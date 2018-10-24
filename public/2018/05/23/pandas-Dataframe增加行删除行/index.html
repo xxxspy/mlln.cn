@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="pandas-Dataframe增加行删除行"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>pandas-Dataframe增加行删除行 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/05/23/pandas-Dataframe增加行删除行/index.html",
+    "appid": "1600845001263316",
+    "title": "pandas-Dataframe增加行删除行",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-05-23T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/05/23/pandas-Dataframe增加行删除行/">
+                pandas-Dataframe增加行删除行
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="pandas-Dataframe增加行删除行"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年05月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#增加行"><span class="toc-number">1.</span> <span class="toc-text">增加行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除行"><span class="toc-number">2.</span> <span class="toc-text">删除行</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>原创发表, 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+</ul>
+<p>我使用pandas有很长时间了, 一个经常被问道的问题是, 如何增加或删除行, 今天我在这里做一个总结, 希望能帮助一部分人. 下面我们先引入用到的库, 并进行一些初始化的操作.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">'a'</span>:list(range(<span class="number">100</span>)), <span class="string">'b'</span>:[random.random() <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>)]&#125;)</span><br><span class="line">index = pd.MultiIndex.from_product([list(<span class="string">'abcd'</span>), list(range(<span class="number">25</span>))])</span><br><span class="line">df.index = index</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">a</th>
+      <th>0</th>
+      <td>0</td>
+      <td>0.579633</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.220929</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.729217</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.183624</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.088332</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="增加行"><a href="#增加行" class="headerlink" title="增加行"></a>增加行</h3><p>如果你确定知道要增加的行的索引是什么, 并且这个索引不在df.index中, 那么用如下方法是最简单的.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.loc[(<span class="string">'a'</span>, <span class="number">-1</span>), :]=<span class="keyword">None</span> </span><br><span class="line">df.tail()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">d</th>
+      <th>21</th>
+      <td>96.0</td>
+      <td>0.869157</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>97.0</td>
+      <td>0.443904</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>98.0</td>
+      <td>0.946893</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>99.0</td>
+      <td>0.787945</td>
+    </tr>
+    <tr>
+      <th>a</th>
+      <th>-1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>但是, 很多时候, 我们并不确定索引是否已经存在, 只想追加数据, 那么最好是使用<code>DataFrame.append</code>方法. 但是你需要事先创建一个dataframe实例, 用于存放被追加的数据.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = pd.DataFrame(&#123;<span class="string">'a'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">'b'</span>:[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;)</span><br><span class="line">data.index = pd.MultiIndex.from_tuples([(<span class="string">'a'</span>, <span class="number">1</span>), (<span class="string">'b'</span>, <span class="number">1</span>), (<span class="string">'c'</span>, <span class="number">1</span>)])</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <th>1</th>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <th>1</th>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <th>1</th>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new_df = df.append(data)</span><br><span class="line">new_df.tail()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>d</th>
+      <th>24</th>
+      <td>99.0</td>
+      <td>0.787945</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>-1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <th>1</th>
+      <td>2.0</td>
+      <td>5.000000</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <th>1</th>
+      <td>3.0</td>
+      <td>6.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h3><p>很多时候我们没必要做频繁的数据操作, 只需要建立一个DataFrame的视图即可, 比如选择a&lt;10的所有数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">'a'</span>]&lt;<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="9" valign="top">a</th>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.579633</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>0.729217</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>0.183624</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>0.088332</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5.0</td>
+      <td>0.757389</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6.0</td>
+      <td>0.621999</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7.0</td>
+      <td>0.907589</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8.0</td>
+      <td>0.493122</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9.0</td>
+      <td>0.884472</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>我们并没有删除这些行, 只是选择出了我们需要的行, 并建立了一个视图, 这个概念可以类比与mysql数据库的查询视图.</p>
+<p>但是, 如果想要删除某些行, 那怎么办? 我常用的方法是<code>DataFrame.drop</code>, 它既可以删除行, 也可以删除列. 具体看代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除index为('a', -1)的行</span></span><br><span class="line">df.drop((<span class="string">'a'</span>, <span class="number">-1</span>)).tail()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>to_delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">d</th>
+      <th>20</th>
+      <td>95.0</td>
+      <td>0.599706</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>96.0</td>
+      <td>0.869157</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>97.0</td>
+      <td>0.443904</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>98.0</td>
+      <td>0.946893</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>99.0</td>
+      <td>0.787945</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除指定行</span></span><br><span class="line"><span class="comment"># 删除倒数第一行</span></span><br><span class="line">df.drop(df.index[<span class="number">-1</span>]).tail()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">d</th>
+      <th>20</th>
+      <td>95.0</td>
+      <td>0.599706</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>96.0</td>
+      <td>0.869157</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>97.0</td>
+      <td>0.443904</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>98.0</td>
+      <td>0.946893</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>99.0</td>
+      <td>0.787945</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除多行</span></span><br><span class="line"></span><br><span class="line">df.drop([(<span class="string">'a'</span>, <span class="number">-1</span>), (<span class="string">'d'</span>, <span class="number">24</span>)]).tail()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>to_delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">d</th>
+      <th>19</th>
+      <td>94.0</td>
+      <td>0.593349</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>95.0</td>
+      <td>0.599706</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>96.0</td>
+      <td>0.869157</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>97.0</td>
+      <td>0.443904</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>98.0</td>
+      <td>0.946893</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除连续的多行</span></span><br><span class="line"><span class="comment"># 删除最后5行</span></span><br><span class="line">df.drop(df.index[<span class="number">-5</span>:]).tail()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">d</th>
+      <th>16</th>
+      <td>91.0</td>
+      <td>0.838718</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>92.0</td>
+      <td>0.334192</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>93.0</td>
+      <td>0.110082</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>94.0</td>
+      <td>0.593349</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>95.0</td>
+      <td>0.599706</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除列</span></span><br><span class="line">df.drop(<span class="string">'to_delete'</span>, axis=<span class="number">1</span>).head()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">a</th>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.579633</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>0.729217</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>0.183624</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>0.088332</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>当然, 这些操作并没有真的删除这些数据, 想要在<code>df</code>上删除, 你需要使用参数<code>inplace=True</code>, 如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.drop(<span class="string">'to_delete'</span>, axis=<span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">a</th>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.579633</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.0</td>
+      <td>0.729217</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>0.183624</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>0.088332</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>好啦, 这就是我用python pandas时删除和增加行的方法, 如果你有更好的方法, 请在这里留言.</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="pandas-Dataframe增加行删除行.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/dataframe/">#dataframe</a> <a href="/tags/数据分析/">#数据分析</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/dataframe/">
+            dataframe
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/05/23/pandas-Dataframe增加行删除行/">
+                    pandas-Dataframe增加行删除行
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/数据分析/">
+            数据分析
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/05/23/pandas-Dataframe增加行删除行/">
+                    pandas-Dataframe增加行删除行
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

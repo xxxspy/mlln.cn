@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="李宏毅机器学习教程1-1：回归案例教程"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>李宏毅机器学习教程1-1：回归案例教程 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                李宏毅机器学习教程1-1：回归案例教程
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="李宏毅机器学习教程1-1：回归案例教程"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月21日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#视频"><span class="toc-number">1.</span> <span class="toc-text">视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践代码"><span class="toc-number">2.</span> <span class="toc-text">实践代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字幕转录"><span class="toc-number">3.</span> <span class="toc-text">字幕转录</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>很多人联系我说是否能出一系列机器学习的视频教程, 我觉得目前市场上有很多大神的经典课程, 都讲的比我好, 我不想再创造很多轮子, 但是, 这些大神的作品都缺乏一定的配套资源, 比如练习和实验代码, 并且缺少系统的学习路线, 所以本站打算做一个整理, 把一些经典课程整理出来, 并配上相应的学习资料, 让大神的课程发挥更大的作用。 以下是本站整理的李宏毅老师的机器学习视频教程系列, 本站先放视频, 然后会逐步整理配套的代码/习题/笔记等, 只是希望这个系列教程能对大家有帮助。下面是《李宏毅机器学习教程1-1：回归案例教程》的视频内容:</p>
+<p><span></span><br><a id="more"></a></p>
+<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><embed src="http://player.youku.com/player.php/sid/XMzg3NjkyNjU4MA==/v.swf" allowfullscreen="true" quality="high" width="100%" height="500" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash">
+
+<h3 id="实践代码"><a href="#实践代码" class="headerlink" title="实践代码"></a>实践代码</h3><p>代码正在整理中…</p>
+<h3 id="字幕转录"><a href="#字幕转录" class="headerlink" title="字幕转录"></a>字幕转录</h3><p>我们今天要讲的是regression。等一下我会举一个例子，来讲regression是怎么做的。顺便引出一些machinelearning里面常见的重要观念。那regression可以做甚么?除了我们作业里面要大家做的预测PM2.5这个任务以外，还有很多其他非常有用的task。</p>
+<p>举例来说，如果你可以做一个股票预测的系统，你要做的事情就是:找一个function。这个function的input可能是，过去十年，各种股票起伏的资料。或者是，A公司併购B公司，B公司併购C公司等等的资料。你希望这个function在input这些资料以后，它的output是，明天的道琼工业指数的点数。</p>
+<p>如果你可以预测这个的话，你就发了还有别的task，比如说现在很热门的无人车，自动车。这个自动车也可以想成是一个regression的problem，在这个regression的problem里面，input就是，你的无人车所看到的各种sensor:它的红外线感测的sensor，它的影像的视讯的镜头所看到的马路上的东西等等。你的input就是这些information，output就是方向盘的角度。比如说，要左转50度，还是右转50度，右转50度你就当作左转负50度，所以output也是一个scalar。</p>
+<p>所以无人车驾驶就是一个regressionprobleminput一些information，output就是方向盘的角度，它是一个数值。或者是，你可以做推荐系统。我们都知道说，YouTube要推荐影片或者Amazon要推荐商品给你，那推荐系统它要做的事情，也可以想成是一个regression的问题。就是找一个function，它的input是，某一个使用者A和某一个商品B，它的output就是，使用者A购买商品B的可能性。</p>
+<p>如果你可以找到这样一个function，它可以精确的预测说，使用者A购买商品B的可能性的话，那Amazon就会推荐使用者A他最有可能购买的商品。这个是regression的种种应用，今天我要讲的是，另外一个我觉得更实用的应用:就是预测宝可梦的CP值。这个大家知道是甚么意思吗?我来说明一下好了:你的CP值就是一只宝可梦的战斗力。你抓到一只宝可梦后，比如说，这个是一只妙蛙种子，比如说这是一只妙蛙种子，然后你给他吃一些星辰或糖果以后，他就会进化成妙蛙草。</p>
+<p>而如果他进化成妙蛙草以后，他的CP值就变了。为甚么我们会希望能够预测宝可梦的CP值呢?因为如果你可以精确的预测一只宝可梦在进化以后的CP值的话，你就可以评估说，你是否要进化这只宝可梦。如果他是一只CP值比较低的宝可梦的话，你可能就把他拿去做糖果。你就不进化他，这样你就可以节省一些你的糖果的资源。</p>
+<p>你可能就会问说，为甚么我们要节省糖果的资源?因为你这样可以在比较短时间内，就进化比较多强的神奇宝贝。你就会想说为甚么我们要比较强的宝可梦?因为他可以去打道馆。你问为甚么我们要去打道馆?其实我也不知道这样。我们今天要做的事情，就是找一个function。</p>
+<p>这个function的input，就是某一只宝可梦。它的output就是这只宝可梦如果我们把它进化以后，它的CP值的数值是多少。这是一个regression的problem，我们的input就是某一只宝可梦所有相关的information，比如说，我们把一只宝可梦用X表示，我们把一只宝可梦用Xcp表示。它的CP值我们就用Xcp来表示。</p>
+<p>我们用下标来表示某一个，完整的东西里面的，某一个component，某一个部分，我们用下标来表示。Xcp代表某一只宝可梦X，它在进化前的CP值。比如说，这个妙蛙种子，它CP值是14，Xs代表这一只宝可梦X，是属于哪一个物种。比如说这是妙蛙种子。</p>
+<p>Xhp代表这一只表可梦，它的hp值是多少，它的生命值是多少。这个妙蛙种子的生命值是10。Xw代表它的重量，Xh代表它的高度。可以看看你抓的宝可梦是不是特别大只或特别小只。</p>
+<p>那output是进化后的CP。这个进化后的CP值，就是一个数值。就是一个scalar，我们把它用Y来表示。这么解这个问题呢?我们第一堂课就讲过说，做machinelearning就是三个步骤，第一个步骤就是，找一个model；第二个步骤是，model就是一个functionset，第二个步骤就是，定义functionset里面某一个function，我们拿一个function出来可以要evaluate它的好坏；第三步骤就是找一个最好的function。</p>
+<p>首先我们就从第一个步骤开始。我们要找一个functionset，这个functionset就是所谓的model。在这个task里面，我们的functionset，应该长甚么样子呢?一个input一只宝可梦，output进化后的CP值的function，应该长甚么样子呢?这边就先乱写一个简单的。比如说我们认为说，进化后的CP值Y，等于某一个常数项B加上某一个数值W，等于某一个常数项b加上某一个数值w，乘上现在输入的宝可梦的X它在进化前的CP值，这个Xcp代表进化前的CP值，这个Y是进化后的CP值。</p>
+<p>这个w和b是参数，w和b可以是任何的数值。在这个model里面，w和b是未知的，你可以把任何的数字填进去，填进不同的数值，你就得到不同的function。比如说你可以有一个f1，f1是b=10，w=9你可以有另外一个functionf2，这个f2是b=9.8，w=9.2你有一个f3，它是b=-0.8，w=-1.2如果今天你的w和b可以代任何值的话，’其实你这个functionset里面，可以有无穷无尽的function，有无穷多的function。你用这个式子y=b+w×Xcp代表这些function所成的集合。</p>
+<p>当然在这些function里面，比如说f1，f2，f3里面你会发现有一些function显然不太可能是正确的。比如说f3不太可能是正确的。因为我们知道说CP值其实是正，乘以-1.2就变成是负的所以进化以后CP值就变成是负的，这样显然是说不通的。这个就是我们等一下要用靠trainingdata来告诉我们说，在这个functionset里面，哪一个function才是合理的function。</p>
+<p>这样子的model，这个y=b+w×Xcp这样子的model，它是一种linear的model。所谓的linear的model的意思是，简单来说，如果我们可以把一个function，我们把现在我们要找的function，写成y=b+∑WiXi那它是一个linear的function。这边的Xi指的是你input的X的各种attribute。比如说你input宝可梦的各种不同的属性，比如说身高或体重等等。</p>
+<p>这些东西我们叫做feature。从input的object里面，抽出来的各种数值当作function的input，这些东西叫做feature。这个Wi和b，这个Wi叫做weight，这个b叫做bias。接下来我们要收集trainingdata，才能够找这个function。</p>
+<p>这是一个supervisedlearning的task，所以我们收集的是function的input，和function的output。因为是regression的task，所以function的output是一个数值。举例来说，你就抓了一只，这个是杰尼龟，它进化后这个是卡咪龟，卡咪龟进化是水箭龟。这个function的input在这边就是这只杰尼龟。</p>
+<p>那我们用X1来表示它。我们用上标来表示一个完整的object的编号。刚才我们有看到用下标来表示一个component，一个完整object里面的component。我们用上标来表示一个完整object的编号，所以这是第一个X这是一只杰尼龟那它进化以后的CP是973所以我们function的output，应该看到X1就output数值973。</p>
+<p>那这个973我们用Y1hat来代表，这边用Y来代表function的output，用上标来代表一个完整的个体。因为我们今天考虑的output是scalar，所以它其实里面没有component，它就是一个简单的数值。但是我们未来如果在考虑structuredlearning的时候，我们output的object可能是有structure的。所以我们还是会需要上标下标来表示一个完整的output的object，还有它里面的component。</p>
+<p>我们用Yhat1来表示这个数值979。只有一只不够要收集很多。比如说再抓一只伊布，那这个伊布就是X2。那它进化以后可以变成雷精灵，那雷精灵的CP值是1420，这个1420就是Y2hat。</p>
+<p>我们用hat来代表说这个是一个正确的值，是我们实际观察到function该有的output。你可能以为说这只是个例子，这不只是一个例子，我是有真正的data的。今天其实我是想要发表，我在神奇宝贝上面的研究成果这样。那我们就收集10只神奇宝贝，这10只宝可梦就是从编号1到编号10每一只宝可梦我们都让它进化以后，我们就知道它进化后的CP值就是Y1hat到Y10hat这个是真正的data，你可能会问说怎么只抓10只呢?你不知道抓这个很麻烦吗?其实老实说这也不是我自己抓的，网路上有人分享他抓出来的数据。</p>
+<p>我拿他的数据来做一下，其实他也没有抓太多次，因为抓这个其实是很麻烦的。并不是抓来就好，你要把它进化以后，你才知道function的output是多少。所以收集这个data并没有那么容易。所以就收集了10只神奇宝贝，它进化后的CP值。</p>
+<p>那如果我们把这十只神奇宝贝的information画出来的话，这个图上每一个蓝色的点，代表一只宝可梦。然后他的X轴，X轴代表的是这一只宝可梦他的CP值，这个我们一抓来的时候我们就知道了然后他的Y轴代表如果你把这只宝可梦进化以后，进化后的CP值。这个用ŷ来表示。所以10只宝可梦这边我们有10个点这个CP值其实就特别高，这只其实是伊布伊布其实不是很容易抓的这边每一个点就是某第n只宝可梦的CP值，跟它进化以后的ŷ。</p>
+<p>那我们用X上标n和下标cp，来代表第n笔data，他的某一个component，也就是他的CP值。接下来，有了这些trainingdata以后，我们就可以定义一个function的好坏，我们就可以知道一个function是多好或者是多不好，知道说这里面每一个function是多好或者是多不好。怎么做呢?我们要定义一个另外一个function，叫做lossfunction，这边写作大写的L我们这里定了一个functionset，这里面有一大堆的function。这边我们要再定另外一个function另外一个function叫做lossfunction，我们写成大写的L。</p>
+<p>这个lossfunction的input，他是一个很特别function，这个lossfunction他是function的function，大家知道今天我的意思吗?他的input就是一个function，他的output就是一个数值告诉我们说现在input的这个function他有多不好我们这边是用多不好来表示。所以这个lossfunction他是一个function的function，他就是吃一个function当作input他的output就是这个function有多不好。所以你可以写成这样，这个L他的input就是某一个functionf你知道一个function，他又是由这个function里面的两个参数b和w来决定的这个f是由b和w来决定的所以input这个f，就等于input这个f里面的b和w。所以你可以说lossfunction，他是在衡量一组参数的好坏，衡量一组b和w的好坏。</p>
+<p>那怎么定这个lossfunction呢?lossfunction你其实可以随自己的喜好，定义一个你觉得合理的function。不过我们这边就用比较常见的作法:怎么定呢?你就把这个input的w和b，实际地代入y=b+w×Xcp这个function里面。实际地代入y=b+w×Xcp这个function里面。你把w乘上第n只宝可梦的CP值，再加上这个constantb，然后你就得到说:如果我们使用这一组w，这一个w和b，来当作我们的function，来预测宝可梦它进化以后的CP值的话，这个预测的值Y的数值是多少。</p>
+<p>这个里面的括号，比较小的括号，他输出的数值是我们用现在的function来预测的话，我们得到的输出是甚么。那ŷ是真正的数值。我们把真正的数值，减掉预测的数值，再取平方，这个就是估测的误差。我们再把我们手上的10只宝可梦的估测误差，都合起来，就得到这个lossfunction。</p>
+<p>那这个定义我相信你是不太会有问题的，因为它非常的直觉估测:如果我使用某一个function，它给我们的估测误差越大，那当然这个function就越不好。所以我们就用估测误差来定义一个lossfunction。当然你可以选择其他可能性。再来我们有了这个lossfunction以后，如果你还是有一些困惑的话，我们可以把这个lossfunction的形状画出来。</p>
+<p>这个lossfunctionL(w,b)它input就是两个参数w和b所以我们可以把这个L(w,b)对w和b把它做图把它画出来。在这个图上的每一个点，就代表着一个组w跟b，也就是代表某一个function。比如说，红色这个点，红色这个点就代表着，这个b=-180，这个w=-2的时候所得到的function。这个b=-180，这个w=-2时候所得到的function。</p>
+<p>就y=-180−2×Xcp这个function。这图上每一个点都代表着一个function。颜色代表了，现在如果我们使用这个function，根据我们定义的lossfunction，它有多糟糕，它有多不好。这个颜色越偏红色代表数值越大，所以在这一群的function，他们loss非常大，也就是它们是一群不好的function。</p>
+<p>最好的function落在哪里呢?越偏蓝色代表那一个function越好所以最好的function其实落在这个位子如果你选这个function的话，它是可以让你loss最低的一个function。接下来，我们已经定好了我们的lossfunction，可以衡量我们的model里面每一个function的好坏。接下来我们要做的事情就是，从这个functionset里面，挑选一个最好的function。所谓挑选最好的function这一件事情，如果你想要把它写成formulation的话，如果你想要把它写成equation的话，那写起来是甚么样子呢?它写起来就是，你要我们定的那个lossfunction长这样，那你要找一个f，它可以让L(f)最小，这个可以让L(f)最小的function，我们就写成f*。</p>
+<p>或者是，我们知道f是由两个参数w和b表示，今天要做的事情就是，穷举所有的w和b，看哪一个w和b代入L(w,b)，可以让这个loss的值最小。那这一个w跟b就是最好的w跟b，那么写成w<em>跟b</em>。或者是我们把L这个function列出来，L这个function我们知道它长的就是这个样子，那我们就是把w和b，用各种不同的数值代到这个function里面，看哪一组w跟b，可以给我们最好的结果。如果你修过线性代数的话，其实这个对你来说应该完全不是问题，对不对?这个是有closed-formsolution的像我相信你可能不记得它长甚么样子了所谓的closed-formsolution意思是说，你只要把10只宝可梦的CP值跟他们进化后的ŷ你只要把这些数值代到某一个function里面，它output就可以告诉你最好的w和b是甚么。</p>
+<p>如果你修过线代的话，其实你理论上是应该是知道要怎么做的。我假设你已经忘记了，那我们要教你另外一个做法。这个做法叫做gradientdescent。这边要强调的是，gradientdescent不是只适用于解这一个function。</p>
+<p>解这一个function是比较容易的，你有修过线代你其实就会了。但是gradientdescent它厉害的地方是，只要你这个L是可微分的不管它是甚么function，gradientdescent都可以拿来处理这个function，都可以拿来帮你找可能是比较好的function或者是参数。那我们来看一下gradientdescent是怎么做?我们先假设一个比较简单的task，在这个比较简单的task里面，我们的lossfunctionL(w)，它只有一个参数w。那这个L(w)必然是不需要是我们之前定出来的那个lossfunction，它可以是任何function，只要是可微分的就行了。</p>
+<p>那我们现在要解的问题是，找一个w，让这个L(w)最小。这件事情怎么做呢?那暴力的方法就是，穷举所有w可能的数字，把所有w可能的数值，从负无限大到无限大，一个一个值都代到lossfunction里面去，试一下这个lossfunction的value，你就会知道说，哪一个w的值，可以让loss最小。如果你做这件事的话，你就会发现说，比如说这里这个w的值，可以让loss最小。但是这样做是没有效率的，怎么做比较有效率呢?这就是gradientdescent要告诉我们的。</p>
+<p>这个作法是这样子的:我们首先随机选取一个初始的点。比如这边随机选取的是，w0其实你也不一定要随机选取，其实有可能有一些其他的方法，可以让你找的值是比较好的。这个之后再提，现在就想成是，随机选取一个初始的点w00接下来，在这个初始的w0这个位置，我们去计算一下，w这个参数我们要计算在w=w0这个位置，参数w对lossfunction的微分。如果你对微分不熟的话，反正我们这边要找的就是切线斜率。</p>
+<p>如果今天这个切线斜率是负的的话，那显然就是，所以从这个图上就可以很明显地看到如果切线斜率是负的的话，显然左边loss是比较高的，右边loss是比较低的，那我们要找loss比较低的function，所以你应该增加你的w值，你应该增加w0值。反之，如果今天算出来的斜率是正的，代表跟这条虚线反向，也就是右边高左边低的话，那我们显然应该减少w的值。把我们的参数往左边移动，把我们的参数减小。或者是，假如你对微分也不熟切线也不熟的话，那你就想成是，有一个人，站在w0这个点。</p>
+<p>他往前后各窥视了一下，看一下他往左边走一步，loss会减少，往左边走一步loss会减少，还是往右边走一步，loss会减少。如果往右边走一步loss会减少的话，那他就会往右边走一步。总之在这个例子里面，我们的参数是增加的，我们的参数是会增加的，会往右边移动。那怎么增加呢?应该要增加多少呢?这边的增加量，我们写成有关gradientdescent的theory，我们留到下次再讲，我们今天就讲一下它的操作是甚么样子。</p>
+<p>如果我们往右边踏一步的话，应该要踏多少呢?这个踏一步的stepsize，取决于两件事。第一件事情是，现在的微分值有多大。现在的dL/dw有多大如果微分值越大，代表现在在一个越陡峭的地方，那它的移动的距离就越大，反之就越小。那还取决于另外一件事情，这个另外一件事情，是一个常数项，是一个常数项。</p>
+<p>这个常数项这个η，我们把它叫做learningrate。这个learningrate决定说，我们今天踏一步，不只是取决于我们现在微分值算出来有多大，还取决于我们一个事先就定好的数值。这个learningrate是一个事先定好的数值。如果这个事先定好的数值你给它定大一点的话，那今天踏出一步的时候，参数更新的幅度就比较大，反之参数更新的幅度就比较小。</p>
+<p>如果参数更新的幅度比较大的话，你learningrate大一点的话，那学习的效率，学习的速度就比较快。所以这个参数η，我们就称之为learningrate。所以，现在我们已经算出，在w0这个地方，我们应该把参数更新η乘上dL/dw所以你就把原来的参数w0减掉η乘以dL/dw这边会有一项减的，因为如果我们这个微分算出来是负的的话，要增加这个w的值，如果算出来是正的的话，要减少w的值。所以这一项微分值，跟我们的增加减少是反向的，所以我们前面需要乘以一个负号。</p>
+<p>那我们把w0更新以后，变成w1，接下来就是重复刚才看到的步骤，重新去计算一次在w=w1这个地方，所算出来的微分值。假设这个微分值算出来是这样子的，这个微分值仍然建议我们，应该往右移动我们的参数，只是现在移动的幅度，可能是比较小的。因为这个微分值，相较于前面这一项，是比较小的。那你就把w1−ηdL/dw，然后变成w2。</p>
+<p>那这个步骤就反覆不断地执行下去，经过非常非常多的iteration后，经过非常多次的参数更新以后，假设经过t次的更新，这个t是一个非常大的数字，最后你会到一个localminimum的地方。所谓localminimum的地方，就是这个地方的微分是0，所以你接下来算出的微分都是0了，所以你的参数接下来就会卡在这边，就没有办法再更新了。这件事情你可能会觉得不太高兴，因为这边其实有一个localminimum，你找出来的跟gradientdescent找出来的solution，你找出来的参数，它其实不是最佳解。你只能找到localminimum，你没有办法找到globalminimum。</p>
+<p>但幸运的是，这件事情在regression上面，不是一个问题。因为在regression上面，在linearregression上面，它是没有localminimum，等下这种事情我们会再看到。今天我们刚才讨论的是，只有一个参数的情形，那如果是有两个参数呢我们今天真正要处理的事情，是有两个参数的问题，也就是w跟b。其实有两个参数，从一个参数推广到两个参数，其实是没有任何不同的。</p>
+<p>首先你就随机选取两个初始值，w0和b0，接下来，你就计算，在w=w0，b=b0的时候w对loss的偏微分，你在计算w=w0，b=b0的时候，b对L的偏微分。接下来，你计算出这两个偏微分之后，你就分别去更新w0和b0这两个参数，你就把w0减掉η乘上w对L的偏微分，得到w1。你就把b0减掉η乘上b对L的偏微分，你就得到b1。这个步骤你就反覆的持续下去，接下来，你算出b1和w1以后，你就再计算一次w和L的偏微分只是现在是计算w=w1，b=b1的时候的偏微分，所以这项偏微分跟这项偏微分的值不是一样的，这是在不同位置算出来的。</p>
+<p>接下来你有了w1和b1以后，你就计算w1和b1在w=w1,b=b1的时候，w对L的偏微分，还有w1和b1在w=w1,b=b1的时候，b对L的偏微分。接下来你就更新参数，你就把w1减掉η乘上算出来的微分值，你就得到w2。你把b1减掉η乘上微分值就得到b2。你就反覆进行这个步骤，最后你就可以找到一个loss相对比较小的w值跟b的值，这边要补充说明的是，所谓的gradientdescent的gradient指的是甚么呢?其实gradient就是这个倒三角∇L我知道大家已经，很久没有学微积分了，所以我猜你八成不记得∇L是甚么。</p>
+<p>这个∇L就是，你把w对L的偏微分和b对L的偏微分排成一个vector，这一项就是gradient。因为我们在整个process里面，我们要计算w对L的偏微分和b对L的偏微分，这个就是gradient。所以这门课如果没必要的话，我们就尽量不要把这个大家不熟悉的符号弄出来。只是想要让大家知道说gradient指的就是这个东西。</p>
+<p>那我们来visualize一下刚才做的事情。刚才做的事情像是这样:有两个参数w和b，这两个参数决定了一个function长甚么样。那在这个图上的颜色，这个图上的颜色代表lossfunction的数值。越偏蓝色代表loss越小，那我们随机选取一个初始值，是在左下角红色的点这个地方。</p>
+<p>接下来，你就去计算，在红色这个点，b对loss的偏微分还有w对loss的偏微分然后你就把参数更新，这个η乘上b对loss的偏微分。还有η乘上w对loss的偏微分。如果你对偏微分比较不熟的话，其实这个方向，这个gradient的方向，其实就是等高线的法线方向。那我们就可以更新这个参数，从这个地方，到这个地方。</p>
+<p>接下来你就再计算一次偏微分，这个偏微分告诉你说现在应该往这个方向，更新你的参数。你就把你的参数从这个地方移到这个地方。接下来它再告诉你说，应该这样子走，然后你就把参数从这个地方再更新到这个地方。那gradientdescent有一个让人担心的地方。</p>
+<p>就是如果今天你的lossfunction长的是这个样子，如果今天w和b对这个lossL，它看起来是这个样子，那你就麻烦了。这个时候如果你的随机取舍值是在这个地方，那按照gradient建议你的方向，按照今天这个偏微分建议你的方向，你走走走走走，就找到这个function。如果你随机取舍的地方是在这个地方，那根据gradient的方向，你走走走就走到这个地方。所以变成说这个方法你找到的结果，是看人品的。</p>
+<p>这个让人非常非常的担心，但是在linearregression里面，你不用太担心。为甚么呢?因为在linearregression里面，你的这个lossfunctionL，它是convex。如果你定义你loss的方式跟我在前几页投影片讲的是一样的话，那一个loss是convex的。如果你不知道convex是甚么的话，换句话说，它是没有local的optimal的位置，或者是，如果我们把图画出来的话，它长的就是这样子。</p>
+<p>它的等高线就是一圈一圈椭圆形的。所以它是没有localoptimal的地方，所以你随便选一个起始点，根据gradientdescent所帮你找出来的最佳的参数你最后找出来的都会是同一组参数。我们来看一下它的formulation。其实这个式子是非常简单的，假如你要实际算一下w对L的偏微分和b对L的偏微分这个式子长的是甚么样子呢?这个L我们刚才已经看到了，它是长这个样子。</p>
+<p>它是估测误差的平方和。如果我们把它对w做偏微分，我们得到甚么样的式子呢?这个其实非常简单，我相信有修过微积分的人都可以秒算。你就把这个2移到左边，你要对w做偏微分，你就先把括号里面这一项先做偏微分，你把2移到左边，你得到这样子的结果。接下来考虑括号里面的部分，括号里面的部分，只有负的𝑤∙𝑥上标𝑛下标𝑐𝑝这一项是跟w有关的只有负的𝑤∙𝑥上标𝑛下标𝑐𝑝这一项是跟w有关的所以如果你把括号里面的equation对w做偏微分的话，你得到的值就是负的𝑥上标𝑛下标𝑐𝑝所以partialwpartialL，w对L的偏微分它的式子就是长这样如果你要算d对L的偏微分的话，也非常简单，你就把2移到前面，把2移到前面，变成这个样子。</p>
+<p>然后你再把这个括号里面的值，对b做偏微分。括号里面只有负b这一项，跟我们要做偏微分的这个b有关，所以－b对b做偏微分得到的值，是－1然后就结束了。所以有了gradientdescent，你就知道说怎么算偏微分，那你就可以找一个最佳的function。那结果怎么样呢?我们的model长这样，然后费尽一般功夫以后，你找出来的最好的b跟w，根据trainingdata分别是b=－188.4，w=2.7如果你把这一个function:y=b+w×Xcp把它的b跟w值画到图上的话，它长的是这个样子。</p>
+<p>这一条红色的线，那妳可以计算一下，你会发现说这一条红色的线，没有办法完全正确的评定，所有的宝可梦的进化后的CP值。如果你想要知道说他做的有多不好的话，或者是多好的话，你可以看一下，你可以计算一下你的error。你的error就是，你计算一下每一个蓝色的点跟这个红色的点之间的距离，第一个蓝色的点跟这个红色的线的距离，是e1第二个蓝色的点跟红色的线的距离是e2以此类推，所以有e1到e10。那平均的trainingdata的error，就是summatione1到e10。</p>
+<p>这边算出来是31.9但是这个并不是我们真正关心的，因为你真正关心的是，generalization的case。也就是说，假设你今天抓到一只新的宝可梦以后，如果使用你现在的model去预测的话，那做出来你估测的误差到底有多少。所以真正关心的是，那些你没有看过的新的data，这边我们叫做testingdata，它的误差是多少。所以这边又抓了另外10只宝可梦，当作testingdata。</p>
+<p>这10只宝可梦跟之前拿来做训练的10只，不是同样的10只。其实这新抓的10只跟刚才看到的10只的分布，其实是还满像的它们就是这个图上的10个点。那你会发现说，我们刚才在训练资料上找出来这条红色的线，其实也可以大致上预测，在我们没有看过的宝可梦上，它的进化后的CP值。如果你想要量化它的错误的话，那就计算一下它的错误。</p>
+<p>它错误算出来是35.0。这个值是比我们刚才在trainingdata上看到的error还要稍微大一点因为可以想想看我们最好的function是在trainingdata上找到的所以在trainingdata上面算出来的error，本来就应该比testingdata上面算出来的error还要稍微大一点有没有办法做得更好呢?如果你想要做得更好的话，接下来你要做的事情就是，重新去设计你的model。如果你观察一下data你会发现说，在原进化前的CP值特别大的地方，还有进化前的CP值特别小的地方，预测是比较不准的。在这个地方和这个地方，预测是比较不准的。</p>
+<p>那你可以想想看说任天堂在做这个游戏的时候，它背后一定是有某一支程式，去根据某一些hidden的factor。比如说，去根据原来的CP值和其他的一些数值，generate进化以后的数值。所以到底它的function长甚么样子?从这个结果看来，那个function可能不是这样子一条直线，它可能是稍微更复杂一点。所以我们需要有一个更复杂的model。</p>
+<p>举例来说，我们这边可能需要引入二次式。我们今天，可能需要引入(Xcp)²这一项我们重新设计了一个model，这个model它写成y=b+w1×Xcp+w2×(Xcp)²我们加了后面这一项如果我们有了这个新的function，你可以用我们刚才讲得一模一样的方式，去define一个function的好坏，然后用gradientdescent，找出一个，在你的functionset里面最好的function。根据trainingdata找出来的最好的function是b=−10.3,w1=1.0,w2=2.7×10^-3如果我们把这个最好的function画在图上的话，它长的是这个样子。你就会发现说，现在我们有了这条新的曲线，我们有了这个新的model，它的预测在trainingdata上面看起来是更准一点。</p>
+<p>在trainingdata上面你得到的averageerror现在是15.4。但我们真正关心的，是testingdata那我们就把同样的model再apply到testingdata上。我们在testingdata上apply同样这条红色的线，然后去计算它的averageerror。那我们现在得到的是18.4在刚才如果我们没有考虑(Xcp)²的时候算出来的averageerror是30左右现在有考虑平方项得到的是18.4那有没有可能做得更好呢?比如说我们可以考虑一个更复杂的model。</p>
+<p>我们引入不只是(Xcp)²，我们引入(Xcp)³。所以我们现在的model长的是这个样子。你就用一模一样的方法，你就可以根据你的trainingdata，找到在这一个functionset里面，在这个model里面最好的一个function。那找出来是这样:b=6.4，w1=0.66,w2=4.3×10^-3，w3=-1.8×10^-6所以你发现w3其实是它的值比较小它可能是没有太大的影响作出来的线其实跟刚才看到的二次的线是没有太大的差别的那做出来看起来像是这个样子。</p>
+<p>那这个时候averageerror算出来是15.3如果你看testingdata的话，testingdata算出来的averageerror是18.1。跟刚刚二次的，有考虑(Xcp)²的结果比起来是稍微好一点点。刚才前一页是18.3，有考虑三次项后是18.1是稍微好一点点。那有没有可能是更复杂的model呢?或许在宝可梦的那个程式背后，它产生进化后的CP值用的是一个更复杂的一个function或许它不只考虑了三次，或者它不只考虑了(Xcp)³或许它考虑的是四次方也说不定那你就用同样的方法，再把这些参数:b、w1、w2、w3和w4都找出来，那你得到的function长这个样子。</p>
+<p>你发现它在trainingdata上它显然可以做得更好。在input的CP值比较小的这些宝可梦，这些显然是一些绿毛虫之类的东西，它在这边是predict更准的。所以现在的averageerror是14.9，刚才三次的是15.3刚才三次的是在trainingdata上是15.3现在四次的时候在trainingdata上是14.9但是我们真正关心的是testing我们真正关心的是如果没有看过的宝可梦，我们能够多精确的预测它进化后的CP值。所以，我们发现说，如果我们看没有看过的宝可梦的话，我们得到的averageerror是多少呢?我们得到的averageerror其实是28.8前一页做出来已经是18.3了就我们用三次的时候，在testingdata上面做出来已经是18.3了但是我们换了一个更复杂的model以后，做出来是28.8结果竟然变得更糟了!我们换了一个更复杂的model，在trainingdata上给我们比较好的结果但在testingdata上，看起来结果是更糟的。</p>
+<p>那如果换再更复杂的model会怎样呢?有没有可能是五次式，有没有可能它背后的程式是如此的复杂，原来的CP值的一次、两次、三次、四次到五次那这个时候，我们把最好的function找出来，你会发现它最好的function在trainingdata上长得像是这样子。这个是一个合理的结果吗?你会发现说，在原来的CP值是500左右，500左右可能就是伊布之类的东西。在原来的CP值是500左右的宝可梦，根据你现在的model预测出来，它的CP值竟然是负的。但是在trainingdata上面，我们可以算出来的error是12.8，比我们刚才用四次式，得到的结果又再更好一些。</p>
+<p>那在testing的结果上是怎样呢如果我们把这个我们找出来的function，apply到新的宝可梦上面，你会发现结果怎么烂掉了啊至少这一只大概是伊布吧这只伊布，它预测出来进化后的CP值，是非常的不准。照理说有1000多，但是你的model却给它一个负的预测值。所以算出来的averageerror非常大，有200多。所以当我们换了一个更复杂的model，考虑到五次的时候，结果又更加糟糕了。</p>
+<p>所以到目前为止，我们试了五个不同的model。那这五个model，如果你把他们分别的在trainingdata上面的averageerror都画出来的话，你会得到这样子的一张图。从高到低也就是说，如果你考虑一个最简单的model，这个时候error是比较高的；model稍微复杂一点，error稍微下降；然后model越复杂，在这个trainingdata上的error就会越来越小。那为甚么会这样呢?这件事情倒是非常的直觉，非常容易解释。</p>
+<p>假设黄色的这个圈圈，我们故意用一样的颜色黄色这个圈圈代表这一个式子，有考虑三次的式子，所形成的functionspace。那四次的式子所形成的functionspace，就是这个绿色的圈圈。它是包含黄色的圈圈的，这个事情很合理，因为你只要把w4设为0，是四次的这个式子就可以变成三次的式子。所以三次的式子都包含在这个四次的式子里面，黄色的圈圈都包含在绿色的圈圈里面。</p>
+<p>那如果我们今天考虑更复杂的五次的式子的话，它又可以包含所有四次的式子。所以今天如果你有一个越复杂的model，它包含了越多的function的话，那理论上你就可以找出一个function，它可以让你的errorrate越来越低。你的function如果越复杂，你的candidate如果越多，你当然可以找到一个function，让你的errorrate越来越低。当然这边的前提就是，你的gradientdescent要能够真正帮你找出bestfunction的前提下，你的function越复杂，可以让你的errorrate在trainingfunction上越低。</p>
+<p>但是在testingdata上面，看起来的结果是不一样的。在testingdata上面看起来的结果是不一样的。在trainingdata上，你会发现说model越来越复杂你的error越来越低；但是在testingdata上，在到第三个式子为止，你的error是有下降的。但是到第四个和第五个的function的时候，error就暴增。</p>
+<p>然后把它的图试着画在左边这边。蓝色的是trainingdata上对不同function的error，橙色的是testingdata上对不同function的error。你会发现说，今天在五次的时候，在testing上是爆炸的，它就突破天际没办法画在这张图上。那所以我们今天，得到一个观察，虽然说越复杂的model可以在trainingdata上面给我们越好的结果，但这件事情也没有甚么，因为越复杂的model并不一定能够在testingdata上给我们越好的结果。</p>
+<p>这件事情就叫做overfitting。就复杂的model在trainingdata上有好的结果，但在testingdata上不一定有好的结果。这件事情就叫做overfitting。比如当我们用第四个和第五个式子的时候，我们就发生overfitting的情形。</p>
+<p>那为甚么会有overfitting这个情形呢?为甚么更复杂的model它在training上面得到比较好的结果，在testing上面不一定得到比较好的结果呢?这个我们日后再解释。但是你其实是可以想到很多很直观的，在trainingdata上面得到比较好的结果，在训练的时候得到比较好的结果但在测试的时候不一定会得到比较好的结果。比如说，你有没有考过驾照?考驾照不是都要去那个驾训班吗?驾训班不是都在那个场内练习吗你在场内练习不是都很顺?练习非常非常多次以后，你就会得到很奇怪的技能。你就学到说，比如说，当我后照镜里面看到路边小丸子的贴纸对到正中间的时候，就把方向盘左转半圈这样子。</p>
+<p>你就学到这种技能，所以你在测试训练的时候，在驾训班的时候你可以做得很好。但在路上的时候你就做不好。像我就不太会开车，虽然我有驾照。所以我都在等无人驾驶车出来。</p>
+<p>所以overfitting是很有可能会发生的。所以model不是越复杂越好，我们必须选一个刚刚好，没有非常复杂也没有很复杂的model，你要选一个最适合的model。比如说在这个case里面，当我们选一个三次式的时候，在这个case里面当我们选一个三次式的时候，可以给我们最低的error。所以如果今天可以选的话，我们就应该选择三次的式子来作为我们的model，来作为我们的functionset。</p>
+<p>你以为这样就结束了吗?其实还没有。刚才只收集了10只宝可梦，其实太少了当我们收集到60只宝可梦的时候，你会发现说刚才都是白忙一场。你仔细想:当我们收集60只宝可梦，你把它的原来的CP值和进化后的CP值，画在这个图上，你会发现说他们中间有一个非常奇妙的关系。它显然不是甚么一次二次三次一百次式，显然都不是，中间有另外一个力量，这个力量不是CP值它在影响着进化后的数值，到底是甚么呢?其实非常的直觉，就是宝可梦的物种。</p>
+<p>这边我们把不同的物种用不同的颜色来表示，蓝色是波波，波波进化后是比比鸟，比比鸟进化是大比鸟。这个黄色的点是独角虫，独角虫进化后是铁壳蛹，铁壳蛹进化后是大针蜂。然后绿色的是绿毛虫，绿毛虫进化是铁甲蛹，铁甲蛹进化是巴大蝴。红色的是伊布，伊布可以进化成雷精灵、火精灵或水精灵等等你可能说怎么都只有这些路边就可以见到的，因为抓乘龙快龙是很麻烦的，所以就只有这些而已。</p>
+<p>所以刚才只考虑CP值这件事，只考虑进化前的CP值显然是不对的。因为这个进化后的CP值受到物种的影响其实是很大的。或者是比原来的CP值产生非常关键性的影响。所以我们在设计model的时候，刚才那个model设计的是不好的。</p>
+<p>刚才那个model就好像是，你想要海底捞针，从functionset里面捞出一个最好的model那其实里面model通通都不好，所以针根本就不在海里，所以你要重新设计一下你的functionset。所以这边就重新设计一下functionset，我们的functionset，inputx跟outputy，这个input宝可梦和output进化后的CP值有甚么关系呢?它的关系是这样:如果今天输入的宝可梦x，它的物种是属于波波的话，这个Xs代表说这个inputx的物种，那他的输出y=b1+w1×Xcp。那如果它是独角虫的话，y=b2+w2×Xcp。如果它是绿毛虫的话，就是b3+w3×Xcp。</p>
+<p>如果它是伊布的话，就用另外一个式子。也就是不同的物种，我们就看它是哪一个物种，我们就代不同的linearfunction，然后得到不同的y作为最终的输出。你可能会问一个问题说，你把if放到整个function里面，这样你不就不是一个linearmodel了吗?function里面有if你搞得定吗?你可以用微分来做吗?你可以用刚才的gradientdescent来算参数对lossfunction微分吗?其实是可以的。这个式子你可以把它改写成一个linearfunction。</p>
+<p>写起来就是这样:这个有一点复杂但没有关系。我们先来观察一下δ这个function。如果你有修过信号的处理，我想应该知道δ这个function是指甚么。今天这个δ这个function的意思是说，δofXs等于比比鸟的意思就是说，假如我们今天输入的这只宝可梦是比比鸟的话，这个δfunction它的output就是1。</p>
+<p>反之如果是其他种类的宝可梦的话，它δfunction的output就是0。所以我们可以把刚才那个有if的式子，写成像这边这个样子。你的宝可梦进化后的CP值，等于b1×δ(比比鸟)这样子，然后加上w1×δ(比比鸟)×这只宝可梦的CP值，加上b2×δ(独角虫)，加上w2×δ(独角虫)，再乘上它的CP值，然后接下来考虑绿毛虫，然后接下来考虑伊布。你可能会想说这个跟刚刚那个式子哪里一样了呢?你想想看，假如我们今天输入的那一只神奇宝贝，假如我们今天输入的那一只宝可梦，是比比鸟的话，假如Xs等于比比鸟的话，意味着这两个function会是1，这两个δfunction如果input是比比鸟的话就是1，其他δfunction就是0。</p>
+<p>那乘上0的项，乘上0的项就当作没看到，其实就变成y=b1+w1×Xcp所以对其他种类的宝可梦来说也是一样。所以当我们设计这个function的时候，我们就可以做到我们刚才在前一页design的那一个有if的function。那事实上这一个function，它就是一个linearfunction。这个function就是一个linearfunction。</p>
+<p>怎么说呢?前面这个b1w1到b4w4就是我们的参数，而后面这一项δ或者是δ乘以Xcp不同的δ，跟不同的δ乘以Xcp，就是后面这个Xi这一项feature。这个蓝色框框里面的这些，其实就是feature。所以这个东西它也是linearmodel。那有了这些以后，我们做出来的结果怎么样呢?这个是在trainingdata上的结果，在trainingdata上面，我们知道不同种类的宝可梦，它用的参数就不一样。</p>
+<p>所以不同种类的宝可梦，它的线是不一样的，它的model的那条line是不一样的。蓝色这条线是比比鸟的线，绿色这条线是绿毛虫的线，黄色独角虫的线跟绿毛虫的线其实是重叠的，红色这条线是伊布的线。所以就发现说，当我们分不同种类的宝可梦来考虑的时候，我们的model在trainingdata上面可以得到更低的error。你发现说现在这几条线，是把trainingdatafit得更好，是把trainingdata解释得更好，如果说我们这么做有考虑到宝可梦的种类的时候，我们得到的averageerror是3.8，在trainingdata上。</p>
+<p>但我们真正在意的是，它能不能够预测新看到的宝可梦，也就是testingdata上面的结果。那在testingdata上面，它的结果是这个样子：一样是这三条线，发现说它也把在testingdata上面的那些宝可梦fit得很好。然后它的averageerror是14.3这比我们刚才可以做好的18点多还要更好。但是如果你再观察这个图的话，感觉应该是还有一些东西是没有做好的。</p>
+<p>我仔细想想看，我觉得伊布这边应该就没救了。因为我认为伊布会有很不一样的CP值是因为进化成不同种类的精灵。所以如果你没有考虑这个factor的话，应该就没救了。但是我觉得这边有一些还没有fit很好的地方，有一些值还是略高或略低于这条直线。</p>
+<p>所以这个地方搞不好还是有办法解释的。当然有一个可能是，这些略高略低于，我们现在找出来这个蓝色绿色线的这个model的变化这个difference其实来自于random的数值，就是每次那个宝可梦的程式产生进化后的CP值的时候，它其实有加一个random的参数。但也有可能是其实不是random的参数，它还有其他的东西在影响着宝可梦进化后的CP值。有什么其他可能的参数呢?比如说，会不会进化后的CP值是跟weight有关系的?会不会进化后的CP值是跟它的高度有关系的?会不会进化后的CP值是跟它的HP有关系的?其实我们不知道，我又不是大木博士我怎么会知道这些事情，所以如果你有domainknowledge的话，你就可能可以知道说你应该把甚么样的东西加到你的model里面去。</p>
+<p>但是我又没有domainknowledge，那怎么办呢?没关系，有一招就是把你所有想到的东西，通通塞进去，我们来弄一个最复杂的function，然后看看会怎样?这个function我写成这样:如果它是比比鸟的话，它的CP值我们就先计算一个y’，这个y’不是最后这个y，这个y’还要做别的处理才能够变成y。我们就说，如果这个是比比鸟的话，这其实不是比比鸟，这应该是波波，因为比比鸟是进化后的。这只应该是波波。那y’=b1+w1×Xcp+W5×(Xcp)²我们就是不只要考虑CP值，也要考虑CP值的平方。</p>
+<p>如果是绿毛虫，用另外一个式子。如果是独角虫，用另外一个式子。如果是伊布，用另外一个式子。最好我们再把y’做其他的处理，我们把y’，再加上HP值，它的生命值乘上w9，再加上生命值的平方乘上w10再加上高度乘上w11，再加上高度的平方乘上w12，再加上它的weight乘上w13，再加上weight平方乘上w14，这些东西合起来，才是最后output的y。</p>
+<p>所以这整个式子里面，其实也没有很多个参数，就是14+4=18跟你们作业比起来，几百个参数比起来，其实也不是一个太复杂的model。那我们现在有个这么复杂的function，在trainingdata上我们得到的error，期望应该就是非常的低。我们果然得到一个非常低的error，这个function你可以把它写成线性的式子，就跟刚才一样，这边我就不解释了。那这么一个复杂的function，理论上我们可以得到非常低的trainingerror。</p>
+<p>trainingerror算出来是1.9，那你可以期待你在testingset上，也算出很低的trainingerror吗?倒是不见得。这么复杂的model，很以可能会overfitting。你很有可能会得到，在testingdata上得到很糟的数字。我们今天得到的数值很糟是102.3这样子，结果坏掉了怎么办呢?如果你是大木博士的话，你就可以删掉一些你觉得没有用的input，然后就得到一个简单的model，避免overfitting的情形。</p>
+<p>但是我不是大木博士，所以我有用别的方法来处理这个问题。这招叫做regularization。regularization要做的事情是，我们重新定义了step2的时候，我们对一个function是好还是坏的定义。我们重新redefine我们的lossfunction。</p>
+<p>然后，我们重新redefine我们的lossfunction，把一些knowledge放进去，让我们可以找到比较好的function。什么意思呢?假设我们的modelingeneral写成这样:y=b+∑WiXi我们原来的lossfunction，它只考虑了error这件事。原来的lossfunction只考虑了prediction的结果减掉正确答案的平方，只考虑了prediction的error。那regularization它就是加上一项额外的term，这一项额外的term是λ∑(Wi)²，λ是一个常数，这个是等一下我们要手调一下看要设多少。</p>
+<p>那∑(Wi)²就是把这个model里面所有的Wi，都算一下平方以后加起来。那这个合起来才是我们的lossfunction。前面这一项我们刚才解释过，所以我相信你是可以理解的。error越小就代表当然是越好的function，但是，为甚么我们期待一个参数的值越小，参数的值越接近0的function呢?这件事情你就比较难想像。</p>
+<p>为甚么我们期待一个参数值接近0的function呢?当我们加上这一项的时候，我们就是预期说我们要找到的那个function，它的那个参数越小越好。当我们加上这一项的时候，你知道参数值比较接近0的function，它是比较平滑的。所谓的比较平滑的意思是，当今天的输入有变化的时候，output对输入的变化是比较不敏感的。为甚么参数小就可以达到这个效果呢?你可以想想看，假设这个是我们的model，现在input有一个变化，比如说我们对某一个Xi加上ΔXi这时候对输出会有什么变化呢?这时候输出的变化，就是ΔXi乘上Wi你的输入变化ΔXi输出就是Wi乘上ΔXi你会发现说如果今天你的Wi越小越接近0的话，如果你的Wi越接近0的话，它的变化就越小。</p>
+<p>如果Wi越接近0的话，输出对输入就越不sensitive。所以今天Wi越接近0，我们的function就是一个越平滑的function。现在的问题就是，为甚么我们喜欢比较平滑的function?这可以有不同的解释，你可以这样想，如果我们今天有一个比较平滑的function的话，那平滑的function对输入是比较不敏感的。所以今天如果我们的输入，被一些杂讯所干扰的话，如果今天杂讯干扰的我们的输入，在我们测试的时候，那一个比较平滑的function，它会受到比较少的影响，而给我们一个比较好的结果。</p>
+<p>接下来我们就要来看看说，如果我们加入了regularization的项，对我们最终的结果会有甚么样的影响?这个是实验的结果。我们就把λ从0、1、10一直调到100000所以λ值越大，代表说今天我们的我们现在loss有两项，一项是考虑error，一项是考虑多smoothλ值越大代表考虑smooth的那个regularization那一项它的影响力越大所以当λ值越大的时候，我们找到的function就越平滑。如果我们看看在trainingdata上的error的话，我们看看在trainingdata上的error的话，我们会发现说，如果function越平滑，我们在trainingdata上得到的error其实是越大的。但是这件事情是非常合理的，因为当λ越大的时候，我们就越倾向于考虑W本来的值，我们就倾向考虑W的值而减少考虑我们的error。</p>
+<p>所以今天如果λ越大的时候，我们考虑error就愈少，所以我们本来在trainingdata上得到的error就越大。但是有趣的是，虽然在trainingdata上得到的error就越大，但是在testingdata上面得到的error可能是会比较小。比如说我们看这边的例子，原来λ=0，就是没有regularization的时候error是102λ=1就变成68，到10就变成25到100就变成11.1但是λ太大的时候，到1000的时候，error又变大变成12.8一直到26.8。那这个结果是合理，我们比较喜欢比较平滑的function，比较平滑的function它对noise比较不sensitive，所以当我们增加λ的时候，你的performance是越来越好，但是我们又不喜欢太平滑的function，因为最平滑的function是甚么?最平滑的function就是一条水平线啊，一条水平线是最平滑的function。</p>
+<p>如果你的function是一条水平线的话，那它啥事都干不成，所以如果今天function太平滑的话，你反而会在testingset上又得到糟糕的结果。所以现在的问题就是，我们希望我们的model多smooth呢?我们希望我们今天找到的function有多平滑呢?这件事情就变成是你们要调λ来解决这件事情，你必须要调整λ来决定你的function的平滑程度。比如说你可能调整一下参数以后发现说，今天training都随着λ增加而增加，testing随着λ先减少后增加。在这个地方有一个转折点，是可以让我们的testingerror最小，你就选λ=100来得到你的model。</p>
+<p>这边还有一个有趣的事实，很多同学其实都知道regularization，你有没有发现，这边我没有把b加进去，我刚刚突然想到一件事情，我其实在前面那个gradientdescent的投影片里面，有一个地方写错了，然后有同学提醒我，以后你如果有发现我投影片有写错的话，以后告诉我就把你的投影片写在投影片这样。这边你发现我没有加上b，为甚么呢?你觉得是我写错了的同学，你觉得是我忘了加上去的同学举手一下，你觉得本来就不需要加上b的同学举手一下这边我觉得我没有写错。事实上很多人可能不知道这件事，在做regularization的时候，其实是不需要考虑bias这一项的。首先，如果你自己做实验的话你会发现，不考虑bias，performance会比较好。</p>
+<p>再来为甚么不考虑bias呢?因为我们今天预期的是，我们要找一个比较平滑的function。你调整bias的这个b的大小，跟一个function的平滑的程度是没有关系的。调整bias值的大小时你只是把function上下移动而已，对function的平滑程度是没有关系的。所以有趣的是，这很多人都不知道，在做regularization的时候，你是不用考虑bias的。</p>
+<p>总之，搞了半天以后，我最后可以做到，我们的testingerror是11.1。那在我们请助教公告作业之前，我们就说一下今天的conclusion:首先感谢大家来参加我对宝可梦研究的发表会，那我今天得到的结论就是，宝可梦进化后的CP值，跟他进化前的CP值，还有它是哪个物种，是非常有关系的。知道这两件事情几乎可以决定进化后的CP值。但是我认为，可能应该还有其他的factors。</p>
+<p>我们刚刚看到说我们加上其他甚么高度啊体重啊HP以后，是有比较好的，如果我们加入regularization的话。不过我data有点少，所以我没有那么confident就是了。然后再来呢就是，我们今天讲了gradientdescent的作法，就是告诉大家怎么做那我们以后会讲它的原理还有技巧。我们今天讲了overfitting和regularization，介绍一下表象上的现象，未来会讲更多它背后的理论。</p>
+<p>再来最后我们有一个很重要的问题，首先我觉得我这个结果应该还满正确的，因为你知道网路上有很多的CP的预测器，那些CP的预测器你在输入的时候，你只要输入你的宝可梦的物种和它现在的CP值，它就可以告诉你进化以后的CP值。所以我认为你要预测进化以后的CP值，应该是要知道原来的CP值和它的物种，就可以知道大部分。不过我看那些预测器预测出来的误差，都是给你一个range，它都没有办法给你一个更准确的预测。如果考虑更多的factor更多的input，比如说HP甚么啊，或许可以预测的更准就是了。</p>
+<p>但最后的问题就是，我们在testingdata上面，在我们testing的10只宝可梦上，我们得到的averageerror最后是11.1。如果我把它做成一个系统，放到网路上给大家使用的话，你觉得如果我们看过没有看到的data，那我们得到的error会预期高过11.1还是低于11.1还是理论上期望值应该是一样的。你知道我的trainingdata是里面只有四种，里面都没有甚么乘龙卡比之类的，我们就假设使用者只能够输入那四种，它不会输入乘龙卡比这样。在这个情况下，你觉得如果我们今天把这个系统放到线上，给大家使用的话，我们今天得到的CP值，会比我今天在testingset上看到的高还是低还是一样?你觉得一样的同学举手一下你觉得会比现在看到的低，举手一下你觉得会比我们今天看到的11.1还要高的举手一下我们之后会解释，我们今天其实用了testingset来选model就我们今天得到的结果其实是如果我们真的把系统放在线上的话预期应该会得到比我们今天看到的11.1还要更高的errorrate这个时候我们需要validation观念来解决这个问题这个我们就下一堂课再讲。</p>
+<p>本教程由mlln.cn站长整理和发布, 有需求请关注我的<a href="http://mlln.cn">网站DataScienct mlln.cn</a></p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/机器学习/">#机器学习</a> <a href="/tags/视频教程/">#视频教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/机器学习/">
+            机器学习
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/23/李宏毅机器学习教程系列/">
+                    李宏毅机器学习教程系列
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/13/机器学习的评估方法有哪些/">
+                    机器学习的评估方法有哪些
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
+                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
+                    李宏毅机器学习教程10：卷积神经网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：tensorflow教程/">
+                    李宏毅机器学习教程9-3：tensorflow教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程9-1：训练深度神经网络的一些tips/">
+                    李宏毅机器学习教程9-1：训练深度神经网络的一些tips
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
+                    李宏毅机器学习教程01:机器学习简介
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程21-1：循环神经网络/">
+                    李宏毅机器学习教程21-1：循环神经网络
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/视频教程/">
+            视频教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/23/李宏毅机器学习教程系列/">
+                    李宏毅机器学习教程系列
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
+                    李宏毅机器学习教程14：无监督学习-词嵌入模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程21-1：循环神经网络/">
+                    李宏毅机器学习教程21-1：循环神经网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程16：无监督学习-自编码器/">
+                    李宏毅机器学习教程16：无监督学习-自编码器
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
+                    李宏毅机器学习教程18：无监督生成模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
+                    李宏毅机器学习教程2：误差来自哪里
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程22：集成模型/">
+                    李宏毅机器学习教程22：集成模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程19：Transfer-Learning/">
+                    李宏毅机器学习教程19：Transfer-Learning
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
+                    李宏毅机器学习教程3-2：梯度下降法案例
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程3-1：梯度下降法/">
+                    李宏毅机器学习教程3-1：梯度下降法
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
+                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

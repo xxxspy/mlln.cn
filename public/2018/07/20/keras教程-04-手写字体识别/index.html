@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="keras教程-04-手写字体识别"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>keras教程-04-手写字体识别 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                keras教程-04-手写字体识别
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-04-手写字体识别"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年07月20日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用Keras建立一个简单的神经网络"><span class="toc-number">1.</span> <span class="toc-text">用Keras建立一个简单的神经网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MNIST手写数字识别问题的描述"><span class="toc-number">2.</span> <span class="toc-text">MNIST手写数字识别问题的描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载图片数据"><span class="toc-number">3.</span> <span class="toc-text">加载图片数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调整数据格式便于进行计算"><span class="toc-number">4.</span> <span class="toc-text">调整数据格式便于进行计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建网络"><span class="toc-number">5.</span> <span class="toc-text">创建网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译模型"><span class="toc-number">6.</span> <span class="toc-text">编译模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练模型"><span class="toc-number">7.</span> <span class="toc-text">训练模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后，评估其性能"><span class="toc-number">8.</span> <span class="toc-text">最后，评估其性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查输出"><span class="toc-number">9.</span> <span class="toc-text">检查输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>编辑发表, 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+<li>tensorflow 1.x</li>
+<li>keras 2.x</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<h3 id="用Keras建立一个简单的神经网络"><a href="#用Keras建立一个简单的神经网络" class="headerlink" title="用Keras建立一个简单的神经网络"></a>用Keras建立一个简单的神经网络</h3><p>这是在Keras的神经网络中进行数字识别的简单快速入门，用于北京师范大学的深度学习教程。它主要基于Keras中的<code>mnist_mlp.py</code>示例。</p>
+<p>在这篇文章中，您将了解如何使用Keras深度学习库开发深度学习模型，以便在Python中识别MNIST手写数字。完成本教程后，您将了解：</p>
+<ul>
+<li>如何在Keras中加载MNIST数据集</li>
+<li>理解图片的数据结构</li>
+<li>如何开发和评估深度前馈神经网络(Deep Feed Forward)</li>
+</ul>
+<p>下面先引入我们需要用到的库:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">'figure.figsize'</span>] = (<span class="number">7</span>,<span class="number">7</span>) <span class="comment"># Make the figures a bit bigger</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers.core <span class="keyword">import</span> Dense, Dropout, Activation</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> np_utils</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+    <br>  from ._conv import register_converters as _register_converters
+    <br>Using TensorFlow backend.
+    <br>
+</div>
+
+<h3 id="MNIST手写数字识别问题的描述"><a href="#MNIST手写数字识别问题的描述" class="headerlink" title="MNIST手写数字识别问题的描述"></a>MNIST手写数字识别问题的描述</h3><p>这是一项数字识别任务, 有10个数字（0到9）或10个类。</p>
+<p>MNIST问题是由Yann LeCun，Corinna Cortes和Christopher Burges开发的用于评估手写数字分类问题的机器学习模型的数据集。该数据集由国家标准与技术研究所（NIST）提供的许多扫描数字构成。这是数据集的名称来源，被称为Modified NIST或MNIST数据集。</p>
+<p>每个图像是28x28像素的正方形（总共784个像素）。其中60,000个图像用于训练模型，并且单独的10,000个图像集用于测试模型。</p>
+<h3 id="加载图片数据"><a href="#加载图片数据" class="headerlink" title="加载图片数据"></a>加载图片数据</h3><p>Keras深度学习库提供了加载MNIST数据集的便捷方法。数据集在第一次调用此函数时自动下载，并作为15MB文件存储在<code>〜/.keras/datasets/mnist.npz</code>的主目录中。这对于开发和测试深度学习模型非常方便。为了演示加载MNIST数据集是多么容易，我们将首先编写一个小脚本来下载和可视化训练数据集中的第1个图像。(如果你你的程序加载的时候非常慢, 可以自己去这里下载这个文件, 然后放到上面提到的目录中: <a href="https://s3.amazonaws.com/img-datasets/mnist.npz" target="_blank" rel="noopener">https://s3.amazonaws.com/img-datasets/mnist.npz</a>)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nb_classes = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个方法可以加载数据</span></span><br><span class="line">(X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line">print(<span class="string">"X_train original shape"</span>, X_train.shape)</span><br><span class="line">print(<span class="string">"y_train original shape"</span>, y_train.shape)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    X_train original shape (60000, 28, 28)
+    <br>y_train original shape (60000,)
+    <br>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看第2个图片的数据:</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">28</span>):</span><br><span class="line">    <span class="comment"># 为了容易看出这个图, 我让每个数字占3个位置</span></span><br><span class="line">    row = [ <span class="string">'&#123;:_&lt;3&#125;'</span>.format(n) <span class="keyword">for</span> n <span class="keyword">in</span> X_train[<span class="number">1</span>, i, :]]</span><br><span class="line">    <span class="comment"># 打印每行数据</span></span><br><span class="line">    print(<span class="string">','</span>.join(row))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,51_,159,253,159,50_,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,48_,238,252,252,252,237,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,54_,227,253,252,239,233,252,57_,6__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,10_,60_,224,252,253,252,202,84_,252,253,122,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,163,252,252,252,253,252,252,96_,189,253,167,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,51_,238,253,253,190,114,253,228,47_,79_,255,168,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,48_,238,252,252,179,12_,75_,121,21_,0__,0__,253,243,50_,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,38_,165,253,233,208,84_,0__,0__,0__,0__,0__,0__,253,252,165,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,7__,178,252,240,71_,19_,28_,0__,0__,0__,0__,0__,0__,253,252,195,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,57_,252,252,63_,0__,0__,0__,0__,0__,0__,0__,0__,0__,253,252,195,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,198,253,190,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,255,253,196,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,76_,246,252,112,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,253,252,148,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,85_,252,230,25_,0__,0__,0__,0__,0__,0__,0__,0__,7__,135,253,186,12_,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,85_,252,223,0__,0__,0__,0__,0__,0__,0__,0__,7__,131,252,225,71_,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,85_,252,145,0__,0__,0__,0__,0__,0__,0__,48_,165,252,173,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,86_,253,225,0__,0__,0__,0__,0__,0__,114,238,253,162,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,85_,252,249,146,48_,29_,85_,178,225,253,223,167,56_,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,85_,252,252,252,229,215,252,252,252,196,130,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,28_,199,252,252,253,252,252,233,145,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,25_,128,252,253,252,141,37_,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__,0__
+    <br>
+</div>
+
+<p>如果你上过幼儿园, 你应该能看出这个图上的数字是0。然后, 就是图片的本质, 图片本质上就是二维矩阵或者三维的张量。我们现在用到的图片是灰度图片, 没有颜色, 所以只需要一个二维矩阵即可。除了向上面那样查看图片外, 我们更多的是使用下面的方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(X_train[<span class="number">1</span>], cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <matplotlib.image.axesimage at="" 0x19179265080="">
+
+</matplotlib.image.axesimage></div>
+
+<p><img src="output_9_1.png" alt="png"></p>
+<h3 id="调整数据格式便于进行计算"><a href="#调整数据格式便于进行计算" class="headerlink" title="调整数据格式便于进行计算"></a>调整数据格式便于进行计算</h3><p>我们的神经网络的输入为一个向量，因此我们需要对图片进行整形，以使每个28x28图像成为单个784维向量。我们还将数字缩放到[0-1]范围而不是[0-255]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">X_train = X_train.reshape(<span class="number">60000</span>, <span class="number">784</span>)</span><br><span class="line">X_test = X_test.reshape(<span class="number">10000</span>, <span class="number">784</span>)</span><br><span class="line">X_train = X_train.astype(<span class="string">'float32'</span>)</span><br><span class="line">X_test = X_test.astype(<span class="string">'float32'</span>)</span><br><span class="line">X_train /= <span class="number">255</span></span><br><span class="line">X_test /= <span class="number">255</span></span><br><span class="line">print(<span class="string">"Training matrix shape"</span>, X_train.shape)</span><br><span class="line">print(<span class="string">"Testing matrix shape"</span>, X_test.shape)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    Training matrix shape (60000, 784)
+    <br>Testing matrix shape (10000, 784)
+    <br>
+</div>
+
+<p>将目标矩阵修改为one-hot格式，即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 -&gt; [1, 0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="line">1 -&gt; [0, 1, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="line">2 -&gt; [0, 0, 1, 0, 0, 0, 0, 0, 0]</span><br><span class="line">etc.</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Y_train = np_utils.to_categorical(y_train, nb_classes)</span><br><span class="line">Y_test = np_utils.to_categorical(y_test, nb_classes)</span><br></pre></td></tr></table></figure>
+<h3 id="创建网络"><a href="#创建网络" class="headerlink" title="创建网络"></a>创建网络</h3><p>在这里，我们将做一个简单的3层全连接网络。</p>
+<p><img src="images/network-figure.png" class="img-thumbnail"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">512</span>, input_shape=(<span class="number">784</span>,)))</span><br><span class="line">model.add(Activation(<span class="string">'relu'</span>)) <span class="comment"># “激活”只是应用于前一层输出的非线性函数</span></span><br><span class="line">                              <span class="comment">#  relu将所有低于0的值设置为0</span></span><br><span class="line"><span class="comment"># 为了防止过拟合, 我们增加了dropout层</span></span><br><span class="line">model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line">model.add(Dense(<span class="number">512</span>))</span><br><span class="line">model.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line">model.add(Dense(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 分类任务的输出通常是softmax, 这保证的所有的输出值都在0-1之间, 并且他们之和为1</span></span><br><span class="line">model.add(Activation(<span class="string">'softmax'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="编译模型"><a href="#编译模型" class="headerlink" title="编译模型"></a>编译模型</h3><p>Keras构建在TensorFlow之上，这两个软件包允许您在Python中定义<em>计算图</em>，然后它们可以在CPU或GPU上高效编译和运行，而无需Python解释器的开销。</p>
+<p>在编写模型时，Keras会要求您指定<strong>损失函数</strong>和<strong>优化器</strong>。我们在这里使用的损失函数称为<em>分类交叉熵</em>(categorical_crossentropy)，并且是一种非常适合比较两个概率分布的损失函数。</p>
+<p>在这里，我们的预测是十个不同数字的概率分布（例如“我们80％确信这个图像是3, 10％确定它是8, 5％它是2，等等”），而观察值Y_train和Y_text是概率分配正确类别为100％，其他所有类别为0。交叉熵是衡量预测分布与观察值分布的差异的度量。 <a href="https://en.wikipedia.org/wiki/Cross_entropy" target="_blank" rel="noopener">维基百科的更多细节</a></p>
+<p>优化器有助于确定模型学习的速度。我们不会过多详细讨论这个问题，但“adam”通常是一个不错的选择。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>, optimizer=<span class="string">'adam'</span>, metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><p>这是有趣的部分：您可以将之前加载的训练数据提供给此模型，它将学习对数字进行分类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.fit(X_train, Y_train,</span><br><span class="line">          batch_size=<span class="number">128</span>, epochs=<span class="number">4</span>,</span><br><span class="line">          validation_data=(X_test, Y_test))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    Train on 60000 samples, validate on 10000 samples
+    <br>Epoch 1/4
+    <br>60000/60000 [==============================] - 7s 108us/step - loss: 0.2432 - acc: 0.9285 - val_loss: 0.1032 - val_acc: 0.9678
+    <br>Epoch 2/4
+    <br>60000/60000 [==============================] - 6s 104us/step - loss: 0.1005 - acc: 0.9692 - val_loss: 0.0766 - val_acc: 0.9763
+    <br>Epoch 3/4
+    <br>60000/60000 [==============================] - 6s 99us/step - loss: 0.0713 - acc: 0.9773 - val_loss: 0.0665 - val_acc: 0.9799
+    <br>Epoch 4/4
+    <br>60000/60000 [==============================] - 6s 106us/step - loss: 0.0560 - acc: 0.9817 - val_loss: 0.0646 - val_acc: 0.9805
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    <keras.callbacks.history at="" 0x19176d1ccf8="">
+
+</keras.callbacks.history></div>
+
+<h3 id="最后，评估其性能"><a href="#最后，评估其性能" class="headerlink" title="最后，评估其性能"></a>最后，评估其性能</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">score = model.evaluate(X_test, Y_test)</span><br><span class="line">print(<span class="string">'Test score:'</span>, score[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">'Test accuracy:'</span>, score[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    10000/10000 [==============================] - 0s 48us/step
+    <br>Test score: 0.06461735829573591
+    <br>Test accuracy: 0.9805
+    <br>
+</div>
+
+<h3 id="检查输出"><a href="#检查输出" class="headerlink" title="检查输出"></a>检查输出</h3><p>检查输出并确保一切看起来都很好，这总是一个好主意。在这里，我们将看一些正确的例子，以及一些错误的例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># predict_classes函数输出最高概率所在的类</span></span><br><span class="line">predicted_classes = model.predict_classes(X_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分别得到错误和正确的类</span></span><br><span class="line">correct_indices = np.nonzero(predicted_classes == y_test)[<span class="number">0</span>]</span><br><span class="line">incorrect_indices = np.nonzero(predicted_classes != y_test)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">plt.figure()</span><br><span class="line"><span class="keyword">for</span> i, correct <span class="keyword">in</span> enumerate(correct_indices[:<span class="number">9</span>]):</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(X_test[correct].reshape(<span class="number">28</span>,<span class="number">28</span>), cmap=<span class="string">'gray'</span>, interpolation=<span class="string">'none'</span>)</span><br><span class="line">    plt.title(<span class="string">"P &#123;&#125;, C &#123;&#125;"</span>.format(predicted_classes[correct], y_test[correct]))</span><br><span class="line">    </span><br><span class="line">plt.figure()</span><br><span class="line"><span class="keyword">for</span> i, incorrect <span class="keyword">in</span> enumerate(incorrect_indices[:<span class="number">9</span>]):</span><br><span class="line">    plt.subplot(<span class="number">3</span>,<span class="number">3</span>,i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(X_test[incorrect].reshape(<span class="number">28</span>,<span class="number">28</span>), cmap=<span class="string">'gray'</span>, interpolation=<span class="string">'none'</span>)</span><br><span class="line">    plt.title(<span class="string">"P &#123;&#125;, C &#123;&#125;"</span>.format(predicted_classes[incorrect], y_test[incorrect]))</span><br></pre></td></tr></table></figure>
+<p><img src="output_24_0.png" alt="png"></p>
+<p><img src="output_24_1.png" alt="png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>简单地说，dropout指的是在随机选择的某些神经元的训练阶段忽略某些神经元。通过“忽略”，我的意思是在特定的计算过程中不考虑这些单位。技术上，在每个训练阶段，单个节点要么以1-p的概率从网络中丢弃，要么以概率p保持。而所谓的丢弃就是将激活量强制设置为0。</p>
+<p><img src="images/dropout.png" class="img-thumbnail" width="800px"></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="keras教程-04-手写字体识别.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/keras教程/">#keras教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/keras教程/">
+            keras教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                    使用谷歌翻译接口进行句子翻译
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                    keras教程-n-CUDA无法找到cudnn的错误解决
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/16/keras教程-08-Dropout的原理和实现/">
+                    keras教程-08-Dropout的原理和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/03/keras教程-n-GAN对抗生成网络的理论和实践/">
+                    keras教程-n-GAN对抗生成网络的理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                    keras教程-n-10分钟入门LSTM
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                    keras教程-n-循环神经网络的注意力机制的理论和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/01/keras教程-06-优化器详细解释/">
+                    keras教程-06-优化器详细解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/30/keras基础-Dense的输入的秩大于2时的注意事项/">
+                    keras基础-Dense的输入的秩大于2时的注意事项
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                    keras教程-05-实验验证神经网络的深度-样本量-dropout
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                    keras教程-04-手写字体识别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/17/keras教程-03-深度学习基础和keras入门/">
+                    keras教程-03-深度学习基础和keras入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/16/keras教程-02-tensorflow和keras安装/">
+                    keras教程-02-tensorflow和keras安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/15/keras教程-01-神经网络图解和手动计算/">
+                    keras教程-01-神经网络图解和手动计算
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

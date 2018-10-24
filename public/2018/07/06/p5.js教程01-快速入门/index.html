@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="p5.js教程01-一文入门p5.js"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>p5.js教程01-一文入门p5.js - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/07/06/p5.js教程01-快速入门/index.html",
+    "appid": "1600845001263316",
+    "title": "p5.js教程01-一文入门p5.js",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-07-06T09:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/07/06/p5.js教程01-快速入门/">
+                p5.js教程01-一文入门p5.js
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="p5.js教程01-一文入门p5.js"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年07月06日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册所需魔法"><span class="toc-number">2.</span> <span class="toc-text">注册所需魔法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-world"><span class="toc-number"></span> <span class="toc-text">Hello world</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建画板"><span class="toc-number">1.</span> <span class="toc-text">创建画板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#鼠标动作和触摸交互"><span class="toc-number">2.</span> <span class="toc-text">鼠标动作和触摸交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步和文件加载"><span class="toc-number">3.</span> <span class="toc-text">异步和文件加载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#回调函数"><span class="toc-number">3.1.</span> <span class="toc-text">回调函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预加载"><span class="toc-number">3.2.</span> <span class="toc-text">预加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loading-Screen"><span class="toc-number">3.3.</span> <span class="toc-text">Loading Screen</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认函数"><span class="toc-number">4.</span> <span class="toc-text">默认函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例化-命名空间"><span class="toc-number">5.</span> <span class="toc-text">实例化/命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#库"><span class="toc-number">6.</span> <span class="toc-text">库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑器"><span class="toc-number">7.</span> <span class="toc-text">编辑器</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>发表, 禁止转载。<br>经允许后转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>jupyter notebook</li>
+<li>p5.js 0.6.1</li>
+</ul>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>p5.js是一个JavaScript库，以<a href="http://processing.org" target="_blank" rel="noopener">Processing</a>为蓝本进行开发 - 可供艺术家，设计师，教育工作者和初学者使用。p5.js的名称使用了软件速写本的隐喻，p5.js具有一整套绘图功能。但是，它不仅限于在canvas上绘图，你可以将整个浏览器页面视为画板！为此，p5.js有很多插件实现了对including text, input, video, webcam, and sound等html5元素的控制。</p>
+<p>p5.js是一种新的解释器，它正在积极开发中。官方编辑器即将推出，还有更多功能！</p>
+<p>本系列教程的代码都是在<a href="http://jupyter.cn" target="_blank" rel="noopener">jupyter notebook</a>中运行的, 有关如何在jupyter notebook中运行p5.js的说明，请参阅<a href="#">p5.js在jupyter-notebook中使用</a>。如果你不想使用这个运行环境, 你完全可以把我的代码复制到一个<code>sketch.js</code>文件中, 然后创建一个<code>index.html</code>文件来引用p5.js的库和<code>sketch.js</code>脚本。然后你就会看到和我的教程里一样的效果了。具体如何做, 你需要参考这篇文章:<a href="https://p5js.org/get-started/" target="_blank" rel="noopener">https://p5js.org/get-started/</a> , 但是需要强调的是, 本教程的代码可以在两种情况下通用, 不需要改任何代码。</p>
+<h3 id="注册所需魔法"><a href="#注册所需魔法" class="headerlink" title="注册所需魔法"></a>注册所需魔法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.core.magic <span class="keyword">import</span> register_cell_magic</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> IFrame</span><br><span class="line"></span><br><span class="line">TEMPLATE = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">&lt;meta charset="utf-8" /&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;title&gt;Notebook中显示P5.js页面&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;a href="http://mlln.cn"  target="_blank"&gt;&lt;h5&gt;p5.js效果展示: %(name)s&lt;/h5&gt;&lt;/a&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">%(script)s</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">@register_cell_magic</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">p5</span><span class="params">(line, cell)</span>:</span></span><br><span class="line">    file_id, kws = line.split(<span class="string">' '</span>)[<span class="number">0</span>], line.split(<span class="string">' '</span>)[<span class="number">1</span>:]</span><br><span class="line">    kwargs = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> kw <span class="keyword">in</span> kws:</span><br><span class="line">        k, v = kw.split(<span class="string">'='</span>)</span><br><span class="line">        kwargs[k] = v</span><br><span class="line">    filename = <span class="string">f"p5js-html/p5-01-<span class="subst">&#123;file_id&#125;</span>.html"</span></span><br><span class="line">    <span class="keyword">with</span> open(filename, <span class="string">"w"</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(TEMPLATE % &#123;<span class="string">"script"</span>: cell, <span class="string">"name"</span>: filename&#125;)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'height'</span> <span class="keyword">not</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        kwargs[<span class="string">'height'</span>] = <span class="string">'200px'</span></span><br><span class="line">    <span class="keyword">return</span> IFrame(filename, width=<span class="string">"100%"</span>, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> p5</span><br></pre></td></tr></table></figure>
+<h2 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h2><p>想要绘制图像, 你需要只是定义两个主要的函数。 <code>setup（）</code>函数运行一次，通常用于初始化，或者用于创建不需要重复循环运行代码的程序。 <code>draw（）</code>函数重复运行，用于动画绘制。</p>
+<p>对于你的第一个“Hello World”程序，创建一个<code>setup（）</code>函数并添加一行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%%p5 <span class="number">1</span></span><br><span class="line">function setup() &#123;</span><br><span class="line">    background(<span class="number">100</span>)</span><br><span class="line">    line(<span class="number">15</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">90</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="200px" src="p5js-html/p5-01-1.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<p>如果您在浏览器中查看此内容，则应该看到一条线。</p>
+<p>添加<code>draw()</code>函数使您可以生成动画。p5js会每隔一定时间自动调用你写的<code>draw</code>函数, 在下面的示例中，每次<code>draw()</code>运行时，都会更新变量<code>x</code>，而这个变量决定了圆的水平位置, 所以动画效果就是在屏幕上移动一个圆圈。一个动画就是这么简单。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">%%p5 <span class="number">2</span></span><br><span class="line">var x = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">function setup() &#123;</span><br><span class="line">  background(<span class="number">100</span>);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function draw() &#123;</span><br><span class="line">    ellipse(x, height/<span class="number">2</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">    x = x + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;<span class="number">100</span>)&#123;</span><br><span class="line">        x=<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="200px" src="p5js-html/p5-01-2.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h3 id="创建画板"><a href="#创建画板" class="headerlink" title="创建画板"></a>创建画板</h3><p>默认情况下，绘图画布的大小为100x100。如果要设置自定义大小，请使用<code>createCanvas（）</code>函数。总是把它作为<code>setup（）</code>的第一行是个好主意。下面的代码将画布设置为600x400：</p>
+<p>(你可能看不全这个图, 需要下拉滚动条, 这是因为在notebook中输出区域的高度小于iframe页面的高度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%%p5 <span class="number">3</span> height=<span class="number">450</span></span><br><span class="line"></span><br><span class="line">function setup() &#123;</span><br><span class="line">  createCanvas(<span class="number">600</span>, <span class="number">400</span>);</span><br><span class="line">  line(<span class="number">15</span>, <span class="number">25</span>, <span class="number">650</span>, <span class="number">200</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="450" src="p5js-html/p5-01-3.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<p><code>createCanvas（）</code>将创建一个指定大小的绘图画布，并将其附加到你正在使用的html页面。如果您的html页面正文中有其他内容，那么它将在此之后添加到页面，因此你可能无法在窗口顶部看到它。</p>
+<p>画布也会受到页面上任何现有css（样式）的影响，包括浏览器设置的默认值。例如，许多浏览器在页面末尾都有一个默认填充。如果您注意到窗口左上角的画布并非一直存在，这可能就是原因。要解决这个问题，你可以在你的html文件的<code>&lt;head&gt;</code>中添加一行来覆盖默认的填充，如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"> body&#123;padding:0; margin:0;&#125; </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果要为画布指定位置，而不是直接附加到末尾，则可以使用<code>parent</code>方法。在你的html文件的<code>&lt;body&gt;</code>中，创建一个你想要插入画布的容器，其中包含你选择的ID：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'myContainer'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在<code>setup()</code>函数中调用<code>parent</code>方法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> myCanvas = createCanvas(<span class="number">600</span>, <span class="number">400</span>);</span><br><span class="line">  myCanvas.parent(<span class="string">'myContainer'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>p5.js API提供了许多用于创建图形的功能，但是有一些HTML5 Canvas功能未被p5封装。你仍然可以使用变量<code>drawingContext</code>直接调用它，如下例所示。有关本机canvas API的信息，请参阅[reference]（<a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D）。" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D）。</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  drawingContext.shadowOffsetX = <span class="number">5</span>;</span><br><span class="line">  drawingContext.shadowOffsetY = <span class="number">-5</span>;</span><br><span class="line">  drawingContext.shadowBlur = <span class="number">10</span>;</span><br><span class="line">  drawingContext.shadowColor = <span class="string">"black"</span>;</span><br><span class="line">  background(<span class="number">200</span>);</span><br><span class="line">  ellipse(width/<span class="number">2</span>, height/<span class="number">2</span>, <span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="鼠标动作和触摸交互"><a href="#鼠标动作和触摸交互" class="headerlink" title="鼠标动作和触摸交互"></a>鼠标动作和触摸交互</h3><p>p5.js有一套处理鼠标和触摸交互的方法。下面的列表显示了它们在概念上的关系。</p>
+<table>
+<thead>
+<tr>
+<th>鼠标</th>
+<th>触摸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseX" target="_blank" rel="noopener">mouseX</a></td>
+<td><a href="http://p5js.org/reference/#p5/touchX" target="_blank" rel="noopener">touchX</a></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseY" target="_blank" rel="noopener">mouseY</a></td>
+<td><a href="http://p5js.org/reference/#p5/touchY" target="_blank" rel="noopener">touchY</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="http://p5js.org/reference/#p5/touches[]" target="_blank" rel="noopener">touches[]</a></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseIsPressed" target="_blank" rel="noopener">mouseIsPressed</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mousePressed" target="_blank" rel="noopener">mousePressed()</a></td>
+<td><a href="http://p5js.org/reference/#p5/touchStarted" target="_blank" rel="noopener">touchStarted()</a></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseMoved" target="_blank" rel="noopener">mouseMoved()</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseDragged" target="_blank" rel="noopener">mouseDragged()</a></td>
+<td><a href="http://p5js.org/reference/#p5/touchMoved" target="_blank" rel="noopener">touchMoved()</a></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseReleased" target="_blank" rel="noopener">mouseReleased()</a></td>
+<td><a href="http://p5js.org/reference/#p5/touchEnded" target="_blank" rel="noopener">touchEnded()</a></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseClicked" target="_blank" rel="noopener">mouseClicked()</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://p5js.org/reference/#p5/mouseScrolled" target="_blank" rel="noopener">mouseScrolled()</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>你可能会注意到触摸，除非你定义了<code>touchStarted</code>方法，否则屏幕可能会对你的移动设备的默认触摸行为做出反应（即，当拖动手指时，整个屏幕视图可能会移动）。如果你添加一个空的<code>touchStarted</code>方法，就不会有这个问题。</p>
+<p>许多浏览器都有各种交互的默认行为。例如，移动设备上的touchMoved可能会导致拖动整个窗口。要防止这些行为，请在定义的函数末尾添加<code>return false</code>行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">touchMoved</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do some stuff</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="异步和文件加载"><a href="#异步和文件加载" class="headerlink" title="异步和文件加载"></a>异步和文件加载</h3><p>JS是单线程和顺序执行的，但是，使用了异步函数可以使程序更快地执行。加载图像和外部文件通常由异步函数处理。 </p>
+<h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>All of the load functions will accept a callback function as an optional last argument. In the following example, an image is drawn once it is loaded.</p>
+<p>所有加载函数都将接受回调函数作为可选的最后一个参数。在以下示例中，图像在加载后执行<code>drawCat</code>函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  createCanvas(<span class="number">400</span>, <span class="number">240</span>);</span><br><span class="line">  loadImage(<span class="string">'cat.jpg'</span>, drawCat);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawCat</span>(<span class="params">img</span>) </span>&#123;</span><br><span class="line">  image(img, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果<code>loadImage</code>之后直接调用<code>image</code>，结果你看不到这个图片, 因为<code>loadImage</code>是异步执行, <code>image(img, 0, 0);</code>执行的时候, <code>img</code>图片还没有下载完成：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  createCanvas(<span class="number">400</span>, <span class="number">240</span>);</span><br><span class="line">  <span class="keyword">var</span> img = loadImage(<span class="string">'cat.jpg'</span>);</span><br><span class="line">  image(img, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h4><p>或者，你可以使用<code>preload</code>函数。如果存在<code>preload</code>函数，它首先会运行，然后<code>setup</code>将等待<code>preload</code>执行完毕，这样你就可以在setup和draw中使用preload中加载的东西。请注意，除了加载函数之外，其他任何内容都不应该在<code>preload</code>中，所有其他初始化应该在setup中进行。另外, 预加载中的加载函数不需要回调。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preload</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  img = loadImage(<span class="string">'cat.jpg'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  createCanvas(<span class="number">400</span>, <span class="number">240</span>);</span><br><span class="line">  image(img, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Loading-Screen"><a href="#Loading-Screen" class="headerlink" title="Loading Screen"></a>Loading Screen</h4><p>如上所述，如果你的程序依赖大的媒体文件，如图像，音频或视频，则应使用<code>preload</code>函数将这些依赖项加载到草图中。由于加载大文件可能需要一些时间，因此你可能希望向用户显示加载过程。这将表明你的程序没有死 - 它正在加载很多很酷的东西。要在p5.js程序中添加加载动画，你需要做的就是在页面上包含一个ID为“p5_loading”的HTML元素。它看起来像下面这样：</p>
+<p><code>&lt;div id=&quot;p5_loading&quot; class=&quot;loadingclass&quot;&gt;this could be some sweet graphics loading lots of bits.&lt;/div&gt;</code></p>
+<p>P5.js查看你的HTML，看看你是否包含了一个id为“p5_loading”的元素。 P5.js将使用此元素及其内容作为草图的加载提示。由于加载元素包含在HTML中，因此你可以添加任何其他类和/或设置。</p>
+<p>有关使用加载屏幕的草图示例，请参阅p5.js源中的<code>examples / loadingscreen / index.html</code>。</p>
+<h3 id="默认函数"><a href="#默认函数" class="headerlink" title="默认函数"></a>默认函数</h3><p>有一些变量和功能使浏览器交互更容易，将来还会有更多！</p>
+<ul>
+<li><a href="http://p5js.org/reference/#p5/windowWidth" target="_blank" rel="noopener">windowWidth</a> / <a href="http://p5js.org/reference/#p5/windowHeight" target="_blank" rel="noopener">windowHeight</a></li>
+<li><a href="http://p5js.org/reference/#p5/displayWidth" target="_blank" rel="noopener">displayWidth</a> / <a href="http://p5js.org/reference/#p5/displayHeight" target="_blank" rel="noopener">displayHeight</a></li>
+<li><a href="http://p5js.org/reference/#p5/winMouseX" target="_blank" rel="noopener">winMouseX</a> / <a href="http://p5js.org/reference/#p5/winMouseY" target="_blank" rel="noopener">winMouseY</a></li>
+<li><a href="http://p5js.org/reference/#p5/fullscreen" target="_blank" rel="noopener">fullscreen()</a></li>
+</ul>
+<p>你还应该能够在p5.js程序中使用任何本地JS函数而不会出现问题，<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">MDN JavaScript参考</a>是一个了解更多信息的好地方。阅读下一节，了解如何让p5在项目的其余部分发挥出色。</p>
+<h3 id="实例化-命名空间"><a href="#实例化-命名空间" class="headerlink" title="实例化/命名空间"></a>实例化/命名空间</h3><p>默认情况下，所有p5.js函数都在全局命名空间中（即绑定到window对象），这意味着你可以直接调用函数<code>ellipse（）</code>，<code>fill（）</code>等。但是，如果你这可能不方便正在与其他JS库混用（同步或异步）或编写自己的长程序。 p5.js目前支持两种解决此问题的方法：“实例模式”和“按需全局模式”。在实例模式中，所有p5函数都绑定在单个变量中，而不是污染全局命名空间。</p>
+<p>考虑这样的程序：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setup</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  createCanvas(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  background(<span class="number">0</span>);</span><br><span class="line">  fill(<span class="number">255</span>);</span><br><span class="line">  ellipse(x,y,<span class="number">50</span>,<span class="number">50</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转换为“实例模式”如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="function"><span class="keyword">function</span>(<span class="params"> p </span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">100</span>; </span><br><span class="line">  <span class="keyword">var</span> y = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">  p.setup = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    p.createCanvas(<span class="number">700</span>, <span class="number">410</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  p.draw = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    p.background(<span class="number">0</span>);</span><br><span class="line">    p.fill(<span class="number">255</span>);</span><br><span class="line">    p.rect(x,y,<span class="number">50</span>,<span class="number">50</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myp5 = <span class="keyword">new</span> p5(s);</span><br></pre></td></tr></table></figure>
+<p>你可以为画布指定默认容器，并使用第二个参数指定要追加的任何其他元素。你可以在html或html节点中提供元素的ID：</p>
+<figure class="highlight plain"><figcaption><span>myp5 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">请注意，创建这样的实例还允许您在单个网页上拥有多个p5程序，因为它们将使用自己的变量进行包装。当然，你可以使用iframe在全局模式下拥有多个p5程序。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">按照这些方式，按需全局模式还允许在页面加载之前实例化p5，可以编写以下类型的程序：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">new p5();</span><br><span class="line"></span><br><span class="line">var boop = random(100);</span><br><span class="line"></span><br><span class="line">function setup() &#123;</span><br><span class="line">    createCanvas(100, 100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function draw() &#123;</span><br><span class="line">    background(255, 0, boop);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="库"><a href="#库" class="headerlink" title="库"></a>库</h3><p>p5.js背后的核心思想之一是，你的草图不仅仅是图形画布，而是浏览器中的整个网页。出于这个原因，有<a href="http://p5js.org/reference/#/libraries/p5.dom" target="_blank" rel="noopener">p5.dom库</a>可以轻松地与其他HTML5对象进行交互，包括文本，超链接，图像，输入，视频，音频和网络摄像头。还有一个<a href="http://p5js.org/reference/#/libraries/p5.sound" target="_blank" rel="noopener">p5.sound库</a>，它为HTML5 web音频API提供了一个友好的接口，用于加载，播放和合成声音。</p>
+<p>学习如何使用这些库或自己开发看<a href="http://p5js.org/libraries/" target="_blank" rel="noopener">这里</a>。</p>
+<h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><p>你可以使用任何您喜欢的编辑环境，此外，<a href="http://p5js.org/download/#editor" target="_blank" rel="noopener">p5.js编辑器</a>正在开发中，你现在可以试用alpha版本。 p5.js编辑器处理设置项目并为你运行本地服务器。你通常可以在没有服务器的情况下运行p5.js程序，但如果你正在执行某些操作（例如加载外部文件），则需要它。以下是<a href="https://github.com/processing/p5.js/wiki/Local-server" target="_blank" rel="noopener">设置本地服务器</a>的说明。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="p5.js教程01-快速入门.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/p5-js/">#p5.js</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/p5-js/">
+            p5.js
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js教程01-快速入门/">
+                    p5.js教程01-一文入门p5.js
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js在jupyter-notebook中使用/">
+                    p5.js在jupyter-notebook中使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程03-动作响应/">
+                    p5.js教程03-动作响应
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程02-绘制简单图形/">
+                    p5.js教程02-绘制简单图形
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程06-显示文字/">
+                    p5.js教程06-显示文字
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程05-图片处理/">
+                    p5.js教程05-图片处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程07-让图动起来/">
+                    p5.js教程07-让图动起来
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js案例01-行走的人/">
+                    p5.js案例01-行走的人
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程04-平移-旋转-缩放/">
+                    p5.js教程04-平移-旋转-缩放
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

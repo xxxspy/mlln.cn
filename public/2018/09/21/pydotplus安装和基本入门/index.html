@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="pydotplus安装和基本入门"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>pydotplus安装和基本入门 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/21/pydotplus安装和基本入门/">
+                pydotplus安装和基本入门
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="pydotplus安装和基本入门"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月21日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载Graphviz"><span class="toc-number">1.</span> <span class="toc-text">下载Graphviz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Graphviz"><span class="toc-number">2.</span> <span class="toc-text">安装Graphviz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境变量"><span class="toc-number">3.</span> <span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装pydotplus"><span class="toc-number">4.</span> <span class="toc-text">安装pydotplus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引入模块"><span class="toc-number">5.</span> <span class="toc-text">引入模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制第一幅图"><span class="toc-number">6.</span> <span class="toc-text">绘制第一幅图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dot语法入门"><span class="toc-number">7.</span> <span class="toc-text">dot语法入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本用法"><span class="toc-number">7.1.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可用形状"><span class="toc-number">7.2.</span> <span class="toc-text">可用形状</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可用颜色"><span class="toc-number">7.3.</span> <span class="toc-text">可用颜色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#箭头类型"><span class="toc-number">7.4.</span> <span class="toc-text">箭头类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终极案例-绘制决策树"><span class="toc-number">8.</span> <span class="toc-text">终极案例-绘制决策树</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+</ul>
+<h3 id="下载Graphviz"><a href="#下载Graphviz" class="headerlink" title="下载Graphviz"></a>下载Graphviz</h3><p>pydotplus依赖Graphviz这个绘图库, 它是c开发的, 所以在安装pydotplus之前, 需要首先安装Graphviz, 不过不管哪个系统, 它都有编译好的二进制包, 可以直接安装。以windows为例, 我们首先需要现在Graphviz安装包: <a href="http://www.graphviz.org/download/" target="_blank" rel="noopener">点此下载</a>.</p>
+<p>然后找到<code>Stable 2.38 Windows install packages</code>, 这是稳定版的, 点击进入以后, 下载<code>graphviz-2.38.msi</code>即可。文件大概由34M。</p>
+<h3 id="安装Graphviz"><a href="#安装Graphviz" class="headerlink" title="安装Graphviz"></a>安装Graphviz</h3><p>安装过程很简单, 只要双击安装包, 一路下一步就行了。</p>
+<p><img src="imgs/install-graphviz.png" class="img-thumbnail"></p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>pydotplus实际上是在命令行调用Graphviz, 所以要想python能找到graphviz的安装路径, 必须配置环境变量。</p>
+<p>通常, graphviz默认安装在这个路径: <code>C:\Program Files (x86)\Graphviz2.38</code></p>
+<p>我们需要将两个路径添加到环境变量中:</p>
+<ul>
+<li><code>C:\Program Files (x86)\Graphviz2.38</code></li>
+<li><code>C:\Program Files (x86)\Graphviz2.38\bin</code></li>
+</ul>
+<p><img src="imgs/path.png" class="img-thumbnail"></p>
+<h3 id="安装pydotplus"><a href="#安装pydotplus" class="headerlink" title="安装pydotplus"></a>安装pydotplus</h3><p>pydotplus是python模块, 它的安装和安装普通的模块一样, 就是使用<code>pip</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pydotplus</span><br></pre></td></tr></table></figure>
+<p>因为本篇教程写在jupyter notebook 中, 可以在cell中安装pydotplus, 所以可以直接使用:</p>
+<p><code>%pip install pydotplus</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Looking in indexes: https://mirrors.ustc.edu.cn/pypi/web/simple</span><br><span class="line">Collecting pydotplus</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/60/bf/62567830b700d9f6930e9ab6831d6ba256f7b0b730acb37278b0ccdf</span><br><span class="line">facf/pydotplus-2.0.2.tar.gz (278kB)</span><br><span class="line">    100% |████████████████████████████████| 286kB 560kB/s</span><br><span class="line">Requirement already satisfied: pyparsing&gt;=2.0.1 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from pydotplu</span><br><span class="line">s) (2.2.0)</span><br><span class="line">Building wheels for collected packages: pydotplus</span><br><span class="line">  Running setup.py bdist_wheel for pydotplus ... done</span><br><span class="line">  Stored in directory: C:\Users\syd\AppData\Local\pip\Cache\wheels\27\e9\b6\40e2817c77acbd8ac9638ac4fd03dc3c34ea2fd8cbd762</span><br><span class="line">2bb4</span><br><span class="line">Successfully built pydotplus</span><br><span class="line">Installing collected packages: pydotplus</span><br><span class="line">Successfully installed pydotplus-2.0.2</span><br></pre></td></tr></table></figure>
+<h3 id="引入模块"><a href="#引入模块" class="headerlink" title="引入模块"></a>引入模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pydotplus <span class="keyword">as</span> pdp</span><br></pre></td></tr></table></figure>
+<p>因为我们的代码运行环境是jupyter notebook, 所以我们可以设置让图片实时展示在notebook中:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<h3 id="绘制第一幅图"><a href="#绘制第一幅图" class="headerlink" title="绘制第一幅图"></a>绘制第一幅图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> display, Image</span><br><span class="line">graph = pdp.graph_from_dot_data(<span class="string">'digraph demo1&#123; a -&gt; b -&gt; c; c -&gt;a; &#125;'</span>)</span><br><span class="line">display(Image(graph.create_png()))</span><br></pre></td></tr></table></figure>
+<p><img src="output_11_0.png" alt="png"></p>
+<h3 id="dot语法入门"><a href="#dot语法入门" class="headerlink" title="dot语法入门"></a>dot语法入门</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><ul>
+<li>使用双斜杠注释</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 这里是注释</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定有向图和无向图</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 有向图</span><br><span class="line">digraph g &#123;</span><br><span class="line">    a-&gt;b;</span><br><span class="line">    b-&gt;c;</span><br><span class="line">    c-&gt;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 无向图</span><br><span class="line">graph g &#123;</span><br><span class="line">    a--b;</span><br><span class="line">    b--c;</span><br><span class="line">    c--a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>节点之间的关系使用<code>--</code>或者<code>-&gt;</code>表示节点间关系</p>
+</li>
+<li><p>定义属性使用<code>node[attribute1=value1, attribute2=value2]</code></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//定义a节点为长方形, 节点显示的文本为&quot;Hello world&quot;样式为填充, 填充颜色为#ABACBA</span><br><span class="line">a[shape=box,label=&quot;Hello world&quot;,style=filled,fillcolor=&quot;#ABACBA&quot;];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义节点形状使用<code>node[shape=形状名称]</code></li>
+</ul>
+<p>使用上面提到的功能, 绘制下面的图:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">dot = <span class="string">'''</span></span><br><span class="line"><span class="string">//定义节点属性</span></span><br><span class="line"><span class="string">  digraph g &#123;</span></span><br><span class="line"><span class="string">      //==========定义节点关系============</span></span><br><span class="line"><span class="string">      a-&gt;b;</span></span><br><span class="line"><span class="string">      b-&gt;c;</span></span><br><span class="line"><span class="string">      c-&gt;a;</span></span><br><span class="line"><span class="string">      c-&gt;d-&gt;e-&gt;f;</span></span><br><span class="line"><span class="string">      d-&gt;g;</span></span><br><span class="line"><span class="string">      e-&gt;h;</span></span><br><span class="line"><span class="string">      //==========定义节点属性============</span></span><br><span class="line"><span class="string">      //定义a节点为长方形, 样式为填充, 填充颜色为#ABACBA</span></span><br><span class="line"><span class="string">      a[shape=box,label="Server1\nWebServer",fillcolor="#ABACBA",style=filled];</span></span><br><span class="line"><span class="string">      //定义b为5边形, 标签为"bb", 样式为填充, 填充色为red</span></span><br><span class="line"><span class="string">      b[shape=polygon,sides=5,label="bb",style=filled,fillcolor=red];</span></span><br><span class="line"><span class="string">      //c, 默认为椭圆</span></span><br><span class="line"><span class="string">      d[shape=circle]; //园</span></span><br><span class="line"><span class="string">      e[shape=triangle]; //三角形</span></span><br><span class="line"><span class="string">      f[shape=polygon, sides=4, skew=0.5]; //平行四边形</span></span><br><span class="line"><span class="string">      g[shape=polygon, distortion=0.5]; //梯形, 上边长</span></span><br><span class="line"><span class="string">      h[shape=polygon, distortion=-.5]; //梯形, 下边长</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">graph = pdp.graph_from_dot_data(dot)</span><br><span class="line"><span class="comment"># 下面这行用于在notebook中显示图片</span></span><br><span class="line">Image(graph.create_png())</span><br></pre></td></tr></table></figure>
+<p><img src="output_14_0.png" alt="png"></p>
+<h4 id="可用形状"><a href="#可用形状" class="headerlink" title="可用形状"></a>可用形状</h4><p>下面是可以在shape属性中使用的:</p>
+
+<table align="CENTER">
+  <tbody><tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/box.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/polygon.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/ellipse.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/oval.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:box">box</a>
+    </td><td><a name="d:polygon">polygon</a>
+    </td><td><a name="d:ellipse">ellipse</a>
+    </td><td><a name="d:oval">oval</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/circle.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/point.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/egg.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/triangle.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:circle">circle</a>
+    </td><td><a name="d:point">point</a>
+    </td><td><a name="d:egg">egg</a>
+    </td><td><a name="d:triangle">triangle</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/plaintext.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/plain.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/diamond.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/trapezium.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:plaintext">plaintext</a>
+    </td><td><a name="d:plain">plain</a>
+    </td><td><a name="d:diamond">diamond</a>
+    </td><td><a name="d:trapezium">trapezium</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/parallelogram.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/house.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/pentagon.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/hexagon.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:parallelogram">parallelogram</a>
+    </td><td><a name="d:house">house</a>
+    </td><td><a name="d:pentagon">pentagon</a>
+    </td><td><a name="d:hexagon">hexagon</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/septagon.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/octagon.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/doublecircle.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/doubleoctagon.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:septagon">septagon</a>
+    </td><td><a name="d:octagon">octagon</a>
+    </td><td><a name="d:doublecircle">doublecircle</a>
+    </td><td><a name="d:doubleoctagon">doubleoctagon</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/tripleoctagon.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/invtriangle.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/invtrapezium.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/invhouse.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:tripleoctagon">tripleoctagon</a>
+    </td><td><a name="d:invtriangle">invtriangle</a>
+    </td><td><a name="d:invtrapezium">invtrapezium</a>
+    </td><td><a name="d:invhouse">invhouse</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/Mdiamond.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/Msquare.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/Mcircle.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/rect.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:Mdiamond">Mdiamond</a>
+    </td><td><a name="d:Msquare">Msquare</a>
+    </td><td><a name="d:Mcircle">Mcircle</a>
+    </td><td><a name="d:rect">rect</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/rectangle.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/square.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/star.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/none.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:rectangle">rectangle</a>
+    </td><td><a name="d:square">square</a>
+    </td><td><a name="d:star">star</a>
+    </td><td><a name="d:none">none</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/underline.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/cylinder.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/note.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/tab.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:underline">underline</a>
+    </td><td><a name="d:cylinder">cylinder</a>
+    </td><td><a name="d:note">note</a>
+    </td><td><a name="d:tab">tab</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/folder.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/box3d.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/component.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/promoter.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:folder">folder</a>
+    </td><td><a name="d:box3d">box3d</a>
+    </td><td><a name="d:component">component</a>
+    </td><td><a name="d:promoter">promoter</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/cds.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/terminator.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/utr.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/primersite.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:cds">cds</a>
+    </td><td><a name="d:terminator">terminator</a>
+    </td><td><a name="d:utr">utr</a>
+    </td><td><a name="d:primersite">primersite</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/restrictionsite.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/fivepoverhang.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/threepoverhang.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/noverhang.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:restrictionsite">restrictionsite</a>
+    </td><td><a name="d:fivepoverhang">fivepoverhang</a>
+    </td><td><a name="d:threepoverhang">threepoverhang</a>
+    </td><td><a name="d:noverhang">noverhang</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/assembly.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/signature.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/insulator.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/ribosite.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:assembly">assembly</a>
+    </td><td><a name="d:signature">signature</a>
+    </td><td><a name="d:insulator">insulator</a>
+    </td><td><a name="d:ribosite">ribosite</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/rnastab.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/proteasesite.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/proteinstab.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/rpromoter.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:rnastab">rnastab</a>
+    </td><td><a name="d:proteasesite">proteasesite</a>
+    </td><td><a name="d:proteinstab">proteinstab</a>
+    </td><td><a name="d:rpromoter">rpromoter</a>
+  </td></tr>
+  <tr align="CENTER">
+    <td><img src="https://graphviz.gitlab.io/_pages/doc/info/rarrow.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/larrow.gif">
+    </td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/lpromoter.gif">
+  </td></tr>
+  <tr align="CENTER">
+    <td><a name="d:rarrow">rarrow</a>
+    </td><td><a name="d:larrow">larrow</a>
+    </td><td><a name="d:lpromoter">lpromoter</a>
+  </td></tr>
+</tbody></table>
+
+
+<h4 id="可用颜色"><a href="#可用颜色" class="headerlink" title="可用颜色"></a>可用颜色</h4><p>下面是可以在属性color中使用的:</p>
+
+<table border="1" align="center">
+<tbody><tr align="center">
+<td bgcolor="#f0f8ff"><a title="#f0f8ff">aliceblue</a></td>
+<td bgcolor="#faebd7"><a title="#faebd7">antiquewhite</a></td>
+<td bgcolor="#ffefdb"><a title="#ffefdb">antiquewhite1</a></td>
+<td bgcolor="#eedfcc"><a title="#eedfcc">antiquewhite2</a></td>
+<td bgcolor="#cdc0b0"><a title="#cdc0b0">antiquewhite3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#8b8378"><a title="#8b8378">antiquewhite4</a></td>
+<td bgcolor="#7fffd4"><a title="#7fffd4">aquamarine</a></td>
+<td bgcolor="#7fffd4"><a title="#7fffd4">aquamarine1</a></td>
+<td bgcolor="#76eec6"><a title="#76eec6">aquamarine2</a></td>
+<td bgcolor="#66cdaa"><a title="#66cdaa">aquamarine3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#458b74"><a title="#458b74">aquamarine4</a></td>
+<td bgcolor="#f0ffff"><a title="#f0ffff">azure</a></td>
+<td bgcolor="#f0ffff"><a title="#f0ffff">azure1</a></td>
+<td bgcolor="#e0eeee"><a title="#e0eeee">azure2</a></td>
+<td bgcolor="#c1cdcd"><a title="#c1cdcd">azure3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#838b8b"><a title="#838b8b">azure4</a></td>
+<td bgcolor="#f5f5dc"><a title="#f5f5dc">beige</a></td>
+<td bgcolor="#ffe4c4"><a title="#ffe4c4">bisque</a></td>
+<td bgcolor="#ffe4c4"><a title="#ffe4c4">bisque1</a></td>
+<td bgcolor="#eed5b7"><a title="#eed5b7">bisque2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cdb79e"><a title="#cdb79e">bisque3</a></td>
+<td bgcolor="#8b7d6b"><a title="#8b7d6b">bisque4</a></td>
+<td bgcolor="#000000"><a title="#000000"><font color="white">black</font></a></td>
+<td bgcolor="#ffebcd"><a title="#ffebcd">blanchedalmond</a></td>
+<td bgcolor="#0000ff"><a title="#0000ff">&nbsp;&nbsp;&nbsp;blue&nbsp;&nbsp;&nbsp;</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#0000ff"><a title="#0000ff">blue1</a></td>
+<td bgcolor="#0000ee"><a title="#0000ee">blue2</a></td>
+<td bgcolor="#0000cd"><a title="#0000cd">blue3</a></td>
+<td bgcolor="#00008b"><a title="#00008b">blue4</a></td>
+<td bgcolor="#8a2be2"><a title="#8a2be2">blueviolet</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#a52a2a"><a title="#a52a2a">brown</a></td>
+<td bgcolor="#ff4040"><a title="#ff4040">brown1</a></td>
+<td bgcolor="#ee3b3b"><a title="#ee3b3b">brown2</a></td>
+<td bgcolor="#cd3333"><a title="#cd3333">brown3</a></td>
+<td bgcolor="#8b2323"><a title="#8b2323">brown4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#deb887"><a title="#deb887">burlywood</a></td>
+<td bgcolor="#ffd39b"><a title="#ffd39b">burlywood1</a></td>
+<td bgcolor="#eec591"><a title="#eec591">burlywood2</a></td>
+<td bgcolor="#cdaa7d"><a title="#cdaa7d">burlywood3</a></td>
+<td bgcolor="#8b7355"><a title="#8b7355">burlywood4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#5f9ea0"><a title="#5f9ea0">cadetblue</a></td>
+<td bgcolor="#98f5ff"><a title="#98f5ff">cadetblue1</a></td>
+<td bgcolor="#8ee5ee"><a title="#8ee5ee">cadetblue2</a></td>
+<td bgcolor="#7ac5cd"><a title="#7ac5cd">cadetblue3</a></td>
+<td bgcolor="#53868b"><a title="#53868b">cadetblue4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#7fff00"><a title="#7fff00">chartreuse</a></td>
+<td bgcolor="#7fff00"><a title="#7fff00">chartreuse1</a></td>
+<td bgcolor="#76ee00"><a title="#76ee00">chartreuse2</a></td>
+<td bgcolor="#66cd00"><a title="#66cd00">chartreuse3</a></td>
+<td bgcolor="#458b00"><a title="#458b00">chartreuse4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#d2691e"><a title="#d2691e">chocolate</a></td>
+<td bgcolor="#ff7f24"><a title="#ff7f24">chocolate1</a></td>
+<td bgcolor="#ee7621"><a title="#ee7621">chocolate2</a></td>
+<td bgcolor="#cd661d"><a title="#cd661d">chocolate3</a></td>
+<td bgcolor="#8b4513"><a title="#8b4513">chocolate4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff7f50"><a title="#ff7f50">coral</a></td>
+<td bgcolor="#ff7256"><a title="#ff7256">coral1</a></td>
+<td bgcolor="#ee6a50"><a title="#ee6a50">coral2</a></td>
+<td bgcolor="#cd5b45"><a title="#cd5b45">coral3</a></td>
+<td bgcolor="#8b3e2f"><a title="#8b3e2f">coral4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#6495ed"><a title="#6495ed">cornflowerblue</a></td>
+<td bgcolor="#fff8dc"><a title="#fff8dc">cornsilk</a></td>
+<td bgcolor="#fff8dc"><a title="#fff8dc">cornsilk1</a></td>
+<td bgcolor="#eee8cd"><a title="#eee8cd">cornsilk2</a></td>
+<td bgcolor="#cdc8b1"><a title="#cdc8b1">cornsilk3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#8b8878"><a title="#8b8878">cornsilk4</a></td>
+<td bgcolor="#dc143c"><a title="#dc143c">crimson</a></td>
+<td bgcolor="#00ffff"><a title="#00ffff">&nbsp;&nbsp;&nbsp;cyan&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#00ffff"><a title="#00ffff">cyan1</a></td>
+<td bgcolor="#00eeee"><a title="#00eeee">cyan2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#00cdcd"><a title="#00cdcd">cyan3</a></td>
+<td bgcolor="#008b8b"><a title="#008b8b">cyan4</a></td>
+<td bgcolor="#b8860b"><a title="#b8860b">darkgoldenrod</a></td>
+<td bgcolor="#ffb90f"><a title="#ffb90f">darkgoldenrod1</a></td>
+<td bgcolor="#eead0e"><a title="#eead0e">darkgoldenrod2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cd950c"><a title="#cd950c">darkgoldenrod3</a></td>
+<td bgcolor="#8b6508"><a title="#8b6508">darkgoldenrod4</a></td>
+<td bgcolor="#006400"><a title="#006400"><font color="white">darkgreen</font></a></td>
+<td bgcolor="#bdb76b"><a title="#bdb76b">darkkhaki</a></td>
+<td bgcolor="#556b2f"><a title="#556b2f"><font color="white">darkolivegreen</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#caff70"><a title="#caff70">darkolivegreen1</a></td>
+<td bgcolor="#bcee68"><a title="#bcee68">darkolivegreen2</a></td>
+<td bgcolor="#a2cd5a"><a title="#a2cd5a">darkolivegreen3</a></td>
+<td bgcolor="#6e8b3d"><a title="#6e8b3d">darkolivegreen4</a></td>
+<td bgcolor="#ff8c00"><a title="#ff8c00">darkorange</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff7f00"><a title="#ff7f00">darkorange1</a></td>
+<td bgcolor="#ee7600"><a title="#ee7600">darkorange2</a></td>
+<td bgcolor="#cd6600"><a title="#cd6600">darkorange3</a></td>
+<td bgcolor="#8b4500"><a title="#8b4500">darkorange4</a></td>
+<td bgcolor="#9932cc"><a title="#9932cc">darkorchid</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#bf3eff"><a title="#bf3eff">darkorchid1</a></td>
+<td bgcolor="#b23aee"><a title="#b23aee">darkorchid2</a></td>
+<td bgcolor="#9a32cd"><a title="#9a32cd">darkorchid3</a></td>
+<td bgcolor="#68228b"><a title="#68228b">darkorchid4</a></td>
+<td bgcolor="#e9967a"><a title="#e9967a">darksalmon</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#8fbc8f"><a title="#8fbc8f">darkseagreen</a></td>
+<td bgcolor="#c1ffc1"><a title="#c1ffc1">darkseagreen1</a></td>
+<td bgcolor="#b4eeb4"><a title="#b4eeb4">darkseagreen2</a></td>
+<td bgcolor="#9bcd9b"><a title="#9bcd9b">darkseagreen3</a></td>
+<td bgcolor="#698b69"><a title="#698b69">darkseagreen4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#483d8b"><a title="#483d8b">darkslateblue</a></td>
+<td bgcolor="#2f4f4f"><a title="#2f4f4f"><font color="white">darkslategray</font></a></td>
+<td bgcolor="#97ffff"><a title="#97ffff">darkslategray1</a></td>
+<td bgcolor="#8deeee"><a title="#8deeee">darkslategray2</a></td>
+<td bgcolor="#79cdcd"><a title="#79cdcd">darkslategray3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#528b8b"><a title="#528b8b">darkslategray4</a></td>
+<td bgcolor="#2f4f4f"><a title="#2f4f4f"><font color="white">darkslategrey</font></a></td>
+<td bgcolor="#00ced1"><a title="#00ced1">darkturquoise</a></td>
+<td bgcolor="#9400d3"><a title="#9400d3">darkviolet</a></td>
+<td bgcolor="#ff1493"><a title="#ff1493">deeppink</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff1493"><a title="#ff1493">deeppink1</a></td>
+<td bgcolor="#ee1289"><a title="#ee1289">deeppink2</a></td>
+<td bgcolor="#cd1076"><a title="#cd1076">deeppink3</a></td>
+<td bgcolor="#8b0a50"><a title="#8b0a50">deeppink4</a></td>
+<td bgcolor="#00bfff"><a title="#00bfff">deepskyblue</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#00bfff"><a title="#00bfff">deepskyblue1</a></td>
+<td bgcolor="#00b2ee"><a title="#00b2ee">deepskyblue2</a></td>
+<td bgcolor="#009acd"><a title="#009acd">deepskyblue3</a></td>
+<td bgcolor="#00688b"><a title="#00688b">deepskyblue4</a></td>
+<td bgcolor="#696969"><a title="#696969"><font color="white">dimgray</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#696969"><a title="#696969"><font color="white">dimgrey</font></a></td>
+<td bgcolor="#1e90ff"><a title="#1e90ff">dodgerblue</a></td>
+<td bgcolor="#1e90ff"><a title="#1e90ff">dodgerblue1</a></td>
+<td bgcolor="#1c86ee"><a title="#1c86ee">dodgerblue2</a></td>
+<td bgcolor="#1874cd"><a title="#1874cd">dodgerblue3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#104e8b"><a title="#104e8b">dodgerblue4</a></td>
+<td bgcolor="#b22222"><a title="#b22222">firebrick</a></td>
+<td bgcolor="#ff3030"><a title="#ff3030">firebrick1</a></td>
+<td bgcolor="#ee2c2c"><a title="#ee2c2c">firebrick2</a></td>
+<td bgcolor="#cd2626"><a title="#cd2626">firebrick3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#8b1a1a"><a title="#8b1a1a">firebrick4</a></td>
+<td bgcolor="#fffaf0"><a title="#fffaf0">floralwhite</a></td>
+<td bgcolor="#228b22"><a title="#228b22">forestgreen</a></td>
+<td bgcolor="#dcdcdc"><a title="#dcdcdc">gainsboro</a></td>
+<td bgcolor="#f8f8ff"><a title="#f8f8ff">ghostwhite</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ffd700"><a title="#ffd700">&nbsp;&nbsp;&nbsp;gold&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ffd700"><a title="#ffd700">gold1</a></td>
+<td bgcolor="#eec900"><a title="#eec900">gold2</a></td>
+<td bgcolor="#cdad00"><a title="#cdad00">gold3</a></td>
+<td bgcolor="#8b7500"><a title="#8b7500">gold4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#daa520"><a title="#daa520">goldenrod</a></td>
+<td bgcolor="#ffc125"><a title="#ffc125">goldenrod1</a></td>
+<td bgcolor="#eeb422"><a title="#eeb422">goldenrod2</a></td>
+<td bgcolor="#cd9b1d"><a title="#cd9b1d">goldenrod3</a></td>
+<td bgcolor="#8b6914"><a title="#8b6914">goldenrod4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#c0c0c0"><a title="#c0c0c0">&nbsp;&nbsp;&nbsp;gray&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#000000"><a title="#000000"><font color="white">gray0</font></a></td>
+<td bgcolor="#030303"><a title="#030303"><font color="white">gray1</font></a></td>
+<td bgcolor="#1a1a1a"><a title="#1a1a1a"><font color="white">gray10</font></a></td>
+<td bgcolor="#ffffff"><a title="#ffffff">gray100</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#1c1c1c"><a title="#1c1c1c"><font color="white">gray11</font></a></td>
+<td bgcolor="#1f1f1f"><a title="#1f1f1f"><font color="white">gray12</font></a></td>
+<td bgcolor="#212121"><a title="#212121"><font color="white">gray13</font></a></td>
+<td bgcolor="#242424"><a title="#242424"><font color="white">gray14</font></a></td>
+<td bgcolor="#262626"><a title="#262626"><font color="white">gray15</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#292929"><a title="#292929"><font color="white">gray16</font></a></td>
+<td bgcolor="#2b2b2b"><a title="#2b2b2b"><font color="white">gray17</font></a></td>
+<td bgcolor="#2e2e2e"><a title="#2e2e2e"><font color="white">gray18</font></a></td>
+<td bgcolor="#303030"><a title="#303030"><font color="white">gray19</font></a></td>
+<td bgcolor="#050505"><a title="#050505"><font color="white">gray2</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#333333"><a title="#333333"><font color="white">gray20</font></a></td>
+<td bgcolor="#363636"><a title="#363636"><font color="white">gray21</font></a></td>
+<td bgcolor="#383838"><a title="#383838"><font color="white">gray22</font></a></td>
+<td bgcolor="#3b3b3b"><a title="#3b3b3b"><font color="white">gray23</font></a></td>
+<td bgcolor="#3d3d3d"><a title="#3d3d3d"><font color="white">gray24</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#404040"><a title="#404040"><font color="white">gray25</font></a></td>
+<td bgcolor="#424242"><a title="#424242"><font color="white">gray26</font></a></td>
+<td bgcolor="#454545"><a title="#454545"><font color="white">gray27</font></a></td>
+<td bgcolor="#474747"><a title="#474747"><font color="white">gray28</font></a></td>
+<td bgcolor="#4a4a4a"><a title="#4a4a4a"><font color="white">gray29</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#080808"><a title="#080808"><font color="white">gray3</font></a></td>
+<td bgcolor="#4d4d4d"><a title="#4d4d4d"><font color="white">gray30</font></a></td>
+<td bgcolor="#4f4f4f"><a title="#4f4f4f"><font color="white">gray31</font></a></td>
+<td bgcolor="#525252"><a title="#525252"><font color="white">gray32</font></a></td>
+<td bgcolor="#545454"><a title="#545454"><font color="white">gray33</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#575757"><a title="#575757"><font color="white">gray34</font></a></td>
+<td bgcolor="#595959"><a title="#595959"><font color="white">gray35</font></a></td>
+<td bgcolor="#5c5c5c"><a title="#5c5c5c"><font color="white">gray36</font></a></td>
+<td bgcolor="#5e5e5e"><a title="#5e5e5e"><font color="white">gray37</font></a></td>
+<td bgcolor="#616161"><a title="#616161"><font color="white">gray38</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#636363"><a title="#636363"><font color="white">gray39</font></a></td>
+<td bgcolor="#0a0a0a"><a title="#0a0a0a"><font color="white">gray4</font></a></td>
+<td bgcolor="#666666"><a title="#666666"><font color="white">gray40</font></a></td>
+<td bgcolor="#696969"><a title="#696969"><font color="white">gray41</font></a></td>
+<td bgcolor="#6b6b6b"><a title="#6b6b6b"><font color="white">gray42</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#6e6e6e"><a title="#6e6e6e"><font color="white">gray43</font></a></td>
+<td bgcolor="#707070"><a title="#707070"><font color="white">gray44</font></a></td>
+<td bgcolor="#737373"><a title="#737373"><font color="white">gray45</font></a></td>
+<td bgcolor="#757575"><a title="#757575"><font color="white">gray46</font></a></td>
+<td bgcolor="#787878"><a title="#787878"><font color="white">gray47</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#7a7a7a"><a title="#7a7a7a"><font color="white">gray48</font></a></td>
+<td bgcolor="#7d7d7d"><a title="#7d7d7d"><font color="white">gray49</font></a></td>
+<td bgcolor="#0d0d0d"><a title="#0d0d0d"><font color="white">gray5</font></a></td>
+<td bgcolor="#7f7f7f"><a title="#7f7f7f"><font color="white">gray50</font></a></td>
+<td bgcolor="#828282"><a title="#828282"><font color="white">gray51</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#858585"><a title="#858585">gray52</a></td>
+<td bgcolor="#878787"><a title="#878787">gray53</a></td>
+<td bgcolor="#8a8a8a"><a title="#8a8a8a">gray54</a></td>
+<td bgcolor="#8c8c8c"><a title="#8c8c8c">gray55</a></td>
+<td bgcolor="#8f8f8f"><a title="#8f8f8f">gray56</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#919191"><a title="#919191">gray57</a></td>
+<td bgcolor="#949494"><a title="#949494">gray58</a></td>
+<td bgcolor="#969696"><a title="#969696">gray59</a></td>
+<td bgcolor="#0f0f0f"><a title="#0f0f0f"><font color="white">gray6</font></a></td>
+<td bgcolor="#999999"><a title="#999999">gray60</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#9c9c9c"><a title="#9c9c9c">gray61</a></td>
+<td bgcolor="#9e9e9e"><a title="#9e9e9e">gray62</a></td>
+<td bgcolor="#a1a1a1"><a title="#a1a1a1">gray63</a></td>
+<td bgcolor="#a3a3a3"><a title="#a3a3a3">gray64</a></td>
+<td bgcolor="#a6a6a6"><a title="#a6a6a6">gray65</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#a8a8a8"><a title="#a8a8a8">gray66</a></td>
+<td bgcolor="#ababab"><a title="#ababab">gray67</a></td>
+<td bgcolor="#adadad"><a title="#adadad">gray68</a></td>
+<td bgcolor="#b0b0b0"><a title="#b0b0b0">gray69</a></td>
+<td bgcolor="#121212"><a title="#121212"><font color="white">gray7</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#b3b3b3"><a title="#b3b3b3">gray70</a></td>
+<td bgcolor="#b5b5b5"><a title="#b5b5b5">gray71</a></td>
+<td bgcolor="#b8b8b8"><a title="#b8b8b8">gray72</a></td>
+<td bgcolor="#bababa"><a title="#bababa">gray73</a></td>
+<td bgcolor="#bdbdbd"><a title="#bdbdbd">gray74</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#bfbfbf"><a title="#bfbfbf">gray75</a></td>
+<td bgcolor="#c2c2c2"><a title="#c2c2c2">gray76</a></td>
+<td bgcolor="#c4c4c4"><a title="#c4c4c4">gray77</a></td>
+<td bgcolor="#c7c7c7"><a title="#c7c7c7">gray78</a></td>
+<td bgcolor="#c9c9c9"><a title="#c9c9c9">gray79</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#141414"><a title="#141414"><font color="white">gray8</font></a></td>
+<td bgcolor="#cccccc"><a title="#cccccc">gray80</a></td>
+<td bgcolor="#cfcfcf"><a title="#cfcfcf">gray81</a></td>
+<td bgcolor="#d1d1d1"><a title="#d1d1d1">gray82</a></td>
+<td bgcolor="#d4d4d4"><a title="#d4d4d4">gray83</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#d6d6d6"><a title="#d6d6d6">gray84</a></td>
+<td bgcolor="#d9d9d9"><a title="#d9d9d9">gray85</a></td>
+<td bgcolor="#dbdbdb"><a title="#dbdbdb">gray86</a></td>
+<td bgcolor="#dedede"><a title="#dedede">gray87</a></td>
+<td bgcolor="#e0e0e0"><a title="#e0e0e0">gray88</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#e3e3e3"><a title="#e3e3e3">gray89</a></td>
+<td bgcolor="#171717"><a title="#171717"><font color="white">gray9</font></a></td>
+<td bgcolor="#e5e5e5"><a title="#e5e5e5">gray90</a></td>
+<td bgcolor="#e8e8e8"><a title="#e8e8e8">gray91</a></td>
+<td bgcolor="#ebebeb"><a title="#ebebeb">gray92</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ededed"><a title="#ededed">gray93</a></td>
+<td bgcolor="#f0f0f0"><a title="#f0f0f0">gray94</a></td>
+<td bgcolor="#f2f2f2"><a title="#f2f2f2">gray95</a></td>
+<td bgcolor="#f5f5f5"><a title="#f5f5f5">gray96</a></td>
+<td bgcolor="#f7f7f7"><a title="#f7f7f7">gray97</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#fafafa"><a title="#fafafa">gray98</a></td>
+<td bgcolor="#fcfcfc"><a title="#fcfcfc">gray99</a></td>
+<td bgcolor="#00ff00"><a title="#00ff00">green</a></td>
+<td bgcolor="#00ff00"><a title="#00ff00">green1</a></td>
+<td bgcolor="#00ee00"><a title="#00ee00">green2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#00cd00"><a title="#00cd00">green3</a></td>
+<td bgcolor="#008b00"><a title="#008b00">green4</a></td>
+<td bgcolor="#adff2f"><a title="#adff2f">greenyellow</a></td>
+<td bgcolor="#c0c0c0"><a title="#c0c0c0">&nbsp;&nbsp;&nbsp;grey&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#000000"><a title="#000000"><font color="white">grey0</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#030303"><a title="#030303"><font color="white">grey1</font></a></td>
+<td bgcolor="#1a1a1a"><a title="#1a1a1a"><font color="white">grey10</font></a></td>
+<td bgcolor="#ffffff"><a title="#ffffff">grey100</a></td>
+<td bgcolor="#1c1c1c"><a title="#1c1c1c"><font color="white">grey11</font></a></td>
+<td bgcolor="#1f1f1f"><a title="#1f1f1f"><font color="white">grey12</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#212121"><a title="#212121"><font color="white">grey13</font></a></td>
+<td bgcolor="#242424"><a title="#242424"><font color="white">grey14</font></a></td>
+<td bgcolor="#262626"><a title="#262626"><font color="white">grey15</font></a></td>
+<td bgcolor="#292929"><a title="#292929"><font color="white">grey16</font></a></td>
+<td bgcolor="#2b2b2b"><a title="#2b2b2b"><font color="white">grey17</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#2e2e2e"><a title="#2e2e2e"><font color="white">grey18</font></a></td>
+<td bgcolor="#303030"><a title="#303030"><font color="white">grey19</font></a></td>
+<td bgcolor="#050505"><a title="#050505"><font color="white">grey2</font></a></td>
+<td bgcolor="#333333"><a title="#333333"><font color="white">grey20</font></a></td>
+<td bgcolor="#363636"><a title="#363636"><font color="white">grey21</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#383838"><a title="#383838"><font color="white">grey22</font></a></td>
+<td bgcolor="#3b3b3b"><a title="#3b3b3b"><font color="white">grey23</font></a></td>
+<td bgcolor="#3d3d3d"><a title="#3d3d3d"><font color="white">grey24</font></a></td>
+<td bgcolor="#404040"><a title="#404040"><font color="white">grey25</font></a></td>
+<td bgcolor="#424242"><a title="#424242"><font color="white">grey26</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#454545"><a title="#454545"><font color="white">grey27</font></a></td>
+<td bgcolor="#474747"><a title="#474747"><font color="white">grey28</font></a></td>
+<td bgcolor="#4a4a4a"><a title="#4a4a4a"><font color="white">grey29</font></a></td>
+<td bgcolor="#080808"><a title="#080808"><font color="white">grey3</font></a></td>
+<td bgcolor="#4d4d4d"><a title="#4d4d4d"><font color="white">grey30</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#4f4f4f"><a title="#4f4f4f"><font color="white">grey31</font></a></td>
+<td bgcolor="#525252"><a title="#525252"><font color="white">grey32</font></a></td>
+<td bgcolor="#545454"><a title="#545454"><font color="white">grey33</font></a></td>
+<td bgcolor="#575757"><a title="#575757"><font color="white">grey34</font></a></td>
+<td bgcolor="#595959"><a title="#595959"><font color="white">grey35</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#5c5c5c"><a title="#5c5c5c"><font color="white">grey36</font></a></td>
+<td bgcolor="#5e5e5e"><a title="#5e5e5e"><font color="white">grey37</font></a></td>
+<td bgcolor="#616161"><a title="#616161"><font color="white">grey38</font></a></td>
+<td bgcolor="#636363"><a title="#636363"><font color="white">grey39</font></a></td>
+<td bgcolor="#0a0a0a"><a title="#0a0a0a"><font color="white">grey4</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#666666"><a title="#666666"><font color="white">grey40</font></a></td>
+<td bgcolor="#696969"><a title="#696969"><font color="white">grey41</font></a></td>
+<td bgcolor="#6b6b6b"><a title="#6b6b6b"><font color="white">grey42</font></a></td>
+<td bgcolor="#6e6e6e"><a title="#6e6e6e"><font color="white">grey43</font></a></td>
+<td bgcolor="#707070"><a title="#707070"><font color="white">grey44</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#737373"><a title="#737373"><font color="white">grey45</font></a></td>
+<td bgcolor="#757575"><a title="#757575"><font color="white">grey46</font></a></td>
+<td bgcolor="#787878"><a title="#787878"><font color="white">grey47</font></a></td>
+<td bgcolor="#7a7a7a"><a title="#7a7a7a"><font color="white">grey48</font></a></td>
+<td bgcolor="#7d7d7d"><a title="#7d7d7d"><font color="white">grey49</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#0d0d0d"><a title="#0d0d0d"><font color="white">grey5</font></a></td>
+<td bgcolor="#7f7f7f"><a title="#7f7f7f"><font color="white">grey50</font></a></td>
+<td bgcolor="#828282"><a title="#828282"><font color="white">grey51</font></a></td>
+<td bgcolor="#858585"><a title="#858585">grey52</a></td>
+<td bgcolor="#878787"><a title="#878787">grey53</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#8a8a8a"><a title="#8a8a8a">grey54</a></td>
+<td bgcolor="#8c8c8c"><a title="#8c8c8c">grey55</a></td>
+<td bgcolor="#8f8f8f"><a title="#8f8f8f">grey56</a></td>
+<td bgcolor="#919191"><a title="#919191">grey57</a></td>
+<td bgcolor="#949494"><a title="#949494">grey58</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#969696"><a title="#969696">grey59</a></td>
+<td bgcolor="#0f0f0f"><a title="#0f0f0f"><font color="white">grey6</font></a></td>
+<td bgcolor="#999999"><a title="#999999">grey60</a></td>
+<td bgcolor="#9c9c9c"><a title="#9c9c9c">grey61</a></td>
+<td bgcolor="#9e9e9e"><a title="#9e9e9e">grey62</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#a1a1a1"><a title="#a1a1a1">grey63</a></td>
+<td bgcolor="#a3a3a3"><a title="#a3a3a3">grey64</a></td>
+<td bgcolor="#a6a6a6"><a title="#a6a6a6">grey65</a></td>
+<td bgcolor="#a8a8a8"><a title="#a8a8a8">grey66</a></td>
+<td bgcolor="#ababab"><a title="#ababab">grey67</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#adadad"><a title="#adadad">grey68</a></td>
+<td bgcolor="#b0b0b0"><a title="#b0b0b0">grey69</a></td>
+<td bgcolor="#121212"><a title="#121212"><font color="white">grey7</font></a></td>
+<td bgcolor="#b3b3b3"><a title="#b3b3b3">grey70</a></td>
+<td bgcolor="#b5b5b5"><a title="#b5b5b5">grey71</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#b8b8b8"><a title="#b8b8b8">grey72</a></td>
+<td bgcolor="#bababa"><a title="#bababa">grey73</a></td>
+<td bgcolor="#bdbdbd"><a title="#bdbdbd">grey74</a></td>
+<td bgcolor="#bfbfbf"><a title="#bfbfbf">grey75</a></td>
+<td bgcolor="#c2c2c2"><a title="#c2c2c2">grey76</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#c4c4c4"><a title="#c4c4c4">grey77</a></td>
+<td bgcolor="#c7c7c7"><a title="#c7c7c7">grey78</a></td>
+<td bgcolor="#c9c9c9"><a title="#c9c9c9">grey79</a></td>
+<td bgcolor="#141414"><a title="#141414"><font color="white">grey8</font></a></td>
+<td bgcolor="#cccccc"><a title="#cccccc">grey80</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cfcfcf"><a title="#cfcfcf">grey81</a></td>
+<td bgcolor="#d1d1d1"><a title="#d1d1d1">grey82</a></td>
+<td bgcolor="#d4d4d4"><a title="#d4d4d4">grey83</a></td>
+<td bgcolor="#d6d6d6"><a title="#d6d6d6">grey84</a></td>
+<td bgcolor="#d9d9d9"><a title="#d9d9d9">grey85</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#dbdbdb"><a title="#dbdbdb">grey86</a></td>
+<td bgcolor="#dedede"><a title="#dedede">grey87</a></td>
+<td bgcolor="#e0e0e0"><a title="#e0e0e0">grey88</a></td>
+<td bgcolor="#e3e3e3"><a title="#e3e3e3">grey89</a></td>
+<td bgcolor="#171717"><a title="#171717"><font color="white">grey9</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#e5e5e5"><a title="#e5e5e5">grey90</a></td>
+<td bgcolor="#e8e8e8"><a title="#e8e8e8">grey91</a></td>
+<td bgcolor="#ebebeb"><a title="#ebebeb">grey92</a></td>
+<td bgcolor="#ededed"><a title="#ededed">grey93</a></td>
+<td bgcolor="#f0f0f0"><a title="#f0f0f0">grey94</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#f2f2f2"><a title="#f2f2f2">grey95</a></td>
+<td bgcolor="#f5f5f5"><a title="#f5f5f5">grey96</a></td>
+<td bgcolor="#f7f7f7"><a title="#f7f7f7">grey97</a></td>
+<td bgcolor="#fafafa"><a title="#fafafa">grey98</a></td>
+<td bgcolor="#fcfcfc"><a title="#fcfcfc">grey99</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#f0fff0"><a title="#f0fff0">honeydew</a></td>
+<td bgcolor="#f0fff0"><a title="#f0fff0">honeydew1</a></td>
+<td bgcolor="#e0eee0"><a title="#e0eee0">honeydew2</a></td>
+<td bgcolor="#c1cdc1"><a title="#c1cdc1">honeydew3</a></td>
+<td bgcolor="#838b83"><a title="#838b83">honeydew4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff69b4"><a title="#ff69b4">hotpink</a></td>
+<td bgcolor="#ff6eb4"><a title="#ff6eb4">hotpink1</a></td>
+<td bgcolor="#ee6aa7"><a title="#ee6aa7">hotpink2</a></td>
+<td bgcolor="#cd6090"><a title="#cd6090">hotpink3</a></td>
+<td bgcolor="#8b3a62"><a title="#8b3a62">hotpink4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cd5c5c"><a title="#cd5c5c">indianred</a></td>
+<td bgcolor="#ff6a6a"><a title="#ff6a6a">indianred1</a></td>
+<td bgcolor="#ee6363"><a title="#ee6363">indianred2</a></td>
+<td bgcolor="#cd5555"><a title="#cd5555">indianred3</a></td>
+<td bgcolor="#8b3a3a"><a title="#8b3a3a">indianred4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#4b0082"><a title="#4b0082"><font color="white">indigo</font></a></td>
+<td bgcolor="#fffffe"><a title="#fffffe">invis</a></td>
+<td bgcolor="#fffff0"><a title="#fffff0">ivory</a></td>
+<td bgcolor="#fffff0"><a title="#fffff0">ivory1</a></td>
+<td bgcolor="#eeeee0"><a title="#eeeee0">ivory2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cdcdc1"><a title="#cdcdc1">ivory3</a></td>
+<td bgcolor="#8b8b83"><a title="#8b8b83">ivory4</a></td>
+<td bgcolor="#f0e68c"><a title="#f0e68c">khaki</a></td>
+<td bgcolor="#fff68f"><a title="#fff68f">khaki1</a></td>
+<td bgcolor="#eee685"><a title="#eee685">khaki2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cdc673"><a title="#cdc673">khaki3</a></td>
+<td bgcolor="#8b864e"><a title="#8b864e">khaki4</a></td>
+<td bgcolor="#e6e6fa"><a title="#e6e6fa">lavender</a></td>
+<td bgcolor="#fff0f5"><a title="#fff0f5">lavenderblush</a></td>
+<td bgcolor="#fff0f5"><a title="#fff0f5">lavenderblush1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#eee0e5"><a title="#eee0e5">lavenderblush2</a></td>
+<td bgcolor="#cdc1c5"><a title="#cdc1c5">lavenderblush3</a></td>
+<td bgcolor="#8b8386"><a title="#8b8386">lavenderblush4</a></td>
+<td bgcolor="#7cfc00"><a title="#7cfc00">lawngreen</a></td>
+<td bgcolor="#fffacd"><a title="#fffacd">lemonchiffon</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#fffacd"><a title="#fffacd">lemonchiffon1</a></td>
+<td bgcolor="#eee9bf"><a title="#eee9bf">lemonchiffon2</a></td>
+<td bgcolor="#cdc9a5"><a title="#cdc9a5">lemonchiffon3</a></td>
+<td bgcolor="#8b8970"><a title="#8b8970">lemonchiffon4</a></td>
+<td bgcolor="#add8e6"><a title="#add8e6">lightblue</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#bfefff"><a title="#bfefff">lightblue1</a></td>
+<td bgcolor="#b2dfee"><a title="#b2dfee">lightblue2</a></td>
+<td bgcolor="#9ac0cd"><a title="#9ac0cd">lightblue3</a></td>
+<td bgcolor="#68838b"><a title="#68838b">lightblue4</a></td>
+<td bgcolor="#f08080"><a title="#f08080">lightcoral</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#e0ffff"><a title="#e0ffff">lightcyan</a></td>
+<td bgcolor="#e0ffff"><a title="#e0ffff">lightcyan1</a></td>
+<td bgcolor="#d1eeee"><a title="#d1eeee">lightcyan2</a></td>
+<td bgcolor="#b4cdcd"><a title="#b4cdcd">lightcyan3</a></td>
+<td bgcolor="#7a8b8b"><a title="#7a8b8b">lightcyan4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#eedd82"><a title="#eedd82">lightgoldenrod</a></td>
+<td bgcolor="#ffec8b"><a title="#ffec8b">lightgoldenrod1</a></td>
+<td bgcolor="#eedc82"><a title="#eedc82">lightgoldenrod2</a></td>
+<td bgcolor="#cdbe70"><a title="#cdbe70">lightgoldenrod3</a></td>
+<td bgcolor="#8b814c"><a title="#8b814c">lightgoldenrod4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#fafad2"><a title="#fafad2">lightgoldenrodyellow</a></td>
+<td bgcolor="#d3d3d3"><a title="#d3d3d3">lightgray</a></td>
+<td bgcolor="#d3d3d3"><a title="#d3d3d3">lightgrey</a></td>
+<td bgcolor="#ffb6c1"><a title="#ffb6c1">lightpink</a></td>
+<td bgcolor="#ffaeb9"><a title="#ffaeb9">lightpink1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#eea2ad"><a title="#eea2ad">lightpink2</a></td>
+<td bgcolor="#cd8c95"><a title="#cd8c95">lightpink3</a></td>
+<td bgcolor="#8b5f65"><a title="#8b5f65">lightpink4</a></td>
+<td bgcolor="#ffa07a"><a title="#ffa07a">lightsalmon</a></td>
+<td bgcolor="#ffa07a"><a title="#ffa07a">lightsalmon1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ee9572"><a title="#ee9572">lightsalmon2</a></td>
+<td bgcolor="#cd8162"><a title="#cd8162">lightsalmon3</a></td>
+<td bgcolor="#8b5742"><a title="#8b5742">lightsalmon4</a></td>
+<td bgcolor="#20b2aa"><a title="#20b2aa">lightseagreen</a></td>
+<td bgcolor="#87cefa"><a title="#87cefa">lightskyblue</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#b0e2ff"><a title="#b0e2ff">lightskyblue1</a></td>
+<td bgcolor="#a4d3ee"><a title="#a4d3ee">lightskyblue2</a></td>
+<td bgcolor="#8db6cd"><a title="#8db6cd">lightskyblue3</a></td>
+<td bgcolor="#607b8b"><a title="#607b8b">lightskyblue4</a></td>
+<td bgcolor="#8470ff"><a title="#8470ff">lightslateblue</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#778899"><a title="#778899">lightslategray</a></td>
+<td bgcolor="#778899"><a title="#778899">lightslategrey</a></td>
+<td bgcolor="#b0c4de"><a title="#b0c4de">lightsteelblue</a></td>
+<td bgcolor="#cae1ff"><a title="#cae1ff">lightsteelblue1</a></td>
+<td bgcolor="#bcd2ee"><a title="#bcd2ee">lightsteelblue2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#a2b5cd"><a title="#a2b5cd">lightsteelblue3</a></td>
+<td bgcolor="#6e7b8b"><a title="#6e7b8b">lightsteelblue4</a></td>
+<td bgcolor="#ffffe0"><a title="#ffffe0">lightyellow</a></td>
+<td bgcolor="#ffffe0"><a title="#ffffe0">lightyellow1</a></td>
+<td bgcolor="#eeeed1"><a title="#eeeed1">lightyellow2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cdcdb4"><a title="#cdcdb4">lightyellow3</a></td>
+<td bgcolor="#8b8b7a"><a title="#8b8b7a">lightyellow4</a></td>
+<td bgcolor="#32cd32"><a title="#32cd32">limegreen</a></td>
+<td bgcolor="#faf0e6"><a title="#faf0e6">linen</a></td>
+<td bgcolor="#ff00ff"><a title="#ff00ff">magenta</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff00ff"><a title="#ff00ff">magenta1</a></td>
+<td bgcolor="#ee00ee"><a title="#ee00ee">magenta2</a></td>
+<td bgcolor="#cd00cd"><a title="#cd00cd">magenta3</a></td>
+<td bgcolor="#8b008b"><a title="#8b008b">magenta4</a></td>
+<td bgcolor="#b03060"><a title="#b03060">maroon</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff34b3"><a title="#ff34b3">maroon1</a></td>
+<td bgcolor="#ee30a7"><a title="#ee30a7">maroon2</a></td>
+<td bgcolor="#cd2990"><a title="#cd2990">maroon3</a></td>
+<td bgcolor="#8b1c62"><a title="#8b1c62">maroon4</a></td>
+<td bgcolor="#66cdaa"><a title="#66cdaa">mediumaquamarine</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#0000cd"><a title="#0000cd">mediumblue</a></td>
+<td bgcolor="#ba55d3"><a title="#ba55d3">mediumorchid</a></td>
+<td bgcolor="#e066ff"><a title="#e066ff">mediumorchid1</a></td>
+<td bgcolor="#d15fee"><a title="#d15fee">mediumorchid2</a></td>
+<td bgcolor="#b452cd"><a title="#b452cd">mediumorchid3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#7a378b"><a title="#7a378b">mediumorchid4</a></td>
+<td bgcolor="#9370db"><a title="#9370db">mediumpurple</a></td>
+<td bgcolor="#ab82ff"><a title="#ab82ff">mediumpurple1</a></td>
+<td bgcolor="#9f79ee"><a title="#9f79ee">mediumpurple2</a></td>
+<td bgcolor="#8968cd"><a title="#8968cd">mediumpurple3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#5d478b"><a title="#5d478b">mediumpurple4</a></td>
+<td bgcolor="#3cb371"><a title="#3cb371">mediumseagreen</a></td>
+<td bgcolor="#7b68ee"><a title="#7b68ee">mediumslateblue</a></td>
+<td bgcolor="#00fa9a"><a title="#00fa9a">mediumspringgreen</a></td>
+<td bgcolor="#48d1cc"><a title="#48d1cc">mediumturquoise</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#c71585"><a title="#c71585">mediumvioletred</a></td>
+<td bgcolor="#191970"><a title="#191970"><font color="white">midnightblue</font></a></td>
+<td bgcolor="#f5fffa"><a title="#f5fffa">mintcream</a></td>
+<td bgcolor="#ffe4e1"><a title="#ffe4e1">mistyrose</a></td>
+<td bgcolor="#ffe4e1"><a title="#ffe4e1">mistyrose1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#eed5d2"><a title="#eed5d2">mistyrose2</a></td>
+<td bgcolor="#cdb7b5"><a title="#cdb7b5">mistyrose3</a></td>
+<td bgcolor="#8b7d7b"><a title="#8b7d7b">mistyrose4</a></td>
+<td bgcolor="#ffe4b5"><a title="#ffe4b5">moccasin</a></td>
+<td bgcolor="#ffdead"><a title="#ffdead">navajowhite</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ffdead"><a title="#ffdead">navajowhite1</a></td>
+<td bgcolor="#eecfa1"><a title="#eecfa1">navajowhite2</a></td>
+<td bgcolor="#cdb38b"><a title="#cdb38b">navajowhite3</a></td>
+<td bgcolor="#8b795e"><a title="#8b795e">navajowhite4</a></td>
+<td bgcolor="#000080"><a title="#000080"><font color="white">&nbsp;&nbsp;&nbsp;navy&nbsp;&nbsp;&nbsp;</font></a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#000080"><a title="#000080"><font color="white">navyblue</font></a></td>
+<td bgcolor="#fffffe"><a title="#fffffe">&nbsp;&nbsp;&nbsp;none&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#fdf5e6"><a title="#fdf5e6">oldlace</a></td>
+<td bgcolor="#6b8e23"><a title="#6b8e23">olivedrab</a></td>
+<td bgcolor="#c0ff3e"><a title="#c0ff3e">olivedrab1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#b3ee3a"><a title="#b3ee3a">olivedrab2</a></td>
+<td bgcolor="#9acd32"><a title="#9acd32">olivedrab3</a></td>
+<td bgcolor="#698b22"><a title="#698b22">olivedrab4</a></td>
+<td bgcolor="#ffa500"><a title="#ffa500">orange</a></td>
+<td bgcolor="#ffa500"><a title="#ffa500">orange1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ee9a00"><a title="#ee9a00">orange2</a></td>
+<td bgcolor="#cd8500"><a title="#cd8500">orange3</a></td>
+<td bgcolor="#8b5a00"><a title="#8b5a00">orange4</a></td>
+<td bgcolor="#ff4500"><a title="#ff4500">orangered</a></td>
+<td bgcolor="#ff4500"><a title="#ff4500">orangered1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ee4000"><a title="#ee4000">orangered2</a></td>
+<td bgcolor="#cd3700"><a title="#cd3700">orangered3</a></td>
+<td bgcolor="#8b2500"><a title="#8b2500">orangered4</a></td>
+<td bgcolor="#da70d6"><a title="#da70d6">orchid</a></td>
+<td bgcolor="#ff83fa"><a title="#ff83fa">orchid1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ee7ae9"><a title="#ee7ae9">orchid2</a></td>
+<td bgcolor="#cd69c9"><a title="#cd69c9">orchid3</a></td>
+<td bgcolor="#8b4789"><a title="#8b4789">orchid4</a></td>
+<td bgcolor="#eee8aa"><a title="#eee8aa">palegoldenrod</a></td>
+<td bgcolor="#98fb98"><a title="#98fb98">palegreen</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#9aff9a"><a title="#9aff9a">palegreen1</a></td>
+<td bgcolor="#90ee90"><a title="#90ee90">palegreen2</a></td>
+<td bgcolor="#7ccd7c"><a title="#7ccd7c">palegreen3</a></td>
+<td bgcolor="#548b54"><a title="#548b54">palegreen4</a></td>
+<td bgcolor="#afeeee"><a title="#afeeee">paleturquoise</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#bbffff"><a title="#bbffff">paleturquoise1</a></td>
+<td bgcolor="#aeeeee"><a title="#aeeeee">paleturquoise2</a></td>
+<td bgcolor="#96cdcd"><a title="#96cdcd">paleturquoise3</a></td>
+<td bgcolor="#668b8b"><a title="#668b8b">paleturquoise4</a></td>
+<td bgcolor="#db7093"><a title="#db7093">palevioletred</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff82ab"><a title="#ff82ab">palevioletred1</a></td>
+<td bgcolor="#ee799f"><a title="#ee799f">palevioletred2</a></td>
+<td bgcolor="#cd6889"><a title="#cd6889">palevioletred3</a></td>
+<td bgcolor="#8b475d"><a title="#8b475d">palevioletred4</a></td>
+<td bgcolor="#ffefd5"><a title="#ffefd5">papayawhip</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ffdab9"><a title="#ffdab9">peachpuff</a></td>
+<td bgcolor="#ffdab9"><a title="#ffdab9">peachpuff1</a></td>
+<td bgcolor="#eecbad"><a title="#eecbad">peachpuff2</a></td>
+<td bgcolor="#cdaf95"><a title="#cdaf95">peachpuff3</a></td>
+<td bgcolor="#8b7765"><a title="#8b7765">peachpuff4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cd853f"><a title="#cd853f">&nbsp;&nbsp;&nbsp;peru&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ffc0cb"><a title="#ffc0cb">&nbsp;&nbsp;&nbsp;pink&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ffb5c5"><a title="#ffb5c5">pink1</a></td>
+<td bgcolor="#eea9b8"><a title="#eea9b8">pink2</a></td>
+<td bgcolor="#cd919e"><a title="#cd919e">pink3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#8b636c"><a title="#8b636c">pink4</a></td>
+<td bgcolor="#dda0dd"><a title="#dda0dd">&nbsp;&nbsp;&nbsp;plum&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ffbbff"><a title="#ffbbff">plum1</a></td>
+<td bgcolor="#eeaeee"><a title="#eeaeee">plum2</a></td>
+<td bgcolor="#cd96cd"><a title="#cd96cd">plum3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#8b668b"><a title="#8b668b">plum4</a></td>
+<td bgcolor="#b0e0e6"><a title="#b0e0e6">powderblue</a></td>
+<td bgcolor="#a020f0"><a title="#a020f0">purple</a></td>
+<td bgcolor="#9b30ff"><a title="#9b30ff">purple1</a></td>
+<td bgcolor="#912cee"><a title="#912cee">purple2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#7d26cd"><a title="#7d26cd">purple3</a></td>
+<td bgcolor="#551a8b"><a title="#551a8b">purple4</a></td>
+<td bgcolor="#ff0000"><a title="#ff0000">&nbsp;&nbsp;&nbsp;red&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ff0000"><a title="#ff0000">&nbsp;&nbsp;&nbsp;red1&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ee0000"><a title="#ee0000">&nbsp;&nbsp;&nbsp;red2&nbsp;&nbsp;&nbsp;</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cd0000"><a title="#cd0000">&nbsp;&nbsp;&nbsp;red3&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#8b0000"><a title="#8b0000">&nbsp;&nbsp;&nbsp;red4&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#bc8f8f"><a title="#bc8f8f">rosybrown</a></td>
+<td bgcolor="#ffc1c1"><a title="#ffc1c1">rosybrown1</a></td>
+<td bgcolor="#eeb4b4"><a title="#eeb4b4">rosybrown2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cd9b9b"><a title="#cd9b9b">rosybrown3</a></td>
+<td bgcolor="#8b6969"><a title="#8b6969">rosybrown4</a></td>
+<td bgcolor="#4169e1"><a title="#4169e1">royalblue</a></td>
+<td bgcolor="#4876ff"><a title="#4876ff">royalblue1</a></td>
+<td bgcolor="#436eee"><a title="#436eee">royalblue2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#3a5fcd"><a title="#3a5fcd">royalblue3</a></td>
+<td bgcolor="#27408b"><a title="#27408b">royalblue4</a></td>
+<td bgcolor="#8b4513"><a title="#8b4513">saddlebrown</a></td>
+<td bgcolor="#fa8072"><a title="#fa8072">salmon</a></td>
+<td bgcolor="#ff8c69"><a title="#ff8c69">salmon1</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ee8262"><a title="#ee8262">salmon2</a></td>
+<td bgcolor="#cd7054"><a title="#cd7054">salmon3</a></td>
+<td bgcolor="#8b4c39"><a title="#8b4c39">salmon4</a></td>
+<td bgcolor="#f4a460"><a title="#f4a460">sandybrown</a></td>
+<td bgcolor="#2e8b57"><a title="#2e8b57">seagreen</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#54ff9f"><a title="#54ff9f">seagreen1</a></td>
+<td bgcolor="#4eee94"><a title="#4eee94">seagreen2</a></td>
+<td bgcolor="#43cd80"><a title="#43cd80">seagreen3</a></td>
+<td bgcolor="#2e8b57"><a title="#2e8b57">seagreen4</a></td>
+<td bgcolor="#fff5ee"><a title="#fff5ee">seashell</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#fff5ee"><a title="#fff5ee">seashell1</a></td>
+<td bgcolor="#eee5de"><a title="#eee5de">seashell2</a></td>
+<td bgcolor="#cdc5bf"><a title="#cdc5bf">seashell3</a></td>
+<td bgcolor="#8b8682"><a title="#8b8682">seashell4</a></td>
+<td bgcolor="#a0522d"><a title="#a0522d">sienna</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff8247"><a title="#ff8247">sienna1</a></td>
+<td bgcolor="#ee7942"><a title="#ee7942">sienna2</a></td>
+<td bgcolor="#cd6839"><a title="#cd6839">sienna3</a></td>
+<td bgcolor="#8b4726"><a title="#8b4726">sienna4</a></td>
+<td bgcolor="#87ceeb"><a title="#87ceeb">skyblue</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#87ceff"><a title="#87ceff">skyblue1</a></td>
+<td bgcolor="#7ec0ee"><a title="#7ec0ee">skyblue2</a></td>
+<td bgcolor="#6ca6cd"><a title="#6ca6cd">skyblue3</a></td>
+<td bgcolor="#4a708b"><a title="#4a708b">skyblue4</a></td>
+<td bgcolor="#6a5acd"><a title="#6a5acd">slateblue</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#836fff"><a title="#836fff">slateblue1</a></td>
+<td bgcolor="#7a67ee"><a title="#7a67ee">slateblue2</a></td>
+<td bgcolor="#6959cd"><a title="#6959cd">slateblue3</a></td>
+<td bgcolor="#473c8b"><a title="#473c8b">slateblue4</a></td>
+<td bgcolor="#708090"><a title="#708090">slategray</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#c6e2ff"><a title="#c6e2ff">slategray1</a></td>
+<td bgcolor="#b9d3ee"><a title="#b9d3ee">slategray2</a></td>
+<td bgcolor="#9fb6cd"><a title="#9fb6cd">slategray3</a></td>
+<td bgcolor="#6c7b8b"><a title="#6c7b8b">slategray4</a></td>
+<td bgcolor="#708090"><a title="#708090">slategrey</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#fffafa"><a title="#fffafa">&nbsp;&nbsp;&nbsp;snow&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#fffafa"><a title="#fffafa">snow1</a></td>
+<td bgcolor="#eee9e9"><a title="#eee9e9">snow2</a></td>
+<td bgcolor="#cdc9c9"><a title="#cdc9c9">snow3</a></td>
+<td bgcolor="#8b8989"><a title="#8b8989">snow4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#00ff7f"><a title="#00ff7f">springgreen</a></td>
+<td bgcolor="#00ff7f"><a title="#00ff7f">springgreen1</a></td>
+<td bgcolor="#00ee76"><a title="#00ee76">springgreen2</a></td>
+<td bgcolor="#00cd66"><a title="#00cd66">springgreen3</a></td>
+<td bgcolor="#008b45"><a title="#008b45">springgreen4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#4682b4"><a title="#4682b4">steelblue</a></td>
+<td bgcolor="#63b8ff"><a title="#63b8ff">steelblue1</a></td>
+<td bgcolor="#5cacee"><a title="#5cacee">steelblue2</a></td>
+<td bgcolor="#4f94cd"><a title="#4f94cd">steelblue3</a></td>
+<td bgcolor="#36648b"><a title="#36648b">steelblue4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#d2b48c"><a title="#d2b48c">&nbsp;&nbsp;&nbsp;tan&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ffa54f"><a title="#ffa54f">&nbsp;&nbsp;&nbsp;tan1&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#ee9a49"><a title="#ee9a49">&nbsp;&nbsp;&nbsp;tan2&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#cd853f"><a title="#cd853f">&nbsp;&nbsp;&nbsp;tan3&nbsp;&nbsp;&nbsp;</a></td>
+<td bgcolor="#8b5a2b"><a title="#8b5a2b">&nbsp;&nbsp;&nbsp;tan4&nbsp;&nbsp;&nbsp;</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#d8bfd8"><a title="#d8bfd8">thistle</a></td>
+<td bgcolor="#ffe1ff"><a title="#ffe1ff">thistle1</a></td>
+<td bgcolor="#eed2ee"><a title="#eed2ee">thistle2</a></td>
+<td bgcolor="#cdb5cd"><a title="#cdb5cd">thistle3</a></td>
+<td bgcolor="#8b7b8b"><a title="#8b7b8b">thistle4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ff6347"><a title="#ff6347">tomato</a></td>
+<td bgcolor="#ff6347"><a title="#ff6347">tomato1</a></td>
+<td bgcolor="#ee5c42"><a title="#ee5c42">tomato2</a></td>
+<td bgcolor="#cd4f39"><a title="#cd4f39">tomato3</a></td>
+<td bgcolor="#8b3626"><a title="#8b3626">tomato4</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#fffffe"><a title="#fffffe">transparent</a></td>
+<td bgcolor="#40e0d0"><a title="#40e0d0">turquoise</a></td>
+<td bgcolor="#00f5ff"><a title="#00f5ff">turquoise1</a></td>
+<td bgcolor="#00e5ee"><a title="#00e5ee">turquoise2</a></td>
+<td bgcolor="#00c5cd"><a title="#00c5cd">turquoise3</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#00868b"><a title="#00868b">turquoise4</a></td>
+<td bgcolor="#ee82ee"><a title="#ee82ee">violet</a></td>
+<td bgcolor="#d02090"><a title="#d02090">violetred</a></td>
+<td bgcolor="#ff3e96"><a title="#ff3e96">violetred1</a></td>
+<td bgcolor="#ee3a8c"><a title="#ee3a8c">violetred2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cd3278"><a title="#cd3278">violetred3</a></td>
+<td bgcolor="#8b2252"><a title="#8b2252">violetred4</a></td>
+<td bgcolor="#f5deb3"><a title="#f5deb3">wheat</a></td>
+<td bgcolor="#ffe7ba"><a title="#ffe7ba">wheat1</a></td>
+<td bgcolor="#eed8ae"><a title="#eed8ae">wheat2</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#cdba96"><a title="#cdba96">wheat3</a></td>
+<td bgcolor="#8b7e66"><a title="#8b7e66">wheat4</a></td>
+<td bgcolor="#ffffff"><a title="#ffffff">white</a></td>
+<td bgcolor="#f5f5f5"><a title="#f5f5f5">whitesmoke</a></td>
+<td bgcolor="#ffff00"><a title="#ffff00">yellow</a></td>
+</tr>
+<tr align="center">
+<td bgcolor="#ffff00"><a title="#ffff00">yellow1</a></td>
+<td bgcolor="#eeee00"><a title="#eeee00">yellow2</a></td>
+<td bgcolor="#cdcd00"><a title="#cdcd00">yellow3</a></td>
+<td bgcolor="#8b8b00"><a title="#8b8b00">yellow4</a></td>
+<td bgcolor="#9acd32"><a title="#9acd32">yellowgreen</a></td>
+</tr>
+</tbody></table>
+
+
+<h4 id="箭头类型"><a href="#箭头类型" class="headerlink" title="箭头类型"></a>箭头类型</h4><p>通常可以这样指定箭头形状: <code>[arrowhead=dot]</code></p>
+
+<table>
+  <tbody><tr>
+    <td>"box"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_box.gif">
+    </td><td>"crow"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_crow.gif">
+    </td><td>"curve"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_curve.gif">
+    </td><td>"diamond"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_diamond.gif">
+  </td></tr>
+  <tr>
+  </tr>
+  <tr>
+    <td>"dot"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_dot.gif">
+    </td><td>"icurve"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_icurve.gif">
+    </td><td>"inv"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_inv.gif">
+    </td><td>"none"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_none.gif">
+  </td></tr>
+  <tr>
+  </tr>
+  <tr>
+    <td>"normal"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_normal.gif">
+    </td><td>"tee"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_tee.gif">
+    </td><td>"vee"</td><td><img src="https://graphviz.gitlab.io/_pages/doc/info/a_open.gif">
+  </td></tr>
+</tbody></table>
+
+<p>下面是一个案例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dot = <span class="string">'''</span></span><br><span class="line"><span class="string">digraph graphname &#123;</span></span><br><span class="line"><span class="string">    subgraph clusterA &#123;</span></span><br><span class="line"><span class="string">        node [shape=plaintext,style=filled];</span></span><br><span class="line"><span class="string">        1 -&gt; 2 [arrowhead=dot];</span></span><br><span class="line"><span class="string">        2 -&gt; 3 -&gt; X2 -&gt; 5[arrowhead=tee];</span></span><br><span class="line"><span class="string">        6;</span></span><br><span class="line"><span class="string">        7;</span></span><br><span class="line"><span class="string">        label = "A";</span></span><br><span class="line"><span class="string">        color=blue</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">graph = pdp.graph_from_dot_data(dot)</span><br><span class="line"><span class="comment"># 下面这行用于在notebook中显示图片</span></span><br><span class="line">Image(graph.create_png())</span><br></pre></td></tr></table></figure>
+<p><img src="output_18_0.png" alt="png"></p>
+<h3 id="终极案例-绘制决策树"><a href="#终极案例-绘制决策树" class="headerlink" title="终极案例-绘制决策树"></a>终极案例-绘制决策树</h3><p>使用pydotplus可以很方便的绘制决策树的决策图, 下面直接上代码就可以了:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#用于数据处理和分析的工具包</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment">#引入用于数据预处理/特征工程的工具包</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="comment">#import决策树建模包</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> display, Image</span><br><span class="line">adult_data = pd.read_csv(<span class="string">'DecisionTree.csv'</span>)</span><br><span class="line">feature_columns = [<span class="string">u'workclass'</span>, <span class="string">u'education'</span>, <span class="string">u'marital-status'</span>, <span class="string">u'occupation'</span>, <span class="string">u'relationship'</span>, <span class="string">u'race'</span>, <span class="string">u'gender'</span>, <span class="string">u'native-country'</span>]</span><br><span class="line">label_column = [<span class="string">'income'</span>]</span><br><span class="line">features = adult_data[feature_columns]</span><br><span class="line">label = adult_data[label_column]</span><br><span class="line">features = pd.get_dummies(features)</span><br><span class="line"><span class="comment">#初始化一个决策树分类器</span></span><br><span class="line">clf = tree.DecisionTreeClassifier(criterion=<span class="string">'entropy'</span>, max_depth=<span class="number">3</span>)</span><br><span class="line"><span class="comment">#用决策树分类器拟合数据</span></span><br><span class="line">clf = clf.fit(features.values, label.values)</span><br><span class="line">dot_data = tree.export_graphviz(clf, </span><br><span class="line">                                out_file=<span class="keyword">None</span>, </span><br><span class="line">                                feature_names=features.columns,</span><br><span class="line">                                class_names = [<span class="string">'&lt;=50k'</span>, <span class="string">'&gt;50k'</span>],</span><br><span class="line">                                filled = <span class="keyword">True</span>,</span><br><span class="line">                                rounded =<span class="keyword">True</span></span><br><span class="line">                               )</span><br><span class="line">graph = pdp.graph_from_dot_data(dot_data)</span><br><span class="line">display(Image(graph.create_png()))</span><br></pre></td></tr></table></figure>
+<p><img src="output_20_0.png" alt="png"></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="pydotplus安装和基本入门.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pydotplus/">#pydotplus</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/pydotplus/">
+            pydotplus
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/21/pydotplus安装和基本入门/">
+                    pydotplus安装和基本入门
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

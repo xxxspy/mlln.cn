@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing PsychoPy in a classroom (administrators) &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Recipes (“How-to”s)" href="recipes.html" />
+    <link rel="next" title="Generating formatted strings" href="formattedStrings.html" />
+    <link rel="prev" title="Builder - terminating a loop" href="builderTerminateLoops.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="formattedStrings.html" title="Generating formatted strings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="builderTerminateLoops.html" title="Builder - terminating a loop"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" accesskey="U">Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Installing PsychoPy in a classroom (administrators)</a><ul>
+<li><a class="reference internal" href="#install-dependencies-locally">1. Install dependencies locally</a></li>
+<li><a class="reference internal" href="#move-the-psychopy-to-the-network">2. Move the PsychoPy to the network</a></li>
+<li><a class="reference internal" href="#update-the-python-path">3. Update the Python path</a></li>
+<li><a class="reference internal" href="#update-the-start-menu">4. Update the Start Menu</a></li>
+<li><a class="reference internal" href="#updating-to-a-new-version">5. Updating to a new version</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="builderTerminateLoops.html"
+                                  title="previous chapter">Builder - terminating a loop</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="formattedStrings.html"
+                                  title="next chapter">Generating formatted strings</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/recipes/classroomInstallation.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-psychopy-in-a-classroom-administrators">
+<span id="classroom"></span><h1>Installing PsychoPy in a classroom (administrators)<a class="headerlink" href="#installing-psychopy-in-a-classroom-administrators" title="Permalink to this headline">¶</a></h1>
+<p>For running PsychoPy in a classroom environment it is probably preferable to have a &#8216;partial&#8217; network installation. The PsychoPy library features frequent new releases, including bug fixes and you want to be able to update machines with these new releases. But PsychoPy depends on many other python libraries (over 200Mb in total) that tend not to change so rapidly, or at least not in ways critical to the running of experiments. If you install the whole PsychoPy application on the network then all of this data has to pass backwards and forwards, and starting the app will take even longer than normal.</p>
+<p>The basic aim of this document is to get to a state whereby;</p>
+<blockquote>
+<div><ul class="simple">
+<li>Python and the major dependencies of PsychoPy are installed on the local machine (probably a disk image to be copied across your lab computers)</li>
+<li>PsychoPy itself (only ~2Mb) is installed in a network location where it can be updated easily by the administrator</li>
+<li>a file is created in the installation that provides the path to the network drive location</li>
+<li>Start-Menu shortcuts need to be set to point to the local Python but the remote PsychoPy application launcher</li>
+</ul>
+</div></blockquote>
+<p>Once this is done, the vast majority of updates can be performed simply by replacing the PsychoPy library on the network drive.</p>
+<div class="section" id="install-dependencies-locally">
+<h2>1. Install dependencies locally<a class="headerlink" href="#install-dependencies-locally" title="Permalink to this headline">¶</a></h2>
+<p>Download the latest version of the Standalone PsychoPy distribution, and run as administrator. This will install a copy of Python and many dependencies to a default location of</p>
+<blockquote>
+<div><cite>C:\Program Files\PsychoPy2\</cite></div></blockquote>
+</div>
+<div class="section" id="move-the-psychopy-to-the-network">
+<h2>2. Move the PsychoPy to the network<a class="headerlink" href="#move-the-psychopy-to-the-network" title="Permalink to this headline">¶</a></h2>
+<p>You need a network location that is going to be available, with read-only access, to all users on your machines. You will find all the contents of PsychoPy itself at something like this (version dependent obviously):</p>
+<blockquote>
+<div><cite>C:\Program Files\PsychoPy2\Lib\site-packages\PsychoPy-1.70.00-py2.6.egg</cite></div></blockquote>
+<p>Move that entire folder to your network location and call it psychopyLib (or similar, getting rid of the version-specific part of the name). Now the following should be a valid path:</p>
+<blockquote>
+<div><cite>&lt;NETWORK_LOC&gt;\psychopyLib\psychopy</cite></div></blockquote>
+</div>
+<div class="section" id="update-the-python-path">
+<h2>3. Update the Python path<a class="headerlink" href="#update-the-python-path" title="Permalink to this headline">¶</a></h2>
+<p>The Python installation (in C:\Program Files\PsychoPy2) needs to know about the network location. If Python finds a text file with extension <cite>.pth</cite> anywhere on its existing path then it will add to the path any valid paths it finds in the file. So create a text file that has one line in it:</p>
+<blockquote>
+<div><cite>&lt;NETWORK_LOC&gt;\psychopyLib</cite></div></blockquote>
+<p>You can test if this has worked. Go to <cite>C:\Program Files\PsychoPy2</cite> and double-click on python.exe. You should get a Python terminal window come up. Now try:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">psychopy</span>
+</pre></div>
+</div>
+<p>If psychopy is not found on the path then there will be an import error. Try adjusting the .pth file, restarting python.exe and importing again.</p>
+</div>
+<div class="section" id="update-the-start-menu">
+<h2>4. Update the Start Menu<a class="headerlink" href="#update-the-start-menu" title="Permalink to this headline">¶</a></h2>
+<p>The shortcut in the Windows Start Menu will still be pointing to the local (now non-existent) PsychoPy library. Right-click it to change properties and set the shortcut to point to something like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\PsychoPy2\pythonw.exe&quot;</span> <span class="s2">&quot;&lt;NETWORK_LOC&gt;\psychopyLib\psychopy</span><span class="se">\a</span><span class="s2">pp\psychopyApp.py&quot;</span>
+</pre></div>
+</div>
+<p>You probably spotted from this that the PsychoPy app is simply a Python script. You may want to update the file associations too, so that <cite>.psyexp</cite> and <cite>.py</cite> are opened with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\PsychoPy2\pythonw.exe&quot;</span> <span class="s2">&quot;&lt;NETWORK_LOC&gt;\psychopyLib\psychopy</span><span class="se">\a</span><span class="s2">pp\psychopyApp.py&quot;</span> <span class="s2">&quot;%1&quot;</span>
+</pre></div>
+</div>
+<p>Lastly, to make the shortcut look pretty, you might want to update the icon too. Set the icon&#8217;s location to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;&lt;NETWORK_LOC&gt;\psychopyLib\psychopy</span><span class="se">\a</span><span class="s2">pp\Resources\psychopy.ico&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updating-to-a-new-version">
+<h2>5. Updating to a new version<a class="headerlink" href="#updating-to-a-new-version" title="Permalink to this headline">¶</a></h2>
+<p>Fetch the latest .zip release. Unpack it and replace the contents of <cite>&lt;NETWORK_LOC&gt;\psychopyLib\</cite> with the contents of the zip file.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="formattedStrings.html" title="Generating formatted strings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="builderTerminateLoops.html" title="Builder - terminating a loop"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" >Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

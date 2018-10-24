@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/index.html",
+    "appid": "1600845001263316",
+    "title": "文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量",
+    "images": [
+        "http://mlln.cn/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/main.jpg"
+    ], 
+    "pubDate": "2018-08-18T06:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年08月18日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#系列文章"><span class="toc-number">1.</span> <span class="toc-text">系列文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#篇章-词频矩阵"><span class="toc-number">2.</span> <span class="toc-text">篇章/词频矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TF-IDF权重"><span class="toc-number">3.</span> <span class="toc-text">TF-IDF权重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语料库"><span class="toc-number">4.</span> <span class="toc-text">语料库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算词典和词频数矩阵"><span class="toc-number">5.</span> <span class="toc-text">计算词典和词频数矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TF-IDF权重计算"><span class="toc-number">6.</span> <span class="toc-text">TF-IDF权重计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#计算TF"><span class="toc-number">6.1.</span> <span class="toc-text">计算TF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算IDF"><span class="toc-number">6.2.</span> <span class="toc-text">计算IDF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#计算tf-idf"><span class="toc-number">6.3.</span> <span class="toc-text">计算tf-idf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#词向量"><span class="toc-number">7.</span> <span class="toc-text">词向量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#词相关矩阵"><span class="toc-number">7.1.</span> <span class="toc-text">词相关矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文档相关矩阵"><span class="toc-number">7.2.</span> <span class="toc-text">文档相关矩阵</span></a></li></ol></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<h3 id="系列文章"><a href="#系列文章" class="headerlink" title="系列文章"></a>系列文章</h3><p>这个是系列博客, 所有文章链接都列在这里, 并持续更新中。</p>
+<ul><br><li><a href="http://mlln.cn/2018/08/17/文本向量化理论和实践教程/">文本向量化理论和实践教程</a></li><br><li><a href="http://mlln.cn/2018/08/17/文本向量系列-如何基于拼音构建字向量/">文本向量系列-如何基于拼音构建字向量</a></li><br><li><a href="http://mlln.cn/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">文本向量系列-如何基于笔画+拼音构建字向量/</a></li><br><li><a href="http://mlln.cn/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/</a></li><br></ul>
+
+<h3 id="篇章-词频矩阵"><a href="#篇章-词频矩阵" class="headerlink" title="篇章/词频矩阵"></a>篇章/词频矩阵</h3><p>基于矩阵的分布表示通常又称为语义分布模型ＰＵ，该方法的主要思想是构建一个共现矩阵，矩阵的每行对应一个单词，每列表示一种上下文(通常是一篇文章)，而每个元素的值为对应单词与上下文在语料库中的共现次数。因此，每个单词可由矩阵中对应的行向量表示，而任意两个单词的相似性可直接由它们向量的相似性衡量。</p>
+<p>下面就是一个共现矩阵, 每一行就是一个词向量:</p>
+<p><a href="http://mlln.cn"></a></p>
+<p><table><br>    <tr><td></td><td>文档1</td><td>文档2</td><td>文档3</td><td>…</td></tr><br>    <tr><td>词1</td><td>1</td><td>0</td><td>3</td><td>…</td></tr><br>    <tr><td>词2</td><td></td><td>1</td><td>0</td><td>…</td></tr><br>    <tr><td>词3</td><td>1</td><td>0</td><td>0</td><td>…</td></tr><br>    <tr><td>.</td><td>13</td><td>4</td><td>3</td><td>…</td></tr><br></table><br></p>
+<h3 id="TF-IDF权重"><a href="#TF-IDF权重" class="headerlink" title="TF-IDF权重"></a>TF-IDF权重</h3><p>TF-IDF基于上面提到的共现矩阵。从实际操作角度来说, <a href="http://mlln.cn">TF-IDF</a>只是对共现矩阵进行了加权。</p>
+<p>传统经典模型TF-IDF以及一些基于它改进的方法:主要思想是通过提取文本中词语的权重来标识句子, 使文本构成向量表达。权重主要由两部分组成, 即该词语在文本中的频率 (term frequency, TF) 与反文档频率 (inverse document frequency, IDF) 。它衡量了一个词的常见程度，TF-IDF的假设是：如果某个词或短语在一篇文章中出现的频率高，并且在其他文章中很少出，那么它很可能就反映了这篇文章的特性，因此要提高它的权值。然而这种方法太过于依赖词语的共现, 加上本身短文本消息就由很少的字组成, 往往实际应用中得不到很好的效果。因为两个文本消息可能没有共同的词语但也可以语义相关, 相反如果两个文本消息有一些共同的词语也不一定语义相关。如”富士苹果很好吃, 赶紧买”, “苹果六代真好用, 赶紧买”和”乔布斯逝世了”。</p>
+<h3 id="语料库"><a href="#语料库" class="headerlink" title="语料库"></a>语料库</h3><p>因为中文语料库往往需要涉及<a href="http://mlln.cn">分词</a>, 之后分词后才能对词进行向量化, 但是目前分词还不是我们教程的内容, 所以为了降低学习难度, 我们使用英文作为这次教程的语料库, 这个语料库比较小, 只有几个文档, 我们直接写在代码里了:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">documents = [<span class="string">"Human machine interface for lab abc computer applications"</span>,</span><br><span class="line">             <span class="string">"A survey of user opinion of computer system response time"</span>,</span><br><span class="line">             <span class="string">"The EPS user interface management system"</span>,</span><br><span class="line">             <span class="string">"System and human system engineering testing of EPS"</span>,</span><br><span class="line">             <span class="string">"Relation of user perceived response time to error measurement"</span>,</span><br><span class="line">             <span class="string">"The generation of random binary unordered trees"</span>,</span><br><span class="line">             <span class="string">"The intersection graph of paths in trees"</span>,</span><br><span class="line">             <span class="string">"Graph minors IV Widths of trees and well quasi ordering"</span>,</span><br><span class="line">             <span class="string">"Graph minors A survey"</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="计算词典和词频数矩阵"><a href="#计算词典和词频数矩阵" class="headerlink" title="计算词典和词频数矩阵"></a>计算词典和词频数矩阵</h3><p>词典就是词到词id的映射, 这样我们可以用id(一个整数)表示一个词了。词频矩阵参考上面的表格。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">word_matrix</span><span class="params">(documents)</span>:</span></span><br><span class="line">    <span class="string">'''计算词频矩阵'''</span></span><br><span class="line">    <span class="comment"># 所有字母转换位小写</span></span><br><span class="line">    docs = [d.lower() <span class="keyword">for</span> d <span class="keyword">in</span> documents]</span><br><span class="line">    <span class="comment"># 分词</span></span><br><span class="line">    docs = [d.split() <span class="keyword">for</span> d <span class="keyword">in</span> docs]</span><br><span class="line">    <span class="comment"># 获取所有词</span></span><br><span class="line">    words = list(set(chain(*docs)))</span><br><span class="line">    <span class="comment"># 词到ID的映射, 使得每个词有一个ID</span></span><br><span class="line">    dictionary = dict(zip(words, range(len(words))))</span><br><span class="line">    <span class="comment"># 创建一个空的矩阵, 行数等于词数, 列数等于文档数</span></span><br><span class="line">    matrix = np.zeros((len(words), len(docs)))</span><br><span class="line">    <span class="comment"># 逐个文档统计词频</span></span><br><span class="line">    <span class="keyword">for</span> col, d <span class="keyword">in</span> enumerate(docs):</span><br><span class="line">        <span class="comment"># 统计词频</span></span><br><span class="line">        count = Counter(d)</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> count:</span><br><span class="line">            <span class="comment"># 用word的id表示word在矩阵中的行数</span></span><br><span class="line">            id = dictionary[word]</span><br><span class="line">            <span class="comment"># 把词频赋值给矩阵</span></span><br><span class="line">            matrix[id, col] = count[word]</span><br><span class="line">    <span class="keyword">return</span> matrix, dictionary</span><br><span class="line"></span><br><span class="line">matrix, dictionary = word_matrix(documents)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(matrix[:<span class="number">10</span>,:<span class="number">10</span>])</span><br><span class="line">dictionary</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    [[0. 0. 0. 0. 0. 1. 0. 0. 0.]
+    <br> [0. 0. 0. 1. 0. 0. 0. 0. 0.]
+    <br> [0. 1. 0. 0. 0. 0. 0. 0. 0.]
+    <br> [0. 0. 0. 0. 0. 0. 0. 1. 1.]
+    <br> [0. 0. 1. 1. 0. 0. 0. 0. 0.]
+    <br> [1. 0. 0. 0. 0. 0. 0. 0. 0.]
+    <br> [0. 0. 0. 0. 0. 0. 0. 1. 0.]
+    <br> [0. 0. 1. 0. 0. 0. 0. 0. 0.]
+    <br> [1. 0. 0. 0. 0. 0. 0. 0. 0.]
+    <br> [0. 1. 1. 2. 0. 0. 0. 0. 0.]]
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    {'unordered': 0,
+    <br> 'engineering': 1,
+    <br> 'opinion': 2,
+    <br> 'minors': 3,
+    <br> 'eps': 4,
+    <br> 'abc': 5,
+    <br> 'iv': 6,
+    <br> 'management': 7,
+    <br> 'machine': 8,
+    <br> 'system': 9,
+    <br> 'random': 10,
+    <br> 'ordering': 11,
+    <br> 'well': 12,
+    <br> 'the': 13,
+    <br> 'relation': 14,
+    <br> 'a': 15,
+    <br> 'perceived': 16,
+    <br> 'and': 17,
+    <br> 'of': 18,
+    <br> 'graph': 19,
+    <br> 'widths': 20,
+    <br> 'computer': 21,
+    <br> 'quasi': 22,
+    <br> 'user': 23,
+    <br> 'lab': 24,
+    <br> 'for': 25,
+    <br> 'trees': 26,
+    <br> 'to': 27,
+    <br> 'binary': 28,
+    <br> 'time': 29,
+    <br> 'testing': 30,
+    <br> 'in': 31,
+    <br> 'survey': 32,
+    <br> 'error': 33,
+    <br> 'human': 34,
+    <br> 'intersection': 35,
+    <br> 'paths': 36,
+    <br> 'interface': 37,
+    <br> 'applications': 38,
+    <br> 'measurement': 39,
+    <br> 'generation': 40,
+    <br> 'response': 41}
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(dictionary)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    {'unordered': 0, 'engineering': 1, 'opinion': 2, 'minors': 3, 'eps': 4, 'abc': 5, 'iv': 6, 'management': 7, 'machine': 8, 'system': 9, 'random': 10, 'ordering': 11, 'well': 12, 'the': 13, 'relation': 14, 'a': 15, 'perceived': 16, 'and': 17, 'of': 18, 'graph': 19, 'widths': 20, 'computer': 21, 'quasi': 22, 'user': 23, 'lab': 24, 'for': 25, 'trees': 26, 'to': 27, 'binary': 28, 'time': 29, 'testing': 30, 'in': 31, 'survey': 32, 'error': 33, 'human': 34, 'intersection': 35, 'paths': 36, 'interface': 37, 'applications': 38, 'measurement': 39, 'generation': 40, 'response': 41}
+    <br>
+</div>
+
+<h3 id="TF-IDF权重计算"><a href="#TF-IDF权重计算" class="headerlink" title="TF-IDF权重计算"></a>TF-IDF权重计算</h3><h4 id="计算TF"><a href="#计算TF" class="headerlink" title="计算TF"></a>计算TF</h4><p>词在每个文档中的频数已经由上面的步骤计算得到, 下面我们要计算TF(词频率term frequency), 它其实就是每个词的频数除以文档的总词数:</p>
+<p><a href="http://mlln.cn"><img src="tf.svg"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tf</span><span class="params">(matrix)</span>:</span></span><br><span class="line">    <span class="comment"># 计算每个文档的总次数</span></span><br><span class="line">    sm = np.sum(matrix, axis=<span class="number">0</span>)</span><br><span class="line">    print(sm)</span><br><span class="line">    <span class="comment"># 每个词的词频除以每个文档的词频</span></span><br><span class="line">    <span class="keyword">return</span> matrix / sm</span><br><span class="line"></span><br><span class="line">tf(matrix)[:<span class="number">5</span>, :<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    [ 8. 10.  6.  8.  9.  7.  7. 10.  4.]
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    array([[0.        , 0.        , 0.        , 0.        , 0.        ],
+    <br>       [0.        , 0.        , 0.        , 0.125     , 0.        ],
+    <br>       [0.        , 0.1       , 0.        , 0.        , 0.        ],
+    <br>       [0.        , 0.        , 0.        , 0.        , 0.        ],
+    <br>       [0.        , 0.        , 0.16666667, 0.125     , 0.        ]])
+
+</div>
+
+<h4 id="计算IDF"><a href="#计算IDF" class="headerlink" title="计算IDF"></a>计算IDF</h4><p>逆向文件频率（inverse document frequency，IDF）是一个词语普遍重要性的度量, 某一特定词语的idf，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取以10为底的对数得到：<br><a href="http://mlln.cn"><img src="idf.svg"></a></p>
+<p>其中:</p>
+<p>|D|: 语料库中的文档总数<br>分子: 包含词ti的文档数</p>
+<p>下面我们用代码来计算idf:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">idf</span><span class="params">(matrix)</span>:</span></span><br><span class="line">    <span class="string">'''计算IDF'''</span></span><br><span class="line">    <span class="comment"># 文档总数</span></span><br><span class="line">    D = matrix.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># 包含每个词的文档数</span></span><br><span class="line">    j = np.sum(matrix&gt;<span class="number">0</span>, axis=<span class="number">1</span>)</span><br><span class="line">    print(j)</span><br><span class="line">    <span class="keyword">return</span> D / j</span><br><span class="line"></span><br><span class="line">idf(matrix)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    [1 1 1 2 2 1 1 1 1 3 1 1 1 3 1 2 1 2 6 3 1 2 1 3 1 1 3 1 1 2 1 1 2 1 2 1 1
+    <br> 2 1 1 1 2]
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    array([9. , 9. , 9. , 4.5, 4.5, 9. , 9. , 9. , 9. , 3. , 9. , 9. , 9. ,
+    <br>       3. , 9. , 4.5, 9. , 4.5, 1.5, 3. , 9. , 4.5, 9. , 3. , 9. , 9. ,
+    <br>       3. , 9. , 9. , 4.5, 9. , 9. , 4.5, 9. , 4.5, 9. , 9. , 4.5, 9. ,
+    <br>       9. , 9. , 4.5])
+
+</div>
+
+<h4 id="计算tf-idf"><a href="#计算tf-idf" class="headerlink" title="计算tf-idf"></a>计算tf-idf</h4><p>这个就很简单了:</p>
+<p><a href="http://mlln.cn"><img src="tf-idf.svg"></a></p>
+<p>下面是用代码实现的tf-idf函数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tf_idf</span><span class="params">(matrx)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tf(matrix) * idf(matrix).reshape(matrix.shape[<span class="number">0</span>], <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">weights = tf_idf(matrix)</span><br><span class="line">weights[:<span class="number">5</span>, :<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    [ 8. 10.  6.  8.  9.  7.  7. 10.  4.]
+    <br>[1 1 1 2 2 1 1 1 1 3 1 1 1 3 1 2 1 2 6 3 1 2 1 3 1 1 3 1 1 2 1 1 2 1 2 1 1
+    <br> 2 1 1 1 2]
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    array([[0.    , 0.    , 0.    , 0.    , 0.    ],
+    <br>       [0.    , 0.    , 0.    , 1.125 , 0.    ],
+    <br>       [0.    , 0.9   , 0.    , 0.    , 0.    ],
+    <br>       [0.    , 0.    , 0.    , 0.    , 0.    ],
+    <br>       [0.    , 0.    , 0.75  , 0.5625, 0.    ]])
+
+</div>
+
+<h3 id="词向量"><a href="#词向量" class="headerlink" title="词向量"></a>词向量</h3><p>我们得到了weights矩阵, 它的每一行就是一个词的词向量, 每一列就是一个文档的向量, 如果要计算词的相似性可以计算行向量的余弦值, 如果要计算文档的相似性, 我们可以计算列向量的余弦值。</p>
+<p>下面分别计算词和文档的相关矩阵:</p>
+<h4 id="词相关矩阵"><a href="#词相关矩阵" class="headerlink" title="词相关矩阵"></a>词相关矩阵</h4><p>由于语料库太小了, 只有十几篇文档, 导致很多词的词向量都是相同的, 所以计算得到的词之间的相关很可能出现一些强相关, 但并不意味着他们由语义相关。但是在语料库比较大的时候, 很难出现两个词的词向量相同, 哪怕两个词是同义词也不太可能。</p>
+<p>但是, 就今天的例子而言, 结果不是很好。大部分cosine值都是1附近, 说明词之间的相关几乎是0。这种方法的效果较差, 很难揭示语义相似性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> scipy.spatial.distance <span class="keyword">import</span> cosine</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">word_relations</span><span class="params">(weights, )</span>:</span></span><br><span class="line">    relations = np.zeros((len(weights), len(weights)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(weights)):</span><br><span class="line">        vec1 = weights[i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i, len(weights)):</span><br><span class="line">            vec2 = weights[j]</span><br><span class="line">            relations[i, j] = cosine(vec1, vec2)</span><br><span class="line">    reverse = dict(zip(dictionary.values(), dictionary.keys()))</span><br><span class="line">    plt.matshow(relations)</span><br><span class="line">    </span><br><span class="line">word_relations(weights)</span><br></pre></td></tr></table></figure>
+<p><img src="output_19_0.png" alt="png"></p>
+<h4 id="文档相关矩阵"><a href="#文档相关矩阵" class="headerlink" title="文档相关矩阵"></a>文档相关矩阵</h4><p>我们得到词向量的同时也得到了文档向量, 我们可以计算文档之间的相关性几乎是没有的, 这不符合我们的直观感受。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">doc_relations</span><span class="params">(weights)</span>:</span></span><br><span class="line">    n = weights.shape[<span class="number">1</span>]</span><br><span class="line">    relations = np.zeros((n, n))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        vec1 = weights[:, i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i, n):</span><br><span class="line">            vec2 = weights[:, j]</span><br><span class="line">            relations[i, j] = cosine(vec1, vec2)</span><br><span class="line">    reverse = dict(zip(dictionary.values(), dictionary.keys()))</span><br><span class="line">    plt.matshow(relations)</span><br><span class="line">    print(relations)</span><br><span class="line">    </span><br><span class="line">doc_relations(weights)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    [[0.         0.93513419 0.92300095 0.94191977 1.         1.
+    <br>  1.         1.         1.        ]
+    <br> [0.         0.         0.89788806 0.90372145 0.82532862 0.98323348
+    <br>  0.98114633 0.98558537 0.66476436]
+    <br> [0.         0.         0.         0.80571111 0.96544268 0.96019457
+    <br>  0.95523946 1.         1.        ]
+    <br> [0.         0.         0.         0.         0.99348337 0.99249371
+    <br>  0.9915593  0.93546641 1.        ]
+    <br> [0.         0.         0.         0.         0.         0.99432578
+    <br>  0.99361943 0.99512172 1.        ]
+    <br> [0.         0.         0.         0.         0.         0.
+    <br>  0.93385392 0.97190435 1.        ]
+    <br> [0.         0.         0.         0.         0.         0.
+    <br>  0.         0.94313243 0.93468898]
+    <br> [0.         0.         0.         0.         0.         0.
+    <br>  0.         0.         0.83771539]
+    <br> [0.         0.         0.         0.         0.         0.
+    <br>  0.         0.         0.        ]]
+    <br>
+</div>
+
+<p><img src="output_21_1.png" alt="png"></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/文本挖掘/">#文本挖掘</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/文本挖掘/">
+            文本挖掘
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">
+                    sentimentpy模块进行中文文本情感分类
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/07/gensim-lda-文档主题提取实现/">
+                    gensim lda 文档主题提取实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/03/pyltp安装和小白入门/">
+                    pyltp安装和小白入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/01/31/pyltp在windows下的编译安装/">
+                    哈工大自然语言处理ltp在windows10下的安装使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/06/13/作文自动分类方案设计/">
+                    作文自动分类方案设计
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="tensorflow实现som案例教程"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>tensorflow实现som案例教程 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/06/21/tensorflow实现SOM案例教程/">
+                tensorflow实现som案例教程
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="tensorflow实现som案例教程"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年06月21日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络结构"><span class="toc-number">2.</span> <span class="toc-text">网络结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习过程"><span class="toc-number">3.</span> <span class="toc-text">学习过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">4.</span> <span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化权重"><span class="toc-number">4.1.</span> <span class="toc-text">初始化权重</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寻找最佳匹配单元BMU"><span class="toc-number">5.</span> <span class="toc-text">寻找最佳匹配单元BMU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算邻域节点"><span class="toc-number">6.</span> <span class="toc-text">计算邻域节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新权重"><span class="toc-number">7.</span> <span class="toc-text">更新权重</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#计算-L-t"><span class="toc-number">7.1.</span> <span class="toc-text">计算$L(t)$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更新权重-1"><span class="toc-number">7.2.</span> <span class="toc-text">更新权重</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试以上函数"><span class="toc-number">7.3.</span> <span class="toc-text">测试以上函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练"><span class="toc-number">8.</span> <span class="toc-text">训练</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#训练数据"><span class="toc-number">8.1.</span> <span class="toc-text">训练数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出层可视化函数"><span class="toc-number">8.2.</span> <span class="toc-text">输出层可视化函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#训练函数"><span class="toc-number">8.3.</span> <span class="toc-text">训练函数</span></a></li></ol></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Kohonen自组织特征映射或SOMs，是由芬兰科学院教授Teuvo Kohonen发明的，他们提供了一种在低维空间（通常是一维或二维）表示多维数据的方法。这个降低矢量维度的过程本质上是一种称为矢量量化的数据压缩技术。此外，Kohonen技术创建了一个网络，以这种方式存储信息，以保持训练集内的任何拓扑关系。</p>
+<p>SOM一个常见示例是将颜色从其三维空间（红色，绿色和蓝色）映射到两个维度。图1显示了一个SOM训练的例子，用于识别右侧显示的八种不同颜色。颜色作为向量呈现给网络 - 每个颜色分量都有一个维度 - 网络已经学会在二维空间中表示它们。注意，除了将颜色聚类到不同的区域之外，通常还会发现类似属性的区域彼此相邻。 </p>
+<div align="center"><br>    <img src="images/som-1.png"><br>图1 经过训练的SOM<br></div>
+
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p>SOM(Self Organizing Feature Maps)的网络结构非常简单, 很适合作为一个入门案例. 如图2所示, 本教程讨论的是一个二维SOM. 这个网络可以被当作一个两层网络: 输入层和输出层. 输入层只有一个节点, 我们用X表示输入, 输出层是一个7x7的矩阵或者说表格. 因为我们要对颜色进行分类, 所以我们设输入向量x是一个三维向量, 如[0 0 1], 代表一种颜色. 输出层的每个神经元有一个权重向量W, 我们这个网络中就有49个权重向量, 而且向量的维数与输入向量相等, 也是3, 这样这些权重向量也可以被当作一种颜色的数值表示, 所以可以被可视化成图1的样子.</p>
+<div align="center"><br><img src="images/som-2.png"><br>图2 SOM神经网络架构<br></div>
+
+<h3 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h3><p>SOM是无监督学习, 不需要成对的数据. SOM的学习过程可以总结成一句话, 就是调整输出层权重W以便于让相邻的节点具有相似的权重. 具体来说分为一下的步骤:</p>
+<ul>
+<li><ol>
+<li>每个节点的权重都被随机初始化。</li>
+</ol>
+</li>
+<li><ol>
+<li>从训练数据集中随机选择向量x并将其输入到网格。</li>
+</ol>
+</li>
+<li><ol>
+<li>检查每个输出层节点以计算哪一个的权重最像输入向量。获胜节点通常被称为最佳匹配单元（BMU）或激活单元。</li>
+</ol>
+</li>
+<li><ol>
+<li>现在计算BMU邻域节点, 以BMU为圆心, 处于半径R内的节点都被称为邻域。R是一个开始较大的值，通常设置为输出层的“半径”，但会随着训练逐步减小。在该半径内发现的任何节点都被视为在BMU的邻域内。</li>
+</ol>
+</li>
+<li><ol>
+<li>调整每个邻域节点（步骤4中找到的节点）权重以使它们更像输入向量。节点越靠近BMU，其权重调整的就越大。</li>
+</ol>
+</li>
+<li><ol>
+<li>N次迭代重复步骤2。</li>
+</ol>
+</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>下面我们用tensorflow逐步实现这些过程.</p>
+<h4 id="初始化权重"><a href="#初始化权重" class="headerlink" title="初始化权重"></a>初始化权重</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sess = tf.InteractiveSession()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_locations</span><span class="params">(shape)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(shape[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(shape[<span class="number">1</span>]):</span><br><span class="line">            <span class="keyword">yield</span> [r*<span class="number">1.0</span>, c*<span class="number">1.0</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(shape = <span class="params">(<span class="number">13</span>,<span class="number">13</span>)</span>, dim=<span class="number">3</span>, num_iters=<span class="number">200</span>, learning_rate=<span class="number">0.5</span>)</span>:</span></span><br><span class="line">    <span class="string">'''shape: 输出层节点数</span></span><br><span class="line"><span class="string">    dim: 权重向量的维数</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    weights = tf.Variable(tf.random_normal([shape[<span class="number">0</span>]*shape[<span class="number">1</span>], dim],mean=<span class="number">0.5</span>, stddev=<span class="number">0.1</span>, dtype=<span class="string">"float64"</span>), name=<span class="string">"weights"</span>, dtype=tf.float64)</span><br><span class="line">    x = tf.placeholder(<span class="string">"float64"</span>, [<span class="number">1</span>,dim], name=<span class="string">'X'</span>)</span><br><span class="line">    locations = np.array(list(_locations(shape)))</span><br><span class="line">    locations = tf.constant(locations)</span><br><span class="line">    num_iters = tf.constant([num_iters], dtype=tf.float64)</span><br><span class="line">    learning_rate = tf.constant([learning_rate], dtype=tf.float64)</span><br><span class="line">    radius = tf.constant([shape[<span class="number">0</span>]/<span class="number">2</span>], dtype=tf.float64)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'weights'</span>:weights,</span><br><span class="line">        <span class="string">'x'</span>:x,</span><br><span class="line">        <span class="string">'locations'</span>:locations,</span><br><span class="line">        <span class="string">'learning_rate'</span>:learning_rate,</span><br><span class="line">        <span class="string">'num_iters'</span>:num_iters,</span><br><span class="line">        <span class="string">'radius'</span>: radius</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vs = init()</span><br><span class="line">w, x = vs[<span class="string">'weights'</span>], vs[<span class="string">'x'</span>]</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"><span class="comment"># sess.run(w)</span></span><br><span class="line">print(w.eval()[:<span class="number">5</span>])</span><br><span class="line">print(vs[<span class="string">'locations'</span>].eval())</span><br></pre></td></tr></table></figure>
+<h3 id="寻找最佳匹配单元BMU"><a href="#寻找最佳匹配单元BMU" class="headerlink" title="寻找最佳匹配单元BMU"></a>寻找最佳匹配单元BMU</h3><p>用欧几里得距离来衡量两个向量之间的相似性. 公式是:</p>
+<p><img src="images/som-dist.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate_bmu</span><span class="params">(weights, x)</span>:</span></span><br><span class="line">    <span class="string">'''找到最佳匹配单元'''</span></span><br><span class="line">    sub = tf.subtract(weights, x)</span><br><span class="line">    sq = tf.square(sub)</span><br><span class="line">    rs = tf.reduce_sum(sq, <span class="number">-1</span>)</span><br><span class="line">    index = tf.argmin(rs, axis=<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> index</span><br></pre></td></tr></table></figure>
+<p>通过下面代码大概测试一下程序是否能跑通</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vs = init()</span><br><span class="line">w, x = vs[<span class="string">'weights'</span>], vs[<span class="string">'x'</span>]</span><br><span class="line">index = calculate_bmu(w, x)</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line">x0 = np.zeros([<span class="number">1</span>,<span class="number">3</span>], dtype=np.float64)</span><br><span class="line">print(x0)</span><br><span class="line"><span class="comment"># sess.run(index, feed_dict=&#123;x: x0&#125;)</span></span><br><span class="line">i= index.eval(feed_dict=&#123;x: x0&#125;)</span><br><span class="line">W = w.eval()</span><br><span class="line">print(i)</span><br><span class="line">print(W[i])</span><br><span class="line">print(W[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="计算邻域节点"><a href="#计算邻域节点" class="headerlink" title="计算邻域节点"></a>计算邻域节点</h3><p>首先我们要确定邻域的半径, 然后才能找到半径以内的节点.</p>
+<p>计算邻域半径的公式是:</p>
+<p><img src="images/som-radius.png"></p>
+<p>其中, t表示时间步骤, 可以把它当作训练的迭代次数, <code>$\sigma$</code> 表示半径, <code>$\sigma_0$</code>表示输出层矩阵的宽度, <code>$\lambda$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate_radius_lrate</span><span class="params">(iter_step, num_iters, radius0, learning_rate0)</span>:</span></span><br><span class="line">    <span class="string">'''计算半径和学习率</span></span><br><span class="line"><span class="string">    iter_step: 迭代次数</span></span><br><span class="line"><span class="string">        num_iters: 总迭代次数</span></span><br><span class="line"><span class="string">        segma: 初始的'''</span></span><br><span class="line">    div = tf.negative(tf.divide(iter_step, num_iters))</span><br><span class="line">    radius =  tf.multiply(radius0, tf.exp(div))</span><br><span class="line">    learning_rate = tf.multiply(learning_rate0, tf.exp(div))</span><br><span class="line">    <span class="keyword">return</span> radius, learning_rate</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">neighbors</span><span class="params">(radius, bmu_index, locations)</span>:</span></span><br><span class="line">    <span class="string">'''radius: 半径</span></span><br><span class="line"><span class="string">    bmu_index: 激活神经元的索引</span></span><br><span class="line"><span class="string">    locdations: 表示神经元在输出层的位置的向量</span></span><br><span class="line"><span class="string">    return: 表示邻域的蒙版向量'''</span></span><br><span class="line">    slice_input = tf.pad(tf.reshape(bmu_index, [<span class="number">1</span>]),</span><br><span class="line">                                 np.array([[<span class="number">0</span>, <span class="number">1</span>]]))</span><br><span class="line"><span class="comment">#     print('slice:', slice_input.eval())</span></span><br><span class="line">    slice_input = tf.cast(slice_input, tf.int64)</span><br><span class="line">    bmu = tf.slice(locations, slice_input, [<span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment">#     print('bmu:', bmu.eval())</span></span><br><span class="line"></span><br><span class="line">    sub = tf.subtract(locations, bmu)</span><br><span class="line">    <span class="comment"># 向量距离的平方和</span></span><br><span class="line">    dist_square = tf.reduce_sum(tf.pow(sub, <span class="number">2</span>),<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 用一个蒙板表示被选邻域内的节点</span></span><br><span class="line">    mask = tf.pow(radius, <span class="number">2</span>) &gt;= dist_square</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'mask'</span>:mask,</span><br><span class="line">        <span class="string">'dist_square'</span>:dist_square</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>简单测试上面的函数, 确保能正常运行:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vs = init()</span><br><span class="line">iter_step = tf.constant([<span class="number">100</span>], dtype=tf.float64)</span><br><span class="line">radius, learning_rate = calculate_radius_lrate(iter_step, vs[<span class="string">'num_iters'</span>], vs[<span class="string">'radius'</span>], vs[<span class="string">'learning_rate'</span>])</span><br><span class="line"><span class="comment"># sess.run(tf.global_variables_initializer())</span></span><br><span class="line"><span class="comment"># sess.run([radius, learning_rate])</span></span><br><span class="line">print(radius.eval())</span><br><span class="line">print(learning_rate.eval())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bmu_index = tf.constant([<span class="number">85</span>], dtype=tf.float64)</span><br><span class="line">mask = neighbors(radius, bmu_index, vs[<span class="string">'locations'</span>])[<span class="string">'mask'</span>]</span><br><span class="line">l = int(int(mask.shape[<span class="number">0</span>])**<span class="number">0.5</span>)</span><br><span class="line">rmask = tf.reshape(mask, (l, l))</span><br><span class="line"><span class="comment"># sess.run(rmask)</span></span><br><span class="line"><span class="comment"># print(vs['locations'].eval())</span></span><br><span class="line"><span class="comment"># print(mask.eval())</span></span><br><span class="line">print(<span class="string">'从下面的矩阵种可以大概看出激活的神经元(True)'</span>)</span><br><span class="line">print(rmask.eval())</span><br></pre></td></tr></table></figure>
+<h3 id="更新权重"><a href="#更新权重" class="headerlink" title="更新权重"></a>更新权重</h3><p>我们先来看一下, 权重的更新公式:</p>
+<p><code>$$
+W(t+1) = W(t) + Θ(t)L(t)(X(t) - W(t))
+$$</code></p>
+<p>公式中符号的意义:</p>
+<ul>
+<li><code>$X(t)$</code>t时刻的输入</li>
+<li><code>$W(t)$</code>t时刻的权重</li>
+<li><code>$W(t+1)$</code>t+1时刻的权重</li>
+<li><code>$L(t)$</code>t时刻的学习率, 所有邻域内的神经元具有相同的<code>$L(t)$</code></li>
+<li><code>$Θ(t)$</code>t时刻某个神经元距离bmu的距离的函数, 是学习率的权重, 它使得距离bmu近的神经元更新的权重更大, 受输入的影响更多</li>
+</ul>
+<p>计算<code>$L(t)$</code>的公式如下:</p>
+<p><code>$$
+L(t) = L_0 \exp(- {t \over \lambda}) ; t = 1, 2, 3 ...
+$$</code></p>
+<p>其中: </p>
+<ul>
+<li>t代表时间步, 也叫当前迭代次数</li>
+<li><code>$\lambda$</code>代表总迭代次数</li>
+<li><code>$L_0$</code>代表初始的学习率, 通常是输出层矩阵的长度或宽度</li>
+</ul>
+<p>计算<code>$Θ(t)$</code>的公式如下:</p>
+<p><code>$$
+\Theta(t) = \exp ( -{dist^2 \over {2\sigma^2(t)}} )
+$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">theta</span><span class="params">(radius, dist_square)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    radius: 半径</span></span><br><span class="line"><span class="string">    dist_square: 神经元到BMU的欧几里得距离的平方</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    c = tf.constant(<span class="number">2</span>, dtype=tf.float64)</span><br><span class="line">    div = tf.divide(dist_square, tf.multiply(c, tf.pow(radius, <span class="number">2</span>)))</span><br><span class="line">    minus = tf.constant(<span class="number">-1</span>, dtype=tf.float64)</span><br><span class="line">    <span class="keyword">return</span> tf.exp(tf.multiply(minus, div))</span><br></pre></td></tr></table></figure>
+<h4 id="计算-L-t"><a href="#计算-L-t" class="headerlink" title="计算$L(t)$"></a>计算<code>$L(t)$</code></h4><p><code>$L(t)$</code></p>
+<h4 id="更新权重-1"><a href="#更新权重-1" class="headerlink" title="更新权重"></a>更新权重</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update_weights</span><span class="params">(weights, mask, xt, lr, theta)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    weights: 所有神经元的权重矩阵</span></span><br><span class="line"><span class="string">    mask: 邻域神经元的蒙版</span></span><br><span class="line"><span class="string">    xt: 输入</span></span><br><span class="line"><span class="string">    lr: 学习率</span></span><br><span class="line"><span class="string">    theta: 学习率的权重</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    theta = tf.expand_dims(theta, <span class="number">1</span>)</span><br><span class="line">    cha = tf.subtract(xt, weights)</span><br><span class="line">    cha = tf.multiply(cha, lr)</span><br><span class="line">    cha = tf.multiply(cha, theta)</span><br><span class="line">    <span class="comment"># 把非邻域内的神经元的更新值设置成0 , 这样这些权重就不会更新</span></span><br><span class="line">    mask = tf.cast(mask, tf.float64)</span><br><span class="line">    mask = tf.expand_dims(mask, <span class="number">1</span>)</span><br><span class="line">    cha = tf.multiply(cha, mask)</span><br><span class="line">    <span class="keyword">return</span> tf.add(weights, cha)</span><br></pre></td></tr></table></figure>
+<h4 id="测试以上函数"><a href="#测试以上函数" class="headerlink" title="测试以上函数"></a>测试以上函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">radius, learning_rate = calculate_radius_lrate(iter_step, vs[<span class="string">'num_iters'</span>], vs[<span class="string">'radius'</span>], vs[<span class="string">'learning_rate'</span>])</span><br><span class="line">bmu_index = tf.constant([<span class="number">35</span>], dtype=tf.float64)</span><br><span class="line">nbs = neighbors(radius, bmu_index, vs[<span class="string">'locations'</span>])</span><br><span class="line">theta_ = theta(radius, nbs[<span class="string">'dist_square'</span>])</span><br><span class="line"><span class="comment"># sess.run(theta_)</span></span><br><span class="line">print(theta_.eval())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = vs[<span class="string">'x'</span>]</span><br><span class="line">uw = update_weights(vs[<span class="string">'weights'</span>], nbs[<span class="string">'mask'</span>], x, learning_rate, theta_)</span><br><span class="line"><span class="comment"># sess.run(uw, feed_dict=&#123;x:x0&#125;)</span></span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line">print(vs[<span class="string">'weights'</span>].eval()[:<span class="number">5</span>])</span><br><span class="line">print(uw.eval(feed_dict=&#123;x:x0&#125;)[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>现在即将要大功告成, 我们需要整合上面所有的函数, 然后进行训练.</p>
+<h4 id="训练数据"><a href="#训练数据" class="headerlink" title="训练数据"></a>训练数据</h4><p>训练数据就是15种颜色. 将这些数据迭代1000次.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">colors = np.array(</span><br><span class="line">     [[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.5</span>],</span><br><span class="line">      [<span class="number">0.125</span>, <span class="number">0.529</span>, <span class="number">1.0</span>],</span><br><span class="line">      [<span class="number">0.33</span>, <span class="number">0.4</span>, <span class="number">0.67</span>],</span><br><span class="line">      [<span class="number">0.6</span>, <span class="number">0.5</span>, <span class="number">1.0</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">.33</span>, <span class="number">.33</span>, <span class="number">.33</span>],</span><br><span class="line">      [<span class="number">.5</span>, <span class="number">.5</span>, <span class="number">.5</span>],</span><br><span class="line">      [<span class="number">.66</span>, <span class="number">.66</span>, <span class="number">.66</span>]])</span><br><span class="line">color_names = [<span class="string">'black'</span>, <span class="string">'blue'</span>, <span class="string">'darkblue'</span>, <span class="string">'skyblue'</span>,</span><br><span class="line">     <span class="string">'greyblue'</span>, <span class="string">'lilac'</span>, <span class="string">'green'</span>, <span class="string">'red'</span>,</span><br><span class="line">     <span class="string">'cyan'</span>, <span class="string">'violet'</span>, <span class="string">'yellow'</span>, <span class="string">'white'</span>,</span><br><span class="line">     <span class="string">'darkgrey'</span>, <span class="string">'mediumgrey'</span>, <span class="string">'lightgrey'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="输出层可视化函数"><a href="#输出层可视化函数" class="headerlink" title="输出层可视化函数"></a>输出层可视化函数</h4><p>这个函数用于监控在训练过程种输出层权重的变化.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> IPython <span class="keyword">import</span> display</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_image</span><span class="params">(data, iter_step, radius, lrate)</span>:</span></span><br><span class="line">    l = int(data.shape[<span class="number">0</span>]**<span class="number">0.5</span>)</span><br><span class="line">    data = data.reshape([l, l,<span class="number">3</span>])</span><br><span class="line">    display.clear_output(wait=<span class="keyword">True</span>)</span><br><span class="line">    plt.clf()</span><br><span class="line">    _ = plt.imshow(data, aspect=<span class="string">"auto"</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.8</span>, <span class="string">f'radius: <span class="subst">&#123;radius&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.7</span>, <span class="string">f'lrate: <span class="subst">&#123;lrate&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.6</span>, <span class="string">f'iter_step: <span class="subst">&#123;iter_step&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    display.display(plt.gcf())</span><br></pre></td></tr></table></figure>
+<h4 id="训练函数"><a href="#训练函数" class="headerlink" title="训练函数"></a>训练函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(colors, num_iters, shape=<span class="params">(<span class="number">13</span>,<span class="number">13</span>)</span>,  dim=<span class="number">3</span>, learning_rate=<span class="number">0.5</span>, print_step=<span class="number">40</span>)</span>:</span></span><br><span class="line">    <span class="string">'''训练函数</span></span><br><span class="line"><span class="string">    colors: 颜色向量</span></span><br><span class="line"><span class="string">    num_iters: 总训练次数</span></span><br><span class="line"><span class="string">    shape: 输出层shape</span></span><br><span class="line"><span class="string">    dim: 输出层向量维度</span></span><br><span class="line"><span class="string">    learning_rate: 初始学习率'''</span></span><br><span class="line">    params = init(shape = shape, dim=dim, num_iters=num_iters, learning_rate=learning_rate)</span><br><span class="line">    bmu = calculate_bmu(params[<span class="string">'weights'</span>], params[<span class="string">'x'</span>])</span><br><span class="line">    iter_step = tf.placeholder(tf.float64, [<span class="number">1</span>], name=<span class="string">"iter-step"</span>)</span><br><span class="line">    radius, lrate = calculate_radius_lrate(iter_step, params[<span class="string">'num_iters'</span>], params[<span class="string">'radius'</span>], params[<span class="string">'learning_rate'</span>])</span><br><span class="line">    nbs = neighbors(radius, bmu, params[<span class="string">'locations'</span>])</span><br><span class="line">    theta_ = theta(radius, nbs[<span class="string">'dist_square'</span>])</span><br><span class="line">    new_weights = update_weights(params[<span class="string">'weights'</span>], nbs[<span class="string">'mask'</span>], params[<span class="string">'x'</span>], lrate, theta_)</span><br><span class="line">    train_op = tf.assign(params[<span class="string">'weights'</span>], new_weights)</span><br><span class="line">    <span class="comment"># 初始化所有变量</span></span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iters):</span><br><span class="line">        </span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> i == (num_iters<span class="number">-1</span>):</span><br><span class="line">            positions = []</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(colors.shape[<span class="number">0</span>]):</span><br><span class="line">            x = colors[j].reshape([<span class="number">1</span>,<span class="number">3</span>])</span><br><span class="line">            x.astype(<span class="string">'float64'</span>)</span><br><span class="line">            radius_, lrate_,bmu_, new_weights_, _ = sess.run([ radius, lrate,bmu,new_weights,train_op], feed_dict=&#123;</span><br><span class="line">                params[<span class="string">'x'</span>]:x,</span><br><span class="line">                iter_step:[i+<span class="number">1</span>]</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">if</span> i == (num_iters<span class="number">-1</span>):</span><br><span class="line">                positions.append(bmu_)</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> i % print_step == <span class="number">0</span> :</span><br><span class="line">            show_image(new_weights_, i, radius_, lrate_)</span><br><span class="line">    print(<span class="string">'Train Finished'</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'weights'</span>:  new_weights_,</span><br><span class="line">        <span class="string">'positions'</span>:positions</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">data = train(colors, <span class="number">200</span>, print_step=<span class="number">1</span>, shape=(<span class="number">150</span>,<span class="number">150</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="output_28_0.png" alt="png"></p>
+
+<div class="output">
+输出:
+    Train Finished
+    
+</div>
+
+<p><img src="output_28_2.png" alt="png"></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="tensorflow实现SOM案例教程.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/tensorflow教程/">#tensorflow教程</a> <a href="/tags/som/">#som</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/tensorflow教程/">
+            tensorflow教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/21/tensorflow教程01-神经网络模型通俗理解和简单案例/">
+                    tensorflow教程01-神经网络模型通俗理解和简单案例
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/21/tensorflow实现SOM案例教程/">
+                    tensorflow实现som案例教程
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/som/">
+            som
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/06/21/tensorflow实现SOM案例教程/">
+                    tensorflow实现som案例教程
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

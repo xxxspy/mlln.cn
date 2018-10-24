@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/">
+                jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年03月31日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
+<a id="more"></a>
+<h3 id="怎样扩展notebook功能"><a href="#怎样扩展notebook功能" class="headerlink" title="怎样扩展notebook功能"></a>怎样扩展notebook功能</h3><p>Jupyter Notebook客户端和服务器应用程序都可以进行深度定制。他们的行为可以通过分别创建以下功能来扩展：</p>
+<ul>
+<li>nbextension：笔记本扩展<ul>
+<li>一个单独的JS文件或JavaScript目录或Cascading StyleSheets等，它们至少包含一个AMD模块，该模块导出一个函数<code>load_ipython_extension</code></li>
+</ul>
+</li>
+<li>服务器扩展：一个可导入的Python模块<ul>
+<li>实现load_jupyter_server_extension</li>
+</ul>
+</li>
+<li>bundler扩展：一个可导入的Python模块，利用<code>File  - &gt; Download as / Deploy</code>作为菜单项触发器<ul>
+<li>实现<code>bundler</code>方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么要为Jupyter扩展创建一个Python包？"><a href="#为什么要为Jupyter扩展创建一个Python包？" class="headerlink" title="为什么要为Jupyter扩展创建一个Python包？"></a>为什么要为Jupyter扩展创建一个Python包？</h3><p>由于很少有服务器扩展没有任何前端组件（nExxtension），为了方便和一致，所有这些客户端和服务器扩展及其资产都可以作为Python包打包和版本化，并带有一些简单的命令。这使得用户可以更容易地安装扩展包并且不易出错。</p>
+<h3 id="安装Jupyter扩展"><a href="#安装Jupyter扩展" class="headerlink" title="安装Jupyter扩展"></a>安装Jupyter扩展</h3><h4 id="安装一个包含Jupyter扩展的Python包"><a href="#安装一个包含Jupyter扩展的Python包" class="headerlink" title="安装一个包含Jupyter扩展的Python包"></a>安装一个包含Jupyter扩展的Python包</h4><p>有几种方法可以获得包含Jupyter Extensions的Python包。通常，您会使用软件包管理器：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip install helpful_package</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">conda install helpful_package</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">apt-get install helpful_package</span><br><span class="line"></span><br><span class="line"><span class="comment"># where 'helpful_package' is a Python package containing one or more Jupyter Extensions</span></span><br></pre></td></tr></table></figure>
+<h4 id="启用服务器扩展"><a href="#启用服务器扩展" class="headerlink" title="启用服务器扩展"></a>启用服务器扩展</h4><p>最简单的情况是启用没有前端组件的服务器扩展。</p>
+<p>希望将其配置存储在其主目录中的pip用户将键入以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter serverextension enable --py helpful_package</span><br></pre></td></tr></table></figure>
+<p>或者，virtualenv或conda用户可以传递–sys-prefix，以保持其环境的独立性和可重复性。例如：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Make sure that your virtualenv or conda environment is activated</span><br><span class="line">[source] activate my-environment</span><br><span class="line"></span><br><span class="line">jupyter serverextension enable --py helpful_package --sys-prefix</span><br></pre></td></tr></table></figure>
+<h4 id="安装nbextension-assets"><a href="#安装nbextension-assets" class="headerlink" title="安装nbextension assets"></a>安装nbextension assets</h4><p>如果某个软件包还具nbextension前端资源（但默认情况下未启用），请使用以下命令安装这些资源：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension install --py helpful_package <span class="comment"># or --sys-prefix if using virtualenv or conda</span></span><br></pre></td></tr></table></figure>
+<h4 id="启用nbextension资源"><a href="#启用nbextension资源" class="headerlink" title="启用nbextension资源"></a>启用nbextension资源</h4><p>如果每次在浏览器中加载Jupyter应用程序（例如实验室，笔记本，仪表板，终端）时，你的应用程序需要加载资源，则可使用以下命令启用nbextension：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension enable --py helpful_package # or --sys-prefix <span class="keyword">if</span> using virtualenv or conda</span><br></pre></td></tr></table></figure>
+<h4 id="它生效了吗？通过列出Jupyter扩展来检查"><a href="#它生效了吗？通过列出Jupyter扩展来检查" class="headerlink" title="它生效了吗？通过列出Jupyter扩展来检查"></a>它生效了吗？通过列出Jupyter扩展来检查</h4><p>在运行一个或多个扩展安装步骤之后，您可以列出目前已知的有关nbextensions，服务器扩展或捆绑包扩展的内容。以下命令将列出哪些扩展可用，是否已启用以及其他扩展详细信息：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension list</span><br><span class="line">jupyter serverextension list</span><br><span class="line">jupyter bundlerextension list</span><br></pre></td></tr></table></figure>
+<h3 id="示例-服务器扩展"><a href="#示例-服务器扩展" class="headerlink" title="示例 - 服务器扩展"></a>示例 - 服务器扩展</h3><h4 id="使用服务器扩展创建一个Python包"><a href="#使用服务器扩展创建一个Python包" class="headerlink" title="使用服务器扩展创建一个Python包"></a>使用服务器扩展创建一个Python包</h4><p>下面是一个python模块的例子，它包含一个服务器扩展。它有这个目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- setup.py</span><br><span class="line">- MANIFEST.in</span><br><span class="line">- my_module/</span><br><span class="line">  - __init__.py</span><br></pre></td></tr></table></figure>
+<h4 id="定义服务器扩展"><a href="#定义服务器扩展" class="headerlink" title="定义服务器扩展"></a>定义服务器扩展</h4><p>此示例显示服务器扩展及其<code>load_jupyter_server_extension</code>函数是在<code>__init__.py</code>文件中定义的。</p>
+<p><code>my_module/__init__.py</code>:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_jupyter_server_extension_paths</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [&#123;</span><br><span class="line">        <span class="string">"module"</span>: <span class="string">"my_module"</span></span><br><span class="line">    &#125;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_jupyter_server_extension</span><span class="params">(nbapp)</span>:</span></span><br><span class="line">    nbapp.log.info(<span class="string">"my module enabled!"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="示例-服务器扩展和nbextension"><a href="#示例-服务器扩展和nbextension" class="headerlink" title="示例 - 服务器扩展和nbextension"></a>示例 - 服务器扩展和nbextension</h3><h4 id="使用服务器扩展创建一个Python包-1"><a href="#使用服务器扩展创建一个Python包-1" class="headerlink" title="使用服务器扩展创建一个Python包"></a>使用服务器扩展创建一个Python包</h4><p>这是另一个带有前端模块的服务器扩展。它应当有这样的目录结构:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- setup.py</span><br><span class="line">- MANIFEST.<span class="keyword">in</span></span><br><span class="line">- my_fancy_module/</span><br><span class="line">  - __init__.py</span><br><span class="line">  - static/</span><br><span class="line">    index.js</span><br></pre></td></tr></table></figure>
+<h4 id="定义服务器扩展和nbextension"><a href="#定义服务器扩展和nbextension" class="headerlink" title="定义服务器扩展和nbextension"></a>定义服务器扩展和nbextension</h4><p>这个例子再次表明服务器扩展及其<code>load_jupyter_server_extension</code>函数是在<code>__init__.py</code>文件中定义的。这一次，<code>nbextension</code>还有一个函数<code>_jupyter_nbextension_path</code>。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_jupyter_server_extension_paths</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [&#123;</span><br><span class="line">        <span class="string">"module"</span>: <span class="string">"my_fancy_module"</span></span><br><span class="line">    &#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Jupyter Extension points</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_jupyter_nbextension_paths</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> [dict(</span><br><span class="line">        section=<span class="string">"notebook"</span>,</span><br><span class="line">        <span class="comment"># 相对于 `my_fancy_module`的相对路径</span></span><br><span class="line">        src=<span class="string">"static"</span>,</span><br><span class="line">        <span class="comment"># directory in the `nbextension/` namespace</span></span><br><span class="line">        dest=<span class="string">"my_fancy_module"</span>,</span><br><span class="line">        <span class="comment"># _also_ in the `nbextension/` namespace</span></span><br><span class="line">        require=<span class="string">"my_fancy_module/index"</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_jupyter_server_extension</span><span class="params">(nbapp)</span>:</span></span><br><span class="line">    nbapp.log.info(<span class="string">"my module enabled!"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="安装并启用服务器扩展和nbextension"><a href="#安装并启用服务器扩展和nbextension" class="headerlink" title="安装并启用服务器扩展和nbextension"></a>安装并启用服务器扩展和nbextension</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension install --py my_fancy_module [--sys-prefix|--user]</span><br><span class="line">jupyter nbextension enable --py my_fancy_module [--sys-prefix|--system]</span><br><span class="line">jupyter serverextension enable --py my_fancy_module [--sys-prefix|--system]</span><br></pre></td></tr></table></figure>
+<h3 id="案例-Bundler-extension"><a href="#案例-Bundler-extension" class="headerlink" title="案例- Bundler extension"></a>案例- Bundler extension</h3><h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- setup.py</span><br><span class="line">- MANIFEST.<span class="keyword">in</span></span><br><span class="line">- my_tarball_bundler/</span><br><span class="line">  - __init__.py</span><br></pre></td></tr></table></figure>
+<h4 id="在-init-py中定义"><a href="#在-init-py中定义" class="headerlink" title="在__init__.py中定义"></a>在<code>__init__.py</code>中定义</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tarfile</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> nbformat</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_jupyter_bundlerextension_paths</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""Declare bundler extensions provided by this package."""</span></span><br><span class="line">    <span class="keyword">return</span> [&#123;</span><br><span class="line">        <span class="comment"># unique bundler name</span></span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"tarball_bundler"</span>,</span><br><span class="line">        <span class="comment"># module containing bundle function</span></span><br><span class="line">        <span class="string">"module_name"</span>: <span class="string">"my_tarball_bundler"</span>,</span><br><span class="line">        <span class="comment"># human-redable menu item label</span></span><br><span class="line">        <span class="string">"label"</span> : <span class="string">"Notebook Tarball (tar.gz)"</span>,</span><br><span class="line">        <span class="comment"># group under 'deploy' or 'download' menu</span></span><br><span class="line">        <span class="string">"group"</span> : <span class="string">"download"</span>,</span><br><span class="line">    &#125;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bundle</span><span class="params">(handler, model)</span>:</span></span><br><span class="line">    <span class="string">"""Create a compressed tarball containing the notebook document.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    handler : tornado.web.RequestHandler</span></span><br><span class="line"><span class="string">        Handler that serviced the bundle request</span></span><br><span class="line"><span class="string">    model : dict</span></span><br><span class="line"><span class="string">        Notebook model from the configured ContentManager</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    notebook_filename = model[<span class="string">'name'</span>]</span><br><span class="line">    notebook_content = nbformat.writes(model[<span class="string">'content'</span>]).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    notebook_name = os.path.splitext(notebook_filename)[<span class="number">0</span>]</span><br><span class="line">    tar_filename = <span class="string">'&#123;&#125;.tar.gz'</span>.format(notebook_name)</span><br><span class="line"></span><br><span class="line">    info = tarfile.TarInfo(notebook_filename)</span><br><span class="line">    info.size = len(notebook_content)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> io.BytesIO() <span class="keyword">as</span> tar_buffer:</span><br><span class="line">        <span class="keyword">with</span> tarfile.open(tar_filename, <span class="string">"w:gz"</span>, fileobj=tar_buffer) <span class="keyword">as</span> tar:</span><br><span class="line">            tar.addfile(info, io.BytesIO(notebook_content))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Set headers to trigger browser download</span></span><br><span class="line">        handler.set_header(<span class="string">'Content-Disposition'</span>,</span><br><span class="line">                           <span class="string">'attachment; filename="&#123;&#125;"'</span>.format(tar_filename))</span><br><span class="line">        handler.set_header(<span class="string">'Content-Type'</span>, <span class="string">'application/gzip'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Return the buffer value as the response</span></span><br><span class="line">        handler.finish(tar_buffer.getvalue())</span><br></pre></td></tr></table></figure>
+<h3 id="jupyter-notebook-扩展开发系列"><a href="#jupyter-notebook-扩展开发系列" class="headerlink" title="jupyter notebook 扩展开发系列:"></a>jupyter notebook 扩展开发系列:</h3><ul>
+<li><a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/" title="jupyter notebook 扩展开发之自定义请求处理程序">jupyter notebook 扩展开发之自定义请求处理程序</a></li>
+<li><a href="/2018/03/31/jupyter notebook 扩展开发之内容API/" title="jupyter notebook 扩展开发之内容API">jupyter notebook 扩展开发之内容API</a></li>
+<li><a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/" title="jupyter notebook 扩展开发之 Custom bundler extensions">jupyter notebook 扩展开发之 Custom bundler extensions</a></li>
+<li><a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/" title="jupyter notebook 扩展开发之  文件保存钩子">jupyter notebook 扩展开发之  文件保存钩子</a></li>
+<li><a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/" title="jupyter notebook扩展开发之前端插件开发">jupyter notebook扩展开发之前端插件开发</a></li>
+<li><a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/" title="jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发">jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发</a>
+</li>
+</ul>
+<p>转载请注明出处:<a href="http://mlln.cn">http://mlln.cn</a> 或者 <a href="http://jupyter.cn" target="_blank" rel="noopener">http://jupyter.cn</a></p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/jupyter/">#jupyter</a> <a href="/tags/notebook/">#notebook</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/jupyter/">
+            jupyter
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
+                    jupyter notebook 扩展开发之  文件保存钩子
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/">
+                    jupyter notebook 扩展开发之自定义请求处理程序
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/">
+                    jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
+                    jupyter notebook扩展开发之前端插件开发
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之内容API/">
+                    jupyter notebook 扩展开发之内容API
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/">
+                    jupyter notebook 扩展开发之 Custom bundler extensions
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/notebook/">
+            notebook
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
+                    jupyter notebook 扩展开发之  文件保存钩子
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/">
+                    jupyter notebook 扩展开发之自定义请求处理程序
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/">
+                    jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
+                    jupyter notebook扩展开发之前端插件开发
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之内容API/">
+                    jupyter notebook 扩展开发之内容API
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/">
+                    jupyter notebook 扩展开发之 Custom bundler extensions
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/12/18/python3静态类型编程入门/">
+                    python3静态类型编程入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/31/链家爬虫数据分析附带源码/">
+                    链家爬虫数据抓取数据分析附带源码
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

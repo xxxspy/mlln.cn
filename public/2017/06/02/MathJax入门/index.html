@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="MathJax入门"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>MathJax入门 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/06/02/MathJax入门/">
+                MathJax入门
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="MathJax入门"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2017年06月02日</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/数学分析/">数学分析</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="MathJax简介"><a href="#MathJax简介" class="headerlink" title="MathJax简介"></a>MathJax简介</h2><p>MathJax是一款展示数学符号、数学公式的JavaScript库，可以解析Latex、MathML和ASCIIMathML等标记语言，将其渲染成人类可读的公式。今天我在这里总结一点入门的知识点，主要是给自己学习用。</p>
+<h2 id="公式标记"><a href="#公式标记" class="headerlink" title="公式标记"></a>公式标记</h2><p>用符号<code>$</code>作为公的开头和结尾，比如<code>$a \neq b$</code>可以渲染成<code>\(a \neq b\)</code></p>
+<h2 id="首先是希腊字母的写法"><a href="#首先是希腊字母的写法" class="headerlink" title="首先是希腊字母的写法"></a>首先是希腊字母的写法</h2><p>不同的数学符号都有大小写，都列在下表中。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>大写</th>
+<th>Tex</th>
+<th>小写</th>
+<th>Tex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpha</td>
+<td><code>$A$</code></td>
+<td><code>\(A\)</code></td>
+<td><code>$\alpha$</code></td>
+<td><code>\(\alpha\)</code></td>
+</tr>
+<tr>
+<td>beta</td>
+<td><code>$B$</code></td>
+<td><code>\(B\)</code></td>
+<td><code>$\beta$</code></td>
+<td><code>\(\beta\)</code></td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>$\Gamma$</td>
+<td><code>\(\Gamma\)</code></td>
+<td>$\gamma$</td>
+<td><code>\(\gamma\)</code></td>
+</tr>
+<tr>
+<td>delta</td>
+<td>$\Delta$</td>
+<td><code>\(\Delta\)</code></td>
+<td>$\delta$</td>
+<td><code>\(\delta\)</code></td>
+</tr>
+<tr>
+<td>epsilon</td>
+<td>$E$</td>
+<td><code>\(E\)</code></td>
+<td>$\epsilon$</td>
+<td><code>\(\epsilon\)</code></td>
+</tr>
+<tr>
+<td>zeta</td>
+<td>$Z$</td>
+<td><code>\(Z\)</code></td>
+<td>$\zeta$</td>
+<td><code>\(\zeta\)</code></td>
+</tr>
+<tr>
+<td>eta</td>
+<td>$H$</td>
+<td><code>\(H\)</code></td>
+<td>$\eta$</td>
+<td><code>\(\eta\)</code></td>
+</tr>
+<tr>
+<td>theta</td>
+<td>$\Theta$</td>
+<td><code>\(\Theta\)</code></td>
+<td>$\theta$</td>
+<td><code>\(\theta\)</code></td>
+</tr>
+<tr>
+<td>iota</td>
+<td>$I$</td>
+<td><code>\(I\)</code></td>
+<td>$\iota$</td>
+<td><code>\(\iota\)</code></td>
+</tr>
+<tr>
+<td>kappa</td>
+<td>$K$</td>
+<td><code>\(K\)</code></td>
+<td>$\kappa$</td>
+<td><code>\(\kappa\)</code></td>
+</tr>
+<tr>
+<td>lambda</td>
+<td>$\Lambda$</td>
+<td><code>\(\Lambda\)</code></td>
+<td>$\lambda$</td>
+<td><code>\(\lambda\)</code></td>
+</tr>
+<tr>
+<td>mu</td>
+<td>$M$</td>
+<td><code>\(M\)</code></td>
+<td>$\mu$</td>
+<td><code>\(\mu\)</code></td>
+</tr>
+<tr>
+<td>nu</td>
+<td>$N$</td>
+<td><code>\(N\)</code></td>
+<td>$\nu$</td>
+<td><code>\(\nu\)</code></td>
+</tr>
+<tr>
+<td>xi</td>
+<td>$\Xi$</td>
+<td><code>\(\Xi\)</code></td>
+<td>$\xi$</td>
+<td><code>\(\xi\)</code></td>
+</tr>
+<tr>
+<td>omicron</td>
+<td>$O$</td>
+<td><code>\(O\)</code></td>
+<td>$\omicron$</td>
+<td><code>\(\omicron\)</code></td>
+</tr>
+<tr>
+<td>pi</td>
+<td>$\Pi$</td>
+<td><code>\(\Pi\)</code></td>
+<td>$\pi$</td>
+<td><code>\(\pi\)</code></td>
+</tr>
+<tr>
+<td>rho</td>
+<td>$P$</td>
+<td><code>\(P\)</code></td>
+<td>$\rho$</td>
+<td><code>\(\rho\)</code></td>
+</tr>
+<tr>
+<td>sigma</td>
+<td>$\Sigma$</td>
+<td><code>\(\Sigma\)</code></td>
+<td>$\sigma$</td>
+<td><code>\(\sigma\)</code></td>
+</tr>
+<tr>
+<td>tau</td>
+<td>$T$</td>
+<td><code>\(T\)</code></td>
+<td>$\tau$</td>
+<td><code>\(\tau\)</code></td>
+</tr>
+<tr>
+<td>upsilon</td>
+<td>$\Upsilon$</td>
+<td><code>\(\Upsilon\)</code></td>
+<td>$\upsilon$</td>
+<td><code>\(\upsilon\)</code></td>
+</tr>
+<tr>
+<td>phi</td>
+<td>$\Phi$</td>
+<td><code>\(\Phi\)</code></td>
+<td>$\phi$</td>
+<td><code>\(\phi\)</code></td>
+</tr>
+<tr>
+<td>chi</td>
+<td>$X$</td>
+<td><code>\(X\)</code></td>
+<td>$\chi$</td>
+<td><code>\(\chi\)</code></td>
+</tr>
+<tr>
+<td>psi</td>
+<td>$\Psi$</td>
+<td><code>\(\Psi\)</code></td>
+<td>$\psi$</td>
+<td><code>\(\psi\)</code></td>
+</tr>
+<tr>
+<td>omega</td>
+<td>$\Omega $</td>
+<td><code>\(\Omega\)</code></td>
+<td>$\omega$</td>
+<td><code>\(\omega\)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="上标与下标"><a href="#上标与下标" class="headerlink" title="上标与下标"></a>上标与下标</h2><p>上标和下标分别使用^与_，例如<code>\(x_i^2\)</code>显示为<code>\(x_i^2\)</code>。默认情况下，上下标符号仅仅对下一个组起作用。一个组即单个字符或者使用<code>{..}</code>包裹起来的内容。也就是说，如果使用<code>10^10</code>，会得到<code>\(10^10\)</code>，而<code>10^{10}</code>才是<code>\(10^{10}\)</code>。同时，大括号还能消除二义性，如<code>x^5^6</code>将得到一个错误<code>\(x^5^6\)</code>，必须使用大括号来界定<code>^</code>的结合性，如<code>{x^5}^6</code>：<code>\({x^5}^6\)</code> 或者 <code>x^{5^6}</code>：<code>\(x^{5^6}\)</code>。</p>
+<h2 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h2><ul>
+<li>小括号与方括号：使用原始的( )，[ ]即可，如(2+3)[4+4]：<code>\((2+3)[4+4]\)</code></li>
+<li>大括号：时由于大括号<code>{}</code>被用来分组，因此需要使用<code>{</code>和<code>}</code>表示大括号，也可以使用<code>\lbrace</code> 和<code>\rbrace</code>来表示。<br>如<code>\{ a*b \}</code>:  <code>\(\{a*b\}\)</code>，<code>\lbrace a\*b \rbrace</code>：<code>\(\lbrace a*b \rbrace\)</code>。</li>
+<li>尖括号：使用<code>\langle</code> 和 <code>\rangle</code>表示左尖括号和右尖括号。如<code>\langle x \rangle</code>：<code>\(\langle x \rangle\)</code>。</li>
+<li>上取整：使用<code>\lceil</code> 和 <code>\rceil</code> 表示。 如，<code>\lceil x \rceil</code>：<code>\(\lceil x \rceil\)</code>。</li>
+<li>下取整：使用\lfloor 和 \rfloor 表示。如，\lfloor x \rfloor：<code>\(\lfloor x \rfloor\)</code>。</li>
+</ul>
+<h2 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h2><ul>
+<li>三角函数：\sin x –&gt; <code>\(\sin x\)</code> ; \cos a –&gt; <code>\(\cos a\)</code> ; \arctan x –&gt; <code>\(\arctan x\)</code></li>
+<li>极限符号: <code>\lim_{1\to\infty}</code> –&gt; <code>\(\lim_{1\to\infty}\)</code></li>
+</ul>
+<h2 id="常见符号"><a href="#常见符号" class="headerlink" title="常见符号"></a>常见符号</h2><ul>
+<li>比较运算符：<code>\lt \gt \le \ge \neq</code> –&gt; <code>\(\lt \gt \le \ge \neq\)</code></li>
+<li>箭头符号：<code>\to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto</code> –&gt; <code>\(\to \rightarrow \leftarrow \Rightarrow \Leftarrow \mapsto\)</code></li>
+<li>四则运算：<code>+ - \times \div</code> –&gt; <code>\(+ - \times \div\)</code></li>
+</ul>
+<h2 id="顶部符号"><a href="#顶部符号" class="headerlink" title="顶部符号"></a>顶部符号</h2><p>我们有时候需要在字母上方书写符号，用<code>{}</code>来表示组合，例如:</p>
+<ul>
+<li>单字母<code>\hat xy</code>–&gt; <code>\(\hat x\)</code></li>
+<li>多字母<code>\widehat {xy}</code> –&gt; <code>\(\widehat {xy} \)</code></li>
+<li>横线<code>\overline x</code> –&gt; <code>\(\overline x\)</code></li>
+<li>向量<code>\vec {xy}</code> –&gt; <code>\(\vec {xy}\)</code></li>
+<li>点 <code>\dot x</code> –&gt; <code>\(\dot x\)</code></li>
+<li>箭头<code>\overrightarrow {xy}</code> –&gt; <code>\(\overrightarrow {xy}\)</code></li>
+<li>两点 <code>\ddot x</code> –&gt; <code>\(\ddot x\)</code></li>
+</ul>
+<h2 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h2><p><code>\sum</code> 用来表示求和符号<code>\(\sum\)</code>, 有很多不同的写法：</p>
+<ul>
+<li>下标表示下限：<code>\sum_1</code> –&gt; <code>\(\sum_1\)</code></li>
+<li>上标表示上限：<code>\sum^n</code> –&gt; <code>\(\sum^n\)</code></li>
+<li>上下结合，可以写为：<code>\sum_1^n</code> –&gt; <code>\(\sum_1^n\)</code></li>
+</ul>
+<h2 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h2><p><code>\int</code> 表示积分符号 <code>\(\int\)</code>, 和求和符号类似：</p>
+<ul>
+<li>积分上下限：\int_1^n –&gt; <code>\(\int_1^n\)</code></li>
+</ul>
+<h4 id="和积分类似的符号还有以下这些"><a href="#和积分类似的符号还有以下这些" class="headerlink" title="和积分类似的符号还有以下这些"></a>和积分类似的符号还有以下这些</h4><ul>
+<li>累积 \prod –&gt; <code>\(\prod\)</code></li>
+<li>并集 \bigcup –&gt; <code>\(\bigcup\)</code></li>
+<li>交集 \bigcap –&gt; <code>\(\bigcap\)</code></li>
+<li>二重积分 \iint –&gt; <code>\(\iint\)</code></li>
+</ul>
+<h2 id="分数和根号"><a href="#分数和根号" class="headerlink" title="分数和根号"></a>分数和根号</h2><p>分数用\frac 表示，例如<code>\frac ab</code> –&gt; <code>\(\frac ab\)</code>, <code>{}</code>可以帮助你分组，例如<code>\frac a{b*c}</code> –&gt; <code>\(\frac a{b*c}\)</code>，带括号的分数<code>(\frac ab)^2</code> –&gt; <code>\((\frac ab)^2\)</code> 。 还有一种写法是使用\over，例如<code>1+2 \over 3+4</code> –&gt; <code>\(1+2 \over 3+4\)</code>。</p>
+<p>使用\sqrt表示根号，例如 \sqrt[4] x –&gt; <code>\(\sqrt[4] x\)</code>。</p>
+<h2 id="矩阵和表格"><a href="#矩阵和表格" class="headerlink" title="矩阵和表格"></a>矩阵和表格</h2><p>使用<code>\begin{array}{列样式}…\end{array}</code>这样的形式来创建表格，列样式可以是<code>clr</code>表示居中，左，右对齐，还可以使用<code>|</code>表示一条竖线。表格中 各行使用<code>\\</code>分隔，各列使用<code>&amp;</code>分隔。使用<code>\hline</code>在本行前加入一条直线。 例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;array&#125;&#123;c|lcr&#125;</span><br><span class="line">n &amp; \text&#123;Left&#125; &amp; \text&#123;Center&#125; &amp; \text&#123;Right&#125; \\</span><br><span class="line">\hline</span><br><span class="line">1 &amp; 0.24 &amp; 1 &amp; 125 \\</span><br><span class="line">\hline</span><br><span class="line">2 &amp; -1 &amp; 189 &amp; -8 \\</span><br><span class="line">3 &amp; -20 &amp; 2000 &amp; 1+10i \\</span><br><span class="line">\end&#123;array&#125;</span><br></pre></td></tr></table></figure>
+<p><code>\[
+\begin{array}{c|lcr}
+n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
+\hline
+1 &amp; 0.24 &amp; 1 &amp; 125 \\
+\hline
+2 &amp; -1 &amp; 189 &amp; -8 \\
+3 &amp; -20 &amp; 2000 &amp; 1+10i \\
+\end{array}
+\]</code></p>
+<p>`<br>[J<em>\alpha(x) = \sum</em>{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}]</p>
+<p>`</p>
+<h2 id="一些常用公式"><a href="#一些常用公式" class="headerlink" title="一些常用公式"></a>一些常用公式</h2><ul>
+<li>二项式定理</li>
+</ul>
+<p><code>\[ (a + b)^n = /sum{r=0}^n C_n^ra^{n-r}b^r \]</code></p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/MathJax/">#MathJax</a> <a href="/tags/Latex/">#Latex</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/MathJax/">
+            MathJax
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/06/02/MathJax入门/">
+                    MathJax入门
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/Latex/">
+            Latex
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/06/02/MathJax入门/">
+                    MathJax入门
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

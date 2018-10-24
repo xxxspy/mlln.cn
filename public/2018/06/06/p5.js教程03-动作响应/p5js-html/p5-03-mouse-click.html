@@ -1,0 +1,32 @@
+
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+<title>Notebook中显示P5.js页面</title>
+</head>
+<body>
+<a href="http://mlln.cn"  target="_blank"><h5>p5.js效果展示: p5js-html/p5-03-mouse-click.html</h5></a>
+<script>
+
+function setup(){
+    createCanvas(880, 380); 
+    fill(255, 255, 255, 50)
+    stroke(0, 0, 0, 50)
+    background(220)
+}
+
+let w = 0
+function draw() {  
+    // 鼠标点击加粗线条
+    if (mouseIsPressed){
+        w +=1
+        strokeWeight(w)
+    }
+    // 绘制轨迹, 
+     line(mouseX, mouseY, pmouseX, pmouseY); 
+}
+</script>
+</body>
+</html>

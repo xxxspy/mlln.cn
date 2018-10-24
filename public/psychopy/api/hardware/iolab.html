@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>iolab &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="psychopy.hardware - hardware interfaces" href="../hardware.html" />
+    <link rel="next" title="joystick (pyglet and pygame)" href="joystick.html" />
+    <link rel="prev" title="fORP response box" href="forp.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="joystick.html" title="joystick (pyglet and pygame)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="forp.html" title="fORP response box"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../hardware.html" accesskey="U"><code class="docutils literal"><span class="pre">psychopy.hardware</span></code> - hardware interfaces</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="forp.html"
+                                  title="previous chapter">fORP response box</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="joystick.html"
+                                  title="next chapter">joystick (pyglet and pygame)</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/api/hardware/iolab.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.hardware.iolab">
+<span id="iolab"></span><h1>iolab<a class="headerlink" href="#module-psychopy.hardware.iolab" title="Permalink to this headline">¶</a></h1>
+<p>This provides a basic ButtonBox class, and imports the <a class="reference external" href="http://github.com/ioLab/python-ioLabs">ioLab python library</a>.</p>
+<dl class="class">
+<dt id="psychopy.hardware.iolab.ButtonBox">
+<em class="property">class </em><code class="descclassname">psychopy.hardware.iolab.</code><code class="descname">ButtonBox</code><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>PsychoPy&#8217;s interface to ioLabs.USBBox. Voice key completely untested.</p>
+<p>Original author: Jonathan Roberts
+PsychoPy rewrite: Jeremy Gray, 2013</p>
+<p>Class to detect and report
+<a class="reference external" href="http://www.iolab.co.uk">ioLab button box</a>.</p>
+<p>The ioLabs library needs to be installed. It is included in the
+<em>Standalone</em> distributions of PsychoPy as of version 1.62.01.
+Otherwise try &#8220;pip install ioLabs&#8221;</p>
+<p>Usage:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy.hardware</span> <span class="k">import</span> <span class="n">iolab</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="n">iolab</span><span class="o">.</span><span class="n">ButtonBox</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For examples see the demos menu of the PsychoPy Coder or go to the
+URL above.</p>
+<p>All times are reported in units of seconds.</p>
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.clearEvents">
+<code class="descname">clearEvents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.clearEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discard all button / voice key events.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.getBaseTime">
+<code class="descname">getBaseTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.getBaseTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the time since init (using the CPU clock, not ioLab bbox).</p>
+<p>Aim is to provide a similar API as for a Cedrus box.
+Could let both clocks run for a long time to assess relative drift.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.getEnabled">
+<code class="descname">getEnabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.getEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the buttons that are currently enabled.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.getEvents">
+<code class="descname">getEvents</code><span class="sig-paren">(</span><em>downOnly=True</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.getEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect and return a list of all events (likely just one); no block.</p>
+<p>Use <cite>downOnly=False</cite> to include button-release events.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.resetClock">
+<code class="descname">resetClock</code><span class="sig-paren">(</span><em>log=True</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.resetClock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the clock on the bbox internal clock, e.g., at the start
+of a trial.</p>
+<p>~1ms for me; logging is much faster than the reset</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.setEnabled">
+<code class="descname">setEnabled</code><span class="sig-paren">(</span><em>buttonList=(0</em>, <em>1</em>, <em>2</em>, <em>3</em>, <em>4</em>, <em>5</em>, <em>6</em>, <em>7)</em>, <em>voice=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.setEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a filter to suppress events from non-enabled buttons.</p>
+<p>The ioLabs bbox filters buttons in hardware; here we just tell it
+what we want:
+None - disable all buttons
+an integer (0..7) - enable a single button
+a list of integers (0..7) - enable all buttons in the list</p>
+<p>Set voice=True to enable the voiceKey - gets reported as button 64</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.setLights">
+<code class="descname">setLights</code><span class="sig-paren">(</span><em>lightList=(0</em>, <em>1</em>, <em>2</em>, <em>3</em>, <em>4</em>, <em>5</em>, <em>6</em>, <em>7)</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.setLights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn on the specified LEDs (None, 0..7, list of 0..7)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.standby">
+<code class="descname">standby</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.standby" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable all buttons and lights.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.hardware.iolab.ButtonBox.waitEvents">
+<code class="descname">waitEvents</code><span class="sig-paren">(</span><em>downOnly=True</em>, <em>timeout=0</em>, <em>escape='escape'</em>, <em>wait=0.002</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.iolab.ButtonBox.waitEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for and return the first button press event.</p>
+<p>Always calls <cite>clearEvents()</cite> first (like PsychoPy keyboard waitKeys).</p>
+<p>Use <cite>downOnly=False</cite> to include button-release events.</p>
+<p><cite>escape</cite> is a list/tuple of keyboard events that, if pressed, will
+interrupt the bbox wait; <cite>waitKeys</cite> will return <cite>None</cite> in that case.</p>
+<p><cite>timeout</cite> is the max time to wait in seconds before returning <cite>None</cite>.
+<cite>timeout</cite> of 0 means no time-out (= default).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="joystick.html" title="joystick (pyglet and pygame)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="forp.html" title="fORP response box"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../hardware.html" ><code class="docutils literal"><span class="pre">psychopy.hardware</span></code> - hardware interfaces</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

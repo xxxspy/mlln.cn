@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="p5.js案例01-行走的人"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>p5.js案例01-行走的人 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/06/06/p5.js案例01-行走的人/index.html",
+    "appid": "1600845001263316",
+    "title": "p5.js案例01-行走的人",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-06-06T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/06/06/p5.js案例01-行走的人/">
+                p5.js案例01-行走的人
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="p5.js案例01-行走的人"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年06月06日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>发表,未经允许不得转载。 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>jupyter notebook</li>
+<li>p5.js 0.6.1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.core.magic <span class="keyword">import</span> register_cell_magic</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> IFrame</span><br><span class="line"></span><br><span class="line">TEMPLATE = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">&lt;meta charset="utf-8" /&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;title&gt;Notebook中显示P5.js页面&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;a href="http://mlln.cn"  target="_blank"&gt;&lt;h5&gt;p5.js效果展示: %(name)s&lt;/h5&gt;&lt;/a&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">%(script)s</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register_cell_magic</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">p5</span><span class="params">(line, cell)</span>:</span></span><br><span class="line">    file_id, kws = line.split(<span class="string">' '</span>)[<span class="number">0</span>], line.split(<span class="string">' '</span>)[<span class="number">1</span>:]</span><br><span class="line">    kwargs = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> kw <span class="keyword">in</span> kws:</span><br><span class="line">        k, v = kw.split(<span class="string">'='</span>)</span><br><span class="line">        kwargs[k] = v</span><br><span class="line">    filename = <span class="string">f"p5js-html/example-01-<span class="subst">&#123;file_id&#125;</span>.html"</span></span><br><span class="line">    <span class="keyword">with</span> open(filename, <span class="string">"w"</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(TEMPLATE % &#123;<span class="string">"script"</span>: cell, <span class="string">"name"</span>: filename&#125;)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'height'</span> <span class="keyword">not</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        kwargs[<span class="string">'height'</span>] = <span class="string">'200px'</span></span><br><span class="line">    <span class="keyword">return</span> IFrame(filename, width=<span class="string">"100%"</span>, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> p5</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">%%p5 walking-man height=<span class="number">800</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var data2 = [<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.566</span>,<span class="number">220.307</span>,<span class="number">345.036</span>,<span class="number">161.03</span>,<span class="number">338.079</span>,<span class="number">105.569</span>,<span class="number">393.994</span>,<span class="number">107.748</span>,<span class="number">416.197</span>,<span class="number">168.413</span>,<span class="number">419.841</span>,<span class="number">235.297</span>,<span class="number">422.212</span>,<span class="number">256.19</span>,<span class="number">338.079</span>,<span class="number">105.569</span>,<span class="number">330.11</span>,<span class="number">79.5909</span>,<span class="number">327.501</span>,<span class="number">57.3636</span>,<span class="number">338.079</span>,<span class="number">105.569</span>,<span class="number">287.615</span>,<span class="number">119.797</span>,<span class="number">281.813</span>,<span class="number">183.263</span>,<span class="number">259.249</span>,<span class="number">253.235</span>,<span class="number">260.306</span>,<span class="number">272.378</span>,<span class="number">376.786</span>,<span class="number">240.247</span>,<span class="number">372.111</span>,<span class="number">371.145</span>,<span class="number">426.257</span>,<span class="number">374.581</span>,<span class="number">421.481</span>,<span class="number">399.685</span>,<span class="number">310.122</span>,<span class="number">241.008</span>,<span class="number">301.739</span>,<span class="number">374.391</span>,<span class="number">312.717</span>,<span class="number">492.93</span>,<span class="number">296.487</span>,<span class="number">521.009</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.411</span>,<span class="number">220.293</span>,<span class="number">344.539</span>,<span class="number">161.074</span>,<span class="number">337.828</span>,<span class="number">105.704</span>,<span class="number">394.524</span>,<span class="number">107.575</span>,<span class="number">417.215</span>,<span class="number">167.367</span>,<span class="number">422.298</span>,<span class="number">233.197</span>,<span class="number">425.304</span>,<span class="number">253.642</span>,<span class="number">337.828</span>,<span class="number">105.704</span>,<span class="number">330.146</span>,<span class="number">79.864</span>,<span class="number">327.896</span>,<span class="number">57.5828</span>,<span class="number">337.828</span>,<span class="number">105.704</span>,<span class="number">285.889</span>,<span class="number">119.952</span>,<span class="number">275.74</span>,<span class="number">186.252</span>,<span class="number">250.698</span>,<span class="number">259.567</span>,<span class="number">250.541</span>,<span class="number">280.528</span>,<span class="number">376.903</span>,<span class="number">239.885</span>,<span class="number">365.776</span>,<span class="number">377.178</span>,<span class="number">420.797</span>,<span class="number">379.866</span>,<span class="number">415.67</span>,<span class="number">405.612</span>,<span class="number">309.985</span>,<span class="number">241.373</span>,<span class="number">305.77</span>,<span class="number">371.795</span>,<span class="number">319.224</span>,<span class="number">487.056</span>,<span class="number">303.411</span>,<span class="number">514.733</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.24</span>,<span class="number">220.299</span>,<span class="number">344.025</span>,<span class="number">161.137</span>,<span class="number">337.563</span>,<span class="number">105.835</span>,<span class="number">394.637</span>,<span class="number">107.671</span>,<span class="number">417.483</span>,<span class="number">166.985</span>,<span class="number">423.492</span>,<span class="number">232.079</span>,<span class="number">426.906</span>,<span class="number">252.231</span>,<span class="number">337.563</span>,<span class="number">105.835</span>,<span class="number">329.905</span>,<span class="number">80.0992</span>,<span class="number">327.909</span>,<span class="number">57.7585</span>,<span class="number">337.563</span>,<span class="number">105.835</span>,<span class="number">284.891</span>,<span class="number">119.763</span>,<span class="number">271.838</span>,<span class="number">187.734</span>,<span class="number">244.93</span>,<span class="number">262.94</span>,<span class="number">243.623</span>,<span class="number">285.256</span>,<span class="number">376.946</span>,<span class="number">239.605</span>,<span class="number">360.892</span>,<span class="number">380.672</span>,<span class="number">415.622</span>,<span class="number">387.084</span>,<span class="number">409.557</span>,<span class="number">413.688</span>,<span class="number">309.934</span>,<span class="number">241.655</span>,<span class="number">308.507</span>,<span class="number">369.834</span>,<span class="number">323.621</span>,<span class="number">482.736</span>,<span class="number">308.105</span>,<span class="number">510.152</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.725</span>,<span class="number">220.36</span>,<span class="number">342.51</span>,<span class="number">161.343</span>,<span class="number">336.523</span>,<span class="number">106.215</span>,<span class="number">394.318</span>,<span class="number">108.053</span>,<span class="number">416.879</span>,<span class="number">166.441</span>,<span class="number">424.626</span>,<span class="number">229.856</span>,<span class="number">428.842</span>,<span class="number">249.364</span>,<span class="number">336.523</span>,<span class="number">106.215</span>,<span class="number">329.314</span>,<span class="number">80.6173</span>,<span class="number">327.953</span>,<span class="number">58.1199</span>,<span class="number">336.523</span>,<span class="number">106.215</span>,<span class="number">282.342</span>,<span class="number">119.102</span>,<span class="number">263.552</span>,<span class="number">189.869</span>,<span class="number">232.806</span>,<span class="number">267.474</span>,<span class="number">228.614</span>,<span class="number">292.178</span>,<span class="number">376.927</span>,<span class="number">238.984</span>,<span class="number">350.565</span>,<span class="number">385.56</span>,<span class="number">399.846</span>,<span class="number">416.187</span>,<span class="number">390.14</span>,<span class="number">445.053</span>,<span class="number">309.957</span>,<span class="number">242.281</span>,<span class="number">314.46</span>,<span class="number">365.006</span>,<span class="number">332.915</span>,<span class="number">472.412</span>,<span class="number">317.999</span>,<span class="number">499.321</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.497</span>,<span class="number">220.407</span>,<span class="number">341.85</span>,<span class="number">161.452</span>,<span class="number">336.064</span>,<span class="number">106.419</span>,<span class="number">393.982</span>,<span class="number">108.387</span>,<span class="number">416.271</span>,<span class="number">166.517</span>,<span class="number">424.467</span>,<span class="number">229.364</span>,<span class="number">428.873</span>,<span class="number">248.674</span>,<span class="number">336.064</span>,<span class="number">106.419</span>,<span class="number">328.948</span>,<span class="number">80.8318</span>,<span class="number">327.874</span>,<span class="number">58.2619</span>,<span class="number">336.064</span>,<span class="number">106.419</span>,<span class="number">281.639</span>,<span class="number">118.649</span>,<span class="number">260.943</span>,<span class="number">190.146</span>,<span class="number">228.747</span>,<span class="number">267.909</span>,<span class="number">223.371</span>,<span class="number">293.135</span>,<span class="number">376.885</span>,<span class="number">238.766</span>,<span class="number">347.165</span>,<span class="number">386.54</span>,<span class="number">391.347</span>,<span class="number">433.682</span>,<span class="number">379.802</span>,<span class="number">463.251</span>,<span class="number">310.007</span>,<span class="number">242.5</span>,<span class="number">316.956</span>,<span class="number">362.816</span>,<span class="number">336.733</span>,<span class="number">467.698</span>,<span class="number">322.025</span>,<span class="number">494.412</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.089</span>,<span class="number">220.552</span>,<span class="number">340.804</span>,<span class="number">161.72</span>,<span class="number">335.22</span>,<span class="number">107.018</span>,<span class="number">393.338</span>,<span class="number">109.248</span>,<span class="number">414.663</span>,<span class="number">166.882</span>,<span class="number">423.144</span>,<span class="number">228.832</span>,<span class="number">427.577</span>,<span class="number">247.824</span>,<span class="number">335.22</span>,<span class="number">107.018</span>,<span class="number">328.642</span>,<span class="number">81.3691</span>,<span class="number">328.352</span>,<span class="number">58.6174</span>,<span class="number">335.22</span>,<span class="number">107.018</span>,<span class="number">280.458</span>,<span class="number">117.923</span>,<span class="number">256.467</span>,<span class="number">190.521</span>,<span class="number">222.307</span>,<span class="number">267.737</span>,<span class="number">214.728</span>,<span class="number">293.275</span>,<span class="number">376.742</span>,<span class="number">238.535</span>,<span class="number">342.81</span>,<span class="number">387.224</span>,<span class="number">367.431</span>,<span class="number">481.503</span>,<span class="number">351.432</span>,<span class="number">511.224</span>,<span class="number">310.174</span>,<span class="number">242.732</span>,<span class="number">322.699</span>,<span class="number">357.536</span>,<span class="number">345.781</span>,<span class="number">455.557</span>,<span class="number">331.472</span>,<span class="number">481.787</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.006</span>,<span class="number">220.616</span>,<span class="number">340.696</span>,<span class="number">161.812</span>,<span class="number">335.151</span>,<span class="number">107.281</span>,<span class="number">393.235</span>,<span class="number">109.701</span>,<span class="number">414.099</span>,<span class="number">167.208</span>,<span class="number">422.429</span>,<span class="number">228.97</span>,<span class="number">426.666</span>,<span class="number">247.894</span>,<span class="number">335.151</span>,<span class="number">107.281</span>,<span class="number">328.757</span>,<span class="number">81.6064</span>,<span class="number">328.83</span>,<span class="number">58.7748</span>,<span class="number">335.151</span>,<span class="number">107.281</span>,<span class="number">280.473</span>,<span class="number">117.68</span>,<span class="number">255.575</span>,<span class="number">190.48</span>,<span class="number">221.088</span>,<span class="number">267.364</span>,<span class="number">212.803</span>,<span class="number">292.811</span>,<span class="number">376.664</span>,<span class="number">238.594</span>,<span class="number">342.401</span>,<span class="number">387.11</span>,<span class="number">355.996</span>,<span class="number">501.905</span>,<span class="number">338.159</span>,<span class="number">530.754</span>,<span class="number">310.267</span>,<span class="number">242.671</span>,<span class="number">325.127</span>,<span class="number">355.174</span>,<span class="number">349.776</span>,<span class="number">449.754</span>,<span class="number">335.631</span>,<span class="number">475.738</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.044</span>,<span class="number">220.709</span>,<span class="number">341.358</span>,<span class="number">161.844</span>,<span class="number">336.013</span>,<span class="number">107.649</span>,<span class="number">393.809</span>,<span class="number">110.682</span>,<span class="number">413.42</span>,<span class="number">168.211</span>,<span class="number">420.886</span>,<span class="number">230.098</span>,<span class="number">424.264</span>,<span class="number">248.977</span>,<span class="number">336.013</span>,<span class="number">107.649</span>,<span class="number">330.171</span>,<span class="number">81.9765</span>,<span class="number">331.102</span>,<span class="number">58.984</span>,<span class="number">336.013</span>,<span class="number">107.649</span>,<span class="number">281.684</span>,<span class="number">117.194</span>,<span class="number">255.854</span>,<span class="number">189.919</span>,<span class="number">222.064</span>,<span class="number">266.518</span>,<span class="number">212.843</span>,<span class="number">291.682</span>,<span class="number">376.441</span>,<span class="number">239.048</span>,<span class="number">343.215</span>,<span class="number">386.564</span>,<span class="number">332.054</span>,<span class="number">537.313</span>,<span class="number">311.168</span>,<span class="number">562.318</span>,<span class="number">310.529</span>,<span class="number">242.212</span>,<span class="number">330.779</span>,<span class="number">349.204</span>,<span class="number">359.213</span>,<span class="number">434.709</span>,<span class="number">345.537</span>,<span class="number">460.024</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.136</span>,<span class="number">220.706</span>,<span class="number">341.961</span>,<span class="number">161.751</span>,<span class="number">336.864</span>,<span class="number">107.623</span>,<span class="number">394.459</span>,<span class="number">111.033</span>,<span class="number">413.434</span>,<span class="number">168.777</span>,<span class="number">420.344</span>,<span class="number">231.004</span>,<span class="number">423.27</span>,<span class="number">249.896</span>,<span class="number">336.864</span>,<span class="number">107.623</span>,<span class="number">331.327</span>,<span class="number">81.9896</span>,<span class="number">332.589</span>,<span class="number">58.9456</span>,<span class="number">336.864</span>,<span class="number">107.623</span>,<span class="number">282.693</span>,<span class="number">116.901</span>,<span class="number">257.027</span>,<span class="number">189.307</span>,<span class="number">224.05</span>,<span class="number">266.017</span>,<span class="number">214.692</span>,<span class="number">291.106</span>,<span class="number">376.335</span>,<span class="number">239.303</span>,<span class="number">343.583</span>,<span class="number">386.415</span>,<span class="number">325.481</span>,<span class="number">545.015</span>,<span class="number">303.962</span>,<span class="number">568.695</span>,<span class="number">310.654</span>,<span class="number">241.955</span>,<span class="number">333.129</span>,<span class="number">346.511</span>,<span class="number">363.185</span>,<span class="number">427.663</span>,<span class="number">349.772</span>,<span class="number">452.692</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.366</span>,<span class="number">220.601</span>,<span class="number">343.711</span>,<span class="number">161.293</span>,<span class="number">339.729</span>,<span class="number">107.118</span>,<span class="number">396.713</span>,<span class="number">111.843</span>,<span class="number">413.973</span>,<span class="number">170.681</span>,<span class="number">419.48</span>,<span class="number">234.026</span>,<span class="number">421.509</span>,<span class="number">253.063</span>,<span class="number">339.729</span>,<span class="number">107.118</span>,<span class="number">334.963</span>,<span class="number">81.6293</span>,<span class="number">336.872</span>,<span class="number">58.5127</span>,<span class="number">339.729</span>,<span class="number">107.118</span>,<span class="number">285.856</span>,<span class="number">115.885</span>,<span class="number">262.189</span>,<span class="number">186.598</span>,<span class="number">232.031</span>,<span class="number">263.675</span>,<span class="number">222.669</span>,<span class="number">288.678</span>,<span class="number">376.133</span>,<span class="number">239.715</span>,<span class="number">343.01</span>,<span class="number">386.576</span>,<span class="number">322.288</span>,<span class="number">547.398</span>,<span class="number">300.074</span>,<span class="number">572.014</span>,<span class="number">310.89</span>,<span class="number">241.54</span>,<span class="number">337.344</span>,<span class="number">341.385</span>,<span class="number">371.616</span>,<span class="number">410.555</span>,<span class="number">359.104</span>,<span class="number">435.232</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.428</span>,<span class="number">220.527</span>,<span class="number">344.397</span>,<span class="number">161.041</span>,<span class="number">341.076</span>,<span class="number">106.787</span>,<span class="number">397.742</span>,<span class="number">112.229</span>,<span class="number">414.197</span>,<span class="number">171.746</span>,<span class="number">419.182</span>,<span class="number">235.611</span>,<span class="number">420.965</span>,<span class="number">254.823</span>,<span class="number">341.076</span>,<span class="number">106.787</span>,<span class="number">336.671</span>,<span class="number">81.3488</span>,<span class="number">338.799</span>,<span class="number">58.2199</span>,<span class="number">341.076</span>,<span class="number">106.787</span>,<span class="number">287.26</span>,<span class="number">115.363</span>,<span class="number">265.24</span>,<span class="number">184.876</span>,<span class="number">236.573</span>,<span class="number">261.858</span>,<span class="number">227.279</span>,<span class="number">286.79</span>,<span class="number">376.105</span>,<span class="number">239.726</span>,<span class="number">342.275</span>,<span class="number">386.701</span>,<span class="number">325.453</span>,<span class="number">542.865</span>,<span class="number">303.356</span>,<span class="number">569.262</span>,<span class="number">310.924</span>,<span class="number">241.529</span>,<span class="number">337.704</span>,<span class="number">340.625</span>,<span class="number">374.428</span>,<span class="number">403.476</span>,<span class="number">362.536</span>,<span class="number">428.264</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.49</span>,<span class="number">220.329</span>,<span class="number">345.247</span>,<span class="number">160.539</span>,<span class="number">343.436</span>,<span class="number">106.076</span>,<span class="number">399.224</span>,<span class="number">113.208</span>,<span class="number">413.82</span>,<span class="number">174.635</span>,<span class="number">417.853</span>,<span class="number">239.928</span>,<span class="number">419.389</span>,<span class="number">259.869</span>,<span class="number">343.436</span>,<span class="number">106.076</span>,<span class="number">339.953</span>,<span class="number">80.6346</span>,<span class="number">342.441</span>,<span class="number">57.504</span>,<span class="number">343.436</span>,<span class="number">106.076</span>,<span class="number">289.749</span>,<span class="number">114.104</span>,<span class="number">273.283</span>,<span class="number">179.711</span>,<span class="number">248.311</span>,<span class="number">254.88</span>,<span class="number">239.565</span>,<span class="number">279.234</span>,<span class="number">376.134</span>,<span class="number">239.481</span>,<span class="number">340.968</span>,<span class="number">386.293</span>,<span class="number">337.452</span>,<span class="number">524.188</span>,<span class="number">317.03</span>,<span class="number">553.98</span>,<span class="number">310.89</span>,<span class="number">241.775</span>,<span class="number">331.637</span>,<span class="number">344.932</span>,<span class="number">377.144</span>,<span class="number">389.47</span>,<span class="number">367.813</span>,<span class="number">415.115</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.505</span>,<span class="number">220.244</span>,<span class="number">345.323</span>,<span class="number">160.409</span>,<span class="number">343.895</span>,<span class="number">105.881</span>,<span class="number">399.324</span>,<span class="number">113.572</span>,<span class="number">413.159</span>,<span class="number">175.893</span>,<span class="number">416.867</span>,<span class="number">241.882</span>,<span class="number">418.379</span>,<span class="number">262.197</span>,<span class="number">343.895</span>,<span class="number">105.881</span>,<span class="number">340.897</span>,<span class="number">80.3862</span>,<span class="number">343.486</span>,<span class="number">57.257</span>,<span class="number">343.895</span>,<span class="number">105.881</span>,<span class="number">290.291</span>,<span class="number">113.684</span>,<span class="number">276.6</span>,<span class="number">177.277</span>,<span class="number">253.067</span>,<span class="number">250.935</span>,<span class="number">244.956</span>,<span class="number">274.744</span>,<span class="number">376.111</span>,<span class="number">239.395</span>,<span class="number">341.061</span>,<span class="number">385.667</span>,<span class="number">342.58</span>,<span class="number">515.462</span>,<span class="number">323.089</span>,<span class="number">545.751</span>,<span class="number">310.916</span>,<span class="number">241.861</span>,<span class="number">325.557</span>,<span class="number">349.48</span>,<span class="number">376.139</span>,<span class="number">385.073</span>,<span class="number">368.384</span>,<span class="number">410.999</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.637</span>,<span class="number">220.064</span>,<span class="number">345.422</span>,<span class="number">160.309</span>,<span class="number">343.961</span>,<span class="number">105.786</span>,<span class="number">398.395</span>,<span class="number">114.489</span>,<span class="number">410.75</span>,<span class="number">179.117</span>,<span class="number">413.411</span>,<span class="number">247.218</span>,<span class="number">414.683</span>,<span class="number">268.506</span>,<span class="number">343.961</span>,<span class="number">105.786</span>,<span class="number">341.53</span>,<span class="number">80.1059</span>,<span class="number">344.198</span>,<span class="number">56.9602</span>,<span class="number">343.961</span>,<span class="number">105.786</span>,<span class="number">291.368</span>,<span class="number">113.041</span>,<span class="number">284.22</span>,<span class="number">171.397</span>,<span class="number">262.743</span>,<span class="number">240.627</span>,<span class="number">257.007</span>,<span class="number">262.317</span>,<span class="number">375.844</span>,<span class="number">239.579</span>,<span class="number">343.492</span>,<span class="number">383.056</span>,<span class="number">352.416</span>,<span class="number">499.124</span>,<span class="number">334.493</span>,<span class="number">529.087</span>,<span class="number">311.226</span>,<span class="number">241.675</span>,<span class="number">305.555</span>,<span class="number">363.204</span>,<span class="number">368.323</span>,<span class="number">381.009</span>,<span class="number">363.422</span>,<span class="number">406.666</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">341.775</span>,<span class="number">219.995</span>,<span class="number">345.576</span>,<span class="number">160.328</span>,<span class="number">343.742</span>,<span class="number">105.855</span>,<span class="number">397.675</span>,<span class="number">114.901</span>,<span class="number">409.494</span>,<span class="number">180.55</span>,<span class="number">411.571</span>,<span class="number">249.662</span>,<span class="number">412.639</span>,<span class="number">271.374</span>,<span class="number">343.742</span>,<span class="number">105.855</span>,<span class="number">341.37</span>,<span class="number">80.1155</span>,<span class="number">343.961</span>,<span class="number">56.9551</span>,<span class="number">343.742</span>,<span class="number">105.855</span>,<span class="number">291.904</span>,<span class="number">112.908</span>,<span class="number">287.22</span>,<span class="number">168.944</span>,<span class="number">266.189</span>,<span class="number">236.225</span>,<span class="number">261.532</span>,<span class="number">256.844</span>,<span class="number">375.674</span>,<span class="number">239.841</span>,<span class="number">345.426</span>,<span class="number">381.467</span>,<span class="number">356.013</span>,<span class="number">493.899</span>,<span class="number">338.498</span>,<span class="number">523.409</span>,<span class="number">311.423</span>,<span class="number">241.412</span>,<span class="number">296.198</span>,<span class="number">368.934</span>,<span class="number">362.959</span>,<span class="number">382.964</span>,<span class="number">358.145</span>,<span class="number">408.555</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.236</span>,<span class="number">219.88</span>,<span class="number">346.121</span>,<span class="number">160.435</span>,<span class="number">343.188</span>,<span class="number">106.106</span>,<span class="number">395.323</span>,<span class="number">116.122</span>,<span class="number">405.996</span>,<span class="number">184.114</span>,<span class="number">406.259</span>,<span class="number">255.701</span>,<span class="number">406.705</span>,<span class="number">278.386</span>,<span class="number">343.188</span>,<span class="number">106.106</span>,<span class="number">340.276</span>,<span class="number">80.2669</span>,<span class="number">342.276</span>,<span class="number">57.0916</span>,<span class="number">343.188</span>,<span class="number">106.106</span>,<span class="number">294.405</span>,<span class="number">112.324</span>,<span class="number">294.621</span>,<span class="number">163.135</span>,<span class="number">274.367</span>,<span class="number">225.648</span>,<span class="number">271.332</span>,<span class="number">244.24</span>,<span class="number">375.318</span>,<span class="number">240.669</span>,<span class="number">351.395</span>,<span class="number">376.851</span>,<span class="number">364.096</span>,<span class="number">483.694</span>,<span class="number">347.283</span>,<span class="number">512.031</span>,<span class="number">311.832</span>,<span class="number">240.582</span>,<span class="number">277.505</span>,<span class="number">379.17</span>,<span class="number">346.617</span>,<span class="number">399.28</span>,<span class="number">338.808</span>,<span class="number">426.157</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.421</span>,<span class="number">219.862</span>,<span class="number">346.305</span>,<span class="number">160.497</span>,<span class="number">342.929</span>,<span class="number">106.182</span>,<span class="number">394.277</span>,<span class="number">116.539</span>,<span class="number">404.503</span>,<span class="number">185.364</span>,<span class="number">403.869</span>,<span class="number">257.944</span>,<span class="number">404.089</span>,<span class="number">280.98</span>,<span class="number">342.929</span>,<span class="number">106.182</span>,<span class="number">339.905</span>,<span class="number">80.3458</span>,<span class="number">341.47</span>,<span class="number">57.1802</span>,<span class="number">342.929</span>,<span class="number">106.182</span>,<span class="number">295.599</span>,<span class="number">112.075</span>,<span class="number">297.265</span>,<span class="number">160.931</span>,<span class="number">277.198</span>,<span class="number">221.372</span>,<span class="number">274.349</span>,<span class="number">239.419</span>,<span class="number">375.198</span>,<span class="number">241.02</span>,<span class="number">354.331</span>,<span class="number">374.574</span>,<span class="number">367.648</span>,<span class="number">479.424</span>,<span class="number">351.126</span>,<span class="number">507.332</span>,<span class="number">311.969</span>,<span class="number">240.231</span>,<span class="number">271.768</span>,<span class="number">382.054</span>,<span class="number">337.7</span>,<span class="number">412.017</span>,<span class="number">327.519</span>,<span class="number">439.992</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.651</span>,<span class="number">219.881</span>,<span class="number">346.302</span>,<span class="number">160.661</span>,<span class="number">342.298</span>,<span class="number">106.26</span>,<span class="number">391.583</span>,<span class="number">117.504</span>,<span class="number">400.872</span>,<span class="number">187.925</span>,<span class="number">397.704</span>,<span class="number">262.615</span>,<span class="number">397.325</span>,<span class="number">286.367</span>,<span class="number">342.298</span>,<span class="number">106.26</span>,<span class="number">338.593</span>,<span class="number">80.483</span>,<span class="number">338.983</span>,<span class="number">57.3647</span>,<span class="number">342.298</span>,<span class="number">106.26</span>,<span class="number">298.867</span>,<span class="number">111.337</span>,<span class="number">303.712</span>,<span class="number">156.306</span>,<span class="number">283.924</span>,<span class="number">211.825</span>,<span class="number">280.987</span>,<span class="number">228.864</span>,<span class="number">374.996</span>,<span class="number">241.564</span>,<span class="number">361.31</span>,<span class="number">368.858</span>,<span class="number">376.341</span>,<span class="number">468.297</span>,<span class="number">360.592</span>,<span class="number">495.452</span>,<span class="number">312.199</span>,<span class="number">239.688</span>,<span class="number">264.388</span>,<span class="number">386.022</span>,<span class="number">311.088</span>,<span class="number">453.235</span>,<span class="number">294.175</span>,<span class="number">483.495</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.646</span>,<span class="number">219.898</span>,<span class="number">346.034</span>,<span class="number">160.741</span>,<span class="number">341.868</span>,<span class="number">106.241</span>,<span class="number">390.647</span>,<span class="number">117.686</span>,<span class="number">399.78</span>,<span class="number">188.489</span>,<span class="number">395.527</span>,<span class="number">263.839</span>,<span class="number">394.918</span>,<span class="number">287.799</span>,<span class="number">341.868</span>,<span class="number">106.241</span>,<span class="number">338.006</span>,<span class="number">80.5482</span>,<span class="number">337.949</span>,<span class="number">57.4455</span>,<span class="number">341.868</span>,<span class="number">106.241</span>,<span class="number">299.572</span>,<span class="number">111.265</span>,<span class="number">305.464</span>,<span class="number">154.92</span>,<span class="number">285.653</span>,<span class="number">208.574</span>,<span class="number">282.669</span>,<span class="number">225.176</span>,<span class="number">374.964</span>,<span class="number">241.616</span>,<span class="number">364.119</span>,<span class="number">366.325</span>,<span class="number">380.202</span>,<span class="number">462.856</span>,<span class="number">364.825</span>,<span class="number">489.742</span>,<span class="number">312.236</span>,<span class="number">239.637</span>,<span class="number">263.641</span>,<span class="number">386.871</span>,<span class="number">297.431</span>,<span class="number">473.546</span>,<span class="number">277.645</span>,<span class="number">503.954</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.472</span>,<span class="number">219.914</span>,<span class="number">344.877</span>,<span class="number">160.894</span>,<span class="number">340.598</span>,<span class="number">106.094</span>,<span class="number">388.594</span>,<span class="number">117.889</span>,<span class="number">397.663</span>,<span class="number">189.175</span>,<span class="number">390.346</span>,<span class="number">265.706</span>,<span class="number">388.92</span>,<span class="number">290.04</span>,<span class="number">340.598</span>,<span class="number">106.094</span>,<span class="number">335.861</span>,<span class="number">80.61</span>,<span class="number">335.14</span>,<span class="number">57.5047</span>,<span class="number">340.598</span>,<span class="number">106.094</span>,<span class="number">300.137</span>,<span class="number">111.399</span>,<span class="number">308.678</span>,<span class="number">152.686</span>,<span class="number">289.477</span>,<span class="number">202.902</span>,<span class="number">286.88</span>,<span class="number">218.381</span>,<span class="number">375.136</span>,<span class="number">241.238</span>,<span class="number">369.887</span>,<span class="number">360.463</span>,<span class="number">389.454</span>,<span class="number">448.612</span>,<span class="number">374.996</span>,<span class="number">474.834</span>,<span class="number">312.04</span>,<span class="number">240.014</span>,<span class="number">266.536</span>,<span class="number">387.567</span>,<span class="number">264.161</span>,<span class="number">518.135</span>,<span class="number">239.345</span>,<span class="number">545.739</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.381</span>,<span class="number">219.903</span>,<span class="number">344.315</span>,<span class="number">160.891</span>,<span class="number">340</span>,<span class="number">105.973</span>,<span class="number">388.146</span>,<span class="number">117.6</span>,<span class="number">397.4</span>,<span class="number">188.846</span>,<span class="number">388.812</span>,<span class="number">265.602</span>,<span class="number">387.054</span>,<span class="number">289.99</span>,<span class="number">340</span>,<span class="number">105.973</span>,<span class="number">334.974</span>,<span class="number">80.5398</span>,<span class="number">334.125</span>,<span class="number">57.4272</span>,<span class="number">340</span>,<span class="number">105.973</span>,<span class="number">299.682</span>,<span class="number">111.61</span>,<span class="number">308.954</span>,<span class="number">152.283</span>,<span class="number">290.154</span>,<span class="number">201.656</span>,<span class="number">287.957</span>,<span class="number">216.712</span>,<span class="number">375.34</span>,<span class="number">240.896</span>,<span class="number">372.119</span>,<span class="number">357.994</span>,<span class="number">393.564</span>,<span class="number">441.974</span>,<span class="number">379.504</span>,<span class="number">467.881</span>,<span class="number">311.807</span>,<span class="number">240.355</span>,<span class="number">269.211</span>,<span class="number">387.431</span>,<span class="number">251.516</span>,<span class="number">533.215</span>,<span class="number">225.634</span>,<span class="number">558.537</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.242</span>,<span class="number">219.847</span>,<span class="number">343.493</span>,<span class="number">160.629</span>,<span class="number">339.15</span>,<span class="number">105.482</span>,<span class="number">388.263</span>,<span class="number">116.104</span>,<span class="number">398.151</span>,<span class="number">186.891</span>,<span class="number">386.957</span>,<span class="number">263.641</span>,<span class="number">384.445</span>,<span class="number">287.997</span>,<span class="number">339.15</span>,<span class="number">105.482</span>,<span class="number">333.41</span>,<span class="number">79.9871</span>,<span class="number">332.446</span>,<span class="number">56.8781</span>,<span class="number">339.15</span>,<span class="number">105.482</span>,<span class="number">298.612</span>,<span class="number">111.971</span>,<span class="number">308.408</span>,<span class="number">152.385</span>,<span class="number">290.382</span>,<span class="number">201.47</span>,<span class="number">289.774</span>,<span class="number">215.816</span>,<span class="number">376.03</span>,<span class="number">239.924</span>,<span class="number">377.489</span>,<span class="number">352.113</span>,<span class="number">403.551</span>,<span class="number">425.945</span>,<span class="number">390.393</span>,<span class="number">451.14</span>,<span class="number">311.011</span>,<span class="number">241.33</span>,<span class="number">276.052</span>,<span class="number">386.711</span>,<span class="number">234.271</span>,<span class="number">553.362</span>,<span class="number">208.149</span>,<span class="number">574.23</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.24</span>,<span class="number">219.816</span>,<span class="number">343.48</span>,<span class="number">160.421</span>,<span class="number">339.145</span>,<span class="number">105.167</span>,<span class="number">388.945</span>,<span class="number">115.13</span>,<span class="number">399.332</span>,<span class="number">185.514</span>,<span class="number">387.666</span>,<span class="number">261.99</span>,<span class="number">384.947</span>,<span class="number">286.258</span>,<span class="number">339.145</span>,<span class="number">105.167</span>,<span class="number">333.204</span>,<span class="number">79.5856</span>,<span class="number">332.228</span>,<span class="number">56.493</span>,<span class="number">339.145</span>,<span class="number">105.167</span>,<span class="number">298.231</span>,<span class="number">112.142</span>,<span class="number">307.497</span>,<span class="number">153.083</span>,<span class="number">289.368</span>,<span class="number">202.816</span>,<span class="number">289.577</span>,<span class="number">216.997</span>,<span class="number">376.359</span>,<span class="number">239.536</span>,<span class="number">379.836</span>,<span class="number">349.675</span>,<span class="number">407.975</span>,<span class="number">418.99</span>,<span class="number">395.207</span>,<span class="number">443.948</span>,<span class="number">310.627</span>,<span class="number">241.722</span>,<span class="number">278.168</span>,<span class="number">386.605</span>,<span class="number">233.495</span>,<span class="number">556.031</span>,<span class="number">207.832</span>,<span class="number">576.685</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.397</span>,<span class="number">219.757</span>,<span class="number">344.299</span>,<span class="number">159.849</span>,<span class="number">340.031</span>,<span class="number">104.262</span>,<span class="number">391.38</span>,<span class="number">112.726</span>,<span class="number">403.564</span>,<span class="number">181.768</span>,<span class="number">392.732</span>,<span class="number">257.151</span>,<span class="number">389.949</span>,<span class="number">281.106</span>,<span class="number">340.031</span>,<span class="number">104.262</span>,<span class="number">333.629</span>,<span class="number">78.4706</span>,<span class="number">332.571</span>,<span class="number">55.4563</span>,<span class="number">340.031</span>,<span class="number">104.262</span>,<span class="number">297.744</span>,<span class="number">112.787</span>,<span class="number">304.575</span>,<span class="number">156.679</span>,<span class="number">285.578</span>,<span class="number">209.121</span>,<span class="number">287.3</span>,<span class="number">223.331</span>,<span class="number">377</span>,<span class="number">238.989</span>,<span class="number">384.243</span>,<span class="number">345.965</span>,<span class="number">417.961</span>,<span class="number">402.993</span>,<span class="number">406.201</span>,<span class="number">427.809</span>,<span class="number">309.871</span>,<span class="number">242.277</span>,<span class="number">279.391</span>,<span class="number">387.412</span>,<span class="number">244.538</span>,<span class="number">552.029</span>,<span class="number">220.636</span>,<span class="number">576.437</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.535</span>,<span class="number">219.729</span>,<span class="number">344.971</span>,<span class="number">159.605</span>,<span class="number">340.768</span>,<span class="number">103.833</span>,<span class="number">392.669</span>,<span class="number">111.705</span>,<span class="number">405.811</span>,<span class="number">180.031</span>,<span class="number">396.23</span>,<span class="number">254.751</span>,<span class="number">393.719</span>,<span class="number">278.512</span>,<span class="number">340.768</span>,<span class="number">103.833</span>,<span class="number">334.177</span>,<span class="number">77.9719</span>,<span class="number">333.046</span>,<span class="number">55.0118</span>,<span class="number">340.768</span>,<span class="number">103.833</span>,<span class="number">297.578</span>,<span class="number">113.217</span>,<span class="number">303.08</span>,<span class="number">159.104</span>,<span class="number">283.56</span>,<span class="number">213.084</span>,<span class="number">285.592</span>,<span class="number">227.539</span>,<span class="number">377.198</span>,<span class="number">238.927</span>,<span class="number">385.437</span>,<span class="number">345.996</span>,<span class="number">421.709</span>,<span class="number">396.698</span>,<span class="number">410.434</span>,<span class="number">421.707</span>,<span class="number">309.635</span>,<span class="number">242.341</span>,<span class="number">278.97</span>,<span class="number">387.885</span>,<span class="number">252.92</span>,<span class="number">546.424</span>,<span class="number">230.106</span>,<span class="number">573.127</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.778</span>,<span class="number">219.914</span>,<span class="number">346.066</span>,<span class="number">159.809</span>,<span class="number">341.036</span>,<span class="number">103.957</span>,<span class="number">394.046</span>,<span class="number">110.165</span>,<span class="number">408.526</span>,<span class="number">177.113</span>,<span class="number">402.333</span>,<span class="number">250.046</span>,<span class="number">400.803</span>,<span class="number">273.324</span>,<span class="number">341.036</span>,<span class="number">103.957</span>,<span class="number">334.005</span>,<span class="number">77.8201</span>,<span class="number">332.037</span>,<span class="number">55.0563</span>,<span class="number">341.036</span>,<span class="number">103.957</span>,<span class="number">295.636</span>,<span class="number">115.261</span>,<span class="number">299.994</span>,<span class="number">165.466</span>,<span class="number">280.796</span>,<span class="number">222.832</span>,<span class="number">282.698</span>,<span class="number">238.213</span>,<span class="number">377.149</span>,<span class="number">239.586</span>,<span class="number">386.5</span>,<span class="number">348.867</span>,<span class="number">427.614</span>,<span class="number">386.538</span>,<span class="number">417.357</span>,<span class="number">412.11</span>,<span class="number">309.692</span>,<span class="number">241.675</span>,<span class="number">279.617</span>,<span class="number">387.234</span>,<span class="number">272.526</span>,<span class="number">528.71</span>,<span class="number">252.476</span>,<span class="number">558.501</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.842</span>,<span class="number">220.002</span>,<span class="number">346.212</span>,<span class="number">160.007</span>,<span class="number">340.748</span>,<span class="number">104.15</span>,<span class="number">394.205</span>,<span class="number">109.601</span>,<span class="number">409.943</span>,<span class="number">175.571</span>,<span class="number">405.482</span>,<span class="number">247.461</span>,<span class="number">404.677</span>,<span class="number">270.351</span>,<span class="number">340.748</span>,<span class="number">104.15</span>,<span class="number">333.379</span>,<span class="number">77.9689</span>,<span class="number">331.038</span>,<span class="number">55.3227</span>,<span class="number">340.748</span>,<span class="number">104.15</span>,<span class="number">294.355</span>,<span class="number">116.386</span>,<span class="number">297.948</span>,<span class="number">168.704</span>,<span class="number">278.841</span>,<span class="number">227.717</span>,<span class="number">280.669</span>,<span class="number">243.519</span>,<span class="number">377.053</span>,<span class="number">239.902</span>,<span class="number">386.01</span>,<span class="number">351.133</span>,<span class="number">429.562</span>,<span class="number">382.654</span>,<span class="number">420.042</span>,<span class="number">408.418</span>,<span class="number">309.806</span>,<span class="number">241.356</span>,<span class="number">282.027</span>,<span class="number">385.904</span>,<span class="number">280.523</span>,<span class="number">521.232</span>,<span class="number">261.524</span>,<span class="number">551.359</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.841</span>,<span class="number">220.159</span>,<span class="number">346.018</span>,<span class="number">160.498</span>,<span class="number">339.703</span>,<span class="number">104.719</span>,<span class="number">394.057</span>,<span class="number">108.689</span>,<span class="number">412.466</span>,<span class="number">172.537</span>,<span class="number">411.53</span>,<span class="number">242.258</span>,<span class="number">412.138</span>,<span class="number">264.3</span>,<span class="number">339.703</span>,<span class="number">104.719</span>,<span class="number">331.812</span>,<span class="number">78.5493</span>,<span class="number">328.927</span>,<span class="number">56.157</span>,<span class="number">339.703</span>,<span class="number">104.719</span>,<span class="number">291.569</span>,<span class="number">118.291</span>,<span class="number">292.804</span>,<span class="number">174.856</span>,<span class="number">273.133</span>,<span class="number">237.601</span>,<span class="number">274.844</span>,<span class="number">254.32</span>,<span class="number">376.844</span>,<span class="number">240.349</span>,<span class="number">382.953</span>,<span class="number">357.173</span>,<span class="number">430.917</span>,<span class="number">377.381</span>,<span class="number">423.401</span>,<span class="number">403.166</span>,<span class="number">310.052</span>,<span class="number">240.904</span>,<span class="number">289.405</span>,<span class="number">381.897</span>,<span class="number">293.988</span>,<span class="number">509.169</span>,<span class="number">276.338</span>,<span class="number">538.785</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.765</span>,<span class="number">220.232</span>,<span class="number">345.711</span>,<span class="number">160.747</span>,<span class="number">338.985</span>,<span class="number">105.065</span>,<span class="number">393.913</span>,<span class="number">108.17</span>,<span class="number">414.042</span>,<span class="number">170.671</span>,<span class="number">415.119</span>,<span class="number">239.191</span>,<span class="number">416.483</span>,<span class="number">260.753</span>,<span class="number">338.985</span>,<span class="number">105.065</span>,<span class="number">330.987</span>,<span class="number">78.9485</span>,<span class="number">328.06</span>,<span class="number">56.6749</span>,<span class="number">338.985</span>,<span class="number">105.065</span>,<span class="number">289.99</span>,<span class="number">119.077</span>,<span class="number">289.115</span>,<span class="number">178.246</span>,<span class="number">268.677</span>,<span class="number">243.513</span>,<span class="number">270.373</span>,<span class="number">260.883</span>,<span class="number">376.772</span>,<span class="number">240.426</span>,<span class="number">379.805</span>,<span class="number">361.846</span>,<span class="number">430.343</span>,<span class="number">374.84</span>,<span class="number">424.224</span>,<span class="number">400.287</span>,<span class="number">310.137</span>,<span class="number">240.827</span>,<span class="number">294.405</span>,<span class="number">378.977</span>,<span class="number">301.502</span>,<span class="number">502.694</span>,<span class="number">284.453</span>,<span class="number">531.699</span>,<span class="number">343.578</span>,<span class="number">240.626</span>,<span class="number">342.765</span>,<span class="number">220.232</span>,<span class="number">345.711</span>,<span class="number">160.747</span>,<span class="number">338.985</span>,<span class="number">105.065</span>,<span class="number">393.913</span>,<span class="number">108.17</span>,<span class="number">414.042</span>,<span class="number">170.671</span>,<span class="number">415.119</span>,<span class="number">239.191</span>,<span class="number">416.483</span>,<span class="number">260.753</span>,<span class="number">338.985</span>,<span class="number">105.065</span>,<span class="number">330.987</span>,<span class="number">78.9485</span>,<span class="number">328.06</span>,<span class="number">56.6749</span>,<span class="number">338.985</span>,<span class="number">105.065</span>,<span class="number">289.99</span>,<span class="number">119.077</span>,<span class="number">289.115</span>,<span class="number">178.246</span>,<span class="number">268.677</span>,<span class="number">243.513</span>,<span class="number">270.373</span>,<span class="number">260.883</span>,<span class="number">376.772</span>,<span class="number">240.426</span>,<span class="number">379.805</span>,<span class="number">361.846</span>,<span class="number">430.343</span>,<span class="number">374.84</span>,<span class="number">424.224</span>,<span class="number">400.287</span>,<span class="number">310.137</span>,<span class="number">240.827</span>,<span class="number">294.405</span>,<span class="number">378.977</span>,<span class="number">301.502</span>,<span class="number">502.694</span>,<span class="number">284.453</span>,<span class="number">531.699</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function setup() &#123;</span><br><span class="line">  createCanvas(<span class="number">720</span>, <span class="number">800</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function draw() &#123;</span><br><span class="line">  </span><br><span class="line">  background(<span class="number">0</span>);</span><br><span class="line">  fill(<span class="number">255</span>);</span><br><span class="line">  stroke(<span class="number">255</span>);</span><br><span class="line">  </span><br><span class="line">  var frame = (int)(frameCount*<span class="number">0.5</span>) % <span class="number">30</span>;</span><br><span class="line">  var myPts =  [];//point[<span class="number">24</span>]; // new Array(<span class="number">24</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">24</span>; i++)&#123;</span><br><span class="line">      myPts[i] = createVector();</span><br><span class="line">      myPts[i].x =  data2[ frame*<span class="number">24</span>*<span class="number">2</span> + i*<span class="number">2</span> + <span class="number">0</span> ];</span><br><span class="line">      myPts[i].y =  data2[ frame*<span class="number">24</span>*<span class="number">2</span> + i*<span class="number">2</span> + <span class="number">1</span> ];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">24</span>; i++)&#123;</span><br><span class="line">    </span><br><span class="line">    //line(myPts[i].x, myPts[i].y,mouseX, mouseY);</span><br><span class="line">    //ellipse(myPts[i].x, myPts[i].y, <span class="number">10</span>, <span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">   <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">24</span>; i++)&#123;</span><br><span class="line">     i_p_1 = (i + <span class="number">1</span>) % <span class="number">24</span>; </span><br><span class="line">     line(myPts[i].x, myPts[i].y, myPts[i_p_1].x, myPts[i_p_1].y)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ellipse(myPts[<span class="number">18</span>].x, myPts[<span class="number">18</span>].y, <span class="number">30</span>,<span class="number">30</span>);</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="800" src="p5js-html/example-01-walking-man.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="p5.js案例01-行走的人.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/p5-js/">#p5.js</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/p5-js/">
+            p5.js
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js教程01-快速入门/">
+                    p5.js教程01-一文入门p5.js
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js在jupyter-notebook中使用/">
+                    p5.js在jupyter-notebook中使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程03-动作响应/">
+                    p5.js教程03-动作响应
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程02-绘制简单图形/">
+                    p5.js教程02-绘制简单图形
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程06-显示文字/">
+                    p5.js教程06-显示文字
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程05-图片处理/">
+                    p5.js教程05-图片处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程07-让图动起来/">
+                    p5.js教程07-让图动起来
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js案例01-行走的人/">
+                    p5.js案例01-行走的人
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程04-平移-旋转-缩放/">
+                    p5.js教程04-平移-旋转-缩放
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

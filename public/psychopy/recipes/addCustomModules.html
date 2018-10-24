@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adding external modules to Standalone PsychoPy &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Recipes (“How-to”s)" href="recipes.html" />
+    <link rel="next" title="Animation" href="animation.html" />
+    <link rel="prev" title="Recipes (“How-to”s)" href="recipes.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="animation.html" title="Animation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="recipes.html" title="Recipes (“How-to”s)"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" accesskey="U">Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Adding external modules to Standalone PsychoPy</a><ul>
+<li><a class="reference internal" href="#using-preferences">Using preferences</a></li>
+<li><a class="reference internal" href="#adding-a-pth-file">Adding a .pth file</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="recipes.html"
+                                  title="previous chapter">Recipes (&#8220;How-to&#8221;s)</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="animation.html"
+                                  title="next chapter">Animation</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/recipes/addCustomModules.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-external-modules-to-standalone-psychopy">
+<span id="addmodules"></span><h1>Adding external modules to Standalone PsychoPy<a class="headerlink" href="#adding-external-modules-to-standalone-psychopy" title="Permalink to this headline">¶</a></h1>
+<p>You might find that you want to add some additional Python module/package to your Standalone version of PsychoPy. To do this you need to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>download a copy of the package (make sure it&#8217;s for Python 2.7 on your particular platform)</li>
+<li>unzip/open it into a folder</li>
+<li>add that folder to the path of PsychoPy by one of the methods below</li>
+</ul>
+</div></blockquote>
+<p>Avoid adding the entire path (e.g. the site-packages folder) of separate installation of Python, because that may contain conflicting copies of modules that PsychoPy is also providing.</p>
+<div class="section" id="using-preferences">
+<h2>Using preferences<a class="headerlink" href="#using-preferences" title="Permalink to this headline">¶</a></h2>
+<p>As of version 1.70.00 you can do this using the PsychoPy preferences/general. There you will find a preference for <a class="reference internal" href="../general/prefs.html#generalsettings"><span class="std std-ref">paths</span></a> which can be set to a list of strings e.g. <cite>[&#8216;/Users/jwp/code&#8217;, &#8216;~/code/thirdParty&#8217;]</cite></p>
+<p>These only get added to the Python path when you import psychopy (or one of the psychopy packages) in your script.</p>
+</div>
+<div class="section" id="adding-a-pth-file">
+<h2>Adding a .pth file<a class="headerlink" href="#adding-a-pth-file" title="Permalink to this headline">¶</a></h2>
+<p>An alternative is to add a file into the site-packages folder of your application. This file should be pure text and have the extension .pth to indicate to Python that it adds to the path.</p>
+<p>On win32 the site-packages folder will be something like:</p>
+<blockquote>
+<div>C:/Program Files/PsychoPy2/lib/site-packages</div></blockquote>
+<p>On macOS you need to right-click the application icon, select &#8216;Show Package Contents&#8217; and then navigate down to Contents/Resources/lib/python2.6. Put your .pth file here, next to the various libraries.</p>
+<p>The advantage of this method is that you don&#8217;t need to do the import psychopy step. The downside is that when you update PsychoPy to a new major release you&#8217;ll need to repeat this step (patch updates won&#8217;t affect it though).</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="animation.html" title="Animation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="recipes.html" title="Recipes (“How-to”s)"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" >Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Tensorflow逐步实现记忆网络(Memory networks)第一部分"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Tensorflow逐步实现记忆网络(Memory networks)第一部分 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/index.html",
+    "appid": "1600845001263316",
+    "title": "Tensorflow逐步实现记忆网络(Memory networks)第一部分",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-07-05T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                Tensorflow逐步实现记忆网络(Memory networks)第一部分
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="Tensorflow逐步实现记忆网络(Memory networks)第一部分"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年07月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是记忆网络"><span class="toc-number">2.</span> <span class="toc-text">什么是记忆网络?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拆解记忆网络-MemN2N"><span class="toc-number">3.</span> <span class="toc-text">拆解记忆网络(MemN2N)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#输入"><span class="toc-number">3.1.</span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#记忆-Memory"><span class="toc-number">3.2.</span> <span class="toc-text">记忆(Memory)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出"><span class="toc-number">3.3.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#得到答案"><span class="toc-number">3.4.</span> <span class="toc-text">得到答案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">4.</span> <span class="toc-text">小结</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>原创发表, 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+<li>tensorflow 1.x</li>
+</ul>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>我们将实现端到端记忆网络(Memory networks), 这个网络的论文在<a href="https://arxiv.org/abs/1503.08895" target="_blank" rel="noopener">这里</a>。我们将使用Dom Lun的一些<a href="https://github.com/domluna/memn2n/blob/master/data_utils.py" target="_blank" rel="noopener">辅助函数</a>, 看一下这些函数有助于你对我这篇文章的理解。我们这篇文章专注于实现最简单的记忆网络。在这个过程中，我们将学习如何操纵记忆以获得输出。我们将使用Tensorflow 1.x代码，并偶尔使用Hafner博客的代码。这个博客的最终代码在<a href="https://github.com/Utkarshdevd/memn2n-TFcode" target="_blank" rel="noopener">这里</a>。</p>
+<p>我们遵循论文中的任务: 给你一个故事, 你需要找到最终的问题的答案。</p>
+<ul>
+<li>故事是这样的, 也可以叫做记忆(memory):</li>
+</ul>
+<p><a href="http://mlln.cn"><img src="images/story.png"></a></p>
+<ul>
+<li>问题是这样的</li>
+</ul>
+<p><a href="http://mlln.cn"><img src="images/question.png"></a></p>
+<ul>
+<li>答案是这样的</li>
+</ul>
+<p><a href="http://mlln.cn"><img src="images/answer.png"></a></p>
+<p>论文的的最终目的是找到一种神经网络算法能够根据故事和问题, 找到问题的答案, 在这篇论文中, 答案就是一个单词</p>
+<h3 id="什么是记忆网络"><a href="#什么是记忆网络" class="headerlink" title="什么是记忆网络?"></a>什么是记忆网络?</h3><p>传统上，循环神经网络及其变体（LSTM，GRU）在句子标注和其他自然语言处理任务中非常成功。但是在推理任务方面失败了，他们必须以某种方式记住项目，因为他们缺少“记忆”组件。因此，记忆网络(MN)为这些任务提供了显式记忆，以克服对长期依赖性的限制。他们还使用soft attention来进一步模拟这些记忆的读写。首先，我们将这个特定的记忆网络缩写为MemN2N。这个网络的原始版本是使用matlab实现的, 并且只有1 hop<a href="http://mlln.cn">。</a></p>
+<p><a href="http://mlln.cn"><img src="images/simpleMemn2n.jpg"></a></p>
+<center>图1</center>
+
+<p>我们将专注于在没有时间编码的情况下复制论文中的bAbI任务。这留给读者练习。现在让我们看一般的MemN2N并逐个编写代码。</p>
+<h3 id="拆解记忆网络-MemN2N"><a href="#拆解记忆网络-MemN2N" class="headerlink" title="拆解记忆网络(MemN2N)"></a>拆解记忆网络(MemN2N)</h3><p>与早期的记忆网络中使用的硬注意力相反，MemN2N使用软注意来选择记忆。这是使用简单的softmax函数完成的。</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>(仔细观察图1你才能理解下面的话)</p>
+<p>我们使用不同的嵌入矩阵向量化所有句子（<code>$x_i$</code>），问题（<code>$q$</code>）和答案（<code>$a$</code>）。因此，我们保留了我们在数据集中看到的所有单词的字典<code>$ V $</code>。字典可以将每个单词都映射到一个索引(数字)。输入包括嵌入矩阵C，A和B.其中C和A分别映射到记忆向量（<code>$m_i$</code>）和输出向量（<code>$c_i$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_create_placeholders</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="comment"># http://mlln.cn</span></span><br><span class="line">    <span class="comment"># 学习率</span></span><br><span class="line">    self._lr = tf.placeholder(tf.float32, [], name=<span class="string">"learning_rate"</span>)</span><br><span class="line">    <span class="comment"># 记忆</span></span><br><span class="line">    <span class="comment"># _memory_size: 记忆条数, 也可以理解为记忆中包括多少篇文章</span></span><br><span class="line">    <span class="comment"># _sentence_size: 句子长度, 也可以是文章长度</span></span><br><span class="line">    <span class="comment"># 这个矩阵的元素就是单词的索引值</span></span><br><span class="line">    self._stories = tf.placeholder(tf.int32, [<span class="keyword">None</span>, self._memory_size, self._sentence_size], name=<span class="string">"stories"</span>)</span><br><span class="line">    <span class="comment"># 问题向量, 向量内元素代表单词的索引值</span></span><br><span class="line">    self._queries = tf.placeholder(tf.int32, [<span class="keyword">None</span>, self._sentence_size], name=<span class="string">"queries"</span>)</span><br><span class="line">    <span class="comment"># 答案, 因为本文章设定问题的答案就是一个单词, 所以使用one-hot的方法编码答案</span></span><br><span class="line">    self._answers = tf.placeholder(tf.int32, [<span class="keyword">None</span>, self._vocab_size], name=<span class="string">"answers"</span>)</span><br><span class="line">    <span class="comment"># 无意义的词向量, 代表为被词典收录的词</span></span><br><span class="line">    nil_word = tf.zeros([<span class="number">1</span>, self._embedding_size])</span><br><span class="line">    <span class="comment"># </span></span><br><span class="line">    A_placeholder = tf.concat(axis=<span class="number">0</span>, values=</span><br><span class="line">        [nil_word, self._normal_init([self._vocab_size<span class="number">-1</span>, self._embedding_size])])</span><br><span class="line">    </span><br><span class="line">    C_placeholder = tf.concat(axis=<span class="number">0</span>, values=</span><br><span class="line">        [nil_word, self._normal_init([self._vocab_size<span class="number">-1</span>, self._embedding_size])])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"memn2n"</span>):</span><br><span class="line">        <span class="comment"># 我们将其命名为A_1，因为代码保持与论文所说的符号相关，如果你想理解权重的影响，你可以制作更多的A_k类型矩阵。</span></span><br><span class="line">        <span class="comment"># 我们遵循论文中描述的相邻权重共享，连续的A矩阵等于先前的C矩阵。        </span></span><br><span class="line">        self.A_1 = tf.Variable(A_placeholder, name=<span class="string">"A"</span>)</span><br><span class="line">        <span class="comment"># 现在我们添加了hop的概念，可以以相同的方式添加更多A类型矩阵。</span></span><br><span class="line">        self.C = []</span><br><span class="line">        <span class="comment"># 这里我们将矩阵添加到每一hop对应于C矩阵的数组中。存储器中的hop数由n_hops表示。</span></span><br><span class="line">        <span class="keyword">for</span> hop_number <span class="keyword">in</span> range(self._hops):</span><br><span class="line">            <span class="comment"># 每一hop都有自己的范围。</span></span><br><span class="line">            <span class="keyword">with</span> tf.variable_scope(<span class="string">"hop_number&#123;&#125;"</span>.format(hop_number)):</span><br><span class="line">                self.C.append(tf.Variable(C_placeholder, name=<span class="string">"C"</span>))</span><br></pre></td></tr></table></figure>
+<p>默认情况下，我们将hop数保持为k = 3，如论文中所报告的，这样可以有良好的结果, 并且每个hop共享权重。这就是论文的图示:</p>
+<p><img src="images/nHop.png" width="500px"></p>
+<center>图 2 </center>
+
+<h4 id="记忆-Memory"><a href="#记忆-Memory" class="headerlink" title="记忆(Memory)"></a>记忆(Memory)</h4><p>在我们继续编写词嵌入部分之前，在论文的第4.1节描述了位置编码算法，以便让句子向量中保存词序信息。如果你不懂位置编码这个算法, 可以看我之前写过的文章: <a href="#">作文自动评分-位置编码position-encoding(PE)解释</a>。保持最后一个单词独立，因为它表示句子的结束。 作者用Matlab代码定义了这个函数，我们将它转换为python函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">position_encoder</span><span class="params">(embedding_size, sentence_size)</span>:</span></span><br><span class="line">    encoding = np.ones((embedding_size, sentence_size), dtype=np.float32)</span><br><span class="line">    <span class="comment"># 1 based indexing</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, embedding_size+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, sentence_size+<span class="number">1</span>):</span><br><span class="line">            encoding[k<span class="number">-1</span>, j<span class="number">-1</span>] = (<span class="number">1</span> - j/sentence_size) - (k/embedding_size) * (<span class="number">1</span> - <span class="number">2</span> * j/sentence_size)</span><br><span class="line">    <span class="comment"># make last word immune to encoding</span></span><br><span class="line">    encoding[:, <span class="number">-1</span>] = <span class="number">1.0</span></span><br><span class="line">    <span class="keyword">return</span> np.transpose(encoding)</span><br></pre></td></tr></table></figure>
+<p>我们现在可以添加词索引到词向量再到句子向量转换的代码，tensorflow提供了从句子(词索引的序列)到其向量表示的转换功能。由于这是构建实际网络的部分，因此我们创建了一个新的<code>_inference</code>函数。在这里，我们制作<code>$B$</code>矩阵，它使用与<code>$A$</code>矩阵相同的矩阵来查找单词。因此，同一组权重用于问题和句子。回到图1，我们看到经过<code>$B$</code>给出了结果向量<code>$u$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_inference</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"memn2n"</span>):</span><br><span class="line">        <span class="comment"># adjacent weight, B = A_1</span></span><br><span class="line">        <span class="comment"># 提示, self._queries 代表 问题向量, 向量内元素代表单词的索引值</span></span><br><span class="line">        <span class="comment"># 词的索引无法直接进入模型计算, 需要映射成词向量, 所以矩阵B就是保存了词向量的矩阵</span></span><br><span class="line">        B = tf.nn.embedding_lookup(self.A_1, self._queries)</span><br><span class="line">        <span class="comment"># 求句子向量, 使用了位置编码算法</span></span><br><span class="line">        u_1 = tf.reduce_sum(B * self._encoding, <span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 请记住, u中存放的都是问题向量</span></span><br><span class="line">        u = [u_1]</span><br></pre></td></tr></table></figure>
+<p>现在要获得<code>$p_i$</code>，我们必须得到<code>$m_i$</code>并在softmax操作中使用它。它是记忆<code>$m_i$</code></p>
+<p>让我们从其对应的查找中获取mi。我们在每一跳都这样做，这就是第一跳的样子，</p>
+<p>(下面的代码紧接上面)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> hop_number <span class="keyword">in</span> range(self._hops):</span><br><span class="line">    <span class="keyword">if</span> hop_number == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># first hop, C_1 = A_1</span></span><br><span class="line">        <span class="comment"># 转换为词向量</span></span><br><span class="line">        A_lookup = tf.nn.embedding_lookup(self.A_1, self._stories)</span><br><span class="line">        <span class="comment"># 转换为文章向量 m_i</span></span><br><span class="line">        m_A = tf.reduce_sum(A_lookup * self._encoding, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 这是相邻的权重共享，除了第一个hop, 我们将m_A定义为上一个hop的m_C</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">"hop_number&#123;&#125;"</span>.format(hop_number<span class="number">-1</span>)):</span><br><span class="line">            <span class="comment"># A_k+1 = C_k --&gt; C[-1], topmost C</span></span><br><span class="line">            <span class="comment"># 转换为词向量</span></span><br><span class="line">            A_lookup = tf.nn.embedding_lookup(self.C[hop_number<span class="number">-1</span>], self._stories)</span><br><span class="line">            <span class="comment"># 转换为文章向量 m_i</span></span><br><span class="line">            m_A = tf.reduce_sum(A_lookup * self._encoding, <span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 根据 公式1 计算概率</span></span><br><span class="line">    u_temp = tf.transpose(tf.expand_dims(u[<span class="number">-1</span>], <span class="number">-1</span>), [<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br><span class="line">    dot = tf.reduce_sum(m_A * u_temp, <span class="number">2</span>)</span><br><span class="line">    print(dot.get_shape())</span><br><span class="line">    prob = tf.nn.softmax(dot)</span><br><span class="line">    P = tf.transpose(tf.expand_dims(prob, <span class="number">-1</span>), [<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"hop_number&#123;&#125;"</span>.format(hop_number)):</span><br><span class="line">        C_lookup = tf.nn.embedding_lookup(self.C[hop_number], self._stories)</span><br><span class="line">        m_C = tf.reduce_sum(C_lookup * self._encoding, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>计算得到<code>$P$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">m_C_temp = tf.transpose(m_C, [<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br><span class="line">o_k = tf.reduce_sum(m_C_temp * P, <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 更新u</span></span><br><span class="line">u_k = u[<span class="number">-1</span>] + o_k</span><br><span class="line"><span class="comment"># 追加到列表中, 以备后用</span></span><br><span class="line">u.append(u_k)</span><br></pre></td></tr></table></figure>
+<h4 id="得到答案"><a href="#得到答案" class="headerlink" title="得到答案"></a>得到答案</h4><p>答案<code>$\hat a$</code>的计算公式是:</p>
+<p><code>$$
+\hat{a} = Softmax(W(o + u)) \tag{3}
+$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># W = last C, weight tying</span></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">"hop_number&#123;&#125;"</span>.format(hop_number)):</span><br><span class="line">    self._logits = tf.matmul(u_k, tf.transpose(self.C[<span class="number">-1</span>], [<span class="number">1</span>,<span class="number">0</span>]))</span><br><span class="line">    self._scores = tf.nn.softmax(self._logits)</span><br></pre></td></tr></table></figure>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>文章到此就是完成了一个端到端的记忆网络, 但是这里还没有介绍如何训练这个网络以及一些可视化的方法。我们统一放在下一篇<a href="http://mlln.cn">介绍, </a>链接:</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="Tensorflow逐步实现记忆网络(Memory networks">notebook</a>第一部分.ipynb)<br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/深度学习/">#深度学习</a> <a href="/tags/tensorflow/">#tensorflow</a> <a href="/tags/作文评分/">#作文评分</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/深度学习/">
+            深度学习
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/08/29/神经网络实现的贪吃蛇机器人-视频展示/">
+                    神经网络实现的贪吃蛇机器人-视频展示
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/26/机器翻译语料库大全(免费下)/">
+                    机器翻译语料库大全(免费下)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/AI对对联的训练过程/">
+                    Ai对对联训练过程-好多精彩对联不舍得删
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/22/使用循环神经网络和遗传算法玩排球游戏/">
+                    使用循环神经网络和遗传算法玩排球游戏
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
+                    作文自动评分-位置编码position-encoding(PE)解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/04/Tensorflow.js实现进化算法及可视化演示/">
+                    Tensorflow.js实现进化算法及可视化演示
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/21/tensorflow教程01-神经网络模型通俗理解和简单案例/">
+                    tensorflow教程01-神经网络模型通俗理解和简单案例
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/10/Q-learning人工智能玩推箱子小游戏/">
+                    Q-learning人工智能玩推箱子小游戏
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/27/神经网络BP算法求导-手动推导/">
+                    神经网络BP算法求导-手动推导
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/tensorflow/">
+            tensorflow
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/16/textgenrnn-demo/">
+                    使用textgenrnn生成文本(最后生成中文)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
+                    作文自动评分-位置编码position-encoding(PE)解释
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/作文评分/">
+            作文评分
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
+                    作文自动评分-位置编码position-encoding(PE)解释
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

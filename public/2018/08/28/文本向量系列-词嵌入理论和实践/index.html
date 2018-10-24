@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="文本向量系列-词嵌入理论和实践"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>文本向量系列-词嵌入理论和实践 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/08/28/文本向量系列-词嵌入理论和实践/index.html",
+    "appid": "1600845001263316",
+    "title": "文本向量系列-词嵌入理论和实践",
+    "images": [
+        "http://mlln.cn/2018/08/28/文本向量系列-词嵌入理论和实践/main.jpg"
+    ], 
+    "pubDate": "2018-08-28T06:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                文本向量系列-词嵌入理论和实践
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="文本向量系列-词嵌入理论和实践"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年08月28日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#系列文章"><span class="toc-number">1.</span> <span class="toc-text">系列文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#word2vec"><span class="toc-number">3.</span> <span class="toc-text">word2vec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练流程"><span class="toc-number">4.</span> <span class="toc-text">训练流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实战-使用word2vec训练词向量"><span class="toc-number">5.</span> <span class="toc-text">实战:使用word2vec训练词向量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语料库"><span class="toc-number">6.</span> <span class="toc-text">语料库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读取数据"><span class="toc-number">6.1.</span> <span class="toc-text">读取数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#训练词向量"><span class="toc-number">6.2.</span> <span class="toc-text">训练词向量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取词向量"><span class="toc-number">6.3.</span> <span class="toc-text">获取词向量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取相近的词"><span class="toc-number">6.4.</span> <span class="toc-text">获取相近的词</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#词向量的可视化"><span class="toc-number">7.</span> <span class="toc-text">词向量的可视化</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<h3 id="系列文章"><a href="#系列文章" class="headerlink" title="系列文章"></a>系列文章</h3><p>这个是系列博客, 所有文章链接都列在这里, 并持续更新中。</p>
+<ul><br><li><a href="http://mlln.cn/2018/08/17/文本向量化理论和实践教程/">文本向量化理论和实践教程</a></li><br><li><a href="http://mlln.cn/2018/08/17/文本向量系列-如何基于拼音构建字向量/">文本向量系列-如何基于拼音构建字向量</a></li><br><li><a href="http://mlln.cn/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">文本向量系列-如何基于笔画+拼音构建字向量/</a></li><br><li><a href="http://mlln.cn/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/</a></li><br> <li><a href="http://mlln.cn/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">文本向量系列-基于潜在语义分析的词向量</a></li><br></ul>
+
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>神经网络的词向量表示法是基于一个哲学: 词的上下文环境决定了词的意义, 所以在训练词向量的时候, 是通过词的上下文来计算词向量, 因而这样的词向量也具有了上下文的语义信息。</p>
+<p>基于神经网络生成的词表示一般称为词向量、词嵌入（wordembeding），狭义上，与分布表示（distributional representation）相对，也称为分布式表示（distributed representation）。该表示将每一单词映射到一个低维、稠密的实数向量上，向量的每一维代表单词的潜在特征，且该特征能够捕捉到有用的语法和语义属性。词向量的最大优势在于我们可以相对快速、有效地根据向量间的距离（比如余弦距离）判断单词的相似性，原因在于语义或语法相似的单词拥有相似的向量表示。词向量的构建主要依赖于神经网络模型，神经网络能够非常灵活地以线性组合方式表示任意n-gram词组，且参数以线性速度増长，相对于基于矩阵和聚类的分布表示，词向量能够捕捉到更多复杂、有用的语义信息。</p>
+<h3 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h3><p>深度学习word2vec是Google的一款将词表征为实数值向量的高效工具, 其利用深度学习的思想, 通过训练把对文本内容的处理简化为K维向量空间中的向量运算, 而向量空间上的相似度可以用来表示文本语义上的相似度。在实际应用场景中, word2vec可以用于计算词的相似度、文档的相似度等, 也可以用来对文档进行情感分析等。</p>
+<p>深度学习word2vec中有CBOW和Skip-gram两种神经网络框架可用于训练并得到参数, 参数迭代更新后得到的就是每个字的词向量。其中, CBOW模型是利用词w<sub>t</sub>上下文中的c个词去预测当前词;而Skip-gram模型恰好相反, 它是利用词w<sub>t</sub>去预测上下文中的c个词。本文采用CBOW架构训练模型, 其数学表达式为:</p>
+<p><img src="cbow.png"></p>
+<p>其中, w<sub>t</sub>为词典D中的一个词, 即通过和该词相邻的窗口T来预测w<sub>t</sub>出现的概率。p (w<sub>t</sub>/Context<sub>i</sub>) 代表前后c个词出现的概率。该框架可表示为下图所示模型。</p>
+<p><img src="cbow-pic.png"></p>
+<p>上述符号中, INPUT代表输入层, PROJECTION代表投影层, OUTPUT代表输出层, w<sub>t</sub>代表当前词语 (向量) , w<sub>t-2</sub>、w<sub>t-1</sub>、w<sub>t+1</sub>、w<sub>t+2</sub>代表当前词语的上下文, SUM代表上下文的累加和。输出层是以词典D中出现过的N个词作为叶节点, 并以词在语料库中出现的次数作为权值构造出的巨大二叉树, 该二叉树的构建算法为霍夫曼 (Huffman) 树。</p>
+<h3 id="训练流程"><a href="#训练流程" class="headerlink" title="训练流程"></a>训练流程</h3><ul>
+<li>把word表示成one-hot向量</li>
+</ul>
+<p><img src="one-hot.png"></p>
+<ul>
+<li>one-hot词向量乘以W得到embeding的词向量</li>
+</ul>
+<p>W的形状是VxN, 其中V是语料库的词典大小, N是词向量的维度, W中的数都是我们要训练的参数</p>
+<p><img src="to-dense.png"></p>
+<ul>
+<li>训练神经网络, 输入是目标词的上下文的词向量, 输出是目标词的词向量, 或者相反</li>
+</ul>
+<p>词向量相加:</p>
+<p><img src="add-word.png"></p>
+<p>乘以权重矩阵, 得到向量</p>
+<p><img src="multiply-w.png"></p>
+<p>经过softmax函数, 得到输出的词向量y, 优化目标是让向量y无限接近目标词的one-hot向量</p>
+<p><img src="train-word-vector.png"></p>
+<ul>
+<li>最后的效果就是, 得到的词向量具有语义相关, 这些词向量其实都是嵌入在权重向矩阵W中的</li>
+</ul>
+<p><img src="word-embeding.png"></p>
+<h3 id="实战-使用word2vec训练词向量"><a href="#实战-使用word2vec训练词向量" class="headerlink" title="实战:使用word2vec训练词向量"></a>实战:使用word2vec训练词向量</h3><p>其实在这里有一篇文章已经非常详细的介绍了词向量的训练, 有兴趣的可以去看看:<a href="http://mlln.cn/2018/06/21/大数据揭示心理学规律(利用gensim训练词向量">http://mlln.cn/2018/06/21/大数据揭示心理学规律(利用gensim训练词向量</a>) 。这里只是为了文章完整性, 再演示一遍如何使用word2vec训练词向量。</p>
+<h3 id="语料库"><a href="#语料库" class="headerlink" title="语料库"></a>语料库</h3><p>这次我们使用中英文语料库, 语料库可以从这里下载:<a href="http://mlln.cn/2018/08/26/机器翻译语料库大全(免费下">机器翻译语料库大全(免费下)</a>), 我这里用的是中英文翻译语料, 下面是一些语料的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Hi.	嗨。</span><br><span class="line">Hi.	你好。</span><br><span class="line">Run.	你用跑的。</span><br><span class="line">Wait!	等等！</span><br><span class="line">Hello!	你好。</span><br><span class="line">I try.	让我来。</span><br><span class="line">I won!	我赢了。</span><br><span class="line">Oh no!	不会吧。</span><br><span class="line">Cheers!	乾杯!</span><br><span class="line">He ran.	他跑了。</span><br><span class="line">Hop in.	跳进来。</span><br><span class="line">I lost.	我迷失了。</span><br><span class="line">I quit.	我退出。</span><br><span class="line">I&apos;m OK.	我沒事。</span><br><span class="line">Listen.	听着。</span><br><span class="line">No way!	不可能！</span><br></pre></td></tr></table></figure>
+<p>这些语料需要经过一些处理才能进行训练:</p>
+<ul>
+<li>英文都转小写</li>
+<li>中文需要分词</li>
+</ul>
+<p>中文分词有很多工具可以用, tcharacters 模块是我们自己开发的, 利用了pyltp的分词功能, 大家可以访问这个页面(<a href="http://www.mlln.cn/2018/01/31/pyltp在windows下的编译安装/" target="_blank" rel="noopener">http://www.mlln.cn/2018/01/31/pyltp在windows下的编译安装/</a> )看pyltp的用法, 我这里就不再赘述。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tcharacters.ltp <span class="keyword">import</span> ltp</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line"><span class="keyword">from</span> gensim.models <span class="keyword">import</span> Word2Vec</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fenci</span><span class="params">(line)</span>:</span></span><br><span class="line">    ci = ltp.fenci(line)</span><br><span class="line">    ci = chain(*ci)</span><br><span class="line">    <span class="keyword">return</span> list(ci)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xiaoxie</span><span class="params">(line)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> line.lower().split(<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clean_data</span><span class="params">(fpath)</span>:</span></span><br><span class="line">    fpath = Path(fpath)</span><br><span class="line">    lines = fpath.read_text(<span class="string">'utf8'</span>).split(<span class="string">'\n'</span>)</span><br><span class="line">    lines = [l.split(<span class="string">'\t'</span>) <span class="keyword">for</span> l <span class="keyword">in</span> lines]</span><br><span class="line">    lines = [xiaoxie(l[<span class="number">0</span>])+fenci(l[<span class="number">1</span>]) <span class="keyword">for</span> l <span class="keyword">in</span> lines]</span><br><span class="line">    <span class="keyword">return</span> lines</span><br><span class="line"></span><br><span class="line">print(<span class="string">"测试分词:"</span>, fenci(<span class="string">'我跳进来没事了'</span>))</span><br><span class="line">print(<span class="string">"测试小写:"</span>, xiaoxie(<span class="string">"I'm OK"</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\gensim\utils.py:1197: UserWarning: detected Windows; aliasing chunkize to chunkize_serial
+    <br>  warnings.warn("detected Windows; aliasing chunkize to chunkize_serial")
+    <br>
+</div>
+
+
+<div class="output">
+输出(stream):<br>
+    测试分词: ['我', '跳', '进来', '没事', '了']
+    <br>测试小写: ["i'm", 'ok']
+    <br>
+</div>
+
+<h4 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fpath = <span class="string">'./data/cmn.txt'</span></span><br><span class="line">sentences = clean_data(fpath)</span><br></pre></td></tr></table></figure>
+<h4 id="训练词向量"><a href="#训练词向量" class="headerlink" title="训练词向量"></a>训练词向量</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = Word2Vec(min_count=<span class="number">1</span>)</span><br><span class="line">model.build_vocab(sentences)  <span class="comment"># prepare the model vocabulary</span></span><br><span class="line">model.train(sentences, total_examples=model.corpus_count, epochs=model.iter)  <span class="comment"># train word vectors</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:3: DeprecationWarning: Call to deprecated `iter` (Attribute will be removed in 4.0.0, use self.epochs instead).
+    <br>  This is separate from the ipykernel package so we can avoid doing imports until
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    (1053714, 1354925)
+
+</div>
+
+<h4 id="获取词向量"><a href="#获取词向量" class="headerlink" title="获取词向量"></a>获取词向量</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">model[<span class="string">'我'</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:1: DeprecationWarning: Call to deprecated `__getitem__` (Method will be removed in 4.0.0, use self.wv.__getitem__() instead).
+    <br>  """Entry point for launching an IPython kernel.
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    array([-0.3515351 , -1.3118509 , -0.6156184 ,  0.15516779,  1.1383128 ,
+    <br>       -0.07251779,  0.23020045, -0.52926725, -0.76866174, -1.0467764 ,
+    <br>       -0.31507614, -0.15950103, -0.52083683, -0.36872956, -0.8011314 ,
+    <br>        0.4902281 , -0.5143664 ,  0.3182344 ,  0.8374854 , -0.3608164 ,
+    <br>        0.03827107,  0.406259  ,  0.43838248,  0.21362059,  0.8257452 ,
+    <br>       -0.5523492 ,  0.45621607, -0.8586342 ,  1.0493718 ,  0.11673231,
+    <br>        0.53156763,  0.01687986,  0.29621682,  0.13253698,  0.64017475,
+    <br>       -0.33693016, -0.7375661 , -0.7472176 ,  0.8874524 ,  0.5582712 ,
+    <br>       -0.89976597,  0.1379873 ,  0.17002319, -1.0449922 ,  0.23068163,
+    <br>        0.33250892,  0.13288185, -0.3183722 ,  0.18426847,  0.31564566,
+    <br>       -0.17929862, -0.36949784,  0.4063392 , -0.38051793,  1.1805166 ,
+    <br>        0.40641445, -0.77273184,  1.2720692 , -0.04576248, -0.02152266,
+    <br>       -0.33833855, -0.59893143,  0.7793325 ,  0.6381986 , -0.7024244 ,
+    <br>        0.03128409, -0.18902263, -0.14734915,  1.2367837 , -0.1975445 ,
+    <br>        0.02902468,  0.3363272 ,  0.73686606, -0.05201327, -0.33830413,
+    <br>        0.6940766 ,  0.10825578,  0.04985462,  0.20522375, -0.07374723,
+    <br>        0.31967226,  0.9696962 , -1.058341  ,  1.0477684 , -0.47876847,
+    <br>        1.7466705 ,  0.8541186 ,  0.63398683, -0.48192078,  0.3477193 ,
+    <br>        0.05898082, -0.76784873,  0.5714927 , -0.16609748, -0.4489299 ,
+    <br>       -0.55590814,  0.4317831 ,  0.38580045, -1.0079336 , -0.6381117 ],
+    <br>      dtype=float32)
+
+</div>
+
+<h4 id="获取相近的词"><a href="#获取相近的词" class="headerlink" title="获取相近的词"></a>获取相近的词</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.wv.similar_by_word(<span class="string">'我'</span>, topn=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    [('汤姆', 0.9596410989761353),
+    <br> ('湯姆', 0.9314063787460327),
+    <br> ('我們', 0.8994365930557251),
+    <br> ('understand.', 0.895287811756134),
+    <br> ('說謊', 0.8948416709899902),
+    <br> ('擺脫', 0.8923969864845276),
+    <br> ('我们', 0.8902699947357178),
+    <br> ('明白', 0.8879507780075073),
+    <br> ('当然', 0.8863658905029297),
+    <br> ('feelings.', 0.8862991333007812),
+    <br> ('让', 0.8845858573913574),
+    <br> ('喜', 0.8840827941894531),
+    <br> ('肯定', 0.8825405240058899),
+    <br> ('有时', 0.8797551989555359),
+    <br> ('讓', 0.8797382116317749),
+    <br> ('記', 0.8793071508407593),
+    <br> ('korea.', 0.8779969811439514),
+    <br> ('不', 0.8774625062942505),
+    <br> ('样子', 0.8769326210021973),
+    <br> ('喜歡狗', 0.8766648173332214)]
+
+</div>
+
+<h3 id="词向量的可视化"><a href="#词向量的可视化" class="headerlink" title="词向量的可视化"></a>词向量的可视化</h3><p>先把数据保存到文件中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data = np.zeros((len(model.wv.vocab), <span class="number">100</span>))</span><br><span class="line">i = <span class="number">-1</span></span><br><span class="line">words = []</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> model.wv.vocab:</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    data[i] = model[word]</span><br><span class="line">    words.append(word)</span><br><span class="line"></span><br><span class="line">tsv_path=<span class="string">'./data/wordvec.tsv'</span></span><br><span class="line">np.savetxt(tsv_path, data, delimiter=<span class="string">'\t'</span>)</span><br><span class="line">words = <span class="string">'\n'</span>.join(words)</span><br><span class="line"><span class="comment"># words = '词\n' + words</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'./data/words.tsv'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(words)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:7: DeprecationWarning: Call to deprecated `__getitem__` (Method will be removed in 4.0.0, use self.wv.__getitem__() instead).
+    <br>  import sys
+    <br>
+</div>
+
+<p>打开网址: <a href="http://mlln.cn/vector/">http://mlln.cn/vector/</a></p>
+<p>上传刚才生成的数据文件, 不必担心数据泄密, 因为这里所有的数据都只是上传到了网页, 并没有回传到服务器, 数据只存在于你的电脑。</p>
+<iframe height="498" width="510" src="http://player.youku.com/embed/XMzgwMDYwNTc4MA==" frameborder="0" 'allowfullscreen'=""></iframe>
+
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="文本向量系列-词嵌入理论和实践.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/文本挖掘/">#文本挖掘</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/文本挖掘/">
+            文本挖掘
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">
+                    sentimentpy模块进行中文文本情感分类
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/07/gensim-lda-文档主题提取实现/">
+                    gensim lda 文档主题提取实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/03/pyltp安装和小白入门/">
+                    pyltp安装和小白入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/01/31/pyltp在windows下的编译安装/">
+                    哈工大自然语言处理ltp在windows10下的安装使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/06/13/作文自动分类方案设计/">
+                    作文自动分类方案设计
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

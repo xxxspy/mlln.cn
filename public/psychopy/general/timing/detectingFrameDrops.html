@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Detecting dropped frames &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="Timing Issues and synchronisation" href="timing.html" />
+    <link rel="next" title="Reducing dropped frames" href="reducingFrameDrops.html" />
+    <link rel="prev" title="Non-slip timing for imaging" href="nonSlipTiming.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reducingFrameDrops.html" title="Reducing dropped frames"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nonSlipTiming.html" title="Non-slip timing for imaging"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" accesskey="U">Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Detecting dropped frames</a><ul>
+<li><a class="reference internal" href="#turn-on-frame-time-recording">Turn on frame time recording</a></li>
+<li><a class="reference internal" href="#warn-me-if-i-drop-a-frame">Warn me if I drop a frame</a></li>
+<li><a class="reference internal" href="#show-me-all-the-frame-times-that-i-recorded">Show me all the frame times that I recorded</a></li>
+<li><a class="reference internal" href="#blocking-on-the-vbi">&#8216;Blocking&#8217; on the VBI</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="nonSlipTiming.html"
+                                  title="previous chapter">Non-slip timing for imaging</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="reducingFrameDrops.html"
+                                  title="next chapter">Reducing dropped frames</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/general/timing/detectingFrameDrops.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="detecting-dropped-frames">
+<span id="detectdroppedframes"></span><h1>Detecting dropped frames<a class="headerlink" href="#detecting-dropped-frames" title="Permalink to this headline">¶</a></h1>
+<p>Occasionally you will drop frames if you:</p>
+<ul class="simple">
+<li>try to do too much drawing</li>
+<li>do it in an inefficient manner (write poor code)</li>
+<li>have a poor computer/graphics card</li>
+</ul>
+<p>Things to avoid:</p>
+<ul class="simple">
+<li>recreating textures for stimuli</li>
+<li>building new stimuli from scratch (create them once at the top of your script</li>
+</ul>
+<p>and then change them using <code class="xref py py-meth docutils literal"><span class="pre">stim.setOri(ori)()</span></code>, <cite>stim.setPos([x,y]...)</cite></p>
+<div class="section" id="turn-on-frame-time-recording">
+<h2>Turn on frame time recording<a class="headerlink" href="#turn-on-frame-time-recording" title="Permalink to this headline">¶</a></h2>
+<p>The key sometimes is <em>knowing</em> if you are dropping frames. PsychoPy can help
+with that by keeping track of frame durations. By default, frame time tracking
+is turned off because many people don&#8217;t need it, but it can be turned on any
+time after <a class="reference internal" href="../../api/visual/window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> creation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">visual</span>
+<span class="n">win</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">Window</span><span class="p">([</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">])</span>
+<span class="n">win</span><span class="o">.</span><span class="n">recordFrameIntervals</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Since there are often dropped frames just after the system is initialised, it
+makes sense to start off with a fixation period, or a ready message and don&#8217;t
+start recording frame times until that has ended. Obviously if you aren&#8217;t
+refreshing the window at some point (e.g. waiting for a key press with an
+unchanging screen) then you should turn off the recording of frame times or it
+will give spurious results.</p>
+</div>
+<div class="section" id="warn-me-if-i-drop-a-frame">
+<h2>Warn me if I drop a frame<a class="headerlink" href="#warn-me-if-i-drop-a-frame" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to check if a frame has been dropped is to get PsychoPy to
+report a warning if it thinks a frame was dropped:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">visual</span><span class="p">,</span> <span class="n">logging</span>
+<span class="n">win</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">Window</span><span class="p">([</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">])</span>
+
+<span class="n">win</span><span class="o">.</span><span class="n">recordFrameIntervals</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># By default, the threshold is set to 120% of the estimated refresh</span>
+<span class="c1"># duration, but arbitrary values can be set.</span>
+<span class="c1">#</span>
+<span class="c1"># I&#39;ve got 85Hz monitor and want to allow 4 ms tolerance; any refresh that</span>
+<span class="c1"># takes longer than the specified period will be considered a &quot;dropped&quot;</span>
+<span class="c1"># frame and increase the count of win.nDroppedFrames.</span>
+<span class="n">win</span><span class="o">.</span><span class="n">refreshThreshold</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">85</span> <span class="o">+</span> <span class="mf">0.004</span>
+
+<span class="c1"># Set the log module to report warnings to the standard output window</span>
+<span class="c1"># (default is errors only).</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Overall, </span><span class="si">%i</span><span class="s1"> frames were dropped.&#39;</span> <span class="o">%</span> <span class="n">win</span><span class="o">.</span><span class="n">nDroppedFrames</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-me-all-the-frame-times-that-i-recorded">
+<h2>Show me all the frame times that I recorded<a class="headerlink" href="#show-me-all-the-frame-times-that-i-recorded" title="Permalink to this headline">¶</a></h2>
+<p>While recording frame times, these are simply appended, every frame to
+win.frameIntervals (a list). You can simply plot these at the end of your script
+using matplotlib:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">win</span><span class="o">.</span><span class="n">frameIntervals</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or you could save them to disk. A convenience function is provided for this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">win</span><span class="o">.</span><span class="n">saveFrameIntervals</span><span class="p">(</span><span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above will save the currently stored frame intervals (using the default
+filename, &#8216;lastFrameIntervals.log&#8217;) and then clears the data. The saved file is</p>
+<blockquote>
+<div>a simple text file.</div></blockquote>
+<p>At any time you can also retrieve the time of the /last/ frame flip using
+win.lastFrameT (the time is synchronised with logging.defaultClock so it will
+match any logging commands that your script uses).</p>
+</div>
+<div class="section" id="blocking-on-the-vbi">
+<span id="blockingonvbi"></span><h2>&#8216;Blocking&#8217; on the VBI<a class="headerlink" href="#blocking-on-the-vbi" title="Permalink to this headline">¶</a></h2>
+<p>As of version 1.62 PsychoPy &#8216;blocks&#8217; on the vertical blank interval meaning
+that, once Window.flip() has been called, no code will be executed until that
+flip actually takes place. The timestamp for the above frame interval
+measurements is taken immediately after the flip occurs. Run the timeByFrames
+demo in Coder to see the precision of these measurements on your system. They
+should be within 1ms of your mean frame interval.</p>
+<p>Note that Intel integrated graphics chips (e.g. GMA 945) under win32 do not sync
+to the screen at all and so blocking on those machines is not possible.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reducingFrameDrops.html" title="Reducing dropped frames"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nonSlipTiming.html" title="Non-slip timing for imaging"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" >Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

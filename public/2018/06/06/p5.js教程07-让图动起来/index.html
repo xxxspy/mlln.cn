@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="p5.js教程07-让图动起来"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>p5.js教程07-让图动起来 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/06/06/p5.js教程07-让图动起来/index.html",
+    "appid": "1600845001263316",
+    "title": "p5.js教程07-让图动起来",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-06-06T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/06/06/p5.js教程07-让图动起来/">
+                p5.js教程07-让图动起来
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="p5.js教程07-让图动起来"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年06月06日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#帧的概念"><span class="toc-number">1.</span> <span class="toc-text">帧的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制运动速度和方向"><span class="toc-number">2.</span> <span class="toc-text">控制运动速度和方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计时"><span class="toc-number">3.</span> <span class="toc-text">计时</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>发表,未经允许不得转载。 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>jupyter notebook</li>
+<li>p5.js 0.6.1</li>
+</ul>
+<p>在此之前的教程中你可能已经见过动态的效果了, 不过我们在这里更详细和系统的说明下。</p>
+<p>就像翻书一样，屏幕上的动画是通过不断显示不同的图像来显示动态效果的。我们需要绘制图像，然后绘制稍微不同的图像，然后绘制另一个图像，依此类推, 让这些图像连续出现。当以足够快的速度呈现一组相似图像时，我们的大脑将这些图像转换为运动。</p>
+<p>(下面我们注册p5魔法, 以便于在jupyter notebook中使用p5.js, 如果你不用notebook, 请忽略这部分python代码)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.core.magic <span class="keyword">import</span> register_cell_magic</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> IFrame</span><br><span class="line"></span><br><span class="line">TEMPLATE = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">&lt;meta charset="utf-8" /&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;title&gt;Notebook中显示P5.js页面&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;a href="http://mlln.cn"  target="_blank"&gt;&lt;h5&gt;p5.js效果展示: %(name)s&lt;/h5&gt;&lt;/a&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">%(script)s</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register_cell_magic</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">p5</span><span class="params">(line, cell)</span>:</span></span><br><span class="line">    file_id, kws = line.split(<span class="string">' '</span>)[<span class="number">0</span>], line.split(<span class="string">' '</span>)[<span class="number">1</span>:]</span><br><span class="line">    kwargs = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> kw <span class="keyword">in</span> kws:</span><br><span class="line">        k, v = kw.split(<span class="string">'='</span>)</span><br><span class="line">        kwargs[k] = v</span><br><span class="line">    filename = <span class="string">f"p5js-html/p5-07-<span class="subst">&#123;file_id&#125;</span>.html"</span></span><br><span class="line">    <span class="keyword">with</span> open(filename, <span class="string">"w"</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(TEMPLATE % &#123;<span class="string">"script"</span>: cell, <span class="string">"name"</span>: filename&#125;)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'height'</span> <span class="keyword">not</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        kwargs[<span class="string">'height'</span>] = <span class="string">'200px'</span></span><br><span class="line">    <span class="keyword">return</span> IFrame(filename, width=<span class="string">"100%"</span>, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> p5</span><br></pre></td></tr></table></figure>
+<h3 id="帧的概念"><a href="#帧的概念" class="headerlink" title="帧的概念"></a>帧的概念</h3><p>为了创建平滑的运动，p5.js尝试以每秒60帧的速度运行draw（）内的代码。帧是draw（）函数的一次执行，帧速率是每秒绘制的帧数。因此，每秒绘制60帧的程序意味着程序每秒60运行60次draw（）函数。</p>
+<h3 id="控制运动速度和方向"><a href="#控制运动速度和方向" class="headerlink" title="控制运动速度和方向"></a>控制运动速度和方向</h3><p>通常我们用物体在每帧的位移大小来表示速度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">%%p5 speed height=<span class="number">250</span></span><br><span class="line">// 速度是每帧<span class="number">1</span>个像素</span><br><span class="line">let speed = <span class="number">1</span></span><br><span class="line">// 方向有<span class="number">1</span> 和 <span class="number">-1</span>两个取值</span><br><span class="line">let direction = <span class="number">1</span></span><br><span class="line">let x = <span class="number">1</span></span><br><span class="line">function setup() &#123;  </span><br><span class="line">    createCanvas(<span class="number">220</span>, <span class="number">220</span>);  </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function draw() &#123;</span><br><span class="line">    // 更改小球的x坐标实现运动效果</span><br><span class="line">    x += speed*direction;</span><br><span class="line">    background(<span class="number">204</span>); </span><br><span class="line">    ellipse(x, <span class="number">100</span>, <span class="number">20</span>, <span class="number">20</span>); </span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">220</span>)&#123;</span><br><span class="line">        direction = <span class="number">-1</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(x &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        direction = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="250" src="p5js-html/p5-07-speed.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<p>更复杂的案例, 制作一个随机运动的小球。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">%%p5 speed-random height=<span class="number">280</span></span><br><span class="line">// 速度是每帧<span class="number">1</span>个像素</span><br><span class="line">// 用random生成一个随机数</span><br><span class="line">let speed_x = <span class="number">1</span> </span><br><span class="line">let speed_y = <span class="number">2</span> </span><br><span class="line">// 方向有<span class="number">1</span> 和 <span class="number">-1</span>两个取值</span><br><span class="line">let direction_x = <span class="number">1</span></span><br><span class="line">let direction_y = <span class="number">1</span></span><br><span class="line">let x = <span class="number">1</span></span><br><span class="line">let y = <span class="number">50</span></span><br><span class="line">function setup() &#123;  </span><br><span class="line">    createCanvas(<span class="number">220</span>, <span class="number">220</span>);  </span><br><span class="line">    // 使用random方法可以生成处于两个参数之间的数字</span><br><span class="line">    speed_x *= random(<span class="number">1</span>, <span class="number">10</span>) * <span class="number">0.1</span></span><br><span class="line">    speed_y *= random(<span class="number">5</span>, <span class="number">10</span>) * <span class="number">0.1</span></span><br><span class="line">    // 方向也是随机的</span><br><span class="line">    <span class="keyword">if</span> (random(<span class="number">0</span>, <span class="number">1</span>)&gt;<span class="number">0.5</span>)&#123;</span><br><span class="line">        direction_x *= <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (random(<span class="number">0</span>, <span class="number">1</span>)&gt;<span class="number">0.5</span>)&#123;</span><br><span class="line">        direction_y *= <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function draw() &#123;</span><br><span class="line">    // 更改小球的x坐标实现运动效果</span><br><span class="line">    x += speed_x*direction_x;</span><br><span class="line">    y += speed_y*direction_y;</span><br><span class="line">    background(<span class="number">204</span>); </span><br><span class="line">    ellipse(x, y, <span class="number">20</span>, <span class="number">20</span>); </span><br><span class="line">    // 判断小球在x方向上是否出界</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">210</span>)&#123;</span><br><span class="line">        direction_x = <span class="number">-1</span></span><br><span class="line">        // 如果出界, 调转方向</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(x &lt; <span class="number">10</span>)&#123;</span><br><span class="line">        direction_x = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    // 判断小球在y方向上是否出界</span><br><span class="line">    <span class="keyword">if</span>(y &gt; <span class="number">210</span>)&#123;</span><br><span class="line">        // 如果出界, 调转方向</span><br><span class="line">        direction_y = <span class="number">-1</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(y &lt; <span class="number">10</span>)&#123;</span><br><span class="line">        direction_y = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="280" src="p5js-html/p5-07-speed-random.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h3 id="计时"><a href="#计时" class="headerlink" title="计时"></a>计时</h3><p>每个p5.js程序都会计算自启动以来经过的时间。它以毫秒（千分之一秒）计，因此在1秒后，计数器为1,000; 5秒后，它达到5,000; 1分钟后，它是60,000。我们可以使用此计数器在特定时间触发动画。 millis（）函数返回此计数器值。</p>
+<p>下面我们制作一个可以定时改变颜色的小球。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">%%p5 speed-random-change-color height=<span class="number">280</span></span><br><span class="line">// 速度是每帧<span class="number">1</span>个像素</span><br><span class="line">// 用random生成一个随机数</span><br><span class="line">let speed_x = <span class="number">1</span> </span><br><span class="line">let speed_y = <span class="number">2</span> </span><br><span class="line">// 方向有<span class="number">1</span> 和 <span class="number">-1</span>两个取值</span><br><span class="line">let direction_x = <span class="number">1</span></span><br><span class="line">let direction_y = <span class="number">1</span></span><br><span class="line">let x = <span class="number">1</span></span><br><span class="line">let y = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">// 记录上次更改颜色的时间</span><br><span class="line">let change_time = <span class="number">0</span>;</span><br><span class="line">function setup() &#123;  </span><br><span class="line">    createCanvas(<span class="number">220</span>, <span class="number">220</span>);  </span><br><span class="line">    // 使用random方法可以生成处于两个参数之间的数字</span><br><span class="line">    speed_x *= random(<span class="number">1</span>, <span class="number">10</span>) * <span class="number">0.1</span></span><br><span class="line">    speed_y *= random(<span class="number">5</span>, <span class="number">10</span>) * <span class="number">0.1</span></span><br><span class="line">    // 方向也是随机的</span><br><span class="line">    <span class="keyword">if</span> (random(<span class="number">0</span>, <span class="number">1</span>)&gt;<span class="number">0.5</span>)&#123;</span><br><span class="line">        direction_x *= <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (random(<span class="number">0</span>, <span class="number">1</span>)&gt;<span class="number">0.5</span>)&#123;</span><br><span class="line">        direction_y *= <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function draw() &#123;</span><br><span class="line">    // 更改小球的x坐标实现运动效果</span><br><span class="line">    x += speed_x*direction_x;</span><br><span class="line">    y += speed_y*direction_y;</span><br><span class="line">    background(<span class="number">204</span>); </span><br><span class="line">    ellipse(x, y, <span class="number">20</span>, <span class="number">20</span>); </span><br><span class="line">    // 判断小球在x方向上是否出界</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">210</span>)&#123;</span><br><span class="line">        direction_x = <span class="number">-1</span></span><br><span class="line">        // 如果出界, 调转方向</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(x &lt; <span class="number">10</span>)&#123;</span><br><span class="line">        direction_x = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    // 判断小球在y方向上是否出界</span><br><span class="line">    <span class="keyword">if</span>(y &gt; <span class="number">210</span>)&#123;</span><br><span class="line">        // 如果出界, 调转方向</span><br><span class="line">        direction_y = <span class="number">-1</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(y &lt; <span class="number">10</span>)&#123;</span><br><span class="line">        direction_y = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    // 获取当前时间</span><br><span class="line">    let current = millis()</span><br><span class="line"></span><br><span class="line">    // 每隔<span class="number">1000</span>毫秒执行一次</span><br><span class="line">    // 判断时间是否超过<span class="number">1000</span>毫秒</span><br><span class="line">    <span class="keyword">if</span> (current - change_time &gt; <span class="number">1000</span>)&#123;</span><br><span class="line">        fill(random(<span class="number">1</span>, <span class="number">255</span>), random(<span class="number">1</span>, <span class="number">255</span>), random(<span class="number">1</span>, <span class="number">255</span>))</span><br><span class="line">        // change_time的值</span><br><span class="line">        change_time = current</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="280" src="p5js-html/p5-07-speed-random-change-color.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="p5.js教程07-让图动起来.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/p5-js/">#p5.js</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/p5-js/">
+            p5.js
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js教程01-快速入门/">
+                    p5.js教程01-一文入门p5.js
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js在jupyter-notebook中使用/">
+                    p5.js在jupyter-notebook中使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程03-动作响应/">
+                    p5.js教程03-动作响应
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程02-绘制简单图形/">
+                    p5.js教程02-绘制简单图形
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程06-显示文字/">
+                    p5.js教程06-显示文字
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程05-图片处理/">
+                    p5.js教程05-图片处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程07-让图动起来/">
+                    p5.js教程07-让图动起来
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js案例01-行走的人/">
+                    p5.js案例01-行走的人
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程04-平移-旋转-缩放/">
+                    p5.js教程04-平移-旋转-缩放
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

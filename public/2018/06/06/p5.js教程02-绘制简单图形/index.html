@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="p5.js教程02-绘制简单图形"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>p5.js教程02-绘制简单图形 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/06/06/p5.js教程02-绘制简单图形/index.html",
+    "appid": "1600845001263316",
+    "title": "p5.js教程02-绘制简单图形",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-06-06T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/06/06/p5.js教程02-绘制简单图形/">
+                p5.js教程02-绘制简单图形
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="p5.js教程02-绘制简单图形"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年06月06日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建画布"><span class="toc-number">1.</span> <span class="toc-text">创建画布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制基本图形"><span class="toc-number">2.</span> <span class="toc-text">绘制基本图形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#像素点"><span class="toc-number">2.1.</span> <span class="toc-text">像素点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#线段"><span class="toc-number">2.2.</span> <span class="toc-text">线段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图形"><span class="toc-number">2.3.</span> <span class="toc-text">图形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#矩形和圆形"><span class="toc-number">2.4.</span> <span class="toc-text">矩形和圆形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制扇形"><span class="toc-number">2.5.</span> <span class="toc-text">绘制扇形</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图形重叠次序"><span class="toc-number">3.</span> <span class="toc-text">图形重叠次序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图形属性"><span class="toc-number">4.</span> <span class="toc-text">图形属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#轮廓粗细-strokeWeight"><span class="toc-number">4.1.</span> <span class="toc-text">轮廓粗细(strokeWeight)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#轮廓端点风格"><span class="toc-number">4.2.</span> <span class="toc-text">轮廓端点风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#颜色"><span class="toc-number">4.3.</span> <span class="toc-text">颜色</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂图形"><span class="toc-number">5.</span> <span class="toc-text">复杂图形</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>发表,未经允许不得转载。 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>jupyter notebook</li>
+<li>p5.js 0.6.1</li>
+</ul>
+<p>在计算机屏幕上绘图就像在方格纸上绘图一样。但随着新概念的引入，用软件绘制简单的形状扩展到绘制动画和界面。在我们进行高阶应用之前，我们需要从头开始。计算机屏幕是像素构成的网格。像素的坐标就是在屏幕上的位置。创建p5.js程序时，可以使用Web浏览器进行预览。在浏览器的窗口中，p5.js创建一个画布，即绘制图形的区域。画布可以与窗口大小相同，也可以具有不同的尺寸。画布通常位于窗口的左上角，但您可以将其放置在其他位置。在画布上绘制时，x坐标是距画布左边缘的距离，y坐标是距上边缘的距离。我们写这样一个像素的坐标：（x，y）。因此，如果画布是200×200像素，左上角是（0,0），中间是（100,100），右下角是（199,199）。这些数字可能看起来令人困惑;为什么我们从0到199而不是1到200？答案是，在代码中，我们通常从0开始计算，这使得很多程序写起来更简单。</p>
+<p>(下面我们注册p5魔法, 以便于在jupyter notebook中使用p5.js, 如果你不用notebook, 请忽略这部分python代码)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.core.magic <span class="keyword">import</span> register_cell_magic</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> IFrame</span><br><span class="line"></span><br><span class="line">TEMPLATE = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;html&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;title&gt;Notebook中显示P5.js页面&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;a href="http://mlln.cn"  target="_blank"&gt;&lt;h5&gt;p5.js效果展示: %(name)s&lt;/h5&gt;&lt;/a&gt;</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">%(script)s</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register_cell_magic</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">p5</span><span class="params">(line, cell)</span>:</span></span><br><span class="line">    file_id, kws = line.split(<span class="string">' '</span>)[<span class="number">0</span>], line.split(<span class="string">' '</span>)[<span class="number">1</span>:]</span><br><span class="line">    kwargs = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> kw <span class="keyword">in</span> kws:</span><br><span class="line">        k, v = kw.split(<span class="string">'='</span>)</span><br><span class="line">        kwargs[k] = v</span><br><span class="line">    filename = <span class="string">f"p5js-html/p5-02-<span class="subst">&#123;file_id&#125;</span>.html"</span></span><br><span class="line">    <span class="keyword">with</span> open(filename, <span class="string">"w"</span>) <span class="keyword">as</span> fp:</span><br><span class="line">        fp.write(TEMPLATE % &#123;<span class="string">"script"</span>: cell, <span class="string">"name"</span>: filename&#125;)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'height'</span> <span class="keyword">not</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        kwargs[<span class="string">'height'</span>] = <span class="string">'200px'</span></span><br><span class="line">    <span class="keyword">return</span> IFrame(filename, width=<span class="string">"100%"</span>, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> p5</span><br></pre></td></tr></table></figure>
+<h3 id="创建画布"><a href="#创建画布" class="headerlink" title="创建画布"></a>创建画布</h3><p>创建画布并通过函数在内部绘制图像。函数是p5.js程序的基本构建块。函数的行为由其参数定义。例如，几乎每个p5.js程序都有一个createCanvas函数，用于创建具有特定宽度和高度的绘图画布。如果您的程序没有createCanvas函数，则p5会默认的创建尺寸为100×100像素的画布。</p>
+<p>createCanvas函数有两个参数;第一个设置绘图画布的宽度，第二个设置高度。要绘制宽度为80像素，高度为60像素的画布，请键入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%%p5 create-canvas height=<span class="number">100</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;</span><br><span class="line">    createCanvas(<span class="number">80</span>, <span class="number">60</span>); </span><br><span class="line">    // 设置背景以便于你看清画布</span><br><span class="line">    background(<span class="number">100</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="100px" src="p5js-html/p5-02-create-canvas.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h3 id="绘制基本图形"><a href="#绘制基本图形" class="headerlink" title="绘制基本图形"></a>绘制基本图形</h3><h4 id="像素点"><a href="#像素点" class="headerlink" title="像素点"></a>像素点</h4><p>要设置画布中单个像素的颜色，我们使用point（）函数。它有两个定义位置的参数：x坐标后跟y坐标。要在它的中心创建一个小画布和一个点，坐标（24,6），键入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%%p5 draw-point height=<span class="number">100</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">48</span>, <span class="number">24</span>); &#125;</span><br><span class="line">function draw() &#123;  </span><br><span class="line">    background(<span class="number">204</span>)  </span><br><span class="line">    point(<span class="number">24</span>, <span class="number">6</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="100px" src="p5js-html/p5-02-draw-point.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<p>你可能看不清这个像素点。</p>
+<h4 id="线段"><a href="#线段" class="headerlink" title="线段"></a>线段</h4><p>要在坐标（20,50）和（420,110）之间画一条线，请尝试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%%p5 draw-line height=<span class="number">150</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>); &#125;</span><br><span class="line">function draw() &#123;  </span><br><span class="line">    background(<span class="number">204</span>);  </span><br><span class="line">    line(<span class="number">20</span>, <span class="number">50</span>, <span class="number">420</span>, <span class="number">110</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="150px" src="p5js-html/p5-02-draw-line.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h4 id="图形"><a href="#图形" class="headerlink" title="图形"></a>图形</h4><p>遵循上例的模式，三角形需要六个参数，四边形需要八个（每个点一对）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%%p5 draw-shape height=<span class="number">180</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>); &#125;</span><br><span class="line">function draw() &#123;  </span><br><span class="line">    background(<span class="number">204</span>); </span><br><span class="line">    // 四边形</span><br><span class="line">    quad(<span class="number">118</span>, <span class="number">55</span>, <span class="number">199</span>, <span class="number">14</span>, <span class="number">392</span>, <span class="number">66</span>, <span class="number">351</span>, <span class="number">107</span>); </span><br><span class="line">    // 三角形</span><br><span class="line">    triangle(<span class="number">247</span>, <span class="number">54</span>, <span class="number">392</span>, <span class="number">9</span>, <span class="number">392</span>, <span class="number">66</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-draw-shape.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h4 id="矩形和圆形"><a href="#矩形和圆形" class="headerlink" title="矩形和圆形"></a>矩形和圆形</h4><p>矩形和椭圆都用四个参数定义：第一个和第二个是锚点的x和y坐标，第三个是宽度，第四个是高度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%%p5 draw-rect-ellipse height=<span class="number">180</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>); &#125;</span><br><span class="line">function draw() &#123;  </span><br><span class="line">    background(<span class="number">204</span>); </span><br><span class="line">    // 矩形</span><br><span class="line">    rect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="number">100</span>)</span><br><span class="line">    // 圆形</span><br><span class="line">    ellipse(<span class="number">150</span>,<span class="number">60</span>,<span class="number">80</span>,<span class="number">100</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-draw-rect-ellipse.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h4 id="绘制扇形"><a href="#绘制扇形" class="headerlink" title="绘制扇形"></a>绘制扇形</h4><p>arc可以绘制圆形的一部分。</p>
+<p>第一个和第二个参数设置位置，而第三个和第四个参数设置宽度和高度。第五个参数设置开始弧的角度，第六个参数设置要停止的角度。角度以弧度而不是度数设置。弧度是基于pi值（3.14159）的角度测量值。图3-2显示了两者的关系。如本例中所示，使用了四个弧度值，因此它们的特殊名称被添加为p5.js的一部分。值PI，QUARTER_PI，HALF_PI和TWO_PI可用于替换180°，45°，90°和360°的弧度值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">%%p5 draw-arc height=<span class="number">180</span>px</span><br><span class="line">let x = <span class="number">0</span></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">580</span>, <span class="number">120</span>); &#125;</span><br><span class="line">function draw() &#123;  </span><br><span class="line">    background(<span class="number">204</span>);  </span><br><span class="line">    x += <span class="number">0.1</span></span><br><span class="line">    arc(<span class="number">90</span>, <span class="number">60</span>, <span class="number">80</span>, <span class="number">80</span>, <span class="number">0</span>, HALF_PI);  </span><br><span class="line">    arc(<span class="number">190</span>, <span class="number">60</span>, <span class="number">80</span>, <span class="number">80</span>, <span class="number">0</span>, PI+HALF_PI);  </span><br><span class="line">    arc(<span class="number">290</span>, <span class="number">60</span>, <span class="number">80</span>, <span class="number">80</span>, PI, TWO_PI+HALF_PI);  </span><br><span class="line">    // 动态改变起始位置, 可以看到转动效果</span><br><span class="line">    arc(<span class="number">390</span>, <span class="number">60</span>, <span class="number">80</span>, <span class="number">80</span>, QUARTER_PI+x, PI+QUARTER_PI+x); </span><br><span class="line">    // 如果你想使用度数, 而不是弧度</span><br><span class="line">    arc(<span class="number">490</span>, <span class="number">60</span>, <span class="number">80</span>, <span class="number">80</span>, radians(<span class="number">30</span>), radians(<span class="number">90</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-draw-arc.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h3 id="图形重叠次序"><a href="#图形重叠次序" class="headerlink" title="图形重叠次序"></a>图形重叠次序</h3><p>先后绘制的图形有可能覆盖之前绘制的图形。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%%p5 draw-overlap height=<span class="number">180</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>); &#125;</span><br><span class="line">function draw() &#123;  </span><br><span class="line">    background(<span class="number">204</span>); </span><br><span class="line">    // 矩形</span><br><span class="line">    rect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="number">100</span>)</span><br><span class="line">    // 圆形</span><br><span class="line">    ellipse(<span class="number">100</span>,<span class="number">60</span>,<span class="number">80</span>,<span class="number">100</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-draw-overlap.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h3 id="图形属性"><a href="#图形属性" class="headerlink" title="图形属性"></a>图形属性</h3><h4 id="轮廓粗细-strokeWeight"><a href="#轮廓粗细-strokeWeight" class="headerlink" title="轮廓粗细(strokeWeight)"></a>轮廓粗细(strokeWeight)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">%%p5 stroke-properties height=<span class="number">180</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>); &#125;</span><br><span class="line">let weight = <span class="number">1</span></span><br><span class="line">function draw() &#123;  </span><br><span class="line">    weight += <span class="number">1</span></span><br><span class="line">    background(<span class="number">204</span>); </span><br><span class="line">    // 设置线粗细</span><br><span class="line">    strokeWeight(weight)</span><br><span class="line">    // 圆形</span><br><span class="line">    ellipse(<span class="number">100</span>,<span class="number">60</span>,<span class="number">80</span>,<span class="number">100</span>)</span><br><span class="line">    <span class="keyword">if</span> (weight==<span class="number">200</span>)&#123;</span><br><span class="line">        weight=<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-stroke-properties.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h4 id="轮廓端点风格"><a href="#轮廓端点风格" class="headerlink" title="轮廓端点风格"></a>轮廓端点风格</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">%%p5 strokeJoin height=<span class="number">180</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>);  strokeWeight(<span class="number">12</span>); &#125;</span><br><span class="line">function draw() &#123;</span><br><span class="line">    background(<span class="number">204</span>);  </span><br><span class="line">     // 圆弧夹角</span><br><span class="line">    strokeJoin(ROUND);      </span><br><span class="line">    rect(<span class="number">40</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">70</span>);  </span><br><span class="line">    // Bevel型夹角</span><br><span class="line">    strokeJoin(BEVEL);      </span><br><span class="line">     rect(<span class="number">140</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">70</span>); </span><br><span class="line">    // 直角线端点</span><br><span class="line">    strokeCap(SQUARE);      </span><br><span class="line">    line(<span class="number">270</span>, <span class="number">25</span>, <span class="number">340</span>, <span class="number">95</span>);  </span><br><span class="line">    // 圆弧形端点</span><br><span class="line">     strokeCap(ROUND);       </span><br><span class="line">    line(<span class="number">350</span>, <span class="number">25</span>, <span class="number">420</span>, <span class="number">95</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-strokeJoin.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h4 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h4><p>到目前为止，所有的形状都是白色的，带有黑色轮廓。要更改此设置，请使用fill（）和stroke（）函数。参数值的范围为0到255，其中255为白色，128为中灰色，0为黑色。我们在前面的例子中看到的background（）函数以相同的方式工作，它设置画布的背景颜色。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">%%p5 color height=<span class="number">180</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>) &#125;</span><br><span class="line">function draw() &#123;</span><br><span class="line">    background(<span class="number">204</span>);  </span><br><span class="line">     // 填充红色</span><br><span class="line">    // 三个参数分别是 R G B</span><br><span class="line">    fill(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)  </span><br><span class="line">    // 轮廓黑色</span><br><span class="line">    stroke(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);  </span><br><span class="line">    rect(<span class="number">40</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">70</span>);  </span><br><span class="line">     // 填充绿色</span><br><span class="line">    fill(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)   </span><br><span class="line">    // 轮廓红色</span><br><span class="line">    stroke(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>);  </span><br><span class="line">     rect(<span class="number">140</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">70</span>); </span><br><span class="line">    // 轮廓颜色(随便设置了一个颜色)</span><br><span class="line">    stroke(<span class="number">129</span>,<span class="number">20</span>,<span class="number">255</span>);      </span><br><span class="line">    line(<span class="number">270</span>, <span class="number">25</span>, <span class="number">340</span>, <span class="number">95</span>);  </span><br><span class="line">    // 第<span class="number">4</span>个参数设置透明度</span><br><span class="line">    fill(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">    rect(<span class="number">370</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">70</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-color.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<h3 id="复杂图形"><a href="#复杂图形" class="headerlink" title="复杂图形"></a>复杂图形</h3><p>你不仅可以使用这些基本几何形状 - 还可以通过连接一系列点来定义新形状。</p>
+<p>beginShape（）函数指示新形状的开始。 vertex（）函数用于定义点的x和y坐标。最后，调用endShape（）来表示形状已完成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">%%p5 beginshape-endshape height=<span class="number">180</span>px</span><br><span class="line"></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>) &#125;</span><br><span class="line">function draw() &#123;</span><br><span class="line">    background(<span class="number">204</span>);  </span><br><span class="line">    // 绘制一个太阳</span><br><span class="line">    fill(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">    stroke(<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">    strokeWeight(<span class="number">6</span>)</span><br><span class="line">    ellipse(<span class="number">360</span>, <span class="number">110</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">    // 开始绘制山的图形</span><br><span class="line">    // 设置颜色为灰色</span><br><span class="line">    fill(<span class="number">45</span>,<span class="number">45</span>,<span class="number">45</span>)</span><br><span class="line">    stroke(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    strokeWeight(<span class="number">1</span>)</span><br><span class="line">    beginShape()</span><br><span class="line">    vertex(<span class="number">0</span>,<span class="number">120</span>)</span><br><span class="line">    vertex(<span class="number">10</span>, <span class="number">40</span>)</span><br><span class="line">    vertex(<span class="number">40</span>, <span class="number">100</span>)</span><br><span class="line">    vertex(<span class="number">80</span>, <span class="number">20</span>)</span><br><span class="line">    vertex(<span class="number">110</span>, <span class="number">80</span>)</span><br><span class="line">    vertex(<span class="number">260</span>, <span class="number">50</span>)</span><br><span class="line">    vertex(<span class="number">360</span>, <span class="number">110</span>)</span><br><span class="line">    vertex(<span class="number">400</span>, <span class="number">10</span>)</span><br><span class="line">    vertex(<span class="number">480</span>, <span class="number">120</span>)</span><br><span class="line">    // 结束绘制图形</span><br><span class="line">    endShape()</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-beginshape-endshape.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<p>如果你觉得不过瘾, 可以做一个太阳落山的动画:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">%%p5 beginshape-endshape-moving height=<span class="number">180</span>px</span><br><span class="line">let sun_y=<span class="number">0</span></span><br><span class="line">function setup() &#123;  createCanvas(<span class="number">480</span>, <span class="number">120</span>) &#125;</span><br><span class="line">function draw() &#123;</span><br><span class="line">    sun_y += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span>(sun_y==<span class="number">200</span>)&#123;</span><br><span class="line">        sun_y=<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    background(<span class="number">204</span>);  </span><br><span class="line">    // 绘制一个太阳</span><br><span class="line">    fill(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">    stroke(<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">    strokeWeight(<span class="number">6</span>)</span><br><span class="line">    ellipse(<span class="number">360</span>, sun_y, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">    // 开始绘制山的图形</span><br><span class="line">    // 设置颜色为灰色</span><br><span class="line">    fill(<span class="number">45</span>,<span class="number">45</span>,<span class="number">45</span>)</span><br><span class="line">    stroke(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    strokeWeight(<span class="number">1</span>)</span><br><span class="line">    beginShape()</span><br><span class="line">    vertex(<span class="number">0</span>,<span class="number">120</span>)</span><br><span class="line">    vertex(<span class="number">10</span>, <span class="number">40</span>)</span><br><span class="line">    vertex(<span class="number">40</span>, <span class="number">100</span>)</span><br><span class="line">    vertex(<span class="number">80</span>, <span class="number">20</span>)</span><br><span class="line">    vertex(<span class="number">110</span>, <span class="number">80</span>)</span><br><span class="line">    vertex(<span class="number">260</span>, <span class="number">50</span>)</span><br><span class="line">    vertex(<span class="number">360</span>, <span class="number">110</span>)</span><br><span class="line">    vertex(<span class="number">400</span>, <span class="number">10</span>)</span><br><span class="line">    vertex(<span class="number">480</span>, <span class="number">120</span>)</span><br><span class="line">    // 结束绘制图形</span><br><span class="line">    endShape()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+
+        <iframe width="100%" height="180px" src="p5js-html/p5-02-beginshape-endshape-moving.html" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="p5.js教程02-绘制简单图形.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/p5-js/">#p5.js</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/p5-js/">
+            p5.js
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js教程01-快速入门/">
+                    p5.js教程01-一文入门p5.js
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/06/p5.js在jupyter-notebook中使用/">
+                    p5.js在jupyter-notebook中使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程03-动作响应/">
+                    p5.js教程03-动作响应
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程02-绘制简单图形/">
+                    p5.js教程02-绘制简单图形
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程06-显示文字/">
+                    p5.js教程06-显示文字
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程05-图片处理/">
+                    p5.js教程05-图片处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程07-让图动起来/">
+                    p5.js教程07-让图动起来
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js案例01-行走的人/">
+                    p5.js案例01-行走的人
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/06/p5.js教程04-平移-旋转-缩放/">
+                    p5.js教程04-平移-旋转-缩放
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

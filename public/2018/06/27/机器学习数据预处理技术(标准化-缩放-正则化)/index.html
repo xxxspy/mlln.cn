@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="机器学习数据预处理技术(标准化-缩放-正则化)"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>机器学习数据预处理技术(标准化-缩放-正则化) - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/06/27/机器学习数据预处理技术(标准化-缩放-正则化)/index.html",
+    "appid": "1600845001263316",
+    "title": "机器学习数据预处理技术(标准化-缩放-正则化)",
+    "images": [
+        "http://mlln.cn/2018/06/27/机器学习数据预处理技术(标准化-缩放-正则化)/main.jpg"
+    ], 
+    "pubDate": "2018-06-27T06:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/06/27/机器学习数据预处理技术(标准化-缩放-正则化)/">
+                机器学习数据预处理技术(标准化-缩放-正则化)
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="机器学习数据预处理技术(标准化-缩放-正则化)"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年06月27日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据预处理技术介绍"><span class="toc-number">2.</span> <span class="toc-text">数据预处理技术介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据标准化"><span class="toc-number">3.</span> <span class="toc-text">数据标准化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#sklearn-preprocessing-scale"><span class="toc-number">3.0.1.</span> <span class="toc-text">sklearn.preprocessing.scale</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sklearn-preprocessing-StandardScaler"><span class="toc-number">3.0.2.</span> <span class="toc-text">sklearn.preprocessing.StandardScaler</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据缩放"><span class="toc-number">4.</span> <span class="toc-text">数据缩放</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MinMaxScaler-or-MaxAbsScaler"><span class="toc-number">4.0.1.</span> <span class="toc-text">MinMaxScaler or MaxAbsScaler</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缩放稀疏数据"><span class="toc-number">4.1.</span> <span class="toc-text">缩放稀疏数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带有异常值的数据缩放"><span class="toc-number">4.2.</span> <span class="toc-text">带有异常值的数据缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缩放和白化-whitening"><span class="toc-number">4.3.</span> <span class="toc-text">缩放和白化(whitening)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非线性转换¶"><span class="toc-number">5.</span> <span class="toc-text">非线性转换¶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正则化"><span class="toc-number">6.</span> <span class="toc-text">正则化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未完待续"><span class="toc-number">7.</span> <span class="toc-text">未完待续</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>机器学习模型千变万化, 每种模型需要的数据形式都略有不同, 所以我们一般花在数据提取/清理/格式化等操作的时间可能会占项目总时间的百分之七十(甚至更多)。</p>
+<p>不过, 借助别人已经写好的程序可以让我们的工作事半功倍。今天我们介绍的一个工具就是著名的python机器学习库sklearn, 它包含很多数据预处理技术, 下面我们就来列出常用的一些数据预处理技术, 以便大家提高效率, 也是给我自己的一个技术笔记。</p>
+<h3 id="数据预处理技术介绍"><a href="#数据预处理技术介绍" class="headerlink" title="数据预处理技术介绍"></a>数据预处理技术介绍</h3><p>数据集的标准化是scikit-learn中实现的许多机器学习估计器的通用要求;如果单个特征看起来不像标准正态分布数据那么它们可能会表现得很差：高斯分布的零均值和单位方差。</p>
+<p>在实践中，我们经常忽略分布的形状，只是通过去除每个特征的平均值来将数据转化为中心，然后通过将特征向量除以它们的标准差来对其进行调整。</p>
+<p>例如，学习算法的目标函数（如支持向量机的RBF核或线性模型的l1和l2正则化）中使用的许多元素都假定所有特征都以零为中心并具有相同数量级的方差。如果一个特征的方差比其他特征要大几个数量级，那么它可能会影响目标函数，使得算法无法正确地按照预期正确地学习其他特征。</p>
+<h3 id="数据标准化"><a href="#数据标准化" class="headerlink" title="数据标准化"></a>数据标准化</h3><h5 id="sklearn-preprocessing-scale"><a href="#sklearn-preprocessing-scale" class="headerlink" title="sklearn.preprocessing.scale"></a>sklearn.preprocessing.scale</h5><p>函数<code>scale</code>提供了一种在单个类似数组的数据集上执行标准化操作的快捷方法：</p>
+<p>(也就是特征向量减去平均值除以标准差)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">X = np.random.rand(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([[4.17022005e-01, 7.20324493e-01, 1.14374817e-04],
+           [3.02332573e-01, 1.46755891e-01, 9.23385948e-02],
+           [1.86260211e-01, 3.45560727e-01, 3.96767474e-01]])
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在垂直方向上做标准化</span></span><br><span class="line">X_scaled = preprocessing.scale(X)</span><br><span class="line">mean = X_scaled.mean(axis=<span class="number">0</span>)</span><br><span class="line">print(<span class="string">'Mean:'</span>, mean)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    Mean: [ 1.48029737e-16 -1.11022302e-16  7.40148683e-17]
+    
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std = X_scaled.std(axis=<span class="number">0</span>)</span><br><span class="line">print(<span class="string">'Std:'</span>, std)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    Std: [1. 1. 1.]
+    
+</div>
+
+<h5 id="sklearn-preprocessing-StandardScaler"><a href="#sklearn-preprocessing-StandardScaler" class="headerlink" title="sklearn.preprocessing.StandardScaler"></a>sklearn.preprocessing.StandardScaler</h5><p>我们经常需要保存训练阶段使用的标准差和平均值, sklearn为我们做好了一切。</p>
+<p>预处理模块还提供了一个实用程序类StandardScaler，它实现了Transformer API来计算训练集上的平均值和标准差，以便稍后能够在测试集上重新应用相同的转换。因此该类适用于<code>sklearn.pipeline.Pipeline</code>的早期步骤：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scaler = preprocessing.StandardScaler().fit(X)</span><br><span class="line">print(<span class="string">'Mean:'</span>, scaler.mean_)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([0.3018716 , 0.4042137 , 0.16307348])
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Std:'</span>, scaler.scale_)</span><br></pre></td></tr></table></figure>
+<p>在测试阶段, 我们只需要使用StandardScaler进行数据转换即可:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X_test = np.random.rand(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">scaler.transform(X_test)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([[-1.71411671, -0.86673532,  3.76248109],
+           [ 7.07355245, -0.38178469,  3.12275387],
+           [ 6.0983511 ,  2.06218199, -0.46039982]])
+</div>
+
+<h3 id="数据缩放"><a href="#数据缩放" class="headerlink" title="数据缩放"></a>数据缩放</h3><h5 id="MinMaxScaler-or-MaxAbsScaler"><a href="#MinMaxScaler-or-MaxAbsScaler" class="headerlink" title="MinMaxScaler or MaxAbsScaler"></a>MinMaxScaler or MaxAbsScaler</h5><p>(将特征向量缩放至一定范围)</p>
+<p>另一种标准化是缩放功能位于给定的最小值和最大值之间，通常在0和1之间，或者使每个功能的最大绝对值按比例缩放到单位大小。这可以分别使用<code>MinMaxScaler</code>或<code>MaxAbsScaler</code>来实现。</p>
+<p>使用这种扩展的目的包括对特征的非常小的标准偏差的鲁棒性以及在稀疏数据中保留零条目。</p>
+<ul>
+<li>MinMaxScaler 的转换类似于以下代码:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 标准化</span></span><br><span class="line">X_std = (X - X.min(axis=<span class="number">0</span>)) / (X.max(axis=<span class="number">0</span>) - X.min(axis=<span class="number">0</span>))</span><br><span class="line"><span class="comment">### 复原</span></span><br><span class="line">X_scaled = X_std * (max - min) + min</span><br></pre></td></tr></table></figure>
+<ul>
+<li>MaxAbsScaler 的转换类似于以下代码:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 标准化</span></span><br><span class="line">X_std = X / X.max(axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment">### 复原</span></span><br><span class="line">X_scaled = X_std * max</span><br></pre></td></tr></table></figure>
+<p>MaxAbsScaler以非常相似的方式工作，但通过除以每个特征中的最大值来使数据在<code>[-1,1]</code>范围内。这意味着你需要自己对数据中心化负责(它没有做中心化)。</p>
+<p>以下是将数据矩阵缩放到<code>[0,1]</code>范围的示例, 使用了MinMaxScaler类:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X = np.random.rand(<span class="number">3</span>,<span class="number">3</span>)*<span class="number">3</span></span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([[2.05950278, 2.50387702, 0.05486483],
+           [2.25043294, 2.96658327, 2.24449696],
+           [0.84133198, 2.36783799, 0.30967802]])
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scaler = preprocessing.MinMaxScaler()</span><br><span class="line">X_transformed = scaler.fit_transform(X)</span><br><span class="line">X_transformed</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([[0.86450214, 0.22720685, 0.        ],
+           [1.        , 1.        , 1.        ],
+           [0.        , 0.        , 0.1163726 ]])
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'range:'</span>, scaler.data_range_)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    range: [1.40910097 0.59874528 2.18963213]
+    
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'Min:'</span>, scaler.data_min_, <span class="string">'Max:'</span>, scaler.data_max_)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    Min: [0.84133198 2.36783799 0.05486483] Max: [2.25043294 2.96658327 2.24449696]
+    
+</div>
+
+<h4 id="缩放稀疏数据"><a href="#缩放稀疏数据" class="headerlink" title="缩放稀疏数据"></a>缩放稀疏数据</h4><p>将稀疏数据中心化会破坏数据中的稀疏结构，因此很少是明智的做法。然而，缩放稀疏数据是有意义的，特别是如果特征向量在不同的尺度上。</p>
+<p><code>MaxAbsScaler</code>和<code>maxabs_scale</code>专门用于缩放稀疏数据，并且是推荐的方法。但是，<code>scale</code>和<code>StandardScaler</code>可以接受scipy.sparse矩阵作为输入，只要将<code>with_mean = False</code>显式传递给构造函数即可。否则就会产生<code>ValueError</code>，因为静默集中会破坏稀疏性，并且通常会无意中分配过多的内存而导致执行崩溃。 <code>RobustScaler</code>无法适应稀疏输入，但可以在稀疏输入上使用变换方法。</p>
+<p>请注意，<code>scalers</code>接受压缩稀疏行和压缩稀疏列格式（请参阅<code>scipy.sparse.csr_matrix</code>和<code>scipy.sparse.csc_matrix</code>）。任何其他稀疏输入将被转换为压缩稀疏行表示。为避免不必要的内存拷贝，建议在上游选择CSR或CSC表示。</p>
+<p>最后，如果预期中心化后的数据足够小，则使用稀疏矩阵的方法显式地将输入转换为矩阵是另一种选择。</p>
+<h4 id="带有异常值的数据缩放"><a href="#带有异常值的数据缩放" class="headerlink" title="带有异常值的数据缩放"></a>带有异常值的数据缩放</h4><p>如果您的数据包含很多异常值，则使用数据的平均值和方差进行缩放可能无法很好地工作。在这些情况下，您可以使用<code>robust_scale</code>和<code>RobustScaler</code>作为替换。他们对数据的中心和范围使用更稳健的估计。</p>
+<h4 id="缩放和白化-whitening"><a href="#缩放和白化-whitening" class="headerlink" title="缩放和白化(whitening)"></a>缩放和白化(whitening)</h4><p>由于下游模型可以进一步对特征的线性独立性作出一些假设，所以只做标准化是不够的。所以才有白化(whitening)的技术要求。它就是将特征向量之间的相关性消除。</p>
+<p>要解决此问题，您可以使用<code>sklearn.decomposition.PCA</code>或<code>sklearn.decomposition.RandomizedPCA</code> 设置 <code>whiten = True</code>来进一步删除跨特征的线性相关性。关心这个技术的请参考我的博客。</p>
+<h3 id="非线性转换¶"><a href="#非线性转换¶" class="headerlink" title="非线性转换¶"></a>非线性转换¶</h3><p>与缩放器一样，<code>QuantileTransformer</code>将每个特性放入相同的范围或分布。然而，通过执行等级转换，它可以消除不寻常的分布，并且比缩放方法更少受异常值的影响。但是，它会扭曲特征内和特征间的相关性和距离。</p>
+<p><code>QuantileTransformer</code>和<code>quantile_transform</code>提供基于分位数函数的非参数变换，以便将数据映射到0到1之间的均匀分布。他的方法将功能转换为均匀或正态分布。因此，对于一个给定的特征，这种转换倾向于分散高频值。它也减少了（边际）异常值的影响：因此这是一个强大的预处理方案。</p>
+<p>该转换是独立应用于每个功能的。特征的累积密度函数用于投影原始值。低于或高于拟合范围的新/未见数据的特征值将被映射到输出分布的边界。请注意，这种转换是非线性的。它可能会扭曲在相同规模下测量的变量之间的线性相关性，但会使得在不同规模下测量的变量更加直接可比。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">iris = load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">0</span>)</span><br><span class="line">quantile_transformer = preprocessing.QuantileTransformer(random_state=<span class="number">0</span>)</span><br><span class="line">X_train_trans = quantile_transformer.fit_transform(X_train)</span><br><span class="line">X_test_trans = quantile_transformer.transform(X_test)</span><br><span class="line">rtn = np.percentile(X_train[:, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">25</span>, <span class="number">50</span>, <span class="number">75</span>, <span class="number">100</span>]) </span><br><span class="line">print(<span class="string">'原始数据的分位数:'</span>, rtn)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    原始数据的分位数: [4.3 5.1 5.8 6.5 7.9]
+    
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rtn2 = np.percentile(X_train_trans[:, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">25</span>, <span class="number">50</span>, <span class="number">75</span>, <span class="number">100</span>])</span><br><span class="line">print(<span class="string">'转换后的分位数:'</span>, rtn2)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    转换后的分位数: [9.99999998e-08 2.38738739e-01 5.09009009e-01 7.43243243e-01
+     9.99999900e-01]
+    
+</div>
+
+<p>测试集上也会进行相似的转换, 可以看到:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.percentile(X_test[:, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">25</span>, <span class="number">50</span>, <span class="number">75</span>, <span class="number">100</span>])</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([4.4  , 5.125, 5.75 , 6.175, 7.3  ])
+</div>
+
+<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3><p>正态化是将单个样本缩放为单位规范的过程。如果你计划使用诸如点积或任何其他内核的二次形式来量化任何一对样本的相似性，则此过程可能很有用。</p>
+<p>这个假设是经常用于文本分类和聚类上下文的矢量空间模型的基础。</p>
+<p>函数<code>normalize</code>提供了一种快速简便的方法，可以使用l1或l2范数在单个类似数组的数据集上执行此操作。</p>
+<p>Normalization主要思想是对每个样本计算其p-范数，然后对该样本中每个元素除以该范数，这样处理的结果是使得每个处理后样本的p-范数（l1-norm,l2-norm）等于1。</p>
+<p>p-范数的计算公式：||X||p=(|x1|^p+|x2|^p+…+|xn|^p)^1/p</p>
+<p>最常见的2范数可以表述为: 向量的每个元素的平方和再开方。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X = np.random.rand(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">X_normalized = preprocessing.normalize(X, norm=<span class="string">'l2'</span>)</span><br><span class="line">X_normalized</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([[0.42466981, 0.86148394, 0.27838997],
+           [0.90958378, 0.41098685, 0.06121397],
+           [0.89435184, 0.27881569, 0.34985226]])
+</div>
+
+<p>预处理模块还提供了一个工具类<code>Normalizer</code>，它使用Transformer API实现相同的操作（即使在这种情况下fit方法是无用的：因为此操作独立处理样本，所以类是无状态的）。</p>
+<p>因此该类适用于sklearn.pipeline.Pipeline的早期步骤：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">normalizer = preprocessing.Normalizer()</span><br><span class="line">normalizer.transform(X)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    array([[0.42466981, 0.86148394, 0.27838997],
+           [0.90958378, 0.41098685, 0.06121397],
+           [0.89435184, 0.27881569, 0.34985226]])
+</div>
+
+<h3 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h3><p>这篇文章还有一个续篇, 大家可以看看: <a href="/2018/06/27/机器学习数据预处理技术(二值化-连续化-估计缺失值-多项式)/" title="机器学习数据预处理技术(二值化-连续化-估计缺失值-多项式)">机器学习数据预处理技术(二值化-连续化-估计缺失值-多项式)</a></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="机器学习数据预处理技术(标准化-缩放-正则化">notebook</a>.ipynb)<br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/sklearn/">#sklearn</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/sklearn/">
+            sklearn
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/06/27/机器学习数据预处理技术(二值化-连续化-估计缺失值-多项式)/">
+                    机器学习数据预处理技术(二值化-连续化-估计缺失值-多项式)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/27/机器学习数据预处理技术(标准化-缩放-正则化)/">
+                    机器学习数据预处理技术(标准化-缩放-正则化)
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

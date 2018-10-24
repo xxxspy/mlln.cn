@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.logging - control what gets logged &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.microphone - Capture and analyze sound" href="microphone.html" />
+    <link rel="prev" title="Touch Screen Device and Events" href="iohub/device/touch.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="microphone.html" title="psychopy.microphone - Capture and analyze sound"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="iohub/device/touch.html" title="Touch Screen Device and Events"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.logging</span></code> - control what gets logged</a><ul>
+<li><a class="reference internal" href="#flush"><code class="docutils literal"><span class="pre">flush()</span></code></a></li>
+<li><a class="reference internal" href="#setdefaultclock"><code class="docutils literal"><span class="pre">setDefaultClock()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="iohub/device/touch.html"
+                                  title="previous chapter">Touch Screen Device and Events</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="microphone.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.microphone</span></code> - Capture and analyze sound</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/logging.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.logging">
+<span id="psychopy-logging-control-what-gets-logged"></span><h1><a class="reference internal" href="#module-psychopy.logging" title="psychopy.logging"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.logging</span></code></a> - control what gets logged<a class="headerlink" href="#module-psychopy.logging" title="Permalink to this headline">¶</a></h1>
+<p>Provides functions for logging error and other messages to one or more
+files and/or the console, using python&#8217;s own logging module. Some warning
+messages and error messages are generated by PsychoPy itself. The user can
+generate more using the functions in this module.</p>
+<p>There are various levels for logged messages with the following order of
+importance: ERROR, WARNING, DATA, EXP, INFO and DEBUG.</p>
+<p>When setting the level for a particular log target (e.g. LogFile)
+the  user can set the minimum level that is required
+for messages to enter the log. For example, setting a level of INFO will
+result in INFO, EXP, DATA, WARNING and ERROR messages to be recorded but not
+DEBUG messages.</p>
+<p>By default, PsychoPy will record messages of WARNING level and above to
+the console. The user can silence that by setting it to receive only CRITICAL
+messages, (which PsychoPy doesn&#8217;t use) using the commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="psychopy.logging.LogFile">
+<em class="property">class </em><code class="descclassname">psychopy.logging.</code><code class="descname">LogFile</code><span class="sig-paren">(</span><em>f=None</em>, <em>level=30</em>, <em>filemode='a'</em>, <em>logger=None</em>, <em>encoding='utf8'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.LogFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>A text stream to receive inputs from the logging system</p>
+<p>Create a log file as a target for logged entries of a given level</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last">
+<li><dl class="first docutils">
+<dt>f:</dt>
+<dd><p class="first last">this could be a string to a path, that will be created if it
+doesn&#8217;t exist. Alternatively this could be a file object,
+sys.stdout or any object that supports .write() and .flush()
+methods</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>level:</dt>
+<dd><p class="first last">The minimum level of importance that a message must have
+to be logged by this target.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>filemode: &#8216;a&#8217;, &#8216;w&#8217;</dt>
+<dd><p class="first last">Append or overwrite existing log file</p>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="psychopy.logging.LogFile.setLevel">
+<code class="descname">setLevel</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.LogFile.setLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a new minimal level for the log file/stream</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.logging.LogFile.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>txt</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.LogFile.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write directy to the log file (without using logging functions).
+Useful to send messages that only this file receives</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.addLevel">
+<code class="descclassname">psychopy.logging.</code><code class="descname">addLevel</code><span class="sig-paren">(</span><em>level</em>, <em>levelName</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.addLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate &#8216;levelName&#8217; with &#8216;level&#8217;.</p>
+<p>This is used when converting levels to text during message formatting.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.critical">
+<code class="descclassname">psychopy.logging.</code><code class="descname">critical</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.critical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.CRITICAL</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.data">
+<code class="descclassname">psychopy.logging.</code><code class="descname">data</code><span class="sig-paren">(</span><em>msg</em>, <em>t=None</em>, <em>obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log a message about data collection (e.g. a key press)</p>
+<dl class="docutils">
+<dt>usage::</dt>
+<dd>log.data(message)</dd>
+</dl>
+<p>Sends the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.DATA</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.debug">
+<code class="descclassname">psychopy.logging.</code><code class="descname">debug</code><span class="sig-paren">(</span><em>msg</em>, <em>t=None</em>, <em>obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log a debugging message (not likely to be wanted once
+experiment is finalised)</p>
+<dl class="docutils">
+<dt>usage::</dt>
+<dd>log.debug(message)</dd>
+</dl>
+<p>Sends the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.DEBUG</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.error">
+<code class="descclassname">psychopy.logging.</code><code class="descname">error</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.ERROR</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.exp">
+<code class="descclassname">psychopy.logging.</code><code class="descname">exp</code><span class="sig-paren">(</span><em>msg</em>, <em>t=None</em>, <em>obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log a message about the experiment
+(e.g. a new trial, or end of a stimulus)</p>
+<dl class="docutils">
+<dt>usage::</dt>
+<dd>log.exp(message)</dd>
+</dl>
+<p>Sends the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.EXP</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.fatal">
+<code class="descclassname">psychopy.logging.</code><code class="descname">fatal</code><span class="sig-paren">(</span><em>msg</em>, <em>t=None</em>, <em>obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.fatal" title="Permalink to this definition">¶</a></dt>
+<dd><p>log.critical(message)
+Send the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.CRITICAL</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.flush">
+<code class="descclassname">psychopy.logging.</code><code class="descname">flush</code><span class="sig-paren">(</span><em>logger=&lt;psychopy.logging._Logger object at 0x061DBE50&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send current messages in the log to all targets</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.getLevel">
+<code class="descclassname">psychopy.logging.</code><code class="descname">getLevel</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.getLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the textual representation of logging level &#8216;level&#8217;.</p>
+<p>If the level is one of the predefined levels (CRITICAL, ERROR, WARNING,
+INFO, DEBUG) then you get the corresponding string. If you have
+associated levels with names using addLevelName then the name you have
+associated with &#8216;level&#8217; is returned.</p>
+<p>If a numeric value corresponding to one of the defined levels is passed
+in, the corresponding string representation is returned.</p>
+<p>Otherwise, the string &#8220;Level %s&#8221; % level is returned.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.info">
+<code class="descclassname">psychopy.logging.</code><code class="descname">info</code><span class="sig-paren">(</span><em>msg</em>, <em>t=None</em>, <em>obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log some information - maybe useful, maybe not</p>
+<dl class="docutils">
+<dt>usage::</dt>
+<dd>log.info(message)</dd>
+</dl>
+<p>Sends the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.INFO</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.log">
+<code class="descclassname">psychopy.logging.</code><code class="descname">log</code><span class="sig-paren">(</span><em>msg</em>, <em>level</em>, <em>t=None</em>, <em>obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log a message</p>
+<dl class="docutils">
+<dt>usage::</dt>
+<dd>log(level, msg, t=t, obj=obj)</dd>
+</dl>
+<p>Log the msg, at a  given level on the root logger</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.setDefaultClock">
+<code class="descclassname">psychopy.logging.</code><code class="descname">setDefaultClock</code><span class="sig-paren">(</span><em>clock</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.setDefaultClock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the default clock to be used to reference all logging times.
+Must be a <a class="reference internal" href="core.html#psychopy.core.Clock" title="psychopy.core.Clock"><code class="xref py py-class docutils literal"><span class="pre">psychopy.core.Clock</span></code></a> object. Beware that if you
+reset the clock during the experiment then the resets will be
+reflected here. That might be useful if you want your logs to be
+reset on each trial, but probably not.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.warn">
+<code class="descclassname">psychopy.logging.</code><code class="descname">warn</code><span class="sig-paren">(</span><em>msg</em>, <em>t=None</em>, <em>obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.warn" title="Permalink to this definition">¶</a></dt>
+<dd><p>log.warning(message)</p>
+<p>Sends the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.WARNING</cite> or higher</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.logging.warning">
+<code class="descclassname">psychopy.logging.</code><code class="descname">warning</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.logging.warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the message to any receiver of logging info (e.g. a LogFile)
+of level <cite>log.WARNING</cite> or higher</p>
+</dd></dl>
+
+<div class="section" id="flush">
+<h2><a class="reference internal" href="#psychopy.logging.flush" title="psychopy.logging.flush"><code class="xref py py-func docutils literal"><span class="pre">flush()</span></code></a><a class="headerlink" href="#flush" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descclassname">psychopy.logging.</code><code class="descname">flush</code><span class="sig-paren">(</span><em>logger=&lt;psychopy.logging._Logger object at 0x061DBE50&gt;</em><span class="sig-paren">)</span></dt>
+<dd><p>Send current messages in the log to all targets</p>
+</dd></dl>
+
+</div>
+<div class="section" id="setdefaultclock">
+<h2><a class="reference internal" href="#psychopy.logging.setDefaultClock" title="psychopy.logging.setDefaultClock"><code class="xref py py-func docutils literal"><span class="pre">setDefaultClock()</span></code></a><a class="headerlink" href="#setdefaultclock" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descclassname">psychopy.logging.</code><code class="descname">setDefaultClock</code><span class="sig-paren">(</span><em>clock</em><span class="sig-paren">)</span></dt>
+<dd><p>Set the default clock to be used to reference all logging times.
+Must be a <a class="reference internal" href="core.html#psychopy.core.Clock" title="psychopy.core.Clock"><code class="xref py py-class docutils literal"><span class="pre">psychopy.core.Clock</span></code></a> object. Beware that if you
+reset the clock during the experiment then the resets will be
+reflected here. That might be useful if you want your logs to be
+reset on each trial, but probably not.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="microphone.html" title="psychopy.microphone - Capture and analyze sound"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="iohub/device/touch.html" title="Touch Screen Device and Events"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

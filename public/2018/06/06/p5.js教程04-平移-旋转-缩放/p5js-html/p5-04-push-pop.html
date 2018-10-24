@@ -1,0 +1,37 @@
+
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+<title>Notebook中显示P5.js页面</title>
+</head>
+<body>
+<a href="http://mlln.cn"  target="_blank"><h5>p5.js效果展示: p5js-html/p5-04-push-pop.html</h5></a>
+<script>
+
+function setup() {  
+    createCanvas(220, 220);  
+    background(204); 
+}
+
+let r= 0.1;
+function draw() {
+    push()
+    scale(r)
+    // 每次迭代增加0.01
+    r += 0.01
+    ellipse(100, 100, 20, 20);
+    // 如果超过一定值, 就重置r
+    if (r>2){
+        background(204); 
+        r=0.1
+    }
+    pop()
+    // 保证不缩放矩形
+    rect(220-r*80, r*80, 10, 10)
+}
+</script>
+</body>
+</html>

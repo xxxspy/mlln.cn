@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.voicekey - Real-time sound processing &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.web - Web methods" href="web.html" />
+    <link rel="prev" title="psychopy.tools.unittools" href="tools/unittools.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="web.html" title="psychopy.web - Web methods"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tools/unittools.html" title="psychopy.tools.unittools"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.voicekey</span></code> - Real-time sound processing</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#voice-keys">Voice-Keys</a></li>
+<li><a class="reference internal" href="#signal-processing-functions">Signal-processing functions</a></li>
+<li><a class="reference internal" href="#sound-file-i-o">Sound file I/O</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="tools/unittools.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.tools.unittools</span></code></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="web.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.web</span></code> - Web methods</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/voicekey.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="psychopy-voicekey-real-time-sound-processing">
+<span id="voicekey"></span><h1><code class="xref py py-mod docutils literal"><span class="pre">psychopy.voicekey</span></code> - Real-time sound processing<a class="headerlink" href="#psychopy-voicekey-real-time-sound-processing" title="Permalink to this headline">¶</a></h1>
+<p>(Available as of version 1.83.00)</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Hardware voice-keys are used to detect and signal acoustic properties in real
+time, e.g., the onset of a spoken word in word-naming studies. PsychoPy
+provides two virtual voice-keys, one for detecting vocal onsets and one for vocal
+offsets.</p>
+<p>All PsychoPy voice-keys can take their input from a file or from a microphone.
+Event detection is typically quite similar is both cases.</p>
+<p>The base class is very general, and is best thought of as providing a toolkit
+for developing a wide range of custom voice-keys. It would be possible to develop
+a set of voice-keys, each optimized for detecting different initial phonemes.
+Band-pass filtered data and zero-crossing counts are computed in real-time
+every 2ms.</p>
+</div>
+<div class="section" id="voice-keys">
+<h2>Voice-Keys<a class="headerlink" href="#voice-keys" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.voicekey.OnsetVoiceKey">
+<em class="property">class </em><code class="descclassname">psychopy.voicekey.</code><code class="descname">OnsetVoiceKey</code><span class="sig-paren">(</span><em>sec=0</em>, <em>file_out=''</em>, <em>file_in=''</em>, <em>**config</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for speech onset detection.</p>
+<p>Uses bandpass-filtered signal (100-3000Hz). When the voice key trips,
+the best voice-onset RT estimate is saved as <cite>self.event_onset</cite>, in sec.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>sec:</dt>
+<dd><p class="first last">duration to record in seconds</p>
+</dd>
+<dt>file_out:</dt>
+<dd><p class="first last">name for output filename (for microphone input)</p>
+</dd>
+<dt>file_in:</dt>
+<dd><p class="first last">name of input file for sound source (not microphone)</p>
+</dd>
+</dl>
+<p>config:  kwargs dict of parameters for configuration. defaults are:</p>
+<blockquote class="last">
+<div><p>&#8216;msPerChunk&#8217;: 2; duration of each real-time analysis chunk, in ms</p>
+<p>&#8216;signaler&#8217;: default None</p>
+<dl class="docutils">
+<dt>&#8216;autosave&#8217;: True; False means manual saving to a file is still</dt>
+<dd><p class="first last">possible (by calling .save() but not called automatically upon
+stopping</p>
+</dd>
+</dl>
+<p>&#8216;chnl_in&#8217; : microphone channel; see pyo.pa_get_input_devices()</p>
+<p>&#8216;chnl_out&#8217;: not implemented; output device to use</p>
+<p>&#8216;start&#8217;: 0, select section from a file based on (start, stop) time</p>
+<p>&#8216;stop&#8217;: -1, end of file (default)</p>
+<p>&#8216;vol&#8217;: 0.99, volume 0..1</p>
+<p>&#8216;low&#8217;: 100, Hz, low end of bandpass; can vary for M/F speakers</p>
+<p>&#8216;high&#8217;: 3000, Hz, high end of bandpass</p>
+<p>&#8216;threshold&#8217;: 10</p>
+<p>&#8216;baseline&#8217;: 0; 0 = auto-detect; give a non-zero value to use that</p>
+<dl class="docutils">
+<dt>&#8216;more_processing&#8217;: True; compute more stats per chunk including</dt>
+<dd><p class="first last">bandpass; try False if 32-bit python can&#8217;t keep up</p>
+</dd>
+</dl>
+<p>&#8216;zero_crossings&#8217;: True</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="psychopy.voicekey.OnsetVoiceKey.detect">
+<code class="descname">detect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trip if recent audio power is greater than the baseline.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.voicekey.OnsetVoiceKey.join">
+<code class="descname">join</code><span class="sig-paren">(</span><em>sec=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.join" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sleep for <cite>sec</cite> or until end-of-input, and then call stop().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.voicekey.OnsetVoiceKey.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>ftype=''</em>, <em>dtype='int16'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save new data to file, return the size of the saved file (or None).</p>
+<p>The file format is inferred from the filename extension, e.g., <cite>flac</cite>.
+This will be overridden by the <cite>ftype</cite> if one is provided; defaults to
+<cite>wav</cite> if nothing else seems reasonable. The optional <cite>dtype</cite> (e.g.,
+<cite>int16</cite>) can be any of the sample types supported by <cite>pyo</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.voicekey.OnsetVoiceKey.slippage">
+<code class="descname">slippage</code><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.slippage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Diagnostic: Ratio of the actual (elapsed) time to the ideal time.</p>
+<p>Ideal ratio = 1 = sample-perfect acquisition of msPerChunk, without
+any gaps between or within chunks. 1. / slippage is the proportion of
+samples contributing to chunk stats.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.voicekey.OnsetVoiceKey.start">
+<code class="descname">start</code><span class="sig-paren">(</span><em>silent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start reading and processing audio data from a file or microphone.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.voicekey.OnsetVoiceKey.started">
+<code class="descname">started</code><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.started" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boolean property, whether <cite>.start()</cite> has been called.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.voicekey.OnsetVoiceKey.stop">
+<code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop a voice-key in progress.</p>
+<p>Ends and saves the recording if using microphone input.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.voicekey.OnsetVoiceKey.wait_for_event">
+<code class="descname">wait_for_event</code><span class="sig-paren">(</span><em>plus=0</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OnsetVoiceKey.wait_for_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start, join, and wait until the voice-key trips, or it times out.</p>
+<p>Optionally wait for some extra time, <cite>plus</cite>, before calling <cite>stop()</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="psychopy.voicekey.OffsetVoiceKey">
+<em class="property">class </em><code class="descclassname">psychopy.voicekey.</code><code class="descname">OffsetVoiceKey</code><span class="sig-paren">(</span><em>sec=10</em>, <em>file_out=''</em>, <em>file_in=''</em>, <em>delay=0.3</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.OffsetVoiceKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to detect the offset of a single-word utterance.</p>
+<p>Record and ends the recording after speech offset.  When the voice
+key trips, the best voice-offset RT estimate is saved as
+<cite>self.event_offset</cite>, in seconds.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><cite>sec</cite>: duration of recording in the absence of speech or</dt>
+<dd><p class="first last">other sounds.</p>
+</dd>
+</dl>
+<p class="last"><cite>delay</cite>: extra time to record after speech offset, default 0.3s.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The same methods are available as for class OnsetVoiceKey.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="signal-processing-functions">
+<h2>Signal-processing functions<a class="headerlink" href="#signal-processing-functions" title="Permalink to this headline">¶</a></h2>
+<p>Several utility functions are available for real-time sound analysis.</p>
+<dl class="function">
+<dt id="psychopy.voicekey.smooth">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">smooth</code><span class="sig-paren">(</span><em>data</em>, <em>win=16</em>, <em>tile=True</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.smooth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Running smoothed average, via convolution over <cite>win</cite> window-size.</p>
+<p><cite>tile</cite> with the mean at start and end by default; otherwise replace with 0.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.bandpass">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">bandpass</code><span class="sig-paren">(</span><em>data</em>, <em>low=80</em>, <em>high=1200</em>, <em>rate=44100</em>, <em>order=6</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.bandpass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bandpass filtered <cite>data</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.rms">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">rms</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.rms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic audio-power measure: root-mean-square of data.</p>
+<p>Identical to <cite>std</cite> when the mean is zero; faster to compute just rms.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.std">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">std</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.std" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like rms, but also subtracts the mean (= slower).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.zero_crossings">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">zero_crossings</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.zero_crossings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a vector of length n-1 of zero-crossings within vector <cite>data</cite>.</p>
+<p>1 if the adjacent values switched sign, or
+0 if they stayed the same sign.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.tone">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">tone</code><span class="sig-paren">(</span><em>freq=440</em>, <em>sec=2</em>, <em>rate=44100</em>, <em>vol=0.99</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.tone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a np.array suitable for use as a tone (pure sine wave).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.apodize">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">apodize</code><span class="sig-paren">(</span><em>data</em>, <em>ms=5</em>, <em>rate=44100</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.apodize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Hamming window (5ms) to reduce a sound&#8217;s &#8216;click&#8217; onset / offset.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sound-file-i-o">
+<h2>Sound file I/O<a class="headerlink" href="#sound-file-i-o" title="Permalink to this headline">¶</a></h2>
+<p>Several helper functions are available for converting and saving sound data
+from several data formats (numpy arrays, pyo tables) and file formats. All file formats that
+<cite>pyo</cite> supports are available, including <cite>wav</cite>, <cite>flac</cite> for lossless compression. <cite>mp3</cite> format is not
+supported (but you can convert to .wav using another utility).</p>
+<dl class="function">
+<dt id="psychopy.voicekey.samples_from_table">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">samples_from_table</code><span class="sig-paren">(</span><em>table</em>, <em>start=0</em>, <em>stop=-1</em>, <em>rate=44100</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.samples_from_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return samples as a np.array read from a pyo table.</p>
+<p>A (start, stop) selection in seconds may require a non-default rate.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.table_from_samples">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">table_from_samples</code><span class="sig-paren">(</span><em>samples</em>, <em>start=0</em>, <em>stop=-1</em>, <em>rate=44100</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.table_from_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pyo DataTable constructed from samples.</p>
+<p>A (start, stop) selection in seconds may require a non-default rate.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.table_from_file">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">table_from_file</code><span class="sig-paren">(</span><em>file_in</em>, <em>start=0</em>, <em>stop=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.table_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from files, any pyo format, returns (rate, pyo SndTable)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.samples_from_file">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">samples_from_file</code><span class="sig-paren">(</span><em>file_in</em>, <em>start=0</em>, <em>stop=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.samples_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from files, returns tuple (rate, np.array(.float64))</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.samples_to_file">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">samples_to_file</code><span class="sig-paren">(</span><em>samples</em>, <em>rate</em>, <em>file_out</em>, <em>fmt=''</em>, <em>dtype='int16'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.samples_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to file, using requested format or infer from file .ext.</p>
+<p>Only integer <cite>rate</cite> values are supported.</p>
+<p>See <a class="reference external" href="http://ajaxsoundstudio.com/pyodoc/api/functions/sndfile.html">http://ajaxsoundstudio.com/pyodoc/api/functions/sndfile.html</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.voicekey.table_to_file">
+<code class="descclassname">psychopy.voicekey.</code><code class="descname">table_to_file</code><span class="sig-paren">(</span><em>table</em>, <em>file_out</em>, <em>fmt=''</em>, <em>dtype='int16'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.voicekey.table_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to file, using requested format or infer from file .ext.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="web.html" title="psychopy.web - Web methods"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tools/unittools.html" title="psychopy.tools.unittools"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

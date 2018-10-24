@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Coder - interleave staircases &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Recipes (“How-to”s)" href="recipes.html" />
+    <link rel="next" title="Making isoluminant stimuli" href="isoluminance.html" />
+    <link rel="prev" title="Generating formatted strings" href="formattedStrings.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="isoluminance.html" title="Making isoluminant stimuli"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="formattedStrings.html" title="Generating formatted strings"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" accesskey="U">Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="formattedStrings.html"
+                                  title="previous chapter">Generating formatted strings</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="isoluminance.html"
+                                  title="next chapter">Making isoluminant stimuli</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/recipes/interleaveStaircases.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coder-interleave-staircases">
+<span id="interleavedstairs"></span><h1>Coder - interleave staircases<a class="headerlink" href="#coder-interleave-staircases" title="Permalink to this headline">¶</a></h1>
+<p>Often psychophysicists using staircase procedures want to interleave multiple staircases, either with different start points, or for different conditions.</p>
+<p>There is now a class, <a class="reference internal" href="../api/data.html#psychopy.data.MultiStairHandler" title="psychopy.data.MultiStairHandler"><code class="xref py py-class docutils literal"><span class="pre">psychopy.data.MultiStairHandler</span></code></a> to allow simple access to interleaved staircases of either basic or QUEST types. That can also be used from the <a class="reference internal" href="../builder/flow.html#loops"><span class="std std-ref">Loops</span></a> in the <a class="reference internal" href="../builder/builder.html#builder"><span class="std std-ref">Builder</span></a>. The following method allows the same to be created in your own code, for greater options.</p>
+<p>The method works by nesting a pair of loops, one to loop through the number of trials and another to loop across the staircases. The staircases can be shuffled between trials, so that they do not simply alternate.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note the need to create a <em>copy</em> of the info. If you simply do <cite>thisInfo=info</cite> then all your staircases will end up pointing to the same object, and when you change the info in the final one, you will be changing it for all.</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="nb">next</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="nb">range</span>
+<span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">visual</span><span class="p">,</span> <span class="n">core</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">event</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">shuffle</span>
+<span class="kn">import</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">time</span> <span class="c1">#from the std python libs</span>
+
+<span class="c1">#create some info to store with the data</span>
+<span class="n">info</span><span class="o">=</span><span class="p">{}</span>
+<span class="n">info</span><span class="p">[</span><span class="s1">&#39;startPoints&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">info</span><span class="p">[</span><span class="s1">&#39;nTrials&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">info</span><span class="p">[</span><span class="s1">&#39;observer&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;jwp&#39;</span>
+
+<span class="n">win</span><span class="o">=</span><span class="n">visual</span><span class="o">.</span><span class="n">Window</span><span class="p">([</span><span class="mi">400</span><span class="p">,</span><span class="mi">400</span><span class="p">])</span>
+<span class="c1">#---------------------</span>
+<span class="c1">#create the stimuli</span>
+<span class="c1">#---------------------</span>
+
+<span class="c1">#create staircases</span>
+<span class="n">stairs</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">thisStart</span> <span class="ow">in</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;startPoints&#39;</span><span class="p">]:</span>
+    <span class="c1">#we need a COPY of the info for each staircase </span>
+    <span class="c1">#(or the changes here will be made to all the other staircases)</span>
+    <span class="n">thisInfo</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+    <span class="c1">#now add any specific info for this staircase</span>
+    <span class="n">thisInfo</span><span class="p">[</span><span class="s1">&#39;thisStart&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">thisStart</span> <span class="c1">#we might want to keep track of this</span>
+    <span class="n">thisStair</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">StairHandler</span><span class="p">(</span><span class="n">startVal</span><span class="o">=</span><span class="n">thisStart</span><span class="p">,</span> 
+        <span class="n">extraInfo</span><span class="o">=</span><span class="n">thisInfo</span><span class="p">,</span>
+        <span class="n">nTrials</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">nUp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nDown</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">minVal</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">maxVal</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+        <span class="n">stepSizes</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">stairs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thisStair</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">trialN</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;nTrials&#39;</span><span class="p">]):</span>
+    <span class="n">shuffle</span><span class="p">(</span><span class="n">stairs</span><span class="p">)</span> <span class="c1">#this shuffles &#39;in place&#39; (ie stairs itself is changed, nothing returned)</span>
+    <span class="c1">#then loop through our randomised order of staircases for this repeat</span>
+    <span class="k">for</span> <span class="n">thisStair</span> <span class="ow">in</span> <span class="n">stairs</span><span class="p">:</span>
+        <span class="n">thisIntensity</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">thisStair</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;start=</span><span class="si">%.2f</span><span class="s1">, current=</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">thisStair</span><span class="o">.</span><span class="n">extraInfo</span><span class="p">[</span><span class="s1">&#39;thisStart&#39;</span><span class="p">],</span> <span class="n">thisIntensity</span><span class="p">))</span>
+        
+        <span class="c1">#---------------------</span>
+        <span class="c1">#run your trial and get an input</span>
+        <span class="c1">#---------------------</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">waitKeys</span><span class="p">()</span> <span class="c1">#(we can simulate by pushing left for &#39;correct&#39;)</span>
+        <span class="k">if</span> <span class="s1">&#39;left&#39;</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span> <span class="n">wasCorrect</span><span class="o">=</span><span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">wasCorrect</span> <span class="o">=</span> <span class="kc">False</span>
+        
+        <span class="n">thisStair</span><span class="o">.</span><span class="n">addData</span><span class="p">(</span><span class="n">wasCorrect</span><span class="p">)</span> <span class="c1">#so that the staircase adjusts itself</span>
+        
+    <span class="c1">#this trial (of all staircases) has finished</span>
+<span class="c1">#all trials finished</span>
+        
+<span class="c1">#save data (separate pickle and txt files for each staircase)</span>
+<span class="n">dateStr</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%b_</span><span class="si">%d</span><span class="s2">_%H%M&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span><span class="c1">#add the current time</span>
+<span class="k">for</span> <span class="n">thisStair</span> <span class="ow">in</span> <span class="n">stairs</span><span class="p">:</span>
+    <span class="c1">#create a filename based on the subject and start value</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> start</span><span class="si">%.2f</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">thisStair</span><span class="o">.</span><span class="n">extraInfo</span><span class="p">[</span><span class="s1">&#39;observer&#39;</span><span class="p">],</span> <span class="n">thisStair</span><span class="o">.</span><span class="n">extraInfo</span><span class="p">[</span><span class="s1">&#39;thisStart&#39;</span><span class="p">],</span> <span class="n">dateStr</span><span class="p">)</span>
+    <span class="n">thisStair</span><span class="o">.</span><span class="n">saveAsPickle</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">thisStair</span><span class="o">.</span><span class="n">saveAsText</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="isoluminance.html" title="Making isoluminant stimuli"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="formattedStrings.html" title="Generating formatted strings"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" >Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

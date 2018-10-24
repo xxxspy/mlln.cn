@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.hardware - hardware interfaces &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="Cedrus (response boxes)" href="hardware/cedrus.html" />
+    <link rel="prev" title="psychopy.gui - create dialogue boxes" href="gui.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hardware/cedrus.html" title="Cedrus (response boxes)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gui.html" title="psychopy.gui - create dialogue boxes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="gui.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.gui</span></code> - create dialogue boxes</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="hardware/cedrus.html"
+                                  title="next chapter">Cedrus (response boxes)</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/hardware.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.hardware">
+<span id="psychopy-hardware-hardware-interfaces"></span><h1><a class="reference internal" href="#module-psychopy.hardware" title="psychopy.hardware"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.hardware</span></code></a> - hardware interfaces<a class="headerlink" href="#module-psychopy.hardware" title="Permalink to this headline">¶</a></h1>
+<p>PsychoPy can access a wide range of external hardware. For some devices the interface has already been created in the following sub-packages of PsychoPy. For others you may need to write the code to access the serial port etc. manually.</p>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hardware/cedrus.html">Cedrus (response boxes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/crs.html">Cambridge Research Systems Ltd.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/egi.html">egi (pynetstation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/emulator.html">Launch an fMRI experiment: Test or Scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/forp.html">fORP response box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/iolab.html">iolab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/joystick.html">joystick (pyglet and pygame)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/labjack.html">labjacks (USB I/O devices)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/minolta.html">Minolta</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/pr.html">PhotoResearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/pylink.html">pylink (SR research)</a></li>
+</ul>
+</div>
+<dl class="function">
+<dt id="psychopy.hardware.findPhotometer">
+<code class="descclassname">psychopy.hardware.</code><code class="descname">findPhotometer</code><span class="sig-paren">(</span><em>ports=None</em>, <em>device=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.hardware.findPhotometer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to find a connected photometer/photospectrometer!</p>
+<p>PsychoPy will sweep a series of serial ports trying to open them.
+If a port successfully opens then it will try to issue a command to
+the device. If it responds with one of the expected values then it
+is assumed to be the appropriate device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>ports</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">a list of ports to search</span><dd><p class="first last">Each port can be a string (e.g. &#8216;COM1&#8217;, &#8216;&#8217;/dev/tty.Keyspan1.1&#8217;)
+or a number (for win32 comports only). If none are provided
+then PsychoPy will sweep COM0-10 on win32 and search known
+likely port names on OS X and linux.</p>
+</dd>
+<dt>device</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">string giving expected device (e.g. &#8216;PR650&#8217;, &#8216;PR655&#8217;,</span><dd><p class="first last">&#8216;LS110&#8217;). If this is not given then an attempt will be made
+to find a device of any type, but this often fails</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li>An object representing the first photometer found</li>
+<li>None if the ports didn&#8217;t yield a valid response</li>
+<li>None if there were not even any valid ports (suggesting a driver
+not being installed)</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># sweeps ports 0 to 10 searching for a PR655</span>
+<span class="n">photom</span> <span class="o">=</span> <span class="n">findPhotometer</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s1">&#39;PR655&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">photom</span><span class="o">.</span><span class="n">getLum</span><span class="p">())</span>
+<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">photom</span><span class="p">,</span> <span class="s1">&#39;getSpectrum&#39;</span><span class="p">):</span>
+    <span class="c1"># can retrieve spectrum (e.g. a PR650)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">photom</span><span class="o">.</span><span class="n">getSpectrum</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hardware/cedrus.html" title="Cedrus (response boxes)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gui.html" title="psychopy.gui - create dialogue boxes"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

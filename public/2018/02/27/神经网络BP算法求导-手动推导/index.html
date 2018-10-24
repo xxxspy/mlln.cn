@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="神经网络BP算法求导-手动推导"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>神经网络BP算法求导-手动推导 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/02/27/神经网络BP算法求导-手动推导/">
+                神经网络BP算法求导-手动推导
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="神经网络BP算法求导-手动推导"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年02月27日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>神经网络BP算法我这里不多说, 大家自行百度. 我这篇文章要手动计算一下神经网络算法求偏导数的过程, 其中用到了反向传播和链式法则. 为了简单, 我们用一个只有两层, 每层只有两个神经元的神经网络, 其网络结构如下:</p>
+<a id="more"></a>
+<img src="/2018/02/27/神经网络BP算法求导-手动推导/network.png" title="神经网络示意图">
+<p>其中, x代表神经元输入, o代表神经元输出, 假设激活函数用sigmoid, 则有:</p>
+<p><code>\[
+o = {\sigma(x)} = {1 \over {1 + e^{-x}\ } }
+\]</code></p>
+<p>再看途中w代表权重, w13 代表神经元1和神经元3之间的连接权重, 那么神经元4的输入x4可以计算:</p>
+<p><code>\[
+x_4 = o_1 w_{14} + o_2 w_{24}    
+\]</code></p>
+<p>根据激活函数, 可以知道神经元4的输出为:</p>
+<p><code>\[
+o_4 = {\sigma(x_4)} = {1 \over 1 + e^{-x_4}\ }
+\]</code></p>
+<p>其他神经元的输入输出可以一次类推计算出来.</p>
+<p>神经元5的输入和输出分别是:</p>
+<p><code>\[
+x_5 = o_3 w_{35} + o_4 w_{45}    
+\]</code></p>
+<p><code>\[
+o_5 = {\sigma(x_5)} ={ 1 \over 1 + e^{-x_5}\ }
+\]</code></p>
+<p>假如我们的目标值为t, 也就是神经元5输出值的目标值. 那么我们的目标函数应该是最小化均方误差:</p>
+<p><code>\[
+E = 0.5(o_5-t)^2
+\]</code></p>
+<h3 id="手动推导"><a href="#手动推导" class="headerlink" title="手动推导"></a>手动推导</h3><p>至此, 我们要用到的信息基本都有了, 那么神经网络算法如何求梯度呢? 也就是参数的偏导数. 我们知道神经网络的参数就是权重w, 求梯度就是求E对每个w的偏微分, 那么下面先来求E对w45的偏微分.</p>
+<p>根据链式法则有:</p>
+<p><code>\[
+{\ \partial E \over \partial w_{45}\ } = {\partial E \over \partial o_5}{\partial o_5 \over \partial x_5}{\partial x_5 \over \partial w_{45}\ }
+\]</code></p>
+<p>分别求三个偏微分:</p>
+<p><code>\[
+\begin{align}
+{\partial E \over \partial o_5} &amp;= {o_5-t} \\
+{\partial o_5 \over \partial x_5} &amp;= {\sigma(x_4)(1-\sigma(x_4))} \\
+{\partial x_5 \over \partial w_{45}\ } &amp;= {w_{35}\ }
+\end{align}
+\]</code></p>
+<p>最后求得:</p>
+<p><code>\[
+{\ \partial E \over \partial w_{45}\ } = {(o_5-t)}{\sigma(x_4)(1-\sigma(x_4))}x_4
+\]</code></p>
+<p>同样的道理, w35的偏导也能求得:</p>
+<p><code>\[
+{\ \partial E \over \partial w_{35}\ } = {(o_5-t)}{\sigma(x_3)(1-\sigma(x_3))}x_3
+\]</code></p>
+<p>下面我们求一下E对w23的偏导数, 先列出已知的信息:<br><code>\[
+\begin{align}
+E &amp;= 0.5(o_5-t)^2 \\
+o_5 &amp;= {\sigma(x_5)} ={1 \over 1 + e^{-x_5}\ } \\
+x_5 &amp;= o_3 w_{35} + o_4 w_{45} \\
+o_3 &amp;= {\sigma(x_3)} = {1 \over 1 + e^{-x_3}\ } \\
+o_4 &amp;= {\sigma(x_4)} = {1 \over 1 + e^{-x_4}\ } \\
+x_3 &amp;= o_1 w_{13} + o_2 w_{23} \\
+x_4 &amp;= o_1 w_{14} + o_2 w_{24}  \\
+\end{align}
+\]</code></p>
+<p>根据链式法则:</p>
+<p><code>\[
+{\ \partial E \over \partial w_{23}\ } = {\partial E \over \partial o_5}{\partial o_5 \over \partial x_5}{\partial x_5 \over \partial o_3 }{\partial o_3 \over \partial x_3 }{\partial x_3 \over \partial w_{23} }
+\]</code></p>
+<p>同样分别求偏导:</p>
+<p><code>\[
+\begin{align}
+{\partial E \over \partial o_5} &amp;= {o_5-t} \\
+{\partial o_5 \over \partial x_5} &amp;= {o_4(1-o_4)} \\
+{\partial x_5 \over \partial o_3 } &amp;= w_{35}  \\
+{\partial o_3 \over \partial x_3 } &amp;= o_3(1-o_3) \\
+{\partial x_3 \over \partial w_{23} } &amp;= x_2
+\end{align}
+\]</code></p>
+<p>最后整合到一起就是:</p>
+<p><code>\[
+{\ \partial E \over \partial w_{23}\ } = (o_5-t)o_4(1-o_4)w_{35}o_3(1-o_3)x_2
+\]</code></p>
+<p>同样道理可以求得E对w24的偏导:</p>
+<p><code>\[
+{\ \partial E \over \partial w_{24}\ } = (o_5-t)o_4(1-o_4)w_{45}o_4(1-o_4)x_2
+\]</code></p>
+<h3 id="概念抽象"><a href="#概念抽象" class="headerlink" title="概念抽象"></a>概念抽象</h3><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>同样的神经网络结构, 我们准备一批数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> exp</span><br><span class="line"><span class="comment"># 初始城市距离</span></span><br><span class="line">x1 = [<span class="number">29</span>, <span class="number">43</span>, <span class="number">50</span>, <span class="number">36</span>, <span class="number">2</span>, <span class="number">29</span>, <span class="number">94</span>, <span class="number">45</span>, <span class="number">83</span>, <span class="number">93</span>, <span class="number">41</span>, <span class="number">76</span>, <span class="number">39</span>, <span class="number">91</span>, <span class="number">45</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">39</span>, <span class="number">57</span>, </span><br><span class="line">      <span class="number">72</span>, <span class="number">12</span>, <span class="number">38</span>, <span class="number">52</span>, <span class="number">83</span>, <span class="number">32</span>, <span class="number">15</span>, <span class="number">100</span>, <span class="number">49</span>, <span class="number">83</span>, <span class="number">93</span>, <span class="number">50</span>, <span class="number">45</span>, <span class="number">72</span>, <span class="number">56</span>, <span class="number">36</span>, <span class="number">43</span>, <span class="number">11</span>, </span><br><span class="line">      <span class="number">23</span>, <span class="number">67</span>, <span class="number">67</span>, <span class="number">2</span>, <span class="number">86</span>, <span class="number">14</span>, <span class="number">92</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">94</span>, <span class="number">55</span>, <span class="number">87</span>, <span class="number">40</span>, <span class="number">14</span>, <span class="number">30</span>, <span class="number">24</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">22</span>, </span><br><span class="line">      <span class="number">7</span>, <span class="number">43</span>, <span class="number">71</span>, <span class="number">23</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">53</span>, <span class="number">32</span>, <span class="number">27</span>, <span class="number">94</span>, <span class="number">19</span>, <span class="number">54</span>, <span class="number">76</span>, <span class="number">50</span>, <span class="number">67</span>, <span class="number">53</span>, <span class="number">2</span>, <span class="number">45</span>, <span class="number">73</span>, <span class="number">98</span>, </span><br><span class="line">      <span class="number">19</span>, <span class="number">15</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">64</span>, <span class="number">51</span>, <span class="number">62</span>, <span class="number">86</span>, <span class="number">58</span>, <span class="number">32</span>, <span class="number">53</span>, <span class="number">45</span>, <span class="number">52</span>, <span class="number">85</span>, <span class="number">84</span>, <span class="number">29</span>, <span class="number">83</span>, <span class="number">67</span>, <span class="number">91</span>, <span class="number">45</span>, <span class="number">71</span>, <span class="number">8</span>, <span class="number">76</span>, <span class="number">99</span>]</span><br><span class="line">x2 = [<span class="number">54</span>, <span class="number">47</span>, <span class="number">65</span>, <span class="number">79</span>, <span class="number">56</span>, <span class="number">80</span>, <span class="number">55</span>, <span class="number">65</span>, <span class="number">85</span>, <span class="number">67</span>, <span class="number">67</span>, <span class="number">42</span>, <span class="number">45</span>, <span class="number">56</span>, <span class="number">21</span>, <span class="number">67</span>, <span class="number">72</span>, <span class="number">50</span>, <span class="number">33</span>, <span class="number">2</span>, </span><br><span class="line">      <span class="number">81</span>, <span class="number">55</span>, <span class="number">66</span>, <span class="number">13</span>, <span class="number">30</span>, <span class="number">63</span>, <span class="number">55</span>, <span class="number">7</span>, <span class="number">39</span>, <span class="number">19</span>, <span class="number">61</span>, <span class="number">43</span>, <span class="number">35</span>, <span class="number">69</span>, <span class="number">45</span>, <span class="number">69</span>, <span class="number">39</span>, <span class="number">83</span>, <span class="number">50</span>, <span class="number">60</span>, </span><br><span class="line">      <span class="number">44</span>, <span class="number">10</span>, <span class="number">56</span>, <span class="number">99</span>, <span class="number">59</span>, <span class="number">17</span>, <span class="number">66</span>, <span class="number">68</span>, <span class="number">41</span>, <span class="number">83</span>, <span class="number">26</span>, <span class="number">42</span>, <span class="number">79</span>, <span class="number">0</span>, <span class="number">14</span>, <span class="number">48</span>, <span class="number">44</span>, <span class="number">96</span>, <span class="number">65</span>, <span class="number">37</span>, </span><br><span class="line">      <span class="number">61</span>, <span class="number">85</span>, <span class="number">72</span>, <span class="number">40</span>, <span class="number">24</span>, <span class="number">82</span>, <span class="number">0</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">35</span>, <span class="number">43</span>, <span class="number">28</span>, <span class="number">67</span>, <span class="number">58</span>, <span class="number">37</span>, <span class="number">28</span>, <span class="number">34</span>, <span class="number">40</span>, <span class="number">61</span>, <span class="number">45</span>, </span><br><span class="line">      <span class="number">22</span>, <span class="number">28</span>, <span class="number">60</span>, <span class="number">91</span>, <span class="number">81</span>, <span class="number">51</span>, <span class="number">83</span>, <span class="number">75</span>, <span class="number">97</span>, <span class="number">91</span>, <span class="number">58</span>, <span class="number">83</span>, <span class="number">68</span>, <span class="number">57</span>, <span class="number">55</span>, <span class="number">38</span>, <span class="number">87</span>, <span class="number">59</span>, <span class="number">100</span>, <span class="number">80</span>]</span><br><span class="line"></span><br><span class="line">y = [<span class="number">973</span>, <span class="number">202</span>, <span class="number">77</span>, <span class="number">541</span>, <span class="number">59</span>, <span class="number">796</span>, <span class="number">429</span>, <span class="number">187</span>, <span class="number">131</span>, <span class="number">63</span>, <span class="number">853</span>, <span class="number">938</span>, <span class="number">40</span>, <span class="number">256</span>, <span class="number">738</span>, <span class="number">335</span>, <span class="number">77</span>, <span class="number">357</span>, </span><br><span class="line">      <span class="number">114</span>, <span class="number">308</span>, <span class="number">100</span>, <span class="number">210</span>, <span class="number">906</span>, <span class="number">10</span>, <span class="number">12</span>, <span class="number">677</span>, <span class="number">181</span>, <span class="number">710</span>, <span class="number">250</span>, <span class="number">30</span>, <span class="number">594</span>, <span class="number">936</span>, <span class="number">160</span>, <span class="number">133</span>, <span class="number">83</span>, <span class="number">909</span>, </span><br><span class="line">      <span class="number">222</span>, <span class="number">71</span>, <span class="number">42</span>, <span class="number">43</span>, <span class="number">591</span>, <span class="number">763</span>, <span class="number">33</span>, <span class="number">240</span>, <span class="number">479</span>, <span class="number">839</span>, <span class="number">144</span>, <span class="number">102</span>, <span class="number">27</span>, <span class="number">137</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">65</span>, <span class="number">9</span>, <span class="number">220</span>, <span class="number">80</span>, </span><br><span class="line">      <span class="number">25</span>, <span class="number">535</span>, <span class="number">216</span>, <span class="number">721</span>, <span class="number">794</span>, <span class="number">161</span>, <span class="number">63</span>, <span class="number">186</span>, <span class="number">22</span>, <span class="number">466</span>, <span class="number">35</span>, <span class="number">49</span>, <span class="number">463</span>, <span class="number">18</span>, <span class="number">354</span>, <span class="number">871</span>, <span class="number">638</span>, <span class="number">367</span>, <span class="number">216</span>, </span><br><span class="line">      <span class="number">223</span>, <span class="number">818</span>, <span class="number">68</span>, <span class="number">38</span>, <span class="number">208</span>, <span class="number">604</span>, <span class="number">435</span>, <span class="number">47</span>, <span class="number">434</span>, <span class="number">135</span>, <span class="number">29</span>, <span class="number">710</span>, <span class="number">62</span>, <span class="number">457</span>, <span class="number">353</span>, <span class="number">899</span>, <span class="number">79</span>, <span class="number">64</span>, <span class="number">44</span>, </span><br><span class="line">      <span class="number">39</span>, <span class="number">512</span>, <span class="number">119</span>, <span class="number">105</span>, <span class="number">114</span>, <span class="number">148</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对输出进行尺度调整至（0，1）范围</span></span><br><span class="line"><span class="comment"># 这种方法得到的值都在1附近</span></span><br><span class="line">s = [<span class="number">1</span> / (<span class="number">1</span> + exp(-i)) <span class="keyword">for</span> i <span class="keyword">in</span> y]</span><br><span class="line"><span class="comment"># 这种方法比较好</span></span><br><span class="line">p1 = [i / max(x1) <span class="keyword">for</span> i <span class="keyword">in</span> x1]</span><br><span class="line">p2 = [i / max(x2) <span class="keyword">for</span> i <span class="keyword">in</span> x2]</span><br><span class="line">s = [i / max(y) <span class="keyword">for</span> i <span class="keyword">in</span> y]</span><br><span class="line"></span><br><span class="line">data = (p1, p2, s)</span><br></pre></td></tr></table></figure>
+<p>训练代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bp_back</span><span class="params">(training_example, eta)</span>:</span></span><br><span class="line">    <span class="comment"># m:行, n:列, 一列代表一组输入, 一行代表一个变量的所有样本</span></span><br><span class="line">    <span class="comment"># 所以n代表样本量</span></span><br><span class="line">    m, n = training_example.shape</span><br><span class="line">    <span class="comment"># 初始化权值矩阵</span></span><br><span class="line">    <span class="comment"># 第一层 2x2矩阵</span></span><br><span class="line">    <span class="comment"># [[w13, w14],[w23, w24]]</span></span><br><span class="line">    w = np.random.rand(<span class="number">2</span>,<span class="number">2</span>)<span class="number">-0.5</span></span><br><span class="line">    <span class="comment"># 第二层 2x1矩阵</span></span><br><span class="line">    <span class="comment"># [[w35],[w45]]</span></span><br><span class="line">    v = np.random.rand(<span class="number">2</span>).reshape((<span class="number">1</span>, <span class="number">2</span>))<span class="number">-0.5</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        Es =[]</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            one_sample = training_example[:, num] <span class="comment"># 取一组</span></span><br><span class="line">            x = one_sample[:<span class="number">2</span>]</span><br><span class="line">            y = one_sample[<span class="number">2</span>:]</span><br><span class="line">            <span class="comment"># 隐层</span></span><br><span class="line">            net2 = np.dot(w, x)</span><br><span class="line">            <span class="comment"># print(net2)</span></span><br><span class="line">            hidden = np.exp(net2)</span><br><span class="line">            net3 = np.dot(v, hidden)</span><br><span class="line">            <span class="comment"># 输出值</span></span><br><span class="line">            output = np.exp(net3)</span><br><span class="line">            <span class="comment"># print(net3)</span></span><br><span class="line">            <span class="comment"># print(output)</span></span><br><span class="line">            E = <span class="number">0.5</span>*(output-y)**<span class="number">2</span></span><br><span class="line">            Es.append(E[<span class="number">0</span>])</span><br><span class="line">            <span class="comment"># print('第&#123;&#125;次循环, 第&#123;&#125;个样本, 误差:&#123;&#125;'.format(t, num, E))</span></span><br><span class="line">            <span class="comment"># -----反向传播---------</span></span><br><span class="line">            <span class="comment"># 计算各层delta值</span></span><br><span class="line">            <span class="comment"># 输出层</span></span><br><span class="line">            delta3=(y-output)*output*(<span class="number">1</span>-output)</span><br><span class="line">            <span class="comment"># 隐层</span></span><br><span class="line">            <span class="comment"># print(np.dot(delta3, v))</span></span><br><span class="line">            <span class="comment"># print(hidden*(1 - hidden))</span></span><br><span class="line">            delta2=np.dot(hidden*(<span class="number">1</span>-hidden)*np.dot(delta3, v), w)</span><br><span class="line">            <span class="comment"># print(delta2)</span></span><br><span class="line">            <span class="comment"># 更新权重</span></span><br><span class="line">            v += eta*delta3*hidden</span><br><span class="line">            w += eta*delta2*x</span><br><span class="line">        print(<span class="string">'第&#123;&#125;次循环, 总体误差:&#123;&#125;'</span>.format(t, sum(Es)))</span><br><span class="line">        print(<span class="string">'每个样本误差:'</span>, Es)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">from</span> bp_data <span class="keyword">import</span> data</span><br><span class="line">    training_example = np.array(data)</span><br><span class="line">    <span class="comment"># print(training_example)</span></span><br><span class="line">    bp_back(training_example, <span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+<p>结果输出:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">第<span class="number">0</span>次循环, 总体误差:<span class="number">4.744542968142258</span></span><br><span class="line">每个样本误差: [<span class="number">0.09307431216223538</span>, <span class="number">0.13482397893216636</span>, <span class="number">0.00018704728019664</span>, <span class="number">0.1046919893614765</span>, <span class="number">0.058956017922238216</span>, <span class="number">0.0036282732958129666</span>, <span class="number">0.050450890167652536</span>, <span class="number">0.06517168771792486</span>, <span class="number">0.07738121132961508</span>, <span class="number">0.11230615882898966</span>, <span class="number">0.13206927130629312</span>, <span class="number">0.10011690699810656</span>, <span class="number">0.02032154767301941</span>, <span class="number">0.05920000032102159</span>, <span class="number">0.006656422232387443</span>, <span class="number">0.0679442967849832</span>, <span class="number">0.0008677025088858484</span>, <span class="number">0.04162054516688042</span>, <span class="number">0.0014801508865888624</span>, <span class="number">0.034694549663665024</span>, <span class="number">0.009749293552389859</span>, <span class="number">0.16636888478898437</span>, <span class="number">0.0710884393181918</span>, <span class="number">0.05743462849231556</span>, <span class="number">0.0687225801146502</span>, <span class="number">0.021118042994188277</span>, <span class="number">0.07731371723037268</span>, <span class="number">0.009011379065124923</span>, <span class="number">0.058955897118622855</span>, <span class="number">0.03327133691287055</span>, <span class="number">0.1789504977069153</span>, <span class="number">0.031715810217841235</span>, <span class="number">0.03567017546619412</span>, <span class="number">0.03931500832823137</span>, <span class="number">0.16877492843490846</span>, <span class="number">0.010990866980906138</span>, <span class="number">0.04632053691772168</span>, <span class="number">0.05232127410675336</span>, <span class="number">0.04615033491133325</span>, <span class="number">0.04959695312638082</span>, <span class="number">0.10116160124325828</span>, <span class="number">0.0499072973336097</span>, <span class="number">0.007932525679858117</span>, <span class="number">0.012083239432233776</span>, <span class="number">0.13969503544745038</span>, <span class="number">0.03315587129262023</span>, <span class="number">0.0348070597043839</span>, <span class="number">0.054299956863141464</span>, <span class="number">0.016181924029705454</span>, <span class="number">0.039197720240548545</span>, <span class="number">0.03432475570460683</span>, <span class="number">0.020210146967107337</span>, <span class="number">0.02825411290125502</span>, <span class="number">8.35556257127824e-05</span>, <span class="number">0.013446237428159653</span>, <span class="number">0.02099870430501065</span>, <span class="number">0.04804258527146816</span>, <span class="number">0.0012262884444965325</span>, <span class="number">0.1250634929991989</span>, <span class="number">0.14934943964627748</span>, <span class="number">0.00885792852228099</span>, <span class="number">0.02841111217574339</span>, <span class="number">0.0035404672017931033</span>, <span class="number">0.029479948923050767</span>, <span class="number">0.016381135690093925</span>, <span class="number">0.023232901236498803</span>, <span class="number">0.02407178917746283</span>, <span class="number">0.0204323636088328</span>, <span class="number">0.030349738117992922</span>, <span class="number">0.004964066077222589</span>, <span class="number">0.20299524746261138</span>, <span class="number">0.077406799514915</span>, <span class="number">0.002251242858983825</span>, <span class="number">0.005013448792635658</span>, <span class="number">0.004363235268089541</span>, <span class="number">0.15367845461322194</span>, <span class="number">0.030916451147753345</span>, <span class="number">0.03419591474355951</span>, <span class="number">0.002979797552180166</span>, <span class="number">0.051792057225486236</span>, <span class="number">0.009045319818791777</span>, <span class="number">0.04082751571907755</span>, <span class="number">0.006361209444404315</span>, <span class="number">0.016983912287479187</span>, <span class="number">0.035213247505465006</span>, <span class="number">0.09518379919820484</span>, <span class="number">0.031199789826430173</span>, <span class="number">0.014196754477282516</span>, <span class="number">0.0004655563978522462</span>, <span class="number">0.17702753168991042</span>, <span class="number">0.032560626879791485</span>, <span class="number">0.03971569132031204</span>, <span class="number">0.03794836576830288</span>, <span class="number">0.03832239243657794</span>, <span class="number">0.030994410645955223</span>, <span class="number">0.017394929806560457</span>, <span class="number">0.01174252771919042</span>, <span class="number">0.015441139727277163</span>, <span class="number">0.01069905067784429</span>]</span><br><span class="line">第<span class="number">1</span>次循环, 总体误差:<span class="number">4.502181777491771</span></span><br><span class="line">每个样本误差: [<span class="number">0.0012700060400311598</span>, <span class="number">0.016522932028595234</span>, <span class="number">0.04873826234382247</span>, <span class="number">0.01578181182447815</span>, <span class="number">0.16446427991054896</span>, <span class="number">0.009052891870907567</span>, <span class="number">0.0046455741360792455</span>, <span class="number">0.014714776862181924</span>, <span class="number">0.028015591383956564</span>, <span class="number">0.18911712820325752</span>, <span class="number">0.21649487788119498</span>, <span class="number">0.04010730316154194</span>, <span class="number">0.002558353127111011</span>, <span class="number">0.10532001857551229</span>, <span class="number">0.00017314513702910286</span>, <span class="number">0.03071919891592851</span>, <span class="number">0.0013513845595703915</span>, <span class="number">0.021195985095411138</span>, <span class="number">7.60127215852222e-05</span>, <span class="number">0.01749444569334864</span>, <span class="number">0.0031550579994367267</span>, <span class="number">0.19949585869752826</span>, <span class="number">0.05223257420408922</span>, <span class="number">0.0417197299413162</span>, <span class="number">0.08686706546262214</span>, <span class="number">0.01299495015986755</span>, <span class="number">0.09280958816426604</span>, <span class="number">0.004318972333369115</span>, <span class="number">0.04747375326598561</span>, <span class="number">0.04315580313118569</span>, <span class="number">0.20046168069988676</span>, <span class="number">0.02317144506803086</span>, <span class="number">0.0266865304413249</span>, <span class="number">0.03145201575664053</span>, <span class="number">0.18473230641262856</span>, <span class="number">0.007114805722550368</span>, <span class="number">0.038027579184671464</span>, <span class="number">0.0462206504982442</span>, <span class="number">0.04105797250936242</span>, <span class="number">0.054635540247132464</span>, <span class="number">0.10671281382208357</span>, <span class="number">0.04435911915976863</span>, <span class="number">0.006135732470001004</span>, <span class="number">0.014140025488489394</span>, <span class="number">0.14519131376861055</span>, <span class="number">0.029954652107043234</span>, <span class="number">0.03162772852037402</span>, <span class="number">0.05152001516713817</span>, <span class="number">0.014386648703932331</span>, <span class="number">0.037213255463416764</span>, <span class="number">0.03263048951500987</span>, <span class="number">0.018799039490834994</span>, <span class="number">0.02737442325507797</span>, <span class="number">4.123501152087079e-05</span>, <span class="number">0.01268597627455187</span>, <span class="number">0.020115097943397862</span>, <span class="number">0.04960741315184319</span>, <span class="number">0.0010404239358350034</span>, <span class="number">0.1268144157609311</span>, <span class="number">0.1518319562123025</span>, <span class="number">0.008087312809286505</span>, <span class="number">0.027341518921012054</span>, <span class="number">0.00327227163536747</span>, <span class="number">0.028860313154113998</span>, <span class="number">0.01695190177384341</span>, <span class="number">0.022886453498333095</span>, <span class="number">0.02357270215063361</span>, <span class="number">0.020874091245249703</span>, <span class="number">0.029894374890739202</span>, <span class="number">0.005130582064571118</span>, <span class="number">0.20387667683492292</span>, <span class="number">0.07884590736837074</span>, <span class="number">0.00244745416771797</span>, <span class="number">0.004864147316093057</span>, <span class="number">0.004302279963069986</span>, <span class="number">0.15485797495703155</span>, <span class="number">0.030259953401556322</span>, <span class="number">0.03337372381816873</span>, <span class="number">0.00283219935700535</span>, <span class="number">0.05191626277954449</span>, <span class="number">0.009157597210177964</span>, <span class="number">0.040329105615334315</span>, <span class="number">0.006611338760075727</span>, <span class="number">0.01657225383033488</span>, <span class="number">0.03483110284720921</span>, <span class="number">0.09604649256785981</span>, <span class="number">0.030722821645282852</span>, <span class="number">0.014587144602478806</span>, <span class="number">0.0005128340794891227</span>, <span class="number">0.17723263916390225</span>, <span class="number">0.03199221816014485</span>, <span class="number">0.03957062607913407</span>, <span class="number">0.03784490914124141</span>, <span class="number">0.0383469337352142</span>, <span class="number">0.031021299358769783</span>, <span class="number">0.017164763124022882</span>, <span class="number">0.011558059484844537</span>, <span class="number">0.015203126914957909</span>, <span class="number">0.010648774470268851</span>]</span><br><span class="line">第<span class="number">2</span>次循环, 总体误差:<span class="number">4.50209383116374</span></span><br><span class="line">每个样本误差: [<span class="number">0.0012613361798074847</span>, <span class="number">0.016417973459872656</span>, <span class="number">0.04908512932387356</span>, <span class="number">0.015618020505986492</span>, <span class="number">0.16513061624625497</span>, <span class="number">0.008986838938196488</span>, <span class="number">0.004590977958504538</span>, <span class="number">0.014615622732475526</span>, <span class="number">0.02804873047955616</span>, <span class="number">0.18950515084421546</span>, <span class="number">0.21604464159060585</span>, <span class="number">0.040126161146987506</span>, <span class="number">0.002594935175893824</span>, <span class="number">0.1049310486104809</span>, <span class="number">0.0001909681667250087</span>, <span class="number">0.03046133443512142</span>, <span class="number">0.0013533645182198894</span>, <span class="number">0.021364811471012272</span>, <span class="number">5.441763226454322e-05</span>, <span class="number">0.017191750162103933</span>, <span class="number">0.0031341360096008367</span>, <span class="number">0.1997365360170566</span>, <span class="number">0.052846285147174925</span>, <span class="number">0.04182230916103678</span>, <span class="number">0.08727490941594492</span>, <span class="number">0.013101958039012073</span>, <span class="number">0.09225713450144259</span>, <span class="number">0.004399952712020484</span>, <span class="number">0.047966486197536906</span>, <span class="number">0.04332982475338354</span>, <span class="number">0.20048906759708862</span>, <span class="number">0.023339642242776733</span>, <span class="number">0.02650109008242775</span>, <span class="number">0.0313896697160414</span>, <span class="number">0.18529602390861782</span>, <span class="number">0.007065434815815943</span>, <span class="number">0.03754474387310269</span>, <span class="number">0.04632472041556352</span>, <span class="number">0.04104463073032525</span>, <span class="number">0.054827735777764175</span>, <span class="number">0.10586087774363721</span>, <span class="number">0.044106573575446166</span>, <span class="number">0.0060355671493624455</span>, <span class="number">0.014174255071731109</span>, <span class="number">0.1445411381046562</span>, <span class="number">0.03003529991927018</span>, <span class="number">0.03150847213408243</span>, <span class="number">0.05183267184056195</span>, <span class="number">0.01417496919566876</span>, <span class="number">0.03727653075731824</span>, <span class="number">0.032616444023574595</span>, <span class="number">0.01856285056463817</span>, <span class="number">0.02761783499375432</span>, <span class="number">4.589630256098282e-05</span>, <span class="number">0.012626787336487049</span>, <span class="number">0.020027102418648714</span>, <span class="number">0.050022314902156896</span>, <span class="number">0.0010351952093687476</span>, <span class="number">0.1268115375676597</span>, <span class="number">0.15211976701145383</span>, <span class="number">0.007930939125049816</span>, <span class="number">0.027236569888979857</span>, <span class="number">0.003288915927744943</span>, <span class="number">0.028997837164734988</span>, <span class="number">0.016989120172959293</span>, <span class="number">0.02311919714829562</span>, <span class="number">0.023629605628414114</span>, <span class="number">0.020845232236497174</span>, <span class="number">0.030001153842067016</span>, <span class="number">0.005090276195857431</span>, <span class="number">0.20348598278457516</span>, <span class="number">0.07931714345418078</span>, <span class="number">0.002466416544404575</span>, <span class="number">0.004948341368436139</span>, <span class="number">0.0044362742963262175</span>, <span class="number">0.15488141747135703</span>, <span class="number">0.030195441045555643</span>, <span class="number">0.03310865308444844</span>, <span class="number">0.002816779505798389</span>, <span class="number">0.051563162223746295</span>, <span class="number">0.009057760959356531</span>, <span class="number">0.040292674356201014</span>, <span class="number">0.006698392461250337</span>, <span class="number">0.016421793521015193</span>, <span class="number">0.03476951591115415</span>, <span class="number">0.0964360409513888</span>, <span class="number">0.030541023647400686</span>, <span class="number">0.014802006199359244</span>, <span class="number">0.0005292385801232739</span>, <span class="number">0.17690600336443466</span>, <span class="number">0.03171344688103629</span>, <span class="number">0.039665652989046785</span>, <span class="number">0.03794360020655491</span>, <span class="number">0.038542853898324604</span>, <span class="number">0.030910921449707272</span>, <span class="number">0.017048461068700095</span>, <span class="number">0.011457070901732348</span>, <span class="number">0.015052076992633487</span>, <span class="number">0.01065863120095895</span>]</span><br><span class="line">第<span class="number">3</span>次循环, 总体误差:<span class="number">4.501825250607882</span></span><br><span class="line">每个样本误差: [<span class="number">0.0012715264518135426</span>, <span class="number">0.01637889142609892</span>, <span class="number">0.049326982351990054</span>, <span class="number">0.015518124378057436</span>, <span class="number">0.1656111202476661</span>, <span class="number">0.008876214211966228</span>, <span class="number">0.004571613539081073</span>, <span class="number">0.014573419085074172</span>, <span class="number">0.028148158137075344</span>, <span class="number">0.18972863181434513</span>, <span class="number">0.2154103472383741</span>, <span class="number">0.04024397029565818</span>, <span class="number">0.0026517284194097325</span>, <span class="number">0.10442820117896899</span>, <span class="number">0.00020292031830110606</span>, <span class="number">0.03028255511531193</span>, <span class="number">0.0013431576085319633</span>, <span class="number">0.021576011537984604</span>, <span class="number">3.511613570847874e-05</span>, <span class="number">0.016934367363186986</span>,</span><br><span class="line"><span class="number">0.003126131581331897</span>, <span class="number">0.19988284027198758</span>, <span class="number">0.05350570042592307</span>, <span class="number">0.041966620773010305</span>, <span class="number">0.08762022312536813</span>, <span class="number">0.013229082409332666</span>, <span class="number">0.09166187927265652</span>, <span class="number">0.004492309401356834</span>, <span class="number">0.048488379402446546</span>, <span class="number">0.04346780868541996</span>, <span class="number">0.20044099461407955</span>, <span class="number">0.023533476172840677</span>, <span class="number">0.026350125275669597</span>, <span class="number">0.03135507358714391</span>, <span class="number">0.1857945304937314</span>, <span class="number">0.00703150982854957</span>, <span class="number">0.037107185192333254</span>, <span class="number">0.046446534513531486</span>, <span class="number">0.04104645767896824</span>, <span class="number">0.05499975711601556</span>, <span class="number">0.10500538819677512</span>, <span class="number">0.04387936810787768</span>, <span class="number">0.005941912576150481</span>, <span class="number">0.014202421574417196</span>, <span class="number">0.1438862344223261</span>, <span class="number">0.030122543744766615</span>, <span class="number">0.03140049478151737</span>, <span class="number">0.05214552693159448</span>, <span class="number">0.013972451983760886</span>, <span class="number">0.037343265032153086</span>, <span class="number">0.032604862605521326</span>, <span class="number">0.018332972831179937</span>, <span class="number">0.027860569651754655</span>, <span class="number">5.0773206797848936e-05</span>, <span class="number">0.01256844516109681</span>, <span class="number">0.01994037886363708</span>, <span class="number">0.05043641144999795</span>, <span class="number">0.0010297239502908661</span>, <span class="number">0.12680846324374223</span>, <span class="number">0.15240143938663495</span>, <span class="number">0.007780854081136127</span>, <span class="number">0.027135126031150147</span>,</span><br><span class="line"><span class="number">0.0033057647891532034</span>, <span class="number">0.029135040826811256</span>, <span class="number">0.017027614051537573</span>, <span class="number">0.023352051574074877</span>, <span class="number">0.023685611297066266</span>, <span class="number">0.020818104342713837</span>, <span class="number">0.030106836382957535</span>, <span class="number">0.005051016190108512</span>, <span class="number">0.20310054805905026</span>, <span class="number">0.07977779332720433</span>, <span class="number">0.0024842819298944853</span>, <span class="number">0.005032660847039665</span>, <span class="number">0.004570611580484247</span>, <span class="number">0.1548969981156132</span>, <span class="number">0.03013824489937508</span>, <span class="number">0.03285472247512336</span>, <span class="number">0.002802177029993951</span>, <span class="number">0.05121627621567326</span>, <span class="number">0.00895978030747251</span>, <span class="number">0.040257482333418464</span>, <span class="number">0.006785226215576935</span>, <span class="number">0.01627500757618664</span>, <span class="number">0.03470915341357972</span>, <span class="number">0.09682317257912786</span>, <span class="number">0.030364107252577634</span>, <span class="number">0.015015169748170694</span>, <span class="number">0.0005457453961753774</span>, <span class="number">0.17658677253409513</span>, <span class="number">0.03144681111946729</span>, <span class="number">0.03975827203779853</span>, <span class="number">0.03803926142884098</span>, <span class="number">0.03873290681727725</span>, <span class="number">0.03080410198617534</span>, <span class="number">0.016932604019750566</span>, <span class="number">0.011357612574031097</span>, <span class="number">0.014901120691179673</span>, <span class="number">0.010665284152526213</span>]</span><br><span class="line">第<span class="number">4</span>次循环, 总体误差:<span class="number">4.501655539751194</span></span><br><span class="line">每个样本误差: [<span class="number">0.0012810007374459932</span>, <span class="number">0.016337727149017926</span>, <span class="number">0.049571041298433566</span>, <span class="number">0.0154191502905733</span>, <span class="number">0.16609264787818742</span>, <span class="number">0.008768909266432524</span>, <span class="number">0.004552488457587328</span>, <span class="number">0.014530356763192495</span>, <span class="number">0.028243567449200487</span>, <span class="number">0.1899538997249965</span>, <span class="number">0.21478620526585016</span>, <span class="number">0.040363510390739814</span>, <span class="number">0.0027080233274512575</span>, <span class="number">0.1039320359856473</span>, <span class="number">0.00021472997757682373</span>, <span class="number">0.030110990339776177</span>, <span class="number">0.0013331217097075224</span>, <span class="number">0.0217845065015839</span>, <span class="number">2.0218445720393362e-05</span>, <span class="number">0.016684289468013525</span>,</span><br><span class="line"><span class="number">0.003117702968915142</span>, <span class="number">0.2000333944015917</span>, <span class="number">0.05415818881273483</span>, <span class="number">0.042109904219724686</span>, <span class="number">0.08795942780769156</span>, <span class="number">0.013354300432984757</span>, <span class="number">0.09107492273245561</span>, <span class="number">0.004583878570047355</span>, <span class="number">0.04900386963359642</span>, <span class="number">0.04360260691061347</span>, <span class="number">0.20038797942859046</span>, <span class="number">0.023727101534126518</span>, <span class="number">0.026206849992983845</span>, <span class="number">0.03132398370941548</span>, <span class="number">0.1862807271337394</span>, <span class="number">0.007001577816649997</span>, <span class="number">0.036688872438779746</span>, <span class="number">0.046565762603440176</span>, <span class="number">0.04104660344529882</span>, <span class="number">0.05516893013333573</span>, <span class="number">0.10416794173615296</span>, <span class="number">0.043659364378941114</span>, <span class="number">0.005849145121009201</span>, <span class="number">0.01423189364754228</span>, <span class="number">0.1432476399587152</span>, <span class="number">0.030205279073125056</span>, <span class="number">0.03129316361736822</span>, <span class="number">0.0524480232730553</span>, <span class="number">0.013773321464879426</span>, <span class="number">0.03740635471515059</span>, <span class="number">0.032589848631052076</span>, <span class="number">0.01810495271497343</span>, <span class="number">0.02809878543723228</span>, <span class="number">5.570281107423547e-05</span>, <span class="number">0.012508438919783203</span>, <span class="number">0.019852024061128327</span>, <span class="number">0.050854459926390295</span>, <span class="number">0.0010234020614932032</span>, <span class="number">0.12681146146437114</span>, <span class="number">0.15268521575478844</span>, <span class="number">0.007634606906872306</span>, <span class="number">0.027033686416006033</span>, <span class="number">0.0033218447236874242</span>, <span class="number">0.029269381138154</span>, <span class="number">0.01706931277336085</span>, <span class="number">0.023583138711193517</span>, <span class="number">0.023738836081285963</span>, <span class="number">0.020794311802326007</span>, <span class="number">0.030209557965669407</span>, <span class="number">0.0050134647955839716</span>, <span class="number">0.20272439402664696</span>, <span class="number">0.08023209466032187</span>, <span class="number">0.002501708436255113</span>, <span class="number">0.005116362270518572</span>, <span class="number">0.004704651163655204</span>, <span class="number">0.15490883648993545</span>, <span class="number">0.030086185642819157</span>, <span class="number">0.03260943046547132</span>, <span class="number">0.0027879143891497726</span>, <span class="number">0.050876810645680434</span>, <span class="number">0.008864239336093371</span>, <span class="number">0.04022191599593699</span>, <span class="number">0.006872527606976508</span>, <span class="number">0.01613075556624254</span>, <span class="number">0.03464884151904811</span>, <span class="number">0.09721008479385566</span>, <span class="number">0.030190776468417658</span>, <span class="number">0.015227541664627206</span>, <span class="number">0.0005624770578042486</span>, <span class="number">0.17627613082306104</span>, <span class="number">0.031190774985234176</span>, <span class="number">0.03984790290819274</span>, <span class="number">0.038131398765409344</span>, <span class="number">0.038916767357488356</span>, <span class="number">0.030701124521315123</span>, <span class="number">0.01681668002737729</span>, <span class="number">0.011259248028938965</span>, <span class="number">0.014749802962360161</span>, <span class="number">0.010668595936147865</span>]</span><br><span class="line">第<span class="number">5</span>次循环, 总体误差:<span class="number">4.5015829548229975</span></span><br><span class="line">每个样本误差: [<span class="number">0.001289707804815632</span>, <span class="number">0.016294251592264976</span>, <span class="number">0.0498179888494067</span>, <span class="number">0.015320744457033126</span>, <span class="number">0.1665764756363082</span>, <span class="number">0.008664851160191172</span>, <span class="number">0.004533480028655703</span>, <span class="number">0.014486246505671457</span>, <span class="number">0.02833491527743062</span>, <span class="number">0.19018174659944698</span>, <span class="number">0.21417187304878257</span>, <span class="number">0.04048470025657677</span>, <span class="number">0.0027638093228498223</span>, <span class="number">0.10344228156077849</span>, <span class="number">0.00022639575275375302</span>, <span class="number">0.029946080266968017</span>, <span class="number">0.0013232713083051806</span>, <span class="number">0.021990382313238382</span>, <span class="number">9.534283354484233e-06</span>, <span class="number">0.016440829596439232</span>, <span class="number">0.0031088264052454404</span>, <span class="number">0.20018848845461928</span>, <span class="number">0.054804111079948745</span>, <span class="number">0.042252327240697274</span>, <span class="number">0.08829313496374984</span>, <span class="number">0.013477769874535766</span>, <span class="number">0.0904955682865953</span>, <span class="number">0.004674732907585553</span>, <span class="number">0.049513369834711905</span>, <span class="number">0.04373440560521315</span>, <span class="number">0.20032988587458264</span>, <span class="number">0.023920804613817834</span>, <span class="number">0.026070970021056673</span>, <span class="number">0.031296362704219295</span>, <span class="number">0.18675538794030394</span>, <span class="number">0.006975570154330517</span>, <span class="number">0.036288652352273146</span>, <span class="number">0.04668267883958205</span>, <span class="number">0.041045162145841745</span>, <span class="number">0.055335486873460946</span>, <span class="number">0.10334743545618993</span>, <span class="number">0.043446207022046886</span>, <span class="number">0.005757159353576704</span>, <span class="number">0.014262651992589496</span>, <span class="number">0.14262437173488227</span>, <span class="number">0.030283745465974423</span>, <span class="number">0.031186410722764273</span>, <span class="number">0.052740549336285705</span>, <span class="number">0.013577238257058288</span>, <span class="number">0.03746595082175152</span>, <span class="number">0.032571458296497754</span>, <span class="number">0.017878449086541782</span>, <span class="number">0.02833271534301041</span>, <span class="number">6.0668012074977177e-05</span>, <span class="number">0.012446745169993554</span>, <span class="number">0.019761973660390127</span>, <span class="number">0.051277051532142494</span>, <span class="number">0.0010162480439617743</span>, <span class="number">0.12682040037110226</span>, <span class="number">0.1529713515961217</span>, <span class="number">0.007491913608523561</span>, <span class="number">0.026932216186451207</span>, <span class="number">0.003337205945914931</span>, <span class="number">0.02940109177361338</span>, <span class="number">0.0171141921359362</span>, <span class="number">0.023812735723690553</span>, <span class="number">0.023789426280209164</span>, <span class="number">0.020773732687621796</span>, <span class="number">0.030309519005365406</span>, <span class="number">0.004977521571307425</span>, <span class="number">0.2023568380031319</span>, <span class="number">0.08068073005354169</span>, <span class="number">0.0025186892487028393</span>, <span class="number">0.005199567542217719</span>, <span class="number">0.004838489288318679</span>, <span class="number">0.15491677928373482</span>, <span class="number">0.03003925483928631</span>, <span class="number">0.032372309507056565</span>, <span class="number">0.0027739933840318486</span>, <span class="number">0.050544187014554105</span>, <span class="number">0.008770933757055885</span>, <span class="number">0.040186047480268106</span>, <span class="number">0.006960387899961615</span>, <span class="number">0.015988840446957513</span>, <span class="number">0.03458858146348635</span>, <span class="number">0.0975972572835421</span>, <span class="number">0.03002080958707491</span>, <span class="number">0.015439388643367516</span>, <span class="number">0.0005794402832418634</span>, <span class="number">0.17597329648825163</span>, <span class="number">0.03094487346669481</span>, <span class="number">0.0399348469256211</span>, <span class="number">0.038220265026402356</span>, <span class="number">0.039094749314543924</span>, <span class="number">0.03060176011035619</span>, <span class="number">0.016700581021201484</span>, <span class="number">0.01116184598282629</span>, <span class="number">0.014597971259511794</span>, <span class="number">0.010668642230823871</span>]</span><br><span class="line">第<span class="number">6</span>次循环, 总体误差:<span class="number">4.501605217174395</span></span><br><span class="line">每个样本误差: [<span class="number">0.0012976674664389796</span>, <span class="number">0.016248472522430987</span>, <span class="number">0.05006813492315359</span>, <span class="number">0.015222789266512155</span>, <span class="number">0.16706321585669012</span>, <span class="number">0.008563803752886194</span>, <span class="number">0.004514594148929642</span>, <span class="number">0.01444109897313673</span>, <span class="number">0.02842240056753414</span>, <span class="number">0.19041236877758896</span>, <span class="number">0.2135662906591705</span>, <span class="number">0.04060784353691085</span>, <span class="number">0.0028191557239606543</span>, <span class="number">0.10295819563195668</span>, <span class="number">0.0002378950953542833</span>, <span class="number">0.02978756011159985</span>, <span class="number">0.0013135754427695875</span>, <span class="number">0.022193901712782654</span>, <span class="number">2.8840748401707985e-06</span>, <span class="number">0.016203470193874393</span>, <span class="number">0.003099523341778673</span>, <span class="number">0.20034809804526668</span>, <span class="number">0.05544406703759431</span>, <span class="number">0.04239422289288286</span>, <span class="number">0.08862174227501203</span>, <span class="number">0.01359972423801866</span>, <span class="number">0.08992291129456452</span>, <span class="number">0.004764995087099896</span>, <span class="number">0.05001744922730403</span>, <span class="number">0.04386327657183403</span>, <span class="number">0.20026630904413786</span>, <span class="number">0.024114979746166165</span>, <span class="number">0.02594230717597944</span>, <span class="number">0.03127227012136621</span>, <span class="number">0.1872190905297509</span>, <span class="number">0.006953479319779926</span>, <span class="number">0.03590555073562455</span>, <span class="number">0.046797611548124146</span>, <span class="number">0.04104226245406527</span>, <span class="number">0.05549959605914291</span>, <span class="number">0.10254269118486779</span>, <span class="number">0.04323962023581409</span>, <span class="number">0.005665856773608033</span>, <span class="number">0.014294665731533129</span>, <span class="number">0.14201537932774344</span>, <span class="number">0.03035819467676156</span>, <span class="number">0.031080189569693436</span>, <span class="number">0.053023511434915925</span>, <span class="number">0.013383883041366404</span>, <span class="number">0.03752222463624934</span>, <span class="number">0.03254975134782228</span>, <span class="number">0.01765313092935447</span>, <span class="number">0.028562621434350993</span>, <span class="number">6.565461518314286e-05</span>, <span class="number">0.012383336476392365</span>, <span class="number">0.019670161629847322</span>, <span class="number">0.051704813292726255</span>, <span class="number">0.0010082768686936827</span>, <span class="number">0.12683515174470192</span>, <span class="number">0.15326011141660129</span>, <span class="number">0.007352508375506724</span>, <span class="number">0.026830675618222673</span>, <span class="number">0.0033519000816687305</span>, <span class="number">0.029530418106971063</span>, <span class="number">0.01716225368825092</span>, <span class="number">0.02404115057870026</span>, <span class="number">0.023837522145142</span>, <span class="number">0.02075626326523131</span>, <span class="number">0.03040692002403533</span>, <span class="number">0.004943092329208686</span>, <span class="number">0.20199719768866403</span>, <span class="number">0.08112435793880979</span>, <span class="number">0.0025352155426716827</span>, <span class="number">0.005282406077505768</span>, <span class="number">0.004972237506291855</span>, <span class="number">0.15492063697423974</span>, <span class="number">0.029997475000035894</span>, <span class="number">0.032142931188255806</span>, <span class="number">0.002760417035537887</span>, <span class="number">0.05021782956874063</span>, <span class="number">0.008679662360908611</span>, <span class="number">0.04014993701492093</span>, <span class="number">0.007048913127079878</span>, <span class="number">0.015849063855412772</span>, <span class="number">0.03452837139955961</span>, <span class="number">0.09798520337858595</span>, <span class="number">0.02985398926893116</span>, <span class="number">0.015650990040071398</span>, <span class="number">0.000596645019567768</span>, <span class="number">0.1756775221727273</span>, <span class="number">0.030708689909705423</span>, <span class="number">0.040019386897047836</span>, <span class="number">0.03830609792336132</span>, <span class="number">0.03926714564760046</span>, <span class="number">0.03050578945464535</span>, <span class="number">0.01658418280819489</span>, <span class="number">0.011065277441583615</span>, <span class="number">0.014445453502252577</span>, <span class="number">0.010665475666307296</span>]</span><br><span class="line">第<span class="number">7</span>次循环, 总体误差:<span class="number">4.501720565786242</span></span><br><span class="line">每个样本误差: [<span class="number">0.0013048976805702642</span>, <span class="number">0.016200381803095146</span>, <span class="number">0.05032181953240226</span>, <span class="number">0.01512516960501414</span>, <span class="number">0.16755351811219585</span>, <span class="number">0.008465544078056192</span>, <span class="number">0.0044958357028848095</span>, <span class="number">0.014394909616083184</span>, <span class="number">0.028506202362832182</span>, <span class="number">0.19064598861113768</span>, <span class="number">0.21296839621612515</span>, <span class="number">0.04073327021060456</span>, <span class="number">0.0028741343594354024</span>, <span class="number">0.10247900675462528</span>, <span class="number">0.00024920621309561594</span>, <span class="number">0.029635193516428737</span>, <span class="number">0.0013040033430204742</span>, <span class="number">0.022395338087843705</span>, <span class="number">1.0656406061364746e-07</span>, <span class="number">0.015971719944801625</span>, <span class="number">0.0030898109607830496</span>, <span class="number">0.20051225318153115</span>, <span class="number">0.056078705990982046</span>, <span class="number">0.042535933066167916</span>, <span class="number">0.08894564611881633</span>, <span class="number">0.013720391443042091</span>, <span class="number">0.0893560214982335</span>, <span class="number">0.004854792909237545</span>, <span class="number">0.05051670578919593</span>, <span class="number">0.04398930028432042</span>, <span class="number">0.20019683349247303</span>, <span class="number">0.02431003628472982</span>, <span class="number">0.025820700043307235</span>, <span class="number">0.03125177357052729</span>, <span class="number">0.18767241679477015</span>, <span class="number">0.006935317553843128</span>, <span class="number">0.03553867140384327</span>, <span class="number">0.046910868886840214</span>, <span class="number">0.041038004716504414</span>, <span class="number">0.05566142861417524</span>, <span class="number">0.10175252781672592</span>, <span class="number">0.043039339684716495</span>, <span class="number">0.005575124316998947</span>, <span class="number">0.014327920305230179</span>, <span class="number">0.14141961641858297</span>, <span class="number">0.030428849503286094</span>, <span class="number">0.03097443478051214</span>, <span class="number">0.053297295509539835</span>, <span class="number">0.01319293308195767</span>, <span class="number">0.037575342088494834</span>, <span class="number">0.03252476860731002</span>, <span class="number">0.017428658227656123</span>, <span class="number">0.02878878317962888</span>, <span class="number">7.065066545343095e-05</span>, <span class="number">0.012318171273479872</span>, <span class="number">0.01957650838057024</span>, <span class="number">0.052138433485686884</span>, <span class="number">0.0009994974794457548</span>, <span class="number">0.1268556149681578</span>, <span class="number">0.15355180342007035</span>, <span class="number">0.007216132960147398</span>, <span class="number">0.026729006248870705</span>, <span class="number">0.003365976721099383</span>, <span class="number">0.0296576094666496</span>, <span class="number">0.017213533585808533</span>, <span class="number">0.02426871873077312</span>, <span class="number">0.02388325104074532</span>, <span class="number">0.020741824358975265</span>, <span class="number">0.030501955615137348</span>, <span class="number">0.004910091245963403</span>, <span class="number">0.20164480219247866</span>, <span class="number">0.08156363293270721</span>, <span class="number">0.0025512789050975873</span>, <span class="number">0.005365013080816118</span>, <span class="number">0.0051060217655788795</span>, <span class="number">0.15492019652881422</span>, <span class="number">0.029960893057235906</span>, <span class="number">0.031920895018325644</span>, <span class="number">0.0027471878855784386</span>, <span class="number">0.04989716614810648</span>, <span class="number">0.008590227948700867</span>, <span class="number">0.04011362669699745</span>, <span class="number">0.007138228612640216</span>, <span class="number">0.015711220460328752</span>, <span class="number">0.03446820182449697</span>, <span class="number">0.09837448417794106</span>, <span class="number">0.029690096328545683</span>, <span class="number">0.015862644314314646</span>, <span class="number">0.0006141053557446362</span>, <span class="number">0.17538809535438518</span>, <span class="number">0.030481849176645783</span>, <span class="number">0.04010178611080003</span>, <span class="number">0.03838911909476024</span>, <span class="number">0.039434227942281797</span>, <span class="number">0.030413002888288007</span>, <span class="number">0.01646734171105202</span>, <span class="number">0.010969413184563953</span>, <span class="number">0.014292054548651812</span>, <span class="number">0.010659124455052668</span>]</span><br><span class="line">第<span class="number">8</span>次循环, 总体误差:<span class="number">4.501927770761087</span></span><br><span class="line">每个样本误差: [<span class="number">0.0013114142987468306</span>, <span class="number">0.016149953710192736</span>, <span class="number">0.05057941948383527</span>, <span class="number">0.015027770686962738</span>, <span class="number">0.1680480809114139</span>, <span class="number">0.008369860864801163</span>, <span class="number">0.00447720813110411</span>, <span class="number">0.014347657296975796</span>, <span class="number">0.02858647976223599</span>, <span class="number">0.19088286053887882</span>, <span class="number">0.2123771167329272</span>, <span class="number">0.04086134028122645</span>, <span class="number">0.0029288200324464886</span>, <span class="number">0.10200390666240929</span>, <span class="number">0.0002603078515135808</span>, <span class="number">0.029488769874384927</span>, <span class="number">0.0012945242563314585</span>, <span class="number">0.022594978316282776</span>, <span class="number">1.059492904946271e-06</span>, <span class="number">0.01574510801101386</span>, <span class="number">0.0030797019997853945</span>, <span class="number">0.20068104224123332</span>, <span class="number">0.05670873614506661</span>, <span class="number">0.04267781182354075</span>, <span class="number">0.08926524683965914</span>, <span class="number">0.013839995367979897</span>, <span class="number">0.088793933384569</span>, <span class="number">0.004944260437752274</span>, <span class="number">0.05101177331632998</span>, <span class="number">0.044112567727550456</span>, <span class="number">0.20012102933033998</span>, <span class="number">0.02450640313549718</span>, <span class="number">0.025706002706820066</span>, <span class="number">0.03123494955250261</span>, <span class="number">0.1881159603532619</span>, <span class="number">0.0069211177705223075</span>, <span class="number">0.03518718748138915</span>, <span class="number">0.04702274093179794</span>, <span class="number">0.041032460719649305</span>, <span class="number">0.05582115981688513</span>, <span class="number">0.10097575004057964</span>, <span class="number">0.04284511012364612</span>, <span class="number">0.005484833132017415</span>, <span class="number">0.014362418080179129</span>, <span class="number">0.14083603110541928</span>, <span class="number">0.030495904579465993</span>, <span class="number">0.03086906083800984</span>, <span class="number">0.053562269401922685</span>, <span class="number">0.013004058827293804</span>, <span class="number">0.03762546495103309</span>, <span class="number">0.03249653141393947</span>, <span class="number">0.017204678107319286</span>, <span class="number">0.02901150098652604</span>, <span class="number">7.564636564244785e-05</span>, <span class="number">0.012251192863786719</span>, <span class="number">0.019480919330383966</span>, <span class="number">0.052578671909193485</span>, <span class="number">0.000989912619705864</span>, <span class="number">0.12688171747589855</span>, <span class="number">0.1538467847653139</span>, <span class="number">0.007082534203182374</span>, <span class="number">0.026627129801592583</span>, <span class="number">0.0033794837748039037</span>, <span class="number">0.02978292172511706</span>, <span class="number">0.017268104420798555</span>, <span class="number">0.024495808003313947</span>, <span class="number">0.023926728061202336</span>, <span class="number">0.02073036148293005</span>, <span class="number">0.030594816024573313</span>, <span class="number">0.0048784402303073465</span>, <span class="number">0.20129898585991673</span>, <span class="number">0.0819992128532776</span>, <span class="number">0.00256687126266354</span>, <span class="number">0.005447531130792593</span>, <span class="number">0.0052399843996283725</span>, <span class="number">0.15491521811564474</span>, <span class="number">0.029929582100023056</span>, <span class="number">0.03170582503699299</span>, <span class="number">0.0027343080639013104</span>, <span class="number">0.049581622666546935</span>, <span class="number">0.00850243546303479</span>, <span class="number">0.040077140391033626</span>, <span class="number">0.007228481421535626</span>, <span class="number">0.01557509583919555</span>, <span class="number">0.034408055322642794</span>, <span class="number">0.09876571651129276</span>, <span class="number">0.029528907601203348</span>, <span class="number">0.016074673181954997</span>, <span class="number">0.0006318400241298109</span>, <span class="number">0.1751043316871342</span>, <span class="number">0.030264015352071003</span>, <span class="number">0.04018229052163691</span>, <span class="number">0.038469535787376614</span>, <span class="number">0.039596248059509016</span>, <span class="number">0.030323198611404575</span>, <span class="number">0.0163498926505776</span>, <span class="number">0.010874122411527135</span>, <span class="number">0.014137553795040479</span>, <span class="number">0.010649591715579906</span>]</span><br><span class="line">第<span class="number">9</span>次循环, 总体误差:<span class="number">4.502226152227579</span></span><br><span class="line">每个样本误差: [<span class="number">0.001317231067850271</span>, <span class="number">0.016097144054108482</span>, <span class="number">0.0508413538749347</span>, <span class="number">0.014930476818848865</span>, <span class="number">0.16854766104657656</span>, <span class="number">0.00827655257132664</span>, <span class="number">0.004458713497264518</span>, <span class="number">0.014299303623927758</span>, <span class="number">0.028663372678876628</span>, <span class="number">0.19112327502823778</span>, <span class="number">0.21179135634069013</span>, <span class="number">0.040992449235648334</span>, <span class="number">0.002983291328664909</span>, <span class="number">0.10153204091072036</span>, <span class="number">0.0002711789977922791</span>, <span class="number">0.029348103059564243</span>, <span class="number">0.0012851071217576694</span>, <span class="number">0.022793126280563174</span>, <span class="number">5.620598456722201e-06</span>, <span class="number">0.015523179215543425</span>, <span class="number">0.0030692047047643687</span>, <span class="number">0.2008546152492946</span>, <span class="number">0.05733493506496241</span>, <span class="number">0.04282022942430053</span>, <span class="number">0.08958095319930079</span>, <span class="number">0.013958757674356951</span>, <span class="number">0.08823563588353799</span>, <span class="number">0.005033539378533779</span>, <span class="number">0.051503329131960526</span>, <span class="number">0.04423318184614184</span>, <span class="number">0.20003844718009733</span>, <span class="number">0.0247045338906571</span>, <span class="number">0.025598084112693247</span>, <span class="number">0.03122188472178246</span>, <span class="number">0.18855033325514775</span>, <span class="number">0.006910934913182355</span>, <span class="number">0.03485033419744961</span>, <span class="number">0.04713350177928889</span>, <span class="number">0.041025673336913836</span>, <span class="number">0.05597897131696737</span>, <span class="number">0.10021113720899681</span>, <span class="number">0.04265668336858872</span>, <span class="number">0.005394837347377341</span>, <span class="number">0.014398179061585501</span>, <span class="number">0.140263556241528</span>, <span class="number">0.030559527008321936</span>, <span class="number">0.030763960744903965</span>, <span class="number">0.05381878494420242</span>, <span class="number">0.012816920662379975</span>, <span class="number">0.03767275203473241</span>, <span class="number">0.032465040925560955</span>, <span class="number">0.0169808210990911</span>, <span class="number">0.029231099915583897</span>, <span class="number">8.063402021866931e-05</span>, <span class="number">0.01218232833227656</span>, <span class="number">0.019383283395793656</span>, <span class="number">0.053026370770935374</span>, <span class="number">0.0009795186490412023</span>, <span class="number">0.1269134154340862</span>, <span class="number">0.1541454671363221</span>, <span class="number">0.0069514617946905555</span>, <span class="number">0.026524947042412123</span>, <span class="number">0.003392467837067336</span>, <span class="number">0.029906619986157637</span>, <span class="number">0.01732607742659765</span>, <span class="number">0.024722823839743658</span>, <span class="number">0.023968056552655905</span>, <span class="number">0.020721845221073874</span>, <span class="number">0.030685688707742086</span>, <span class="number">0.004848068378161524</span>, <span class="number">0.20095908220669773</span>, <span class="number">0.08243176556396757</span>, <span class="number">0.002581984774379569</span>, <span class="number">0.005530111896541403</span>, <span class="number">0.005374286335543998</span>, <span class="number">0.15490543139491386</span>, <span class="number">0.029903643536279768</span>, <span class="number">0.031497366878392836</span>, <span class="number">0.0027217793591948762</span>, <span class="number">0.04927061772376989</span>, <span class="number">0.008416090197014945</span>, <span class="number">0.0400404834642265</span>, <span class="number">0.007319843061622256</span>, <span class="number">0.015440464364690897</span>, <span class="number">0.03434790626544063</span>, <span class="number">0.09915958138932274</span>, <span class="number">0.029370193912026693</span>, <span class="number">0.01628742597820966</span>, <span class="number">0.0006498729463292356</span>, <span class="number">0.1748255685337651</span>, <span class="number">0.030054890239840263</span>, <span class="number">0.04026113080289452</span>, <span class="number">0.038547542381366935</span>, <span class="number">0.03975343952438599</span>, <span class="number">0.030236181073711337</span>, <span class="number">0.01623164707335592</span>, <span class="number">0.010779271413321228</span>, <span class="number">0.013981702655116505</span>, <span class="number">0.010636854580740627</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以上内容都是为了完成机器学习课程作业</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/机器学习/">#机器学习</a> <a href="/tags/深度学习/">#深度学习</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/机器学习/">
+            机器学习
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/23/李宏毅机器学习教程系列/">
+                    李宏毅机器学习教程系列
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/13/机器学习的评估方法有哪些/">
+                    机器学习的评估方法有哪些
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
+                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
+                    李宏毅机器学习教程10：卷积神经网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：tensorflow教程/">
+                    李宏毅机器学习教程9-3：tensorflow教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程9-1：训练深度神经网络的一些tips/">
+                    李宏毅机器学习教程9-1：训练深度神经网络的一些tips
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
+                    李宏毅机器学习教程01:机器学习简介
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程21-1：循环神经网络/">
+                    李宏毅机器学习教程21-1：循环神经网络
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/深度学习/">
+            深度学习
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/08/29/神经网络实现的贪吃蛇机器人-视频展示/">
+                    神经网络实现的贪吃蛇机器人-视频展示
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/26/机器翻译语料库大全(免费下)/">
+                    机器翻译语料库大全(免费下)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/AI对对联的训练过程/">
+                    Ai对对联训练过程-好多精彩对联不舍得删
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/22/使用循环神经网络和遗传算法玩排球游戏/">
+                    使用循环神经网络和遗传算法玩排球游戏
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
+                    作文自动评分-位置编码position-encoding(PE)解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/04/Tensorflow.js实现进化算法及可视化演示/">
+                    Tensorflow.js实现进化算法及可视化演示
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/21/tensorflow教程01-神经网络模型通俗理解和简单案例/">
+                    tensorflow教程01-神经网络模型通俗理解和简单案例
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/10/Q-learning人工智能玩推箱子小游戏/">
+                    Q-learning人工智能玩推箱子小游戏
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/27/神经网络BP算法求导-手动推导/">
+                    神经网络BP算法求导-手动推导
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

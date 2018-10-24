@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.sound - play various forms of sound &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.tools - miscellaneous tools" href="tools.html" />
+    <link rel="prev" title="psychopy.serial - functions for interacting with the serial port" href="serial.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="psychopy.tools - miscellaneous tools"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="serial.html" title="psychopy.serial - functions for interacting with the serial port"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.sound</span></code> - play various forms of sound</a><ul>
+<li><a class="reference internal" href="#sound"><code class="docutils literal"><span class="pre">Sound</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="serial.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.serial</span></code> - functions for interacting with the serial port</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="tools.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.tools</span></code> - miscellaneous tools</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/sound.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.sound">
+<span id="psychopy-sound-play-various-forms-of-sound"></span><h1><a class="reference internal" href="#module-psychopy.sound" title="psychopy.sound"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.sound</span></code></a> - play various forms of sound<a class="headerlink" href="#module-psychopy.sound" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sound">
+<h2><a class="reference internal" href="#psychopy.sound.Sound" title="psychopy.sound.Sound"><code class="xref py py-class docutils literal"><span class="pre">Sound</span></code></a><a class="headerlink" href="#sound" title="Permalink to this headline">¶</a></h2>
+<p>PsychoPy currently supports a choice of three sound libraries: pyo, sounddevice or pygame. Select which will be
+used via the <a class="reference internal" href="../general/prefs.html#generalsettings"><span class="std std-ref">audioLib</span></a> preference. <cite>sound.Sound()</cite> will then refer to one of <cite>SoundDevice</cite>
+<cite>SoundPyo</cite> or <cite>SoundPygame</cite>. This can be set on a per-experiment basis by importing
+preferences, and <a class="reference internal" href="preferences.html"><span class="doc">setting the audioLib option</span></a> to use.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <cite>pygame</cite> backend is the oldest and should always work without errors, but has the least good performance. Use it if latencies foryour audio don&#8217;t mattter.</li>
+<li>The <cite>pyo</cite> library is, in theory, the highest performer, but in practice it has ften had issues (at least on macOS) with crashes and freezing of experiments, or causing them not to finish properly. If those issues aren&#8217;t affecting your studies then this could be the one for you.</li>
+<li>The <cite>sounddevice</cite> library looks like the way of the future. The performance appears to be good (although this might be less so in cases where you have complex rendering being done as well because it operates from the same computer core as the main experiment code). It&#8217;s newer than <cite>pyo</cite> and so more prone to bugs and we haven&#8217;t yet added microphone support to record your participants.</li>
+</ul>
+</div></blockquote>
+<dl class="attribute">
+<dt id="psychopy.sound.Sound">
+<code class="descclassname">psychopy.sound.</code><code class="descname">Sound</code><a class="headerlink" href="#psychopy.sound.Sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">SoundPyo</span></code></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="psychopy.tools - miscellaneous tools"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="serial.html" title="psychopy.serial - functions for interacting with the serial port"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

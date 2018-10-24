@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Tensorflow.js实现进化算法及可视化演示"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Tensorflow.js实现进化算法及可视化演示 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/07/04/Tensorflow.js实现进化算法及可视化演示/index.html",
+    "appid": "1600845001263316",
+    "title": "Tensorflow.js实现进化算法及可视化演示",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-07-04T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/07/04/Tensorflow.js实现进化算法及可视化演示/">
+                Tensorflow.js实现进化算法及可视化演示
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="Tensorflow.js实现进化算法及可视化演示"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年07月04日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进化算法概念"><span class="toc-number">2.</span> <span class="toc-text">进化算法概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进化算法的过程"><span class="toc-number">3.</span> <span class="toc-text">进化算法的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用下图来更具体的说明"><span class="toc-number">3.1.</span> <span class="toc-text">用下图来更具体的说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进化算法用途"><span class="toc-number">4.</span> <span class="toc-text">进化算法用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tensorflow-js架构"><span class="toc-number">5.</span> <span class="toc-text">Tensorflow.js架构</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#核心-API-Low-Level-我们今天的代码用的就是这一部分"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">核心 API (Low Level) - 我们今天的代码用的就是这一部分</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Layers-high-level"><span class="toc-number">5.0.0.2.</span> <span class="toc-text">Layers (high level)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型介绍"><span class="toc-number">6.</span> <span class="toc-text">模型介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#性能指标"><span class="toc-number">6.0.1.</span> <span class="toc-text">性能指标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#选择优胜的生物"><span class="toc-number">6.0.2.</span> <span class="toc-text">选择优胜的生物</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#交配繁殖"><span class="toc-number">6.0.3.</span> <span class="toc-text">交配繁殖:</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#突变"><span class="toc-number">6.0.3.1.</span> <span class="toc-text">突变</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">7.</span> <span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一部分实现一个神经网络结构-生物的大脑"><span class="toc-number">7.1.</span> <span class="toc-text">第一部分实现一个神经网络结构(生物的大脑)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二部分实现达尔文选择和交配繁殖"><span class="toc-number">7.2.</span> <span class="toc-text">第二部分实现达尔文选择和交配繁殖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三部分可视化相关代码"><span class="toc-number">7.3.</span> <span class="toc-text">第三部分可视化相关代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>发表, 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>物竞天择是大自然最伟大的发明。生命是如何从无机物一步步进化成智能的实体? 我们可以使用进化算法感受以下这个过程。今天的一个机器学习的小例子不需要任何训练数据和人工指导, 只需要遵循适者生存的生命法则, 就能让生物学会跑步。</p>
+<p>本篇文章要带领大家使用tensorflow.js实现一个神经网络, 并使用进化算法更新神经网络的参数, 并使用p5.js实现整个训练过程的可视化。你可以看这个gif图片看到我们要做的东西。另外通过这个<a href="http://mlln.cn/demos/evolutionSimulator/">DEMO</a>可以全程观察生物进化的过程, 你会看到跑的更远的生物适应能力更强, 能繁衍更多的后代。</p>
+<p><img src="images/evolutional-process.gif"></p>
+<h3 id="进化算法概念"><a href="#进化算法概念" class="headerlink" title="进化算法概念"></a>进化算法概念</h3><p><img src="https://github.com/nnrg/opennero/wiki/neuroevolution.png" width="700px"></p>
+<ul>
+<li>机器学习模型本质上是函数拟合。</li>
+<li>无论是分类，回归还是强化学习，最终目标几乎总是找到将输入数据映射到输出数据的函数。</li>
+</ul>
+<p><img src="http://wiki.ubc.ca/images/6/64/FunctionApproximation_idea.png" width="700px"></p>
+<p>所以, 问题可以变得很简单, 给你一堆训练数据(包括输入<code>$x$</code>和输出<code>$y$</code>), 你要找到一个函数(调整函数的参数)<code>$f$</code>, 使得<code>$\hat y = f(x)$</code>, 并且 <code>$\hat y ≈ y$</code></p>
+<h3 id="进化算法的过程"><a href="#进化算法的过程" class="headerlink" title="进化算法的过程"></a>进化算法的过程</h3><ul>
+<li>我们假设要学习的函数是一个神经网络结构的函数</li>
+<li>生成随机神经网络函数参数, 比如生成100个不同的参数但相同结构的函数</li>
+<li>使用高斯分布随机确定每个函数的参数</li>
+<li>检验这些函数的性能, 选择最好的函数</li>
+<li>性能越好的函数有越大的几率影响他们的下一代函数</li>
+<li>繁殖下一代函数</li>
+<li>重复上面的过程, 逐步提高函数的性能</li>
+</ul>
+<p>进化算法有以下的特点:</p>
+<ul>
+<li>因此，我们使用几种模型而不是单一模型。这是与梯度下降的关键区别</li>
+<li>NEAT，HyperNEAT和新奇搜索就是一些例子</li>
+<li>进化策略，遗传算法等对于如何进行遗传优化的方法都略有不同。</li>
+</ul>
+<h4 id="用下图来更具体的说明"><a href="#用下图来更具体的说明" class="headerlink" title="用下图来更具体的说明"></a>用下图来更具体的说明</h4><p><img src="https://cdn-images-1.medium.com/max/1600/1*KQIGKIZOKJudEf9x_sW5Kw.png" width="700px"></p>
+<ul>
+<li>首先，确定评估性能的方法。</li>
+<li>这意味着检查函数并确定哪些函数表现最佳。</li>
+<li>接下来，基于评估结果选择优秀的函数。</li>
+<li>对于DNN，常用指标定义为损失或奖励。</li>
+<li>生成下一代函数, 让优秀的祖先获得更高的权重来影响下一代的函数参数, 并且增加一些随机值来提高函数的可能性</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/43eaf9175653a3e5fffd1e79c7aafeb9ca83cc81/68747470733a2f2f76697375616c73747564696f6d6167617a696e652e636f6d2f61727469636c65732f323031342f30332f30312f2537452f6d656469612f4543472f76697375616c73747564696f6d6167617a696e652f496d616765732f323031342f30332f45766f6c7574696f6e617279416c676f726974686d2e61736878" width="700px"></p>
+<h3 id="进化算法用途"><a href="#进化算法用途" class="headerlink" title="进化算法用途"></a>进化算法用途</h3><ul>
+<li>无人驾驶</li>
+</ul>
+<p><img src="https://eng.uber.com/wp-content/uploads/2017/11/image4-1-1024x574.png" width="700px"></p>
+<ul>
+<li>智能游戏/机器人</li>
+</ul>
+<p><img src="https://blog.openai.com/content/images/2017/03/out.gif" width="700px"></p>
+<ul>
+<li>图片分类</li>
+</ul>
+<p><img src="https://techcrunch.com/wp-content/uploads/2016/10/customtraining-adidas.png?w=730&crop=1" width="700px"></p>
+<ul>
+<li>生成艺术</li>
+</ul>
+<p><img src="https://eng.uber.com/wp-content/uploads/2017/11/image4-1-1024x574.png" width="700px"></p>
+<ul>
+<li>Anything really!</li>
+</ul>
+<h3 id="Tensorflow-js架构"><a href="#Tensorflow-js架构" class="headerlink" title="Tensorflow.js架构"></a>Tensorflow.js架构</h3><p>这里不详细介绍tensorflow.js, 有兴趣的可以关注我以后的教程。总的来说, tensorflow.js分类两个部分:</p>
+<h6 id="核心-API-Low-Level-我们今天的代码用的就是这一部分"><a href="#核心-API-Low-Level-我们今天的代码用的就是这一部分" class="headerlink" title="核心 API (Low Level) - 我们今天的代码用的就是这一部分"></a>核心 API (Low Level) - 我们今天的代码用的就是这一部分</h6><ul>
+<li>计算图是一系列TensorFlow操作，排列成图形。</li>
+<li>图形由两种类型的对象组成。</li>
+<li>操作（或“操作”）：图形的节点。操作描述消耗和产生张量的计算。</li>
+<li>张量：图中的边缘。这些代表将流经图表的值。大多数TensorFlow函数返回tf.Tensors。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = tf.constant(<span class="number">3.0</span>, dtype=tf.float32)</span><br><span class="line">b = tf.constant(4.0) # also tf.float32 implicitly</span><br><span class="line">total = a + b</span><br></pre></td></tr></table></figure>
+<h6 id="Layers-high-level"><a href="#Layers-high-level" class="headerlink" title="Layers (high level)"></a>Layers (high level)</h6><ul>
+<li>图层将变量和作用于它们的操作打包在一起。</li>
+<li>例如，全连接层对每个输出的所有输入执行加权和，并应用可选的激活函数。</li>
+<li>连接权重和偏差由图层对象管理。</li>
+<li>以下代码创建一个Dense图层，它接受一批输入向量，并为每个向量生成一个输出值。</li>
+<li>要将图层应用于输入，请将图层称为函数。例如：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = tf.placeholder(tf.float32, shape=[None, <span class="number">3</span>])</span><br><span class="line">linear_model = tf.layers.Dense(units=<span class="number">1</span>)</span><br><span class="line">y = linear_model(x)</span><br></pre></td></tr></table></figure>
+<h3 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h3><p>(我会使用”生物”这个词来代表我的函数, 进化算法常常这么叫)</p>
+<p><img src="images/evolutional.png"></p>
+<ul>
+<li>我们要在网页上创建一个20个生物</li>
+<li>他们需要自己摸索如何走路, 并且走的越远越表明”基因”越优秀</li>
+<li>为了简单, 他们只有两条腿, 如上图</li>
+<li>所有生物都有3层前馈神经网络作为他们的大脑</li>
+<li>每层的神经元个数是4/10/X，其中输出层中的节点数X取决于生物的肌肉数量。</li>
+<li><p>馈送到网络的输入数据是(可以当作这些生物只有这4个感觉)：</p>
+<ul>
+<li>水平速度</li>
+<li>垂直速度</li>
+<li>扭矩</li>
+<li>高于地面的高度</li>
+</ul>
+</li>
+</ul>
+<h5 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h5><ul>
+<li>生物可以根据它从起点移动的距离获得分数。</li>
+<li>它越向正确的方向行进，它获得的分数越多, 说明这个函数的性能越好。</li>
+<li>在相反方向行驶，将减少分数。</li>
+</ul>
+<h5 id="选择优胜的生物"><a href="#选择优胜的生物" class="headerlink" title="选择优胜的生物"></a>选择优胜的生物</h5><ul>
+<li>根据生物的性能选择生物, 被选择的生物才有机会进行繁殖。</li>
+<li>他们所得的分数被用于计算选择的概率。</li>
+<li>表现更好的生物具有更高的分数，因此具有更高的机会进行繁殖。</li>
+</ul>
+<h5 id="交配繁殖"><a href="#交配繁殖" class="headerlink" title="交配繁殖:"></a>交配繁殖:</h5><ul>
+<li>使用上面的选择算法选择两个生物（父母）。</li>
+<li>如下图所示，它们的权重按位随机互换，形成一组新的权重。</li>
+<li>在我们的例子中，一个位代表一个权重值。这组新的权重用于形成一个新的生物（孩子）, 也可以被称为一个函数。</li>
+</ul>
+<p><img src="https://camo.githubusercontent.com/82b85caee5d382d8f4959af6acd6fed8ccca93b0/68747470733a2f2f7374617469632e7468696e6b696e67616e64636f6d707574696e672e636f6d2f323031342f30332f63726f73736f7665722e706e67" alt="alt text" title="Logo Title Text 1"></p>
+<h6 id="突变"><a href="#突变" class="headerlink" title="突变"></a>突变</h6><ul>
+<li>突变率通常约为1-2％，实际上是引入随机性的概率。</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="第一部分实现一个神经网络结构-生物的大脑"><a href="#第一部分实现一个神经网络结构-生物的大脑" class="headerlink" title="第一部分实现一个神经网络结构(生物的大脑)"></a>第一部分实现一个神经网络结构(生物的大脑)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 神经网络 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NeuralNetwork</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 三个参数分别代表输入层/隐藏层/输出层的神经元个数</span></span><br><span class="line"><span class="comment">     * @constructor</span></span><br><span class="line"><span class="comment">     * @param &#123;number&#125; input_nodes</span></span><br><span class="line"><span class="comment">     * @param &#123;number&#125; hidden_nodes </span></span><br><span class="line"><span class="comment">     * @param &#123;number&#125; output_nodes </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">constructor</span>(input_nodes, hidden_nodes, output_nodes) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.input_nodes = input_nodes;</span><br><span class="line">        <span class="keyword">this</span>.hidden_nodes = hidden_nodes;</span><br><span class="line">        <span class="keyword">this</span>.output_nodes = output_nodes;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Initialize random weights</span></span><br><span class="line">        <span class="keyword">this</span>.input_weights = tf.randomNormal([<span class="keyword">this</span>.input_nodes, <span class="keyword">this</span>.hidden_nodes]);</span><br><span class="line">        <span class="keyword">this</span>.output_weights = tf.randomNormal([<span class="keyword">this</span>.hidden_nodes, <span class="keyword">this</span>.output_nodes]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 输入一个向量, 进行前向传播计算输出值</span></span><br><span class="line"><span class="comment">     * @param &#123;array&#125; - Array of inputs</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    predict(user_input) &#123;</span><br><span class="line">        <span class="keyword">let</span> output;</span><br><span class="line">        tf.tidy(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">/* Takes a 1D array */</span></span><br><span class="line">            <span class="keyword">let</span> input_layer = tf.tensor(user_input, [<span class="number">1</span>, <span class="keyword">this</span>.input_nodes]);</span><br><span class="line">            <span class="keyword">let</span> hidden_layer = input_layer.matMul(<span class="keyword">this</span>.input_weights).sigmoid();</span><br><span class="line">            <span class="keyword">let</span> output_layer = hidden_layer.matMul(<span class="keyword">this</span>.output_weights).sigmoid();</span><br><span class="line">            output = output_layer.dataSync();</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> output;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回一个新的实例, 复制权重</span></span><br><span class="line"><span class="comment">     * @returns &#123;NeuralNetwork&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    clone() &#123;</span><br><span class="line">        <span class="keyword">let</span> clonie = <span class="keyword">new</span> NeuralNetwork(<span class="keyword">this</span>.input_nodes, <span class="keyword">this</span>.hidden_nodes, <span class="keyword">this</span>.output_nodes);</span><br><span class="line">        clonie.dispose();</span><br><span class="line">        clonie.input_weights = tf.clone(<span class="keyword">this</span>.input_weights);</span><br><span class="line">        clonie.output_weights = tf.clone(<span class="keyword">this</span>.output_weights);</span><br><span class="line">        <span class="keyword">return</span> clonie;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理内存中的输入和输出权重</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    dispose() &#123;</span><br><span class="line">        <span class="keyword">this</span>.input_weights.dispose();</span><br><span class="line">        <span class="keyword">this</span>.output_weights.dispose();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="第二部分实现达尔文选择和交配繁殖"><a href="#第二部分实现达尔文选择和交配繁殖" class="headerlink" title="第二部分实现达尔文选择和交配繁殖"></a>第二部分实现达尔文选择和交配繁殖</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generation</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 输入生物群大小/也就是生物的个数</span></span><br><span class="line"><span class="comment">     * @constructor</span></span><br><span class="line"><span class="comment">     * @param &#123;number&#125; population - The population Size</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(population) &#123;</span><br><span class="line">        <span class="keyword">this</span>.population = population;</span><br><span class="line">        <span class="keyword">this</span>.species = [];</span><br><span class="line">        <span class="keyword">this</span>.generation = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span>.high_score = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.avg_score = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.total_score = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.fitness = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.progress = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建种群</span></span><br><span class="line"><span class="comment">     * @param &#123;object&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    initialize(Person) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.population; i++) &#123;</span><br><span class="line">            <span class="keyword">let</span> new_Person = <span class="keyword">new</span> Person(&#123;</span><br><span class="line">                upper_length: <span class="number">30</span>,</span><br><span class="line">                upper_width: <span class="number">8</span>,</span><br><span class="line">                lower_length: <span class="number">30</span>,</span><br><span class="line">                lower_width: <span class="number">6</span>,</span><br><span class="line">                x: width * <span class="number">0.15</span>,</span><br><span class="line">                y: height * <span class="number">0.85</span>,</span><br><span class="line">                id: i</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">this</span>.species.push(new_Person);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从种群中筛选一个人作为育种候选人</span></span><br><span class="line"><span class="comment">     * fitness高的人更容易被选出来</span></span><br><span class="line"><span class="comment">     * @returns A Person</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    pickOne() &#123;</span><br><span class="line">        <span class="keyword">let</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">let</span> r = <span class="built_in">Math</span>.random();</span><br><span class="line">        <span class="keyword">while</span> (r &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            r -= <span class="keyword">this</span>.species[index].fitness;</span><br><span class="line">            index += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        index -= <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> selected = <span class="keyword">this</span>.species[index].clone();</span><br><span class="line">        <span class="keyword">return</span> selected;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    evolve() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 保存高分</span></span><br><span class="line">        <span class="keyword">this</span>.generation += <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">let</span> gen_highscore = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, <span class="keyword">this</span>.species.map(<span class="function"><span class="params">o</span> =&gt;</span> o.score));</span><br><span class="line">        <span class="keyword">this</span>.high_score = gen_highscore &gt; <span class="keyword">this</span>.high_score ? gen_highscore : <span class="keyword">this</span>.high_score;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算种群总分</span></span><br><span class="line">        <span class="keyword">let</span> total_score = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.species.forEach(<span class="function">(<span class="params">person</span>) =&gt;</span> &#123; total_score += person.score &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算每个人的性能(适应能力)</span></span><br><span class="line">        <span class="keyword">this</span>.progress = (total_score / <span class="keyword">this</span>.population) - <span class="keyword">this</span>.avg_score</span><br><span class="line">        <span class="keyword">this</span>.avg_score = total_score / <span class="keyword">this</span>.population;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.population; i++) &#123;</span><br><span class="line">            <span class="keyword">this</span>.species[i].fitness = <span class="keyword">this</span>.species[i].score / total_score;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 新一代种群保存在这个列表里</span></span><br><span class="line">        <span class="keyword">let</span> new_generation = [];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 繁殖</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.population; i++) &#123;</span><br><span class="line">            <span class="keyword">let</span> parentA = <span class="keyword">this</span>.pickOne();</span><br><span class="line">            <span class="keyword">let</span> parentB = <span class="keyword">this</span>.pickOne();</span><br><span class="line">            <span class="keyword">let</span> child = parentA.crossover(parentB);</span><br><span class="line">            child.mutate();</span><br><span class="line">            child.id = i;</span><br><span class="line">            child.params.id = i;</span><br><span class="line">            child.colors = [parentA.colors[<span class="number">0</span>], parentB.colors[<span class="number">1</span>]];</span><br><span class="line">            child.parents = [&#123; <span class="attr">id</span>: parentA.id, <span class="attr">score</span>: <span class="keyword">this</span>.species[parentA.id].score &#125;, &#123; <span class="attr">id</span>: parentB.id, <span class="attr">score</span>: <span class="keyword">this</span>.species[parentB.id].score &#125;];</span><br><span class="line">            new_generation.push(child);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 杀死这个老种群</span></span><br><span class="line">        <span class="comment">// i.e. Remove their bodies from MatterJS World and dispose their brain</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.population; i++) &#123;</span><br><span class="line">            <span class="keyword">this</span>.species[i].kill(world);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将新一代种群添加到这里</span></span><br><span class="line">        <span class="keyword">this</span>.species = new_generation;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.population; i++) &#123;</span><br><span class="line">            <span class="keyword">this</span>.species[i].add_to_world(world);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="第三部分可视化相关代码"><a href="#第三部分可视化相关代码" class="headerlink" title="第三部分可视化相关代码"></a>第三部分可视化相关代码</h4><p>可视化是用p5.js实现的, 因为不是这篇文章的重点, 所以这里没有贴出来。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上面的代码, 你应该能够理解进化算法的基本理念了。进化算法和梯度下降法的区别就是他们更新函数参数的方法不同。</p>
+<p>你可以通过这个在线<a href="http://mlln.cn/demos/evolutionSimulator/">Demo</a>, 观察整个生物进化过程。</p>
+<p>上面的代码来自这个<a href="https://github.com/adityathebe/evolutionSimulator" target="_blank" rel="noopener">GitHub</a>, 感谢作者.</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="Tensorflow.js实现进化算法及可视化演示.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/深度学习/">#深度学习</a> <a href="/tags/tensorflow-js/">#tensorflow.js</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/深度学习/">
+            深度学习
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/08/29/神经网络实现的贪吃蛇机器人-视频展示/">
+                    神经网络实现的贪吃蛇机器人-视频展示
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/26/机器翻译语料库大全(免费下)/">
+                    机器翻译语料库大全(免费下)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/AI对对联的训练过程/">
+                    Ai对对联训练过程-好多精彩对联不舍得删
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/22/使用循环神经网络和遗传算法玩排球游戏/">
+                    使用循环神经网络和遗传算法玩排球游戏
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
+                    作文自动评分-位置编码position-encoding(PE)解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/04/Tensorflow.js实现进化算法及可视化演示/">
+                    Tensorflow.js实现进化算法及可视化演示
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/21/tensorflow教程01-神经网络模型通俗理解和简单案例/">
+                    tensorflow教程01-神经网络模型通俗理解和简单案例
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/10/Q-learning人工智能玩推箱子小游戏/">
+                    Q-learning人工智能玩推箱子小游戏
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/27/神经网络BP算法求导-手动推导/">
+                    神经网络BP算法求导-手动推导
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/tensorflow-js/">
+            tensorflow.js
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/07/04/Tensorflow.js实现进化算法及可视化演示/">
+                    Tensorflow.js实现进化算法及可视化演示
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

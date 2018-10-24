@@ -1,0 +1,35 @@
+
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+<title>Notebook中显示P5.js页面</title>
+</head>
+<body>
+<a href="http://mlln.cn"  target="_blank"><h5>p5.js效果展示: p5js-html/p5-03-mouse-track.html</h5></a>
+<script>
+
+function setup(){
+    createCanvas(880, 380); 
+    fill(255, 255, 255, 50)
+    stroke(0, 0, 0, 50)
+    background(240)
+}
+
+function draw() {  
+    // mouseX和mouseY代表鼠标位置
+    // 使用 pmouseX, pmouseY捕捉前一个鼠标位置
+    // 可以使用前后两个鼠标点的位置推断鼠标速度
+    // 我们让速度快的轨迹深一些
+    let weight = dist(mouseX, mouseY, pmouseX, pmouseY)*5;
+    // 设置透明度为weight
+    stroke(0, 0, 0, weight)
+    // 绘制圆圈
+    ellipse(mouseX, mouseY, 10, 10, 0)
+    // 绘制轨迹, 
+     line(mouseX, mouseY, pmouseX, pmouseY); 
+}
+</script>
+</body>
+</html>

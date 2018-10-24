@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="keras教程-n-循环神经网络的注意力机制的理论和实现"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>keras教程-n-循环神经网络的注意力机制的理论和实现 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                keras教程-n-循环神经网络的注意力机制的理论和实现
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-n-循环神经网络的注意力机制的理论和实现"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月02日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#案例介绍"><span class="toc-number">1.</span> <span class="toc-text">案例介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理论知识"><span class="toc-number">2.</span> <span class="toc-text">理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景知识"><span class="toc-number">2.1.</span> <span class="toc-text">背景知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意力机制"><span class="toc-number">2.2.</span> <span class="toc-text">注意力机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keras实现注意力机制"><span class="toc-number">3.</span> <span class="toc-text">keras实现注意力机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#伪造数据"><span class="toc-number">3.1.</span> <span class="toc-text">伪造数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带注意力机制的多层感知机"><span class="toc-number">3.2.</span> <span class="toc-text">带注意力机制的多层感知机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码实现"><span class="toc-number">3.3.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意机制的循环神经网络"><span class="toc-number">3.4.</span> <span class="toc-text">注意机制的循环神经网络</span></a></li></ol></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+<li>tensorflow 1.x</li>
+<li>keras 2.x</li>
+</ul>
+<h3 id="案例介绍"><a href="#案例介绍" class="headerlink" title="案例介绍"></a>案例介绍</h3><p>让我们考虑这样一种情景: 一个序列v(假如维度是10), 里面都是数字, 我们想要预测<code>abs(v[1:4]-v[5:8])=?</code>, 也就是序列中, 只有6位数是有效的, 其他的数字都是随机数, 我们想要求这6位数分成的两个三位数的差的绝对值是多少。那么我们可以使用注意力机制, 它可以有效的忽略随机数的干扰, 从而提取得到有效的信息。</p>
+<h3 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h3><h4 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h4><p>在一次采访中，现在是OpenAI研究主任的Ilya Sutskever提到，注意机制是最激动人心的进步之一，他们将在这个方向上继续研究。听起来让人兴奋不已。但是什么是注意机制？</p>
+<p>神经网络中的注意机制基于人类中发现的视觉注意机制。人类视觉注意力得到充分研究，虽然存在不同的模型，但它们都基本上都认为, 注意力能够以“高分辨率”聚焦于图像的某个区域，同时以“低分辨率”感知周围图像，然后随着时间的推移调整焦点。</p>
+<p>神经网络中的注意力机制历史悠久，特别是在图像识别方面。但是直到2016年才将注意力机制引入NLP（并且越来越多地用于视觉）的循环神经网络架构中。这就是我们将在这篇文章中关注的内容。</p>
+<h4 id="注意力机制"><a href="#注意力机制" class="headerlink" title="注意力机制"></a>注意力机制</h4><p>要理解注意力机制需要具备循环神经网络的基础知识, 可以参考我这篇文章: <a href="#">keras教程-n-10分钟入门LSTM</a>, 下面我们用一个机器翻译的例子来做说明。</p>
+<p><img src="images/rnn-translate.png"></p>
+<p>上面的流程图就是一个循环神经网络的seq2seq模型, 实现的功能就是把”Echt dicke Kiste”翻译成”Awesome sauce”, 如果你仔细观察就会发现, 这个模型的解码器(蓝色部分)只利用了编码器最后一次循环的状态。也就是说, 想要翻译句子, 必须把所有的信息都保存到一个状态向量里, 这对循环神经网络是有难度的, 尤其当句子很长的时候, 难度更大。</p>
+<p>解决上面的问题的方法就是使用注意机制。通过注意机制，我们不再尝试将完整的句子编码为固定长度的向量。相反，我们允许解码器在生成的每个步骤“参考”源句子的不同部分。重要的是，我们让模型根据输入句子以及它到目前为止产生的内容来学习要注意的内容。因此，在非常类似的语言（如英语和德语）中，解码器可能会选择按顺序处理事物。在翻译第一个英文单词时注意第一个单词，依此类推。如下所示：</p>
+<p><img src="images/rnn-attention.png"></p>
+<p>上图中编码器使用了双向循环神经网络, 但这不是重点, 你可以忽略。 <code>$y_t$</code>代表输出的字符, <code>$x_T$</code>代表输入的字符, <code>$a_t,T$</code>代表权重。重要的是，每个解码器输出字<code>$y_t$</code>现在取决于所有输入状态的加权组合，而不仅仅是最后状态。a是权重，用于定义每个编码器状态的重要性。因此，如果<code>$a_ {3,2}$</code></p>
+<p>实际上，这是违反直觉的。人类的注意力是应该是为了节省计算资源。通过专注于一件事，我们可以忽略许多其他事情。但这并不是我们在上述模型中所做的事情。在决定关注什么之前，我们基本上详细查看了所有内容。直观地说，这相当于输出一个翻译的单词，然后返回文本的所有内部存储器，以便决定接下来要生成哪个单词。这似乎是一种浪费，而不是人类正在做的事情。事实上，它更类似于记忆访问，而不是注意，在我看来，这在某种程度上是用词不当（更多内容见下文）。尽管如此，这并没有阻止注意机制变得非常流行并且在许多任务上表现良好。</p>
+<p>另一种注意方法是使用强化学习来预测要关注的大致位置。这听起来更像人类的注意力，这就是<a href="http://arxiv.org/abs/1406.6247" target="_blank" rel="noopener">Recurrent Models of Visual Attention</a>中所做的。</p>
+<p>注意机制解决的基本问题是它允许网络返回参考输入序列，而不是强迫它将所有信息编码成一个固定长度的向量。正如我上面提到的，我认为注意力有点用词不当。换句话说，注意机制只是让网络访问其内部存储器，这是编码器的隐藏状态。在这种解释中，网络选择从内存中检索的内容，而不是选择“注意”的内容。与典型的存储器不同，这里的存储器访问机制是软的，这意味着网络返回的是存储器位置的加权组合，而不是来自单个离散位置的值。</p>
+<h3 id="keras实现注意力机制"><a href="#keras实现注意力机制" class="headerlink" title="keras实现注意力机制"></a>keras实现注意力机制</h3><h4 id="伪造数据"><a href="#伪造数据" class="headerlink" title="伪造数据"></a>伪造数据</h4><p>下面我们来创建一些数据, 用于测试我们的模型。创建数据的依据就是上面介绍的案例:</p>
+<blockquote>
+<p>一个序列v(假如维度是10), 里面都是数字, 我们想要预测abs(v[1:4]-v[5:8])=?, 也就是序列中, 只有6位数是有效的, 其他的数字都是随机数, 我们想要求这6位数分成的两个三位数的差的绝对值是多少。那么我们可以使用注意力机制, 它可以有效的忽略随机数的干扰, 从而提取得到有效的信息。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Dense, merge, Reshape, Flatten, RepeatVector, Permute, Lambda, LSTM</span><br><span class="line">BATCH_SIZE = <span class="number">12800</span></span><br><span class="line">TIME_STEP = <span class="number">10</span></span><br><span class="line">DEMESION = <span class="number">10</span></span><br><span class="line">OUTPUT_LEN = <span class="number">3</span></span><br><span class="line">num_sample = <span class="number">300000</span></span><br><span class="line">ONE_HOT = <span class="keyword">False</span></span><br><span class="line"><span class="comment"># 为了结果可重复性</span></span><br><span class="line">np.random.seed(<span class="number">1337</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_data</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="string">'''n: 样本量'''</span></span><br><span class="line">    </span><br><span class="line">    X = np.zeros((n, TIME_STEP), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    Y = np.zeros((n,), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    Y_one_hot = np.zeros((n, OUTPUT_LEN, DEMESION), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    X_one_hot = np.zeros((n, TIME_STEP, DEMESION), dtype=<span class="string">'int32'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        row = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, (TIME_STEP))</span><br><span class="line">        x1 = row[<span class="number">1</span>]*<span class="number">100</span>+row[<span class="number">2</span>]*<span class="number">10</span>+row[<span class="number">3</span>]</span><br><span class="line">        x2 = row[<span class="number">5</span>]*<span class="number">100</span>+row[<span class="number">6</span>]*<span class="number">10</span>+row[<span class="number">7</span>]</span><br><span class="line">        y = abs(x1-x2)</span><br><span class="line">        y_str = str(y).zfill(<span class="number">0</span>)</span><br><span class="line">        y_digits = [int(s) <span class="keyword">for</span> s <span class="keyword">in</span> y_str]</span><br><span class="line">        Y[i]=y</span><br><span class="line">        X[i] = row</span><br><span class="line">        <span class="keyword">for</span> c, r <span class="keyword">in</span> enumerate(y_digits):</span><br><span class="line">            Y_one_hot[i, c, r] =<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> c,r <span class="keyword">in</span> enumerate(row):</span><br><span class="line">            X_one_hot[i, c, r] =<span class="number">1</span></span><br><span class="line">            </span><br><span class="line"><span class="comment">#     for i in range(10):</span></span><br><span class="line"><span class="comment">#         print(X[i])</span></span><br><span class="line"><span class="comment">#         print(X_one_hot[i])</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'X'</span>: X / <span class="number">10</span>, </span><br><span class="line">        <span class="string">'Y'</span>:Y / <span class="number">1000</span>, </span><br><span class="line">        <span class="string">'X_one_hot'</span>:X_one_hot,</span><br><span class="line">        <span class="string">'Y_one_hot'</span>:Y_one_hot,</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+    <br>  from ._conv import register_converters as _register_converters
+    <br>Using TensorFlow backend.
+    <br>
+</div>
+
+<h4 id="带注意力机制的多层感知机"><a href="#带注意力机制的多层感知机" class="headerlink" title="带注意力机制的多层感知机"></a>带注意力机制的多层感知机</h4><p>下面我们将要实现一个多层感知机, 并且使用注意机制。下面是带有注意机制的网络架构思路:</p>
+<ul>
+<li>首先输入经过Dense层得到注意力概率分布</li>
+<li>然后注意力概率分布与输入相乘得到加权后的输入</li>
+<li>然后经过Dense层得到输出</li>
+<li>这是一个回归问题, loss使用MSE</li>
+</ul>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_dense_model</span><span class="params">()</span>:</span></span><br><span class="line">    inputs = Input(shape=(TIME_STEP, ))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ATTENTION PART STARTS HERE</span></span><br><span class="line">    <span class="comment"># 只对时间步骤加权</span></span><br><span class="line">    attention_probs = Dense(TIME_STEP, activation=<span class="string">'softmax'</span>, name=<span class="string">'attention_vec'</span>)(inputs)</span><br><span class="line">    attention_mul = merge([inputs, attention_probs], output_shape=(TIME_STEP, ), name=<span class="string">'attention_mul'</span>, mode=<span class="string">'mul'</span>)</span><br><span class="line">    <span class="comment"># ATTENTION PART FINISHES HERE</span></span><br><span class="line">    print(attention_mul)</span><br><span class="line">    attention_mul = Dense(TIME_STEP, activation=<span class="string">'sigmoid'</span>)(attention_mul)</span><br><span class="line">    output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>)(attention_mul)</span><br><span class="line">    print(<span class="string">'output:'</span>, output)</span><br><span class="line">    model = Model(input=[inputs], output=output)</span><br><span class="line">    print(<span class="string">'Input:'</span>, inputs)</span><br><span class="line">    print(<span class="string">'attention_probs:'</span>, attention_probs)</span><br><span class="line">    print(<span class="string">'Output:'</span>, output)</span><br><span class="line">    <span class="keyword">return</span> model,inputs, attention_probs</span><br><span class="line"></span><br><span class="line">dense_model,inputs, attention_probs = build_dense_model()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    Tensor("attention_mul/mul:0", shape=(?, 10), dtype=float32)
+    <br>output: Tensor("dense_2/Sigmoid:0", shape=(?, 1), dtype=float32)
+    <br>Input: Tensor("input_1:0", shape=(?, 10), dtype=float32)
+    <br>attention_probs: Tensor("attention_vec/Softmax:0", shape=(?, 10), dtype=float32)
+    <br>Output: Tensor("dense_2/Sigmoid:0", shape=(?, 1), dtype=float32)
+    <br>
+</div>
+
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:9: UserWarning: The `merge` function is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+    <br>  if __name__ == '__main__':
+    <br>d:\mysites\deeplearning.ai-master\.env\lib\site-packages\keras\legacy\layers.py:465: UserWarning: The `Merge` layer is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+    <br>  name=name)
+    <br>d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:15: UserWarning: Update your `Model` call to the Keras 2 API: `Model(inputs=[<tf.tenso..., outputs="Tensor("de...)`" <br="">  from ipykernel import kernelapp as app
+    <br>
+</tf.tenso...,></div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dense_model.compile(loss=<span class="string">'mean_squared_error'</span>,  optimizer=<span class="string">'adam'</span>,)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data=create_data(num_sample)</span><br><span class="line">dense_model.fit([data[<span class="string">'X'</span>]], data[<span class="string">'Y'</span>], epochs=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    Epoch 1/10
+    <br>300000/300000 [==============================] - 7s 22us/step - loss: 0.0269
+    <br>Epoch 2/10
+    <br>300000/300000 [==============================] - 6s 21us/step - loss: 0.0066
+    <br>Epoch 3/10
+    <br>300000/300000 [==============================] - 6s 21us/step - loss: 0.0028
+    <br>Epoch 4/10
+    <br>300000/300000 [==============================] - 6s 21us/step - loss: 0.0023
+    <br>Epoch 5/10
+    <br>300000/300000 [==============================] - 6s 20us/step - loss: 0.0020
+    <br>Epoch 6/10
+    <br>300000/300000 [==============================] - 6s 20us/step - loss: 0.0019
+    <br>Epoch 7/10
+    <br>300000/300000 [==============================] - 6s 20us/step - loss: 0.0018
+    <br>Epoch 8/10
+    <br>300000/300000 [==============================] - 6s 20us/step - loss: 0.0018
+    <br>Epoch 9/10
+    <br>300000/300000 [==============================] - 6s 20us/step - loss: 0.0017
+    <br>Epoch 10/10
+    <br>300000/300000 [==============================] - 6s 20us/step - loss: 0.0017
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    <keras.callbacks.history at="" 0x2b98e6108d0="">
+
+</keras.callbacks.history></div>
+
+<p>我们想看注意力的分布, 于是我画了一个柱状图(见下图)。可以看到在第二位和第六位的数的权重最高, 因为这俩数属于最高位数, 决定了Y的大部分成分, 其他部分(第三四六七位)虽然也重要, 但是已经远远不如第第二第六位重要(差一个数量级)。现在loss还在下降, 还有优化的可能性。不过我这里就不继续了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a_model = Model(inputs, attention_probs)</span><br><span class="line">attention = a_model.predict(data[<span class="string">'X'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.bar(range(<span class="number">10</span>), np.mean(attention, axis=<span class="number">0</span>))</span><br><span class="line">print(np.mean(attention, axis=<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    [6.8626799e-02 4.4603109e-01 1.3522616e-06 3.4738071e-02 7.8722491e-04
+    <br> 3.2603509e-08 5.4183584e-03 1.4031818e-02 4.2847097e-01 1.8743974e-03]
+    <br>
+</div>
+
+<p><img src="output_17_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'真实值'</span>,data[<span class="string">'Y'</span>][:<span class="number">10</span>])</span><br><span class="line">print(<span class="string">'预测值:'</span>, dense_model.predict(data[<span class="string">'X'</span>][:<span class="number">10</span>]))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    真实值 [0.483 0.587 0.035 0.009 0.471 0.312 0.319 0.652 0.166 0.746]
+    <br>预测值: [[0.50961006]
+    <br> [0.61784214]
+    <br> [0.08250739]
+    <br> [0.07742871]
+    <br> [0.4838765 ]
+    <br> [0.28396246]
+    <br> [0.28179035]
+    <br> [0.66745037]
+    <br> [0.1289852 ]
+    <br> [0.7194878 ]]
+    <br>
+</div>
+
+<h4 id="注意机制的循环神经网络"><a href="#注意机制的循环神经网络" class="headerlink" title="注意机制的循环神经网络"></a>注意机制的循环神经网络</h4><p>网络的基本架构如下图, 这是一个多维注意机制架构图, 也就是每个时间步有不同的注意力分配向量。</p>
+<ul>
+<li>输入, 张量的形状是: (BS, TS, I), 分别表示: Batch size, Time Steps, Demension</li>
+<li>转置张量, 使得张量的形状变成:(BS, I, TS)</li>
+<li>全连接层得到注意力权重, 得到的张量形状可以是 (BS, I, TS), 也可以是(BS, TS), 也可以是(BS, I), 这要看你想要让注意力如何分配</li>
+<li>转置张量, 使得张量的维度恢复成(BS, TS, I), 或不需要转置的(BS, TS), (BS, I)</li>
+<li>合并输入和注意力权重, 也就是element-wise的矩阵乘法, 或者row-wise的矩阵乘法</li>
+</ul>
+<p><img src="images/dense-attention.png"></p>
+<p>不过还有一种方式, 是所有时间步共享一个注意力分配向量, 如下图:</p>
+<p><img src="images/graph_single_attention.png"></p>
+<p>是时候实现一个注意机制的LSTM模型了, 在循环神经网络中, 输入的数据是二维的(TIME_STEP, DEMESION)。也就是说, 我们把每个数字编码成了one-hot向量, 具体做法参考创建数据的代码。而输出仍然是一个标量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_lstm_model</span><span class="params">(only_time_step=True)</span>:</span></span><br><span class="line">    inputs = Input(shape=(TIME_STEP, DEMESION))</span><br><span class="line">    <span class="comment"># 转置</span></span><br><span class="line">    a = Permute((<span class="number">2</span>,<span class="number">1</span>))(inputs)</span><br><span class="line">    <span class="comment"># 现在a的形状是: (DEMENSION, TIME_STEP)</span></span><br><span class="line">    <span class="comment"># 目的就是为了得到每个时间步的权重</span></span><br><span class="line">    a = Dense(TIME_STEP, activation=<span class="string">'softmax'</span>)(a)</span><br><span class="line">    <span class="keyword">if</span> only_time_step:</span><br><span class="line">        <span class="comment"># 降低一个维度, 使得得到长度为TIME_STEP的向量</span></span><br><span class="line">        a = Lambda(<span class="keyword">lambda</span> x: K.mean(x, axis=<span class="number">1</span>), name=<span class="string">'dim_reduction'</span>)(a)</span><br><span class="line">        weight = a</span><br><span class="line">        <span class="comment"># 出重复这个向量得到一个矩阵便于下一步计算</span></span><br><span class="line">        a = RepeatVector(DEMESION)(a)</span><br><span class="line">        <span class="comment"># 现在a的形状是(DEMESION, TIME_STEP)</span></span><br><span class="line">    <span class="comment"># 转置矩阵, 便于下一步计算乘法</span></span><br><span class="line">    a_probs = Permute((<span class="number">2</span>,<span class="number">1</span>), name=<span class="string">'attention_vec'</span>)(a)</span><br><span class="line">    <span class="comment"># 计算加权后的输入</span></span><br><span class="line">    weighted_inputs = merge([inputs, a_probs], name=<span class="string">'weighted_inputs'</span>, mode=<span class="string">'mul'</span>)</span><br><span class="line">    lstm_units = <span class="number">64</span></span><br><span class="line">    <span class="comment"># 只需要返回最后的结果</span></span><br><span class="line">    output = LSTM(lstm_units, return_sequences=<span class="keyword">False</span>)(weighted_inputs)</span><br><span class="line">    <span class="comment"># 经过全连接层</span></span><br><span class="line">    output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>)(output)</span><br><span class="line">    model = Model([inputs], output)</span><br><span class="line">    weight_model = Model([inputs], weight)</span><br><span class="line">    <span class="keyword">return</span> model, weight_model</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lstm_model, weight = build_lstm_model()</span><br><span class="line">lstm_model.compile(optimizer=<span class="string">'adam'</span>, loss=<span class="string">'MSE'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:18: UserWarning: The `merge` function is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+    <br>d:\mysites\deeplearning.ai-master\.env\lib\site-packages\keras\legacy\layers.py:465: UserWarning: The `Merge` layer is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
+    <br>  name=name)
+    <br>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lstm_model.fit(data[<span class="string">'X_one_hot'</span>], data[<span class="string">'Y'</span>], epochs=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    Epoch 1/10
+    <br>300000/300000 [==============================] - 47s 155us/step - loss: 0.0146
+    <br>Epoch 2/10
+    <br>300000/300000 [==============================] - 46s 152us/step - loss: 1.3361e-04
+    <br>Epoch 3/10
+    <br>300000/300000 [==============================] - 46s 153us/step - loss: 1.8170e-05
+    <br>Epoch 4/10
+    <br>300000/300000 [==============================] - 47s 155us/step - loss: 1.0955e-05
+    <br>Epoch 5/10
+    <br>300000/300000 [==============================] - 47s 156us/step - loss: 7.9359e-06
+    <br>Epoch 6/10
+    <br>300000/300000 [==============================] - 48s 159us/step - loss: 6.3272e-06
+    <br>Epoch 7/10
+    <br>300000/300000 [==============================] - 46s 155us/step - loss: 5.5028e-06
+    <br>Epoch 8/10
+    <br>300000/300000 [==============================] - 45s 150us/step - loss: 4.9407e-06
+    <br>Epoch 9/10
+    <br>300000/300000 [==============================] - 45s 150us/step - loss: 4.3552e-06
+    <br>Epoch 10/10
+    <br>300000/300000 [==============================] - 46s 155us/step - loss: 3.9599e-06
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    <keras.callbacks.history at="" 0x2b98f218080="">
+
+</keras.callbacks.history></div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weightV = weight.predict(data[<span class="string">'X_one_hot'</span>])</span><br></pre></td></tr></table></figure>
+<p>如果我们可视化一下权重, 可以看到不同时间步的权重, 这个效果并不吃惊, 循环神经网络的能力显然比单纯的感知机模型要好很多。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(range(<span class="number">10</span>), np.mean(weightV, axis=<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <barcontainer 10="" object="" of="" artists="">
+
+</barcontainer></div>
+
+<p><img src="output_27_1.png" alt="png"></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="keras教程-n-循环神经网络的注意力机制的理论和实现.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/keras教程/">#keras教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/keras教程/">
+            keras教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                    使用谷歌翻译接口进行句子翻译
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                    keras教程-n-CUDA无法找到cudnn的错误解决
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/16/keras教程-08-Dropout的原理和实现/">
+                    keras教程-08-Dropout的原理和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/03/keras教程-n-GAN对抗生成网络的理论和实践/">
+                    keras教程-n-GAN对抗生成网络的理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                    keras教程-n-10分钟入门LSTM
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                    keras教程-n-循环神经网络的注意力机制的理论和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/01/keras教程-06-优化器详细解释/">
+                    keras教程-06-优化器详细解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/30/keras基础-Dense的输入的秩大于2时的注意事项/">
+                    keras基础-Dense的输入的秩大于2时的注意事项
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                    keras教程-05-实验验证神经网络的深度-样本量-dropout
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                    keras教程-04-手写字体识别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/17/keras教程-03-深度学习基础和keras入门/">
+                    keras教程-03-深度学习基础和keras入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/16/keras教程-02-tensorflow和keras安装/">
+                    keras教程-02-tensorflow和keras安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/15/keras教程-01-神经网络图解和手动计算/">
+                    keras教程-01-神经网络图解和手动计算
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

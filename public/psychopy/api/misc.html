@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.misc - miscellaneous routines for converting units etc &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.monitors - for those that don’t like Monitor Center" href="monitors.html" />
+    <link rel="prev" title="psychopy.microphone - Capture and analyze sound" href="microphone.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="monitors.html" title="psychopy.monitors - for those that don’t like Monitor Center"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="microphone.html" title="psychopy.microphone - Capture and analyze sound"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.misc</span></code> - miscellaneous routines for converting units etc</a><ul>
+<li><a class="reference internal" href="#from-psychopy-tools-filetools">From <code class="docutils literal"><span class="pre">psychopy.tools.filetools</span></code></a></li>
+<li><a class="reference internal" href="#from-psychopy-tools-colorspacetools">From <code class="docutils literal"><span class="pre">psychopy.tools.colorspacetools</span></code></a></li>
+<li><a class="reference internal" href="#from-psychopy-tools-coordinatetools">From <code class="docutils literal"><span class="pre">psychopy.tools.coordinatetools</span></code></a></li>
+<li><a class="reference internal" href="#from-psychopy-tools-monitorunittools">From <code class="docutils literal"><span class="pre">psychopy.tools.monitorunittools</span></code></a></li>
+<li><a class="reference internal" href="#from-psychopy-tools-imagetools">From <code class="docutils literal"><span class="pre">psychopy.tools.imagetools</span></code></a></li>
+<li><a class="reference internal" href="#from-psychopy-tools-plottools">From <code class="docutils literal"><span class="pre">psychopy.tools.plottools</span></code></a></li>
+<li><a class="reference internal" href="#from-psychopy-tools-typetools">From <code class="docutils literal"><span class="pre">psychopy.tools.typetools</span></code></a></li>
+<li><a class="reference internal" href="#from-psychopy-tools-unittools">From <code class="docutils literal"><span class="pre">psychopy.tools.unittools</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="microphone.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.microphone</span></code> - Capture and analyze sound</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="monitors.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.monitors</span></code> - for those that don&#8217;t like Monitor Center</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/misc.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.misc">
+<span id="psychopy-misc-miscellaneous-routines-for-converting-units-etc"></span><h1><a class="reference internal" href="#module-psychopy.misc" title="psychopy.misc"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.misc</span></code></a> - miscellaneous routines for converting units etc<a class="headerlink" href="#module-psychopy.misc" title="Permalink to this headline">¶</a></h1>
+<p>Wrapper for all miscellaneous functions and classes from psychopy.tools</p>
+<p><cite>psychopy.misc</cite> has gradually grown very large and the underlying code for its functions are distributed in multiple files. You can still (at least for now) import the functions here using <cite>from psychopy import misc</cite> but you can also import them from the <cite>tools</cite> sub-modules.</p>
+<div class="section" id="from-psychopy-tools-filetools">
+<h2>From <a class="reference internal" href="tools/filetools.html#module-psychopy.tools.filetools" title="psychopy.tools.filetools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.filetools</span></code></a><a class="headerlink" href="#from-psychopy-tools-filetools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/filetools.html#psychopy.tools.filetools.toFile" title="psychopy.tools.filetools.toFile"><code class="xref py py-obj docutils literal"><span class="pre">toFile</span></code></a>(filename,&nbsp;data)</td>
+<td>Save data (of any sort) as a pickle file.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/filetools.html#psychopy.tools.filetools.fromFile" title="psychopy.tools.filetools.fromFile"><code class="xref py py-obj docutils literal"><span class="pre">fromFile</span></code></a>(filename)</td>
+<td>Load data (of any sort) from a pickle file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/filetools.html#psychopy.tools.filetools.mergeFolder" title="psychopy.tools.filetools.mergeFolder"><code class="xref py py-obj docutils literal"><span class="pre">mergeFolder</span></code></a>(src,&nbsp;dst[,&nbsp;pattern])</td>
+<td>Merge a folder into another.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-psychopy-tools-colorspacetools">
+<h2>From <a class="reference internal" href="tools/colorspacetools.html#module-psychopy.tools.colorspacetools" title="psychopy.tools.colorspacetools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.colorspacetools</span></code></a><a class="headerlink" href="#from-psychopy-tools-colorspacetools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/colorspacetools.html#psychopy.tools.colorspacetools.dkl2rgb" title="psychopy.tools.colorspacetools.dkl2rgb"><code class="xref py py-obj docutils literal"><span class="pre">dkl2rgb</span></code></a>(dkl[,&nbsp;conversionMatrix])</td>
+<td>Convert from DKL color space (Derrington, Krauskopf &amp; Lennie) to RGB.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/colorspacetools.html#psychopy.tools.colorspacetools.dklCart2rgb" title="psychopy.tools.colorspacetools.dklCart2rgb"><code class="xref py py-obj docutils literal"><span class="pre">dklCart2rgb</span></code></a>(LUM,&nbsp;LM,&nbsp;S[,&nbsp;conversionMatrix])</td>
+<td>Like dkl2rgb except that it uses cartesian coords (LM,S,LUM) rather than spherical coords for DKL (elev, azim, contr).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/colorspacetools.html#psychopy.tools.colorspacetools.rgb2dklCart" title="psychopy.tools.colorspacetools.rgb2dklCart"><code class="xref py py-obj docutils literal"><span class="pre">rgb2dklCart</span></code></a>(picture[,&nbsp;conversionMatrix])</td>
+<td>Convert an RGB image into Cartesian DKL space.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/colorspacetools.html#psychopy.tools.colorspacetools.hsv2rgb" title="psychopy.tools.colorspacetools.hsv2rgb"><code class="xref py py-obj docutils literal"><span class="pre">hsv2rgb</span></code></a>(hsv_Nx3)</td>
+<td>Convert from HSV color space to RGB gun values.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/colorspacetools.html#psychopy.tools.colorspacetools.lms2rgb" title="psychopy.tools.colorspacetools.lms2rgb"><code class="xref py py-obj docutils literal"><span class="pre">lms2rgb</span></code></a>(lms_Nx3[,&nbsp;conversionMatrix])</td>
+<td>Convert from cone space (Long, Medium, Short) to RGB.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/colorspacetools.html#psychopy.tools.colorspacetools.rgb2lms" title="psychopy.tools.colorspacetools.rgb2lms"><code class="xref py py-obj docutils literal"><span class="pre">rgb2lms</span></code></a>(rgb_Nx3[,&nbsp;conversionMatrix])</td>
+<td>Convert from RGB to cone space (LMS).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/colorspacetools.html#psychopy.tools.colorspacetools.dkl2rgb" title="psychopy.tools.colorspacetools.dkl2rgb"><code class="xref py py-obj docutils literal"><span class="pre">dkl2rgb</span></code></a>(dkl[,&nbsp;conversionMatrix])</td>
+<td>Convert from DKL color space (Derrington, Krauskopf &amp; Lennie) to RGB.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-psychopy-tools-coordinatetools">
+<h2>From <a class="reference internal" href="tools/coordinatetools.html#module-psychopy.tools.coordinatetools" title="psychopy.tools.coordinatetools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.coordinatetools</span></code></a><a class="headerlink" href="#from-psychopy-tools-coordinatetools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/coordinatetools.html#psychopy.tools.coordinatetools.cart2pol" title="psychopy.tools.coordinatetools.cart2pol"><code class="xref py py-obj docutils literal"><span class="pre">cart2pol</span></code></a>(x,&nbsp;y[,&nbsp;units])</td>
+<td>Convert from cartesian to polar coordinates.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/coordinatetools.html#psychopy.tools.coordinatetools.cart2sph" title="psychopy.tools.coordinatetools.cart2sph"><code class="xref py py-obj docutils literal"><span class="pre">cart2sph</span></code></a>(z,&nbsp;y,&nbsp;x)</td>
+<td>Convert from cartesian coordinates (x,y,z) to spherical (elevation, azimuth, radius).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/coordinatetools.html#psychopy.tools.coordinatetools.pol2cart" title="psychopy.tools.coordinatetools.pol2cart"><code class="xref py py-obj docutils literal"><span class="pre">pol2cart</span></code></a>(theta,&nbsp;radius[,&nbsp;units])</td>
+<td>Convert from polar to cartesian coordinates.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/coordinatetools.html#psychopy.tools.coordinatetools.sph2cart" title="psychopy.tools.coordinatetools.sph2cart"><code class="xref py py-obj docutils literal"><span class="pre">sph2cart</span></code></a>(*args)</td>
+<td>Convert from spherical coordinates (elevation, azimuth, radius) to cartesian (x,y,z).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-psychopy-tools-monitorunittools">
+<h2>From <a class="reference internal" href="tools/monitorunittools.html#module-psychopy.tools.monitorunittools" title="psychopy.tools.monitorunittools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.monitorunittools</span></code></a><a class="headerlink" href="#from-psychopy-tools-monitorunittools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/monitorunittools.html#psychopy.tools.monitorunittools.convertToPix" title="psychopy.tools.monitorunittools.convertToPix"><code class="xref py py-obj docutils literal"><span class="pre">convertToPix</span></code></a>(vertices,&nbsp;pos,&nbsp;units,&nbsp;win)</td>
+<td>Takes vertices and position, combines and converts to pixels</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/monitorunittools.html#psychopy.tools.monitorunittools.cm2pix" title="psychopy.tools.monitorunittools.cm2pix"><code class="xref py py-obj docutils literal"><span class="pre">cm2pix</span></code></a>(cm,&nbsp;monitor)</td>
+<td>Convert size in degrees to size in pixels for a given Monitor object</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/monitorunittools.html#psychopy.tools.monitorunittools.cm2deg" title="psychopy.tools.monitorunittools.cm2deg"><code class="xref py py-obj docutils literal"><span class="pre">cm2deg</span></code></a>(cm,&nbsp;monitor[,&nbsp;correctFlat])</td>
+<td>Convert size in cm to size in degrees for a given Monitor object</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/monitorunittools.html#psychopy.tools.monitorunittools.deg2cm" title="psychopy.tools.monitorunittools.deg2cm"><code class="xref py py-obj docutils literal"><span class="pre">deg2cm</span></code></a>(degrees,&nbsp;monitor[,&nbsp;correctFlat])</td>
+<td>Convert size in degrees to size in pixels for a given Monitor object.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/monitorunittools.html#psychopy.tools.monitorunittools.deg2pix" title="psychopy.tools.monitorunittools.deg2pix"><code class="xref py py-obj docutils literal"><span class="pre">deg2pix</span></code></a>(degrees,&nbsp;monitor[,&nbsp;correctFlat])</td>
+<td>Convert size in degrees to size in pixels for a given Monitor object</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/monitorunittools.html#psychopy.tools.monitorunittools.pix2cm" title="psychopy.tools.monitorunittools.pix2cm"><code class="xref py py-obj docutils literal"><span class="pre">pix2cm</span></code></a>(pixels,&nbsp;monitor)</td>
+<td>Convert size in pixels to size in cm for a given Monitor object</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/monitorunittools.html#psychopy.tools.monitorunittools.pix2deg" title="psychopy.tools.monitorunittools.pix2deg"><code class="xref py py-obj docutils literal"><span class="pre">pix2deg</span></code></a>(pixels,&nbsp;monitor[,&nbsp;correctFlat])</td>
+<td>Convert size in pixels to size in degrees for a given Monitor object</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-psychopy-tools-imagetools">
+<h2>From <a class="reference internal" href="tools/imagetools.html#module-psychopy.tools.imagetools" title="psychopy.tools.imagetools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.imagetools</span></code></a><a class="headerlink" href="#from-psychopy-tools-imagetools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/imagetools.html#psychopy.tools.imagetools.array2image" title="psychopy.tools.imagetools.array2image"><code class="xref py py-obj docutils literal"><span class="pre">array2image</span></code></a>(a)</td>
+<td>Takes an array and returns an image object (PIL)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/imagetools.html#psychopy.tools.imagetools.image2array" title="psychopy.tools.imagetools.image2array"><code class="xref py py-obj docutils literal"><span class="pre">image2array</span></code></a>(im)</td>
+<td>Takes an image object (PIL) and returns a numpy array</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/imagetools.html#psychopy.tools.imagetools.makeImageAuto" title="psychopy.tools.imagetools.makeImageAuto"><code class="xref py py-obj docutils literal"><span class="pre">makeImageAuto</span></code></a>(inarray)</td>
+<td>Combines float_uint8 and image2array operations ie.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-psychopy-tools-plottools">
+<h2>From <a class="reference internal" href="tools/plottools.html#module-psychopy.tools.plottools" title="psychopy.tools.plottools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.plottools</span></code></a><a class="headerlink" href="#from-psychopy-tools-plottools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/plottools.html#psychopy.tools.plottools.plotFrameIntervals" title="psychopy.tools.plottools.plotFrameIntervals"><code class="xref py py-obj docutils literal"><span class="pre">plotFrameIntervals</span></code></a>(intervals)</td>
+<td>Plot a histogram of the frame intervals.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-psychopy-tools-typetools">
+<h2>From <a class="reference internal" href="tools/typetools.html#module-psychopy.tools.typetools" title="psychopy.tools.typetools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.typetools</span></code></a><a class="headerlink" href="#from-psychopy-tools-typetools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/typetools.html#psychopy.tools.typetools.float_uint8" title="psychopy.tools.typetools.float_uint8"><code class="xref py py-obj docutils literal"><span class="pre">float_uint8</span></code></a>(inarray)</td>
+<td>Converts arrays, lists, tuples and floats ranging -1:1</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/typetools.html#psychopy.tools.typetools.uint8_float" title="psychopy.tools.typetools.uint8_float"><code class="xref py py-obj docutils literal"><span class="pre">uint8_float</span></code></a>(inarray)</td>
+<td>Converts arrays, lists, tuples and UINTs ranging 0:255</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="tools/typetools.html#psychopy.tools.typetools.float_uint16" title="psychopy.tools.typetools.float_uint16"><code class="xref py py-obj docutils literal"><span class="pre">float_uint16</span></code></a>(inarray)</td>
+<td>Converts arrays, lists, tuples and floats ranging -1:1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-psychopy-tools-unittools">
+<h2>From <a class="reference internal" href="tools/unittools.html#module-psychopy.tools.unittools" title="psychopy.tools.unittools"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.tools.unittools</span></code></a><a class="headerlink" href="#from-psychopy-tools-unittools" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="tools/unittools.html#psychopy.tools.unittools.radians" title="psychopy.tools.unittools.radians"><code class="xref py py-obj docutils literal"><span class="pre">radians</span></code></a></td>
+<td>radians(x, /, out=None, <a href="#id1"><span class="problematic" id="id2">*</span></a>, where=True, casting=&#8217;same_kind&#8217;, order=&#8217;K&#8217;, dtype=None, subok=True[, signature, extobj])</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="tools/unittools.html#psychopy.tools.unittools.degrees" title="psychopy.tools.unittools.degrees"><code class="xref py py-obj docutils literal"><span class="pre">degrees</span></code></a></td>
+<td>degrees(x, /, out=None, <a href="#id3"><span class="problematic" id="id4">*</span></a>, where=True, casting=&#8217;same_kind&#8217;, order=&#8217;K&#8217;, dtype=None, subok=True[, signature, extobj])</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="monitors.html" title="psychopy.monitors - for those that don’t like Monitor Center"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="microphone.html" title="psychopy.microphone - Capture and analyze sound"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

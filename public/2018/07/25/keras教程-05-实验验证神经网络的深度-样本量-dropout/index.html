@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="keras教程-05-实验验证神经网络的深度-样本量-dropout"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>keras教程-05-实验验证神经网络的深度-样本量-dropout - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/index.html",
+    "appid": "1600845001263316",
+    "title": "keras教程-05-实验验证神经网络的深度-样本量-dropout",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-07-25T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                keras教程-05-实验验证神经网络的深度-样本量-dropout
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-05-实验验证神经网络的深度-样本量-dropout"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年07月25日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#神经网络有多少层比较合适"><span class="toc-number">1.</span> <span class="toc-text">神经网络有多少层比较合适</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我们现在讨论1层和10的差别"><span class="toc-number">2.</span> <span class="toc-text">我们现在讨论1层和10的差别</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+<li>tensorflow 1.x</li>
+<li>keras 2.x</li>
+</ul>
+<h3 id="神经网络有多少层比较合适"><a href="#神经网络有多少层比较合适" class="headerlink" title="神经网络有多少层比较合适"></a>神经网络有多少层比较合适</h3><p>沈向洋在专访中表示:</p>
+<blockquote>
+<p>ResNet他们做了152层，然后后面又做了一个1001层的，孙剑他们做的。我一直对他们不太满意，所以他们做出了非常好的结果之后，我又问了他们一个非常基础的问题：你到底要多少层？这个问题一直没有得到回答。我觉得应该有人写这样一篇基础的论文（来回答这个问题），这肯定会是一篇获奖论文，这是毫无疑问的。 回到现在这个问题，到现在为止，大家肯定会觉得是越深越好。就是打仗要打刚仗，要上力度，GPU要多，数据要多。到现在为止，因为很多新的系统也不太一样，然后大家一般认为，更深更准还是一个趋势。就像AlphaGo他们讲出来就是做了50层，他也没讲为什么做50层，可能就是工程师弄了50层就差不多了。</p>
+</blockquote>
+<p>所以通常神经网络到底要用多少层?这是一个重要也不重要的问题。</p>
+<p>说重要是因为神经网络的深度的确影响它的性能。我们总是期望用最少的神经元最最多或者最好的事情。</p>
+<p>说它不重要是因为, 我们往往在实践中发现, 你用50层还是51层, 网络的预测效果差不多。</p>
+<h3 id="我们现在讨论1层和10的差别"><a href="#我们现在讨论1层和10的差别" class="headerlink" title="我们现在讨论1层和10的差别"></a>我们现在讨论1层和10的差别</h3><p>因为9层和10层的网络结构似乎没有太大差别, 但是如果层数差别太大, 可能效果就不一样了, 所以我们做一个实验, 比较一下神经网络的层数对神经网络的各方面指标的影响。</p>
+<p>我们采用上一篇教程中用到的案例:  <a href="/2018/07/20/keras教程-04-手写字体识别/" title="keras教程-04-手写字体识别">keras教程-04-手写字体识别</a></p>
+<p>引入用到的库:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">'figure.figsize'</span>] = (<span class="number">7</span>,<span class="number">7</span>) <span class="comment"># Make the figures a bit bigger</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers.core <span class="keyword">import</span> Dense, Dropout, Activation</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> np_utils</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+    <br>  from ._conv import register_converters as _register_converters
+    <br>Using TensorFlow backend.
+    <br>
+</div>
+
+<p>我们把所有代码封装到一个函数里, 这样方便多次调用, 下面的代码和上一篇的代码一样, 只是调整了结构, 如果看不懂请返回上一篇有解释:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prepare_data</span><span class="params">(n=<span class="number">6000</span>, test_n=<span class="number">3000</span>)</span>:</span></span><br><span class="line">    <span class="string">'''准备用到的数据'''</span></span><br><span class="line">    nb_classes = <span class="number">10</span></span><br><span class="line">    <span class="comment"># 这个方法可以加载数据</span></span><br><span class="line">    (X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line">    X_train = X_train.reshape(<span class="number">60000</span>, <span class="number">784</span>)</span><br><span class="line">    X_train = X_train[:n, :]</span><br><span class="line">    y_train = y_train[:n]</span><br><span class="line">    X_test = X_test.reshape(<span class="number">10000</span>, <span class="number">784</span>)</span><br><span class="line">    X_test = X_test[:test_n, :]</span><br><span class="line">    y_test = y_test[:test_n]</span><br><span class="line">    X_train = X_train.astype(<span class="string">'float32'</span>)</span><br><span class="line">    X_test = X_test.astype(<span class="string">'float32'</span>)</span><br><span class="line">    X_train /= <span class="number">255</span></span><br><span class="line">    X_test /= <span class="number">255</span></span><br><span class="line">    Y_train = np_utils.to_categorical(y_train, nb_classes)</span><br><span class="line">    Y_test = np_utils.to_categorical(y_test, nb_classes)</span><br><span class="line">    <span class="keyword">return</span> (X_train, Y_train), (X_test, Y_test)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">net_work</span><span class="params">(n_layer, has_dropout=False)</span>:</span></span><br><span class="line">    model = Sequential()</span><br><span class="line">    <span class="keyword">assert</span> n_layer &gt;= <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n_layer):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            model.add(Dense(<span class="number">512</span>, input_shape=(<span class="number">784</span>,)))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            model.add(Dense(<span class="number">512</span>))</span><br><span class="line">        model.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line">        <span class="keyword">if</span> has_dropout:</span><br><span class="line">            model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line">    <span class="comment"># 输出层</span></span><br><span class="line">    model.add(Dense(<span class="number">10</span>))</span><br><span class="line">    <span class="comment"># 分类任务的输出通常是softmax, 这保证的所有的输出值都在0-1之间, 并且他们之和为1</span></span><br><span class="line">    model.add(Activation(<span class="string">'softmax'</span>)) </span><br><span class="line">    <span class="keyword">return</span> model</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(model, train_data, test_data)</span>:</span></span><br><span class="line">    X_train, y_train = train_data</span><br><span class="line">    X_test, y_test = test_data</span><br><span class="line">    model.compile(loss=<span class="string">'categorical_crossentropy'</span>, optimizer=<span class="string">'adam'</span>, metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">    <span class="keyword">return</span> model.fit(X_train, y_train,</span><br><span class="line">          batch_size=<span class="number">128</span>, epochs=<span class="number">18</span>,</span><br><span class="line">          validation_data=(X_test, y_test))</span><br></pre></td></tr></table></figure>
+<p>下面我们迭代多种模型, 模型的层数分别是:1,3,5,7,9。</p>
+<p>因为模型层数和样本量有很大关系, 样本量小的情况下更容易显示出神经网络层数太多造成的不利影响。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># prepare_data的第一个参数就是训练样本的样本量</span></span><br><span class="line">train_data, test_data = prepare_data(<span class="number">1000</span>)</span><br><span class="line">results = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环模型的层数</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    n = i*<span class="number">2</span> + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> dropout <span class="keyword">in</span> (<span class="keyword">False</span>, <span class="keyword">True</span>):</span><br><span class="line">        print(<span class="string">f'层数为: <span class="subst">&#123;n&#125;</span>, 是否使用dropout: <span class="subst">&#123;dropout&#125;</span>'</span>)</span><br><span class="line">        model = net_work(n, dropout)</span><br><span class="line">        results[(n, dropout)] = train(model, train_data, test_data)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    层数为: 1, 是否使用dropout: False
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 1.6539 - acc: 0.5560 - val_loss: 1.2262 - val_acc: 0.6930
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 0s 148us/step - loss: 0.7366 - acc: 0.8280 - val_loss: 0.7899 - val_acc: 0.7660
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 148us/step - loss: 0.4471 - acc: 0.8800 - val_loss: 0.6391 - val_acc: 0.8000
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 151us/step - loss: 0.3269 - acc: 0.9160 - val_loss: 0.5804 - val_acc: 0.8237
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 0s 151us/step - loss: 0.2615 - acc: 0.9370 - val_loss: 0.5186 - val_acc: 0.8390
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 154us/step - loss: 0.2128 - acc: 0.9510 - val_loss: 0.5216 - val_acc: 0.8393
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 0s 154us/step - loss: 0.1714 - acc: 0.9650 - val_loss: 0.4932 - val_acc: 0.8450
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 0s 159us/step - loss: 0.1441 - acc: 0.9750 - val_loss: 0.5062 - val_acc: 0.8400
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 147us/step - loss: 0.1209 - acc: 0.9810 - val_loss: 0.4838 - val_acc: 0.8470
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 161us/step - loss: 0.1011 - acc: 0.9900 - val_loss: 0.4874 - val_acc: 0.8467
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 0s 145us/step - loss: 0.0852 - acc: 0.9950 - val_loss: 0.4849 - val_acc: 0.8473
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 145us/step - loss: 0.0725 - acc: 0.9960 - val_loss: 0.4863 - val_acc: 0.8503
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 149us/step - loss: 0.0614 - acc: 0.9980 - val_loss: 0.4945 - val_acc: 0.8497
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 0s 157us/step - loss: 0.0528 - acc: 0.9990 - val_loss: 0.4845 - val_acc: 0.8507
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 152us/step - loss: 0.0455 - acc: 0.9990 - val_loss: 0.4942 - val_acc: 0.8483
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 0s 162us/step - loss: 0.0389 - acc: 0.9990 - val_loss: 0.4893 - val_acc: 0.8533
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 198us/step - loss: 0.0347 - acc: 1.0000 - val_loss: 0.4985 - val_acc: 0.8520
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 171us/step - loss: 0.0303 - acc: 1.0000 - val_loss: 0.4943 - val_acc: 0.8533
+    <br>层数为: 1, 是否使用dropout: True
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 1.7496 - acc: 0.4990 - val_loss: 1.2538 - val_acc: 0.7203
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 0s 155us/step - loss: 0.8016 - acc: 0.8210 - val_loss: 0.8199 - val_acc: 0.7620
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 149us/step - loss: 0.4991 - acc: 0.8740 - val_loss: 0.6690 - val_acc: 0.7933
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 150us/step - loss: 0.3728 - acc: 0.8900 - val_loss: 0.5824 - val_acc: 0.8223
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 0s 150us/step - loss: 0.3042 - acc: 0.9100 - val_loss: 0.5508 - val_acc: 0.8237
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 155us/step - loss: 0.2453 - acc: 0.9430 - val_loss: 0.5144 - val_acc: 0.8433
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 0s 169us/step - loss: 0.2075 - acc: 0.9520 - val_loss: 0.5087 - val_acc: 0.8400
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 0s 152us/step - loss: 0.1778 - acc: 0.9610 - val_loss: 0.4918 - val_acc: 0.8427
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 153us/step - loss: 0.1531 - acc: 0.9670 - val_loss: 0.4897 - val_acc: 0.8477
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 159us/step - loss: 0.1347 - acc: 0.9760 - val_loss: 0.4831 - val_acc: 0.8513
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 0s 152us/step - loss: 0.1134 - acc: 0.9850 - val_loss: 0.4845 - val_acc: 0.8493
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 163us/step - loss: 0.0969 - acc: 0.9910 - val_loss: 0.4820 - val_acc: 0.8493
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 159us/step - loss: 0.0814 - acc: 0.9910 - val_loss: 0.4749 - val_acc: 0.8510
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 0s 151us/step - loss: 0.0734 - acc: 0.9910 - val_loss: 0.4701 - val_acc: 0.8540
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 149us/step - loss: 0.0643 - acc: 0.9950 - val_loss: 0.4736 - val_acc: 0.8560
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 0s 150us/step - loss: 0.0609 - acc: 0.9940 - val_loss: 0.4778 - val_acc: 0.8547
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 156us/step - loss: 0.0490 - acc: 0.9980 - val_loss: 0.4663 - val_acc: 0.8590
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 163us/step - loss: 0.0419 - acc: 0.9980 - val_loss: 0.4823 - val_acc: 0.8527
+    <br>层数为: 3, 是否使用dropout: False
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 1.5944 - acc: 0.5340 - val_loss: 0.8926 - val_acc: 0.7417
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 0s 263us/step - loss: 0.5139 - acc: 0.8500 - val_loss: 0.6719 - val_acc: 0.7820
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 332us/step - loss: 0.3309 - acc: 0.9000 - val_loss: 0.6658 - val_acc: 0.7950
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 284us/step - loss: 0.2036 - acc: 0.9420 - val_loss: 0.5670 - val_acc: 0.8217
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 0s 336us/step - loss: 0.1311 - acc: 0.9570 - val_loss: 0.5967 - val_acc: 0.8173
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 322us/step - loss: 0.0867 - acc: 0.9790 - val_loss: 0.4886 - val_acc: 0.8570
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 0s 294us/step - loss: 0.0437 - acc: 0.9940 - val_loss: 0.5260 - val_acc: 0.8427
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 0s 381us/step - loss: 0.0222 - acc: 0.9990 - val_loss: 0.4776 - val_acc: 0.8647
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 286us/step - loss: 0.0112 - acc: 1.0000 - val_loss: 0.5387 - val_acc: 0.8493
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 284us/step - loss: 0.0068 - acc: 1.0000 - val_loss: 0.5487 - val_acc: 0.8560
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 0s 277us/step - loss: 0.0043 - acc: 1.0000 - val_loss: 0.5305 - val_acc: 0.8613
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 265us/step - loss: 0.0031 - acc: 1.0000 - val_loss: 0.5358 - val_acc: 0.8627
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 259us/step - loss: 0.0024 - acc: 1.0000 - val_loss: 0.5516 - val_acc: 0.8600
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 0s 264us/step - loss: 0.0020 - acc: 1.0000 - val_loss: 0.5596 - val_acc: 0.8623
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 278us/step - loss: 0.0017 - acc: 1.0000 - val_loss: 0.5681 - val_acc: 0.8617
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 0s 269us/step - loss: 0.0015 - acc: 1.0000 - val_loss: 0.5713 - val_acc: 0.8643
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 264us/step - loss: 0.0013 - acc: 1.0000 - val_loss: 0.5757 - val_acc: 0.8650
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 267us/step - loss: 0.0011 - acc: 1.0000 - val_loss: 0.5817 - val_acc: 0.8633
+    <br>层数为: 3, 是否使用dropout: True
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 1.8140 - acc: 0.4390 - val_loss: 1.1753 - val_acc: 0.7013
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 0s 272us/step - loss: 0.7222 - acc: 0.8050 - val_loss: 0.7396 - val_acc: 0.7473
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 274us/step - loss: 0.5023 - acc: 0.8400 - val_loss: 0.6120 - val_acc: 0.8037
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 274us/step - loss: 0.3295 - acc: 0.9010 - val_loss: 0.5935 - val_acc: 0.8180
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 0s 269us/step - loss: 0.2152 - acc: 0.9390 - val_loss: 0.5393 - val_acc: 0.8280
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 269us/step - loss: 0.1482 - acc: 0.9600 - val_loss: 0.4698 - val_acc: 0.8580
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 0s 276us/step - loss: 0.1066 - acc: 0.9720 - val_loss: 0.4797 - val_acc: 0.8573
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 0s 290us/step - loss: 0.0765 - acc: 0.9810 - val_loss: 0.4954 - val_acc: 0.8540
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 273us/step - loss: 0.0670 - acc: 0.9800 - val_loss: 0.6527 - val_acc: 0.8270
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 325us/step - loss: 0.0441 - acc: 0.9870 - val_loss: 0.5724 - val_acc: 0.8543
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 0s 264us/step - loss: 0.0479 - acc: 0.9890 - val_loss: 0.5865 - val_acc: 0.8480
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 281us/step - loss: 0.0287 - acc: 0.9940 - val_loss: 0.5884 - val_acc: 0.8513
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 273us/step - loss: 0.0171 - acc: 1.0000 - val_loss: 0.5508 - val_acc: 0.8597
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 0s 271us/step - loss: 0.0182 - acc: 0.9960 - val_loss: 0.5889 - val_acc: 0.8637
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 280us/step - loss: 0.0120 - acc: 0.9970 - val_loss: 0.6343 - val_acc: 0.8550
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 0s 274us/step - loss: 0.0137 - acc: 0.9980 - val_loss: 0.6691 - val_acc: 0.8500
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 275us/step - loss: 0.0109 - acc: 1.0000 - val_loss: 0.5613 - val_acc: 0.8717
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 265us/step - loss: 0.0107 - acc: 0.9980 - val_loss: 0.6020 - val_acc: 0.8630
+    <br>层数为: 5, 是否使用dropout: False
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 1.7325 - acc: 0.4870 - val_loss: 1.0345 - val_acc: 0.6690
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 0s 365us/step - loss: 0.6573 - acc: 0.7810 - val_loss: 0.7932 - val_acc: 0.7463
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 365us/step - loss: 0.3516 - acc: 0.8940 - val_loss: 0.5671 - val_acc: 0.8230
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 376us/step - loss: 0.2164 - acc: 0.9300 - val_loss: 0.6681 - val_acc: 0.7847
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 0s 367us/step - loss: 0.1397 - acc: 0.9610 - val_loss: 0.6000 - val_acc: 0.8150
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 369us/step - loss: 0.0902 - acc: 0.9750 - val_loss: 0.6249 - val_acc: 0.8297
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 0s 365us/step - loss: 0.0501 - acc: 0.9830 - val_loss: 0.5513 - val_acc: 0.8483
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 0s 375us/step - loss: 0.0244 - acc: 0.9950 - val_loss: 0.6023 - val_acc: 0.8480
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 378us/step - loss: 0.0062 - acc: 0.9990 - val_loss: 0.6093 - val_acc: 0.8537
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 362us/step - loss: 0.0031 - acc: 1.0000 - val_loss: 0.6172 - val_acc: 0.8597
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 0s 364us/step - loss: 0.0013 - acc: 1.0000 - val_loss: 0.6261 - val_acc: 0.8670
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 373us/step - loss: 6.4309e-04 - acc: 1.0000 - val_loss: 0.6380 - val_acc: 0.8680
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 368us/step - loss: 4.0857e-04 - acc: 1.0000 - val_loss: 0.6528 - val_acc: 0.8660
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 0s 379us/step - loss: 3.1626e-04 - acc: 1.0000 - val_loss: 0.6642 - val_acc: 0.8650
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 376us/step - loss: 2.6359e-04 - acc: 1.0000 - val_loss: 0.6716 - val_acc: 0.8637
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 0s 370us/step - loss: 2.2463e-04 - acc: 1.0000 - val_loss: 0.6781 - val_acc: 0.8647
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 365us/step - loss: 1.9379e-04 - acc: 1.0000 - val_loss: 0.6817 - val_acc: 0.8650
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 357us/step - loss: 1.7031e-04 - acc: 1.0000 - val_loss: 0.6853 - val_acc: 0.8650
+    <br>层数为: 5, 是否使用dropout: True
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 2.1412 - acc: 0.2460 - val_loss: 1.6280 - val_acc: 0.5767
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 0s 405us/step - loss: 1.0705 - acc: 0.6650 - val_loss: 0.8204 - val_acc: 0.7303
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 405us/step - loss: 0.6596 - acc: 0.7680 - val_loss: 0.6594 - val_acc: 0.7870
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 413us/step - loss: 0.4251 - acc: 0.8650 - val_loss: 0.6361 - val_acc: 0.7933
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 0s 399us/step - loss: 0.2742 - acc: 0.9150 - val_loss: 0.5704 - val_acc: 0.8253
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 404us/step - loss: 0.1980 - acc: 0.9450 - val_loss: 0.5138 - val_acc: 0.8477
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 0s 398us/step - loss: 0.1427 - acc: 0.9520 - val_loss: 0.6035 - val_acc: 0.8303
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 0s 398us/step - loss: 0.1252 - acc: 0.9630 - val_loss: 0.5194 - val_acc: 0.8567
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 394us/step - loss: 0.0891 - acc: 0.9760 - val_loss: 0.5780 - val_acc: 0.8430
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 413us/step - loss: 0.0635 - acc: 0.9810 - val_loss: 0.5924 - val_acc: 0.8530
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 0s 409us/step - loss: 0.0409 - acc: 0.9860 - val_loss: 0.6003 - val_acc: 0.8573
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 394us/step - loss: 0.0266 - acc: 0.9920 - val_loss: 0.6048 - val_acc: 0.8607
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 394us/step - loss: 0.0214 - acc: 0.9950 - val_loss: 0.6282 - val_acc: 0.8617
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 0s 413us/step - loss: 0.0202 - acc: 0.9940 - val_loss: 0.6887 - val_acc: 0.8530
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 408us/step - loss: 0.0233 - acc: 0.9920 - val_loss: 0.7631 - val_acc: 0.8590
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 0s 396us/step - loss: 0.0273 - acc: 0.9900 - val_loss: 0.6793 - val_acc: 0.8660
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 418us/step - loss: 0.0189 - acc: 0.9940 - val_loss: 0.8249 - val_acc: 0.8497
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 399us/step - loss: 0.0470 - acc: 0.9890 - val_loss: 0.6655 - val_acc: 0.8677
+    <br>层数为: 7, 是否使用dropout: False
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 1.8625 - acc: 0.3900 - val_loss: 1.5827 - val_acc: 0.4977
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 0s 477us/step - loss: 0.7984 - acc: 0.7190 - val_loss: 0.7433 - val_acc: 0.7547
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 478us/step - loss: 0.4006 - acc: 0.8830 - val_loss: 0.6758 - val_acc: 0.7833
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 489us/step - loss: 0.2653 - acc: 0.9240 - val_loss: 0.5781 - val_acc: 0.8087
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 0s 472us/step - loss: 0.1260 - acc: 0.9630 - val_loss: 0.5725 - val_acc: 0.8377
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 472us/step - loss: 0.0503 - acc: 0.9870 - val_loss: 0.6851 - val_acc: 0.8353
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 0s 466us/step - loss: 0.0441 - acc: 0.9850 - val_loss: 1.0263 - val_acc: 0.7850
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 0s 471us/step - loss: 0.0618 - acc: 0.9790 - val_loss: 0.8586 - val_acc: 0.8120
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 474us/step - loss: 0.0489 - acc: 0.9840 - val_loss: 0.8344 - val_acc: 0.8183
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 465us/step - loss: 0.0470 - acc: 0.9850 - val_loss: 0.6937 - val_acc: 0.8477
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 0s 464us/step - loss: 0.0323 - acc: 0.9870 - val_loss: 0.8116 - val_acc: 0.8367
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 478us/step - loss: 0.0259 - acc: 0.9930 - val_loss: 0.8093 - val_acc: 0.8267
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 457us/step - loss: 0.0154 - acc: 0.9970 - val_loss: 0.8789 - val_acc: 0.8343
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 0s 458us/step - loss: 0.0195 - acc: 0.9950 - val_loss: 0.8948 - val_acc: 0.8353
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 464us/step - loss: 0.0254 - acc: 0.9920 - val_loss: 0.8633 - val_acc: 0.8300
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 0s 457us/step - loss: 0.0166 - acc: 0.9960 - val_loss: 0.8745 - val_acc: 0.8437
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 465us/step - loss: 0.0372 - acc: 0.9890 - val_loss: 1.0414 - val_acc: 0.7937
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 461us/step - loss: 0.0599 - acc: 0.9820 - val_loss: 0.9729 - val_acc: 0.8073
+    <br>层数为: 7, 是否使用dropout: True
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 2.2600 - acc: 0.1390 - val_loss: 2.0195 - val_acc: 0.3350
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 1s 508us/step - loss: 1.6436 - acc: 0.4180 - val_loss: 1.4776 - val_acc: 0.4927
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 0s 500us/step - loss: 1.0460 - acc: 0.6340 - val_loss: 0.9979 - val_acc: 0.6333
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 0s 498us/step - loss: 0.7514 - acc: 0.7400 - val_loss: 0.7411 - val_acc: 0.7617
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 1s 505us/step - loss: 0.5013 - acc: 0.8410 - val_loss: 0.7247 - val_acc: 0.7837
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 0s 494us/step - loss: 0.3403 - acc: 0.9020 - val_loss: 0.6754 - val_acc: 0.7980
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 1s 501us/step - loss: 0.2934 - acc: 0.9090 - val_loss: 0.6505 - val_acc: 0.8243
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 1s 502us/step - loss: 0.1868 - acc: 0.9470 - val_loss: 0.6112 - val_acc: 0.8430
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 0s 494us/step - loss: 0.1243 - acc: 0.9650 - val_loss: 0.7286 - val_acc: 0.8213
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 0s 497us/step - loss: 0.1392 - acc: 0.9530 - val_loss: 0.6311 - val_acc: 0.8540
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 1s 505us/step - loss: 0.1065 - acc: 0.9620 - val_loss: 0.6782 - val_acc: 0.8430
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 0s 500us/step - loss: 0.0605 - acc: 0.9810 - val_loss: 0.6976 - val_acc: 0.8450
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 0s 499us/step - loss: 0.0691 - acc: 0.9790 - val_loss: 0.8410 - val_acc: 0.8340
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 1s 502us/step - loss: 0.0820 - acc: 0.9760 - val_loss: 0.7124 - val_acc: 0.8433
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 0s 497us/step - loss: 0.0888 - acc: 0.9670 - val_loss: 0.9082 - val_acc: 0.8217
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 1s 502us/step - loss: 0.0924 - acc: 0.9770 - val_loss: 0.7551 - val_acc: 0.8420
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 0s 492us/step - loss: 0.0498 - acc: 0.9820 - val_loss: 0.8285 - val_acc: 0.8413
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 0s 500us/step - loss: 0.0639 - acc: 0.9890 - val_loss: 0.6282 - val_acc: 0.8640
+    <br>层数为: 9, 是否使用dropout: False
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 4s 4ms/step - loss: 2.0501 - acc: 0.2940 - val_loss: 1.7113 - val_acc: 0.3980
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 1s 582us/step - loss: 1.2018 - acc: 0.5720 - val_loss: 0.9972 - val_acc: 0.6897
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 1s 595us/step - loss: 0.6418 - acc: 0.7800 - val_loss: 0.9730 - val_acc: 0.7260
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 1s 591us/step - loss: 0.4001 - acc: 0.8770 - val_loss: 0.8622 - val_acc: 0.7437
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 1s 578us/step - loss: 0.2187 - acc: 0.9360 - val_loss: 0.7693 - val_acc: 0.7927
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 1s 568us/step - loss: 0.1139 - acc: 0.9680 - val_loss: 0.6192 - val_acc: 0.8417
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 1s 579us/step - loss: 0.0534 - acc: 0.9860 - val_loss: 0.7383 - val_acc: 0.8337
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 1s 587us/step - loss: 0.0460 - acc: 0.9850 - val_loss: 0.8578 - val_acc: 0.8350
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 1s 578us/step - loss: 0.0343 - acc: 0.9880 - val_loss: 0.7517 - val_acc: 0.8593
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 1s 589us/step - loss: 0.0478 - acc: 0.9860 - val_loss: 1.1380 - val_acc: 0.8053
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 1s 582us/step - loss: 0.1683 - acc: 0.9620 - val_loss: 0.8258 - val_acc: 0.7997
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 1s 586us/step - loss: 0.1766 - acc: 0.9460 - val_loss: 0.8498 - val_acc: 0.7710
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 1s 606us/step - loss: 0.1182 - acc: 0.9610 - val_loss: 0.7824 - val_acc: 0.8193
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 1s 589us/step - loss: 0.0574 - acc: 0.9820 - val_loss: 0.8388 - val_acc: 0.8233
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 1s 601us/step - loss: 0.0079 - acc: 0.9990 - val_loss: 0.9922 - val_acc: 0.8350
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 1s 589us/step - loss: 0.0125 - acc: 0.9980 - val_loss: 0.9524 - val_acc: 0.8483
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 1s 589us/step - loss: 0.0198 - acc: 0.9920 - val_loss: 1.0744 - val_acc: 0.8400
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 1s 597us/step - loss: 0.0139 - acc: 0.9950 - val_loss: 0.8997 - val_acc: 0.8550
+    <br>层数为: 9, 是否使用dropout: True
+    <br>Train on 1000 samples, validate on 3000 samples
+    <br>Epoch 1/18
+    <br>1000/1000 [==============================] - 5s 5ms/step - loss: 2.2922 - acc: 0.1230 - val_loss: 2.2089 - val_acc: 0.2273
+    <br>Epoch 2/18
+    <br>1000/1000 [==============================] - 1s 878us/step - loss: 1.9991 - acc: 0.2200 - val_loss: 1.8013 - val_acc: 0.4090
+    <br>Epoch 3/18
+    <br>1000/1000 [==============================] - 1s 773us/step - loss: 1.4803 - acc: 0.4640 - val_loss: 1.2090 - val_acc: 0.5693
+    <br>Epoch 4/18
+    <br>1000/1000 [==============================] - 1s 783us/step - loss: 1.1719 - acc: 0.5810 - val_loss: 1.0512 - val_acc: 0.6240
+    <br>Epoch 5/18
+    <br>1000/1000 [==============================] - 1s 641us/step - loss: 0.8122 - acc: 0.6910 - val_loss: 0.8882 - val_acc: 0.7007
+    <br>Epoch 6/18
+    <br>1000/1000 [==============================] - 1s 630us/step - loss: 0.6455 - acc: 0.7680 - val_loss: 0.8418 - val_acc: 0.7457
+    <br>Epoch 7/18
+    <br>1000/1000 [==============================] - 1s 619us/step - loss: 0.4549 - acc: 0.8480 - val_loss: 0.7960 - val_acc: 0.7583
+    <br>Epoch 8/18
+    <br>1000/1000 [==============================] - 1s 623us/step - loss: 0.3837 - acc: 0.8680 - val_loss: 0.8808 - val_acc: 0.7700
+    <br>Epoch 9/18
+    <br>1000/1000 [==============================] - 1s 646us/step - loss: 0.3051 - acc: 0.9040 - val_loss: 0.6726 - val_acc: 0.8267
+    <br>Epoch 10/18
+    <br>1000/1000 [==============================] - 1s 620us/step - loss: 0.1986 - acc: 0.9390 - val_loss: 0.7279 - val_acc: 0.8200
+    <br>Epoch 11/18
+    <br>1000/1000 [==============================] - 1s 636us/step - loss: 0.1274 - acc: 0.9580 - val_loss: 0.7010 - val_acc: 0.8490
+    <br>Epoch 12/18
+    <br>1000/1000 [==============================] - 1s 655us/step - loss: 0.1356 - acc: 0.9620 - val_loss: 0.8709 - val_acc: 0.8247
+    <br>Epoch 13/18
+    <br>1000/1000 [==============================] - 1s 611us/step - loss: 0.1252 - acc: 0.9680 - val_loss: 0.7168 - val_acc: 0.8530
+    <br>Epoch 14/18
+    <br>1000/1000 [==============================] - 1s 649us/step - loss: 0.1073 - acc: 0.9660 - val_loss: 0.7792 - val_acc: 0.8437
+    <br>Epoch 15/18
+    <br>1000/1000 [==============================] - 1s 725us/step - loss: 0.0887 - acc: 0.9760 - val_loss: 0.9286 - val_acc: 0.8243
+    <br>Epoch 16/18
+    <br>1000/1000 [==============================] - 1s 737us/step - loss: 0.0816 - acc: 0.9770 - val_loss: 0.8026 - val_acc: 0.8423
+    <br>Epoch 17/18
+    <br>1000/1000 [==============================] - 1s 809us/step - loss: 0.0635 - acc: 0.9820 - val_loss: 0.8739 - val_acc: 0.8393
+    <br>Epoch 18/18
+    <br>1000/1000 [==============================] - 1s 632us/step - loss: 0.0763 - acc: 0.9800 - val_loss: 0.8235 - val_acc: 0.8477
+    <br>
+</div>
+
+<p>下面将训练过程中的各个指标进行可视化:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>,<span class="number">24</span>))</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> metric <span class="keyword">in</span> (<span class="string">'loss'</span>, <span class="string">'val_loss'</span>, <span class="string">'acc'</span>, <span class="string">'val_acc'</span>):</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> n, dropout <span class="keyword">in</span> results:</span><br><span class="line">        plt.subplot(<span class="number">4</span>, <span class="number">2</span>, i * <span class="number">2</span> - <span class="number">1</span>+dropout)</span><br><span class="line">        r = results[(n, dropout)]</span><br><span class="line">        data = r.history[metric]</span><br><span class="line">        plt.plot(range(<span class="number">1</span>, len(data)+<span class="number">1</span>), data,  label=str(n))</span><br><span class="line">        plt.title(metric)</span><br><span class="line">        <span class="keyword">if</span> metric <span class="keyword">in</span> (<span class="string">'loss'</span>, <span class="string">'val_loss'</span>):</span><br><span class="line">            plt.ylim(<span class="number">0</span>,<span class="number">1.2</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            plt.ylim(<span class="number">0.5</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        plt.legend()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\matplotlib\cbook\deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+    <br>  warnings.warn(message, mplDeprecation, stacklevel=1)
+    <br>
+</div>
+
+<p><img src="output_9_1.png" alt="png"></p>
+<p>从上面的图中你可能会看出, 在样本量较小或有限的情况下, 模型越复杂, 层数越多, 越容易导致过拟合(测试样本集表现差于训练样本, 并且测试集方差变大), 并且层数越多测试集的表现可能越差。</p>
+<p>然而, 如果你加大训练样本量, 这种情况就会缓解, 甚至消失。</p>
+<p>dropout效果是让loss曲线更平滑, 方差变小, 缓解过拟合。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="keras教程-05-实验验证神经网络的深度-样本量-dropout.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/keras教程/">#keras教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/keras教程/">
+            keras教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                    使用谷歌翻译接口进行句子翻译
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                    keras教程-n-CUDA无法找到cudnn的错误解决
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/16/keras教程-08-Dropout的原理和实现/">
+                    keras教程-08-Dropout的原理和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/03/keras教程-n-GAN对抗生成网络的理论和实践/">
+                    keras教程-n-GAN对抗生成网络的理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                    keras教程-n-10分钟入门LSTM
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                    keras教程-n-循环神经网络的注意力机制的理论和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/01/keras教程-06-优化器详细解释/">
+                    keras教程-06-优化器详细解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/30/keras基础-Dense的输入的秩大于2时的注意事项/">
+                    keras基础-Dense的输入的秩大于2时的注意事项
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                    keras教程-05-实验验证神经网络的深度-样本量-dropout
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                    keras教程-04-手写字体识别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/17/keras教程-03-深度学习基础和keras入门/">
+                    keras教程-03-深度学习基础和keras入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/16/keras教程-02-tensorflow和keras安装/">
+                    keras教程-02-tensorflow和keras安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/15/keras教程-01-神经网络图解和手动计算/">
+                    keras教程-01-神经网络图解和手动计算
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

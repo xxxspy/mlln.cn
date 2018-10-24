@@ -1,0 +1,27 @@
+
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.min.js"></script>
+<title>Notebook中显示P5.js页面</title>
+</head>
+<body>
+<a href="http://mlln.cn"  target="_blank"><h5>p5.js效果展示: p5js-html/p5-02-draw-arc.html</h5></a>
+<script>
+let x = 0
+function setup() {  createCanvas(580, 120); }
+function draw() {  
+    background(204);  
+    x += 0.1
+    arc(90, 60, 80, 80, 0, HALF_PI);  
+    arc(190, 60, 80, 80, 0, PI+HALF_PI);  
+    arc(290, 60, 80, 80, PI, TWO_PI+HALF_PI);  
+    // 动态改变起始位置, 可以看到转动效果
+    arc(390, 60, 80, 80, QUARTER_PI+x, PI+QUARTER_PI+x); 
+    // 如果你想使用度数, 而不是弧度
+    arc(490, 60, 80, 80, radians(30), radians(90))
+}
+</script>
+</body>
+</html>

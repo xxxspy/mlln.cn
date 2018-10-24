@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="使用谷歌翻译接口进行句子翻译"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>使用谷歌翻译接口进行句子翻译 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                使用谷歌翻译接口进行句子翻译
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="使用谷歌翻译接口进行句子翻译"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年10月18日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码测试"><span class="toc-number">3.</span> <span class="toc-text">代码测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所有支持的语言预览"><span class="toc-number">4.</span> <span class="toc-text">所有支持的语言预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项"><span class="toc-number">5.</span> <span class="toc-text">注意事项</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+</ul>
+<ul>
+<li>作者mlln.cn, 转载请注明出处!</li>
+</ul>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Googletrans是一个免费且无限使用的python库，封装了谷歌翻译的网页版。不过它使用Google Translate Ajax API来调用detect和translate之类的方法。</p>
+<p>它有如下特征:</p>
+<ul>
+<li>快速可靠 - 它使用translate.google.com使用的相同服务器</li>
+<li>自动语言检测</li>
+<li>批量翻译</li>
+<li>可自定义的服务URL</li>
+<li>连接池（使用requests.Session的优点）</li>
+<li>HTTP / 2支持</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装方法很简单, 因为我在notebook中使用, 所以直接使用pip命令进行安装:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install googletrans -U</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    Looking in indexes: https://mirrors.ustc.edu.cn/pypi/web/simple
+    <br>Collecting googletrans
+    <br>  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/49/0f/eac53560e99a6b1e3b3e18e8b98f0e0041bfc4f1ee1e1b74cdf5530786d0/googletrans-2.3.0.tar.gz
+    <br>Requirement already satisfied: requests in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from googletrans) (2.18.4)
+    <br>Requirement already satisfied: chardet<3.1.0,>=3.0.2 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests->googletrans) (3.0.4)
+    <br>Requirement already satisfied: idna<2.7,>=2.5 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests->googletrans) (2.6)
+    <br>Requirement already satisfied: urllib3<1.23,>=1.21.1 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests->googletrans) (1.22)
+    <br>Requirement already satisfied: certifi>=2017.4.17 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests->googletrans) (2018.4.16)
+    <br>Building wheels for collected packages: googletrans
+    <br>  Running setup.py bdist_wheel for googletrans: started
+    <br>  Running setup.py bdist_wheel for googletrans: finished with status 'done'
+    <br>  Stored in directory: C:\Users\syd\AppData\Local\pip\Cache\wheels\ba\f2\11\84e336d798cae9a9ebdaa1fdca57460cb0e5c258555963b61c
+    <br>Successfully built googletrans
+    <br>Installing collected packages: googletrans
+    <br>Successfully installed googletrans-2.3.0
+    <br>
+</1.23,></2.7,></3.1.0,></div>
+
+
+<div class="output">
+输出(stream):<br>
+    You are using pip version 18.0, however version 18.1 is available.
+    <br>You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+    <br>
+</div>
+
+<h3 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#### 引入用到的模块</span></span><br><span class="line"><span class="keyword">from</span> googletrans <span class="keyword">import</span> Translator</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实例化一个Translator</span></span><br><span class="line">translator = Translator()</span><br><span class="line"><span class="comment"># 自动翻译</span></span><br><span class="line">translator.translate(<span class="string">'你好, 世界!'</span>)</span><br><span class="line"><span class="comment"># f返回一个Translated类</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <googletrans.models.translated at="" 0x2b6c9b664a8="">
+
+</googletrans.models.translated></div>
+
+<ul>
+<li>指定翻译的目标语言</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">translator.translate(<span class="string">'你好, 世界!'</span>, dest=<span class="string">'en'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <googletrans.models.translated at="" 0x2b6c9a2d550="">
+
+</googletrans.models.translated></div>
+
+<ul>
+<li>指定来源语言</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">translator.translate(<span class="string">'你好, 世界!'</span>, src=<span class="string">'zh-cn'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <googletrans.models.translated at="" 0x2b6c9a573c8="">
+
+</googletrans.models.translated></div>
+
+<ul>
+<li>指定使用的api地址</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">translator = Translator(service_urls=[</span><br><span class="line">      <span class="string">'translate.google.com.hk'</span>,</span><br><span class="line">      <span class="string">'translate.google.co.kr'</span>,</span><br><span class="line">    ])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一次翻译多个语句</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">translations = translator.translate([<span class="string">'The quick brown fox'</span>, <span class="string">'jumps over'</span>, <span class="string">'the lazy dog'</span>], dest=<span class="string">'zh-cn'</span>)</span><br><span class="line"><span class="keyword">for</span> translation <span class="keyword">in</span> translations:</span><br><span class="line">    print(translation.origin, <span class="string">' -&gt; '</span>, translation.text)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    The quick brown fox  ->  快速的棕色狐狸
+    <br>jumps over  ->  跳过来
+    <br>the lazy dog  ->  懒狗
+    <br>
+</div>
+
+<ul>
+<li>推断语言</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">langs = translator.detect([<span class="string">'한국어'</span>, <span class="string">'日本語'</span>, <span class="string">'English'</span>, <span class="string">'le français'</span>])</span><br><span class="line"><span class="keyword">for</span> lang <span class="keyword">in</span> langs:</span><br><span class="line">    print(lang.lang, lang.confidence)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    ko 1
+    <br>ja 0.96244651
+    <br>en 1
+    <br>fr 0.95032448
+    <br>
+</div>
+
+<h3 id="所有支持的语言预览"><a href="#所有支持的语言预览" class="headerlink" title="所有支持的语言预览"></a>所有支持的语言预览</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">LANGUAGES = &#123;</span><br><span class="line">    <span class="string">'af'</span>: <span class="string">'afrikaans'</span>,</span><br><span class="line">    <span class="string">'sq'</span>: <span class="string">'albanian'</span>,</span><br><span class="line">    <span class="string">'am'</span>: <span class="string">'amharic'</span>,</span><br><span class="line">    <span class="string">'ar'</span>: <span class="string">'arabic'</span>,</span><br><span class="line">    <span class="string">'hy'</span>: <span class="string">'armenian'</span>,</span><br><span class="line">    <span class="string">'az'</span>: <span class="string">'azerbaijani'</span>,</span><br><span class="line">    <span class="string">'eu'</span>: <span class="string">'basque'</span>,</span><br><span class="line">    <span class="string">'be'</span>: <span class="string">'belarusian'</span>,</span><br><span class="line">    <span class="string">'bn'</span>: <span class="string">'bengali'</span>,</span><br><span class="line">    <span class="string">'bs'</span>: <span class="string">'bosnian'</span>,</span><br><span class="line">    <span class="string">'bg'</span>: <span class="string">'bulgarian'</span>,</span><br><span class="line">    <span class="string">'ca'</span>: <span class="string">'catalan'</span>,</span><br><span class="line">    <span class="string">'ceb'</span>: <span class="string">'cebuano'</span>,</span><br><span class="line">    <span class="string">'ny'</span>: <span class="string">'chichewa'</span>,</span><br><span class="line">    <span class="string">'zh-cn'</span>: <span class="string">'chinese (simplified)'</span>,</span><br><span class="line">    <span class="string">'zh-tw'</span>: <span class="string">'chinese (traditional)'</span>,</span><br><span class="line">    <span class="string">'co'</span>: <span class="string">'corsican'</span>,</span><br><span class="line">    <span class="string">'hr'</span>: <span class="string">'croatian'</span>,</span><br><span class="line">    <span class="string">'cs'</span>: <span class="string">'czech'</span>,</span><br><span class="line">    <span class="string">'da'</span>: <span class="string">'danish'</span>,</span><br><span class="line">    <span class="string">'nl'</span>: <span class="string">'dutch'</span>,</span><br><span class="line">    <span class="string">'en'</span>: <span class="string">'english'</span>,</span><br><span class="line">    <span class="string">'eo'</span>: <span class="string">'esperanto'</span>,</span><br><span class="line">    <span class="string">'et'</span>: <span class="string">'estonian'</span>,</span><br><span class="line">    <span class="string">'tl'</span>: <span class="string">'filipino'</span>,</span><br><span class="line">    <span class="string">'fi'</span>: <span class="string">'finnish'</span>,</span><br><span class="line">    <span class="string">'fr'</span>: <span class="string">'french'</span>,</span><br><span class="line">    <span class="string">'fy'</span>: <span class="string">'frisian'</span>,</span><br><span class="line">    <span class="string">'gl'</span>: <span class="string">'galician'</span>,</span><br><span class="line">    <span class="string">'ka'</span>: <span class="string">'georgian'</span>,</span><br><span class="line">    <span class="string">'de'</span>: <span class="string">'german'</span>,</span><br><span class="line">    <span class="string">'el'</span>: <span class="string">'greek'</span>,</span><br><span class="line">    <span class="string">'gu'</span>: <span class="string">'gujarati'</span>,</span><br><span class="line">    <span class="string">'ht'</span>: <span class="string">'haitian creole'</span>,</span><br><span class="line">    <span class="string">'ha'</span>: <span class="string">'hausa'</span>,</span><br><span class="line">    <span class="string">'haw'</span>: <span class="string">'hawaiian'</span>,</span><br><span class="line">    <span class="string">'iw'</span>: <span class="string">'hebrew'</span>,</span><br><span class="line">    <span class="string">'hi'</span>: <span class="string">'hindi'</span>,</span><br><span class="line">    <span class="string">'hmn'</span>: <span class="string">'hmong'</span>,</span><br><span class="line">    <span class="string">'hu'</span>: <span class="string">'hungarian'</span>,</span><br><span class="line">    <span class="string">'is'</span>: <span class="string">'icelandic'</span>,</span><br><span class="line">    <span class="string">'ig'</span>: <span class="string">'igbo'</span>,</span><br><span class="line">    <span class="string">'id'</span>: <span class="string">'indonesian'</span>,</span><br><span class="line">    <span class="string">'ga'</span>: <span class="string">'irish'</span>,</span><br><span class="line">    <span class="string">'it'</span>: <span class="string">'italian'</span>,</span><br><span class="line">    <span class="string">'ja'</span>: <span class="string">'japanese'</span>,</span><br><span class="line">    <span class="string">'jw'</span>: <span class="string">'javanese'</span>,</span><br><span class="line">    <span class="string">'kn'</span>: <span class="string">'kannada'</span>,</span><br><span class="line">    <span class="string">'kk'</span>: <span class="string">'kazakh'</span>,</span><br><span class="line">    <span class="string">'km'</span>: <span class="string">'khmer'</span>,</span><br><span class="line">    <span class="string">'ko'</span>: <span class="string">'korean'</span>,</span><br><span class="line">    <span class="string">'ku'</span>: <span class="string">'kurdish (kurmanji)'</span>,</span><br><span class="line">    <span class="string">'ky'</span>: <span class="string">'kyrgyz'</span>,</span><br><span class="line">    <span class="string">'lo'</span>: <span class="string">'lao'</span>,</span><br><span class="line">    <span class="string">'la'</span>: <span class="string">'latin'</span>,</span><br><span class="line">    <span class="string">'lv'</span>: <span class="string">'latvian'</span>,</span><br><span class="line">    <span class="string">'lt'</span>: <span class="string">'lithuanian'</span>,</span><br><span class="line">    <span class="string">'lb'</span>: <span class="string">'luxembourgish'</span>,</span><br><span class="line">    <span class="string">'mk'</span>: <span class="string">'macedonian'</span>,</span><br><span class="line">    <span class="string">'mg'</span>: <span class="string">'malagasy'</span>,</span><br><span class="line">    <span class="string">'ms'</span>: <span class="string">'malay'</span>,</span><br><span class="line">    <span class="string">'ml'</span>: <span class="string">'malayalam'</span>,</span><br><span class="line">    <span class="string">'mt'</span>: <span class="string">'maltese'</span>,</span><br><span class="line">    <span class="string">'mi'</span>: <span class="string">'maori'</span>,</span><br><span class="line">    <span class="string">'mr'</span>: <span class="string">'marathi'</span>,</span><br><span class="line">    <span class="string">'mn'</span>: <span class="string">'mongolian'</span>,</span><br><span class="line">    <span class="string">'my'</span>: <span class="string">'myanmar (burmese)'</span>,</span><br><span class="line">    <span class="string">'ne'</span>: <span class="string">'nepali'</span>,</span><br><span class="line">    <span class="string">'no'</span>: <span class="string">'norwegian'</span>,</span><br><span class="line">    <span class="string">'ps'</span>: <span class="string">'pashto'</span>,</span><br><span class="line">    <span class="string">'fa'</span>: <span class="string">'persian'</span>,</span><br><span class="line">    <span class="string">'pl'</span>: <span class="string">'polish'</span>,</span><br><span class="line">    <span class="string">'pt'</span>: <span class="string">'portuguese'</span>,</span><br><span class="line">    <span class="string">'pa'</span>: <span class="string">'punjabi'</span>,</span><br><span class="line">    <span class="string">'ro'</span>: <span class="string">'romanian'</span>,</span><br><span class="line">    <span class="string">'ru'</span>: <span class="string">'russian'</span>,</span><br><span class="line">    <span class="string">'sm'</span>: <span class="string">'samoan'</span>,</span><br><span class="line">    <span class="string">'gd'</span>: <span class="string">'scots gaelic'</span>,</span><br><span class="line">    <span class="string">'sr'</span>: <span class="string">'serbian'</span>,</span><br><span class="line">    <span class="string">'st'</span>: <span class="string">'sesotho'</span>,</span><br><span class="line">    <span class="string">'sn'</span>: <span class="string">'shona'</span>,</span><br><span class="line">    <span class="string">'sd'</span>: <span class="string">'sindhi'</span>,</span><br><span class="line">    <span class="string">'si'</span>: <span class="string">'sinhala'</span>,</span><br><span class="line">    <span class="string">'sk'</span>: <span class="string">'slovak'</span>,</span><br><span class="line">    <span class="string">'sl'</span>: <span class="string">'slovenian'</span>,</span><br><span class="line">    <span class="string">'so'</span>: <span class="string">'somali'</span>,</span><br><span class="line">    <span class="string">'es'</span>: <span class="string">'spanish'</span>,</span><br><span class="line">    <span class="string">'su'</span>: <span class="string">'sundanese'</span>,</span><br><span class="line">    <span class="string">'sw'</span>: <span class="string">'swahili'</span>,</span><br><span class="line">    <span class="string">'sv'</span>: <span class="string">'swedish'</span>,</span><br><span class="line">    <span class="string">'tg'</span>: <span class="string">'tajik'</span>,</span><br><span class="line">    <span class="string">'ta'</span>: <span class="string">'tamil'</span>,</span><br><span class="line">    <span class="string">'te'</span>: <span class="string">'telugu'</span>,</span><br><span class="line">    <span class="string">'th'</span>: <span class="string">'thai'</span>,</span><br><span class="line">    <span class="string">'tr'</span>: <span class="string">'turkish'</span>,</span><br><span class="line">    <span class="string">'uk'</span>: <span class="string">'ukrainian'</span>,</span><br><span class="line">    <span class="string">'ur'</span>: <span class="string">'urdu'</span>,</span><br><span class="line">    <span class="string">'uz'</span>: <span class="string">'uzbek'</span>,</span><br><span class="line">    <span class="string">'vi'</span>: <span class="string">'vietnamese'</span>,</span><br><span class="line">    <span class="string">'cy'</span>: <span class="string">'welsh'</span>,</span><br><span class="line">    <span class="string">'xh'</span>: <span class="string">'xhosa'</span>,</span><br><span class="line">    <span class="string">'yi'</span>: <span class="string">'yiddish'</span>,</span><br><span class="line">    <span class="string">'yo'</span>: <span class="string">'yoruba'</span>,</span><br><span class="line">    <span class="string">'zu'</span>: <span class="string">'zulu'</span>,</span><br><span class="line">    <span class="string">'fil'</span>: <span class="string">'Filipino'</span>,</span><br><span class="line">    <span class="string">'he'</span>: <span class="string">'Hebrew'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>单个文本的最大字符限制为15k。</li>
+<li>由于谷歌翻译的网页版本的限制，此API不保证库始终正常工作。 （如果您不关心稳定性，请使用此库。）</li>
+<li>如果您想使用稳定的API，我强烈建议您使用Google的官方翻译API。</li>
+<li>如果您收到HTTP 5xx错误或＃6错误，可能是因为Google已禁止您的客户端IP地址。</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="使用谷歌翻译接口进行句子翻译.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/keras教程/">#keras教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/keras教程/">
+            keras教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                    使用谷歌翻译接口进行句子翻译
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                    keras教程-n-CUDA无法找到cudnn的错误解决
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/16/keras教程-08-Dropout的原理和实现/">
+                    keras教程-08-Dropout的原理和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/03/keras教程-n-GAN对抗生成网络的理论和实践/">
+                    keras教程-n-GAN对抗生成网络的理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                    keras教程-n-10分钟入门LSTM
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                    keras教程-n-循环神经网络的注意力机制的理论和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/01/keras教程-06-优化器详细解释/">
+                    keras教程-06-优化器详细解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/30/keras基础-Dense的输入的秩大于2时的注意事项/">
+                    keras基础-Dense的输入的秩大于2时的注意事项
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                    keras教程-05-实验验证神经网络的深度-样本量-dropout
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                    keras教程-04-手写字体识别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/17/keras教程-03-深度学习基础和keras入门/">
+                    keras教程-03-深度学习基础和keras入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/16/keras教程-02-tensorflow和keras安装/">
+                    keras教程-02-tensorflow和keras安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/15/keras教程-01-神经网络图解和手动计算/">
+                    keras教程-01-神经网络图解和手动计算
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

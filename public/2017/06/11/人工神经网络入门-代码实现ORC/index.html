@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="人工神经网络入门+代码实现ORC"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>人工神经网络入门+代码实现ORC - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+        <!-- d3js -->
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+    
+    
+        <!-- synaptic -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/synaptic/1.0.11/synaptic.min.js"></script>
+
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
+                人工神经网络入门+代码实现ORC
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="人工神经网络入门+代码实现ORC"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2017年06月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        
+<div class="row" id="content-body">
+    <div id="orc-container" class="col-md-6 col-lg-6 col-sm-12"></div>
+    <div class="controls col-md-6 col-lg-6 col-sm-12">
+        在表格里写入一个一个数字(0-9)<br>
+        <button class="clear btn btn-default"> 清空 </button>
+        <button class="recognize btn btn-default">识别</button>
+        <div>预测结果： <span class="prediction"> ?? </span> </div>
+        信度：<div class="confidence"></div>
+        <div class="confidences">
+        </div>
+    </div>
+</div>
+<div class="row" id="network-container"></div>
+<div class="row btn-group" id="network-buttons">
+    <button class="btn btn-lg btn-default" id="reduce-neuron">减少神经元</button>
+    <input id="num-nodes" type="number" class="btn btn-default btn-large form-group" value="25" title="隐层神经元个数" height="100%">
+    <button class="btn btn-lg btn-default" id="add-neuron">增加神经元</button>
+    <button class="btn btn-lg btn-default" id="network-run">训练</button>
+</div>
+
+
+<!-- orc -->
+   <style>
+        body {
+          margin: 0;
+          font-family: Helvetica;
+          font-weight: 100;
+        }
+        svg {
+          shape-rendering: crispEdges;
+          cursor: pointer;
+        }
+        .controls {
+        }
+    </style>
+    
+    <!-- draw a grid -->
+    <script type="text/javascript">
+
+        if ('d3' in window){
+            var gL=50, gridN=8, boxLength=gL * gridN
+            var svg=d3.select('#orc-container').append('svg').attr("width",boxLength)
+                .attr("height",boxLength)
+            var data=d3.range(gridN*gridN).map(function(d){
+                return {i: d%gridN, j:Math.floor(d/gridN), id: d, active:0}
+            })
+
+            var grids=svg.append('g').attr('class', 'grids')
+                .selectAll('rect').data(data).enter().append('rect')
+                .attr("width", gL).attr("height", gL)
+                .attr('x', function(d){return gL*d.i})
+                .attr('y', function(d){return gL*d.j})
+                .style('stroke', 'rgba(255, 255, 255, 0.2)')
+
+            function updateGrid(g){
+                g.style('fill', function(d){
+                    return d.active ? 'rgba(255,255,255,1)':'black'
+                })
+
+            }
+            var conf = d3.select('.confidences').selectAll('div')
+                .data(d3.range(10)).enter()
+                .append('div').text(function(d){return d + ': '})
+
+            var bar=conf.append('div').attr('class', 'bg')
+                .style("width",'60px')
+                .style("height", '20px')
+                .style("display", 'inline-block')
+
+            bar.append('div').attr('class', 'fg')
+                .style("width", '20%')
+                .style("height", '100%')
+                .style('background-color', 'rgba(0, 0, 0, 0.8)')
+
+            svg.on('mousedown', function(){
+                grids.on('mousemove',function(d){
+                    d.active=1
+                    updateGrid(d3.select(this))
+                })
+            }).on('mouseup',function(){
+                grids.on('mousemove',null)
+            })
+
+            function updateState(){
+                var input = data.map(function(d){return d.active})
+                var output = window.network.activate(input)
+                var max = -1, maxId = -1
+                output.forEach(function(d, i) { if (d > max) max = d, maxId = i })
+                conf.data(output).select('.fg')
+                    .style('width', function(d) { return d * 100 + '%' })
+                d3.select('.prediction').text(maxId)
+                d3.select('.confidence').text(max)
+
+            }
+            d3.select('button.clear').on('click', resetBlocks)
+            d3.select('button.recognize').on('click', updateState)
+
+            function resetBlocks() {
+              grids.each(function(d) { d.active = 0 }).call(updateGrid)
+            }
+        }else{
+            document.getElementById('content-body').innerHTML='本篇文章内容特殊，只有打开文章才能看到。'
+            document.getElementById('network-buttons').innerHTML=''
+        }
+    </script>
+
+
+
+   <!-- network graph -->
+    <style type="text/css">
+        text {
+          pointer-events: none;
+        }
+
+        .node:hover {
+          stroke: #999;
+          stroke-opacity: .6;
+          stroke-width: 4px;
+        }
+
+        .link {
+          stroke: #999;
+          stroke-opacity: .6;
+        }
+    </style>
+    <script type="text/javascript">
+    if ('d3' in window){
+        var width = 960,
+            height = 1400,
+            nodeSize = 10;
+
+        var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+        var svg = d3.select("#network-container").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+
+        window.show_network=function(network) {
+            
+            svg.selectAll('*').remove()
+            // get network size
+            var netsize = {}
+            allLayers=[network.layers.input]
+            network.layers.hidden.forEach(function(l){
+                allLayers.push(l)
+            })
+            allLayers.push(network.layers.output)
+
+            // calc distances between nodes
+            largestLayerSize=0
+            allLayers.forEach(function(d){if(d.size>largestLayerSize){
+                largestLayerSize=d.size
+            }})
+
+            var xdist = width / allLayers.length,
+                ydist = height / largestLayerSize;
+
+            // create node locations
+            layerCount=0
+            var links = [];
+            allLayers.map(function(layer) {
+                layerCount +=1
+                layer.layerCount=layerCount
+                neurons=layer.neurons()
+                nNeurons=neurons.length
+                maxYDistance=nNeurons * ydist
+                startY=(height-maxYDistance)/2
+                neuCount=0
+                neurons.forEach(function(neuron){
+                    neuCount +=1
+                    neuron.x=(layerCount - 0.5) * xdist
+                    neuron.y=(neuCount - 0.5 ) * ydist + startY
+                    connections=neuron.connections.projected
+                    keys=Object.keys(connections)
+                    keys.forEach(function(id){
+                        links.push(connections[id])
+                    })
+                })
+            });
+
+            // draw links
+            var link = svg.selectAll(".link")
+                .data(links)
+              .enter().append("line")
+                .attr("class", "link")
+                .attr("x1", function(d) { return d.from.x; })
+                .attr("y1", function(d) { return d.from.y; })
+                .attr("x2", function(d) { return d.to.x; })
+                .attr("y2", function(d) { return d.to.y; })
+                .style("stroke-width", function(d) { return d.weight * 10; });
+
+            // draw nodes
+            console.log(network.neurons())
+            var node = svg.selectAll(".node")
+                .data(network.neurons())
+              .enter().append("g")
+                .attr("transform", function(d) {
+                    return "translate(" + d.neuron.x + "," + d.neuron.y + ")"; }
+                );
+
+            var circle = node.append("circle")
+                .attr("class", "node")
+                .attr("r", nodeSize)
+                .style("fill", function(d) { return color(d.layer.layerCount); });
+
+
+            node.append("text")
+                .attr("dx", "-.35em")
+                .attr("dy", ".35em")
+                .text(function(d, i) { return i; })
+        }
+
+        var numInput=document.getElementById('num-nodes')
+        var addBtn=d3.select('#add-neuron').on('click', function(){
+            value=numInput.value
+            console.log(value)
+            value = parseInt(value)
+            // numInput.attr('value', value + 1)  #这个方法不能动态显示更改后的数据
+            numInput.value=value +1
+        })
+        var reduceBtn=d3.select('#reduce-neuron').on('click', function(){
+            value= parseInt(numInput.value)
+            value = (value > 1)? value -1 : 0
+            numInput.value=value
+            
+        })
+        var runBtn= d3.select('#network-run').on('click', function(){
+            num=parseInt(numInput.value)
+            if(num>0){
+                myNetwork=new synaptic.Architect.Perceptron(64, num, 10)
+                trainer=new synaptic.Trainer(myNetwork)
+                window.train(trainer)
+                window.show_network(myNetwork)
+                window.network=myNetwork
+                window.trainer=trainer
+                alert('训练完成')
+            }else{
+                alert('神经元的数量必须大于0')
+            }
+        })
+    }
+    </script>
+
+
+
+    <script type="text/javascript">
+        if('synaptic' in window){
+            var myNetwork = new synaptic.Architect.Perceptron(64, 25, 10)
+            var trainer = new synaptic.Trainer(myNetwork)
+
+            function train(trainer){
+                d3.text('data', function(err, data) {
+                  if (err) {
+                    throw err
+                  }
+                  var ts, te, idx
+                  data = d3.csvParseRows(data, function(row) { return row.map(Number) })
+                    .map(function(d) {
+                    // Expected output.
+                    var t = d3.range(10).map(function() { return 0 })
+                    t[d[0]] = 1
+                    return { input: d.slice(1), output: t }
+                  })
+                    ts=Date.now()
+                    trainer.train(data)
+                    te=Date.now()
+                    console.log('Time Spend: '+ (te-ts))
+                })
+            }
+            window.train=train
+            train(trainer)
+            window.network=myNetwork
+            window.trianer=trainer
+            window.show_network(myNetwork)
+        }
+    </script>
+
+<h3 id="计算计算过程"><a href="#计算计算过程" class="headerlink" title="计算计算过程"></a>计算计算过程</h3><h4 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h4><p>假设网络中所有的参数已知，根据一个输入向量x，求输出向量y。</p>
+<p>首先输入是一个64维向量：</p>
+<p><code>\[ x=\left[ x_1, x_2,\dots x_d \right] \](d=64)</code></p>
+<p>而输出向量应该是一个10维的向量，用来表征10个数字的识别概率。</p>
+<p><code>\[ \hat y=\left [ \hat y_1, \hat y_2,\dots \hat y_l \right](l=10) \]</code></p>
+<h4 id="已知条件："><a href="#已知条件：" class="headerlink" title="已知条件："></a>已知条件：</h4><ul>
+<li>输入层到隐层神经元之间的链接权重<code>v</code>：</li>
+</ul>
+<p><code>\[ v=\left| { \begin{array}{c}
+v_{11} &amp; v_{12} &amp; \dots &amp; v_{1d}\\
+v_{21} &amp; v_{22} &amp; \dots &amp; v_{2d}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+v_{q1} &amp; v_{q2} &amp; \dots &amp; v_{qd}
+\end{array} }\right| (d=64, q=\text{count of hidden layer neurons})\]</code></p>
+<ul>
+<li>隐层神经元的阈值b</li>
+</ul>
+<p><code>\[ b=[b_1, b_2, \dots, b_q](q=\text{count of hidden layer neurons}) \]</code></p>
+<ul>
+<li>隐层到输出层的权重<code>w</code>：</li>
+</ul>
+<p><code>\[
+w=\left| { \begin{array}{c}
+w_{11} &amp; w_{12} &amp; \dots &amp; w_{1q}\\
+w_{21} &amp; w_{22} &amp; \dots &amp; w_{2q}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+w_{l1} &amp; w_{l2} &amp; \dots &amp; w_{lq}
+\end{array} }\right| (l=10, q=\text{count of hidden layer neurons})
+\]</code></p>
+<ul>
+<li>输出层的阈值<code>\( \theta \)</code></li>
+</ul>
+<p><code>\[ \theta=[\theta_1, \theta_2,\dots,\theta_l](l=10) \]</code></p>
+<ul>
+<li>激活函数</li>
+</ul>
+<p><code>\[ f(x)={ 1 \over { 1 + e^{-x} } } \]</code></p>
+<h4 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h4><ul>
+<li>隐层神经元的输入</li>
+</ul>
+<p><code>\[ \alpha = v · x^T + b  \]</code></p>
+<ul>
+<li>隐层神经元的激活</li>
+</ul>
+<p><code>\[ \beta=f(\alpha) \]</code></p>
+<ul>
+<li>输出神经元输入</li>
+</ul>
+<p><code>\[\gamma = w · \beta + \theta\]</code></p>
+<ul>
+<li>输出神经元的激活</li>
+</ul>
+<p><code>\[f(\gamma)\]</code></p>
+<h3 id="synaptic-js实现神经网络"><a href="#synaptic-js实现神经网络" class="headerlink" title="synaptic.js实现神经网络"></a>synaptic.js实现神经网络</h3><p>为了演示我们就用一个前端库来做一个神经网络。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myNetwork = <span class="keyword">new</span> synaptic.Architect.Perceptron(<span class="number">64</span>, <span class="number">25</span>, <span class="number">10</span>)</span><br><span class="line"><span class="keyword">var</span> trainer = <span class="keyword">new</span> synaptic.Trainer(myNetwork)</span><br><span class="line">data=[</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;</span><br><span class="line">]</span><br><span class="line">trainer.train(data)</span><br><span class="line">new_input=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> output = network.activate(new_input)</span><br></pre></td></tr></table></figure>
+<p>### </p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/ORC/">#ORC</a> <a href="/tags/神经网络/">#神经网络</a> <a href="/tags/3djs/">#3djs</a> <a href="/tags/synaptic/">#synaptic</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/ORC/">
+            ORC
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
+                    人工神经网络入门+代码实现ORC
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/神经网络/">
+            神经网络
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/06/13/神经网络python库keras在windows下部署过程，带下载链接/">
+                    神经网络python库keras在windows下部署过程，带下载链接
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
+                    人工神经网络入门+代码实现ORC
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/3djs/">
+            3djs
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
+                    人工神经网络入门+代码实现ORC
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/synaptic/">
+            synaptic
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
+                    人工神经网络入门+代码实现ORC
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

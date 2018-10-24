@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pylink (SR research) &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="psychopy.hardware - hardware interfaces" href="../hardware.html" />
+    <link rel="next" title="psychopy.info - functions for getting information about the system" href="../info.html" />
+    <link rel="prev" title="PhotoResearch" href="pr.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../info.html" title="psychopy.info - functions for getting information about the system"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pr.html" title="PhotoResearch"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../hardware.html" accesskey="U"><code class="docutils literal"><span class="pre">psychopy.hardware</span></code> - hardware interfaces</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="pr.html"
+                                  title="previous chapter">PhotoResearch</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="../info.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.info</span></code> - functions for getting information about the system</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/api/hardware/pylink.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pylink-sr-research">
+<span id="pylink"></span><h1>pylink (SR research)<a class="headerlink" href="#pylink-sr-research" title="Permalink to this headline">¶</a></h1>
+<p>For now the SR Research pylink module is packaged with the Standalone flavours of PsychoPy and can be imported with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pylink</span>
+</pre></div>
+</div>
+<p>You do need to install the Display Software (which they also call Eyelink Developers Kit) for your particular platform. This can be found by following the threads from:</p>
+<p><a class="reference external" href="https://www.sr-support.com/forums/forumdisplay.php?f=17">https://www.sr-support.com/forums/forumdisplay.php?f=17</a></p>
+<p>for pylink documentation see:</p>
+<p><a class="reference external" href="https://www.sr-support.com/forums/showthread.php?t=14">https://www.sr-support.com/forums/showthread.php?t=14</a></p>
+<span class="target" id="module-pylink"></span><p>Performing research with eye-tracking equipment typically requires a long-term investment in software
+tools to collect, process, and analyze data. Much of this involves real-time data collection, saccadic
+analysis, calibration routines, and so on.
+The EyeLink® eye-tracking system is designed to implement most of the required software base for data
+collection and conversion. It is most powerful when used with the Ethernet link interface, which allows
+remote control of data collection and real-time data transfer. The PyLink toolkit includes Pylink module,
+which implements all core EyeLink functions and classes for EyeLink connection and the eyelink graphics,
+such as the display of camera image, calibration, validation, and drift correct. The EyeLink graphics is
+currently implemented using Simple Direct Media Layer (SDL: www.libsdl.org).</p>
+<p>The Pylink library contains a set of classes and functions, which are used to program experiments on many
+different platforms, such as MS-DOS, Windows, Linux, and the Macintosh. Some programming standards,
+such as placement of messages in the EDF file by your experiment, and the use of special data types, have
+been implemented to allow portability of the development kit across platforms. The standard messages
+allow general analysis tools such as EDF2ASC converter or EyeLink Data Viewer to process your EDF files.</p>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../info.html" title="psychopy.info - functions for getting information about the system"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pr.html" title="PhotoResearch"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../hardware.html" ><code class="docutils literal"><span class="pre">psychopy.hardware</span></code> - hardware interfaces</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

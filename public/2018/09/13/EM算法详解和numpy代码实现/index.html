@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="EM算法详解和numpy代码实现"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>EM算法详解和numpy代码实现 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/09/13/EM算法详解和numpy代码实现/index.html",
+    "appid": "1600845001263316",
+    "title": "EM算法详解和numpy代码实现",
+    "images": [
+        "http://mlln.cn/xiongzhang.png"
+    ], 
+    "pubDate": "2018-09-13T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                EM算法详解和numpy代码实现
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="EM算法详解和numpy代码实现"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月13日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用到的资源和基本配置"><span class="toc-number">1.</span> <span class="toc-text">用到的资源和基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题介绍"><span class="toc-number">2.</span> <span class="toc-text">问题介绍</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<blockquote>
+<p>声明: 本文由<a href="http://mlln.cn">DataScience</a>原创发表, 转载请注明<a href="http://mlln.cn">本文链接</a>mlln.cn, 并在文后留言<code>转载</code>.</p>
+</blockquote>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+</ul>
+<h3 id="用到的资源和基本配置"><a href="#用到的资源和基本配置" class="headerlink" title="用到的资源和基本配置"></a>用到的资源和基本配置</h3><p>在教程开始之前了解一下我们将用到的工具, 可以让你们评估一下教程的难度, 并且了解教程的大概内容。我们的教程和本站的大部分内容类似, 都运行在jupyter notebook中, 并且在后续可能会增加在线运行代码的功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<h3 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h3><p>这个例子来自书 Computer Age Statistical Inference By Efron和Hastie。假设我们的数据采自正太双变量:</p>
+<p><img src="images/bi-variate-normal.png"></p>
+<p>用代码来说明就是这样:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标准差</span></span><br><span class="line">sig1=<span class="number">1</span></span><br><span class="line">sig2=<span class="number">0.75</span></span><br><span class="line"><span class="comment"># 均值</span></span><br><span class="line">mu1=<span class="number">1.85</span></span><br><span class="line">mu2=<span class="number">1</span></span><br><span class="line">rho=<span class="number">0.82</span></span><br><span class="line"><span class="comment"># 均值</span></span><br><span class="line">means=np.array([mu1, mu2])</span><br><span class="line"><span class="comment">#协方差矩阵</span></span><br><span class="line">cov = np.array([</span><br><span class="line">    [sig1**<span class="number">2</span>, sig1*sig2*rho],</span><br><span class="line">    [sig2*sig1*rho, sig2**<span class="number">2</span>]</span><br><span class="line">])</span><br><span class="line">print(<span class="string">'均值:'</span>, means)</span><br><span class="line">print(<span class="string">'协方差矩阵:'</span>, cov)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    均值: [1.85 1.  ]
+    <br>协方差矩阵: [[1.     0.615 ]
+    <br> [0.615  0.5625]]
+    <br>
+</div>
+
+<p>生成我们用到的样本, 第一列表示x, 第二列表示y</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">samples=np.random.multivariate_normal(means, cov, size=<span class="number">40</span>)</span><br><span class="line">samples</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    array([[ 2.68359748,  1.48379834],
+    <br>       [ 1.17791924,  1.38894689],
+    <br>       [ 1.86489988,  0.64818678],
+    <br>       [ 3.46263848,  2.52003738],
+    <br>       [ 3.28320055,  2.09838814],
+    <br>       [ 2.2243539 ,  0.68423906],
+    <br>       [-0.81846598,  0.25206792],
+    <br>       [ 2.8875052 ,  1.21514733],
+    <br>       [ 2.8089101 ,  2.66763322],
+    <br>       [-0.43096351, -0.40946548],
+    <br>       [ 1.59169105,  0.83110871],
+    <br>       [ 2.33259334,  0.74321063],
+    <br>       [ 1.23234749,  0.10636416],
+    <br>       [ 2.77710826,  1.22676301],
+    <br>       [ 2.30041259,  1.26537629],
+    <br>       [ 1.46274197,  0.86375528],
+    <br>       [ 2.34134553,  0.60329965],
+    <br>       [ 1.41575413,  0.12814199],
+    <br>       [ 2.89978014,  1.662521  ],
+    <br>       [ 1.94268688,  0.96135903],
+    <br>       [ 1.8706036 ,  0.23341228],
+    <br>       [-0.95437589, -1.59097527],
+    <br>       [ 2.31569597,  1.16615578],
+    <br>       [ 2.22949385,  1.51688792],
+    <br>       [ 1.20585795,  0.65294385],
+    <br>       [ 1.35490525,  1.49116327],
+    <br>       [ 0.65720096, -0.04390794],
+    <br>       [ 3.50395539,  0.94368355],
+    <br>       [ 2.87762334,  2.1871402 ],
+    <br>       [ 1.72990085,  0.06746951],
+    <br>       [ 1.81482228,  1.13994364],
+    <br>       [ 2.90097921,  2.68693399],
+    <br>       [ 0.17064598, -0.57392392],
+    <br>       [ 3.54635827,  1.9893743 ],
+    <br>       [ 0.14184182, -0.16384488],
+    <br>       [ 1.62707491,  1.3287029 ],
+    <br>       [ 0.98461819,  1.14653502],
+    <br>       [ 2.90010676,  1.67282818],
+    <br>       [ 1.40230423,  0.11994606],
+    <br>       [ 2.9772189 ,  1.59642522]])
+
+</div>
+
+<p>不幸的是, 有些数据是缺失的, 所以我们伪造一些缺失数据, 用0表示缺失, 设置后20行数据的y都为0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">samples_censored=np.copy(samples)</span><br><span class="line">samples_censored[<span class="number">20</span>:,<span class="number">1</span>]=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>我们将上面的样本绘制成蓝色点。现在我们丢失了最后20个数据的y值。我们留下了丢失的数据或隐藏数据或潜在变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(samples[:,<span class="number">0</span>], samples[:,<span class="number">1</span>], <span class="string">'o'</span>, alpha=<span class="number">0.8</span>)</span><br><span class="line">plt.plot(samples_censored[:,<span class="number">0</span>], samples_censored[:,<span class="number">1</span>], <span class="string">'s'</span>, alpha=<span class="number">0.3</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    [<matplotlib.lines.line2d at="" 0x21ea51ba2e8="">]
+
+</matplotlib.lines.line2d></div>
+
+<p><img src="output_11_1.png" alt="png"></p>
+<p>如果我们已知所有的数据, 数据没有缺失, 我们可以使用MLE(极大似然估计)的方法求得下面所有的统计量, 下面的公式就是基于MLE推倒而得:</p>
+<p><img src="images/mle.png"></p>
+<p>我们假设缺失值已知, 可以计算得到这些统计量, 这个过程就叫做M-step。下面先写出计算的公式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mu1 = <span class="keyword">lambda</span> s: np.mean(s[:,<span class="number">0</span>])</span><br><span class="line">mu2 = <span class="keyword">lambda</span> s: np.mean(s[:,<span class="number">1</span>])</span><br><span class="line">s1 = <span class="keyword">lambda</span> s: np.std(s[:,<span class="number">0</span>])</span><br><span class="line">s2 = <span class="keyword">lambda</span> s: np.std(s[:,<span class="number">1</span>])</span><br><span class="line">rho = <span class="keyword">lambda</span> s: np.mean((s[:,<span class="number">0</span>] - mu1(s))*(s[:,<span class="number">1</span>] - mu2(s)))/(s1(s)*s2(s))</span><br></pre></td></tr></table></figure>
+<p>但是我们缺少y的部分数据,暂时用0来代替缺失值, 使用这个缺失值, 我们可以计算得到上面所有的统计量,  我们应该用迭代的方式找出缺失值的更好的替代值。下这些列表用于存放中间数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mu1s=[]</span><br><span class="line">mu2s=[]</span><br><span class="line">s1s=[]</span><br><span class="line">s2s=[]</span><br><span class="line"><span class="comment"># 相关系数, 后面有用到</span></span><br><span class="line">rhos=[]</span><br></pre></td></tr></table></figure>
+<p>先使用缺失值0计算所有的统计量:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mu1s.append(mu1(samples_censored))</span><br><span class="line">mu2s.append(mu2(samples_censored))</span><br><span class="line">s1s.append(s1(samples_censored))</span><br><span class="line">s2s.append(s2(samples_censored))</span><br><span class="line">rhos.append(rho(samples_censored))</span><br><span class="line">mu1s,mu2s,s1s,s2s,rhos</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    ([1.8674222131186482],
+    <br> [0.5235219836257345],
+    <br> [1.1279568484950988],
+    <br> [0.7551359797772168],
+    <br> [0.43680179723920937])
+
+</div>
+
+<p>有了这些参数, 我们可以反过来想, 那些缺失的y是不是可以被估计出来, 一种思路是用平均值代替缺失的y, 也就是下面的公式, 它指的是条件期望,也就是已知x和参数<code>$\theta$</code>的情况下, 去估计y的期望:</p>
+<p><code>$$
+E_{p(z \vert \theta, x)}[z]
+$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 用代码实现上面的公式就是:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ynew</span><span class="params">(x, mu1, mu2, s1, s2, rho)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> mu2 + rho*(s2/s1)*(x - mu1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意计算y的时候, 只使用了缺失值对应的x</span></span><br><span class="line">newys=ynew(samples_censored[<span class="number">20</span>:,<span class="number">0</span>], mu1s[<span class="number">0</span>], mu2s[<span class="number">0</span>], s1s[<span class="number">0</span>], s2s[<span class="number">0</span>], rhos[<span class="number">0</span>])</span><br><span class="line">newys</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    array([ 0.52445231, -0.30164726,  0.65460922,  0.62940142,  0.3300629 ,
+    <br>        0.37364831,  0.16962092,  1.00208806,  0.81893182,  0.48330706,
+    <br>        0.50814036,  0.82576169,  0.02733923,  1.01448779,  0.01891612,
+    <br>        0.453238  ,  0.26536647,  0.82550657,  0.38750904,  0.84805622])
+
+</div>
+
+<p>上面的这个过程就叫做E-step, 因为我们计算了期望, 下面我们迭代一下看是否能收敛:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">    samples_censored[<span class="number">20</span>:,<span class="number">1</span>] = newys</span><br><span class="line">    <span class="comment">#M-step</span></span><br><span class="line">    mu1s.append(mu1(samples_censored))</span><br><span class="line">    mu2s.append(mu2(samples_censored))</span><br><span class="line">    s1s.append(s1(samples_censored))</span><br><span class="line">    s2s.append(s2(samples_censored))</span><br><span class="line">    rhos.append(rho(samples_censored))</span><br><span class="line">    <span class="comment">#E-step</span></span><br><span class="line">    newys=ynew(samples_censored[<span class="number">20</span>:,<span class="number">0</span>], mu1s[step], mu2s[step], s1s[step], s2s[step], rhos[step])</span><br><span class="line">df=pd.DataFrame.from_dict(dict(mu1=mu1s, mu2=mu2s, s1=s1s, s2=s2s, rho=rhos))</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mu1</th>
+      <th>mu2</th>
+      <th>s1</th>
+      <th>s2</th>
+      <th>rho</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.867422</td>
+      <td>0.523522</td>
+      <td>1.127957</td>
+      <td>0.755136</td>
+      <td>0.436802</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.867422</td>
+      <td>0.769992</td>
+      <td>1.127957</td>
+      <td>0.656320</td>
+      <td>0.734940</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.867422</td>
+      <td>0.886157</td>
+      <td>1.127957</td>
+      <td>0.667636</td>
+      <td>0.827798</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.867422</td>
+      <td>0.940980</td>
+      <td>1.127957</td>
+      <td>0.685415</td>
+      <td>0.853448</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.867422</td>
+      <td>0.966894</td>
+      <td>1.127957</td>
+      <td>0.696062</td>
+      <td>0.861611</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.867422</td>
+      <td>0.979166</td>
+      <td>1.127957</td>
+      <td>0.701419</td>
+      <td>0.864603</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.867422</td>
+      <td>0.984991</td>
+      <td>1.127957</td>
+      <td>0.703944</td>
+      <td>0.865806</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.867422</td>
+      <td>0.987763</td>
+      <td>1.127957</td>
+      <td>0.705095</td>
+      <td>0.866312</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.867422</td>
+      <td>0.989086</td>
+      <td>1.127957</td>
+      <td>0.705607</td>
+      <td>0.866529</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.867422</td>
+      <td>0.989720</td>
+      <td>1.127957</td>
+      <td>0.705830</td>
+      <td>0.866621</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.867422</td>
+      <td>0.990025</td>
+      <td>1.127957</td>
+      <td>0.705925</td>
+      <td>0.866660</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1.867422</td>
+      <td>0.990173</td>
+      <td>1.127957</td>
+      <td>0.705963</td>
+      <td>0.866676</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1.867422</td>
+      <td>0.990244</td>
+      <td>1.127957</td>
+      <td>0.705978</td>
+      <td>0.866682</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1.867422</td>
+      <td>0.990279</td>
+      <td>1.127957</td>
+      <td>0.705983</td>
+      <td>0.866684</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1.867422</td>
+      <td>0.990297</td>
+      <td>1.127957</td>
+      <td>0.705984</td>
+      <td>0.866684</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1.867422</td>
+      <td>0.990305</td>
+      <td>1.127957</td>
+      <td>0.705984</td>
+      <td>0.866684</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1.867422</td>
+      <td>0.990309</td>
+      <td>1.127957</td>
+      <td>0.705984</td>
+      <td>0.866684</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1.867422</td>
+      <td>0.990312</td>
+      <td>1.127957</td>
+      <td>0.705984</td>
+      <td>0.866684</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1.867422</td>
+      <td>0.990313</td>
+      <td>1.127957</td>
+      <td>0.705983</td>
+      <td>0.866684</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1.867422</td>
+      <td>0.990313</td>
+      <td>1.127957</td>
+      <td>0.705983</td>
+      <td>0.866684</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>我们可以看到, 估计得到的mu2和s2跟初始值(1, 0.75)相比有些出入, 不过也差不多, 因为EM算法只能找到局部最小值, 而不能得到全局最小值。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="EM算法详解和numpy代码实现.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/EM/">#EM</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/EM/">
+            EM
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

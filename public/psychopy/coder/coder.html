@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Coder &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Documentation" href="../documentation.html" />
+    <link rel="next" title="Presenting Stimuli" href="codeStimuli.html" />
+    <link rel="prev" title="Set up your monitor properly" href="../builder/builderMonitors.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="codeStimuli.html" title="Presenting Stimuli"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../builder/builderMonitors.html" title="Set up your monitor properly"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" accesskey="U">Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Coder</a><ul>
+<li><a class="reference internal" href="#basic-concepts">Basic Concepts</a></li>
+<li><a class="reference internal" href="#psychopy-tutorials">PsychoPy Tutorials</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="../builder/builderMonitors.html"
+                                  title="previous chapter">Set up your monitor properly</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="codeStimuli.html"
+                                  title="next chapter">Presenting Stimuli</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/coder/coder.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coder">
+<span id="id1"></span><h1>Coder<a class="headerlink" href="#coder" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These do not teach you about Python <cite>per se</cite>, and you are recommended also to learn about that (<a class="reference external" href="http://www.python.org/">Python</a> has many excellent tutorials for programmers and non-programmers alike). In particular, dictionaries, lists and numpy arrays are used a great deal in most PsychoPy experiments.</p>
+</div>
+<p>You can learn to use the scripting interface to PsychoPy in several ways, and you should probably follow a combination of them:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#concepts"><span class="std std-ref">Basic Concepts</span></a>: some of the logic of PsychoPy scripting</li>
+<li><a class="reference internal" href="#tutorials"><span class="std std-ref">PsychoPy Tutorials</span></a>:  walk you through the development of some semi-complete experiments</li>
+<li>demos: in the demos menu of Coder view. Many and varied</li>
+<li>use the <a class="reference internal" href="../builder/builder.html#builder"><span class="std std-ref">Builder</span></a> to <a class="reference internal" href="../builder/compileScript.html#compilescript"><span class="std std-ref">compile a script</span></a> and see how it works</li>
+<li>check the <a class="reference internal" href="../api/api.html#api"><span class="std std-ref">Reference Manual (API)</span></a> for further details</li>
+<li>ultimately go into PsychoPy and start examining the source code. It&#8217;s just regular python!</li>
+</ul>
+</div></blockquote>
+<div class="section" id="basic-concepts">
+<span id="concepts"></span><h2>Basic Concepts<a class="headerlink" href="#basic-concepts" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="codeStimuli.html">Presenting Stimuli</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codeStimuli.html#stimulus-objects">Stimulus objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeStimuli.html#setting-stimulus-attributes">Setting stimulus attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeStimuli.html#timing">Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeStimuli.html#using-autodraw">Using autoDraw</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeLogging.html">Logging data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codeLogging.html#log-levels-and-targets">Log levels and targets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeLogging.html#updating-the-logs">Updating the logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeLogging.html#autologging">AutoLogging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeLogging.html#manual-methods">Manual methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeLogging.html#using-a-custom-clock-for-logs">Using a custom clock for logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeTrials.html">Handling Trials and Conditions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codeTrials.html#trialhandler">TrialHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codeTrials.html#stairhandler">StairHandler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="globalKeys.html">Global Event Keys</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="globalKeys.html#adding-a-global-event-key-simple">Adding a global event key (simple)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalKeys.html#adding-a-global-event-key-advanced">Adding a global event key (advanced)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalKeys.html#indexing">Indexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalKeys.html#number-of-active-event-keys">Number of active event keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalKeys.html#removing-global-event-keys">Removing global event keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalKeys.html#global-shutdown-key">Global shutdown key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="globalKeys.html#a-working-example">A working example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="psychopy-tutorials">
+<span id="tutorials"></span><h2>PsychoPy Tutorials<a class="headerlink" href="#psychopy-tutorials" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Generating your first stimulus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1.html#know-your-monitor">Know your monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1.html#your-first-stimulus">Your first stimulus</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Measuring a JND using a staircase procedure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html#get-info-from-the-user">Get info from the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html#setup-the-information-for-trials">Setup the information for trials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html#build-your-stimuli">Build your stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html#control-the-presentation-of-the-stimuli">Control the presentation of the stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html#get-input-from-the-subject">Get input from the subject</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html#output-your-data-and-clean-up">Output your data and clean up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Tutorial 3: Analysing data in Python</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="codeStimuli.html" title="Presenting Stimuli"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../builder/builderMonitors.html" title="Set up your monitor properly"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

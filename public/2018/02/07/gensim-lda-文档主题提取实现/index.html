@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="gensim lda 文档主题提取实现"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>gensim lda 文档主题提取实现 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/02/07/gensim-lda-文档主题提取实现/">
+                gensim lda 文档主题提取实现
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="gensim lda 文档主题提取实现"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年02月07日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>怎么样将一堆文章聚合到不同的主题上, 并且还能提取主题的关键词, 这样我们就能对每个主题有一个大概的感性认识. LDA(Latent Dirichlet Allocation)就是实现这个功能的算法, 今天我们在这里使用python的gensim库来试用一下LDA算法. 但是在使用LDA之前, 我们需要使用pyltp进行分词. </p>
+<a id="more"></a>
+<p>我的开发环境:</p>
+<ul>
+<li>win10</li>
+<li>python3.6</li>
+<li>gensim</li>
+<li>pyltp</li>
+</ul>
+<p>我用到的语料库:</p>
+<ul>
+<li>搜狗新闻语料库.</li>
+</ul>
+<h3 id="安装gensim"><a href="#安装gensim" class="headerlink" title="安装gensim"></a>安装gensim</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install gensim</span><br></pre></td></tr></table></figure>
+<h3 id="准备语料库"><a href="#准备语料库" class="headerlink" title="准备语料库"></a>准备语料库</h3><p>我用的是搜狗新闻语料库, 这个语料库是公开免费的, 网上很多地方可以下载得到, 我放到自己网盘做了备份, 下载链接：<a href="https://pan.baidu.com/s/1gg2y3Gf" target="_blank" rel="noopener">https://pan.baidu.com/s/1gg2y3Gf</a> 密码：hk3y. 把语料库下载到本地, 然后解压到一个你方便使用的地方.</p>
+<h3 id="一些基本配置"><a href="#一些基本配置" class="headerlink" title="一些基本配置"></a>一些基本配置</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#项目文件夹</span></span><br><span class="line">project_dir = Path(<span class="string">'D:\\项目\\lda主题提取'</span>)</span><br><span class="line"><span class="comment">#搜狗新闻语料库文件夹</span></span><br><span class="line">source_dir = project_dir / <span class="string">'source'</span></span><br><span class="line"><span class="comment">#分好词以后语料库文件夹</span></span><br><span class="line">words_dir = project_dir / <span class="string">'words'</span></span><br></pre></td></tr></table></figure>
+<h3 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h3><p>我先定义了一个函数<code>fenci_all</code>可以将<code>source_dir</code>目录下的文件进行遍历, 然后输入到<code>fenci</code>函数进行分词, <code>fenci</code>函数先读取文件的内容, 然后将篇章分为句子, 句子分为词, 然后将分词结果保存到<code>words_dir</code>目录下.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyltp</span><br><span class="line"><span class="keyword">from</span> pyltp <span class="keyword">import</span> SentenceSplitter</span><br><span class="line"><span class="keyword">from</span> pyltp <span class="keyword">import</span> Segmentor</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分词模型路径</span></span><br><span class="line">ci_model_path = <span class="string">'D:\\mysites\\text-characters\\tcharacters\\ltp\\ltp_data\\cws.model'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分句器</span></span><br><span class="line">sspliter = SentenceSplitter()</span><br><span class="line"><span class="comment"># 分词器</span></span><br><span class="line">wspliter = Segmentor()</span><br><span class="line">wspliter.load(ci_model_path)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fenci</span><span class="params">(filepath:Path)</span>:</span></span><br><span class="line">    relative=filepath.relative_to(source_dir)</span><br><span class="line">    write_path = words_dir / relative</span><br><span class="line">    <span class="comment"># 分句</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 这个语料库并不是全部都用gbk编码的, 所以无法解码的我就直接扔掉了</span></span><br><span class="line">        passage = open(filepath, <span class="string">'r'</span>, encoding=<span class="string">'gbk'</span>).read()</span><br><span class="line">    <span class="keyword">except</span> UnicodeDecodeError:</span><br><span class="line">        print(<span class="string">'Error to Open file:&#123;&#125;'</span>.format(filepath))</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line"></span><br><span class="line">    sentences = sspliter.split(passage)</span><br><span class="line">    splited = []</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> sentences:</span><br><span class="line">        words = wspliter.segment(sent)</span><br><span class="line">        splited.extend(list(words))</span><br><span class="line">    write_path.parent.mkdir(parents=<span class="keyword">True</span>, exist_ok=<span class="keyword">True</span>)   </span><br><span class="line">    f=open(write_path, <span class="string">'w'</span>)</span><br><span class="line">    f.write(json.dumps(splited))</span><br><span class="line">    f.close()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fenci_all</span><span class="params">()</span>:</span></span><br><span class="line">    d: Path</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> source_dir.iterdir():</span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> d.iterdir():</span><br><span class="line">            print(<span class="string">'split &#123;&#125;'</span>.format(fpath))</span><br><span class="line">            fenci(fpath)</span><br><span class="line"></span><br><span class="line">fenci_all()</span><br><span class="line"><span class="comment"># 释放模型, 节省内存</span></span><br><span class="line">wspliter.release()</span><br></pre></td></tr></table></figure>
+<h3 id="准备参数"><a href="#准备参数" class="headerlink" title="准备参数"></a>准备参数</h3><p>经过上面的步骤, 我们的语料库就是已经分好词的了, 并且所有的预料都保存在了<code>words_dir</code>的目录下. 下面我们要考察一下进行LDA需要整理什么数据.</p>
+<p>我们写要提个加载数据的函数, 这个函数是从文件中读取分好词的数据, 然后把一篇文章的所有句子合并成一个句子(去掉句子信息).</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_corpus</span><span class="params">()</span>:</span></span><br><span class="line">    d:Path</span><br><span class="line">    corpus=[]</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> words_dir.iterdir():</span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> d.iterdir():</span><br><span class="line">            print(<span class="string">'reading &#123;&#125;'</span>.format(fpath))</span><br><span class="line">            passage = json.load(open(fpath, <span class="string">'r'</span>))</span><br><span class="line">            <span class="comment"># 因为我们的句子信息不重要, 所以把所有句子合并成一个</span></span><br><span class="line">            passage = [word <span class="keyword">for</span> sentence <span class="keyword">in</span> passage <span class="keyword">for</span> word <span class="keyword">in</span> sentence]</span><br><span class="line">            corpus.append(passage)</span><br><span class="line">    <span class="keyword">return</span> corpus</span><br></pre></td></tr></table></figure>
+<p>下面我们就可以通过这个方法来加载数据了:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">corpus = load_corpus()</span><br></pre></td></tr></table></figure>
+<p>因为计算机是无法处理文本数据的, 现在在我们的corpus中存储的还是词, 我们需要将词映射到一个数字上, 这就是要建立一个数字和词的对应关系:字典.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gensim <span class="keyword">import</span> models, corpora</span><br><span class="line"></span><br><span class="line">dic = corpora.Dictionary(corpus)</span><br><span class="line">clean_data = [dic.doc2bow(words) <span class="keyword">for</span> words <span class="keyword">in</span> corpus]</span><br></pre></td></tr></table></figure>
+<h3 id="主题提取"><a href="#主题提取" class="headerlink" title="主题提取"></a>主题提取</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lda = models.ldamodel.LdaModel(clean_data, id2word=dic,  num_topics=<span class="number">20</span>)</span><br><span class="line"><span class="comment"># 查看主题</span></span><br><span class="line"><span class="keyword">for</span> topic <span class="keyword">in</span> lda.print_topics(num_words=<span class="number">10</span>):</span><br><span class="line">    print(topic[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>输出结果:(星号前面表示权重, 后面表示词)</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>.<span class="number">029</span>*"," + <span class="number">0</span>.<span class="number">026</span>*"航空" + <span class="number">0</span>.<span class="number">021</span>*"飞机" + <span class="number">0</span>.<span class="number">017</span>*"的" + <span class="number">0</span>.<span class="number">014</span>*"，" + <span class="number">0</span>.<span class="number">012</span>*"。" + <span class="number">0</span>.<span class="number">012</span>*"旅游" + <span class="number">0</span>.<span class="number">010</span>*"、" + <span class="number">0</span>.<span class="number">009</span>*"飞" + <span class="number">0</span>.<span class="number">005</span>*")"</span><br><span class="line"><span class="number">0</span>.<span class="number">024</span>*"，" + <span class="number">0</span>.<span class="number">021</span>*"的" + <span class="number">0</span>.<span class="number">020</span>*"》" + <span class="number">0</span>.<span class="number">017</span>*"《" + <span class="number">0</span>.<span class="number">015</span>*"&amp;" + <span class="number">0</span>.<span class="number">015</span>*"nbsp" + <span class="number">0</span>.<span class="number">014</span>*"。" + <span class="number">0</span>.<span class="number">008</span>*"、" + <span class="number">0</span>.<span class="number">007</span>*"：" + <span class="number">0</span>.<span class="number">005</span>*"为"</span><br><span class="line"><span class="number">0</span>.<span class="number">035</span>*"." + <span class="number">0</span>.<span class="number">017</span>*"的" + <span class="number">0</span>.<span class="number">016</span>*"," + <span class="number">0</span>.<span class="number">016</span>*"，" + <span class="number">0</span>.<span class="number">014</span>*"防务" + <span class="number">0</span>.<span class="number">010</span>*"。" + <span class="number">0</span>.<span class="number">009</span>*")" + <span class="number">0</span>.<span class="number">007</span>*"a" + <span class="number">0</span>.<span class="number">005</span>*"A" + <span class="number">0</span>.<span class="number">004</span>*"、"</span><br><span class="line"><span class="number">0</span>.<span class="number">021</span>*"的" + <span class="number">0</span>.<span class="number">016</span>*"。" + <span class="number">0</span>.<span class="number">014</span>*")" + <span class="number">0</span>.<span class="number">013</span>*"，" + <span class="number">0</span>.<span class="number">013</span>*"(" + <span class="number">0</span>.<span class="number">011</span>*"=" + <span class="number">0</span>.<span class="number">010</span>*"战斗机" + <span class="number">0</span>.<span class="number">009</span>*"+" + <span class="number">0</span>.<span class="number">008</span>*"、" + <span class="number">0</span>.<span class="number">008</span>*"坦克"</span><br><span class="line"><span class="number">0</span>.<span class="number">054</span>*"，" + <span class="number">0</span>.<span class="number">050</span>*"的" + <span class="number">0</span>.<span class="number">025</span>*"。" + <span class="number">0</span>.<span class="number">018</span>*"海军" + <span class="number">0</span>.<span class="number">017</span>*"训练" + <span class="number">0</span>.<span class="number">015</span>*"美军" + <span class="number">0</span>.<span class="number">012</span>*"、" + <span class="number">0</span>.<span class="number">009</span>*"在" + <span class="number">0</span>.<span class="number">008</span>*"潜艇" + <span class="number">0</span>.<span class="number">008</span>*"作战"</span><br><span class="line"><span class="number">0</span>.<span class="number">059</span>*"，" + <span class="number">0</span>.<span class="number">051</span>*"的" + <span class="number">0</span>.<span class="number">034</span>*"。" + <span class="number">0</span>.<span class="number">019</span>*"、" + <span class="number">0</span>.<span class="number">014</span>*"”" + <span class="number">0</span>.<span class="number">014</span>*"在" + <span class="number">0</span>.<span class="number">013</span>*"“" + <span class="number">0</span>.<span class="number">010</span>*"和" + <span class="number">0</span>.<span class="number">009</span>*"中国" + <span class="number">0</span>.<span class="number">008</span>*"了"</span><br><span class="line"><span class="number">0</span>.<span class="number">040</span>*"、" + <span class="number">0</span>.<span class="number">032</span>*"，" + <span class="number">0</span>.<span class="number">022</span>*"的" + <span class="number">0</span>.<span class="number">019</span>*"。" + <span class="number">0</span>.<span class="number">016</span>*"专业" + <span class="number">0</span>.<span class="number">014</span>*"考生" + <span class="number">0</span>.<span class="number">011</span>*"学校" + <span class="number">0</span>.<span class="number">011</span>*"大学" + <span class="number">0</span>.<span class="number">010</span>*"考试" + <span class="number">0</span>.<span class="number">009</span>*"："</span><br><span class="line"><span class="number">0</span>.<span class="number">134</span>*"," + <span class="number">0</span>.<span class="number">014</span>*"的" + <span class="number">0</span>.<span class="number">013</span>*")" + <span class="number">0</span>.<span class="number">013</span>*"、" + <span class="number">0</span>.<span class="number">013</span>*""" + <span class="number">0</span>.<span class="number">012</span>*"(" + <span class="number">0</span>.<span class="number">011</span>*"自卫队" + <span class="number">0</span>.<span class="number">011</span>*"&amp;" + <span class="number">0</span>.<span class="number">010</span>*"nbsp" + <span class="number">0</span>.<span class="number">009</span>*"'"</span><br><span class="line"><span class="number">0</span>.<span class="number">026</span>*"，" + <span class="number">0</span>.<span class="number">017</span>*"的" + <span class="number">0</span>.<span class="number">017</span>*"。" + <span class="number">0</span>.<span class="number">008</span>*"兵力" + <span class="number">0</span>.<span class="number">007</span>*"师" + <span class="number">0</span>.<span class="number">007</span>*"编队" + <span class="number">0</span>.<span class="number">007</span>*"<span class="number">3</span>" + <span class="number">0</span>.<span class="number">006</span>*"在" + <span class="number">0</span>.<span class="number">006</span>*"<span class="number">1</span>" + <span class="number">0</span>.<span class="number">005</span>*"主力"</span><br><span class="line"><span class="number">0</span>.<span class="number">025</span>*"，" + <span class="number">0</span>.<span class="number">025</span>*"的" + <span class="number">0</span>.<span class="number">018</span>*"。" + <span class="number">0</span>.<span class="number">009</span>*"、" + <span class="number">0</span>.<span class="number">007</span>*"推演" + <span class="number">0</span>.<span class="number">006</span>*"在" + <span class="number">0</span>.<span class="number">005</span>*"和" + <span class="number">0</span>.<span class="number">005</span>*"生产" + <span class="number">0</span>.<span class="number">005</span>*"断代" + <span class="number">0</span>.<span class="number">005</span>*"”"</span><br><span class="line"><span class="number">0</span>.<span class="number">125</span>*""" + <span class="number">0</span>.<span class="number">064</span>*")" + <span class="number">0</span>.<span class="number">062</span>*"(" + <span class="number">0</span>.<span class="number">011</span>*"," + <span class="number">0</span>.<span class="number">010</span>*"。" + <span class="number">0</span>.<span class="number">008</span>*":" + <span class="number">0</span>.<span class="number">007</span>*"，" + <span class="number">0</span>.<span class="number">007</span>*"的" + <span class="number">0</span>.<span class="number">006</span>*"&amp;" + <span class="number">0</span>.<span class="number">006</span>*"nbsp"</span><br><span class="line"><span class="number">0</span>.<span class="number">175</span>*";" + <span class="number">0</span>.<span class="number">168</span>*"&amp;" + <span class="number">0</span>.<span class="number">168</span>*"nbsp" + <span class="number">0</span>.<span class="number">014</span>*"的" + <span class="number">0</span>.<span class="number">013</span>*"：" + <span class="number">0</span>.<span class="number">010</span>*"，" + <span class="number">0</span>.<span class="number">010</span>*"。" + <span class="number">0</span>.<span class="number">006</span>*"、" + <span class="number">0</span>.<span class="number">004</span>*"<span class="number">1</span>" + <span class="number">0</span>.<span class="number">004</span>*"<span class="number">2</span>"</span><br><span class="line"><span class="number">0</span>.<span class="number">047</span>*"伊朗" + <span class="number">0</span>.<span class="number">024</span>*"，" + <span class="number">0</span>.<span class="number">022</span>*"。" + <span class="number">0</span>.<span class="number">019</span>*"的" + <span class="number">0</span>.<span class="number">010</span>*"nbsp" + <span class="number">0</span>.<span class="number">009</span>*"、" + <span class="number">0</span>.<span class="number">009</span>*"军费" + <span class="number">0</span>.<span class="number">008</span>*"&amp;" + <span class="number">0</span>.<span class="number">007</span>*"公司" + <span class="number">0</span>.<span class="number">006</span>*"("</span><br><span class="line"><span class="number">0</span>.<span class="number">037</span>*"，" + <span class="number">0</span>.<span class="number">025</span>*"演习" + <span class="number">0</span>.<span class="number">025</span>*"（" + <span class="number">0</span>.<span class="number">024</span>*"）" + <span class="number">0</span>.<span class="number">019</span>*"。" + <span class="number">0</span>.<span class="number">016</span>*"、" + <span class="number">0</span>.<span class="number">009</span>*"的" + <span class="number">0</span>.<span class="number">009</span>*"在" + <span class="number">0</span>.<span class="number">009</span>*"部队" + <span class="number">0</span>.<span class="number">008</span>*"“"</span><br><span class="line"><span class="number">0</span>.<span class="number">075</span>*"，" + <span class="number">0</span>.<span class="number">065</span>*"的" + <span class="number">0</span>.<span class="number">030</span>*"。" + <span class="number">0</span>.<span class="number">018</span>*"是" + <span class="number">0</span>.<span class="number">012</span>*"在" + <span class="number">0</span>.<span class="number">012</span>*"“" + <span class="number">0</span>.<span class="number">011</span>*"”" + <span class="number">0</span>.<span class="number">009</span>*"和" + <span class="number">0</span>.<span class="number">009</span>*"、" + <span class="number">0</span>.<span class="number">007</span>*"不"</span><br><span class="line"><span class="number">0</span>.<span class="number">053</span>*";" + <span class="number">0</span>.<span class="number">047</span>*"，" + <span class="number">0</span>.<span class="number">030</span>*"&amp;" + <span class="number">0</span>.<span class="number">029</span>*"的" + <span class="number">0</span>.<span class="number">023</span>*"。" + <span class="number">0</span>.<span class="number">021</span>*"nbsp" + <span class="number">0</span>.<span class="number">008</span>*"：" + <span class="number">0</span>.<span class="number">008</span>*"是" + <span class="number">0</span>.<span class="number">008</span>*"、" + <span class="number">0</span>.<span class="number">005</span>*"gt"</span><br><span class="line"><span class="number">0</span>.<span class="number">030</span>*"，" + <span class="number">0</span>.<span class="number">023</span>*"《" + <span class="number">0</span>.<span class="number">022</span>*"》" + <span class="number">0</span>.<span class="number">019</span>*"的" + <span class="number">0</span>.<span class="number">015</span>*"。" + <span class="number">0</span>.<span class="number">015</span>*"、" + <span class="number">0</span>.<span class="number">014</span>*"之" + <span class="number">0</span>.<span class="number">009</span>*"&amp;" + <span class="number">0</span>.<span class="number">008</span>*"nbsp" + <span class="number">0</span>.<span class="number">007</span>*"为"</span><br><span class="line"><span class="number">0</span>.<span class="number">041</span>*"，" + <span class="number">0</span>.<span class="number">028</span>*"。" + <span class="number">0</span>.<span class="number">021</span>*"解放军" + <span class="number">0</span>.<span class="number">018</span>*"、" + <span class="number">0</span>.<span class="number">015</span>*"的" + <span class="number">0</span>.<span class="number">014</span>*"台军" + <span class="number">0</span>.<span class="number">009</span>*"空军" + <span class="number">0</span>.<span class="number">008</span>*"架" + <span class="number">0</span>.<span class="number">007</span>*"陆军" + <span class="number">0</span>.<span class="number">007</span>*"）"</span><br><span class="line"><span class="number">0</span>.<span class="number">085</span>*"，" + <span class="number">0</span>.<span class="number">058</span>*"的" + <span class="number">0</span>.<span class="number">035</span>*"。" + <span class="number">0</span>.<span class="number">017</span>*"了" + <span class="number">0</span>.<span class="number">017</span>*"是" + <span class="number">0</span>.<span class="number">014</span>*"”" + <span class="number">0</span>.<span class="number">013</span>*"“" + <span class="number">0</span>.<span class="number">012</span>*"在" + <span class="number">0</span>.<span class="number">011</span>*"一" + <span class="number">0</span>.<span class="number">011</span>*"不"</span><br><span class="line"><span class="number">0</span>.<span class="number">116</span>*"[" + <span class="number">0</span>.<span class="number">115</span>*"]" + <span class="number">0</span>.<span class="number">048</span>*":" + <span class="number">0</span>.<span class="number">043</span>*"-" + <span class="number">0</span>.<span class="number">031</span>*"，" + <span class="number">0</span>.<span class="number">017</span>*"防空" + <span class="number">0</span>.<span class="number">011</span>*"<span class="number">1</span>" + <span class="number">0</span>.<span class="number">009</span>*"。" + <span class="number">0</span>.<span class="number">008</span>*"<span class="number">2</span>" + <span class="number">0</span>.<span class="number">007</span>*"的"</span><br></pre></td></tr></table></figure>
+<h3 id="清理标点和无意义词"><a href="#清理标点和无意义词" class="headerlink" title="清理标点和无意义词"></a>清理标点和无意义词</h3><p>上面打印的每个主题的关键词, 有没有发现好多标点符号和各种无意义的词也进入了模型, 这会大大降低我们主题分类的效果, 那么, 我们要事先删除标点符号和无意义词.</p>
+<p>我们需要使用pyltp对词性进行标注, 然后只保留词性为<code>[&#39;a&#39;, &#39;b&#39;, &#39;d&#39;, &#39;i&#39;, &#39;j&#39;, &#39;n&#39;, &#39;nh&#39;,&#39;ni&#39;, &#39;nl&#39;, &#39;ns&#39;, &#39;nt&#39;, &#39;nz&#39;, &#39;v&#39;]</code>的词.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyltp <span class="keyword">import</span> Postagger</span><br><span class="line">poster = Postagger()</span><br><span class="line">poster.load(<span class="string">'D:\\mysites\\text-characters\\tcharacters\\ltp\\ltp_data\\pos.model'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_word</span><span class="params">(sentence:list)</span>:</span></span><br><span class="line">    <span class="string">'''只保留词性为['a', 'b', 'd', 'i', 'j', 'n', 'nh',</span></span><br><span class="line"><span class="string">            'ni', 'nl', 'ns', 'nt', 'nz', 'v']的词, 具体词性意义参考https://www.ltp-cloud.com/intro/#pos_how'''</span></span><br><span class="line">    keep = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'i'</span>, <span class="string">'j'</span>, <span class="string">'n'</span>, <span class="string">'nh'</span>,</span><br><span class="line">            <span class="string">'ni'</span>, <span class="string">'nl'</span>, <span class="string">'ns'</span>, <span class="string">'nt'</span>, <span class="string">'nz'</span>, <span class="string">'v'</span>]</span><br><span class="line">    tags = poster.postag(sentence)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(sentence)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">if</span> tags[i] <span class="keyword">not</span> <span class="keyword">in</span> keep:</span><br><span class="line">            <span class="keyword">del</span> sentence[i]</span><br></pre></td></tr></table></figure>
+<p>然后在加载数据的时候调用这个方法进行词语筛选, 所以修改一下这个方法:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_corpus</span><span class="params">()</span>:</span></span><br><span class="line">    d:Path</span><br><span class="line">    corpus=[]</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> words_dir.iterdir():</span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> d.iterdir():</span><br><span class="line">            print(<span class="string">'reading &#123;&#125;'</span>.format(fpath))</span><br><span class="line">            passage = json.load(open(fpath, <span class="string">'r'</span>))</span><br><span class="line">            <span class="keyword">for</span> sentence <span class="keyword">in</span> passage:</span><br><span class="line">                select_word(sentence)</span><br><span class="line">            <span class="comment"># 因为我们的句子信息不重要, 所以把所有句子合并成一个</span></span><br><span class="line">            passage = [word <span class="keyword">for</span> sentence <span class="keyword">in</span> passage <span class="keyword">for</span> word <span class="keyword">in</span> sentence]</span><br><span class="line">            corpus.append(passage)</span><br><span class="line">    <span class="keyword">return</span> corpus</span><br></pre></td></tr></table></figure>
+<h3 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>.<span class="number">010</span>*"工作" + <span class="number">0</span>.<span class="number">010</span>*"专业" + <span class="number">0</span>.<span class="number">008</span>*"是" + <span class="number">0</span>.<span class="number">007</span>*"大学" + <span class="number">0</span>.<span class="number">007</span>*"解放军" + <span class="number">0</span>.<span class="number">006</span>*"教育" + <span class="number">0</span>.<span class="number">005</span>*"能力" + <span class="number">0</span>.<span class="number">005</span>*"发展" + <span class="number">0</span>.<span class="number">005</span>*"建设" + <span class="number">0</span>.<span class="number">005</span>*"技术"</span><br><span class="line"><span class="number">0</span>.<span class="number">031</span>*"是" + <span class="number">0</span>.<span class="number">019</span>*"不" + <span class="number">0</span>.<span class="number">014</span>*"也" + <span class="number">0</span>.<span class="number">011</span>*"人" + <span class="number">0</span>.<span class="number">011</span>*"有" + <span class="number">0</span>.<span class="number">011</span>*"就" + <span class="number">0</span>.<span class="number">009</span>*"都" + <span class="number">0</span>.<span class="number">009</span>*"说" + <span class="number">0</span>.<span class="number">007</span>*"没有" + <span class="number">0</span>.<span class="number">007</span>*"到"</span><br><span class="line"><span class="number">0</span>.<span class="number">014</span>*"航母" + <span class="number">0</span>.<span class="number">014</span>*"我军" + <span class="number">0</span>.<span class="number">009</span>*"是" + <span class="number">0</span>.<span class="number">007</span>*"建设" + <span class="number">0</span>.<span class="number">006</span>*"发展" + <span class="number">0</span>.<span class="number">005</span>*"教育部" + <span class="number">0</span>.<span class="number">005</span>*"毛" + <span class="number">0</span>.<span class="number">005</span>*"主权" + <span class="number">0</span>.<span class="number">005</span>*"大" + <span class="number">0</span>.<span class="number">005</span>*"为"</span><br><span class="line"><span class="number">0</span>.<span class="number">012</span>*"师" + <span class="number">0</span>.<span class="number">009</span>*"军" + <span class="number">0</span>.<span class="number">009</span>*"直播员" + <span class="number">0</span>.<span class="number">008</span>*"战斗力" + <span class="number">0</span>.<span class="number">006</span>*"球" + <span class="number">0</span>.<span class="number">005</span>*"拦截" + <span class="number">0</span>.<span class="number">004</span>*"<span class="number">5</span>月" + <span class="number">0</span>.<span class="number">004</span>*"为" + <span class="number">0</span>.<span class="number">003</span>*"指挥" + <span class="number">0</span>.<span class="number">003</span>*"退役"</span><br><span class="line"><span class="number">0</span>.<span class="number">017</span>*"伊朗" + <span class="number">0</span>.<span class="number">013</span>*"空军" + <span class="number">0</span>.<span class="number">013</span>*"飞机" + <span class="number">0</span>.<span class="number">009</span>*"旅游" + <span class="number">0</span>.<span class="number">009</span>*"考生" + <span class="number">0</span>.<span class="number">008</span>*"志愿" + <span class="number">0</span>.<span class="number">008</span>*"军事" + <span class="number">0</span>.<span class="number">008</span>*"是" + <span class="number">0</span>.<span class="number">007</span>*"录取" + <span class="number">0</span>.<span class="number">006</span>*"陈水扁"</span><br><span class="line"><span class="number">0</span>.<span class="number">015</span>*"将" + <span class="number">0</span>.<span class="number">015</span>*"美国" + <span class="number">0</span>.<span class="number">010</span>*"是" + <span class="number">0</span>.<span class="number">008</span>*"中国" + <span class="number">0</span>.<span class="number">007</span>*"航空" + <span class="number">0</span>.<span class="number">007</span>*"为" + <span class="number">0</span>.<span class="number">006</span>*"目前" + <span class="number">0</span>.<span class="number">006</span>*"台" + <span class="number">0</span>.<span class="number">006</span>*"飞机" + <span class="number">0</span>.<span class="number">006</span>*"到"</span><br><span class="line"><span class="number">0</span>.<span class="number">013</span>*"战争" + <span class="number">0</span>.<span class="number">010</span>*"防务" + <span class="number">0</span>.<span class="number">006</span>*"文章" + <span class="number">0</span>.<span class="number">006</span>*"是" + <span class="number">0</span>.<span class="number">005</span>*"为" + <span class="number">0</span>.<span class="number">005</span>*"考研" + <span class="number">0</span>.<span class="number">005</span>*"蒋介石" + <span class="number">0</span>.<span class="number">005</span>*"有" + <span class="number">0</span>.<span class="number">003</span>*"师团" + <span class="number">0</span>.<span class="number">003</span>*"作者"</span><br><span class="line"><span class="number">0</span>.<span class="number">011</span>*"为" + <span class="number">0</span>.<span class="number">010</span>*"农民" + <span class="number">0</span>.<span class="number">007</span>*"政权" + <span class="number">0</span>.<span class="number">006</span>*"农村" + <span class="number">0</span>.<span class="number">006</span>*"是" + <span class="number">0</span>.<span class="number">005</span>*"斯大林" + <span class="number">0</span>.<span class="number">004</span>*"有" + <span class="number">0</span>.<span class="number">003</span>*"不" + <span class="number">0</span>.<span class="number">003</span>*"大" + <span class="number">0</span>.<span class="number">003</span>*"历史"</span><br><span class="line"><span class="number">0</span>.<span class="number">030</span>*"是" + <span class="number">0</span>.<span class="number">024</span>*"不" + <span class="number">0</span>.<span class="number">016</span>*"有" + <span class="number">0</span>.<span class="number">014</span>*"就" + <span class="number">0</span>.<span class="number">013</span>*"人" + <span class="number">0</span>.<span class="number">009</span>*"都" + <span class="number">0</span>.<span class="number">009</span>*"也" + <span class="number">0</span>.<span class="number">008</span>*"要" + <span class="number">0</span>.<span class="number">008</span>*"说" + <span class="number">0</span>.<span class="number">007</span>*"会"</span><br><span class="line"><span class="number">0</span>.<span class="number">018</span>*"公司" + <span class="number">0</span>.<span class="number">013</span>*"银行" + <span class="number">0</span>.<span class="number">009</span>*"贷款" + <span class="number">0</span>.<span class="number">007</span>*"北京" + <span class="number">0</span>.<span class="number">007</span>*"投资" + <span class="number">0</span>.<span class="number">006</span>*"市场" + <span class="number">0</span>.<span class="number">006</span>*"毛泽东" + <span class="number">0</span>.<span class="number">005</span>*"会计" + <span class="number">0</span>.<span class="number">005</span>*"中国" + <span class="number">0</span>.<span class="number">005</span>*"集团"</span><br><span class="line"><span class="number">0</span>.<span class="number">024</span>*"部队" + <span class="number">0</span>.<span class="number">014</span>*"防空" + <span class="number">0</span>.<span class="number">013</span>*"官兵" + <span class="number">0</span>.<span class="number">009</span>*"台军" + <span class="number">0</span>.<span class="number">008</span>*"军队" + <span class="number">0</span>.<span class="number">007</span>*"战士" + <span class="number">0</span>.<span class="number">007</span>*"图" + <span class="number">0</span>.<span class="number">006</span>*"指挥" + <span class="number">0</span>.<span class="number">005</span>*"球" + <span class="number">0</span>.<span class="number">004</span>*"兵力"</span><br><span class="line"><span class="number">0</span>.<span class="number">015</span>*"是" + <span class="number">0</span>.<span class="number">012</span>*"不" + <span class="number">0</span>.<span class="number">008</span>*"有" + <span class="number">0</span>.<span class="number">007</span>*"人" + <span class="number">0</span>.<span class="number">005</span>*"就" + <span class="number">0</span>.<span class="number">005</span>*"也" + <span class="number">0</span>.<span class="number">005</span>*"时" + <span class="number">0</span>.<span class="number">004</span>*"吃" + <span class="number">0</span>.<span class="number">004</span>*"都" + <span class="number">0</span>.<span class="number">004</span>*"可"</span><br><span class="line"><span class="number">0</span>.<span class="number">025</span>*"中国" + <span class="number">0</span>.<span class="number">021</span>*"是" + <span class="number">0</span>.<span class="number">012</span>*"美国" + <span class="number">0</span>.<span class="number">009</span>*"日本" + <span class="number">0</span>.<span class="number">007</span>*"有" + <span class="number">0</span>.<span class="number">006</span>*"也" + <span class="number">0</span>.<span class="number">006</span>*"大" + <span class="number">0</span>.<span class="number">005</span>*"导弹" + <span class="number">0</span>.<span class="number">005</span>*"文化" + <span class="number">0</span>.<span class="number">005</span>*"最"</span><br><span class="line"><span class="number">0</span>.<span class="number">040</span>*"公司" + <span class="number">0</span>.<span class="number">023</span>*"美国" + <span class="number">0</span>.<span class="number">016</span>*"雷达" + <span class="number">0</span>.<span class="number">010</span>*"英国" + <span class="number">0</span>.<span class="number">006</span>*"隐形" + <span class="number">0</span>.<span class="number">006</span>*"系统" + <span class="number">0</span>.<span class="number">005</span>*"进行" + <span class="number">0</span>.<span class="number">005</span>*"时间" + <span class="number">0</span>.<span class="number">005</span>*"机动" + <span class="number">0</span>.<span class="number">005</span>*"将"</span><br><span class="line"><span class="number">0</span>.<span class="number">044</span>*"训练" + <span class="number">0</span>.<span class="number">006</span>*"干部" + <span class="number">0</span>.<span class="number">005</span>*"职工" + <span class="number">0</span>.<span class="number">005</span>*"工资" + <span class="number">0</span>.<span class="number">005</span>*"军区" + <span class="number">0</span>.<span class="number">005</span>*"兵团" + <span class="number">0</span>.<span class="number">004</span>*"规定" + <span class="number">0</span>.<span class="number">004</span>*"不" + <span class="number">0</span>.<span class="number">004</span>*"野战" + <span class="number">0</span>.<span class="number">004</span>*"沈阳"</span><br><span class="line"><span class="number">0</span>.<span class="number">045</span>*"是" + <span class="number">0</span>.<span class="number">016</span>*"有" + <span class="number">0</span>.<span class="number">014</span>*"不" + <span class="number">0</span>.<span class="number">012</span>*"就" + <span class="number">0</span>.<span class="number">011</span>*"要" + <span class="number">0</span>.<span class="number">010</span>*"也" + <span class="number">0</span>.<span class="number">007</span>*"问题" + <span class="number">0</span>.<span class="number">007</span>*"可以" + <span class="number">0</span>.<span class="number">006</span>*"会" + <span class="number">0</span>.<span class="number">006</span>*"能"</span><br><span class="line"><span class="number">0</span>.<span class="number">023</span>*"演习" + <span class="number">0</span>.<span class="number">022</span>*"海军" + <span class="number">0</span>.<span class="number">013</span>*"是" + <span class="number">0</span>.<span class="number">010</span>*"潜艇" + <span class="number">0</span>.<span class="number">010</span>*"有" + <span class="number">0</span>.<span class="number">008</span>*"美军" + <span class="number">0</span>.<span class="number">007</span>*"军演" + <span class="number">0</span>.<span class="number">007</span>*"舰队" + <span class="number">0</span>.<span class="number">006</span>*"军事" + <span class="number">0</span>.<span class="number">005</span>*"直升机"</span><br><span class="line"><span class="number">0</span>.<span class="number">016</span>*"武器" + <span class="number">0</span>.<span class="number">015</span>*"发射" + <span class="number">0</span>.<span class="number">015</span>*"导弹" + <span class="number">0</span>.<span class="number">012</span>*"是" + <span class="number">0</span>.<span class="number">008</span>*"试验" + <span class="number">0</span>.<span class="number">006</span>*"不" + <span class="number">0</span>.<span class="number">006</span>*"系统" + <span class="number">0</span>.<span class="number">006</span>*"卫星" + <span class="number">0</span>.<span class="number">006</span>*"弹道导弹" + <span class="number">0</span>.<span class="number">005</span>*"将"</span><br><span class="line"><span class="number">0</span>.<span class="number">022</span>*"俄" + <span class="number">0</span>.<span class="number">020</span>*"俄罗斯" + <span class="number">0</span>.<span class="number">010</span>*"自卫队" + <span class="number">0</span>.<span class="number">010</span>*"将" + <span class="number">0</span>.<span class="number">006</span>*"系统" + <span class="number">0</span>.<span class="number">005</span>*"进行" + <span class="number">0</span>.<span class="number">005</span>*"是" + <span class="number">0</span>.<span class="number">004</span>*"主席" + <span class="number">0</span>.<span class="number">004</span>*"编队" + <span class="number">0</span>.<span class="number">004</span>*"拦截"</span><br><span class="line"><span class="number">0</span>.<span class="number">014</span>*"为" + <span class="number">0</span>.<span class="number">005</span>*"是" + <span class="number">0</span>.<span class="number">004</span>*"右派" + <span class="number">0</span>.<span class="number">004</span>*"大" + <span class="number">0</span>.<span class="number">004</span>*"有" + <span class="number">0</span>.<span class="number">003</span>*"位" + <span class="number">0</span>.<span class="number">003</span>*"夏" + <span class="number">0</span>.<span class="number">003</span>*"义和团" + <span class="number">0</span>.<span class="number">003</span>*"不" + <span class="number">0</span>.<span class="number">003</span>*"将"</span><br></pre></td></tr></table></figure>
+<p>如果这个结果不是很清晰的话, 我们再看一下前20个关键词:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>.<span class="number">015</span>*"空军" + <span class="number">0</span>.<span class="number">009</span>*"不" + <span class="number">0</span>.<span class="number">008</span>*"战机" + <span class="number">0</span>.<span class="number">008</span>*"记者" + <span class="number">0</span>.<span class="number">008</span>*"训练" + <span class="number">0</span>.<span class="number">008</span>*"到" + <span class="number">0</span>.<span class="number">007</span>*"解放军" + <span class="number">0</span>.<span class="number">006</span>*"是" + <span class="number">0</span>.<span class="number">006</span>*"时" + <span class="number">0</span>.<span class="number">005</span>*"人" + <span class="number">0</span>.<span class="number">005</span>*"学校" + <span class="number">0</span>.<span class="number">005</span>*"学生" + <span class="number">0</span>.<span class="number">005</span>*"还" + <span class="number">0</span>.<span class="number">004</span>*"北京" + <span class="number">0</span>.<span class="number">004</span>*"考试" + <span class="number">0</span>.<span class="number">004</span>*"飞行" + <span class="number">0</span>.<span class="number">004</span>*"有" + <span class="number">0</span>.<span class="number">004</span>*"飞行员" + <span class="number">0</span>.<span class="number">003</span>*"也" + <span class="number">0</span>.<span class="number">003</span>*"就"</span><br><span class="line"><span class="number">0</span>.<span class="number">038</span>*"专业" + <span class="number">0</span>.<span class="number">030</span>*"考生" + <span class="number">0</span>.<span class="number">022</span>*"招生" + <span class="number">0</span>.<span class="number">016</span>*"录取" + <span class="number">0</span>.<span class="number">015</span>*"志愿" + <span class="number">0</span>.<span class="number">013</span>*"大学" + <span class="number">0</span>.<span class="number">011</span>*"学校" + <span class="number">0</span>.<span class="number">010</span>*"院校" + <span class="number">0</span>.<span class="number">010</span>*"本科" + <span class="number">0</span>.<span class="number">009</span>*"计划" + <span class="number">0</span>.<span class="number">007</span>*"高考" + <span class="number">0</span>.<span class="number">007</span>*"成绩" + <span class="number">0</span>.<span class="number">007</span>*"高校" + <span class="number">0</span>.<span class="number">007</span>*"规定" + <span class="number">0</span>.<span class="number">006</span>*"工作" + <span class="number">0</span>.<span class="number">006</span>*"为" + <span class="number">0</span>.<span class="number">006</span>*"填报" + <span class="number">0</span>.<span class="number">005</span>*"不" + <span class="number">0</span>.<span class="number">005</span>*"考试" + <span class="number">0</span>.<span class="number">005</span>*"分"</span><br><span class="line"><span class="number">0</span>.<span class="number">015</span>*"导弹" + <span class="number">0</span>.<span class="number">015</span>*"是" + <span class="number">0</span>.<span class="number">011</span>*"海军" + <span class="number">0</span>.<span class="number">010</span>*"美军" + <span class="number">0</span>.<span class="number">008</span>*"有" + <span class="number">0</span>.<span class="number">007</span>*"美国" + <span class="number">0</span>.<span class="number">005</span>*"战斗机" + <span class="number">0</span>.<span class="number">005</span>*"军事" + <span class="number">0</span>.<span class="number">005</span>*"飞机" + <span class="number">0</span>.<span class="number">005</span>*"不" + <span class="number">0</span>.<span class="number">005</span>*"潜艇" + <span class="number">0</span>.<span class="number">005</span>*"到" + <span class="number">0</span>.<span class="number">004</span>*"也" + <span class="number">0</span>.<span class="number">004</span>*"朝鲜" + <span class="number">0</span>.<span class="number">004</span>*"为" + <span class="number">0</span>.<span class="number">004</span>*"时"+ <span class="number">0</span>.<span class="number">004</span>*"将" + <span class="number">0</span>.<span class="number">004</span>*"说" + <span class="number">0</span>.<span class="number">003</span>*"还" + <span class="number">0</span>.<span class="number">003</span>*"大"</span><br><span class="line"><span class="number">0</span>.<span class="number">012</span>*"军事" + <span class="number">0</span>.<span class="number">009</span>*"部队" + <span class="number">0</span>.<span class="number">009</span>*"演习" + <span class="number">0</span>.<span class="number">009</span>*"系统" + <span class="number">0</span>.<span class="number">009</span>*"作战" + <span class="number">0</span>.<span class="number">009</span>*"台湾" + <span class="number">0</span>.<span class="number">008</span>*"中国" + <span class="number">0</span>.<span class="number">007</span>*"武器" + <span class="number">0</span>.<span class="number">007</span>*"是" + <span class="number">0</span>.<span class="number">007</span>*"装备" + <span class="number">0</span>.<span class="number">006</span>*"将" + <span class="number">0</span>.<span class="number">006</span>*"能力" + <span class="number">0</span>.<span class="number">006</span>*"发展" + <span class="number">0</span>.<span class="number">006</span>*"伊朗" + <span class="number">0</span>.<span class="number">006</span>*"技术" + <span class="number">0</span>.<span class="number">006</span>*"战略" + <span class="number">0</span>.<span class="number">005</span>*"军队" + <span class="number">0</span>.<span class="number">005</span>*"进行" + <span class="number">0</span>.<span class="number">005</span>*"美国" + <span class="number">0</span>.<span class="number">005</span>*"国家"</span><br><span class="line"><span class="number">0</span>.<span class="number">008</span>*"时间" + <span class="number">0</span>.<span class="number">007</span>*"<span class="number">5</span>月" + <span class="number">0</span>.<span class="number">005</span>*"考生" + <span class="number">0</span>.<span class="number">005</span>*"是" + <span class="number">0</span>.<span class="number">004</span>*"作文" + <span class="number">0</span>.<span class="number">004</span>*"大臣" + <span class="number">0</span>.<span class="number">004</span>*"为" + <span class="number">0</span>.<span class="number">004</span>*"答题" + <span class="number">0</span>.<span class="number">004</span>*"语文" + <span class="number">0</span>.<span class="number">004</span>*"南沙" + <span class="number">0</span>.<span class="number">004</span>*"关羽" + <span class="number">0</span>.<span class="number">003</span>*"朝" + <span class="number">0</span>.<span class="number">003</span>*"豆腐块" + <span class="number">0</span>.<span class="number">003</span>*"庐山" + <span class="number">0</span>.<span class="number">003</span>*"有" + <span class="number">0</span>.<span class="number">003</span>*"项" + <span class="number">0</span>.<span class="number">003</span>*"地点" + <span class="number">0</span>.<span class="number">003</span>*"高考" + <span class="number">0</span>.<span class="number">003</span>*"改" + <span class="number">0</span>.<span class="number">003</span>*"横"</span><br><span class="line"><span class="number">0</span>.<span class="number">012</span>*"教育" + <span class="number">0</span>.<span class="number">011</span>*"是" + <span class="number">0</span>.<span class="number">011</span>*"工作" + <span class="number">0</span>.<span class="number">010</span>*"中国" + <span class="number">0</span>.<span class="number">010</span>*"文化" + <span class="number">0</span>.<span class="number">010</span>*"发展" + <span class="number">0</span>.<span class="number">008</span>*"人才" + <span class="number">0</span>.<span class="number">006</span>*"大学" + <span class="number">0</span>.<span class="number">006</span>*"社会" + <span class="number">0</span>.<span class="number">006</span>*"建设" + <span class="number">0</span>.<span class="number">006</span>*"旅游" + <span class="number">0</span>.<span class="number">005</span>*"国家" + <span class="number">0</span>.<span class="number">005</span>*"毕业生" + <span class="number">0</span>.<span class="number">004</span>*"职业" + <span class="number">0</span>.<span class="number">004</span>*"学生" + <span class="number">0</span>.<span class="number">004</span>*"为" + <span class="number">0</span>.<span class="number">004</span>*"学校" + <span class="number">0</span>.<span class="number">004</span>*"新" + <span class="number">0</span>.<span class="number">004</span>*"有" + <span class="number">0</span>.<span class="number">004</span>*"学习"</span><br><span class="line"><span class="number">0</span>.<span class="number">012</span>*"是" + <span class="number">0</span>.<span class="number">011</span>*"面试" + <span class="number">0</span>.<span class="number">007</span>*"不" + <span class="number">0</span>.<span class="number">006</span>*"工作" + <span class="number">0</span>.<span class="number">006</span>*"学生" + <span class="number">0</span>.<span class="number">006</span>*"复习" + <span class="number">0</span>.<span class="number">005</span>*"大学" + <span class="number">0</span>.<span class="number">005</span>*"也" + <span class="number">0</span>.<span class="number">005</span>*"有" + <span class="number">0</span>.<span class="number">005</span>*"要" + <span class="number">0</span>.<span class="number">004</span>*"进行" + <span class="number">0</span>.<span class="number">004</span>*"能" + <span class="number">0</span>.<span class="number">004</span>*"人" + <span class="number">0</span>.<span class="number">004</span>*"指挥员" + <span class="number">0</span>.<span class="number">004</span>*"时" + <span class="number">0</span>.<span class="number">003</span>*"可" + <span class="number">0</span>.<span class="number">003</span>*"多" + <span class="number">0</span>.<span class="number">003</span>*"教学" + <span class="number">0</span>.<span class="number">003</span>*"简历" + <span class="number">0</span>.<span class="number">003</span>*"到"</span><br><span class="line"><span class="number">0</span>.<span class="number">017</span>*"旅游" + <span class="number">0</span>.<span class="number">017</span>*"飞机" + <span class="number">0</span>.<span class="number">010</span>*"游客" + <span class="number">0</span>.<span class="number">009</span>*"成都" + <span class="number">0</span>.<span class="number">007</span>*"旅游局" + <span class="number">0</span>.<span class="number">007</span>*"集团军" + <span class="number">0</span>.<span class="number">007</span>*"机场" + <span class="number">0</span>.<span class="number">007</span>*"铁路" + <span class="number">0</span>.<span class="number">006</span>*"飞" + <span class="number">0</span>.<span class="number">006</span>*"航班" + <span class="number">0</span>.<span class="number">006</span>*"上海" + <span class="number">0</span>.<span class="number">005</span>*"鱼雷" + <span class="number">0</span>.<span class="number">005</span>*"旅客" + <span class="number">0</span>.<span class="number">005</span>*"景区" + <span class="number">0</span>.<span class="number">005</span>*"到" + <span class="number">0</span>.<span class="number">005</span>*"将" + <span class="number">0</span>.<span class="number">004</span>*"沈阳" + <span class="number">0</span>.<span class="number">004</span>*"线路" + <span class="number">0</span>.<span class="number">004</span>*"是" + <span class="number">0</span>.<span class="number">004</span>*"为"</span><br><span class="line"><span class="number">0</span>.<span class="number">041</span>*"中国" + <span class="number">0</span>.<span class="number">033</span>*"美国" + <span class="number">0</span>.<span class="number">028</span>*"日本" + <span class="number">0</span>.<span class="number">011</span>*"将" + <span class="number">0</span>.<span class="number">010</span>*"印度" + <span class="number">0</span>.<span class="number">009</span>*"俄罗斯" + <span class="number">0</span>.<span class="number">008</span>*"是" + <span class="number">0</span>.<span class="number">008</span>*"国家" + <span class="number">0</span>.<span class="number">005</span>*"国际" + <span class="number">0</span>.<span class="number">005</span>*"计划" + <span class="number">0</span>.<span class="number">005</span>*"中" + <span class="number">0</span>.<span class="number">005</span>*"韩国" + <span class="number">0</span>.<span class="number">004</span>*"战争" + <span class="number">0</span>.<span class="number">004</span>*"英国" + <span class="number">0</span>.<span class="number">004</span>*"伊朗" + <span class="number">0</span>.<span class="number">004</span>*"世界" + <span class="number">0</span>.<span class="number">004</span>*"国" + <span class="number">0</span>.<span class="number">004</span>*"技术" + <span class="number">0</span>.<span class="number">004</span>*"美" + <span class="number">0</span>.<span class="number">004</span>*"俄"</span><br><span class="line"><span class="number">0</span>.<span class="number">026</span>*"训练" + <span class="number">0</span>.<span class="number">012</span>*"战术" + <span class="number">0</span>.<span class="number">011</span>*"搜狐" + <span class="number">0</span>.<span class="number">006</span>*"是" + <span class="number">0</span>.<span class="number">006</span>*"为" + <span class="number">0</span>.<span class="number">005</span>*"不" + <span class="number">0</span>.<span class="number">005</span>*"右派" + <span class="number">0</span>.<span class="number">005</span>*"远程" + <span class="number">0</span>.<span class="number">005</span>*"军" + <span class="number">0</span>.<span class="number">004</span>*"击败" + <span class="number">0</span>.<span class="number">004</span>*"到" + <span class="number">0</span>.<span class="number">004</span>*"将" + <span class="number">0</span>.<span class="number">004</span>*"歼" + <span class="number">0</span>.<span class="number">003</span>*"大" + <span class="number">0</span>.<span class="number">003</span>*"直播员" + <span class="number">0</span>.<span class="number">003</span>*"队长" +<span class="number">0</span>.<span class="number">003</span>*"杀" + <span class="number">0</span>.<span class="number">003</span>*"反击" + <span class="number">0</span>.<span class="number">003</span>*"指数" + <span class="number">0</span>.<span class="number">003</span>*"防守"</span><br><span class="line"><span class="number">0</span>.<span class="number">058</span>*"公司" + <span class="number">0</span>.<span class="number">008</span>*"投资" + <span class="number">0</span>.<span class="number">008</span>*"为" + <span class="number">0</span>.<span class="number">007</span>*"会计" + <span class="number">0</span>.<span class="number">007</span>*"贷款" + <span class="number">0</span>.<span class="number">006</span>*"银行" + <span class="number">0</span>.<span class="number">005</span>*"相关" + <span class="number">0</span>.<span class="number">005</span>*"有限公司" + <span class="number">0</span>.<span class="number">005</span>*"合同" + <span class="number">0</span>.<span class="number">004</span>*"集团" + <span class="number">0</span>.<span class="number">004</span>*"资产" + <span class="number">0</span>.<span class="number">004</span>*"网页." + <span class="number">0</span>.<span class="number">004</span>*"共" + <span class="number">0</span>.<span class="number">004</span>*"保险" + <span class="number">0</span>.<span class="number">003</span>*"审计" +<span class="number">0</span>.<span class="number">003</span>*"财务" + <span class="number">0</span>.<span class="number">003</span>*"会议" + <span class="number">0</span>.<span class="number">003</span>*"明思克" + <span class="number">0</span>.<span class="number">003</span>*"不" + <span class="number">0</span>.<span class="number">003</span>*"支付"</span><br><span class="line"><span class="number">0</span>.<span class="number">006</span>*"派" + <span class="number">0</span>.<span class="number">005</span>*"战舰" + <span class="number">0</span>.<span class="number">004</span>*"为" + <span class="number">0</span>.<span class="number">004</span>*"不" + <span class="number">0</span>.<span class="number">003</span>*"连长" + <span class="number">0</span>.<span class="number">003</span>*"出" + <span class="number">0</span>.<span class="number">003</span>*"打" + <span class="number">0</span>.<span class="number">003</span>*"利刃" + <span class="number">0</span>.<span class="number">003</span>*"江青" + <span class="number">0</span>.<span class="number">003</span>*"澳门" + <span class="number">0</span>.<span class="number">003</span>*"国军" + <span class="number">0</span>.<span class="number">002</span>*"任" + <span class="number">0</span>.<span class="number">002</span>*"军长" + <span class="number">0</span>.<span class="number">002</span>*"下" + <span class="number">0</span>.<span class="number">002</span>*"关岛" + <span class="number">0</span>.<span class="number">002</span>*"胡适" +<span class="number">0</span>.<span class="number">002</span>*"刘彻" + <span class="number">0</span>.<span class="number">002</span>*"总司令" + <span class="number">0</span>.<span class="number">002</span>*"入" + <span class="number">0</span>.<span class="number">002</span>*"陈独秀"</span><br><span class="line"><span class="number">0</span>.<span class="number">038</span>*"是" + <span class="number">0</span>.<span class="number">020</span>*"不" + <span class="number">0</span>.<span class="number">015</span>*"有" + <span class="number">0</span>.<span class="number">013</span>*"就" + <span class="number">0</span>.<span class="number">012</span>*"也" + <span class="number">0</span>.<span class="number">012</span>*"人" + <span class="number">0</span>.<span class="number">010</span>*"都" + <span class="number">0</span>.<span class="number">008</span>*"说" + <span class="number">0</span>.<span class="number">007</span>*"要" + <span class="number">0</span>.<span class="number">007</span>*"会" + <span class="number">0</span>.<span class="number">006</span>*"到" + <span class="number">0</span>.<span class="number">006</span>*"能" + <span class="number">0</span>.<span class="number">006</span>*"很" + <span class="number">0</span>.<span class="number">005</span>*"没有" + <span class="number">0</span>.<span class="number">005</span>*"大" + <span class="number">0</span>.<span class="number">005</span>*"来" + <span class="number">0</span>.<span class="number">004</span>*"还" + <span class="number">0</span>.<span class="number">004</span>*"好" + <span class="number">0</span>.<span class="number">004</span>*"多" + <span class="number">0</span>.<span class="number">004</span>*"让"</span><br><span class="line"><span class="number">0</span>.<span class="number">010</span>*"有" + <span class="number">0</span>.<span class="number">009</span>*"是" + <span class="number">0</span>.<span class="number">007</span>*"不" + <span class="number">0</span>.<span class="number">004</span>*"就" + <span class="number">0</span>.<span class="number">004</span>*"吃" + <span class="number">0</span>.<span class="number">004</span>*"可以" + <span class="number">0</span>.<span class="number">004</span>*"人" + <span class="number">0</span>.<span class="number">004</span>*"可" + <span class="number">0</span>.<span class="number">003</span>*"要" + <span class="number">0</span>.<span class="number">003</span>*"时" + <span class="number">0</span>.<span class="number">003</span>*"为" + <span class="number">0</span>.<span class="number">003</span>*"都" + <span class="number">0</span>.<span class="number">003</span>*"也" + <span class="number">0</span>.<span class="number">003</span>*"大" + <span class="number">0</span>.<span class="number">003</span>*"多" + <span class="number">0</span>.<span class="number">003</span>*"会" + <span class="number">0</span>.<span class="number">003</span>*"如" + <span class="number">0</span>.<span class="number">002</span>*"最" + <span class="number">0</span>.<span class="number">002</span>*"断代" + <span class="number">0</span>.<span class="number">002</span>*"到"</span><br><span class="line"><span class="number">0</span>.<span class="number">008</span>*"作品" + <span class="number">0</span>.<span class="number">006</span>*"敌" + <span class="number">0</span>.<span class="number">006</span>*"照片" + <span class="number">0</span>.<span class="number">005</span>*"兵力" + <span class="number">0</span>.<span class="number">005</span>*"将" + <span class="number">0</span>.<span class="number">005</span>*"电影" + <span class="number">0</span>.<span class="number">005</span>*"中国" + <span class="number">0</span>.<span class="number">005</span>*"观众" + <span class="number">0</span>.<span class="number">005</span>*"图片" + <span class="number">0</span>.<span class="number">004</span>*"比赛" + <span class="number">0</span>.<span class="number">004</span>*"部队" + <span class="number">0</span>.<span class="number">004</span>*"师" + <span class="number">0</span>.<span class="number">004</span>*"伊拉克" + <span class="number">0</span>.<span class="number">004</span>*"参演" + <span class="number">0</span>.<span class="number">004</span>*"图" + <span class="number">0</span>.<span class="number">004</span>*"是" + <span class="number">0</span>.<span class="number">003</span>*"侦察" + <span class="number">0</span>.<span class="number">003</span>*"对手" + <span class="number">0</span>.<span class="number">003</span>*"战机" + <span class="number">0</span>.<span class="number">003</span>*"埃及"</span><br><span class="line"><span class="number">0</span>.<span class="number">014</span>*"解放军" + <span class="number">0</span>.<span class="number">013</span>*"战斗" + <span class="number">0</span>.<span class="number">010</span>*"防空" + <span class="number">0</span>.<span class="number">008</span>*"是" + <span class="number">0</span>.<span class="number">007</span>*"空军" + <span class="number">0</span>.<span class="number">007</span>*"战斗力" + <span class="number">0</span>.<span class="number">007</span>*"中国" + <span class="number">0</span>.<span class="number">006</span>*"比赛" + <span class="number">0</span>.<span class="number">006</span>*"'" + <span class="number">0</span>.<span class="number">005</span>*"演练" + <span class="number">0</span>.<span class="number">004</span>*"将" + <span class="number">0</span>.<span class="number">004</span>*"也" + <span class="number">0</span>.<span class="number">004</span>*"军" + <span class="number">0</span>.<span class="number">004</span>*"队员" + <span class="number">0</span>.<span class="number">004</span>*"编队" + <span class="number">0</span>.<span class="number">004</span>*"大" + <span class="number">0</span>.<span class="number">003</span>*"到" + <span class="number">0</span>.<span class="number">003</span>*"胜利" + <span class="number">0</span>.<span class="number">003</span>*"不" + <span class="number">0</span>.<span class="number">003</span>*"体育"</span><br><span class="line"><span class="number">0</span>.<span class="number">015</span>*"为" + <span class="number">0</span>.<span class="number">008</span>*"我军" + <span class="number">0</span>.<span class="number">006</span>*"推演" + <span class="number">0</span>.<span class="number">006</span>*"文明" + <span class="number">0</span>.<span class="number">005</span>*"是" + <span class="number">0</span>.<span class="number">005</span>*"蒋介石" + <span class="number">0</span>.<span class="number">004</span>*"斯大林" + <span class="number">0</span>.<span class="number">004</span>*"历史" + <span class="number">0</span>.<span class="number">003</span>*"师团" + <span class="number">0</span>.<span class="number">003</span>*"不" + <span class="number">0</span>.<span class="number">003</span>*"有" + <span class="number">0</span>.<span class="number">003</span>*"苏" + <span class="number">0</span>.<span class="number">003</span>*"作者" + <span class="number">0</span>.<span class="number">003</span>*"考古" + <span class="number">0</span>.<span class="number">003</span>*"文章" + <span class="number">0</span>.<span class="number">002</span>*"文化" + <span class="number">0</span>.<span class="number">002</span>*"机动" + <span class="number">0</span>.<span class="number">002</span>*"大" + <span class="number">0</span>.<span class="number">002</span>*"猎鹰" + <span class="number">0</span>.<span class="number">002</span>*"实"</span><br><span class="line"><span class="number">0</span>.<span class="number">023</span>*"是" + <span class="number">0</span>.<span class="number">017</span>*"不" + <span class="number">0</span>.<span class="number">011</span>*"企业" + <span class="number">0</span>.<span class="number">010</span>*"有" + <span class="number">0</span>.<span class="number">008</span>*"问题" + <span class="number">0</span>.<span class="number">006</span>*"也" + <span class="number">0</span>.<span class="number">005</span>*"工作" + <span class="number">0</span>.<span class="number">005</span>*"就" + <span class="number">0</span>.<span class="number">005</span>*"会" + <span class="number">0</span>.<span class="number">005</span>*"要" + <span class="number">0</span>.<span class="number">004</span>*"到" + <span class="number">0</span>.<span class="number">004</span>*"社会" + <span class="number">0</span>.<span class="number">004</span>*"人" + <span class="number">0</span>.<span class="number">004</span>*"大" + <span class="number">0</span>.<span class="number">004</span>*"没有" + <span class="number">0</span>.<span class="number">004</span>*"经济" + <span class="number">0</span>.<span class="number">004</span>*"高" + <span class="number">0</span>.<span class="number">003</span>*"能" + <span class="number">0</span>.<span class="number">003</span>*"工资" + <span class="number">0</span>.<span class="number">003</span>*"认为"</span><br><span class="line"><span class="number">0</span>.<span class="number">016</span>*"公司" + <span class="number">0</span>.<span class="number">013</span>*"是" + <span class="number">0</span>.<span class="number">013</span>*"航空" + <span class="number">0</span>.<span class="number">012</span>*"中国" + <span class="number">0</span>.<span class="number">011</span>*"将" + <span class="number">0</span>.<span class="number">010</span>*"市场" + <span class="number">0</span>.<span class="number">009</span>*"大" + <span class="number">0</span>.<span class="number">007</span>*"也" + <span class="number">0</span>.<span class="number">007</span>*"有" + <span class="number">0</span>.<span class="number">006</span>*"目前" + <span class="number">0</span>.<span class="number">006</span>*"发展" + <span class="number">0</span>.<span class="number">006</span>*"网络" + <span class="number">0</span>.<span class="number">006</span>*"企业" + <span class="number">0</span>.<span class="number">005</span>*"航母" + <span class="number">0</span>.<span class="number">005</span>*"到" + <span class="number">0</span>.<span class="number">004</span>*"最" +<span class="number">0</span>.<span class="number">004</span>*"飞机" + <span class="number">0</span>.<span class="number">004</span>*"更" + <span class="number">0</span>.<span class="number">004</span>*"新" + <span class="number">0</span>.<span class="number">004</span>*"行业"</span><br><span class="line"><span class="number">0</span>.<span class="number">015</span>*"是" + <span class="number">0</span>.<span class="number">007</span>*"皇帝" + <span class="number">0</span>.<span class="number">006</span>*"有" + <span class="number">0</span>.<span class="number">006</span>*"历史" + <span class="number">0</span>.<span class="number">005</span>*"大" + <span class="number">0</span>.<span class="number">004</span>*"不" + <span class="number">0</span>.<span class="number">004</span>*"为" + <span class="number">0</span>.<span class="number">004</span>*"文化" + <span class="number">0</span>.<span class="number">003</span>*"出" + <span class="number">0</span>.<span class="number">003</span>*"也" + <span class="number">0</span>.<span class="number">003</span>*"义和团" + <span class="number">0</span>.<span class="number">003</span>*"仿佛" + <span class="number">0</span>.<span class="number">002</span>*"文章" + <span class="number">0</span>.<span class="number">002</span>*"又" + <span class="number">0</span>.<span class="number">002</span>*"时期" + <span class="number">0</span>.<span class="number">002</span>*"就" + <span class="number">0</span>.<span class="number">002</span>*"宗教" + <span class="number">0</span>.<span class="number">002</span>*"纳粹" + <span class="number">0</span>.<span class="number">002</span>*"人" + <span class="number">0</span>.<span class="number">002</span>*"开"</span><br></pre></td></tr></table></figure>
+<p>以下是完整的源码:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding:utf8</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#项目文件夹</span></span><br><span class="line">project_dir = Path(<span class="string">'D:\\项目\\lda主题提取'</span>)</span><br><span class="line"><span class="comment">#搜狗新闻语料库文件夹</span></span><br><span class="line">source_dir = project_dir / <span class="string">'source'</span></span><br><span class="line"><span class="comment">#分好词以后语料库文件夹</span></span><br><span class="line">words_dir = project_dir / <span class="string">'words'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">########### 分词 ##################</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pyltp</span><br><span class="line"><span class="keyword">from</span> pyltp <span class="keyword">import</span> SentenceSplitter</span><br><span class="line"><span class="keyword">from</span> pyltp <span class="keyword">import</span> Segmentor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分词模型路径</span></span><br><span class="line">ci_model_path = <span class="string">'D:\\mysites\\text-characters\\tcharacters\\ltp\\ltp_data\\cws.model'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分句器</span></span><br><span class="line">sspliter = SentenceSplitter()</span><br><span class="line"><span class="comment"># 分词器</span></span><br><span class="line">wspliter = Segmentor()</span><br><span class="line">wspliter.load(ci_model_path)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fenci</span><span class="params">(filepath:Path)</span>:</span></span><br><span class="line">    relative=filepath.relative_to(source_dir)</span><br><span class="line">    write_path = words_dir / relative</span><br><span class="line">    <span class="comment"># 分句</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        passage = open(filepath, <span class="string">'r'</span>, encoding=<span class="string">'gbk'</span>).read()</span><br><span class="line">    <span class="keyword">except</span> UnicodeDecodeError:</span><br><span class="line">        print(<span class="string">'Error to Open file:&#123;&#125;'</span>.format(filepath))</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line"></span><br><span class="line">    sentences = sspliter.split(passage)</span><br><span class="line">    splited = []</span><br><span class="line">    <span class="keyword">for</span> sent <span class="keyword">in</span> sentences:</span><br><span class="line">        words = wspliter.segment(sent)</span><br><span class="line">        splited.append(list(words))</span><br><span class="line">    write_path.parent.mkdir(parents=<span class="keyword">True</span>, exist_ok=<span class="keyword">True</span>)   </span><br><span class="line">    f=open(write_path, <span class="string">'w'</span>)</span><br><span class="line">    f.write(json.dumps(splited))</span><br><span class="line">    f.close()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fenci_all</span><span class="params">()</span>:</span></span><br><span class="line">    d: Path</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> source_dir.iterdir():</span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> d.iterdir():</span><br><span class="line">            print(<span class="string">'split &#123;&#125;'</span>.format(fpath))</span><br><span class="line">            fenci(fpath)</span><br><span class="line"></span><br><span class="line">fenci_all()</span><br><span class="line">wspliter.release()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># lda</span></span><br><span class="line"><span class="keyword">from</span> pyltp <span class="keyword">import</span> Postagger</span><br><span class="line">poster = Postagger()</span><br><span class="line">poster.load(<span class="string">'D:\\mysites\\text-characters\\tcharacters\\ltp\\ltp_data\\pos.model'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_word</span><span class="params">(sentence:list)</span>:</span></span><br><span class="line">    <span class="string">'''只保留词性为['a', 'b', 'd', 'i', 'j', 'n', 'nh',</span></span><br><span class="line"><span class="string">            'ni', 'nl', 'ns', 'nt', 'nz', 'v']的词, 具体词性意义参考https://www.ltp-cloud.com/intro/#pos_how'''</span></span><br><span class="line">    keep = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'i'</span>, <span class="string">'j'</span>, <span class="string">'n'</span>, <span class="string">'nh'</span>,</span><br><span class="line">            <span class="string">'ni'</span>, <span class="string">'nl'</span>, <span class="string">'ns'</span>, <span class="string">'nt'</span>, <span class="string">'nz'</span>, <span class="string">'v'</span>]</span><br><span class="line">    tags = poster.postag(sentence)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(sentence)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">if</span> tags[i] <span class="keyword">not</span> <span class="keyword">in</span> keep:</span><br><span class="line">            <span class="keyword">del</span> sentence[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_corpus</span><span class="params">()</span>:</span></span><br><span class="line">    d: Path</span><br><span class="line">    corpus = []</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> words_dir.iterdir():</span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> d.iterdir():</span><br><span class="line">            print(<span class="string">'reading &#123;&#125;'</span>.format(fpath))</span><br><span class="line">            passage = json.load(open(fpath, <span class="string">'r'</span>))</span><br><span class="line">            <span class="keyword">for</span> sentence <span class="keyword">in</span> passage:</span><br><span class="line">                select_word(sentence)</span><br><span class="line">            <span class="comment"># 因为我们的句子信息不重要, 所以把所有句子合并成一个</span></span><br><span class="line">            passage = [word <span class="keyword">for</span> sentence <span class="keyword">in</span> passage <span class="keyword">for</span> word <span class="keyword">in</span> sentence]</span><br><span class="line">            corpus.append(passage)</span><br><span class="line">    <span class="keyword">return</span> corpus</span><br><span class="line"></span><br><span class="line">corpus = load_corpus()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> gensim <span class="keyword">import</span> models, corpora</span><br><span class="line"></span><br><span class="line">dic = corpora.Dictionary(corpus)</span><br><span class="line">clean_data = [dic.doc2bow(words) <span class="keyword">for</span> words <span class="keyword">in</span> corpus]</span><br><span class="line">lda = models.ldamodel.LdaModel(clean_data, id2word=dic,  num_topics=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看主题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> topic <span class="keyword">in</span> lda.print_topics(num_words=<span class="number">10</span>):</span><br><span class="line">    print(topic[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/文本挖掘/">#文本挖掘</a> <a href="/tags/自然语言处理/">#自然语言处理</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/文本挖掘/">
+            文本挖掘
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">
+                    sentimentpy模块进行中文文本情感分类
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/07/gensim-lda-文档主题提取实现/">
+                    gensim lda 文档主题提取实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/03/pyltp安装和小白入门/">
+                    pyltp安装和小白入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/01/31/pyltp在windows下的编译安装/">
+                    哈工大自然语言处理ltp在windows10下的安装使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/06/13/作文自动分类方案设计/">
+                    作文自动分类方案设计
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/自然语言处理/">
+            自然语言处理
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/06/02/[转]吊炸天的中文自然语言处理工具和语料库介绍/">
+                    (译)吊炸天的中文自然语言处理工具和语料库介绍
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/27/wikipedia维基百科xml数据解压-解析-清理/">
+                    wikipedia维基百科xml数据解压/解析/清理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/02/07/gensim-lda-文档主题提取实现/">
+                    gensim lda 文档主题提取实现
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

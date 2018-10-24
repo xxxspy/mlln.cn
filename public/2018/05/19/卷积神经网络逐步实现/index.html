@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="01-卷积神经网络逐步实现"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>01-卷积神经网络逐步实现 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/05/19/卷积神经网络逐步实现/">
+                01-卷积神经网络逐步实现
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="01-卷积神经网络逐步实现"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年05月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>＃ 卷积神经网络：逐步实现</p>
+<p>欢迎来到课程4的第一项任务！在这个任务中，您将以numpy实现卷积（CONV）和池（POOL）层，包括向前传播和（可选）向后传播。</p>
+<a id="more"></a>
+<p><strong>Notation</strong>:</p>
+<ul>
+<li>上标 <code>$ [l] $</code>表示<code>$ l ^ {th} $</code>图层的一个对象。<ul>
+<li>示例：<code>$ a ^ {[4]} $</code>是<code>$ 4 ^ {th} $</code>层激活。 <code>$ W ^ {[5]} $</code>和<code>$ b ^ {[5]} $</code>是<code>$ 5 ^ {th} $</code>层参数。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>上标<code>$（i）$</code>表示来自<code>$ i ^ {th} $</code>示例的对象。<ul>
+<li>示例：<code>$ x ^ {（i）} $</code>是<code>$ i ^ {th} $</code>训练示例输入。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>下标<code>$ i $</code>表示向量的<code>$ i ^ {th} $</code>条目。<br>  例如：<code>$ a ^ {[l]} _ i $</code>表示层<code>$ l $</code>中激活的<code>$ i ^ {th} $</code>条目，假设这是一个完全连接（FC）层。</li>
+</ul>
+<ul>
+<li><code>$ n_H $</code>，<code>$ n_W $</code>和<code>$ n_C $</code>分别表示给定层的高度，宽度和通道数量。如果你想引用一个特定的图层<code>$ l $</code>，你也可以编写<code>$ n_H ^ {[l]} $</code>，<code>$ n_W ^ {[l]} $</code>，<code>$ n_C ^ {[l]} $</code>。<ul>
+<li><code>$ n_ {H_ {prev}} $</code>，<code>$ n_ {W_ {prev}} $</code>和<code>$ n_ {C_ {prev}} $</code>分别表示上一层的高度，宽度和通道数量。如果引用特定层<code>$ l $</code>，这也可以表示为<code>$ n_H ^ {[l-1]} $</code>，<code>$ n_W ^ {[l-1]} $</code>，<code>$ n_C ^ {[l-1]} $</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-Packages"><a href="#1-Packages" class="headerlink" title="1 - Packages"></a>1 - Packages</h2><p>首先导入您在此作业期间需要的所有软件包。</p>
+<ul>
+<li><a href="www.numpy.org">numpy</a> i是用Python进行科学计算的基础包。</li>
+<li><a href="http://matplotlib.org" target="_blank" rel="noopener">matplotlib</a> 是一个用Python绘制图表的库。</li>
+<li>np.random.seed（1）用于保持所有随机函数调用一致。它会帮助我们为你的工作评分。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[<span class="string">'figure.figsize'</span>] = (<span class="number">5.0</span>, <span class="number">4.0</span>) <span class="comment"># set default size of plots</span></span><br><span class="line">plt.rcParams[<span class="string">'image.interpolation'</span>] = <span class="string">'nearest'</span></span><br><span class="line">plt.rcParams[<span class="string">'image.cmap'</span>] = <span class="string">'gray'</span></span><br><span class="line"></span><br><span class="line">%load_ext autoreload</span><br><span class="line">%autoreload <span class="number">2</span></span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>d:\mysites\deeplearning.ai-master\.env\lib\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+</code></pre><h2 id="2-Outline-of-the-Assignment"><a href="#2-Outline-of-the-Assignment" class="headerlink" title="2 - Outline of the Assignment"></a>2 - Outline of the Assignment</h2><p>您将实现卷积神经网络的基本模块！您将实现的每个功能都将有详细的说明，以引导您完成所需的步骤：</p>
+<ul>
+<li>Convolution functions, including:<ul>
+<li>Zero Padding</li>
+<li>Convolve window </li>
+<li>Convolution forward</li>
+<li>Convolution backward (optional)</li>
+</ul>
+</li>
+<li>Pooling functions, including:<ul>
+<li>Pooling forward</li>
+<li>Create mask </li>
+<li>Distribute value</li>
+<li>Pooling backward (optional)</li>
+</ul>
+</li>
+</ul>
+<p>这个笔记将要求你在<code>numpy</code>上从头开始实现这些功能。在下一个笔记本，您将使用这些函数的TensorFlow等价物来构建以下模型：</p>
+<p><img src="images/model.png" style="width:800px;height:300px;"></p>
+<p><strong>注意</strong>对于每个前向函数，都有相应的后向等值。因此，在您的前向模块的每一步中，您都将一些参数存储在缓存中。这些参数将用于计算反向传播期间的梯度。</p>
+<h2 id="3-Convolutional-Neural-Networks"><a href="#3-Convolutional-Neural-Networks" class="headerlink" title="3 - Convolutional Neural Networks"></a>3 - Convolutional Neural Networks</h2><p>尽管编程框架使卷积易于使用，但它们仍然是深度学习中难理解的概念之一。卷积层将输入转换为不同大小的输出，如下所示。</p>
+<p><img src="images/conv_nn.png" style="width:350px;height:200px;"></p>
+<p>在这部分中，您将构建卷积图层的每一步。您将首先实现两个辅助函数：一个用于零填充(zero padding)，另一个用于计算卷积函数本身。</p>
+<h3 id="3-1-Zero-Padding"><a href="#3-1-Zero-Padding" class="headerlink" title="3.1 - Zero-Padding"></a>3.1 - Zero-Padding</h3><p>零填充在图像的边界周围添加零点：</p>
+<p><img src="images/PAD.png" style="width:600px;height:400px;"></p>
+<caption><center> <u> <font color="purple"> <strong>Figure 1</strong> </font></u><font color="purple">  : <strong>Zero-Padding</strong><br> Image (3 channels, RGB) with a padding of 2. </font></center></caption>
+
+<p>填充的主要好处如下：</p>
+<ul>
+<li><p>它允许您使用CONV层，而不必缩小卷的高度和宽度。这对于建立更深的网络非常重要，否则当你走向更深层时，高度/宽度会缩小。一个重要的特例是“相同”卷积，其中高度/宽度在一层之后被完全保留。</p>
+</li>
+<li><p>它可以帮助我们在图像边界保留更多信息。如果没有填充，下一层的极少数值将受到像素边缘的影响。</p>
+</li>
+</ul>
+<p><strong>练习</strong>：实现以下功能，将一批示例数据集X中的所有图像填充为零。<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html" target="_blank" rel="noopener">Use np.pad</a>. 注意，如果你想为形状为<code>$（5,5,5,5,5）$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: zero_pad</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zero_pad</span><span class="params">(X, pad)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    用零填充数据集X的所有图像。填充应用于图像的高度和宽度，</span></span><br><span class="line"><span class="string">    如图1所示。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Argument:</span></span><br><span class="line"><span class="string">    X -- python numpy array of shape (m, n_H, n_W, n_C) representing a batch of m images</span></span><br><span class="line"><span class="string">    pad -- integer, amount of padding around each image on vertical and horizontal dimensions</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    X_pad -- padded image of shape (m, n_H + 2*pad, n_W + 2*pad, n_C)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    X_pad = np.pad(X,((<span class="number">0</span>,<span class="number">0</span>),(pad,pad),(pad,pad),(<span class="number">0</span>,<span class="number">0</span>)),<span class="string">'constant'</span>,constant_values = <span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> X_pad</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">x = np.random.randn(<span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">x_pad = zero_pad(x, <span class="number">2</span>)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"x.shape ="</span>, x.shape)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"x_pad.shape ="</span>, x_pad.shape)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"x[1,1] ="</span>, x[<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"x_pad[1,1] ="</span>, x_pad[<span class="number">1</span>,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">fig, axarr = plt.subplots(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">axarr[<span class="number">0</span>].set_title(<span class="string">'x'</span>)</span><br><span class="line">axarr[<span class="number">0</span>].imshow(x[<span class="number">0</span>,:,:,<span class="number">0</span>])</span><br><span class="line">axarr[<span class="number">1</span>].set_title(<span class="string">'x_pad'</span>)</span><br><span class="line">axarr[<span class="number">1</span>].imshow(x_pad[<span class="number">0</span>,:,:,<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>x.shape = (4, 3, 3, 2)
+x_pad.shape = (4, 7, 7, 2)
+x[1,1] = [[ 0.90085595 -0.68372786]
+ [-0.12289023 -0.93576943]
+ [-0.26788808  0.53035547]]
+x_pad[1,1] = [[0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [0. 0.]]
+
+
+
+
+
+&lt;matplotlib.image.AxesImage at 0x1d31decada0&gt;
+</code></pre><p><img src="output_8_2.png" alt="png"></p>
+<p><strong>Expected Output</strong>:</p>
+<table><br>    <tr><br>        <td><br>            <strong>x.shape</strong>:<br>        </td><br>        <td><br>           (4, 3, 3, 2)<br>        </td><br>    </tr><br>        <tr><br>        <td><br>            <strong>x_pad.shape</strong>:<br>        </td><br>        <td><br>           (4, 7, 7, 2)<br>        </td><br>    </tr><br>        <tr><br>        <td><br>            <strong>x[1,1]</strong>:<br>        </td><br>        <td><br>           [[ 0.90085595 -0.68372786]<br> [-0.12289023 -0.93576943]<br> [-0.26788808  0.53035547]]<br>        </td><br>    </tr><br>        <tr><br>        <td><br>            <strong>x_pad[1,1]</strong>:<br>        </td><br>        <td><br>           [[ 0.  0.]<br> [ 0.  0.]<br> [ 0.  0.]<br> [ 0.  0.]<br> [ 0.  0.]<br> [ 0.  0.]<br> [ 0.  0.]]<br>        </td><br>    </tr><br><br></table>
+
+<h3 id="3-2-Single-step-of-convolution"><a href="#3-2-Single-step-of-convolution" class="headerlink" title="3.2 - Single step of convolution"></a>3.2 - Single step of convolution</h3><p>在这一部分中，实现一个卷积层，在该步骤中将滤波器应用于输入的单个位置。以下步骤被用来构建一个卷积单元，其中：</p>
+<ul>
+<li>Takes an input volume </li>
+<li>Applies a filter at every position of the input</li>
+<li>Outputs another volume (usually of different size)</li>
+</ul>
+<p><img src="images/Convolution_schematic.gif" style="width:500px;height:300px;"></p>
+<caption><center> <u> <font color="purple"> <strong>Figure 2</strong> </font></u><font color="purple">  : <strong>Convolution operation</strong><br> with a filter of 2x2 and a stride of 1 (stride = amount you move the window each time you slide) </font></center></caption>
+
+<p>在计算机视觉应用中，左侧矩阵中的每个值对应一个像素值，我们通过将其值与原始矩阵元素化相乘，然后对它们进行求和并添加偏差，从而将3x3滤波器与图像进行卷积。在练习的第一步中，您将实现一个卷积步骤，对应于将滤波器应用于其中一个位置以获得单个实值输出。</p>
+<p>Later in this notebook, you’ll apply this function to multiple positions of the input to implement the full convolutional operation. </p>
+<p><strong>Exercise</strong>: Implement conv_single_step(). <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.sum.html" target="_blank" rel="noopener">Hint</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: conv_single_step</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_single_step</span><span class="params">(a_slice_prev, W, b)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Apply one filter defined by parameters W on a single slice (a_slice_prev) of the output activation </span></span><br><span class="line"><span class="string">    of the previous layer.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    a_slice_prev -- slice of input data of shape (f, f, n_C_prev)</span></span><br><span class="line"><span class="string">    W -- Weight parameters contained in a window - matrix of shape (f, f, n_C_prev)</span></span><br><span class="line"><span class="string">    b -- Bias parameters contained in a window - matrix of shape (1, 1, 1)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    Z -- a scalar value, result of convolving the sliding window (W, b) on a slice x of the input data</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Element-wise product between a_slice and W. Do not add the bias yet.</span></span><br><span class="line">    s = np.multiply(a_slice_prev, W)</span><br><span class="line">    <span class="comment"># Sum over all entries of the volume s.</span></span><br><span class="line">    Z = np.sum(s)</span><br><span class="line">    <span class="comment"># Add bias b to Z. Cast b to a float() so that Z results in a scalar value.</span></span><br><span class="line">    Z = float(b)+Z</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Z</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">a_slice_prev = np.random.randn(<span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line">W = np.random.randn(<span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line">b = np.random.randn(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">Z = conv_single_step(a_slice_prev, W, b)</span><br><span class="line">print(<span class="string">"Z ="</span>, Z)</span><br></pre></td></tr></table></figure>
+<pre><code>Z = -6.999089450680221
+</code></pre><p><strong>Expected Output</strong>:</p>
+<table><br>    <tr><br>        <td><br>            <strong>Z</strong><br>        </td><br>        <td><br>            -6.99908945068<br>        </td><br>    </tr><br><br></table>
+
+<h3 id="3-3-Convolutional-Neural-Networks-正向传播"><a href="#3-3-Convolutional-Neural-Networks-正向传播" class="headerlink" title="3.3 - Convolutional Neural Networks - 正向传播"></a>3.3 - Convolutional Neural Networks - 正向传播</h3><p>在正向传播中，您将采取多种滤波器并将它们在输入上进行卷积。每个’卷积’给你一个2D矩阵输出。然后您将堆叠这些输出以获得3D结构：</p>
+<center><br><video width="620" height="440" src="images/conv_kiank.mp4" type="video/mp4" controls><br></video><br></center>
+
+<p><strong>练习</strong>：执行下面的函数以在输入激活A_prev上卷积滤波器W.该函数以A_prev作为输入，前一层（对于一批m个输入），F个滤波器/权重W以及一个由b表示的偏差向量输出的激活，其中每个滤波器具有其自己的（单个）偏差。最后，您还可以使用stride和pad等超参数。</p>
+<p><strong>Hint</strong>: </p>
+<ol>
+<li>要选择矩阵“a_prev”（形状（5,5,3））左上角的2x2切片，您可以:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a_slice_prev = a_prev[<span class="number">0</span>:<span class="number">2</span>,<span class="number">0</span>:<span class="number">2</span>,:]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当你在下面定义<code>a_slice_prev</code>时，这会很有用，使用你将要定义的<code>start / end</code>索引。</p>
+<p>2.要定义a_slice，您需要首先定义它的顶点vert_start，vert_end，horiz_start和horiz_end。这个数字可能有助于您找到如何在下面的代码中使用h，w，f和s来定义每个角点。</p>
+<p><img src="images/vert_horiz_kiank.png" style="width:400px;height:300px;"></p>
+<caption><center> <u> <font color="purple"> <strong>Figure 3</strong> </font></u><font color="purple">  : <strong>Definition of a slice using vertical and horizontal start/end (with a 2x2 filter)</strong> <br> This figure shows only a single channel.  </font></center></caption>
+
+
+<p><strong>Reminder</strong>:<br>卷积的输出形状与输入形状的公式是：<br><code>$$ n_H = \lfloor \frac{n_{H_{prev}} - f + 2 \times pad}{stride} \rfloor +1 $$</code><br><code>$$ n_W = \lfloor \frac{n_{W_{prev}} - f + 2 \times pad}{stride} \rfloor +1 $$</code><br><code>$$ n_C = \text{number of filters used in the convolution}$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_forward</span><span class="params">(A_prev, W, b, hparameters)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    实现卷积函数的前向传播</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    A_prev -- output activations of the previous layer, numpy array of shape (m, n_H_prev, n_W_prev, n_C_prev)</span></span><br><span class="line"><span class="string">    W -- Weights, numpy array of shape (f, f, n_C_prev, n_C)</span></span><br><span class="line"><span class="string">    b -- Biases, numpy array of shape (1, 1, 1, n_C)</span></span><br><span class="line"><span class="string">    hparameters -- python dictionary containing "stride" and "pad"</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    Z -- conv output, numpy array of shape (m, n_H, n_W, n_C)</span></span><br><span class="line"><span class="string">    cache -- cache of values needed for the conv_backward() function</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve dimensions from A_prev's shape (≈1 line)  </span></span><br><span class="line">    <span class="comment"># 如果你不理解下面的符号可以看上面的公式</span></span><br><span class="line">    (m, n_H_prev, n_W_prev, n_C_prev) = A_prev.shape</span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    m: 数据样本量</span></span><br><span class="line"><span class="string">    n_H_prev: 图像宽度</span></span><br><span class="line"><span class="string">    n_W_prev: 图像高度</span></span><br><span class="line"><span class="string">    n_C_prev: 通道数</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve dimensions from W's shape (≈1 line)</span></span><br><span class="line">    <span class="comment"># 如果你不理解下面的符号可以看上面的公式</span></span><br><span class="line">    (f, f, n_C_prev, n_C) = W.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve information from "hparameters" (≈2 lines)</span></span><br><span class="line">    stride = hparameters[<span class="string">'stride'</span>]</span><br><span class="line">    pad = hparameters[<span class="string">'pad'</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 使用上面的公式计算卷积层输出维度. Hint: use int() to floor. (≈2 lines)</span></span><br><span class="line">    n_H = int((n_H_prev-f+<span class="number">2</span>*pad)/stride+<span class="number">1</span>)</span><br><span class="line">    n_W = int((n_W_prev-f+<span class="number">2</span>*pad)/stride+<span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initialize the output volume Z with zeros. (≈1 line)</span></span><br><span class="line">    <span class="comment"># 注意这些参数都很重要:</span></span><br><span class="line">    <span class="comment"># m: 样本量</span></span><br><span class="line">    <span class="comment"># n_H: 输出的高</span></span><br><span class="line">    <span class="comment"># n_W: 输出的宽</span></span><br><span class="line">    <span class="comment"># n_C: 输出的通道数(深度)</span></span><br><span class="line">    Z = np.zeros([m,n_H,n_W,n_C])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Create A_prev_pad by padding A_prev</span></span><br><span class="line">    A_prev_pad = zero_pad(A_prev, pad)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):                               <span class="comment"># loop over the batch of training examples</span></span><br><span class="line">        a_prev_pad = A_prev_pad[i,:,:,:]                               <span class="comment"># Select ith training example's padded activation</span></span><br><span class="line">        <span class="keyword">for</span> h <span class="keyword">in</span> range(n_H-f+<span class="number">1</span>):                           <span class="comment"># 遍历垂直方向</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> range(n_W-f+<span class="number">1</span>):                       <span class="comment"># l遍历水平方向</span></span><br><span class="line">                <span class="keyword">for</span> c <span class="keyword">in</span> range(n_C):                   <span class="comment"># 遍历filter个数</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Find the corners of the current "slice" (≈4 lines)</span></span><br><span class="line">                    vert_start = h</span><br><span class="line">                    vert_end = h+f</span><br><span class="line">                    horiz_start = w</span><br><span class="line">                    horiz_end = w+f</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Use the corners to define the (3D) slice of a_prev_pad (See Hint above the cell). (≈1 line)</span></span><br><span class="line">                    a_slice_prev = a_prev_pad[vert_start:vert_end,horiz_start:horiz_end,:]</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Convolve the (3D) slice with the correct filter W and bias b, to get back one output neuron. (≈1 line)</span></span><br><span class="line">                    Z[i, h, w, c] = conv_single_step(a_slice_prev, W[:,:,:,c], b[:,:,:,c])</span><br><span class="line">                                        </span><br><span class="line">    <span class="comment"># Making sure your output shape is correct</span></span><br><span class="line">    <span class="keyword">assert</span>(Z.shape == (m, n_H, n_W, n_C))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Save information in "cache" for the backprop</span></span><br><span class="line">    cache = (A_prev, W, b, hparameters)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> Z, cache</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">A_prev = np.random.randn(<span class="number">10</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">3</span>)</span><br><span class="line">W = np.random.randn(<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>)</span><br><span class="line">b = np.random.randn(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">8</span>)</span><br><span class="line">hparameters = &#123;<span class="string">"pad"</span> : <span class="number">2</span>,</span><br><span class="line">               <span class="string">"stride"</span>: <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">Z, cache_conv = conv_forward(A_prev, W, b, hparameters)</span><br><span class="line">print(<span class="string">"Z's mean ="</span>, np.mean(Z))</span><br><span class="line">print(<span class="string">"Z[3,2,1] ="</span>, Z[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>])</span><br><span class="line">print(<span class="string">"cache_conv[0][1][2][3] ="</span>, cache_conv[<span class="number">0</span>][<span class="number">1</span>][<span class="number">2</span>][<span class="number">3</span>])</span><br><span class="line">print(Z.shape)</span><br></pre></td></tr></table></figure>
+<pre><code>Z&apos;s mean = 0.004786321537477471
+Z[3,2,1] = [ 0.10709871 -0.03102354 -0.52995452  0.98611224  0.65733641 -0.84239368
+ -0.04608241  0.08802027]
+cache_conv[0][1][2][3] = [-0.20075807  0.18656139  0.41005165]
+(10, 4, 4, 8)
+</code></pre><p><strong>期望结果</strong>:</p>
+<table><br>    <tr><br>        <td><br>            <strong>Z’s mean</strong><br>        </td><br>        <td><br>            0.0489952035289<br>        </td><br>    </tr><br>    <tr><br>        <td><br>            <strong>Z[3,2,1]</strong><br>        </td><br>        <td><br>            [-0.61490741 -6.7439236  -2.55153897  1.75698377  3.56208902  0.53036437<br>  5.18531798  8.75898442]<br>        </td><br>    </tr><br>    <tr><br>        <td><br>            <strong>cache_conv[0][1][2][3]</strong><br>        </td><br>        <td><br>            [-0.20075807  0.18656139  0.41005165]<br>        </td><br>    </tr><br><br></table>
+
+
+
+<p>最后，CONV层还应包含激活，在这种情况下，我们将添加以下代码行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convolve the window to get back one output neuron</span></span><br><span class="line">Z[i, h, w, c] = ...</span><br><span class="line"><span class="comment"># Apply activation</span></span><br><span class="line">A[i, h, w, c] = activation(Z[i, h, w, c])</span><br></pre></td></tr></table></figure>
+<p>你不需要在这里做。</p>
+<h2 id="4-Pooling-layer"><a href="#4-Pooling-layer" class="headerlink" title="4 - Pooling layer"></a>4 - Pooling layer</h2><p>池（POOL）层减少输入的高度和宽度。它有助于减少计算量，并有助于使特征检测器的输入位置更加稳定。这两种池化层是：</p>
+<ul>
+<li><p>最大池化层：在输入上滑动（<code>$ f，f $</code>）窗口并将窗口的最大值存储在输出中。</p>
+</li>
+<li><p>平均池图层：在输入上滑动（<code>$ f，f $</code>）窗口并在输出中存储窗口的平均值。</p>
+</li>
+</ul>
+<table><br><td><br><img src="images/max_pool1.png" style="width:500px;height:300px;"><br></td><td><br><br></td><td><br><img src="images/a_pool.png" style="width:500px;height:300px;"><br></td><td><br></td></table>
+
+<p>这些汇聚层没有反向传播训练的参数。但是，它们具有超参数，如窗口大小<code>$ f $</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: pool_forward</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pool_forward</span><span class="params">(A_prev, hparameters, mode = <span class="string">"max"</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    实现池化层的前向传播</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    A_prev -- Input data, numpy array of shape (m, n_H_prev, n_W_prev, n_C_prev)</span></span><br><span class="line"><span class="string">    hparameters -- python dictionary containing "f" and "stride"</span></span><br><span class="line"><span class="string">    mode -- the pooling mode you would like to use, defined as a string ("max" or "average")</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    A -- output of the pool layer, a numpy array of shape (m, n_H, n_W, n_C)</span></span><br><span class="line"><span class="string">    cache -- cache used in the backward pass of the pooling layer, contains the input and hparameters </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve dimensions from the input shape</span></span><br><span class="line">    (m, n_H_prev, n_W_prev, n_C_prev) = A_prev.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve hyperparameters from "hparameters"</span></span><br><span class="line">    f = hparameters[<span class="string">"f"</span>]</span><br><span class="line">    stride = hparameters[<span class="string">"stride"</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Define the dimensions of the output</span></span><br><span class="line">    n_H = int(<span class="number">1</span> + (n_H_prev - f) / stride)</span><br><span class="line">    n_W = int(<span class="number">1</span> + (n_W_prev - f) / stride)</span><br><span class="line">    n_C = n_C_prev</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initialize output matrix A</span></span><br><span class="line">    A = np.zeros((m, n_H, n_W, n_C))              </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):                         <span class="comment"># 循环m个样本</span></span><br><span class="line">        <span class="keyword">for</span> h <span class="keyword">in</span> range(n_H):                     <span class="comment"># 循环垂直方向</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> range(n_W):                 <span class="comment"># 循环水平方向</span></span><br><span class="line">                <span class="keyword">for</span> c <span class="keyword">in</span> range (n_C):            <span class="comment"># 循环通道</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># 定位 "slice" (≈4 lines)</span></span><br><span class="line">                    vert_start = h*stride</span><br><span class="line">                    vert_end = vert_start+f</span><br><span class="line">                    horiz_start = w*stride</span><br><span class="line">                    horiz_end = horiz_start+f</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># 用定位来生成切片. (≈1 line)</span></span><br><span class="line">                    a_prev_slice = A_prev[vert_start:vert_end,horiz_start:horiz_end,c]</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Compute the pooling operation on the slice. Use an if statment to differentiate the modes. Use np.max/np.mean.</span></span><br><span class="line">                    <span class="keyword">if</span> mode == <span class="string">"max"</span>:</span><br><span class="line">                        A[i, h, w, c] = np.max(a_prev_slice)</span><br><span class="line">                    <span class="keyword">elif</span> mode == <span class="string">"average"</span>:</span><br><span class="line">                        A[i, h, w, c] = np.mean(a_prev_slice)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Store the input and hparameters in "cache" for pool_backward()</span></span><br><span class="line">    cache = (A_prev, hparameters)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Making sure your output shape is correct</span></span><br><span class="line">    <span class="keyword">assert</span>(A.shape == (m, n_H, n_W, n_C))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> A, cache</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">A_prev = np.random.randn(<span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line">hparameters = &#123;<span class="string">"stride"</span> : <span class="number">2</span>, <span class="string">"f"</span>: <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">A, cache = pool_forward(A_prev, hparameters)</span><br><span class="line">print(<span class="string">"mode = max"</span>)</span><br><span class="line">print(<span class="string">"A ="</span>, A)</span><br><span class="line">print()</span><br><span class="line">A, cache = pool_forward(A_prev, hparameters, mode = <span class="string">"average"</span>)</span><br><span class="line">print(<span class="string">"mode = average"</span>)</span><br><span class="line">print(<span class="string">"A ="</span>, A)</span><br></pre></td></tr></table></figure>
+<pre><code>mode = max
+A = [[[[1.62434536 0.86540763 2.18557541]]]
+
+
+ [[[1.62434536 0.86540763 2.18557541]]]]
+
+mode = average
+A = [[[[ 0.24481813 -0.47568152  0.3263877 ]]]
+
+
+ [[[ 0.24481813 -0.47568152  0.3263877 ]]]]
+</code></pre><p><strong>期望输出:</strong></p>
+<table><br><br>    <tr><br>    <td><br>    A  =<br>    </td><br>        <td><br>         [[[[ 1.74481176  0.86540763  1.13376944]]]<br><br><br> [[[ 1.13162939  1.51981682  2.18557541]]]]<br><br>        </td><br>    </tr><br>    <tr><br>    <td><br>    A  =<br>    </td><br>        <td><br>         [[[[ 0.02105773 -0.20328806 -0.40389855]]]<br><br><br> [[[-0.22154621  0.51716526  0.48155844]]]]<br><br>        </td><br>    </tr><br><br></table>
+
+
+<p>恭喜！您现在已经实现了卷积网络所有层的前向传递。</p>
+<h2 id="5-卷积神经网络中的反向传播"><a href="#5-卷积神经网络中的反向传播" class="headerlink" title="5 - 卷积神经网络中的反向传播"></a>5 - 卷积神经网络中的反向传播</h2><p>在现代的深度学习框架中，您只需要实现正向传播，而框架负责反向传播，所以大多数深度学习工程师不需要考虑反向传播的细节。卷积网络的反向传递很复杂。然而，如果你愿意，你可以通过的这个可选部分来了解卷积网络中的backprop。 </p>
+<p>在之前的课程中，您实现了一个简单的（完全连接的）神经网络，您使用反向传播来计算更新loss函数参数的导数。同样，在卷积神经网络中，您可以根据loss函数计算导数以更新参数。反向传播方程不是微不足道的，我们没有在讲座中推导它们，但我们在下面简要地介绍了它们。</p>
+<h3 id="5-1-卷积层反向传播"><a href="#5-1-卷积层反向传播" class="headerlink" title="5.1 - 卷积层反向传播"></a>5.1 - 卷积层反向传播</h3><p>我们首先实现一个CONV层的反向传播。</p>
+<h4 id="5-1-1-Computing-dA"><a href="#5-1-1-Computing-dA" class="headerlink" title="5.1.1 - Computing dA:"></a>5.1.1 - Computing dA:</h4><p>这是计算<code>$ dA $</code>相对于特定过滤器<code>$ W_c $</code>和给定训练示例的loss的公式：</p>
+<p><code>$$ dA += \sum _{h=0} ^{n_H} \sum_{w=0} ^{n_W} W_c \times dZ_{hw} \tag{1}$$</code></p>
+<p>其中<code>$ W_c $</code>是一个过滤器，<code>$ dZ_ {hw} $</code>是一个标量，对应于第h行和第w列的conv层Z输出的成本梯度（对应于在第步走，j步走下）。请注意，在每次更新dA时，我们都会将相同的过滤器<code>$ W_c $</code>乘以不同的dZ。我们这样做主要是因为在计算正向传播时，每个过滤器都被不同的a_slice点分和相加。因此，在计算dA的backprop时，我们只是添加所有a_slices的渐变。<br>In code, inside the appropriate for-loops, this formula translates into:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">da_prev_pad[vert_start:vert_end, horiz_start:horiz_end, :] += W[:,:,:,c] * dZ[i, h, w, c]</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-1-2-Computing-dW"><a href="#5-1-2-Computing-dW" class="headerlink" title="5.1.2 - Computing dW:"></a>5.1.2 - Computing dW:</h4><p>这是计算<code>$ dW_c $</code>（<code>$ dW_c $</code>是一个滤波器的导数）相对于损失的公式：</p>
+<p><code>$$ dW_c  += \sum _{h=0} ^{n_H} \sum_{w=0} ^ {n_W} a_{slice} \times dZ_{hw}  \tag{2}$$</code></p>
+<p><code>$ a_ {slice} $</code>对应于用于生成活动<code>$ $</code> {ij} <code>$的切片。因此，这最终为我们提供了相对于该切片的$</code> W <code>$的渐变。既然它是相同的$</code> W <code>$，我们将只加起来所有这样的渐变来获得$</code> dW `$。</p>
+<p>在代码中，在适当的for循环中，该公式转换为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dW[:,:,:,c] += a_slice * dZ[i, h, w, c]</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-1-3-Computing-db"><a href="#5-1-3-Computing-db" class="headerlink" title="5.1.3 - Computing db:"></a>5.1.3 - Computing db:</h4><p>这是计算$<code>db</code>$相对于特定过滤器$<code>W_c</code>$的成本的公式：</p>
+<p><code>$$ db = \sum_h \sum_w dZ_{hw} \tag{3}$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_backward</span><span class="params">(dZ, cache)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    实现卷积函数的反向传播</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    dZ -- 相对于loss函数的卷积层的输出（Z）的梯度，形状的numpy阵列（m，n_H，n_W，n_C）</span></span><br><span class="line"><span class="string">    cache -- conv_backward（）所需值的缓存，conv_forward（）的输出</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    dA_prev -- 相对于conv层的输入的loss的梯度 (A_prev),</span></span><br><span class="line"><span class="string">               numpy array of shape (m, n_H_prev, n_W_prev, n_C_prev)</span></span><br><span class="line"><span class="string">    dW -- gradient of the cost with respect to the weights of the conv layer (W)</span></span><br><span class="line"><span class="string">          numpy array of shape (f, f, n_C_prev, n_C)</span></span><br><span class="line"><span class="string">    db -- gradient of the cost with respect to the biases of the conv layer (b)</span></span><br><span class="line"><span class="string">          numpy array of shape (1, 1, 1, n_C)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve information from "cache"</span></span><br><span class="line">    (A_prev, W, b, hparameters) = cache</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve dimensions from A_prev's shape</span></span><br><span class="line">    (m, n_H_prev, n_W_prev, n_C_prev) = A_prev.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve dimensions from W's shape</span></span><br><span class="line">    (f, f, n_C_prev, n_C) = W.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve information from "hparameters"</span></span><br><span class="line">    stride = hparameters[<span class="string">'stride'</span>]</span><br><span class="line">    pad = hparameters[<span class="string">'pad'</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve dimensions from dZ's shape</span></span><br><span class="line">    (m, n_H, n_W, n_C) = dZ.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initialize dA_prev, dW, db with the correct shapes</span></span><br><span class="line">    dA_prev = np.zeros(A_prev.shape)</span><br><span class="line">    dW = np.zeros(W.shape)</span><br><span class="line">    db = np.zeros(b.shape)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Pad A_prev and dA_prev</span></span><br><span class="line">    A_prev_pad = zero_pad(A_prev, pad)</span><br><span class="line">    dA_prev_pad = zero_pad(dA_prev, pad)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):                       <span class="comment"># loop over the training examples</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># select ith training example from A_prev_pad and dA_prev_pad</span></span><br><span class="line">        a_prev_pad = A_prev_pad[i,:,:,:]</span><br><span class="line">        da_prev_pad = dA_prev_pad[i,:,:,:]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> h <span class="keyword">in</span> range(n_H-f+<span class="number">1</span>):                   <span class="comment"># loop over vertical axis of the output volume</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> range(n_W-f+<span class="number">1</span>):               <span class="comment"># loop over horizontal axis of the output volume</span></span><br><span class="line">                <span class="keyword">for</span> c <span class="keyword">in</span> range(n_C):           <span class="comment"># loop over the channels of the output volume</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Find the corners of the current "slice"</span></span><br><span class="line">                    vert_start = h</span><br><span class="line">                    vert_end = h+f</span><br><span class="line">                    horiz_start = w</span><br><span class="line">                    horiz_end = w+f</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Use the corners to define the slice from a_prev_pad</span></span><br><span class="line">                    a_slice = a_prev_pad[vert_start:vert_end,horiz_start:horiz_end,:]</span><br><span class="line"></span><br><span class="line">                    <span class="comment"># Update gradients for the window and the filter's parameters using the code formulas given above</span></span><br><span class="line">                    da_prev_pad[vert_start:vert_end, horiz_start:horiz_end, :] +=  W[:,:,:,c] * dZ[i, h, w, c]</span><br><span class="line">                    dW[:,:,:,c] += a_slice * dZ[i, h, w, c]</span><br><span class="line">                    db[:,:,:,c] += dZ[i, h, w, c]</span><br><span class="line">                    </span><br><span class="line">        <span class="comment"># Set the ith training example's dA_prev to the unpaded da_prev_pad (Hint: use X[pad:-pad, pad:-pad, :])</span></span><br><span class="line">        dA_prev[i, :, :, :] = da_prev_pad[pad:-pad, pad:-pad, :]</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Making sure your output shape is correct</span></span><br><span class="line">    <span class="keyword">assert</span>(dA_prev.shape == (m, n_H_prev, n_W_prev, n_C_prev))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dA_prev, dW, db</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">dA, dW, db = conv_backward(Z, cache_conv)</span><br><span class="line">print(<span class="string">"dA_mean ="</span>, np.mean(dA))</span><br><span class="line">print(<span class="string">"dW_mean ="</span>, np.mean(dW))</span><br><span class="line">print(<span class="string">"db_mean ="</span>, np.mean(db))</span><br></pre></td></tr></table></figure>
+<pre><code>dA_mean = -0.775945386961
+dW_mean = 2.74605132882
+db_mean = 0.765811445996
+</code></pre><p><strong> Expected Output: </strong></p>
+<table><br>    <tr><br>        <td><br>            <strong>dA_mean</strong><br>        </td><br>        <td><br>            1.45243777754<br>        </td><br>    </tr><br>    <tr><br>        <td><br>            <strong>dW_mean</strong><br>        </td><br>        <td><br>            1.72699145831<br>        </td><br>    </tr><br>    <tr><br>        <td><br>            <strong>db_mean</strong><br>        </td><br>        <td><br>            7.83923256462<br>        </td><br>    </tr><br><br></table>
+
+
+<h2 id="5-2-Pooling-layer-backward-pass"><a href="#5-2-Pooling-layer-backward-pass" class="headerlink" title="5.2 Pooling layer - backward pass"></a>5.2 Pooling layer - backward pass</h2><p>接下来，我们从MAX-POOL层开始实现池化层的反向传递。即使pooling层没有backprop更新的参数，您仍然需要通过pooling层反向传播梯度，以便为在pooling层之前出现的图层计算梯度。</p>
+<h3 id="5-2-1-Max-pooling-backward-pass"><a href="#5-2-1-Max-pooling-backward-pass" class="headerlink" title="5.2.1 Max pooling - backward pass"></a>5.2.1 Max pooling - backward pass</h3><p>在跳转到pooling层的反向传播之前，您将构建一个名为<code>create_mask_from_window（）</code>的辅助函数，它执行以下操作：</p>
+<p><code>$$ X = \begin{bmatrix}
+1 &amp;&amp; 3 \\
+4 &amp;&amp; 2
+\end{bmatrix} \quad \rightarrow  \quad M =\begin{bmatrix}
+0 &amp;&amp; 0 \\
+1 &amp;&amp; 0
+\end{bmatrix}\tag{4}$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_mask_from_window</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Creates a mask from an input matrix x, to identify the max entry of x.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    x -- Array of shape (f, f)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    mask -- Array of the same shape as window, contains a True at the position corresponding to the max entry of x.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈1 line)</span></span><br><span class="line">    mask = (x==np.max(x))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> mask</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">x = np.random.randn(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">mask = create_mask_from_window(x)</span><br><span class="line">print(<span class="string">'x = '</span>, x)</span><br><span class="line">print(<span class="string">"mask = "</span>, mask)</span><br></pre></td></tr></table></figure>
+<pre><code>x =  [[ 1.62434536 -0.61175641 -0.52817175]
+ [-1.07296862  0.86540763 -2.3015387 ]]
+mask =  [[ True False False]
+ [False False False]]
+</code></pre><p><strong>Expected Output:</strong> </p>
+<table><br><tr><br><td><br><br><strong>x =</strong><br></td><br><br><td><br><br>[[ 1.62434536 -0.61175641 -0.52817175] <br><br> [-1.07296862  0.86540763 -2.3015387 ]]<br><br>  </td><br></tr><br><br><tr><br><td><br><strong>mask =</strong><br></td><br><td><br>[[ True False False] <br><br> [False False False]]<br></td><br></tr><br><br><br></table>
+
+<p>为什么我们要跟踪最大值的位置？这是因为这是最终影响产出的输入值，最终影响到loss。 Backprop计算loss的梯度，因此任何影响最终loss的因素都应该具有非零的梯度。因此，backprop会将梯度“传播”回到影响成本的特定输入值。</p>
+<h3 id="5-2-2-Average-pooling-backward-pass"><a href="#5-2-2-Average-pooling-backward-pass" class="headerlink" title="5.2.2 - Average pooling - backward pass"></a>5.2.2 - Average pooling - backward pass</h3><p>在max pooling中，对于每个输入窗口，输出上的所有“影响”都来自单个输入值 - 最大值。在average pooling中，输入窗口的每个元素对输出都有相同的影响。所以要实现backprop，你现在要实现一个反映这个的辅助函数。</p>
+<p>例如，如果我们使用2x2过滤器在正向传球中进行了平均池化(average pooling)，那么您将用于反向传播的蒙版将如下所示：<br><code>$$ dZ = 1 \quad \rightarrow  \quad dZ =\begin{bmatrix}
+1/4 &amp;&amp; 1/4 \\
+1/4 &amp;&amp; 1/4
+\end{bmatrix}\tag{5}$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">distribute_value</span><span class="params">(dz, shape)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    将输入值分布在维形状的矩阵中</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    dz -- input scalar</span></span><br><span class="line"><span class="string">    shape -- the shape (n_H, n_W) of the output matrix for which we want to distribute the value of dz</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    a -- Array of size (n_H, n_W) for which we distributed the value of dz</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">### START CODE HERE ###</span></span><br><span class="line">    <span class="comment"># Retrieve dimensions from shape (≈1 line)</span></span><br><span class="line">    (n_H, n_W) = shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Compute the value to distribute on the matrix (≈1 line)</span></span><br><span class="line">    average = dz/(n_H*n_W)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Create a matrix where every entry is the "average" value (≈1 line)</span></span><br><span class="line">    a = average*np.ones([n_H,n_W])</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = distribute_value(<span class="number">2</span>, (<span class="number">2</span>,<span class="number">2</span>))</span><br><span class="line">print(<span class="string">'distributed value ='</span>, a)</span><br></pre></td></tr></table></figure>
+<pre><code>distributed value = [[ 0.5  0.5]
+ [ 0.5  0.5]]
+</code></pre><p><strong>Expected Output</strong>: </p>
+<table><br><tr><br><td><br>distributed_value =<br></td><br><td><br>[[ 0.5  0.5]<br><br\><br>[ 0.5  0.5]]<br></br\></td><br></tr><br></table>
+
+<h3 id="5-2-3-Putting-it-together-Pooling-backward"><a href="#5-2-3-Putting-it-together-Pooling-backward" class="headerlink" title="5.2.3 Putting it together: Pooling backward"></a>5.2.3 Putting it together: Pooling backward</h3><p>您现在拥有了在池化层上计算反向传播所需的所有内容。</p>
+<p><strong>练习</strong>：在两种模式下实现<code>pool_backward</code>函数（<code>“max”</code>和<code>“average”</code>）。您将再次使用4个循环（遍历训练样例，高度，宽度和通道）。你应该使用<code>if / elif</code>语句来查看模式是否等于<code>&#39;max&#39;</code>或<code>&#39;average&#39;</code>。如果它等于“average”，则应使用上面实现的<code>distribute_value（）</code>函数来创建一个与<code>a_slice</code>具有相同形状的矩阵。否则，模式等于’max’，您将使用<code>create_mask_from_window（）</code>创建一个蒙版并将其乘以相应的dZ值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pool_backward</span><span class="params">(dA, cache, mode = <span class="string">"max"</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    实现池化层的后向传递</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    dA -- gradient of cost with respect to the output of the pooling layer, same shape as A</span></span><br><span class="line"><span class="string">    cache -- cache output from the forward pass of the pooling layer, contains the layer's input and hparameters </span></span><br><span class="line"><span class="string">    mode -- the pooling mode you would like to use, defined as a string ("max" or "average")</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    dA_prev -- gradient of cost with respect to the input of the pooling layer, same shape as A_prev</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve information from cache (≈1 line)</span></span><br><span class="line">    (A_prev, hparameters) = cache</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve hyperparameters from "hparameters" (≈2 lines)</span></span><br><span class="line">    stride =hparameters[<span class="string">'stride'</span>]</span><br><span class="line">    f = hparameters[<span class="string">'f'</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Retrieve dimensions from A_prev's shape and dA's shape (≈2 lines)</span></span><br><span class="line">    m, n_H_prev, n_W_prev, n_C_prev = A_prev.shape</span><br><span class="line">    m, n_H, n_W, n_C = dA.shape</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initialize dA_prev with zeros (≈1 line)</span></span><br><span class="line">    dA_prev = np.zeros(A_prev.shape)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):                       <span class="comment"># loop over the training examples</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># select training example from A_prev (≈1 line)</span></span><br><span class="line">        a_prev = A_prev[i,:,:,:]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> h <span class="keyword">in</span> range(n_H_prev-f+<span class="number">1</span>):                   <span class="comment"># loop on the vertical axis</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> range(n_W_prev-f+<span class="number">1</span>):               <span class="comment"># loop on the horizontal axis</span></span><br><span class="line">                <span class="keyword">for</span> c <span class="keyword">in</span> range(n_C):           <span class="comment"># loop over the channels (depth)</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Find the corners of the current "slice" (≈4 lines)</span></span><br><span class="line">                    vert_start = h</span><br><span class="line">                    vert_end = h+f</span><br><span class="line">                    horiz_start = w</span><br><span class="line">                    horiz_end = w+f</span><br><span class="line">                    </span><br><span class="line">                    <span class="comment"># Compute the backward propagation in both modes.</span></span><br><span class="line">                    <span class="keyword">if</span> mode == <span class="string">"max"</span>:</span><br><span class="line">                        </span><br><span class="line">                        <span class="comment"># Use the corners and "c" to define the current slice from a_prev (≈1 line)</span></span><br><span class="line">                        a_prev_slice = a_prev[vert_start:vert_end,horiz_start:horiz_end,c]</span><br><span class="line">                        <span class="comment"># Create the mask from a_prev_slice (≈1 line)</span></span><br><span class="line">                        mask = create_mask_from_window(a_prev_slice)</span><br><span class="line">                        </span><br><span class="line">                        <span class="comment"># Set dA_prev to be dA_prev + (the mask multiplied by the correct entry of dA) (≈1 line)</span></span><br><span class="line">                        dA_prev[i, vert_start: vert_end, horiz_start: horiz_end, c] += np.multiply(mask,dA[i,vert_start: vert_end, horiz_start: horiz_end,c])</span><br><span class="line">                        </span><br><span class="line">                    <span class="keyword">elif</span> mode == <span class="string">"average"</span>:</span><br><span class="line">                        </span><br><span class="line">                        <span class="comment"># Get the value a from dA (≈1 line)</span></span><br><span class="line">                        da = np.mean(dA[i, vert_start: vert_end, horiz_start: horiz_end,c])</span><br><span class="line">                        <span class="comment"># Define the shape of the filter as fxf (≈1 line)</span></span><br><span class="line">                        shape = (f,f)</span><br><span class="line">                        <span class="comment"># Distribute it to get the correct slice of dA_prev. i.e. Add the distributed value of da. (≈1 line)</span></span><br><span class="line">                        dA_prev[i, vert_start: vert_end, horiz_start: horiz_end, c] += distribute_value(da, shape)+da</span><br><span class="line">                        </span><br><span class="line">    <span class="comment"># Making sure your output shape is correct</span></span><br><span class="line">    <span class="keyword">assert</span>(dA_prev.shape == A_prev.shape)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dA_prev</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">A_prev = np.random.randn(<span class="number">5</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">hparameters = &#123;<span class="string">"stride"</span> : <span class="number">1</span>, <span class="string">"f"</span>: <span class="number">2</span>&#125;</span><br><span class="line">A, cache = pool_forward(A_prev, hparameters)</span><br><span class="line">dA = np.random.randn(<span class="number">5</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">dA_prev = pool_backward(dA, cache, mode = <span class="string">"max"</span>)</span><br><span class="line">print(<span class="string">"mode = max"</span>)</span><br><span class="line">print(<span class="string">'mean of dA = '</span>, np.mean(dA))</span><br><span class="line">print(<span class="string">'dA_prev[1,1] = '</span>, dA_prev[<span class="number">1</span>,<span class="number">1</span>])  </span><br><span class="line">print()</span><br><span class="line">dA_prev = pool_backward(dA, cache, mode = <span class="string">"average"</span>)</span><br><span class="line">print(<span class="string">"mode = average"</span>)</span><br><span class="line">print(<span class="string">'mean of dA = '</span>, np.mean(dA))</span><br><span class="line">print(<span class="string">'dA_prev[1,1] = '</span>, dA_prev[<span class="number">1</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>mode = max
+mean of dA =  0.145713902729
+dA_prev[1,1] =  [[  0.           0.        ]
+ [ 10.11330283  -0.49726956]
+ [  0.           0.        ]]
+
+mode = average
+mean of dA =  0.145713902729
+dA_prev[1,1] =  [[ 2.59843096 -0.27835778]
+ [ 7.96018612 -1.95394424]
+ [ 5.36175516 -1.67558646]]
+</code></pre><p><strong>Expected Output</strong>: </p>
+<p>mode = max:</p>
+<table><br><tr><br><td><br><br><strong>mean of dA =</strong><br></td><br><br><td><br><br>0.145713902729<br><br>  </td><br></tr><br><br><tr><br><td><br><strong>dA_prev[1,1] =</strong><br></td><br><td><br>[[ 0.          0.        ] <br><br> [ 5.05844394 -1.68282702] <br><br> [ 0.          0.        ]]<br></td><br></tr><br></table>
+
+<p>mode = average</p>
+<table><br><tr><br><td><br><br><strong>mean of dA =</strong><br></td><br><br><td><br><br>0.145713902729<br><br>  </td><br></tr><br><br><tr><br><td><br><strong>dA_prev[1,1] =</strong><br></td><br><td><br>[[ 0.08485462  0.2787552 ] <br><br> [ 1.26461098 -0.25749373] <br><br> [ 1.17975636 -0.53624893]]<br></td><br></tr><br></table>
+
+<h3 id="Congratulations"><a href="#Congratulations" class="headerlink" title="Congratulations !"></a>Congratulations !</h3><p>恭喜完成这项任务。您现在了解了卷积神经网络的工作原理。您已经实现了神经网络的所有构建模块。在下一个作业中，您将使用TensorFlow实施一个ConvNet。</p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/神经网络系列/">#神经网络系列</a> <a href="/tags/笔记/">#笔记</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/神经网络系列/">
+            神经网络系列
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/05/19/卷积神经网络逐步实现/">
+                    01-卷积神经网络逐步实现
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/笔记/">
+            笔记
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/05/19/卷积神经网络逐步实现/">
+                    01-卷积神经网络逐步实现
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

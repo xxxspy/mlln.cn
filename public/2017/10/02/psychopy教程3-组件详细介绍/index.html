@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="psychopy教程3-组件详细介绍"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>psychopy教程3-组件详细介绍 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/10/02/psychopy教程3-组件详细介绍/">
+                psychopy教程3-组件详细介绍
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="psychopy教程3-组件详细介绍"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2017年10月02日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>这篇文章我们介绍一下psychopy中常用的组件，比如文本和图片是最长用的组件。我们主要介绍他们的属性已经配置界面，属于Builder视图下的配置，因为在Coder视图下，我们只需要写代码即可，不需要配置页面。</p>
+<a id="more"></a>
+<h3 id="通用属性"><a href="#通用属性" class="headerlink" title="通用属性"></a>通用属性</h3><p>通用属性就是在很多组件中都包含的属性，比如刺激的呈现时间。我们在这统一对这些属性进行解读，以便节省重复劳动，而且使得教程更有条理。</p>
+<h4 id="开始结束时间"><a href="#开始结束时间" class="headerlink" title="开始结束时间"></a>开始结束时间</h4><p>一个组件需要有开始时间，默认是0s，也就是从0时刻开始。所谓的0时刻就是指环节(Routine)开始的时间。如果结束时间留空，则刺激会一直呈现直到所在环节结束。</p>
+<p>psychopy有很多方式定义开始结束时间，最常用的就是以秒为单位进行控制；还可以使用帧来定义，你可以让刺激呈现240帧, 假如你的显示器刷新频率是60Hz，那么240帧的意思等价于4秒。但是很多时候帧和秒是不能如此转换的。你还可以设置条件来控制结束时间， 比如另一个刺激结束的时候就结束该刺激。我们来详细介绍一下这些复杂的情况。</p>
+<p>如果你想精确控制时间，你需要使用帧来定义你的刺激开始和结束时间。同样以60Hz的显示器来说明问题，假如你想让刺激呈现0.12秒，那么刺激应当在第7.2帧的时候结束，但显然是不可以的，因为你的显示器只能在刷新的时候改变刺激，所以要么在第7帧的时候结束要么在第8帧的时候结束。</p>
+<p>利用条件来控制开始结束时间需要你懂一些psychopy的内部接口，这里不深入去讲，举一个例子，比如你的一个文本刺激需要在视频刺激开始的时候开始，那么可以设置这个文本刺激的开始时间为<code>$myMovie.status==FINISHED</code>，这样视频一旦开始，文本就开始。为了使问题简单化，你只需要将文本和视频的开始时间设置成同一个值即可，只不过这违背了一些程序开发的原则。</p>
+<h4 id="常量VS变量"><a href="#常量VS变量" class="headerlink" title="常量VS变量"></a>常量VS变量</h4><p>有些刺激属性在整个实验阶段都不会改变，所以称为常量，有些属性每一个trial都要更改一个值，这些就叫做变量。变量的改变可以是每个trail改变一次，也可以每一帧改变一次，为了性能，尽量少用每一帧改变一次。在psychopy中如何设置属性为常量还是变量？</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/constants.jpg">
+<p>在配置页，很多属性后面都会跟一个下拉列表，在列表中有三个选项：</p>
+<ul>
+<li>constant: 属性值不变</li>
+<li>set every repeat: 每个trial设置一次，属性值里填写<code>$</code>+<code>变量名</code>, 这个变量名是你定义在一个文件中的。</li>
+<li>set every frame: 每一帧设置一次</li>
+</ul>
+<h4 id="名称-name-属性"><a href="#名称-name-属性" class="headerlink" title="名称(name)属性"></a>名称(name)属性</h4><p>psychopy里任何组件都必须有名称, 并且所有组件的名称都是唯一的, 不能重复, 这个在你设置name属性的时候会发现, 如果你用了相同的名称, 它会提示你错误.</p>
+<h3 id="文本组件"><a href="#文本组件" class="headerlink" title="文本组件"></a>文本组件</h3><p>点击组件框中的text组件，即可打开text的配置页面。</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/components-text.jpg">
+<p>有两个配置页面，一个是basic，一个是advance，顾名思义，basic就是基本配置，是最常用的一些属性，advance不常用，但能实现一些高级效果。basic的配置项具体看下图。</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/text.jpg">
+<p>关于此图，我们需要说明一些问题：</p>
+<ul>
+<li>结束时间可以为空，如果为空，文本组件的持续时间是永远，直到所在的环节(Routine)结束。</li>
+<li>position: 在默认情况下，屏幕的中心点坐标就是(0, 0)，以此为原点绘制一个直角坐标系，然后你就可以用坐标表示屏幕上的任意一点，注意坐标系的轴的最大值是1最小值是-1。当然这不是绝对的，比如你可以用像素来定义坐标，不过为了简化问题，我们先不考虑。</li>
+<li>letter height: 就是文字高度，其实就是font-size，如果你将该值设置成1，那么文字的高度就会占屏幕高度的一半。</li>
+</ul>
+<h3 id="图片组件"><a href="#图片组件" class="headerlink" title="图片组件"></a>图片组件</h3><p>图片组件的配置页面:<br><img src="/2017/10/02/psychopy教程3-组件详细介绍/img_config.jpg"></p>
+<p>关于此图的说明:</p>
+<ul>
+<li>Name: 名称.</li>
+<li>Start: 刺激出现时间.</li>
+<li>Stop: 刺激结束时间.</li>
+<li>Image: 图片文件路径, 如果为空就会显示一个色块.</li>
+<li>Position: 图片中心的位置, 如果unit设置成norm, Position设置成(0,0)意味着图片处于屏幕中心.</li>
+<li>Size: 图片大小, 参数设置为[sizex, sizey]的形式, 比如[0.5, 0.5], 意思为图片的宽度为屏幕宽的1/4(unit=norm情况下, 屏幕宽度为2). 如果设置为空, 图片按照原始大小呈现.</li>
+<li>Orientation: 旋转角度.</li>
+<li>Opacity: 透明度.</li>
+<li>Units: 单位, 常用的是norm.</li>
+</ul>
+<p>图片组件的高级配置页面:<br><img src="/2017/10/02/psychopy教程3-组件详细介绍/img_config_advance.jpg"></p>
+<p>关于此图的说明:</p>
+<ul>
+<li>Color: 适用于灰度图片.</li>
+<li>Color space: 在设置了Color的情况下设置该参数, 任何颜色值都应该有其对应的颜色空间.</li>
+<li>Mask: 可以设置文件, 标准名称(gauss, circle, raisedCos) 或者一个numpy数组.</li>
+<li>Interpolate: 差值算法. 图片尺寸适应屏幕时用到.</li>
+<li>Texture Resolution: 用文本合成图片时用到.</li>
+</ul>
+<h3 id="图形"><a href="#图形" class="headerlink" title="图形"></a>图形</h3><p>线段, 三角形, 圆形, 矩形等刺激都归为此类, 很多人用图片来呈现这些词, 但是如果没有特别复杂的图形, 仅用psychopy的图形组件(ploygon)即可.</p>
+<p>这是图形组件的基本配置项:</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/ploygon.jpg">
+<p>关于此图的基本说明:</p>
+<ul>
+<li>Name: 名称.</li>
+<li>Start: 刺激出现时间.</li>
+<li>Stop: 刺激结束时间.</li>
+<li>Num.vertices: 顶点数量, 两个顶点就是一个线段, 三个顶点就是一个三角形,以此类推.</li>
+<li>Line Width: 线宽度, 以像素为单位, 不遵循unit设置.</li>
+<li>Size: 图片大小, 参数设置为[sizex, sizey]的形式, 比如[0.5, 0.5], 意思为图片的宽度为屏幕宽的1/4(unit=norm情况下, 屏幕宽度为2). 如果设置为空, 图片按照原始大小呈现.</li>
+<li>Orientation: 旋转角度.</li>
+<li>Opacity: 透明度.</li>
+<li>Units: 单位, 常用的是norm.</li>
+</ul>
+<p>图形组件的高级配置:</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/ploygon_advance.jpg">
+<p>关于此图的说明:</p>
+<ul>
+<li>Fill color &amp; Line color: 填充颜色和线条颜色.</li>
+<li>color-space: 颜色空间, 关于颜色空间, 参考上面.</li>
+<li>interpolate: 差值算法, 关于这个属性, 我们会有一个专题介绍.</li>
+</ul>
+<h3 id="随机点"><a href="#随机点" class="headerlink" title="随机点"></a>随机点</h3><p>这个可能不是一个通用功能, 只有一些特殊领域的人会用到. 这个组件的功能是产生一些随机分布的点. 有时候在记忆实验中, 随机点可以防止被试产生视觉记忆. 但是这个组件最多的用途还是用于 Random Dot Kinematogram 实验, 被试需要识别出不同移动方向的目标点.</p>
+<p>下图是随机点的一个示例:</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/random-dot.jpg">
+<p>下图是随机点的基本配置:</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/random-dot-config1.jpg">
+<p>关于此图的解释:(有些略去, 因为上面多次提到同样的配置项)</p>
+<ul>
+<li>Fild position: 出现点的区域的中心坐标. 点是随机出现在某个区域的.</li>
+<li>Field shape: 定义点出现区域的形状, 有<code>circle</code>和<code>square</code>两种可选. 当形状为circle时, 每一帧出现的随机点数的数量的平均值是固定的, 但是每一帧的数量是变化的.</li>
+<li>Field size: 区域的大小, 用直径来定义, 如果unit设置为norm, 那么1就代表直径占屏幕的一半(整个屏幕宽2).</li>
+</ul>
+<p>下图是随机点组件的高级配置:</p>
+<img src="/2017/10/02/psychopy教程3-组件详细介绍/random-dot-config2.jpg">
+<p>关于此图的解释:</p>
+<ul>
+<li>Coherence: 目标动作的移动的一致性.</li>
+<li>Direction: 目标动作的移动方向.</li>
+<li>Dot life-time: 点的生命周期, 即一个点出现的帧数.</li>
+<li>Dot size: 点的大小, 单位是像素.</li>
+<li>Number of dots: 点的数量.</li>
+<li>Noise Dots: 噪声点的行为方式. 可以设置成<code>position</code>, 则噪声点随机出现在每一帧; <code>direction</code>随机点的移动方向随机, 但是一个点的移动方向不变化, 也就是不拐弯;<code>walk</code>则是噪声点会在每一帧都改变移动方向, 但是移动的速度是固定的.</li>
+<li>Dot refresh rule: </li>
+<li>Signal dots: </li>
+<li>Speed: 移动速度.</li>
+</ul>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/eprime/">#eprime</a> <a href="/tags/e-prime/">#e-prime</a> <a href="/tags/psychopy/">#psychopy</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/eprime/">
+            eprime
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/11/19/eprime-e-prime的logging数据指标详解/">
+                    eprime/e-prime的logging数据指标详解
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/11/14/eprime2-0试用版过期咋办如何破解详细过程/">
+                    eprime2.0试用版过期咋办如何破解详细过程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/02/psychopy教程3-组件详细介绍/">
+                    psychopy教程3-组件详细介绍
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/02/psychopy教程2-builder概念介绍/">
+                    psychopy教程2-builder概念介绍
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/09/28/EPrime中如使何呈现时间随机/">
+                    EPrime中如使何呈现时间随机
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/09/27/psychopy中文版安装-附下载地址/">
+                    psychopy中文版安装(附下载地址)
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/e-prime/">
+            e-prime
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2017/11/19/eprime-e-prime的logging数据指标详解/">
+                    eprime/e-prime的logging数据指标详解
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/11/14/eprime2-0试用版过期咋办如何破解详细过程/">
+                    eprime2.0试用版过期咋办如何破解详细过程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/02/psychopy教程3-组件详细介绍/">
+                    psychopy教程3-组件详细介绍
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/02/psychopy教程2-builder概念介绍/">
+                    psychopy教程2-builder概念介绍
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/psychopy/">
+            psychopy
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/03/09/psychopy设置window和显示器参数/">
+                    psychopy设置window和显示器参数
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/09/psychopy免安装版设置方法/">
+                    psychopy免安装版设置方法
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/07/psychopy绿色免安装版下载/">
+                    psychopy绿色免安装版下载
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/25/psychopy实验设计技术/">
+                    psychopy实验设计技术
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/02/psychopy教程3-组件详细介绍/">
+                    psychopy教程3-组件详细介绍
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/02/psychopy教程2-builder概念介绍/">
+                    psychopy教程2-builder概念介绍
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/09/29/psychopy教程1-入门认识psychopy/">
+                    psychopy教程1-入门认识psychopy
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/09/27/psychopy中文版安装-附下载地址/">
+                    psychopy中文版安装(附下载地址)
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

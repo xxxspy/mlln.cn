@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.event - for keypresses and mouse clicks &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.filters - helper functions for creating filters" href="filters.html" />
+    <link rel="prev" title="Encryption" href="encryption.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="filters.html" title="psychopy.filters - helper functions for creating filters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="encryption.html" title="Encryption"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="encryption.html"
+                                  title="previous chapter">Encryption</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="filters.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.filters</span></code> - helper functions for creating filters</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/event.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="psychopy-event-for-keypresses-and-mouse-clicks">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">psychopy.event</span></code> - for keypresses and mouse clicks<a class="headerlink" href="#psychopy-event-for-keypresses-and-mouse-clicks" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="psychopy.event.Mouse">
+<em class="property">class </em><code class="descclassname">psychopy.event.</code><code class="descname">Mouse</code><span class="sig-paren">(</span><em>visible=True</em>, <em>newPos=None</em>, <em>win=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Easy way to track what your mouse is doing.</p>
+<p>It needn&#8217;t be a class, but since Joystick works better
+as a class this may as well be one too for consistency</p>
+<p>Create your <cite>visual.Window</cite> before creating a Mouse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>visible</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>True</strong> or False</span><dd><p class="first last">makes the mouse invisible if necessary</p>
+</dd>
+<dt>newPos</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>None</strong> or [x,y]</span><dd><p class="first last">gives the mouse a particular starting position
+(pygame <cite>Window</cite> only)</p>
+</dd>
+<dt>win</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>None</strong> or <cite>Window</cite></span><dd><p class="first last">the window to which this mouse is attached
+(the first found if None provided)</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="psychopy.event.Mouse.clickReset">
+<code class="descname">clickReset</code><span class="sig-paren">(</span><em>buttons=(0</em>, <em>1</em>, <em>2)</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.clickReset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset a 3-item list of core.Clocks use in timing button clicks.</p>
+<p>The pyglet mouse-button-pressed handler uses their
+clock.getLastResetTime() when a button is pressed so the user
+can reset them at stimulus onset or offset to measure RT. The
+default is to reset all, but they can be reset individually as
+specified in buttons list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.getPos">
+<code class="descname">getPos</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.getPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current position of the mouse,
+in the same units as the <code class="xref py py-class docutils literal"><span class="pre">Window</span></code> (0,0) is at centre</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.getPressed">
+<code class="descname">getPressed</code><span class="sig-paren">(</span><em>getTime=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.getPressed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a 3-item list indicating whether or not buttons 0,1,2
+are currently pressed.</p>
+<p>If <cite>getTime=True</cite> (False by default) then <cite>getPressed</cite> will
+return all buttons that have been pressed since the last call
+to <cite>mouse.clickReset</cite> as well as their time stamps:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">buttons</span> <span class="o">=</span> <span class="n">mouse</span><span class="o">.</span><span class="n">getPressed</span><span class="p">()</span>
+<span class="n">buttons</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">mouse</span><span class="o">.</span><span class="n">getPressed</span><span class="p">(</span><span class="n">getTime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Typically you want to call <span class="xref std std-ref">mouse.clickReset()</span> at stimulus
+onset, then after the button is pressed in reaction to it, the
+total time elapsed from the last reset to click is in mouseTimes.
+This is the actual RT, regardless of when the call to <cite>getPressed()</cite>
+was made.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.getRel">
+<code class="descname">getRel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.getRel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the new position of the mouse relative to the
+last call to getRel or getPos, in the same units as the
+<code class="xref py py-class docutils literal"><span class="pre">Window</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.getVisible">
+<code class="descname">getVisible</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.getVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the visibility of the mouse (1 or 0)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.getWheelRel">
+<code class="descname">getWheelRel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.getWheelRel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the travel of the mouse scroll wheel since last call.
+Returns a numpy.array(x,y) but for most wheels y is the only
+value that will change (except Mac mighty mice?)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.isPressedIn">
+<code class="descname">isPressedIn</code><span class="sig-paren">(</span><em>shape</em>, <em>buttons=(0</em>, <em>1</em>, <em>2)</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.isPressedIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <cite>True</cite> if the mouse is currently inside the shape and
+one of the mouse buttons is pressed. The default is that any of
+the 3 buttons can indicate a click; for only a left-click,
+specifiy <cite>buttons=[0]</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">mouse</span><span class="o">.</span><span class="n">isPressedIn</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+<span class="k">if</span> <span class="n">mouse</span><span class="o">.</span><span class="n">isPressedIn</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">buttons</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>  <span class="c1"># left-clicks only</span>
+</pre></div>
+</div>
+<p>Ideally, <cite>shape</cite> can be anything that has a <cite>.contains()</cite> method,
+like <cite>ShapeStim</cite> or <cite>Polygon</cite>. Not tested with <cite>ImageStim</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.mouseMoveTime">
+<code class="descname">mouseMoveTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.mouseMoveTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.mouseMoved">
+<code class="descname">mouseMoved</code><span class="sig-paren">(</span><em>distance=None</em>, <em>reset=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.mouseMoved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether/how far the mouse has moved.</p>
+<p>With no args returns true if mouse has moved at all since last
+getPos() call, or distance (x,y) can be set to pos or neg
+distances from x and y to see if moved either x or y that
+far from lastPos, or distance can be an int/float to test if
+new coordinates are more than that far in a straight line
+from old coords.</p>
+<p>Retrieve time of last movement from self.mouseClock.getTime().</p>
+<p>Reset can be to &#8216;here&#8217; or to screen coords (x,y) which allows
+measuring distance from there to mouse when moved. If reset is
+(x,y) and distance is set, then prevPos is set to (x,y) and
+distance from (x,y) to here is checked, mouse.lastPos is set as
+current (x,y) by getPos(), mouse.prevPos holds lastPos from
+last time mouseMoved was called.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.setExclusive">
+<code class="descname">setExclusive</code><span class="sig-paren">(</span><em>exclusivity</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.setExclusive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Binds the mouse to the experiment window. Only works in Pyglet.</p>
+<p>In multi-monitor settings, or with a window that is not fullscreen,
+the mouse pointer can drift, and thereby PsychoPy might not get the
+events from that window. setExclusive(True) works with Pyglet to
+bind the mouse to the experiment window.</p>
+<p>Note that binding the mouse pointer to a window will cause the
+pointer to vanish, and absolute positions will no longer be
+meaningful getPos() returns [0, 0] in this case.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.setPos">
+<code class="descname">setPos</code><span class="sig-paren">(</span><em>newPos=(0</em>, <em>0)</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.setPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the current position of the mouse,
+in the same units as the <code class="xref py py-class docutils literal"><span class="pre">Window</span></code>. (0,0) is the center.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>newPos</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(x,y) or [x,y]</span><dd><p class="first last">the new position on the screen</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.event.Mouse.setVisible">
+<code class="descname">setVisible</code><span class="sig-paren">(</span><em>visible</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.Mouse.setVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the visibility of the mouse to 1 or 0</p>
+<p>NB when the mouse is not visible its absolute position is held
+at (0, 0) to prevent it from going off the screen and getting lost!
+You can still use getRel() in that case.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.event.Mouse.units">
+<code class="descname">units</code><a class="headerlink" href="#psychopy.event.Mouse.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>The units for this mouse
+(will match the current units for the Window it lives in)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.event.clearEvents">
+<code class="descclassname">psychopy.event.</code><code class="descname">clearEvents</code><span class="sig-paren">(</span><em>eventType=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.clearEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears all events currently in the event buffer.</p>
+<p>Optional argument, eventType, specifies only certain types to be
+cleared.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>eventType</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>None</strong>, &#8216;mouse&#8217;, &#8216;joystick&#8217;, &#8216;keyboard&#8217;</span><dd><p class="first last">If this is not None then only events of the given type are cleared</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.event.waitKeys">
+<code class="descclassname">psychopy.event.</code><code class="descname">waitKeys</code><span class="sig-paren">(</span><em>maxWait=inf</em>, <em>keyList=None</em>, <em>modifiers=False</em>, <em>timeStamped=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.waitKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>~psychopy.event.getKeys</cite>, but halts everything
+(including drawing) while awaiting input from keyboard. Implicitly
+clears keyboard, so any preceding keypresses will be lost.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>maxWait</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">any numeric value.</span><dd><p class="first last">Maximum number of seconds period and which keys to wait for.
+Default is float(&#8216;inf&#8217;) which simply waits forever.</p>
+</dd>
+<dt>modifiers</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>False</strong> or True</span><dd><p class="first last">If True will return a list of tuples instead of a list of 
+keynames. Each tuple has (keyname, modifiers). The modifiers
+are a dict of keyboard modifier flags keyed by the modifier
+name (eg. &#8216;shift&#8217;, &#8216;ctrl&#8217;).</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns None if times out.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.event.getKeys">
+<code class="descclassname">psychopy.event.</code><code class="descname">getKeys</code><span class="sig-paren">(</span><em>keyList=None</em>, <em>modifiers=False</em>, <em>timeStamped=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.getKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of keys that were pressed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>keyList</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>None</strong> or []</span><dd><p class="first last">Allows the user to specify a set of keys to check for.
+Only keypresses from this set of keys will be removed from
+the keyboard buffer. If the keyList is None all keys will be
+checked and the key buffer will be cleared completely.
+NB, pygame doesn&#8217;t return timestamps (they are always 0)</p>
+</dd>
+<dt>modifiers</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>False</strong> or True</span><dd><p class="first last">If True will return a list of tuples instead of a list of 
+keynames. Each tuple has (keyname, modifiers). The modifiers
+are a dict of keyboard modifier flags keyed by the modifier
+name (eg. &#8216;shift&#8217;, &#8216;ctrl&#8217;).</p>
+</dd>
+<dt>timeStamped</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>False</strong>, True, or <cite>Clock</cite></span><dd><p class="first last">If True will return a list of tuples instead of a list of
+keynames. Each tuple has (keyname, time). If a <cite>core.Clock</cite>
+is given then the time will be relative to the <cite>Clock</cite>&#8216;s last
+reset.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Author:</th><td class="field-body"><ul class="first last simple">
+<li>2003 written by Jon Peirce</li>
+<li>2009 keyList functionality added by Gary Strangman</li>
+<li>2009 timeStamped code provided by Dave Britton</li>
+<li>2016 modifiers code provided by 5AM Solutions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.event.xydist">
+<code class="descclassname">psychopy.event.</code><code class="descname">xydist</code><span class="sig-paren">(</span><em>p1=(0.0</em>, <em>0.0)</em>, <em>p2=(0.0</em>, <em>0.0)</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.event.xydist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function returning the cartesian distance between p1 and p2</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="filters.html" title="psychopy.filters - helper functions for creating filters"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="encryption.html" title="Encryption"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

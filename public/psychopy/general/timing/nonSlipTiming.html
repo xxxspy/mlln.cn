@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Non-slip timing for imaging &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="Timing Issues and synchronisation" href="timing.html" />
+    <link rel="next" title="Detecting dropped frames" href="detectingFrameDrops.html" />
+    <link rel="prev" title="Timing Issues and synchronisation" href="timing.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="detectingFrameDrops.html" title="Detecting dropped frames"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="timing.html" title="Timing Issues and synchronisation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" accesskey="U">Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Non-slip timing for imaging</a><ul>
+<li><a class="reference internal" href="#non-slip-timing-from-the-builder">Non-slip timing from the Builder</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="timing.html"
+                                  title="previous chapter">Timing Issues and synchronisation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="detectingFrameDrops.html"
+                                  title="next chapter">Detecting dropped frames</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/general/timing/nonSlipTiming.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="non-slip-timing-for-imaging">
+<span id="nonslip"></span><h1>Non-slip timing for imaging<a class="headerlink" href="#non-slip-timing-for-imaging" title="Permalink to this headline">¶</a></h1>
+<p>For most behavioural/psychophysics studies timing is most simply controlled by setting some timer (e.g. a <a class="reference internal" href="../../api/core.html#psychopy.core.Clock" title="psychopy.core.Clock"><code class="xref py py-class docutils literal"><span class="pre">Clock()</span></code></a>) to zero and waiting until it has reached a certain value before ending the trial. We might call this a &#8216;relative&#8217; timing method, because everything is timed from the start of the trial/epoch. In reality this will cause an overshoot of some fraction of one screen refresh period (10ms, say). For imaging (EEG/MEG/fMRI) studies adding 10ms to each trial repeatedly for 10 minutes will become a problem, however. After 100 stimulus presentations your stimulus and scanner will be de-synchronised by 1 second.</p>
+<p>There are two ways to get around this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><em>Time by frames</em> If you are confident that you <a class="reference internal" href="detectingFrameDrops.html#detectdroppedframes"><span class="std std-ref">aren&#8217;t dropping frames</span></a> then you could base your timing on frames instead to avoid the problem.</li>
+<li><em>Non-slip (global) clock timing</em> The other way, which for imaging is probably the most sensible, is to arrange timing based on a global clock rather than on a relative timing method. At the start of each trial you add the (known) duration that the trial will last to a <em>global</em> timer and then wait until that timer reaches the necessary value. To facilitate this, the PsychoPy <a class="reference internal" href="../../api/core.html#psychopy.core.Clock" title="psychopy.core.Clock"><code class="xref py py-class docutils literal"><span class="pre">Clock()</span></code></a> was given a new <cite>add()</cite> method as of version 1.74.00 and a <a class="reference internal" href="../../api/core.html#psychopy.core.CountdownTimer" title="psychopy.core.CountdownTimer"><code class="xref py py-class docutils literal"><span class="pre">CountdownTimer()</span></code></a> was also added.</li>
+</ol>
+</div></blockquote>
+<p>The non-slip method can only be used in cases where the trial is of a known duration at its start. It cannot, for example, be used if the trial ends when the subject makes a response, as would occur in most behavioural studies.</p>
+<div class="section" id="non-slip-timing-from-the-builder">
+<h2>Non-slip timing from the Builder<a class="headerlink" href="#non-slip-timing-from-the-builder" title="Permalink to this headline">¶</a></h2>
+<p>(new feature as of version 1.74.00)</p>
+<p>When creating experiments in the <a class="reference internal" href="../../builder/builder.html#builder"><span class="std std-ref">Builder</span></a>, PsychoPy will attempt to identify whether a particular <a class="reference internal" href="../../builder/routines.html#routines"><span class="std std-ref">Routine</span></a> has a known endpoint in seconds. If so then it will use non-slip timing for this Routine based on a global countdown timer called <cite>routineTimer</cite>. Routines that are able to use this non-slip method are shown in green in the <a class="reference internal" href="../../builder/flow.html#flow"><span class="std std-ref">Flow</span></a>, whereas Routines using relative timing are shown in red. So, if you are using PsychoPy for imaging studies then make sure that all the Routines within your loop of epochs are showing as green. (Typically your study will also have a Routine at the start waiting for the first scanner pulse and this will use relative timing, which is appropriate).</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="detectingFrameDrops.html" title="Detecting dropped frames"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="timing.html" title="Timing Issues and synchronisation"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" >Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

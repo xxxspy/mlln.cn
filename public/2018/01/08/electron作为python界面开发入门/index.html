@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="electron作为python界面开发入门"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>electron作为python界面开发入门 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/01/08/electron作为python界面开发入门/">
+                electron作为python界面开发入门
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="electron作为python界面开发入门"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年01月08日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>electron是node开发桌面应用的, 比如git for windows就是electron开发的, 桌面应用可以比网页还漂亮. 而python开发的界面真的很丑, 很多做python web开发的人也比较抵触做python桌面应用, 但是我们又没钱顾一个专门做桌面应用GUI的程序员, 所以electron就比较合适了. 我们可以用web前端的技术来做GUI.</p>
+<a id="more"></a>
+<h3 id="安装全局依赖"><a href="#安装全局依赖" class="headerlink" title="安装全局依赖"></a>安装全局依赖</h3><ul>
+<li>安装nodejs</li>
+<li>安装python3.5(作为开发环境)</li>
+<li>安装node-gyp(<code>npm install -g node-gyp</code>)</li>
+<li>安装windows下的编译环境(<code>npm install --global --production windows-build-tools</code>)</li>
+</ul>
+<p>你会发现安装<code>windows-build-tools</code>同时会把python2安装到你的<code>%USERPROFILE%\.windows-build-tools\python27</code>下, 想知道’USERPROFILE’指向哪里, 只需要在powershell中输入<code>$env:USERPROFILE</code>即可. 现在就需要让node-gyp知道你的python在哪里, 设置<code>node-gyp --python /path/to/python2.7</code>, 或者你用npm的方式调用, 需要设置<code>npm config set python /path/to/executable/python2.7</code>.</p>
+<h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><ul>
+<li>创建一个项目文件夹</li>
+<li>初始化项目<code>npm init</code></li>
+<li>创建文件夹<code>py</code></li>
+<li>在文件夹<code>py</code>内部创建虚拟环境<code>python -m venv .env</code></li>
+<li>在虚拟环境中安装依赖<code>zerorpc</code>和<code>pyinstaller</code>(python 方面比较简单, 不详细介绍)</li>
+</ul>
+<h3 id="安装node依赖"><a href="#安装node依赖" class="headerlink" title="安装node依赖"></a>安装node依赖</h3><h4 id="编辑package-json文件-可以参考我的"><a href="#编辑package-json文件-可以参考我的" class="headerlink" title="编辑package.json文件, 可以参考我的:"></a>编辑<code>package.json</code>文件, 可以参考我的:</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"python-electron"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"start"</span>: <span class="string">".\\node_modules\\.bin\\electron ."</span>,</span><br><span class="line">    <span class="attr">"rebuild"</span>: <span class="string">".\\node_modules\\.bin\\electron-rebuild.cmd"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"electron"</span>: <span class="string">"^1.7.10"</span>,</span><br><span class="line">    <span class="attr">"electron-rebuild"</span>: <span class="string">"^1.6.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"zerorpc"</span>: <span class="string">"^0.9.7"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="配置npm"><a href="#配置npm" class="headerlink" title="配置npm"></a>配置npm</h4><ul>
+<li>在项目根目录下创建<code>.npmrc</code>, 然后输入如下内容:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm_config_target=&quot;1.7.10&quot; # electron version</span><br><span class="line">npm_config_runtime=&quot;electron&quot; # 为elelctron编译</span><br><span class="line">npm_config_disturl=&quot;https://atom.io/download/electron&quot; # 资源下载地址</span><br><span class="line">npm_config_build_from_source=&quot;true&quot; # 从源码编译</span><br></pre></td></tr></table></figure>
+<h4 id="源码编译安装依赖"><a href="#源码编译安装依赖" class="headerlink" title="源码编译安装依赖"></a>源码编译安装依赖</h4><p><code>npm install</code></p>
+<p>这个过程会安装所有列在package.json中的库.</p>
+<h3 id="开发测试程序"><a href="#开发测试程序" class="headerlink" title="开发测试程序"></a>开发测试程序</h3><h4 id="python部分"><a href="#python部分" class="headerlink" title="python部分"></a>python部分</h4><p>这是一个简单的API, 主要功能是把前端发来的字符串经过python的<code>eval</code>处理. 测试程序是否能跑起来, 只需要激活你的python虚拟环境, 然后<code>python ./py/api.py</code>即可.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面的代码放到`./py/api.py`</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> zerorpc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CalcApi</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eval</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="string">"""based on the input text, return the int result"""</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> eval(text)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">echo</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="string">"""echo any text"""</span></span><br><span class="line">        <span class="keyword">return</span> text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_port</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">4242</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    addr = <span class="string">'tcp://127.0.0.1:&#123;&#125;'</span>.format(parse_port())</span><br><span class="line">    s = zerorpc.Server(CalcApi())</span><br><span class="line">    s.bind(addr)</span><br><span class="line">    print(<span class="string">'start running on &#123;&#125;'</span>.format(addr))</span><br><span class="line">    s.run()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="electron部分"><a href="#electron部分" class="headerlink" title="electron部分"></a>electron部分</h4><p>主线程程序, 主要是创建窗口并启动python.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> electron = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line"><span class="keyword">const</span> app = electron.app</span><br><span class="line"><span class="keyword">const</span> BrowserWindow = electron.BrowserWindow</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> mainWindow = <span class="literal">null</span></span><br><span class="line"><span class="keyword">const</span> createWindow = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  mainWindow = <span class="keyword">new</span> BrowserWindow(&#123;<span class="attr">width</span>: <span class="number">800</span>, <span class="attr">height</span>: <span class="number">600</span>&#125;)</span><br><span class="line">  mainWindow.loadURL(<span class="built_in">require</span>(<span class="string">'url'</span>).format(&#123;</span><br><span class="line">    pathname: path.join(__dirname, <span class="string">'index.html'</span>),</span><br><span class="line">    protocol: <span class="string">'file:'</span>,</span><br><span class="line">    slashes: <span class="literal">true</span></span><br><span class="line">  &#125;))</span><br><span class="line">  mainWindow.webContents.openDevTools()</span><br><span class="line">  mainWindow.on(<span class="string">'closed'</span>, () =&gt; &#123;</span><br><span class="line">    mainWindow = <span class="literal">null</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">app.on(<span class="string">'ready'</span>, createWindow)</span><br><span class="line">app.on(<span class="string">'window-all-closed'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (process.platform !== <span class="string">'darwin'</span>) &#123;</span><br><span class="line">    app.quit()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">app.on(<span class="string">'activate'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (mainWindow === <span class="literal">null</span>) &#123;</span><br><span class="line">    createWindow()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下是创建python的进程</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> pyProc = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> pyPort = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectPort = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  pyPort = <span class="number">4242</span></span><br><span class="line">  <span class="keyword">return</span> pyPort</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> createPyProc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'creating python server...'</span>)</span><br><span class="line">  <span class="keyword">let</span> port = <span class="string">''</span> + selectPort()</span><br><span class="line">  <span class="keyword">let</span> script = path.join(__dirname, <span class="string">'py'</span>, <span class="string">'api.py'</span>)</span><br><span class="line">  <span class="keyword">let</span> pypath = path.join(__dirname, <span class="string">'py'</span>,<span class="string">'.env'</span>,<span class="string">'scripts'</span>,<span class="string">'python.exe'</span>)</span><br><span class="line">  pyProc = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn(pypath, [script, port])</span><br><span class="line">  <span class="keyword">if</span> (pyProc != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'child process success'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> exitPyProc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  pyProc.kill()</span><br><span class="line">  pyProc = <span class="literal">null</span></span><br><span class="line">  pyPort = <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.on(<span class="string">'ready'</span>, createPyProc)</span><br><span class="line">app.on(<span class="string">'will-quit'</span>, exitPyProc)</span><br></pre></td></tr></table></figure>
+<p>主页<code>index.html</code>, 就是实现了一个简单的输入框.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello Calculator!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Calculator!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Input something like <span class="tag">&lt;<span class="name">code</span>&gt;</span>1 + 1<span class="tag">&lt;/<span class="name">code</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This calculator supports <span class="tag">&lt;<span class="name">code</span>&gt;</span>+-*/^()<span class="tag">&lt;/<span class="name">code</span>&gt;</span>,</span><br><span class="line">    whitespaces, and integers and floating numbers.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"formula"</span> <span class="attr">value</span>=<span class="string">"1 + 2.0 * 3.1 / (4 ^ 5.6)"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">require</span>(<span class="string">'./render.js'</span>)</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>功能模块<code>render.js</code>, 这部分是响应用户操作并与python通讯的.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> zerorpc = <span class="built_in">require</span>(<span class="string">"zerorpc"</span>)</span><br><span class="line"><span class="keyword">let</span> client = <span class="keyword">new</span> zerorpc.Client()</span><br><span class="line">client.connect(<span class="string">"tcp://127.0.0.1:4242"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> formula = <span class="built_in">document</span>.querySelector(<span class="string">'#formula'</span>)</span><br><span class="line"><span class="keyword">let</span> result = <span class="built_in">document</span>.querySelector(<span class="string">'#result'</span>)</span><br><span class="line">formula.addEventListener(<span class="string">'input'</span>, () =&gt; &#123;</span><br><span class="line">  client.invoke(<span class="string">"eval"</span>, formula.value, (error, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(error) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(error)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result.textContent = res</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">formula.dispatchEvent(<span class="keyword">new</span> Event(<span class="string">'input'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="启动程序"><a href="#启动程序" class="headerlink" title="启动程序"></a>启动程序</h3><p>如果你看我写的package.json文件, 我已经写好了一个启动命令.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<h3 id="打包文件"><a href="#打包文件" class="headerlink" title="打包文件"></a>打包文件</h3><h4 id="打包api-py"><a href="#打包api-py" class="headerlink" title="打包api.py"></a>打包api.py</h4><p>前面我们已经安装了python的打包工具<code>pyinstaller</code>, 所以现在我们在package.json文件中加一条命令即可:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;build-python&quot;:&quot;pyinstaller ./py/api.py --clean --distpath ./pydist&quot;</span><br></pre></td></tr></table></figure>
+<p>现在只要使用命令<code>npm run build-python</code>即可.</p>
+<p>于是在项目根目录下生成了一个<code>pydist</code>文件夹, <code>pydist/api/</code>目录结构如下, 虽然文件多, 但是我们只要知道, api.exe是程序入口即可. 下面可以打包到electron程序里.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">(.env) PS E:\programs\python-electron&gt; ls .\pydist\api</span><br><span class="line">    目录: E:\programs\python-electron\pydist\api</span><br><span class="line">Mode                LastWriteTime         Length Name</span><br><span class="line">----                -------------         ------ ----</span><br><span class="line">d-----        2018/1/10     16:45                Include</span><br><span class="line">d-----        2018/1/10     16:45                tcl</span><br><span class="line">d-----        2018/1/10     16:45                tk</span><br><span class="line">d-----        2018/1/10     16:45                zmq</span><br><span class="line">-a----        2018/1/10     16:45          11616 api-ms-win-core-file-l1-2-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          11616 api-ms-win-core-file-l2-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          14176 api-ms-win-core-localization-l1-2-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          12128 api-ms-win-core-processthreads-l1-1-1.dll</span><br><span class="line">-a----        2018/1/10     16:45          12128 api-ms-win-core-synch-l1-2-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          11616 api-ms-win-core-timezone-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          12640 api-ms-win-crt-conio-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          15712 api-ms-win-crt-convert-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          12128 api-ms-win-crt-environment-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          13664 api-ms-win-crt-filesystem-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          12640 api-ms-win-crt-heap-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          12128 api-ms-win-crt-locale-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          20832 api-ms-win-crt-math-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          19808 api-ms-win-crt-multibyte-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          12640 api-ms-win-crt-process-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          16224 api-ms-win-crt-runtime-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          17760 api-ms-win-crt-stdio-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          17760 api-ms-win-crt-string-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          14176 api-ms-win-crt-time-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:45          12128 api-ms-win-crt-utility-l1-1-0.dll</span><br><span class="line">-a----        2018/1/10     16:44        2481852 api.exe</span><br><span class="line">-a----        2018/1/10     16:45           1028 api.exe.manifest</span><br><span class="line">-a----        2018/1/10     16:44         765325 base_library.zip</span><br><span class="line">-a----        2018/1/10     16:45         285696 gevent.libev.corecext.pyd</span><br><span class="line">-a----        2018/1/10     16:45          80896 gevent._semaphore.pyd</span><br><span class="line">-a----        2018/1/10     16:45          29184 greenlet.pyd</span><br><span class="line">-a----        2018/1/10     16:45          59904 msgpack._packer.pyd</span><br><span class="line">-a----        2018/1/10     16:45          75776 msgpack._unpacker.pyd</span><br><span class="line">-a----        2018/1/10     16:45         633152 MSVCP140.dll</span><br><span class="line">-a----        2018/1/10     16:45         829264 MSVCR100.dll</span><br><span class="line">-a----        2018/1/10     16:45         189952 pyexpat.pyd</span><br><span class="line">-a----        2018/1/10     16:45        3935744 python35.dll</span><br><span class="line">-a----        2018/1/10     16:45         138752 pywintypes35.dll</span><br><span class="line">-a----        2018/1/10     16:45          19968 select.pyd</span><br><span class="line">-a----        2018/1/10     16:45        1640960 tcl86t.dll</span><br><span class="line">-a----        2018/1/10     16:45        1954304 tk86t.dll</span><br><span class="line">-a----        2018/1/10     16:45        1004136 ucrtbase.dll</span><br><span class="line">-a----        2018/1/10     16:45         865792 unicodedata.pyd</span><br><span class="line">-a----        2018/1/10     16:45          87888 VCRUNTIME140.dll</span><br><span class="line">-a----        2018/1/10     16:45         124416 win32api.pyd</span><br><span class="line">-a----        2018/1/10     16:45          62464 win32evtlog.pyd</span><br><span class="line">-a----        2018/1/10     16:45          29696 win32wnet.pyd</span><br><span class="line">-a----        2018/1/10     16:45          55296 zmq.backend.cython.constants.pyd</span><br><span class="line">-a----        2018/1/10     16:45          60928 zmq.backend.cython.context.pyd</span><br><span class="line">-a----        2018/1/10     16:45          30720 zmq.backend.cython.error.pyd</span><br><span class="line">-a----        2018/1/10     16:45          77312 zmq.backend.cython.message.pyd</span><br><span class="line">-a----        2018/1/10     16:45         119808 zmq.backend.cython.socket.pyd</span><br><span class="line">-a----        2018/1/10     16:45          34816 zmq.backend.cython.utils.pyd</span><br><span class="line">-a----        2018/1/10     16:45          46592 zmq.backend.cython._device.pyd</span><br><span class="line">-a----        2018/1/10     16:45          53248 zmq.backend.cython._poll.pyd</span><br><span class="line">-a----        2018/1/10     16:45          26624 zmq.backend.cython._version.pyd</span><br><span class="line">-a----        2018/1/10     16:45          87552 _bz2.pyd</span><br><span class="line">-a----        2018/1/10     16:45         122368 _ctypes.pyd</span><br><span class="line">-a----        2018/1/10     16:45         314880 _decimal.pyd</span><br><span class="line">-a----        2018/1/10     16:45        1443840 _hashlib.pyd</span><br><span class="line">-a----        2018/1/10     16:45         146432 _lzma.pyd</span><br><span class="line">-a----        2018/1/10     16:45          22528 _multiprocessing.pyd</span><br><span class="line">-a----        2018/1/10     16:45          66048 _socket.pyd</span><br><span class="line">-a----        2018/1/10     16:45        2045440 _ssl.pyd</span><br><span class="line">-a----        2018/1/10     16:45          80896 _testcapi.pyd</span><br><span class="line">-a----        2018/1/10     16:45          58368 _tkinter.pyd</span><br></pre></td></tr></table></figure>
+<h4 id="打包electron部分"><a href="#打包electron部分" class="headerlink" title="打包electron部分"></a>打包electron部分</h4><p>这里有一些代码需要修改. 因为之前启动python程序是直接用虚拟环境中的python调用api.py文件, 现在得调用<code>pydist/api/api.exe</code>.</p>
+<p>之前的代码是:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> createPyProc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'creating python server...'</span>)</span><br><span class="line">  <span class="keyword">let</span> port = <span class="string">''</span> + selectPort()</span><br><span class="line">  <span class="keyword">let</span> script = path.join(__dirname, <span class="string">'py'</span>, <span class="string">'api.py'</span>)</span><br><span class="line">  <span class="keyword">let</span> pypath = path.join(__dirname, <span class="string">'py'</span>,<span class="string">'.env'</span>,<span class="string">'scripts'</span>,<span class="string">'python.exe'</span>)</span><br><span class="line">  pyProc = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn(pypath, [script, port])</span><br><span class="line">  <span class="keyword">if</span> (pyProc != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'child process success'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改为:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置一个全局变量来决定是否为开发环境</span></span><br><span class="line"><span class="keyword">const</span> NODE_ENV = <span class="string">'production'</span></span><br><span class="line"><span class="comment">// const NODE_ENV = 'development'</span></span><br><span class="line"><span class="comment">// 根据不同的环境来选择不同的启动方式</span></span><br><span class="line"><span class="keyword">const</span> createPyProc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'creating python server...'</span>)</span><br><span class="line">  <span class="keyword">let</span> port = <span class="string">''</span> + selectPort()</span><br><span class="line">  <span class="keyword">if</span> (NODE_ENV ===<span class="string">'development'</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> script = path.join(__dirname, <span class="string">'py'</span>, <span class="string">'api.py'</span>)</span><br><span class="line">    <span class="keyword">let</span> pypath = path.join(__dirname, <span class="string">'py'</span>, <span class="string">'.env'</span>, <span class="string">'scripts'</span>, <span class="string">'python.exe'</span>)</span><br><span class="line">    pyProc = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn(pypath, [script, port])</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> exePath = path.join(__dirname, <span class="string">'pydist'</span>, <span class="string">'api'</span>,<span class="string">'api.exe'</span>)</span><br><span class="line">    pyProc=<span class="built_in">require</span>(<span class="string">'child_process'</span>).execFile(exePath, [port])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (pyProc != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'child process success'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后, 你需要关闭dev tools, 为了方便调试, 我们在程序中调用了<code>mainWindow.webContents.openDevTools</code>, 同样是加一个判断即可.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(NODE_ENV===<span class="string">'development'</span>)&#123;</span><br><span class="line">	mainWindow.webContents.openDevTools()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后, 你启动一下看是否有问题, 按道理是没有问题的.</p>
+<p>最后就是打包electron, 用到了<code>electron-packager</code>, 我还是把打包命令写在了package.json中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;pack-app&quot;: &quot;./node_modules/.bin/electron-packager . --overwrite --ignore=py$ --ignore=\\.env --ignore=\\.vscode --ignore=old-post-backup&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="安装过程可能出现的问题"><a href="#安装过程可能出现的问题" class="headerlink" title="安装过程可能出现的问题"></a>安装过程可能出现的问题</h3><h4 id="安装electron出现网络超时"><a href="#安装electron出现网络超时" class="headerlink" title="安装electron出现网络超时"></a>安装electron出现网络超时</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/Users/chenlei/node_modules/electron/install.js:47</span><br><span class="line">  throw err</span><br><span class="line">  ^</span><br><span class="line"></span><br><span class="line">Error: connect ETIMEDOUT 54.231.34.41:443</span><br></pre></td></tr></table></figure>
+<p>你需要设置淘宝镜像, 在powershell中运行:</p>
+<p>$env:ELECTRON_MIRROR=”<a href="http://npm.taobao.org/mirrors/electron/" target="_blank" rel="noopener">http://npm.taobao.org/mirrors/electron/</a>“</p>
+<h4 id="总是编译失败"><a href="#总是编译失败" class="headerlink" title="总是编译失败"></a>总是编译失败</h4><ul>
+<li>可能是网络原因, 你需要翻墙或者找个网络好的地方</li>
+<li>可能是配置有问题, 我在这里列出我的环境</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">PS E:\programs\python-electron&gt; npm config ls</span><br><span class="line">; cli configs</span><br><span class="line">metrics-registry = &quot;https://registry.npm.taobao.org/&quot;</span><br><span class="line">scope = &quot;&quot;</span><br><span class="line">user-agent = &quot;npm/5.5.1 node/v8.9.3 win32 x64&quot;</span><br><span class="line"></span><br><span class="line">; project config E:\programs\python-electron\.npmrc</span><br><span class="line">npm_config_build_from_source = true</span><br><span class="line">npm_config_disturl = &quot;https://atom.io/download/electron&quot;</span><br><span class="line">npm_config_runtime = &quot;electron&quot;</span><br><span class="line">npm_config_target = &quot;1.7.10&quot;</span><br><span class="line"></span><br><span class="line">; userconfig C:\Users\wangluobu\.npmrc</span><br><span class="line">msvs_version = &quot;2015&quot;</span><br><span class="line">python = &quot;C:\\Users\\wangluobu\\.windows-build-tools\\python27&quot;</span><br><span class="line">registry = &quot;https://registry.npm.taobao.org/&quot;</span><br><span class="line"></span><br><span class="line">; node bin location = C:\Program Files\nodejs\v8\node.exe</span><br><span class="line">; cwd = E:\programs\python-electron</span><br><span class="line">; HOME = C:\Users\wangluobu</span><br><span class="line">; &quot;npm config ls -l&quot; to show all defaults.</span><br></pre></td></tr></table></figure>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>有什么问题请在下方留言. 你可以下载我打包好的程序试一试, 只不过比较大, 我放在<a href="http://mlln.cn">网盘</a>里了.</p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/electron/">#electron</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/electron/">
+            electron
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/05/08/python-electron-flexx构建纯python桌面GUI/">
+                    python electron flexx构建纯python桌面GUI
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/01/08/electron作为python界面开发入门/">
+                    electron作为python界面开发入门
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="信息熵信息增益率基尼系数原理和pandas实战"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>信息熵信息增益率基尼系数原理和pandas实战 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/09/18/信息熵信息增益率基尼系数原理和pandas实战/index.html",
+    "appid": "1600845001263316",
+    "title": "信息熵信息增益率基尼系数原理和pandas实战",
+    "images": [
+        "http://mlln.cn/2018/09/18/信息熵信息增益率基尼系数原理和pandas实战/main.jpg"
+    ], 
+    "pubDate": "2018-09-18T07:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/18/信息熵信息增益率基尼系数原理和pandas实战/">
+                信息熵信息增益率基尼系数原理和pandas实战
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="信息熵信息增益率基尼系数原理和pandas实战"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月18日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#案例和数据集"><span class="toc-number">1.</span> <span class="toc-text">案例和数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信息熵怎么算"><span class="toc-number">2.</span> <span class="toc-text">信息熵怎么算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#条件信息熵怎么算"><span class="toc-number">3.</span> <span class="toc-text">条件信息熵怎么算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信息增益"><span class="toc-number">4.</span> <span class="toc-text">信息增益</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性的信息增益与属性的类别数的关系"><span class="toc-number">5.</span> <span class="toc-text">属性的信息增益与属性的类别数的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#信息增益率"><span class="toc-number">6.</span> <span class="toc-text">信息增益率</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>信息增益(Info Gain), 信息增益率(Info Gain Ratio)和 基尼指数(Gini Index)都是在做决策树时试用的分支选择策略, 下面我们试用numpy来实现这几个指标, 以便加深对这些指标的理解。</p>
+<p>下面我们来引入用到的库:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 进行数据整理</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment"># 数据</span></span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="comment"># 验证结果</span></span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br></pre></td></tr></table></figure>
+<h3 id="案例和数据集"><a href="#案例和数据集" class="headerlink" title="案例和数据集"></a>案例和数据集</h3><p>学习决策树常用的一个数据集就是”机器学习（周志华）》 西瓜数据集3.0”, 下面我把数据粘贴出来, 你们就不必下载了, 直接硬编码到python种使用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">data_str = output = io.StringIO(<span class="string">'''编号,色泽,根蒂,敲声,纹理,脐部,触感,密度,含糖率,好瓜</span></span><br><span class="line"><span class="string">1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,0.697,0.46,是  </span></span><br><span class="line"><span class="string">2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,0.774,0.376,是  </span></span><br><span class="line"><span class="string">3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,0.634,0.264,是  </span></span><br><span class="line"><span class="string">4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,0.608,0.318,是  </span></span><br><span class="line"><span class="string">5,浅白,蜷缩,浊响,清晰,凹陷,硬滑,0.556,0.215,是  </span></span><br><span class="line"><span class="string">6,青绿,稍蜷,浊响,清晰,稍凹,软粘,0.403,0.237,是  </span></span><br><span class="line"><span class="string">7,乌黑,稍蜷,浊响,稍糊,稍凹,软粘,0.481,0.149,是  </span></span><br><span class="line"><span class="string">8,乌黑,稍蜷,浊响,清晰,稍凹,硬滑,0.437,0.211,是  </span></span><br><span class="line"><span class="string">9,乌黑,稍蜷,沉闷,稍糊,稍凹,硬滑,0.666,0.091,否  </span></span><br><span class="line"><span class="string">10,青绿,硬挺,清脆,清晰,平坦,软粘,0.243,0.267,否  </span></span><br><span class="line"><span class="string">11,浅白,硬挺,清脆,模糊,平坦,硬滑,0.245,0.057,否  </span></span><br><span class="line"><span class="string">12,浅白,蜷缩,浊响,模糊,平坦,软粘,0.343,0.099,否  </span></span><br><span class="line"><span class="string">13,青绿,稍蜷,浊响,稍糊,凹陷,硬滑,0.639,0.161,否  </span></span><br><span class="line"><span class="string">14,浅白,稍蜷,沉闷,稍糊,凹陷,硬滑,0.657,0.198,否  </span></span><br><span class="line"><span class="string">15,乌黑,稍蜷,浊响,清晰,稍凹,软粘,0.36,0.37,否  </span></span><br><span class="line"><span class="string">16,浅白,蜷缩,浊响,模糊,平坦,硬滑,0.593,0.042,否  </span></span><br><span class="line"><span class="string">17,青绿,蜷缩,沉闷,稍糊,稍凹,硬滑,0.719,0.103,否'''</span>)</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(data_str)</span><br><span class="line">data.set_index(<span class="string">'编号'</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>色泽</th>
+      <th>根蒂</th>
+      <th>敲声</th>
+      <th>纹理</th>
+      <th>脐部</th>
+      <th>触感</th>
+      <th>密度</th>
+      <th>含糖率</th>
+      <th>好瓜</th>
+    </tr>
+    <tr>
+      <th>编号</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>青绿</td>
+      <td>蜷缩</td>
+      <td>浊响</td>
+      <td>清晰</td>
+      <td>凹陷</td>
+      <td>硬滑</td>
+      <td>0.697</td>
+      <td>0.460</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>乌黑</td>
+      <td>蜷缩</td>
+      <td>沉闷</td>
+      <td>清晰</td>
+      <td>凹陷</td>
+      <td>硬滑</td>
+      <td>0.774</td>
+      <td>0.376</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>乌黑</td>
+      <td>蜷缩</td>
+      <td>浊响</td>
+      <td>清晰</td>
+      <td>凹陷</td>
+      <td>硬滑</td>
+      <td>0.634</td>
+      <td>0.264</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>青绿</td>
+      <td>蜷缩</td>
+      <td>沉闷</td>
+      <td>清晰</td>
+      <td>凹陷</td>
+      <td>硬滑</td>
+      <td>0.608</td>
+      <td>0.318</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>浅白</td>
+      <td>蜷缩</td>
+      <td>浊响</td>
+      <td>清晰</td>
+      <td>凹陷</td>
+      <td>硬滑</td>
+      <td>0.556</td>
+      <td>0.215</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>青绿</td>
+      <td>稍蜷</td>
+      <td>浊响</td>
+      <td>清晰</td>
+      <td>稍凹</td>
+      <td>软粘</td>
+      <td>0.403</td>
+      <td>0.237</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>乌黑</td>
+      <td>稍蜷</td>
+      <td>浊响</td>
+      <td>稍糊</td>
+      <td>稍凹</td>
+      <td>软粘</td>
+      <td>0.481</td>
+      <td>0.149</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>乌黑</td>
+      <td>稍蜷</td>
+      <td>浊响</td>
+      <td>清晰</td>
+      <td>稍凹</td>
+      <td>硬滑</td>
+      <td>0.437</td>
+      <td>0.211</td>
+      <td>是</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>乌黑</td>
+      <td>稍蜷</td>
+      <td>沉闷</td>
+      <td>稍糊</td>
+      <td>稍凹</td>
+      <td>硬滑</td>
+      <td>0.666</td>
+      <td>0.091</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>青绿</td>
+      <td>硬挺</td>
+      <td>清脆</td>
+      <td>清晰</td>
+      <td>平坦</td>
+      <td>软粘</td>
+      <td>0.243</td>
+      <td>0.267</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>浅白</td>
+      <td>硬挺</td>
+      <td>清脆</td>
+      <td>模糊</td>
+      <td>平坦</td>
+      <td>硬滑</td>
+      <td>0.245</td>
+      <td>0.057</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>浅白</td>
+      <td>蜷缩</td>
+      <td>浊响</td>
+      <td>模糊</td>
+      <td>平坦</td>
+      <td>软粘</td>
+      <td>0.343</td>
+      <td>0.099</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>青绿</td>
+      <td>稍蜷</td>
+      <td>浊响</td>
+      <td>稍糊</td>
+      <td>凹陷</td>
+      <td>硬滑</td>
+      <td>0.639</td>
+      <td>0.161</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>浅白</td>
+      <td>稍蜷</td>
+      <td>沉闷</td>
+      <td>稍糊</td>
+      <td>凹陷</td>
+      <td>硬滑</td>
+      <td>0.657</td>
+      <td>0.198</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>乌黑</td>
+      <td>稍蜷</td>
+      <td>浊响</td>
+      <td>清晰</td>
+      <td>稍凹</td>
+      <td>软粘</td>
+      <td>0.360</td>
+      <td>0.370</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>浅白</td>
+      <td>蜷缩</td>
+      <td>浊响</td>
+      <td>模糊</td>
+      <td>平坦</td>
+      <td>硬滑</td>
+      <td>0.593</td>
+      <td>0.042</td>
+      <td>否</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>青绿</td>
+      <td>蜷缩</td>
+      <td>沉闷</td>
+      <td>稍糊</td>
+      <td>稍凹</td>
+      <td>硬滑</td>
+      <td>0.719</td>
+      <td>0.103</td>
+      <td>否</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>该数据集通常是使用前几个西瓜属性预测最后一个指标”好瓜”.</p>
+<h3 id="信息熵怎么算"><a href="#信息熵怎么算" class="headerlink" title="信息熵怎么算"></a>信息熵怎么算</h3><p>要计算信息增益的话, 首先要知道怎么算信息熵, 它的公式是:</p>
+<p><code>$$
+H(X) = \sum_{i \in X} p_i log p_i
+$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">entropy</span><span class="params">(data, att_name)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    data: 数据集</span></span><br><span class="line"><span class="string">    att_name: 属性名</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    levels = data[att_name].unique()</span><br><span class="line">    <span class="comment"># 信息熵</span></span><br><span class="line">    ent = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> lv <span class="keyword">in</span> levels:</span><br><span class="line">        pi = sum(data[att_name]==lv) / data.shape[<span class="number">0</span>]</span><br><span class="line">        ent += pi*np.log(pi)</span><br><span class="line">    <span class="keyword">return</span> -ent</span><br><span class="line">print(<span class="string">'好瓜的信息熵:'</span>)</span><br><span class="line">entropy(data, <span class="string">'好瓜'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    好瓜的信息熵:
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    0.8760918930634294
+
+</div>
+
+<p>使用scipy内置的<code>stats.entropy</code>验证我们的函数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">entropy_scipy</span><span class="params">(data, att_name)</span>:</span></span><br><span class="line">    n = data.shape[<span class="number">0</span>]</span><br><span class="line">    values = data[att_name].value_counts()</span><br><span class="line">    <span class="keyword">return</span> stats.entropy(values/n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> entropy(data, <span class="string">'好瓜'</span>)==entropy_scipy(data, <span class="string">'好瓜'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="条件信息熵怎么算"><a href="#条件信息熵怎么算" class="headerlink" title="条件信息熵怎么算"></a>条件信息熵怎么算</h3><p>已知条件Y, 求X的概率就是P(X|Y), 知道的信息越多，随机事件的不确定性就越小。<br>书中定义：在Y条件X的条件熵：（二元模型）</p>
+<p>引自维基百科:</p>
+<p><img src="imgs/conditional_entropy.png"></p>
+<p>因为我们已经有了交叉熵的公式, 所以我们其实可以直接算出<code>$H(Y|X=x)$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conditional_entropy</span><span class="params">(data, xname, yname)</span>:</span></span><br><span class="line">    xs = data[xname].unique()</span><br><span class="line">    ys = data[yname].unique()</span><br><span class="line">    p_x = data[xname].value_counts() / data.shape[<span class="number">0</span>]</span><br><span class="line">    ce = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> xs:</span><br><span class="line">        ce += p_x[x]*entropy(data[data[xname]==x], yname)</span><br><span class="line">    <span class="keyword">return</span> ce</span><br><span class="line"></span><br><span class="line">print(<span class="string">'触感条件下, 好瓜的信息熵:'</span>)</span><br><span class="line">conditional_entropy(data, <span class="string">'触感'</span>, <span class="string">'好瓜'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    触感条件下, 好瓜的信息熵:
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    0.8462465738213797
+
+</div>
+
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>理论上我们可以证明<code>$H(Y)&gt;=H(Y|X)$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gain</span><span class="params">(data, xname, yname)</span>:</span></span><br><span class="line">    en = entropy(data, yname)</span><br><span class="line">    ce = conditional_entropy(data, xname, yname)</span><br><span class="line">    <span class="keyword">return</span> en - ce</span><br><span class="line"></span><br><span class="line">print(<span class="string">'触感的引入导致的信息增益:'</span>)</span><br><span class="line">gain(data, <span class="string">'触感'</span>, <span class="string">'好瓜'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    触感的引入导致的信息增益:
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    0.029845319242049695
+
+</div>
+
+<h3 id="属性的信息增益与属性的类别数的关系"><a href="#属性的信息增益与属性的类别数的关系" class="headerlink" title="属性的信息增益与属性的类别数的关系"></a>属性的信息增益与属性的类别数的关系</h3><p>属性的类别越多, 根据该属性就可以把数据切分的更细, 这样往往导致信息的混乱程度降低, 所以类别多的属性的信息增益较大, 我们可以用代码实验一下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data[<span class="string">'testCol'</span>] = <span class="number">0</span></span><br><span class="line">data.iloc[<span class="number">10</span>:, <span class="number">-1</span>] = <span class="number">1</span></span><br><span class="line">print(gain(data, <span class="string">'testCol'</span>, <span class="string">'触感'</span>))</span><br><span class="line">data.iloc[<span class="number">14</span>:, <span class="number">-1</span>] = <span class="number">2</span></span><br><span class="line">print(gain(data, <span class="string">'testCol'</span>, <span class="string">'触感'</span>))</span><br><span class="line">print(gain(data, <span class="string">'密度'</span>, <span class="string">'触感'</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    0.00011925580490779186
+    <br>0.0018253756129741339
+    <br>0.605797499372304
+    <br>
+</div>
+
+<h3 id="信息增益率"><a href="#信息增益率" class="headerlink" title="信息增益率"></a>信息增益率</h3><p>信息增益率的提出是为了规避信息增益种属性类别数目造成的影响, 它的计算公式是:</p>
+<p><code>$$
+GainRatio(Y, X) = {Gain(Y, X) \over SplitInfo(X)}
+$$</code></p>
+<p>其中:</p>
+<p><code>$$
+SplitInfo(X)= \sum_{i \in X} p_i log p_i = H(X)
+$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gain_ratio</span><span class="params">(data, xname, yname)</span>:</span></span><br><span class="line">    g = gain(data, xname, yname)</span><br><span class="line">    si = entropy(data, xname)</span><br><span class="line">    <span class="keyword">return</span> g / si</span><br><span class="line">print(<span class="string">'信息增益率:'</span>)</span><br><span class="line">gain_ratio(data, <span class="string">'触感'</span>, <span class="string">'好瓜'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    信息增益率:
+    <br>
+</div>
+
+
+<div class="output">
+输出(plain):<br>
+
+    0.04926616447405919
+
+</div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="信息熵信息增益率基尼系数原理和pandas实战.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/pandas/">
+            pandas
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/18/pandas文本数据转整数分类编码的最佳实践/">
+                    pandas文本数据转整数分类编码的最佳实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/18/信息熵信息增益率基尼系数原理和pandas实战/">
+                    信息熵信息增益率基尼系数原理和pandas实战
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/07/05/pandas教程：[28]散点图添加趋势线/">
+                    pandas教程：[28]散点图添加趋势线
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/06/19/pandas教程：[31]箱形图/">
+                    pandas教程：[31]箱形图
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/05/23/pandas教程：[30]直方图/">
+                    pandas教程：[30]直方图
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/05/19/pandas教程：[8]数据分组/">
+                    pandas教程：[8]数据分组
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/04/15/pandas教程：[21]带有缺失值的计算/">
+                    pandas教程：[21]带有缺失值的计算
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/03/03/pandas教程：[7]筛选计数统计/">
+                    pandas教程：[7]筛选计数统计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/01/11/pandas教程：[4]Dataframe筛选数据/">
+                    pandas教程：[4]Dataframe筛选数据
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/10/23/pandas教程：[1]DataFrame入门/">
+                    pandas教程：[1]DataFrame入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/10/17/pandas教程：[14]按月分组/">
+                    pandas教程：[14]按月分组
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

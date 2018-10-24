@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="keras教程-n-10分钟入门LSTM"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>keras教程-n-10分钟入门LSTM - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                keras教程-n-10分钟入门LSTM
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-n-10分钟入门LSTM"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月02日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是seq2seq模型-序列到序列的模型"><span class="toc-number">1.</span> <span class="toc-text">什么是seq2seq模型(序列到序列的模型)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#简单模型-输入的序列和输出序列长度都相同"><span class="toc-number">1.1.</span> <span class="toc-text">简单模型:输入的序列和输出序列长度都相同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更通用的模型-输入和输出长度不同"><span class="toc-number">1.2.</span> <span class="toc-text">更通用的模型:输入和输出长度不同</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keras案例"><span class="toc-number">2.</span> <span class="toc-text">keras案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#总的流程"><span class="toc-number">2.1.</span> <span class="toc-text">总的流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-number">3.</span> <span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#彩蛋"><span class="toc-number">4.</span> <span class="toc-text">彩蛋</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如果我想用GRU层而不是LSTM怎么办"><span class="toc-number">4.1.</span> <span class="toc-text">如果我想用GRU层而不是LSTM怎么办?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果用词而不是字母作为输入单元-用数字代表这些词-该怎么做"><span class="toc-number">4.2.</span> <span class="toc-text">如果用词而不是字母作为输入单元, 用数字代表这些词, 该怎么做</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果我不想使用’teacher-forcing’来训练"><span class="toc-number">4.3.</span> <span class="toc-text">如果我不想使用’teacher forcing’来训练</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本教程的全部代码"><span class="toc-number">5.</span> <span class="toc-text">本教程的全部代码</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+<li>tensorflow 1.x</li>
+<li>keras 2.x</li>
+</ul>
+<p>用过keras的人可能都遇到过这个问题: 怎么用keras来实现一个序列到序列的LSTM网络, 因为这个网络相对于简单的多层感知机要复杂很多。今天我们就用10分钟来实现一个lstm神经网络。前提是你对这个网络结构已经有一些了解。 </p>
+<h3 id="什么是seq2seq模型-序列到序列的模型"><a href="#什么是seq2seq模型-序列到序列的模型" class="headerlink" title="什么是seq2seq模型(序列到序列的模型)"></a>什么是seq2seq模型(序列到序列的模型)</h3><p>序列到序列的模型指的是模型的输入和输出都是一个序列, 比如机器翻译, 输入是中文的句子, 输出是英文的句子。这样的模型还可以被用于对话机器人或者一些文字生成的场景。</p>
+<h4 id="简单模型-输入的序列和输出序列长度都相同"><a href="#简单模型-输入的序列和输出序列长度都相同" class="headerlink" title="简单模型:输入的序列和输出序列长度都相同"></a>简单模型:输入的序列和输出序列长度都相同</h4><p>当输入序列和输出序列具有相同的长度时，您可以使用Keras LSTM或GRU层简单地实现这些模型。这个示例脚本就是这种情况，它显示了如何教RNN学习数字加法：</p>
+<p><img src="images/add-nums.png"></p>
+<p>这种方法的一个警告是，它假设有了输入就能产生输出。这在某些情况下有效（数字字符串加法），但对大多数用例不起作用。在一般情况下，关于整个输入序列的信息是必要的，以便开始生成目标序列。</p>
+<h4 id="更通用的模型-输入和输出长度不同"><a href="#更通用的模型-输入和输出长度不同" class="headerlink" title="更通用的模型:输入和输出长度不同"></a>更通用的模型:输入和输出长度不同</h4><p>在一般情况下，输入序列和输出序列具有不同的长度（例如机器翻译），并且需要整个输入序列以便开始预测目标。这需要更高级的设置，这是人们在提及没有进一步上下文的“序列到序列模型”时通常所指的。以下是它的工作原理：</p>
+<ul>
+<li>RNN层充当“编码器”：它处理输入序列并返回其自己的内部状态。注意，我们丢弃编码器RNN的输出，仅使用状态信息。该状态将用作下一步骤中解码器的“上下文”。</li>
+<li>另一个RNN层（或其堆栈）充当“解码器”：在给定目标序列的先前字符的情况下，训练它以预测目标序列的下一个字符。具体而言，训练模型将目标序列转换为相同的序列但偏移一个时间步骤，在此上下文中称为“教师强制”的训练过程。重要的是，解码器使用来自编码器的状态向量作为初始状态，这是解码器获得应该生成什么的信息。</li>
+</ul>
+<p><img src="images/seq2seq.png"></p>
+<p>在预测阶段, 也就是在解码未知输入序列时, 我们经过的步骤有所不同:</p>
+<p>1）将输入序列编码为状态向量。<br>2）从大小为1的目标序列开始（只是序列开始字符）。<br>3）将状态向量和1-char目标序列馈送到解码器以产生对下一个字符的预测。<br>4）使用这些预测对下一个字符进行采样（我们只使用argmax）。<br>5）将采样的字符附加到目标序列<br>6）重复，直到我们生成序列结束字符或我们达到序列最长限制。</p>
+<h3 id="keras案例"><a href="#keras案例" class="headerlink" title="keras案例"></a>keras案例</h3><p>我们用代码来加强理解。</p>
+<p>对于我们的示例，我们将使用成对的英语句子及其中文翻译的数据集，您可以从<a href="http://mlln.cn/2018/08/26/机器翻译语料库大全(免费下">网站(mlln.cn)下载</a>) 。要下载的文件名为 cmn-eng.zip。我们将实现一个字符级的序列到序列模型，逐个字符地处理输入并逐个字符地生成输出。另一种选择是单词级模型，这对于机器翻译而言更为常见。在本文的最后，您将找到一些关于使用嵌入层将模型转换为单词级模型的注释。</p>
+<h4 id="总的流程"><a href="#总的流程" class="headerlink" title="总的流程"></a>总的流程</h4><ul>
+<li><p>1）将句子转换为3个Numpy数组，encoder_input_data，decoder_input_data，decoder_target_data：</p>
+<ul>
+<li>encoder_input_data是包含英语句子的one-hot向量的三维数组, 形状为（num_pairs，max_english_sentence_length，num_english_characters）。</li>
+<li>decoder_input_data是一个形状为（num_pairs，max_chi_sentence_length，num_chi_characters）的3D数组，包含中文句子的one-hot向量。</li>
+<li>decoder_target_data与decoder_input_data相同，但偏移一个timestep。 decoder_target_data [：，t，：]与decoder_input_data [：，t + 1，：]相同。</li>
+</ul>
+</li>
+<li><p>2）训练基本的基于LSTM的Seq2Seq模型以预测给出encoder_input_data和decoder_input_data的decoder_target_data。我们的模型使用”teacher forcing”。</p>
+</li>
+<li><p>3）翻译一些句子以检查模型是否正常工作（将来自encoder_input_data的样本从decoder_target_data转换成相应的样本）。</p>
+</li>
+</ul>
+<p>由于训练过程和推理过程（解码句子）完全不同，我们对两者使用不同的模型，尽管它们都利用相同的内层。</p>
+<p>这是我们的训练模型, 它利用了keras的三个关键参数:</p>
+<ul>
+<li>return_state参数，配置RNN层以返回列表，其中第一个是输出，下一个是内部RNN状态。这用于恢复编码器的状态。</li>
+<li>inital_state参数，指定RNN的初始状态。这用于将编码器状态作为初始状态传递给解码器。</li>
+<li>return_sequences参数，配置RNN以返回其完整的输出序列（而不仅仅是最后一个输出，默认行为）。这用于解码器。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, LSTM, Dense</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义输入序列</span></span><br><span class="line">encoder_inputs = Input(shape=(<span class="keyword">None</span>, num_encoder_tokens))</span><br><span class="line"><span class="comment"># 构建LSTM单元</span></span><br><span class="line">encoder = LSTM(latent_dim, return_state=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># 获取输出和状态h和状态c</span></span><br><span class="line">encoder_outputs, state_h, state_c = encoder(encoder_inputs)</span><br><span class="line"><span class="comment"># 我们抛弃 `encoder_outputs` 只保留states.</span></span><br><span class="line">encoder_states = [state_h, state_c]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置解码器`的初始状态为encoder_states` </span></span><br><span class="line">decoder_inputs = Input(shape=(<span class="keyword">None</span>, num_decoder_tokens))</span><br><span class="line"><span class="comment"># 我们让编码器返回全部的output 序列,</span></span><br><span class="line"><span class="comment"># 并且返回内部状态, 在训练阶段我们不使用内部状态信息</span></span><br><span class="line"><span class="comment"># 但是在推断阶段会用到</span></span><br><span class="line">decoder_lstm = LSTM(latent_dim, return_sequences=<span class="keyword">True</span>, return_state=<span class="keyword">True</span>)</span><br><span class="line">decoder_outputs, _, _ = decoder_lstm(decoder_inputs,</span><br><span class="line">                                     initial_state=encoder_states)</span><br><span class="line">decoder_dense = Dense(num_decoder_tokens, activation=<span class="string">'softmax'</span>)</span><br><span class="line">decoder_outputs = decoder_dense(decoder_outputs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the model that will turn</span></span><br><span class="line"><span class="comment"># `encoder_input_data` &amp; `decoder_input_data` into `decoder_target_data`</span></span><br><span class="line">model = Model([encoder_inputs, decoder_inputs], decoder_outputs)</span><br></pre></td></tr></table></figure>
+<p>用两行代码来实现训练模型，同时监控20％样本中的loss。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'categorical_crossentropy'</span>)</span><br><span class="line">model.fit([encoder_input_data, decoder_input_data], decoder_target_data,</span><br><span class="line">          batch_size=batch_size,</span><br><span class="line">          epochs=epochs,</span><br><span class="line">          validation_split=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+<p>训练大概一小时以后, 我们可以做推断了。</p>
+<ul>
+<li>1）对输入句子进行编码并获取初始解码器状态</li>
+<li>2）以该初始状态和“序列开始”标记作为目标运行解码器的一步。输出将是下一个目标字符。</li>
+<li>3）附加预测的目标字符并重复。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">encoder_model = Model(encoder_inputs, encoder_states)</span><br><span class="line"></span><br><span class="line">decoder_state_input_h = Input(shape=(latent_dim,))</span><br><span class="line">decoder_state_input_c = Input(shape=(latent_dim,))</span><br><span class="line">decoder_states_inputs = [decoder_state_input_h, decoder_state_input_c]</span><br><span class="line">decoder_outputs, state_h, state_c = decoder_lstm(</span><br><span class="line">    decoder_inputs, initial_state=decoder_states_inputs)</span><br><span class="line">decoder_states = [state_h, state_c]</span><br><span class="line">decoder_outputs = decoder_dense(decoder_outputs)</span><br><span class="line">decoder_model = Model(</span><br><span class="line">    [decoder_inputs] + decoder_states_inputs,</span><br><span class="line">    [decoder_outputs] + decoder_states)</span><br></pre></td></tr></table></figure>
+<p>我们用它来实现一个生成句子的循环:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode_sequence</span><span class="params">(input_seq)</span>:</span></span><br><span class="line">    <span class="comment"># Encode the input as state vectors.</span></span><br><span class="line">    states_value = encoder_model.predict(input_seq)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Generate empty target sequence of length 1.</span></span><br><span class="line">    target_seq = np.zeros((<span class="number">1</span>, <span class="number">1</span>, num_decoder_tokens))</span><br><span class="line">    <span class="comment"># Populate the first character of target sequence with the start character.</span></span><br><span class="line">    target_seq[<span class="number">0</span>, <span class="number">0</span>, target_token_index[<span class="string">'\t'</span>]] = <span class="number">1.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Sampling loop for a batch of sequences</span></span><br><span class="line">    <span class="comment"># (to simplify, here we assume a batch of size 1).</span></span><br><span class="line">    stop_condition = <span class="keyword">False</span></span><br><span class="line">    decoded_sentence = <span class="string">''</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> stop_condition:</span><br><span class="line">        output_tokens, h, c = decoder_model.predict(</span><br><span class="line">            [target_seq] + states_value)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Sample a token</span></span><br><span class="line">        sampled_token_index = np.argmax(output_tokens[<span class="number">0</span>, <span class="number">-1</span>, :])</span><br><span class="line">        sampled_char = reverse_target_char_index[sampled_token_index]</span><br><span class="line">        decoded_sentence += sampled_char</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Exit condition: either hit max length</span></span><br><span class="line">        <span class="comment"># or find stop character.</span></span><br><span class="line">        <span class="keyword">if</span> (sampled_char == <span class="string">'\n'</span> <span class="keyword">or</span></span><br><span class="line">           len(decoded_sentence) &gt; max_decoder_seq_length):</span><br><span class="line">            stop_condition = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Update the target sequence (of length 1).</span></span><br><span class="line">        target_seq = np.zeros((<span class="number">1</span>, <span class="number">1</span>, num_decoder_tokens))</span><br><span class="line">        target_seq[<span class="number">0</span>, <span class="number">0</span>, sampled_token_index] = <span class="number">1.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Update states</span></span><br><span class="line">        states_value = [h, c]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decoded_sentence</span><br></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>我们的结果似乎出奇的好, 但是这并不让我吃惊, 因为我们的测试数据就是训练数据!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input sentence: Be nice.</span><br><span class="line">Decoded sentence: Soyez gentil !</span><br><span class="line">-</span><br><span class="line">Input sentence: Drop it!</span><br><span class="line">Decoded sentence: Laissez tomber !</span><br><span class="line">-</span><br><span class="line">Input sentence: Get out!</span><br><span class="line">Decoded sentence: Sortez !</span><br></pre></td></tr></table></figure>
+<h3 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h3><h4 id="如果我想用GRU层而不是LSTM怎么办"><a href="#如果我想用GRU层而不是LSTM怎么办" class="headerlink" title="如果我想用GRU层而不是LSTM怎么办?"></a>如果我想用GRU层而不是LSTM怎么办?</h4><p>使用GRU更简单, 因为LSTM有两个状态向量, 而GRU只有一个。<br>下面是修改的代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">encoder_inputs = Input(shape=(<span class="keyword">None</span>, num_encoder_tokens))</span><br><span class="line">encoder = GRU(latent_dim, return_state=<span class="keyword">True</span>)</span><br><span class="line">encoder_outputs, state_h = encoder(encoder_inputs)</span><br><span class="line"></span><br><span class="line">decoder_inputs = Input(shape=(<span class="keyword">None</span>, num_decoder_tokens))</span><br><span class="line">decoder_gru = GRU(latent_dim, return_sequences=<span class="keyword">True</span>)</span><br><span class="line">decoder_outputs = decoder_gru(decoder_inputs, initial_state=state_h)</span><br><span class="line">decoder_dense = Dense(num_decoder_tokens, activation=<span class="string">'softmax'</span>)</span><br><span class="line">decoder_outputs = decoder_dense(decoder_outputs)</span><br><span class="line">model = Model([encoder_inputs, decoder_inputs], decoder_outputs)</span><br></pre></td></tr></table></figure>
+<h4 id="如果用词而不是字母作为输入单元-用数字代表这些词-该怎么做"><a href="#如果用词而不是字母作为输入单元-用数字代表这些词-该怎么做" class="headerlink" title="如果用词而不是字母作为输入单元, 用数字代表这些词, 该怎么做"></a>如果用词而不是字母作为输入单元, 用数字代表这些词, 该怎么做</h4><p>如果你的输入时数字序列(用数字代表词)你可以使用keras的Embedding 层, 下面是具体做法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define an input sequence and process it.</span></span><br><span class="line">encoder_inputs = Input(shape=(<span class="keyword">None</span>,))</span><br><span class="line">x = Embedding(num_encoder_tokens, latent_dim)(encoder_inputs)</span><br><span class="line">x, state_h, state_c = LSTM(latent_dim,</span><br><span class="line">                           return_state=<span class="keyword">True</span>)(x)</span><br><span class="line">encoder_states = [state_h, state_c]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set up the decoder, using `encoder_states` as initial state.</span></span><br><span class="line">decoder_inputs = Input(shape=(<span class="keyword">None</span>,))</span><br><span class="line">x = Embedding(num_decoder_tokens, latent_dim)(decoder_inputs)</span><br><span class="line">x = LSTM(latent_dim, return_sequences=<span class="keyword">True</span>)(x, initial_state=encoder_states)</span><br><span class="line">decoder_outputs = Dense(num_decoder_tokens, activation=<span class="string">'softmax'</span>)(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define the model that will turn</span></span><br><span class="line"><span class="comment"># `encoder_input_data` &amp; `decoder_input_data` into `decoder_target_data`</span></span><br><span class="line">model = Model([encoder_inputs, decoder_inputs], decoder_outputs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Compile &amp; run training</span></span><br><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'categorical_crossentropy'</span>)</span><br><span class="line"><span class="comment"># Note that `decoder_target_data` needs to be one-hot encoded,</span></span><br><span class="line"><span class="comment"># rather than sequences of integers like `decoder_input_data`!</span></span><br><span class="line">model.fit([encoder_input_data, decoder_input_data], decoder_target_data,</span><br><span class="line">          batch_size=batch_size,</span><br><span class="line">          epochs=epochs,</span><br><span class="line">          validation_split=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="如果我不想使用’teacher-forcing’来训练"><a href="#如果我不想使用’teacher-forcing’来训练" class="headerlink" title="如果我不想使用’teacher forcing’来训练"></a>如果我不想使用’teacher forcing’来训练</h4><p>在某些特殊情况下，可能无法使用’teacher forcing’，因为你无法访问完整的目标序列，例如：如果你正在对很长的序列进行在线培训，那么缓冲完整的输入目标对是不可能的。在这种情况下，你可能希望通过将解码器的输出重新注入解码器的输入来进行训练，就像我们在推理阶段做的那样。</p>
+<p>你可以通过构建硬编码输出重新注入循环的模型来实现此目的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Lambda</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> backend <span class="keyword">as</span> K</span><br><span class="line"></span><br><span class="line"><span class="comment"># The first part is unchanged</span></span><br><span class="line">encoder_inputs = Input(shape=(<span class="keyword">None</span>, num_encoder_tokens))</span><br><span class="line">encoder = LSTM(latent_dim, return_state=<span class="keyword">True</span>)</span><br><span class="line">encoder_outputs, state_h, state_c = encoder(encoder_inputs)</span><br><span class="line">states = [state_h, state_c]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set up the decoder, which will only process one timestep at a time.</span></span><br><span class="line">decoder_inputs = Input(shape=(<span class="number">1</span>, num_decoder_tokens))</span><br><span class="line">decoder_lstm = LSTM(latent_dim, return_sequences=<span class="keyword">True</span>, return_state=<span class="keyword">True</span>)</span><br><span class="line">decoder_dense = Dense(num_decoder_tokens, activation=<span class="string">'softmax'</span>)</span><br><span class="line"></span><br><span class="line">all_outputs = []</span><br><span class="line">inputs = decoder_inputs</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(max_decoder_seq_length):</span><br><span class="line">    <span class="comment"># Run the decoder on one timestep</span></span><br><span class="line">    outputs, state_h, state_c = decoder_lstm(inputs,</span><br><span class="line">                                             initial_state=states)</span><br><span class="line">    outputs = decoder_dense(outputs)</span><br><span class="line">    <span class="comment"># Store the current prediction (we will concatenate all predictions later)</span></span><br><span class="line">    all_outputs.append(outputs)</span><br><span class="line">    <span class="comment"># Reinject the outputs as inputs for the next loop iteration</span></span><br><span class="line">    <span class="comment"># as well as update the states</span></span><br><span class="line">    inputs = outputs</span><br><span class="line">    states = [state_h, state_c]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Concatenate all predictions</span></span><br><span class="line">decoder_outputs = Lambda(<span class="keyword">lambda</span> x: K.concatenate(x, axis=<span class="number">1</span>))(all_outputs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Define and compile model as previously</span></span><br><span class="line">model = Model([encoder_inputs, decoder_inputs], decoder_outputs)</span><br><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'categorical_crossentropy'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Prepare decoder input data that just contains the start character</span></span><br><span class="line"><span class="comment"># Note that we could have made it a constant hard-coded in the model</span></span><br><span class="line">decoder_input_data = np.zeros((num_samples, <span class="number">1</span>, num_decoder_tokens))</span><br><span class="line">decoder_input_data[:, <span class="number">0</span>, target_token_index[<span class="string">'\t'</span>]] = <span class="number">1.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Train model as previously</span></span><br><span class="line">model.fit([encoder_input_data, decoder_input_data], decoder_target_data,</span><br><span class="line">          batch_size=batch_size,</span><br><span class="line">          epochs=epochs,</span><br><span class="line">          validation_split=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="本教程的全部代码"><a href="#本教程的全部代码" class="headerlink" title="本教程的全部代码"></a>本教程的全部代码</h3><blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="keras教程-n-10分钟入门LSTM.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/keras教程/">#keras教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/keras教程/">
+            keras教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                    使用谷歌翻译接口进行句子翻译
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                    keras教程-n-CUDA无法找到cudnn的错误解决
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/16/keras教程-08-Dropout的原理和实现/">
+                    keras教程-08-Dropout的原理和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/03/keras教程-n-GAN对抗生成网络的理论和实践/">
+                    keras教程-n-GAN对抗生成网络的理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                    keras教程-n-10分钟入门LSTM
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                    keras教程-n-循环神经网络的注意力机制的理论和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/01/keras教程-06-优化器详细解释/">
+                    keras教程-06-优化器详细解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/30/keras基础-Dense的输入的秩大于2时的注意事项/">
+                    keras基础-Dense的输入的秩大于2时的注意事项
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                    keras教程-05-实验验证神经网络的深度-样本量-dropout
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                    keras教程-04-手写字体识别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/17/keras教程-03-深度学习基础和keras入门/">
+                    keras教程-03-深度学习基础和keras入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/16/keras教程-02-tensorflow和keras安装/">
+                    keras教程-02-tensorflow和keras安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/15/keras教程-01-神经网络图解和手动计算/">
+                    keras教程-01-神经网络图解和手动计算
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

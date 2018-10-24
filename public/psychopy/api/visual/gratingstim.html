@@ -1,0 +1,813 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GratingStim &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="psychopy.visual - many visual stimuli" href="../visual.html" />
+    <link rel="next" title="Helper functions" href="helperfunctions.html" />
+    <link rel="prev" title="ElementArrayStim" href="elementarraystim.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="helperfunctions.html" title="Helper functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="elementarraystim.html" title="ElementArrayStim"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" accesskey="U"><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">GratingStim</span></code></a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#details">Details</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="elementarraystim.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">ElementArrayStim</span></code></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="helperfunctions.html"
+                                  title="next chapter">Helper functions</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/api/visual/gratingstim.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="gratingstim">
+<h1><code class="xref py py-class docutils literal"><span class="pre">GratingStim</span></code><a class="headerlink" href="#gratingstim" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim" title="psychopy.visual.GratingStim"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim</span></code></a>(win[,&nbsp;tex,&nbsp;mask,&nbsp;units,&nbsp;pos,&nbsp;...])</td>
+<td>Stimulus object for drawing arbitrary bitmaps that can repeat (cycle) in either dimension.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.win" title="psychopy.visual.GratingStim.win"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.win</span></code></a></td>
+<td>The <a class="reference internal" href="window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> object in which the  stimulus will be rendered by default.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.tex" title="psychopy.visual.GratingStim.tex"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.tex</span></code></a></td>
+<td>Texture to used on the stimulus as a grating (aka carrier)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.mask" title="psychopy.visual.GratingStim.mask"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.mask</span></code></a></td>
+<td>The alpha mask (forming the shape of the image)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.units" title="psychopy.visual.GratingStim.units"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.units</span></code></a></td>
+<td>None, &#8216;norm&#8217;, &#8216;cm&#8217;, &#8216;deg&#8217;, &#8216;degFlat&#8217;, &#8216;degFlatPos&#8217;, or &#8216;pix&#8217;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.sf" title="psychopy.visual.GratingStim.sf"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.sf</span></code></a></td>
+<td>Spatial frequency of the grating texture</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.pos" title="psychopy.visual.GratingStim.pos"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.pos</span></code></a></td>
+<td>The position of the center of the stimulus in the stimulus</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.ori" title="psychopy.visual.GratingStim.ori"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.ori</span></code></a></td>
+<td>The orientation of the stimulus (in degrees).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.size" title="psychopy.visual.GratingStim.size"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.size</span></code></a></td>
+<td>The size (width, height) of the stimulus in the stimulus</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.contrast" title="psychopy.visual.GratingStim.contrast"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.contrast</span></code></a></td>
+<td>A value that is simply multiplied by the color</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.color" title="psychopy.visual.GratingStim.color"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.color</span></code></a></td>
+<td>Color of the stimulus</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.colorSpace" title="psychopy.visual.GratingStim.colorSpace"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.colorSpace</span></code></a></td>
+<td>The name of the color space currently being used</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.opacity" title="psychopy.visual.GratingStim.opacity"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.opacity</span></code></a></td>
+<td>Determines how visible the stimulus is relative to background</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.interpolate" title="psychopy.visual.GratingStim.interpolate"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.interpolate</span></code></a></td>
+<td>Whether to interpolate (linearly) the texture in the stimulus</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.texRes" title="psychopy.visual.GratingStim.texRes"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.texRes</span></code></a></td>
+<td>Power-of-two int.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.name" title="psychopy.visual.GratingStim.name"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.name</span></code></a></td>
+<td>String or None.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.autoLog" title="psychopy.visual.GratingStim.autoLog"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.autoLog</span></code></a></td>
+<td>Whether every change in this stimulus should be auto logged.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.GratingStim.draw" title="psychopy.visual.GratingStim.draw"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.draw</span></code></a>([win])</td>
+<td>Draw the stimulus in its relevant window.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.GratingStim.autoDraw" title="psychopy.visual.GratingStim.autoDraw"><code class="xref py py-obj docutils literal"><span class="pre">GratingStim.autoDraw</span></code></a></td>
+<td>Determines whether the stimulus should be automatically drawn on every frame flip.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.visual.GratingStim">
+<em class="property">class </em><code class="descclassname">psychopy.visual.</code><code class="descname">GratingStim</code><span class="sig-paren">(</span><em>win</em>, <em>tex='sin'</em>, <em>mask='none'</em>, <em>units=''</em>, <em>pos=(0.0</em>, <em>0.0)</em>, <em>size=None</em>, <em>sf=None</em>, <em>ori=0.0</em>, <em>phase=(0.0</em>, <em>0.0)</em>, <em>texRes=128</em>, <em>rgb=None</em>, <em>dkl=None</em>, <em>lms=None</em>, <em>color=(1.0</em>, <em>1.0</em>, <em>1.0)</em>, <em>colorSpace='rgb'</em>, <em>contrast=1.0</em>, <em>opacity=1.0</em>, <em>depth=0</em>, <em>rgbPedestal=(0.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>interpolate=False</em>, <em>name=None</em>, <em>autoLog=None</em>, <em>autoDraw=False</em>, <em>maskParams=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stimulus object for drawing arbitrary bitmaps that can repeat (cycle)
+in either dimension.</p>
+<p>One of the main stimuli for PsychoPy.</p>
+<p>Formally GratingStim is just a texture behind an optional
+transparency mask (an &#8216;alpha mask&#8217;). Both the texture and mask can be
+arbitrary bitmaps and their combination allows an enormous variety of
+stimuli to be drawn in realtime.</p>
+<p><strong>Examples</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myGrat</span> <span class="o">=</span> <span class="n">GratingStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">tex</span><span class="o">=</span><span class="s1">&#39;sin&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s1">&#39;circle&#39;</span><span class="p">)</span>  <span class="c1"># gives a circular patch of grating</span>
+<span class="n">myGabor</span> <span class="o">=</span> <span class="n">GratingStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">tex</span><span class="o">=</span><span class="s1">&#39;sin&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s1">&#39;gauss&#39;</span><span class="p">)</span>  <span class="c1"># gives a &#39;Gabor&#39;</span>
+</pre></div>
+</div>
+<p>A GratingStim can be rotated scaled and shifted in position,
+its texture can be drifted in X and/or Y and it can have a spatial
+frequency in X and/or Y (for an image file that simply draws multiple
+copies in the patch).</p>
+<p>Also since transparency can be controlled two GratingStims can
+combine e.g. to form a plaid.</p>
+<p><strong>Using GratingStim with images from disk (jpg, tif, png, ...)</strong></p>
+<p>Ideally texture images to be rendered should be square with
+&#8216;power-of-2&#8217; dimensions e.g. 16 x 16, 128 x 128. Any image that is
+not will be upscaled (with linear interpolation) to the nearest such
+texture by PsychoPy. The size of the stimulus should be specified in
+the normal way using the appropriate units (deg, pix, cm, ...). Be
+sure to get the aspect ratio the same as the image (if you don&#8217;t want it
+stretched!).</p>
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.autoDraw">
+<code class="descname">autoDraw</code><a class="headerlink" href="#psychopy.visual.GratingStim.autoDraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether the stimulus should be automatically drawn
+on every frame flip.</p>
+<p>Value should be: <cite>True</cite> or <cite>False</cite>. You do NOT need to set this
+on every frame flip!</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.autoLog">
+<code class="descname">autoLog</code><a class="headerlink" href="#psychopy.visual.GratingStim.autoLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether every change in this stimulus should be auto logged.</p>
+<p>Value should be: <cite>True</cite> or <cite>False</cite>. Set to <cite>False</cite> if your
+stimulus is updating frequently (e.g. updating its position every</p>
+<blockquote>
+<div>frame) and you want to avoid swamping the log file with</div></blockquote>
+<p>messages that aren&#8217;t likely to be useful.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.clearTextures">
+<code class="descname">clearTextures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.clearTextures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all textures associated with the stimulus.</p>
+<p>As of v1.61.00 this is called automatically during garbage collection
+of your stimulus, so doesn&#8217;t need calling explicitly by the user.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.color">
+<code class="descname">color</code><a class="headerlink" href="#psychopy.visual.GratingStim.color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the stimulus</p>
+<dl class="docutils">
+<dt>Value should be one of:</dt>
+<dd><ul class="first last">
+<li><p class="first">string: to specify a <a class="reference internal" href="../../general/colours.html#colornames"><span class="std std-ref">Colors by name</span></a>. Any of the standard
+html/X11 <cite>color names
+&lt;http://www.w3schools.com/html/html_colornames.asp&gt;</cite>
+can be used.</p>
+</li>
+<li><p class="first"><a class="reference internal" href="../../general/colours.html#hexcolors"><span class="std std-ref">Colors by hex value</span></a></p>
+</li>
+<li><dl class="first docutils">
+<dt>numerically: (scalar or triplet) for DKL, RGB or</dt>
+<dd><p class="first last">other <a class="reference internal" href="../../general/colours.html#colorspaces"><span class="std std-ref">Color spaces</span></a>. For
+these, <a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">operations</span></a> are supported.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>When color is specified using numbers, it is interpreted with
+respect to the stimulus&#8217; current colorSpace. If color is given as a
+single value (scalar) then this will be applied to all 3 channels.</p>
+<dl class="docutils">
+<dt>Examples::</dt>
+<dd><p class="first"># ... for whatever stim you have:
+stim.color = &#8216;white&#8217;
+stim.color = &#8216;RoyalBlue&#8217;  # (the case is actually ignored)
+stim.color = &#8216;#DDA0DD&#8217;  # DDA0DD is hexadecimal for plum
+stim.color = [1.0, -1.0, -1.0]  # if stim.colorSpace=&#8217;rgb&#8217;:</p>
+<blockquote>
+<div># a red color in rgb space</div></blockquote>
+<dl class="last docutils">
+<dt>stim.color = [0.0, 45.0, 1.0]  # if stim.colorSpace=&#8217;dkl&#8217;:</dt>
+<dd># DKL space with elev=0, azimuth=45</dd>
+<dt>stim.color = [0, 0, 255]  # if stim.colorSpace=&#8217;rgb255&#8217;:</dt>
+<dd># a blue stimulus using rgb255 space</dd>
+<dt>stim.color = 255  # interpreted as (255, 255, 255)</dt>
+<dd># which is white in rgb255.</dd>
+</dl>
+</dd>
+</dl>
+<p><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> work as normal for all numeric
+colorSpaces (e.g. &#8216;rgb&#8217;, &#8216;hsv&#8217; and &#8216;rgb255&#8217;) but not for strings, like
+named and hex. For example, assuming that colorSpace=&#8217;rgb&#8217;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># increment all guns by 1 value</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># multiply the color by -1 (which in this</span>
+                    <span class="c1"># space inverts the contrast)</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">*=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># decrease red, remove green, keep blue</span>
+</pre></div>
+</div>
+<p>You can use <cite>setColor</cite> if you want to set color and colorSpace in one
+line. These two are equivalent:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">setColor</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="s1">&#39;rgb255&#39;</span><span class="p">)</span>
+<span class="c1"># ... is equivalent to</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">colorSpace</span> <span class="o">=</span> <span class="s1">&#39;rgb255&#39;</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.colorSpace">
+<code class="descname">colorSpace</code><a class="headerlink" href="#psychopy.visual.GratingStim.colorSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the color space currently being used</p>
+<p>Value should be: a string or None</p>
+<p>For strings and hex values this is not needed.
+If None the default colorSpace for the stimulus is
+used (defined during initialisation).</p>
+<p>Please note that changing colorSpace does not change stimulus
+parameters. Thus you usually want to specify colorSpace before
+setting the color. Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># A light green text</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">TextStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="s1">&#39;Color me!&#39;</span><span class="p">,</span>
+                       <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">colorSpace</span><span class="o">=</span><span class="s1">&#39;rgb&#39;</span><span class="p">)</span>
+
+<span class="c1"># An almost-black text</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">colorSpace</span> <span class="o">=</span> <span class="s1">&#39;rgb255&#39;</span>
+
+<span class="c1"># Make it light green again</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>x</em>, <em>y=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if a point x,y is inside the stimulus&#8217; border.</p>
+<dl class="docutils">
+<dt>Can accept variety of input options:</dt>
+<dd><ul class="first last">
+<li><p class="first">two separate args, x and y</p>
+</li>
+<li><p class="first">one arg (list, tuple or array) containing two vals (x,y)</p>
+</li>
+<li><dl class="first docutils">
+<dt>an object with a getPos() method that returns x,y, such</dt>
+<dd><p class="first last">as a <a class="reference internal" href="../event.html#psychopy.event.Mouse" title="psychopy.event.Mouse"><code class="xref py py-class docutils literal"><span class="pre">Mouse</span></code></a>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>Returns <cite>True</cite> if the point is within the area defined either by its
+<cite>border</cite> attribute (if one defined), or its <cite>vertices</cite> attribute if
+there is no .border. This method handles
+complex shapes, including concavities and self-crossings.</p>
+<p>Note that, if your stimulus uses a mask (such as a Gaussian) then
+this is not accounted for by the <cite>contains</cite> method; the extent of the
+stimulus is determined purely by the size, position (pos), and
+orientation (ori) settings (and by the vertices for shape stimuli).</p>
+<p>See Coder demos: shapeContains.py
+See Coder demos: shapeContains.py</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.contrast">
+<code class="descname">contrast</code><a class="headerlink" href="#psychopy.visual.GratingStim.contrast" title="Permalink to this definition">¶</a></dt>
+<dd><p>A value that is simply multiplied by the color</p>
+<dl class="docutils">
+<dt>Value should be: a float between -1 (negative) and 1 (unchanged).</dt>
+<dd><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> supported.</dd>
+</dl>
+<p>Set the contrast of the stimulus, i.e. scales how far the stimulus
+deviates from the middle grey. You can also use the stimulus
+<cite>opacity</cite> to control contrast, but that cannot be negative.</p>
+<p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">1.0</span>  <span class="c1"># unchanged contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">0.5</span>  <span class="c1"># decrease contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">0.0</span>  <span class="c1"># uniform, no contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>  <span class="c1"># slightly inverted</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>  <span class="c1"># totally inverted</span>
+</pre></div>
+</div>
+<p>Setting contrast outside range -1 to 1 is permitted, but may
+produce strange results if color values exceeds the monitor limits.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">1.2</span>  <span class="c1"># increases contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.2</span>  <span class="c1"># inverts with increased contrast</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.depth">
+<code class="descname">depth</code><a class="headerlink" href="#psychopy.visual.GratingStim.depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED. Depth is now controlled simply by drawing order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>win=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the stimulus in its relevant window. You must call
+this method after every MyWin.flip() if you want the
+stimulus to appear on that frame and then update the screen
+again.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.interpolate">
+<code class="descname">interpolate</code><a class="headerlink" href="#psychopy.visual.GratingStim.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to interpolate (linearly) the texture in the stimulus</p>
+<p>If set to False then nearest neighbour will be used when needed,
+otherwise some form of interpolation will be used.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.mask">
+<code class="descname">mask</code><a class="headerlink" href="#psychopy.visual.GratingStim.mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>The alpha mask (forming the shape of the image)</p>
+<dl class="docutils">
+<dt>This can be one of various options:</dt>
+<dd><ul class="first last simple">
+<li>&#8216;circle&#8217;, &#8216;gauss&#8217;, &#8216;raisedCos&#8217;, &#8216;cross&#8217;</li>
+<li><strong>None</strong> (resets to default)</li>
+<li>the name of an image file (most formats supported)</li>
+<li>a numpy array (1xN or NxN) ranging -1:1</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.maskParams">
+<code class="descname">maskParams</code><a class="headerlink" href="#psychopy.visual.GratingStim.maskParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Various types of input. Default to None.</p>
+<p>This is used to pass additional parameters to the mask if those are
+needed.</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>For &#8216;gauss&#8217; mask, pass dict {&#8216;sd&#8217;: 5} to control</dt>
+<dd><p class="first last">standard deviation.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For the &#8216;raisedCos&#8217; mask, pass a dict: {&#8216;fringeWidth&#8217;:0.2},</dt>
+<dd><p class="first last">where &#8216;fringeWidth&#8217; is a parameter (float, 0-1), determining
+the proportion of the patch that will be blurred by the raised
+cosine edge.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.name">
+<code class="descname">name</code><a class="headerlink" href="#psychopy.visual.GratingStim.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String or None. The name of the object to be using during
+logged messages about this stim. If you have multiple stimuli
+in your experiment this really helps to make sense of log files!</p>
+<p>If name = None your stimulus will be called &#8220;unnamed &lt;type&gt;&#8221;, e.g.
+visual.TextStim(win) will be called &#8220;unnamed TextStim&#8221; in the logs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.opacity">
+<code class="descname">opacity</code><a class="headerlink" href="#psychopy.visual.GratingStim.opacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines how visible the stimulus is relative to background</p>
+<p>The value should be a single float ranging 1.0 (opaque) to 0.0
+(transparent). <a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> are supported.
+Precisely how this is used depends on the <a class="reference internal" href="../../general/rendering.html#blendmode"><span class="std std-ref">Blend Mode</span></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.ori">
+<code class="descname">ori</code><a class="headerlink" href="#psychopy.visual.GratingStim.ori" title="Permalink to this definition">¶</a></dt>
+<dd><p>The orientation of the stimulus (in degrees).</p>
+<p>Should be a single value (<a class="reference internal" href="../../coder/codeStimuli.html#attrib-scalar"><span class="std std-ref">scalar</span></a>).
+<a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> are supported.</p>
+<p>Orientation convention is like a clock: 0 is vertical, and positive
+values rotate clockwise. Beyond 360 and below zero values wrap
+appropriately.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.overlaps">
+<code class="descname">overlaps</code><span class="sig-paren">(</span><em>polygon</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.overlaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <cite>True</cite> if this stimulus intersects another one.</p>
+<p>If <cite>polygon</cite> is another stimulus instance, then the vertices
+and location of that stimulus will be used as the polygon.
+Overlap detection is typically very good, but it
+can fail with very pointy shapes in a crossed-swords configuration.</p>
+<p>Note that, if your stimulus uses a mask (such as a Gaussian blob)
+then this is not accounted for by the <cite>overlaps</cite> method; the extent
+of the stimulus is determined purely by the size, pos, and
+orientation settings (and by the vertices for shape stimuli).</p>
+<p>See coder demo, shapeContains.py</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.phase">
+<code class="descname">phase</code><a class="headerlink" href="#psychopy.visual.GratingStim.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phase of the stimulus in each dimension of the texture.</p>
+<p>Should be an <a class="reference internal" href="../../coder/codeStimuli.html#attrib-xy"><span class="std std-ref">x,y-pair</span></a> or
+<a class="reference internal" href="../../coder/codeStimuli.html#attrib-scalar"><span class="std std-ref">scalar</span></a></p>
+<p><strong>NB</strong> phase has modulus 1 (rather than 360 or 2*pi)
+This is a little unconventional but has the nice effect
+that setting phase=t*n drifts a stimulus at n Hz</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.pos">
+<code class="descname">pos</code><a class="headerlink" href="#psychopy.visual.GratingStim.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position of the center of the stimulus in the stimulus
+<a class="reference internal" href="../../general/units.html#units"><span class="std std-ref">units</span></a></p>
+<p><cite>value</cite> should be an <a class="reference internal" href="../../coder/codeStimuli.html#attrib-xy"><span class="std std-ref">x,y-pair</span></a>.
+<a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> are also supported.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Set slightly to the right of center</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">pos</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Increment pos rightwards and upwards.</span>
+    <span class="n">Is</span> <span class="n">now</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">pos</span> <span class="o">*=</span> <span class="mf">0.2</span>  <span class="c1"># Move stim towards the center.</span>
+    <span class="n">Is</span> <span class="n">now</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tip: If you need the position of stim in pixels, you can obtain
+it like this:</p>
+<blockquote>
+<div>from psychopy.tools.monitorunittools import posToPix
+posPix = posToPix(stim)</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setAutoDraw">
+<code class="descname">setAutoDraw</code><span class="sig-paren">(</span><em>value</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setAutoDraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets autoDraw. Usually you can use &#8216;stim.attribute = value&#8217;
+syntax instead, but use this method to suppress the log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setAutoLog">
+<code class="descname">setAutoLog</code><span class="sig-paren">(</span><em>value=True</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setAutoLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setColor">
+<code class="descname">setColor</code><span class="sig-paren">(</span><em>color</em>, <em>colorSpace=None</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message
+and/or set colorSpace simultaneously.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setContrast">
+<code class="descname">setContrast</code><span class="sig-paren">(</span><em>newContrast</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setContrast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setDKL">
+<code class="descname">setDKL</code><span class="sig-paren">(</span><em>newDKL</em>, <em>operation=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setDKL" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use the <cite>color</cite> attribute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setDepth">
+<code class="descname">setDepth</code><span class="sig-paren">(</span><em>newDepth</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setLMS">
+<code class="descname">setLMS</code><span class="sig-paren">(</span><em>newLMS</em>, <em>operation=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setLMS" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use the <cite>color</cite> attribute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setMask">
+<code class="descname">setMask</code><span class="sig-paren">(</span><em>value</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setOpacity">
+<code class="descname">setOpacity</code><span class="sig-paren">(</span><em>newOpacity</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setOpacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setOri">
+<code class="descname">setOri</code><span class="sig-paren">(</span><em>newOri</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setOri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setPhase">
+<code class="descname">setPhase</code><span class="sig-paren">(</span><em>value</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setPhase" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED. Use &#8216;stim.parameter = value&#8217; syntax instead</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setPos">
+<code class="descname">setPos</code><span class="sig-paren">(</span><em>newPos</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setRGB">
+<code class="descname">setRGB</code><span class="sig-paren">(</span><em>newRGB</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setRGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use the <cite>color</cite> attribute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setSF">
+<code class="descname">setSF</code><span class="sig-paren">(</span><em>value</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setSF" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED. Use &#8216;stim.parameter = value&#8217; syntax instead</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setSize">
+<code class="descname">setSize</code><span class="sig-paren">(</span><em>newSize</em>, <em>operation=''</em>, <em>units=None</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setTex">
+<code class="descname">setTex</code><span class="sig-paren">(</span><em>value</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setTex" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED. Use &#8216;stim.parameter = value&#8217; syntax instead</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.GratingStim.setUseShaders">
+<code class="descname">setUseShaders</code><span class="sig-paren">(</span><em>value=True</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.GratingStim.setUseShaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.sf">
+<code class="descname">sf</code><a class="headerlink" href="#psychopy.visual.GratingStim.sf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spatial frequency of the grating texture</p>
+<p>Should be a <a class="reference internal" href="../../coder/codeStimuli.html#attrib-xy"><span class="std std-ref">x,y-pair</span></a> or
+<a class="reference internal" href="../../coder/codeStimuli.html#attrib-scalar"><span class="std std-ref">scalar</span></a> or None.
+If <cite>units</cite> == &#8216;deg&#8217; or &#8216;cm&#8217; units are in</p>
+<blockquote>
+<div>cycles per deg or cm as appropriate.</div></blockquote>
+<dl class="docutils">
+<dt>If <cite>units</cite> == &#8216;norm&#8217; then sf units are in cycles per stimulus</dt>
+<dd>(and so SF scales with stimulus size).</dd>
+<dt>If texture is an image loaded from a file then sf=None</dt>
+<dd>defaults to 1/stimSize to give one cycle of the image.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.size">
+<code class="descname">size</code><a class="headerlink" href="#psychopy.visual.GratingStim.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size (width, height) of the stimulus in the stimulus
+<a class="reference internal" href="../../general/units.html#units"><span class="std std-ref">units</span></a></p>
+<p>Value should be <a class="reference internal" href="../../coder/codeStimuli.html#attrib-xy"><span class="std std-ref">x,y-pair</span></a>,
+<a class="reference internal" href="../../coder/codeStimuli.html#attrib-scalar"><span class="std std-ref">scalar</span></a> (applies to both dimensions)
+or None (resets to default). <a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a>
+are supported.</p>
+<p>Sizes can be negative (causing a mirror-image reversal) and can
+extend beyond the window.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># Set size to (xsize, ysize) = (0.8, 0.8)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stim</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>  <span class="c1"># Outputs array([0.8, 0.8])</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># make wider and flatter: (1.3, 0.3)</span>
+</pre></div>
+</div>
+<p>Tip: if you can see the actual pixel range this corresponds to by
+looking at <cite>stim._sizeRendered</cite></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.tex">
+<code class="descname">tex</code><a class="headerlink" href="#psychopy.visual.GratingStim.tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Texture to used on the stimulus as a grating (aka carrier)</p>
+<dl class="docutils">
+<dt>This can be one of various options:</dt>
+<dd><ul class="first last simple">
+<li><strong>&#8216;sin&#8217;</strong>,&#8217;sqr&#8217;, &#8216;saw&#8217;, &#8216;tri&#8217;, None (resets to default)</li>
+<li>the name of an image file (most formats supported)</li>
+<li>a numpy array (1xN or NxN) ranging -1:1</li>
+</ul>
+</dd>
+</dl>
+<p>If specifying your own texture using an image or numpy array
+you should ensure that the image has square power-of-two dimesnions
+(e.g. 256 x 256). If not then PsychoPy will upsample your stimulus
+to the next larger power of two.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.texRes">
+<code class="descname">texRes</code><a class="headerlink" href="#psychopy.visual.GratingStim.texRes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Power-of-two int. Sets the resolution of the mask and texture.
+texRes is overridden if an array or image is provided as mask.</p>
+<p><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.units">
+<code class="descname">units</code><a class="headerlink" href="#psychopy.visual.GratingStim.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>None, &#8216;norm&#8217;, &#8216;cm&#8217;, &#8216;deg&#8217;, &#8216;degFlat&#8217;, &#8216;degFlatPos&#8217;, or &#8216;pix&#8217;</p>
+<p>If None then the current units of the
+<a class="reference internal" href="window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> will be used.
+See <a class="reference internal" href="../../general/units.html#units"><span class="std std-ref">Units for the window and stimuli</span></a> for explanation of other options.</p>
+<p>Note that when you change units, you don&#8217;t change the stimulus
+parameters and it is likely to change appearance. Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># This stimulus is 20% wide and 50% tall with respect to window</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">PatchStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># This stimulus is 0.2 degrees wide and 0.5 degrees tall.</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;deg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.useShaders">
+<code class="descname">useShaders</code><a class="headerlink" href="#psychopy.visual.GratingStim.useShaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should shaders be used to render the stimulus
+(typically leave as <cite>True</cite>)</p>
+<p>If the system support the use of OpenGL shader language then leaving
+this set to True is highly recommended. If shaders cannot be used then
+various operations will be slower (notably, changes to stimulus color
+or contrast)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.verticesPix">
+<code class="descname">verticesPix</code><a class="headerlink" href="#psychopy.visual.GratingStim.verticesPix" title="Permalink to this definition">¶</a></dt>
+<dd><p>This determines the coordinates of the vertices for the
+current stimulus in pixels, accounting for size, ori, pos and units</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.GratingStim.win">
+<code class="descname">win</code><a class="headerlink" href="#psychopy.visual.GratingStim.win" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>The <a class="reference internal" href="window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> object in which the</dt>
+<dd>stimulus will be rendered by default. (required)</dd>
+</dl>
+<p>Example, drawing same stimulus in two different windows and display
+simultaneously. Assuming that you have two windows and a stimulus
+(win1, win2 and stim):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">stim</span><span class="o">.</span><span class="n">win</span> <span class="o">=</span> <span class="n">win1</span>  <span class="c1"># stimulus will be drawn in win1</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># stimulus is now drawn to win1</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">win</span> <span class="o">=</span> <span class="n">win2</span>  <span class="c1"># stimulus will be drawn in win2</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># it is now drawn in win2</span>
+   <span class="n">win1</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">waitBlanking</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># do not wait for next</span>
+                <span class="c1"># monitor update</span>
+   <span class="n">win2</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>  <span class="c1"># wait for vertical blanking.</span>
+
+<span class="n">Note</span> <span class="n">that</span> <span class="n">this</span> <span class="n">just</span> <span class="n">changes</span> <span class="o">**</span><span class="n">default</span><span class="o">**</span> <span class="n">window</span> <span class="k">for</span> <span class="n">stimulus</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">could</span> <span class="n">also</span> <span class="n">specify</span> <span class="n">window</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">draw</span><span class="o">-</span><span class="n">to</span> <span class="n">when</span> <span class="n">drawing</span><span class="p">::</span>
+
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">win1</span><span class="p">)</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">win2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="helperfunctions.html" title="Helper functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="elementarraystim.html" title="ElementArrayStim"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" ><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

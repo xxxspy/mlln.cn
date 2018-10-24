@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="python-graphviz图数据可视化入门"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>python-graphviz图数据可视化入门 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/25/python-graphviz图数据可视化入门/">
+                python-graphviz图数据可视化入门
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="python-graphviz图数据可视化入门"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月25日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖"><span class="toc-number">2.</span> <span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本用法"><span class="toc-number">3.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体乱码"><span class="toc-number">4.</span> <span class="toc-text">字体乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#piped输出"><span class="toc-number">5.</span> <span class="toc-text">piped输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jupyter-notebook中显示"><span class="toc-number">6.</span> <span class="toc-text">jupyter notebook中显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示风格"><span class="toc-number">7.</span> <span class="toc-text">显示风格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-number">8.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用引号和HTML作为label"><span class="toc-number">9.</span> <span class="toc-text">使用引号和HTML作为label</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子图和集群"><span class="toc-number">10.</span> <span class="toc-text">子图和集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引擎"><span class="toc-number">11.</span> <span class="toc-text">引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加dot语句"><span class="toc-number">12.</span> <span class="toc-text">添加dot语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用dot文件和源码"><span class="toc-number">13.</span> <span class="toc-text">使用dot文件和源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用临时文件浏览图"><span class="toc-number">14.</span> <span class="toc-text">使用临时文件浏览图</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>graphviz为Graphviz图形绘制软件提供了一个简单的纯Python接口。它在Python 2.7和3.4+下运行。要使用pip安装它，请运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install graphviz</span><br></pre></td></tr></table></figure>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p>graphviz有一个同名依赖<code>graphviz</code>, 这是一个c开发的软件包, 可以通过命令行调用。它的安装很简单, 如果在windows下, 只需要下载二进制包进行安装即可, 具体过程参考这篇文章的<a href="http://mlln.cn/2018/09/21/pydotplus%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%85%A5%E9%97%A8/#%E5%AE%89%E8%A3%85Graphviz">安装Graphviz</a>部分。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>graphviz模块提供两个类：<code>Graph</code>和<code>Digraph</code>。他们使用DOT语言为无向和有向图创建图形描述。他们有相同的API。</p>
+<p>通过实例化新的Graph或Digraph对象来创建图形：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> graphviz <span class="keyword">import</span> Digraph</span><br><span class="line">dot = Digraph(comment=<span class="string">'这是一个有向图'</span>)</span><br><span class="line">str(dot)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    '// 这是一个有向图\ndigraph {\n}'
+
+</div>
+
+<p>它们的构造函数允许设置图形的<code>name</code>，DOT代码的<code>filename</code>，源代码行的注释等。</p>
+<p>使用<code>node（）</code>和<code>edge（）</code>或<code>edges（）</code>方法将节点和边添加到图形对象：</p>
+<ul>
+<li><code>node()</code>方法第一个参数是name, 第二个参数是label</li>
+<li><code>edges()</code>方法可以一次添加多个边, 每个边用字符串表示, 比如<code>AB</code>表示从A到B的边</li>
+<li><code>edge()</code>方法一次添加一个边</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dot = Digraph(comment=<span class="string">'这是一个有向图'</span>)</span><br><span class="line">dot.node(<span class="string">'A'</span>, <span class="string">'作者'</span>)</span><br><span class="line">dot.node(<span class="string">'B'</span>, <span class="string">'医生'</span>)</span><br><span class="line">dot.node(<span class="string">'C'</span>, <span class="string">'律师'</span>)</span><br><span class="line"></span><br><span class="line">dot.edges([<span class="string">'AB'</span>, <span class="string">'AC'</span>])</span><br><span class="line">dot.edge(<span class="string">'B'</span>, <span class="string">'C'</span>)</span><br><span class="line">print(dot.source)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    // 这是一个有向图
+    <br>digraph {
+    <br>	A [label="作者"]
+    <br>	B [label="医生"]
+    <br>	C [label="律师"]
+    <br>	A -> B
+    <br>	A -> C
+    <br>	B -> C
+    <br>}
+    <br>
+</div>
+
+<p>使用<code>render</code>方法将保存dot源码, 并且会渲染图形, 使用<code>view=True</code>参数可以自动打开应用程序以便浏览生成的图:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将dot源码保存到文件:output-graph.gv</span></span><br><span class="line"><span class="comment"># 同时会生成一个pdf文件: output-graph.gv.pdf</span></span><br><span class="line">dot.render(<span class="string">'output-graph.gv'</span>, view=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    'output-graph.gv.pdf'
+
+</div>
+
+<p>除了PDF, 还可以生成其他格式, 比如png:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dot.format = <span class="string">'png'</span></span><br><span class="line">dot.render(<span class="string">'output-graph.gv'</span>, view=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    'output-graph.gv.png'
+
+</div>
+
+<p>由于这是jupyter notebook环境, 我们直接使用notebook展示生成的图片即可:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> display, Image</span><br><span class="line">Image(dot.render(<span class="string">'output-graph.gv'</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="output_12_0.png" alt="png"></p>
+<h3 id="字体乱码"><a href="#字体乱码" class="headerlink" title="字体乱码"></a>字体乱码</h3><p>我们可以看到中文的label无法正确显示在图中, 因为默认的字体并不支持中文, 需要我们为node设置字体, 比如我们设置成黑体:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dot = Digraph(comment=<span class="string">'这是一个有向图'</span>)</span><br><span class="line">dot.node(<span class="string">'A'</span>, <span class="string">'作者'</span>, fontname=<span class="string">"Heiti"</span>)</span><br><span class="line">dot.node(<span class="string">'B'</span>, <span class="string">'医生'</span>)</span><br><span class="line">dot.node(<span class="string">'C'</span>, <span class="string">'律师'</span>)</span><br><span class="line">dot.edges([<span class="string">'AB'</span>, <span class="string">'AC'</span>])</span><br><span class="line">dot.edge(<span class="string">'B'</span>, <span class="string">'C'</span>)</span><br><span class="line">dot.format = <span class="string">'png'</span></span><br><span class="line">Image(dot.render(<span class="string">'output-graph-font.gv'</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    <br>(dot.exe:10280): Pango-WARNING **: couldn't load font "Heiti Not-Rotated 14", falling back to "Sans Not-Rotated 14", expect ugly output.
+    <br>
+</div>
+
+<p><img src="output_14_1.png" alt="png"></p>
+<h3 id="piped输出"><a href="#piped输出" class="headerlink" title="piped输出"></a>piped输出</h3><p>为了直接获取Graphviz软件渲染结果, 而不是让它保存到文件中, 我们可以使用<code>pipe()</code>方法, 比如我们可以直接获取渲染后的svg源码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> graphviz <span class="keyword">import</span> Graph</span><br><span class="line">h = Graph(<span class="string">'hello'</span>, format=<span class="string">'svg'</span>)</span><br><span class="line">h.edge(<span class="string">'Hello'</span>, <span class="string">'World'</span>)</span><br><span class="line">print(h.pipe().decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <br><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+    <br /> "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <br><!-- Generated by graphviz version 2.38.0 (20140413.2041)
+    <br /> -->
+    <br><!-- Title: hello Pages: 1 -->
+    <br><svg width="77pt" height="116pt" <br=""> viewBox="0.00 0.00 76.89 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <br/><g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+    <br/><title>hello</title>
+    <br/><polygon fill="white" stroke="none" points="-4,4 -4,-112 72.8939,-112 72.8939,4 -4,4"/>
+    <br/><!-- Hello -->
+    <br/><g id="node1" class="node"><title>Hello</title>
+    <br/><ellipse fill="none" stroke="black" cx="34.4469" cy="-90" rx="29.795" ry="18"/>
+    <br/><text text-anchor="middle" x="34.4469" y="-86.3" font-family="Times New Roman,serif" font-size="14.00">Hello</text>
+    <br/></g>
+    <br/><!-- World -->
+    <br/><g id="node2" class="node"><title>World</title>
+    <br/><ellipse fill="none" stroke="black" cx="34.4469" cy="-18" rx="34.394" ry="18"/>
+    <br/><text text-anchor="middle" x="34.4469" y="-14.3" font-family="Times New Roman,serif" font-size="14.00">World</text>
+    <br/></g>
+    <br/><!-- Hello&#45;&#45;World -->
+    <br/><g id="edge1" class="edge"><title>Hello&#45;&#45;World</title>
+    <br/><path fill="none" stroke="black" d="M34.4469,-71.6966C34.4469,-60.8463 34.4469,-46.9167 34.4469,-36.1043"/>
+    <br/></g>
+    <br/></g>
+    <br/></svg>
+    <br>
+    <br>
+</div>
+
+<h3 id="jupyter-notebook中显示"><a href="#jupyter-notebook中显示" class="headerlink" title="jupyter notebook中显示"></a>jupyter notebook中显示</h3><p>因为Graph和Bigraph类都有<code>_repr_svg_()</code>方法, 因此他们可以直接显示在notebook中, 而不需要做任何处理, 例如, 上面的svg图, 可以直接显示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h</span><br></pre></td></tr></table></figure>
+<p><img src="output_18_0.svg" alt="svg"></p>
+<h3 id="显示风格"><a href="#显示风格" class="headerlink" title="显示风格"></a>显示风格</h3><p>使用<code>graph_attr</code>, <code>node_attr</code>, <code>edge_attr</code>参数, 你可以更改图中节点和边的显示样式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ps = Digraph(name=<span class="string">'pet-shop'</span>, node_attr=&#123;<span class="string">'shape'</span>: <span class="string">'plaintext'</span>&#125;)</span><br><span class="line">ps.node(<span class="string">'parrot'</span>)</span><br><span class="line">ps.node(<span class="string">'dead'</span>)</span><br><span class="line">ps.edge(<span class="string">'parrot'</span>, <span class="string">'dead'</span>)</span><br><span class="line">ps</span><br></pre></td></tr></table></figure>
+<p><img src="output_20_0.svg" alt="svg"></p>
+<p>创建完毕以后, 你可以更改这些样式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps.graph_attr[<span class="string">'rankdir'</span>] = <span class="string">'LR'</span></span><br><span class="line">ps.edge_attr.update(arrowhead=<span class="string">'vee'</span>, arrowsize=<span class="string">'2'</span>)</span><br><span class="line">ps</span><br></pre></td></tr></table></figure>
+<p><img src="output_22_0.svg" alt="svg"></p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>我们可以直接更改图中所有节点和边的属性, 相当于全局配置, 只要使用<code>attr</code>方法即可:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ni = Graph(<span class="string">'ni'</span>)</span><br><span class="line"><span class="comment"># 设置所有节点的形状</span></span><br><span class="line">ni.attr(<span class="string">'node'</span>, shape=<span class="string">'rarrow'</span>)</span><br><span class="line">ni.node(<span class="string">'1'</span>, <span class="string">'Ni!'</span>)</span><br><span class="line">ni.node(<span class="string">'2'</span>, <span class="string">'Ni!'</span>)</span><br><span class="line"><span class="comment"># 如果单独设置, 优先级更高</span></span><br><span class="line">ni.node(<span class="string">'3'</span>, <span class="string">'Ni!'</span>, shape=<span class="string">'egg'</span>)</span><br><span class="line">ni.node(<span class="string">'4'</span>, <span class="string">'Ni!'</span>)</span><br><span class="line">ni</span><br></pre></td></tr></table></figure>
+<p><img src="output_24_0.svg" alt="svg"></p>
+<h3 id="使用引号和HTML作为label"><a href="#使用引号和HTML作为label" class="headerlink" title="使用引号和HTML作为label"></a>使用引号和HTML作为label</h3><p>在label中使用引号需要使用转义字符<code>\</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ni.node(<span class="string">'5'</span>, <span class="string">'\"Ni\"'</span>)</span><br><span class="line">ni</span><br></pre></td></tr></table></figure>
+<p><img src="output_26_0.svg" alt="svg"></p>
+<p>在label中使用html可以使用<code>&lt; &gt;</code>将html内容括起来, 比如, 我们可以使用下标<code>sub</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ni.node(<span class="string">'6'</span>, <span class="string">'&lt;N&lt;sub&gt;i&lt;/sub&gt;&gt;'</span>)</span><br><span class="line">ni</span><br></pre></td></tr></table></figure>
+<p><img src="output_28_0.svg" alt="svg"></p>
+<h3 id="子图和集群"><a href="#子图和集群" class="headerlink" title="子图和集群"></a>子图和集群</h3><p><code>Graph</code>和<code>Bigraph&#39;对象都有</code>subgraph()`方法用于添加子图, 它有两种用法:</p>
+<ul>
+<li>可以直接添加一个Graph或者Bigraph对象:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">p = Graph(name=<span class="string">'parent'</span>)</span><br><span class="line">p.edge(<span class="string">'spam'</span>, <span class="string">'eggs'</span>)</span><br><span class="line"></span><br><span class="line">c = Graph(name=<span class="string">'child'</span>, node_attr=&#123;<span class="string">'shape'</span>: <span class="string">'box'</span>&#125;)</span><br><span class="line">c.edge(<span class="string">'foo'</span>, <span class="string">'bar'</span>)</span><br><span class="line"></span><br><span class="line">p.subgraph(c)</span><br><span class="line">p</span><br></pre></td></tr></table></figure>
+<p><img src="output_30_0.svg" alt="svg"></p>
+<ul>
+<li>使用<code>with</code>代码块:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = Graph(name=<span class="string">'parent'</span>)</span><br><span class="line">p.edge(<span class="string">'spam'</span>, <span class="string">'eggs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> p.subgraph(name=<span class="string">'child'</span>, node_attr=&#123;<span class="string">'shape'</span>: <span class="string">'box'</span>&#125;) <span class="keyword">as</span> c:</span><br><span class="line">   c.edge(<span class="string">'foo'</span>, <span class="string">'bar'</span>)</span><br><span class="line">p</span><br></pre></td></tr></table></figure>
+<p><img src="output_32_0.svg" alt="svg"></p>
+<h3 id="引擎"><a href="#引擎" class="headerlink" title="引擎"></a>引擎</h3><p>渲染引擎可以选择多种, 而不仅仅是<code>dot</code>, 比如你可以使用<code>neato</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g = Graph(engine=<span class="string">'neato'</span>)</span><br></pre></td></tr></table></figure>
+<p>或者也可以直接更改渲染引擎:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.engine = <span class="string">'circo'</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加dot语句"><a href="#添加dot语句" class="headerlink" title="添加dot语句"></a>添加dot语句</h3><p>有些应用场景是需要使用已经写好的dot语句的, 这时候我们可以直接调用<code>body.append</code>方法来追加dot语句:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rt = Digraph()</span><br><span class="line">rt.body.append(<span class="string">'\t"King Arthur" -&gt; &#123;\n\t\t"Sir Bedevere", "Sir Lancelot"\n\t&#125;'</span>)</span><br><span class="line">rt.edge(<span class="string">'Sir Bedevere'</span>, <span class="string">'Sir Lancelot'</span>, constraint=<span class="string">'false'</span>)</span><br><span class="line">rt</span><br></pre></td></tr></table></figure>
+<p><img src="output_38_0.svg" alt="svg"></p>
+<h3 id="使用dot文件和源码"><a href="#使用dot文件和源码" class="headerlink" title="使用dot文件和源码"></a>使用dot文件和源码</h3><p>我们可以直接使用<code>Source</code>类来直接实例化一个Source对象, 传入的参数就是dot源码, 然后可以调用render方法渲染成图片:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> graphviz <span class="keyword">import</span> Source</span><br><span class="line">src = Source(<span class="string">'digraph "the holy hand grenade" &#123; rankdir=LR; 1 -&gt; 2 -&gt; 3 -&gt; lob &#125;'</span>)</span><br><span class="line">str(src)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    '<graphviz.files.source object="" at="" 0x000002953effe908="">'
+
+</graphviz.files.source></div>
+
+<p>我们还可以直接使用<code>from_file</code>方法来从一个dot文件实例化:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">src = Source.from_file(<span class="string">'output-graph-font.gv'</span>)</span><br><span class="line">src</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    <br>(dot.exe:14100): Pango-WARNING **: couldn't load font "Heiti Not-Rotated 14", falling back to "Sans Not-Rotated 14", expect ugly output.
+    <br>
+</div>
+
+<p><img src="output_42_1.svg" alt="svg"></p>
+<h3 id="使用临时文件浏览图"><a href="#使用临时文件浏览图" class="headerlink" title="使用临时文件浏览图"></a>使用临时文件浏览图</h3><p>很多时候我们要多次浏览绘制的图, 但是又不想保存这个文件, 那么我们可以使用临时文件保存生成的结果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tempfile</span><br><span class="line"></span><br><span class="line">g = Graph()</span><br><span class="line">g.node(<span class="string">'spam'</span>)</span><br><span class="line"></span><br><span class="line">g.view(tempfile.mktemp(<span class="string">'.gv'</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    'C:\\Users\\syd\\AppData\\Local\\Temp\\tmp48i7e5z2.gv.pdf'
+
+</div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="python-graphviz图数据可视化入门.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/graphviz/">#graphviz</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/graphviz/">
+            graphviz
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/25/python-graphviz图数据可视化入门/">
+                    python-graphviz图数据可视化入门
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

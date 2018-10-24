@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.clock - Clocks and timers &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.data - functions for storing/saving/analysing data" href="data.html" />
+    <link rel="prev" title="psychopy.visual.windowwarp - warping to spherical, cylindrical, or other projections" href="visual/windowwarp.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="psychopy.data - functions for storing/saving/analysing data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="visual/windowwarp.html" title="psychopy.visual.windowwarp - warping to spherical, cylindrical, or other projections"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="visual/windowwarp.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.visual.windowwarp</span></code> - warping to spherical, cylindrical, or other projections</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="data.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.data</span></code> - functions for storing/saving/analysing data</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/clock.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="psychopy-clock-clocks-and-timers">
+<h1><a class="reference internal" href="#module-psychopy.clock" title="psychopy.clock"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.clock</span></code></a> -  Clocks and timers<a class="headerlink" href="#psychopy-clock-clocks-and-timers" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-psychopy.clock"></span><p>Created on Tue Apr 23 11:28:32 2013</p>
+<p>Provides the high resolution timebase used by psychopy, and defines some time
+related utility Classes.</p>
+<p>Moved functionality from core.py so a common code
+base could be used in core.py and logging.py; vs. duplicating the getTime and
+Clock logic.</p>
+<p>&#64;author: Sol
+&#64;author: Jon</p>
+<dl class="function">
+<dt id="psychopy.clock.getAbsTime">
+<code class="descclassname">psychopy.clock.</code><code class="descname">getAbsTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.getAbsTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return unix time (i.e., whole seconds elapsed since Jan 1, 1970).</p>
+<p>This uses the same clock-base as the other timing features,
+like <cite>getTime()</cite>. The time (in seconds) ignores the time-zone
+(like <cite>time.time()</cite> on linux). To take the timezone into account,
+use <cite>int(time.mktime(time.gmtime()))</cite>.</p>
+<p>Absolute times in seconds are especially useful to add to generated
+file names for being unique, informative (= a meaningful time stamp),
+and because the resulting files will always sort as expected when
+sorted in chronological, alphabetical, or numerical order, regardless
+of locale and so on.</p>
+<p>Version Notes: This method was added in PsychoPy 1.77.00</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.clock.wait">
+<code class="descclassname">psychopy.clock.</code><code class="descname">wait</code><span class="sig-paren">(</span><em>secs</em>, <em>hogCPUperiod=0.2</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for a given time period.</p>
+<p>If secs=10 and hogCPU=0.2 then for 9.8s python&#8217;s time.sleep function
+will be used, which is not especially precise, but allows the cpu to
+perform housekeeping. In the final hogCPUperiod the more precise
+method of constantly polling the clock is used for greater precision.</p>
+<p>If you want to obtain key-presses during the wait, be sure to use
+pyglet and to hogCPU for the entire time, and then call
+<a class="reference internal" href="event.html#psychopy.event.getKeys" title="psychopy.event.getKeys"><code class="xref py py-func docutils literal"><span class="pre">psychopy.event.getKeys()</span></code></a> after calling
+<a class="reference internal" href="core.html#psychopy.core.wait" title="psychopy.core.wait"><code class="xref py py-func docutils literal"><span class="pre">wait()</span></code></a></p>
+<p>If you want to suppress checking for pyglet events during the wait,
+do this once:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">core</span><span class="o">.</span><span class="n">checkPygletDuringWait</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>and from then on you can do::</dt>
+<dd>core.wait(sec)</dd>
+</dl>
+<p>This will preserve terminal-window focus during command line usage.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="psychopy.clock.Clock">
+<em class="property">class </em><code class="descclassname">psychopy.clock.</code><code class="descname">Clock</code><a class="headerlink" href="#psychopy.clock.Clock" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenient class to keep track of time in your experiments.
+You can have as many independent clocks as you like (e.g. one
+to time responses, one to keep track of stimuli...)</p>
+<p>This clock is identical to the <a class="reference internal" href="core.html#psychopy.core.MonotonicClock" title="psychopy.core.MonotonicClock"><code class="xref py py-class docutils literal"><span class="pre">MonotonicClock</span></code></a>
+except that it can also be reset to 0 or another value at any point.</p>
+<dl class="method">
+<dt id="psychopy.clock.Clock.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.Clock.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add more time to the clock&#8217;s &#8216;start&#8217; time (t0).</p>
+<p>Note that, by adding time to t0, you make the current time
+appear less. Can have the effect that getTime() returns a negative
+number that will gradually count back up to zero.</p>
+<p>e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">timer</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">timer</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># do something</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.clock.Clock.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><em>newT=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.Clock.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the time on the clock. With no args time will be
+set to zero. If a float is received this will be the new
+time on the clock</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="psychopy.clock.CountdownTimer">
+<em class="property">class </em><code class="descclassname">psychopy.clock.</code><code class="descname">CountdownTimer</code><span class="sig-paren">(</span><em>start=0</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.CountdownTimer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to a <a class="reference internal" href="core.html#psychopy.core.Clock" title="psychopy.core.Clock"><code class="xref py py-class docutils literal"><span class="pre">Clock</span></code></a> except that time counts down
+from the time of last reset</p>
+<p>Typical usage:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">timer</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">CountdownTimer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">timer</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># after 5s will become negative</span>
+    <span class="c1"># do stuff</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="psychopy.clock.CountdownTimer.getTime">
+<code class="descname">getTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.CountdownTimer.getTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current time left on this timer in secs
+(sub-ms precision)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="psychopy.clock.MonotonicClock">
+<em class="property">class </em><code class="descclassname">psychopy.clock.</code><code class="descname">MonotonicClock</code><span class="sig-paren">(</span><em>start_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.MonotonicClock" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenient class to keep track of time in your experiments using a
+sub-millisecond timer.</p>
+<p>Unlike the <a class="reference internal" href="core.html#psychopy.core.Clock" title="psychopy.core.Clock"><code class="xref py py-class docutils literal"><span class="pre">Clock</span></code></a> this cannot be reset to
+arbitrary times. For this clock t=0 always represents the time that
+the clock was created.</p>
+<p>Don&#8217;t confuse this <cite>class</cite> with <cite>core.monotonicClock</cite> which is an
+<cite>instance</cite> of it that got created when PsychoPy.core was imported.
+That clock instance is deliberately designed always to return the
+time since the start of the study.</p>
+<p>Version Notes: This class was added in PsychoPy 1.77.00</p>
+<dl class="method">
+<dt id="psychopy.clock.MonotonicClock.getLastResetTime">
+<code class="descname">getLastResetTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.MonotonicClock.getLastResetTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current offset being applied to the high resolution
+timebase used by Clock.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.clock.MonotonicClock.getTime">
+<code class="descname">getTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.clock.MonotonicClock.getTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current time on this clock in secs (sub-ms precision)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="psychopy.data - functions for storing/saving/analysing data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="visual/windowwarp.html" title="psychopy.visual.windowwarp - warping to spherical, cylindrical, or other projections"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

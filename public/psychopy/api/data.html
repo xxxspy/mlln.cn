@@ -1,0 +1,1948 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.data - functions for storing/saving/analysing data &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="Encryption" href="encryption.html" />
+    <link rel="prev" title="psychopy.clock - Clocks and timers" href="clock.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="encryption.html" title="Encryption"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="clock.html" title="psychopy.clock - Clocks and timers"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.data</span></code> - functions for storing/saving/analysing data</a><ul>
+<li><a class="reference internal" href="#experimenthandler"><code class="docutils literal"><span class="pre">ExperimentHandler</span></code></a></li>
+<li><a class="reference internal" href="#trialhandler"><code class="docutils literal"><span class="pre">TrialHandler</span></code></a></li>
+<li><a class="reference internal" href="#stairhandler"><code class="docutils literal"><span class="pre">StairHandler</span></code></a></li>
+<li><a class="reference internal" href="#multistairhandler"><code class="docutils literal"><span class="pre">MultiStairHandler</span></code></a></li>
+<li><a class="reference internal" href="#questhandler"><code class="docutils literal"><span class="pre">QuestHandler</span></code></a></li>
+<li><a class="reference internal" href="#fitweibull"><code class="docutils literal"><span class="pre">FitWeibull</span></code></a></li>
+<li><a class="reference internal" href="#fitlogistic"><code class="docutils literal"><span class="pre">FitLogistic</span></code></a></li>
+<li><a class="reference internal" href="#fitnakarushton"><code class="docutils literal"><span class="pre">FitNakaRushton</span></code></a></li>
+<li><a class="reference internal" href="#fitcumnormal"><code class="docutils literal"><span class="pre">FitCumNormal</span></code></a></li>
+<li><a class="reference internal" href="#importconditions"><code class="docutils literal"><span class="pre">importConditions()</span></code></a></li>
+<li><a class="reference internal" href="#functionfromstaircase"><code class="docutils literal"><span class="pre">functionFromStaircase()</span></code></a></li>
+<li><a class="reference internal" href="#bootstraps"><code class="docutils literal"><span class="pre">bootStraps()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="clock.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.clock</span></code> -  Clocks and timers</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="encryption.html"
+                                  title="next chapter">Encryption</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/data.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.data">
+<span id="psychopy-data-functions-for-storing-saving-analysing-data"></span><h1><a class="reference internal" href="#module-psychopy.data" title="psychopy.data"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.data</span></code></a> - functions for storing/saving/analysing data<a class="headerlink" href="#module-psychopy.data" title="Permalink to this headline">¶</a></h1>
+<p>Routines for handling data structures and analysis</p>
+<div class="section" id="experimenthandler">
+<h2><a class="reference internal" href="#psychopy.data.ExperimentHandler" title="psychopy.data.ExperimentHandler"><code class="xref py py-class docutils literal"><span class="pre">ExperimentHandler</span></code></a><a class="headerlink" href="#experimenthandler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.ExperimentHandler">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">ExperimentHandler</code><span class="sig-paren">(</span><em>name=''</em>, <em>version=''</em>, <em>extraInfo=None</em>, <em>runtimeInfo=None</em>, <em>originPath=None</em>, <em>savePickle=True</em>, <em>saveWideText=True</em>, <em>dataFileName=''</em>, <em>autoLog=True</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>A container class for keeping track of multiple loops/handlers</p>
+<p>Useful for generating a single data file from an experiment with many
+different loops (e.g. interleaved staircases or loops within loops</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Usage:</th><td class="field-body"><p class="first">exp = data.ExperimentHandler(name=&#8221;Face Preference&#8221;,version=&#8216;0.1.0&#8217;)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">a string or unicode</span><dd><p class="first last">As a useful identifier later</p>
+</dd>
+<dt>version</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">usually a string (e.g. &#8216;1.1.0&#8217;)</span><dd><p class="first last">To keep track of which version of the experiment was run</p>
+</dd>
+<dt>extraInfo</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">a dictionary</span><dd><p class="first last">Containing useful information about this run
+(e.g. {&#8216;participant&#8217;:&#8217;jwp&#8217;,&#8217;gender&#8217;:&#8217;m&#8217;,&#8217;orientation&#8217;:90} )</p>
+</dd>
+<dt>runtimeInfo</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference internal" href="info.html#psychopy.info.RunTimeInfo" title="psychopy.info.RunTimeInfo"><code class="xref py py-class docutils literal"><span class="pre">psychopy.info.RunTimeInfo</span></code></a></span><dd><p class="first last">Containining information about the system as detected at
+runtime</p>
+</dd>
+<dt>originPath</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">string or unicode</span><dd><p class="first last">The path and filename of the originating script/experiment
+If not provided this will be determined as the path of the
+calling script.</p>
+</dd>
+<dt>dataFileName</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">string</span><dd><p class="first last">This is defined in advance and the file will be saved at any
+point that the handler is removed or discarded (unless
+.abort() had been called in advance).
+The handler will attempt to populate the file even in the
+event of a (not too serious) crash!</p>
+</dd>
+</dl>
+<p>savePickle : True (default) or False</p>
+<p>saveWideText : True (default) or False</p>
+<p class="last">autoLog : True (default) or False</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="psychopy.data.ExperimentHandler.abort">
+<code class="descname">abort</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler.abort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inform the ExperimentHandler that the run was aborted.</p>
+<p>Experiment handler will attempt automatically to save data
+(even in the event of a crash if possible). So if you quit your
+script early you may want to tell the Handler not to save out
+the data files for this run. This is the method that allows you
+to do that.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.ExperimentHandler.addData">
+<code class="descname">addData</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler.addData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the data with a given name to the current experiment.</p>
+<p>Typically the user does not need to use this function; if you added
+your data to the loop and had already added the loop to the
+experiment then the loop will automatically inform the experiment
+that it has received data.</p>
+<p>Multiple data name/value pairs can be added to any given entry of
+the data file and is considered part of the same entry until the
+nextEntry() call is made.</p>
+<p>e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># add some data for this trial</span>
+<span class="n">exp</span><span class="o">.</span><span class="n">addData</span><span class="p">(</span><span class="s1">&#39;resp.rt&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">exp</span><span class="o">.</span><span class="n">addData</span><span class="p">(</span><span class="s1">&#39;resp.key&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="c1"># end of trial - move to next line in data output</span>
+<span class="n">exp</span><span class="o">.</span><span class="n">nextEntry</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.ExperimentHandler.addLoop">
+<code class="descname">addLoop</code><span class="sig-paren">(</span><em>loopHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler.addLoop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a loop such as a <a class="reference internal" href="#psychopy.data.TrialHandler" title="psychopy.data.TrialHandler"><code class="xref py py-class docutils literal"><span class="pre">TrialHandler</span></code></a>
+or <a class="reference internal" href="#psychopy.data.StairHandler" title="psychopy.data.StairHandler"><code class="xref py py-class docutils literal"><span class="pre">StairHandler</span></code></a>
+Data from this loop will be included in the resulting data files.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.ExperimentHandler.loopEnded">
+<code class="descname">loopEnded</code><span class="sig-paren">(</span><em>loopHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler.loopEnded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Informs the experiment handler that the loop is finished and not to
+include its values in further entries of the experiment.</p>
+<p>This method is called by the loop itself if it ends its iterations,
+so is not typically needed by the user.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.ExperimentHandler.nextEntry">
+<code class="descname">nextEntry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler.nextEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calling nextEntry indicates to the ExperimentHandler that the
+current trial has ended and so further addData() calls correspond
+to the next trial.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.ExperimentHandler.saveAsPickle">
+<code class="descname">saveAsPickle</code><span class="sig-paren">(</span><em>fileName</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler.saveAsPickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basically just saves a copy of self (with data) to a pickle file.</p>
+<p>This can be reloaded if necessary and further analyses carried out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body">fileCollisionMethod: Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.ExperimentHandler.saveAsWideText">
+<code class="descname">saveAsWideText</code><span class="sig-paren">(</span><em>fileName</em>, <em>delim=None</em>, <em>matrixOnly=False</em>, <em>appendFile=False</em>, <em>encoding='utf-8'</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.ExperimentHandler.saveAsWideText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a long, wide-format text file, with one line representing
+the attributes and data for a single trial. Suitable for analysis
+in R and SPSS.</p>
+<p>If <cite>appendFile=True</cite> then the data will be added to the bottom of
+an existing file. Otherwise, if the file exists already it will
+be overwritten</p>
+<p>If <cite>matrixOnly=True</cite> then the file will not contain a header row,
+which can be handy if you want to append data to an existing file
+of the same format.</p>
+<dl class="docutils">
+<dt>encoding:</dt>
+<dd>The encoding to use when saving a the file. Defaults to <cite>utf-8</cite>.</dd>
+<dt>fileCollisionMethod:</dt>
+<dd>Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="trialhandler">
+<h2><a class="reference internal" href="#psychopy.data.TrialHandler" title="psychopy.data.TrialHandler"><code class="xref py py-class docutils literal"><span class="pre">TrialHandler</span></code></a><a class="headerlink" href="#trialhandler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.TrialHandler">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">TrialHandler</code><span class="sig-paren">(</span><em>trialList</em>, <em>nReps</em>, <em>method='random'</em>, <em>dataTypes=None</em>, <em>extraInfo=None</em>, <em>seed=None</em>, <em>originPath=None</em>, <em>name=''</em>, <em>autoLog=True</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to handle trial sequencing and data storage.</p>
+<p>Calls to .next() will fetch the next trial object given to this handler,
+according to the method specified (random, sequential, fullRandom).
+Calls will raise a StopIteration error if trials have finished.</p>
+<p>See demo_trialHandler.py</p>
+<p>The psydat file format is literally just a pickled copy of the
+TrialHandler object that saved it. You can open it with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy.tools.filetools</span> <span class="k">import</span> <span class="n">fromFile</span>
+<span class="n">dat</span> <span class="o">=</span> <span class="n">fromFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you&#8217;ll find that <cite>dat</cite> has the following attributes that</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>trialList: a simple list (or flat array) of dictionaries</dt>
+<dd><p class="first last">specifying conditions. This can be imported from an
+excel/csv file using <a class="reference internal" href="#psychopy.data.importConditions" title="psychopy.data.importConditions"><code class="xref py py-func docutils literal"><span class="pre">importConditions()</span></code></a></p>
+</dd>
+</dl>
+<p>nReps: number of repeats for all conditions</p>
+<dl class="docutils">
+<dt>method: <em>&#8216;random&#8217;,</em> &#8216;sequential&#8217;, or &#8216;fullRandom&#8217;</dt>
+<dd><p class="first last">&#8216;sequential&#8217; obviously presents the conditions in the order
+they appear in the list. &#8216;random&#8217; will result in a shuffle
+of the conditions on each repeat, but all conditions
+occur once before the second repeat etc. &#8216;fullRandom&#8217;
+fully randomises the trials across repeats as well,
+which means you could potentially run all trials of
+one condition before any trial of another.</p>
+</dd>
+<dt>dataTypes: (optional) list of names for data storage.</dt>
+<dd><p class="first last">e.g. [&#8216;corr&#8217;,&#8217;rt&#8217;,&#8217;resp&#8217;]. If not provided then these
+will be created as needed during calls to
+<a class="reference internal" href="#psychopy.data.TrialHandler.addData" title="psychopy.data.TrialHandler.addData"><code class="xref py py-func docutils literal"><span class="pre">addData()</span></code></a></p>
+</dd>
+<dt>extraInfo: A dictionary</dt>
+<dd><p class="first last">This will be stored alongside the data and usually
+describes the experiment and subject ID, date etc.</p>
+</dd>
+<dt>seed: an integer</dt>
+<dd><p class="first last">If provided then this fixes the random number generator to
+use the same pattern of trials, by seeding its startpoint</p>
+</dd>
+<dt>originPath: a string describing the location of the</dt>
+<dd><p class="first last">script / experiment file path. The psydat file format will
+store a copy of the experiment if possible. If
+<cite>originPath==None</cite> is provided here then the TrialHandler
+will still store a copy of the script where it was
+created. If <cite>OriginPath==-1</cite> then nothing will be stored.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Attributes (after creation):</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><dl class="first docutils">
+<dt>.data - a dictionary of numpy arrays, one for each data type</dt>
+<dd><p class="first last">stored</p>
+</dd>
+</dl>
+<p>.trialList - the original list of dicts, specifying the conditions</p>
+<dl class="docutils">
+<dt>.thisIndex - the index of the current trial in the original</dt>
+<dd><p class="first last">conditions list</p>
+</dd>
+</dl>
+<p>.nTotal - the total number of trials that will be run</p>
+<p>.nRemaining - the total number of trials remaining</p>
+<p>.thisN - total trials completed so far</p>
+<p>.thisRepN - which repeat you are currently on</p>
+<p>.thisTrialN - which trial number <em>within</em> that repeat</p>
+<dl class="docutils">
+<dt>.thisTrial - a dictionary giving the parameters of the current</dt>
+<dd><p class="first last">trial</p>
+</dd>
+</dl>
+<p>.finished - True/False for have we finished yet</p>
+<p>.extraInfo - the dictionary of extra info as given at beginning</p>
+<dl class="last docutils">
+<dt>.origin - the contents of the script or builder experiment that</dt>
+<dd><p class="first last">created the handler</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.addData">
+<code class="descname">addData</code><span class="sig-paren">(</span><em>thisType</em>, <em>value</em>, <em>position=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.addData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add data for the current trial</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.getEarlierTrial">
+<code class="descname">getEarlierTrial</code><span class="sig-paren">(</span><em>n=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.getEarlierTrial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the condition information from n trials previously.
+Useful for comparisons in n-back tasks. Returns &#8216;None&#8217; if trying
+to access a trial prior to the first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.getExp">
+<code class="descname">getExp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.getExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ExperimentHandler that this handler is attached to,
+if any. Returns None if not attached</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.getFutureTrial">
+<code class="descname">getFutureTrial</code><span class="sig-paren">(</span><em>n=1</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.getFutureTrial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the condition for n trials into the future,
+without advancing the trials. A negative n returns a previous (past)
+trial. Returns &#8216;None&#8217; if attempting to go beyond the last trial.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.getOriginPathAndFile">
+<code class="descname">getOriginPathAndFile</code><span class="sig-paren">(</span><em>originPath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.getOriginPathAndFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to determine the path of the script that created this
+data file and returns both the path to that script and its contents.
+Useful to store the entire experiment with the data.</p>
+<p>If originPath is provided (e.g. from Builder) then this is used
+otherwise the calling script is the originPath (fine from a
+standard python script).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances to next trial and returns it.
+Updates attributes; thisTrial, thisTrialN and thisIndex
+If the trials have ended this method will raise a StopIteration error.
+This can be handled with code such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">trials</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">TrialHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">eachTrial</span> <span class="ow">in</span> <span class="n">trials</span><span class="p">:</span>  <span class="c1"># automatically stops when done</span>
+    <span class="c1"># do stuff</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">trials</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">TrialHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># ie forever</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">thisTrial</span> <span class="o">=</span> <span class="n">trials</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>  <span class="c1"># we got a StopIteration error</span>
+        <span class="k">break</span> <span class="c1">#break out of the forever loop</span>
+    <span class="c1"># do stuff here for the trial</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.printAsText">
+<code class="descname">printAsText</code><span class="sig-paren">(</span><em>stimOut=None</em>, <em>dataOut=('all_mean'</em>, <em>'all_std'</em>, <em>'all_raw')</em>, <em>delim='\t'</em>, <em>matrixOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.printAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly like saveAsText() except that the output goes
+to the screen instead of a file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.saveAsExcel">
+<code class="descname">saveAsExcel</code><span class="sig-paren">(</span><em>fileName</em>, <em>sheetName='rawData'</em>, <em>stimOut=None</em>, <em>dataOut=('n'</em>, <em>'all_mean'</em>, <em>'all_std'</em>, <em>'all_raw')</em>, <em>matrixOnly=False</em>, <em>appendFile=True</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.saveAsExcel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a summary data file in Excel OpenXML format workbook
+(<a class="reference internal" href="../general/glossary.html#term-xlsx"><span class="xref std std-term">xlsx</span></a>) for processing in most spreadsheet packages.
+This format is compatible with versions of Excel (2007 or greater)
+and and with OpenOffice (&gt;=3.0).</p>
+<p>It has the advantage over the simpler text files (see
+<a class="reference internal" href="#psychopy.data.TrialHandler.saveAsText" title="psychopy.data.TrialHandler.saveAsText"><code class="xref py py-func docutils literal"><span class="pre">TrialHandler.saveAsText()</span></code></a> )
+that data can be stored in multiple named sheets within the file.
+So you could have a single file named after your experiment and
+then have one worksheet for each participant. Or you could have
+one file for each participant and then multiple sheets for
+repeated sessions etc.</p>
+<p>The file extension <cite>.xlsx</cite> will be added if not given already.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName: string</dt>
+<dd><p class="first last">the name of the file to create or append. Can include
+relative or absolute path</p>
+</dd>
+<dt>sheetName: string</dt>
+<dd><p class="first last">the name of the worksheet within the file</p>
+</dd>
+<dt>stimOut: list of strings</dt>
+<dd><p class="first last">the attributes of the trial characteristics to be output.
+To use this you need to have provided a list of dictionaries
+specifying to trialList parameter of the TrialHandler and
+give here the names of strings specifying entries in that
+dictionary</p>
+</dd>
+<dt>dataOut: list of strings</dt>
+<dd><p class="first last">specifying the dataType and the analysis to
+be performed, in the form <cite>dataType_analysis</cite>. The data
+can be any of the types that you added using
+trialHandler.data.add() and the analysis can be either
+&#8216;raw&#8217; or most things in the numpy library, including
+&#8216;mean&#8217;,&#8217;std&#8217;,&#8217;median&#8217;,&#8217;max&#8217;,&#8217;min&#8217;. e.g. <cite>rt_max</cite> will give
+a column of max reaction times across the trials assuming
+that <cite>rt</cite> values have been stored. The default values will
+output the raw, mean and std of all datatypes found.</p>
+</dd>
+<dt>appendFile: True or False</dt>
+<dd><p class="first last">If False any existing file with this name will be
+overwritten. If True then a new worksheet will be appended.
+If a worksheet already exists with that name a number will
+be added to make it unique.</p>
+</dd>
+<dt>fileCollisionMethod: string</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code>
+This is ignored if <code class="docutils literal"><span class="pre">append</span></code> is <code class="docutils literal"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.saveAsPickle">
+<code class="descname">saveAsPickle</code><span class="sig-paren">(</span><em>fileName</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.saveAsPickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basically just saves a copy of the handler (with data) to a
+pickle file.</p>
+<p>This can be reloaded if necessary and further analyses carried out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body">fileCollisionMethod: Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.saveAsText">
+<code class="descname">saveAsText</code><span class="sig-paren">(</span><em>fileName</em>, <em>stimOut=None</em>, <em>dataOut=('n'</em>, <em>'all_mean'</em>, <em>'all_std'</em>, <em>'all_raw')</em>, <em>delim=None</em>, <em>matrixOnly=False</em>, <em>appendFile=True</em>, <em>summarised=True</em>, <em>fileCollisionMethod='rename'</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.saveAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a text file with the data and various chosen stimulus attributes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>fileName:</dt>
+<dd>will have .tsv appended and can include path info.</dd>
+<dt>stimOut:</dt>
+<dd>the stimulus attributes to be output. To use this you need to
+use a list of dictionaries and give here the names of dictionary
+keys that you want as strings</dd>
+<dt>dataOut:</dt>
+<dd>a list of strings specifying the dataType and the analysis to
+be performed,in the form <cite>dataType_analysis</cite>. The data can be
+any of the types that you added using trialHandler.data.add()
+and the analysis can be either &#8216;raw&#8217; or most things in the
+numpy library, including; &#8216;mean&#8217;,&#8217;std&#8217;,&#8217;median&#8217;,&#8217;max&#8217;,&#8217;min&#8217;...
+The default values will output the raw, mean and std of all
+datatypes found</dd>
+<dt>delim:</dt>
+<dd>allows the user to use a delimiter other than tab
+(&#8221;,&#8221; is popular with file extension &#8221;.csv&#8221;)</dd>
+<dt>matrixOnly:</dt>
+<dd>outputs the data with no header row or extraInfo attached</dd>
+<dt>appendFile:</dt>
+<dd>will add this output to the end of the specified file if
+it already exists</dd>
+<dt>fileCollisionMethod:</dt>
+<dd>Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></dd>
+<dt>encoding:</dt>
+<dd>The encoding to use when saving a the file. Defaults to <cite>utf-8</cite>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.saveAsWideText">
+<code class="descname">saveAsWideText</code><span class="sig-paren">(</span><em>fileName</em>, <em>delim=None</em>, <em>matrixOnly=False</em>, <em>appendFile=True</em>, <em>encoding='utf-8'</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.saveAsWideText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a text file with the session, stimulus, and data values
+from each trial in chronological order. Also, return a
+pandas.DataFrame containing same information as the file.</p>
+<dl class="docutils">
+<dt>That is, unlike &#8216;saveAsText&#8217; and &#8216;saveAsExcel&#8217;:</dt>
+<dd><ul class="first last simple">
+<li>each row comprises information from only a single trial.</li>
+<li>no summarizing is done (such as collapsing to produce mean and
+standard deviation values across trials).</li>
+</ul>
+</dd>
+</dl>
+<p>This &#8216;wide&#8217; format, as expected by R for creating dataframes, and
+various other analysis programs, means that some information must
+be repeated on every row.</p>
+<p>In particular, if the trialHandler&#8217;s &#8216;extraInfo&#8217; exists, then each
+entry in there occurs in every row. In builder, this will include
+any entries in the &#8216;Experiment info&#8217; field of the
+&#8216;Experiment settings&#8217; dialog. In Coder, this information can be
+set using something like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myTrialHandler</span><span class="o">.</span><span class="n">extraInfo</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SubjID&#39;</span><span class="p">:</span> <span class="s1">&#39;Joan Smith&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;Group&#39;</span><span class="p">:</span> <span class="s1">&#39;Control&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName:</dt>
+<dd><p class="first last">if extension is not specified, &#8216;.csv&#8217; will be appended
+if the delimiter is &#8216;,&#8217;, else &#8216;.tsv&#8217; will be appended.
+Can include path info.</p>
+</dd>
+<dt>delim:</dt>
+<dd><p class="first last">allows the user to use a delimiter other than the default
+tab (&#8221;,&#8221; is popular with file extension &#8221;.csv&#8221;)</p>
+</dd>
+<dt>matrixOnly:</dt>
+<dd><p class="first last">outputs the data with no header row.</p>
+</dd>
+<dt>appendFile:</dt>
+<dd><p class="first last">will add this output to the end of the specified file if
+it already exists.</p>
+</dd>
+<dt>fileCollisionMethod:</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></p>
+</dd>
+<dt>encoding:</dt>
+<dd><p class="first last">The encoding to use when saving a the file.
+Defaults to <cite>utf-8</cite>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.TrialHandler.setExp">
+<code class="descname">setExp</code><span class="sig-paren">(</span><em>exp</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.TrialHandler.setExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ExperimentHandler that this handler is attached to</p>
+<p>Do NOT attempt to set the experiment using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">trials</span><span class="o">.</span><span class="n">_exp</span> <span class="o">=</span> <span class="n">myExperiment</span>
+</pre></div>
+</div>
+<p>because it needs to be performed using the <cite>weakref</cite> module.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="stairhandler">
+<h2><a class="reference internal" href="#psychopy.data.StairHandler" title="psychopy.data.StairHandler"><code class="xref py py-class docutils literal"><span class="pre">StairHandler</span></code></a><a class="headerlink" href="#stairhandler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.StairHandler">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">StairHandler</code><span class="sig-paren">(</span><em>startVal</em>, <em>nReversals=None</em>, <em>stepSizes=4</em>, <em>nTrials=0</em>, <em>nUp=1</em>, <em>nDown=3</em>, <em>extraInfo=None</em>, <em>method='2AFC'</em>, <em>stepType='db'</em>, <em>minVal=None</em>, <em>maxVal=None</em>, <em>originPath=None</em>, <em>name=''</em>, <em>autoLog=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to handle smoothly the selection of the next trial
+and report current values etc.
+Calls to next() will fetch the next object given to this
+handler, according to the method specified.</p>
+<p>See <code class="docutils literal"><span class="pre">Demos</span> <span class="pre">&gt;&gt;</span> <span class="pre">ExperimentalControl</span> <span class="pre">&gt;&gt;</span> <span class="pre">JND_staircase_exp.py</span></code></p>
+<p>The staircase will terminate when <em>nTrials</em> AND <em>nReversals</em> have
+been exceeded. If <em>stepSizes</em> was an array and has been exceeded
+before nTrials is exceeded then the staircase will continue
+to reverse.</p>
+<p><em>nUp</em> and <em>nDown</em> are always considered as 1 until the first reversal
+is reached. The values entered as arguments are then used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>startVal:</dt>
+<dd><p class="first last">The initial value for the staircase.</p>
+</dd>
+<dt>nReversals:</dt>
+<dd><p class="first last">The minimum number of reversals permitted.
+If <cite>stepSizes</cite> is a list, but the minimum number of
+reversals to perform, <cite>nReversals</cite>, is less than the
+length of this list, PsychoPy will automatically increase
+the minimum number of reversals and emit a warning.</p>
+</dd>
+<dt>stepSizes:</dt>
+<dd><p class="first last">The size of steps as a single value or a list (or array).
+For a single value the step size is fixed. For an array or
+list the step size will progress to the next entry
+at each reversal.</p>
+</dd>
+<dt>nTrials:</dt>
+<dd><p class="first last">The minimum number of trials to be conducted. If the
+staircase has not reached the required number of reversals
+then it will continue.</p>
+</dd>
+<dt>nUp:</dt>
+<dd><p class="first last">The number of &#8216;incorrect&#8217; (or 0) responses before the
+staircase level increases.</p>
+</dd>
+<dt>nDown:</dt>
+<dd><p class="first last">The number of &#8216;correct&#8217; (or 1) responses before the
+staircase level decreases.</p>
+</dd>
+<dt>extraInfo:</dt>
+<dd><p class="first last">A dictionary (typically) that will be stored along with
+collected data using
+<a class="reference internal" href="#psychopy.data.StairHandler.saveAsPickle" title="psychopy.data.StairHandler.saveAsPickle"><code class="xref py py-func docutils literal"><span class="pre">saveAsPickle()</span></code></a> or
+<a class="reference internal" href="#psychopy.data.StairHandler.saveAsText" title="psychopy.data.StairHandler.saveAsText"><code class="xref py py-func docutils literal"><span class="pre">saveAsText()</span></code></a> methods.</p>
+</dd>
+<dt>stepType:</dt>
+<dd><p class="first last">specifies whether each step will be a jump of the given
+size in &#8216;db&#8217;, &#8216;log&#8217; or &#8216;lin&#8217; units (&#8216;lin&#8217; means this
+intensity will be added/subtracted)</p>
+</dd>
+<dt>method:</dt>
+<dd><p class="first last">Not used and may be deprecated in future releases.</p>
+</dd>
+<dt>stepType: <em>&#8216;db&#8217;</em>, &#8216;lin&#8217;, &#8216;log&#8217;</dt>
+<dd><p class="first last">The type of steps that should be taken each time. &#8216;lin&#8217;
+will simply add or subtract that amount each step, &#8216;db&#8217;
+and &#8216;log&#8217; will step by a certain number of decibels or
+log units (note that this will prevent your value ever
+reaching zero or less)</p>
+</dd>
+<dt>minVal: <em>None</em>, or a number</dt>
+<dd><p class="first last">The smallest legal value for the staircase, which can be
+used to prevent it reaching impossible contrast values,
+for instance.</p>
+</dd>
+<dt>maxVal: <em>None</em>, or a number</dt>
+<dd><p class="first last">The largest legal value for the staircase, which can be
+used to prevent it reaching impossible contrast values,
+for instance.</p>
+</dd>
+</dl>
+<p>Additional keyword arguments will be ignored.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Notes:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>The additional keyword arguments <cite>**kwargs</cite> might for example be
+passed by the <cite>MultiStairHandler</cite>, which expects a <cite>label</cite> keyword
+for each staircase. These parameters are to be ignored by the
+StairHandler.</p>
+<dl class="method">
+<dt id="psychopy.data.StairHandler.addData">
+<code class="descname">addData</code><span class="sig-paren">(</span><em>result</em>, <em>intensity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.addData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated since 1.79.00: This function name was ambiguous.
+Please use one of these instead:</p>
+<blockquote>
+<div>.addResponse(result, intensity)
+.addOtherData(&#8216;dataName&#8217;, value&#8217;)</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.addOtherData">
+<code class="descname">addOtherData</code><span class="sig-paren">(</span><em>dataName</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.addOtherData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add additional data to the handler, to be tracked alongside
+the result data but not affecting the value of the staircase</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.addResponse">
+<code class="descname">addResponse</code><span class="sig-paren">(</span><em>result</em>, <em>intensity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.addResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a 1 or 0 to signify a correct / detected or
+incorrect / missed trial</p>
+<p>This is essential to advance the staircase to a new intensity level!</p>
+<p>Supplying an <cite>intensity</cite> value here indicates that you did not use
+the recommended intensity in your last trial and the staircase will
+replace its recorded value with the one you supplied here.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.calculateNextIntensity">
+<code class="descname">calculateNextIntensity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.calculateNextIntensity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Based on current intensity, counter of correct responses, and
+current direction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.getExp">
+<code class="descname">getExp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.getExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ExperimentHandler that this handler is attached to,
+if any. Returns None if not attached</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.getOriginPathAndFile">
+<code class="descname">getOriginPathAndFile</code><span class="sig-paren">(</span><em>originPath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.getOriginPathAndFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to determine the path of the script that created this
+data file and returns both the path to that script and its contents.
+Useful to store the entire experiment with the data.</p>
+<p>If originPath is provided (e.g. from Builder) then this is used
+otherwise the calling script is the originPath (fine from a
+standard python script).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances to next trial and returns it.
+Updates attributes; <cite>thisTrial</cite>, <cite>thisTrialN</cite> and <cite>thisIndex</cite>.</p>
+<p>If the trials have ended, calling this method will raise a
+StopIteration error. This can be handled with code such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">StairHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">eachTrial</span> <span class="ow">in</span> <span class="n">staircase</span><span class="p">:</span>  <span class="c1"># automatically stops when done</span>
+    <span class="c1"># do stuff</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">StairHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># ie forever</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">thisTrial</span> <span class="o">=</span> <span class="n">staircase</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>  <span class="c1"># we got a StopIteration error</span>
+        <span class="k">break</span>  <span class="c1"># break out of the forever loop</span>
+    <span class="c1"># do stuff here for the trial</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.printAsText">
+<code class="descname">printAsText</code><span class="sig-paren">(</span><em>stimOut=None</em>, <em>dataOut=('all_mean'</em>, <em>'all_std'</em>, <em>'all_raw')</em>, <em>delim='\t'</em>, <em>matrixOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.printAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly like saveAsText() except that the output goes
+to the screen instead of a file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.saveAsExcel">
+<code class="descname">saveAsExcel</code><span class="sig-paren">(</span><em>fileName</em>, <em>sheetName='data'</em>, <em>matrixOnly=False</em>, <em>appendFile=True</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.saveAsExcel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a summary data file in Excel OpenXML format workbook
+(<a class="reference internal" href="../general/glossary.html#term-xlsx"><span class="xref std std-term">xlsx</span></a>) for processing in most spreadsheet packages.
+This format is compatible with versions of Excel (2007 or greater)
+and and with OpenOffice (&gt;=3.0).</p>
+<p>It has the advantage over the simpler text files
+(see <a class="reference internal" href="#psychopy.data.TrialHandler.saveAsText" title="psychopy.data.TrialHandler.saveAsText"><code class="xref py py-func docutils literal"><span class="pre">TrialHandler.saveAsText()</span></code></a> ) that data can be stored
+in multiple named sheets within the file. So you could have a
+single file named after your experiment and then have one worksheet
+for each participant. Or you could have one file for each participant
+and then multiple sheets for repeated sessions etc.</p>
+<p>The file extension <cite>.xlsx</cite> will be added if not given already.</p>
+<p>The file will contain a set of values specifying the staircase level
+(&#8216;intensity&#8217;) at each reversal, a list of reversal indices
+(trial numbers), the raw staircase / intensity level on <em>every</em>
+trial and the corresponding responses of the participant on every
+trial.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName: string</dt>
+<dd><p class="first last">the name of the file to create or append. Can include
+relative or absolute path</p>
+</dd>
+<dt>sheetName: string</dt>
+<dd><p class="first last">the name of the worksheet within the file</p>
+</dd>
+<dt>matrixOnly: True or False</dt>
+<dd><p class="first last">If set to True then only the data itself will be output
+(no additional info)</p>
+</dd>
+<dt>appendFile: True or False</dt>
+<dd><p class="first last">If False any existing file with this name will be
+overwritten. If True then a new worksheet will be appended.
+If a worksheet already exists with that name a number will
+be added to make it unique.</p>
+</dd>
+<dt>fileCollisionMethod: string</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code>
+This is ignored if <code class="docutils literal"><span class="pre">append</span></code> is <code class="docutils literal"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.saveAsPickle">
+<code class="descname">saveAsPickle</code><span class="sig-paren">(</span><em>fileName</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.saveAsPickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basically just saves a copy of self (with data) to a pickle file.</p>
+<p>This can be reloaded if necess and further analyses carried out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body">fileCollisionMethod: Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.saveAsText">
+<code class="descname">saveAsText</code><span class="sig-paren">(</span><em>fileName</em>, <em>delim=None</em>, <em>matrixOnly=False</em>, <em>fileCollisionMethod='rename'</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.saveAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a text file with the data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName: a string</dt>
+<dd><p class="first last">The name of the file, including path if needed. The extension
+<cite>.tsv</cite> will be added if not included.</p>
+</dd>
+<dt>delim: a string</dt>
+<dd><p class="first last">the delimitter to be used (e.g. &#8216;       &#8216; for tab-delimitted,
+&#8216;,&#8217; for csv files)</p>
+</dd>
+<dt>matrixOnly: True/False</dt>
+<dd><p class="first last">If True, prevents the output of the <cite>extraInfo</cite> provided
+at initialisation.</p>
+</dd>
+<dt>fileCollisionMethod:</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></p>
+</dd>
+<dt>encoding:</dt>
+<dd><p class="first last">The encoding to use when saving a the file.
+Defaults to <cite>utf-8</cite>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.StairHandler.setExp">
+<code class="descname">setExp</code><span class="sig-paren">(</span><em>exp</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.StairHandler.setExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ExperimentHandler that this handler is attached to</p>
+<p>Do NOT attempt to set the experiment using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">trials</span><span class="o">.</span><span class="n">_exp</span> <span class="o">=</span> <span class="n">myExperiment</span>
+</pre></div>
+</div>
+<p>because it needs to be performed using the <cite>weakref</cite> module.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="multistairhandler">
+<h2><a class="reference internal" href="#psychopy.data.MultiStairHandler" title="psychopy.data.MultiStairHandler"><code class="xref py py-class docutils literal"><span class="pre">MultiStairHandler</span></code></a><a class="headerlink" href="#multistairhandler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.MultiStairHandler">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">MultiStairHandler</code><span class="sig-paren">(</span><em>stairType='simple'</em>, <em>method='random'</em>, <em>conditions=None</em>, <em>nTrials=50</em>, <em>originPath=None</em>, <em>name=''</em>, <em>autoLog=True</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Handler to allow easy interleaved staircase procedures
+(simple or QUEST).</p>
+<p>Parameters for the staircases, as used by the relevant
+<a class="reference internal" href="#psychopy.data.StairHandler" title="psychopy.data.StairHandler"><code class="xref py py-class docutils literal"><span class="pre">StairHandler</span></code></a> or
+<a class="reference internal" href="#psychopy.data.QuestHandler" title="psychopy.data.QuestHandler"><code class="xref py py-class docutils literal"><span class="pre">QuestHandler</span></code></a> (e.g. the <cite>startVal</cite>, <cite>minVal</cite>, <cite>maxVal</cite>...)
+should be specified in the <cite>conditions</cite> list and may vary between
+each staircase. In particular, the conditions /must/ include the
+a <cite>startVal</cite> (because this is a required argument to the above
+handlers) a <cite>label</cite> to tag the staircase and a <cite>startValSd</cite>
+(only for QUEST staircases). Any parameters not specified in the
+conditions file will revert to the default for that individual
+handler.</p>
+<p>If you need to custom the behaviour further you may want to
+look at the recipe on <a class="reference internal" href="../recipes/interleaveStaircases.html#interleavedstairs"><span class="std std-ref">Coder - interleave staircases</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Params:</th><td class="field-body"><dl class="first last docutils">
+<dt>stairType: &#8216;simple&#8217; or &#8216;quest&#8217;</dt>
+<dd><p class="first last">Use a <a class="reference internal" href="#psychopy.data.StairHandler" title="psychopy.data.StairHandler"><code class="xref py py-class docutils literal"><span class="pre">StairHandler</span></code></a> or <a class="reference internal" href="#psychopy.data.QuestHandler" title="psychopy.data.QuestHandler"><code class="xref py py-class docutils literal"><span class="pre">QuestHandler</span></code></a></p>
+</dd>
+<dt>method: &#8216;random&#8217; or &#8216;sequential&#8217;</dt>
+<dd><p class="first last">The stairs are shuffled in each repeat but not randomised
+more than that (so you can&#8217;t have 3 repeats of the same
+staircase in a row unless it&#8217;s the only one still running)</p>
+</dd>
+<dt>conditions: a list of dictionaries specifying conditions</dt>
+<dd><p class="first last">Can be used to control parameters for the different staicases.
+Can be imported from an Excel file using
+<cite>psychopy.data.importConditions</cite>
+MUST include keys providing, &#8216;startVal&#8217;, &#8216;label&#8217; and
+&#8216;startValSd&#8217; (QUEST only).
+The &#8216;label&#8217; will be used in data file saving so should
+be unique.
+See Example Usage below.</p>
+</dd>
+<dt>nTrials=50</dt>
+<dd><p class="first last">Minimum trials to run (but may take more if the staircase
+hasn&#8217;t also met its minimal reversals.
+See <a class="reference internal" href="#psychopy.data.StairHandler" title="psychopy.data.StairHandler"><code class="xref py py-class docutils literal"><span class="pre">StairHandler</span></code></a></p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example usage:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conditions</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;startVal&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;ori&#39;</span><span class="p">:</span><span class="mi">45</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;startVal&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;ori&#39;</span><span class="p">:</span><span class="mi">45</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;startVal&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;ori&#39;</span><span class="p">:</span><span class="mi">90</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;startVal&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;ori&#39;</span><span class="p">:</span><span class="mi">90</span><span class="p">},</span>
+    <span class="p">]</span>
+<span class="n">stairs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">MultiStairHandler</span><span class="p">(</span><span class="n">conditions</span><span class="o">=</span><span class="n">conditions</span><span class="p">,</span> <span class="n">nTrials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">thisIntensity</span><span class="p">,</span> <span class="n">thisCondition</span> <span class="ow">in</span> <span class="n">stairs</span><span class="p">:</span>
+    <span class="n">thisOri</span> <span class="o">=</span> <span class="n">thisCondition</span><span class="p">[</span><span class="s1">&#39;ori&#39;</span><span class="p">]</span>
+
+    <span class="c1"># do something with thisIntensity and thisOri</span>
+
+    <span class="n">stairs</span><span class="o">.</span><span class="n">addResponse</span><span class="p">(</span><span class="n">correctIncorrect</span><span class="p">)</span>  <span class="c1"># this is ESSENTIAL</span>
+
+<span class="c1"># save data as multiple formats</span>
+<span class="n">stairs</span><span class="o">.</span><span class="n">saveDataAsExcel</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>  <span class="c1"># easy to browse</span>
+<span class="n">stairs</span><span class="o">.</span><span class="n">saveAsPickle</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>  <span class="c1"># contains more info</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.addData">
+<code class="descname">addData</code><span class="sig-paren">(</span><em>result</em>, <em>intensity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.addData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated 1.79.00: It was ambiguous whether you were adding
+the response (0 or 1) or some other data concerning the trial so
+there is now a pair of explicit methods:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>addResponse(corr,intensity) #some data that alters the next</dt>
+<dd>trial value</dd>
+<dt>addOtherData(&#8216;RT&#8217;, reactionTime) #some other data that won&#8217;t</dt>
+<dd>control staircase</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.addOtherData">
+<code class="descname">addOtherData</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.addOtherData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add some data about the current trial that will not be used to
+control the staircase(s) such as reaction time data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.addResponse">
+<code class="descname">addResponse</code><span class="sig-paren">(</span><em>result</em>, <em>intensity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.addResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a 1 or 0 to signify a correct / detected or
+incorrect / missed trial</p>
+<p>This is essential to advance the staircase to a new intensity level!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.getExp">
+<code class="descname">getExp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.getExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ExperimentHandler that this handler is attached to,
+if any. Returns None if not attached</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.getOriginPathAndFile">
+<code class="descname">getOriginPathAndFile</code><span class="sig-paren">(</span><em>originPath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.getOriginPathAndFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to determine the path of the script that created this
+data file and returns both the path to that script and its contents.
+Useful to store the entire experiment with the data.</p>
+<p>If originPath is provided (e.g. from Builder) then this is used
+otherwise the calling script is the originPath (fine from a
+standard python script).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances to next trial and returns it.</p>
+<p>This can be handled with code such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">MultiStairHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">eachTrial</span> <span class="ow">in</span> <span class="n">staircase</span><span class="p">:</span>  <span class="c1"># automatically stops when done</span>
+    <span class="c1"># do stuff here for the trial</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">MultiStairHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># ie forever</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">thisTrial</span> <span class="o">=</span> <span class="n">staircase</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>  <span class="c1"># we got a StopIteration error</span>
+        <span class="k">break</span>  <span class="c1"># break out of the forever loop</span>
+    <span class="c1"># do stuff here for the trial</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.printAsText">
+<code class="descname">printAsText</code><span class="sig-paren">(</span><em>delim='\t'</em>, <em>matrixOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.printAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the data to the standard output stream</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>delim: a string</dt>
+<dd><p class="first last">the delimitter to be used (e.g. &#8216;       &#8216; for tab-delimitted,
+&#8216;,&#8217; for csv files)</p>
+</dd>
+<dt>matrixOnly: True/False</dt>
+<dd><p class="first last">If True, prevents the output of the <cite>extraInfo</cite> provided
+at initialisation.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.saveAsExcel">
+<code class="descname">saveAsExcel</code><span class="sig-paren">(</span><em>fileName</em>, <em>matrixOnly=False</em>, <em>appendFile=False</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.saveAsExcel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a summary data file in Excel OpenXML format workbook
+(<a class="reference internal" href="../general/glossary.html#term-xlsx"><span class="xref std std-term">xlsx</span></a>) for processing in most spreadsheet packages.
+This format is compatible with versions of Excel (2007 or greater)
+and and with OpenOffice (&gt;=3.0).</p>
+<p>It has the advantage over the simpler text files (see
+<a class="reference internal" href="#psychopy.data.TrialHandler.saveAsText" title="psychopy.data.TrialHandler.saveAsText"><code class="xref py py-func docutils literal"><span class="pre">TrialHandler.saveAsText()</span></code></a> )
+that the data from each staircase will be save in the same file, with
+the sheet name coming from the &#8216;label&#8217; given in the dictionary of
+conditions during initialisation of the Handler.</p>
+<p>The file extension <cite>.xlsx</cite> will be added if not given already.</p>
+<p>The file will contain a set of values specifying the staircase level
+(&#8216;intensity&#8217;) at each reversal, a list of reversal indices
+(trial numbers), the raw staircase/intensity level on <em>every</em> trial
+and the corresponding responses of the participant on every trial.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName: string</dt>
+<dd><p class="first last">the name of the file to create or append. Can include
+relative or absolute path</p>
+</dd>
+<dt>matrixOnly: True or False</dt>
+<dd><p class="first last">If set to True then only the data itself will be output
+(no additional info)</p>
+</dd>
+<dt>appendFile: True or False</dt>
+<dd><p class="first last">If False any existing file with this name will be overwritten.
+If True then a new worksheet will be appended.
+If a worksheet already exists with that name a number will
+be added to make it unique.</p>
+</dd>
+<dt>fileCollisionMethod: string</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code>
+This is ignored if <code class="docutils literal"><span class="pre">append</span></code> is <code class="docutils literal"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.saveAsPickle">
+<code class="descname">saveAsPickle</code><span class="sig-paren">(</span><em>fileName</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.saveAsPickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a copy of self (with data) to a pickle file.</p>
+<p>This can be reloaded later and further analyses carried out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body">fileCollisionMethod: Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.saveAsText">
+<code class="descname">saveAsText</code><span class="sig-paren">(</span><em>fileName</em>, <em>delim=None</em>, <em>matrixOnly=False</em>, <em>fileCollisionMethod='rename'</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.saveAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out text files with the data.</p>
+<p>For MultiStairHandler this will output one file for each staircase
+that was run, with _label added to the fileName that you specify above
+(label comes from the condition dictionary you specified when you
+created the Handler).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName: a string</dt>
+<dd><p class="first last">The name of the file, including path if needed. The extension
+<cite>.tsv</cite> will be added if not included.</p>
+</dd>
+<dt>delim: a string</dt>
+<dd><p class="first last">the delimitter to be used (e.g. &#8216;       &#8216; for tab-delimitted,
+&#8216;,&#8217; for csv files)</p>
+</dd>
+<dt>matrixOnly: True/False</dt>
+<dd><p class="first last">If True, prevents the output of the <cite>extraInfo</cite> provided
+at initialisation.</p>
+</dd>
+<dt>fileCollisionMethod:</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></p>
+</dd>
+<dt>encoding:</dt>
+<dd><p class="first last">The encoding to use when saving a the file.
+Defaults to <cite>utf-8</cite>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.MultiStairHandler.setExp">
+<code class="descname">setExp</code><span class="sig-paren">(</span><em>exp</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.MultiStairHandler.setExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ExperimentHandler that this handler is attached to</p>
+<p>Do NOT attempt to set the experiment using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">trials</span><span class="o">.</span><span class="n">_exp</span> <span class="o">=</span> <span class="n">myExperiment</span>
+</pre></div>
+</div>
+<p>because it needs to be performed using the <cite>weakref</cite> module.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="questhandler">
+<h2><a class="reference internal" href="#psychopy.data.QuestHandler" title="psychopy.data.QuestHandler"><code class="xref py py-class docutils literal"><span class="pre">QuestHandler</span></code></a><a class="headerlink" href="#questhandler" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.QuestHandler">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">QuestHandler</code><span class="sig-paren">(</span><em>startVal</em>, <em>startValSd</em>, <em>pThreshold=0.82</em>, <em>nTrials=None</em>, <em>stopInterval=None</em>, <em>method='quantile'</em>, <em>beta=3.5</em>, <em>delta=0.01</em>, <em>gamma=0.5</em>, <em>grain=0.01</em>, <em>range=None</em>, <em>extraInfo=None</em>, <em>minVal=None</em>, <em>maxVal=None</em>, <em>staircase=None</em>, <em>originPath=None</em>, <em>name=''</em>, <em>autoLog=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that implements the Quest algorithm for quick measurement of
+psychophysical thresholds.</p>
+<p>Uses Andrew Straw&#8217;s <a class="reference external" href="http://www.visionegg.org/Quest">QUEST</a>, which is a
+Python port of Denis Pelli&#8217;s Matlab code.</p>
+<p>Measures threshold using a Weibull psychometric function. Currently, it is
+not possible to use a different psychometric function.</p>
+<p>Threshold &#8216;t&#8217; is measured on an abstract &#8216;intensity&#8217; scale, which
+usually corresponds to log10 contrast.</p>
+<p>The Weibull psychometric function:</p>
+<p>_e = -10**(beta * (x2 + xThreshold))
+p2 = delta * gamma + (1-delta) * (1 - (1 - gamma) * exp(_e))</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># setup display/window</span>
+<span class="o">...</span>
+<span class="c1"># create stimulus</span>
+<span class="n">stimulus</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">RadialStim</span><span class="p">(</span><span class="n">win</span><span class="o">=</span><span class="n">win</span><span class="p">,</span> <span class="n">tex</span><span class="o">=</span><span class="s1">&#39;sinXsin&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="n">pos</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="c1"># create staircase object</span>
+<span class="c1"># trying to find out the point where subject&#39;s response is 50 / 50</span>
+<span class="c1"># if wanted to do a 2AFC then the defaults for pThreshold and gamma</span>
+<span class="c1"># are good</span>
+<span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">QuestHandler</span><span class="p">(</span><span class="n">staircase</span><span class="o">.</span><span class="n">_nextIntensity</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">pThreshold</span><span class="o">=</span><span class="mf">0.63</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">nTrials</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">minVal</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxVal</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="k">while</span> <span class="n">thisContrast</span> <span class="ow">in</span> <span class="n">staircase</span><span class="p">:</span>
+    <span class="c1"># setup stimulus</span>
+    <span class="n">stimulus</span><span class="o">.</span><span class="n">setContrast</span><span class="p">(</span><span class="n">thisContrast</span><span class="p">)</span>
+    <span class="n">stimulus</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">win</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+    <span class="n">core</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1"># get response</span>
+    <span class="o">...</span>
+    <span class="c1"># inform QUEST of the response, needed to calculate next level</span>
+    <span class="n">staircase</span><span class="o">.</span><span class="n">addResponse</span><span class="p">(</span><span class="n">thisResp</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="c1"># can now access 1 of 3 suggested threshold levels</span>
+<span class="n">staircase</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">staircase</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<span class="n">staircase</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># gets the median</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Typical values for pThreshold are:</dt>
+<dd><ul class="first last">
+<li><p class="first">0.82 which is equivalent to a 3 up 1 down standard staircase</p>
+</li>
+<li><dl class="first docutils">
+<dt>0.63 which is equivalent to a 1 up 1 down standard staircase</dt>
+<dd><p class="first last">(and might want gamma=0.01)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>The variable(s) nTrials and/or stopSd must be specified.</p>
+<p><cite>beta</cite>, <cite>delta</cite>, and <cite>gamma</cite> are the parameters of the Weibull
+psychometric function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>startVal:</dt>
+<dd><p class="first last">Prior threshold estimate or your initial guess threshold.</p>
+</dd>
+<dt>startValSd:</dt>
+<dd><p class="first last">Standard deviation of your starting guess threshold.
+Be generous with the sd as QUEST will have trouble finding
+the true threshold if it&#8217;s more than one sd from your
+initial guess.</p>
+</dd>
+<dt>pThreshold</dt>
+<dd><p class="first last">Your threshold criterion expressed as probability of
+response==1. An intensity offset is introduced into the
+psychometric function so that the threshold (i.e.,
+the midpoint of the table) yields pThreshold.</p>
+</dd>
+<dt>nTrials: <em>None</em> or a number</dt>
+<dd><p class="first last">The maximum number of trials to be conducted.</p>
+</dd>
+<dt>stopInterval: <em>None</em> or a number</dt>
+<dd><p class="first last">The minimum 5-95% confidence interval required in the
+threshold estimate before stopping. If both this and
+nTrials is specified, whichever happens first will
+determine when Quest will stop.</p>
+</dd>
+<dt>method: <em>&#8216;quantile&#8217;</em>, &#8216;mean&#8217;, &#8216;mode&#8217;</dt>
+<dd><p class="first last">The method used to determine the next threshold to test.
+If you want to get a specific threshold level at the end
+of your staircasing, please use the quantile, mean, and
+mode methods directly.</p>
+</dd>
+<dt>beta: <em>3.5</em> or a number</dt>
+<dd><p class="first last">Controls the steepness of the psychometric function.</p>
+</dd>
+<dt>delta: <em>0.01</em> or a number</dt>
+<dd><p class="first last">The fraction of trials on which the observer presses blindly.</p>
+</dd>
+<dt>gamma: <em>0.5</em> or a number</dt>
+<dd><p class="first last">The fraction of trials that will generate response 1 when
+intensity=-Inf.</p>
+</dd>
+<dt>grain: <em>0.01</em> or a number</dt>
+<dd><p class="first last">The quantization of the internal table.</p>
+</dd>
+<dt>range: <em>None</em>, or a number</dt>
+<dd><p class="first last">The intensity difference between the largest and smallest
+intensity that the internal table can store. This interval
+will be centered on the initial guess tGuess. QUEST assumes
+that intensities outside of this range have zero prior
+probability (i.e., they are impossible).</p>
+</dd>
+<dt>extraInfo:</dt>
+<dd><p class="first last">A dictionary (typically) that will be stored along with
+collected data using
+<a class="reference internal" href="#psychopy.data.StairHandler.saveAsPickle" title="psychopy.data.StairHandler.saveAsPickle"><code class="xref py py-func docutils literal"><span class="pre">saveAsPickle()</span></code></a> or
+<a class="reference internal" href="#psychopy.data.StairHandler.saveAsText" title="psychopy.data.StairHandler.saveAsText"><code class="xref py py-func docutils literal"><span class="pre">saveAsText()</span></code></a> methods.</p>
+</dd>
+<dt>minVal: <em>None</em>, or a number</dt>
+<dd><p class="first last">The smallest legal value for the staircase, which can be
+used to prevent it reaching impossible contrast values,
+for instance.</p>
+</dd>
+<dt>maxVal: <em>None</em>, or a number</dt>
+<dd><p class="first last">The largest legal value for the staircase, which can be
+used to prevent it reaching impossible contrast values,
+for instance.</p>
+</dd>
+<dt>staircase: <em>None</em> or StairHandler</dt>
+<dd><p class="first last">Can supply a staircase object with intensities and results.
+Might be useful to give the quest algorithm more information
+if you have it. You can also call the importData function
+directly.</p>
+</dd>
+</dl>
+<p>Additional keyword arguments will be ignored.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Notes:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>The additional keyword arguments <cite>**kwargs</cite> might for example be
+passed by the <cite>MultiStairHandler</cite>, which expects a <cite>label</cite> keyword
+for each staircase. These parameters are to be ignored by the
+StairHandler.</p>
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.addData">
+<code class="descname">addData</code><span class="sig-paren">(</span><em>result</em>, <em>intensity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.addData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated since 1.79.00: This function name was ambiguous.
+Please use one of these instead:</p>
+<blockquote>
+<div>.addResponse(result, intensity)
+.addOtherData(&#8216;dataName&#8217;, value&#8217;)</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.addOtherData">
+<code class="descname">addOtherData</code><span class="sig-paren">(</span><em>dataName</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.addOtherData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add additional data to the handler, to be tracked alongside
+the result data but not affecting the value of the staircase</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.addResponse">
+<code class="descname">addResponse</code><span class="sig-paren">(</span><em>result</em>, <em>intensity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.addResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a 1 or 0 to signify a correct / detected or
+incorrect / missed trial</p>
+<p>Supplying an <cite>intensity</cite> value here indicates that you did not use the
+recommended intensity in your last trial and the staircase will
+replace its recorded value with the one you supplied here.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.calculateNextIntensity">
+<code class="descname">calculateNextIntensity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.calculateNextIntensity" title="Permalink to this definition">¶</a></dt>
+<dd><p>based on current intensity and counter of correct responses</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.confInterval">
+<code class="descname">confInterval</code><span class="sig-paren">(</span><em>getDifference=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.confInterval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return estimate for the 5%&#8211;95% confidence interval (CI).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>getDifference (bool)</dt>
+<dd><p class="first last">If <code class="docutils literal"><span class="pre">True</span></code>, return the width of the confidence interval
+(95% - 5% percentiles). If <code class="docutils literal"><span class="pre">False</span></code>, return an NumPy array
+with estimates for the 5% and 95% boundaries.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">scalar or array of length 2.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.getExp">
+<code class="descname">getExp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.getExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ExperimentHandler that this handler is attached to,
+if any. Returns None if not attached</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.getOriginPathAndFile">
+<code class="descname">getOriginPathAndFile</code><span class="sig-paren">(</span><em>originPath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.getOriginPathAndFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to determine the path of the script that created this
+data file and returns both the path to that script and its contents.
+Useful to store the entire experiment with the data.</p>
+<p>If originPath is provided (e.g. from Builder) then this is used
+otherwise the calling script is the originPath (fine from a
+standard python script).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.importData">
+<code class="descname">importData</code><span class="sig-paren">(</span><em>intensities</em>, <em>results</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.importData" title="Permalink to this definition">¶</a></dt>
+<dd><p>import some data which wasn&#8217;t previously given to the quest
+algorithm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.incTrials">
+<code class="descname">incTrials</code><span class="sig-paren">(</span><em>nNewTrials</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.incTrials" title="Permalink to this definition">¶</a></dt>
+<dd><p>increase maximum number of trials
+Updates attribute: <cite>nTrials</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.mean">
+<code class="descname">mean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>mean of Quest posterior pdf</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.mode">
+<code class="descname">mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>mode of Quest posterior pdf</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances to next trial and returns it.
+Updates attributes; <cite>thisTrial</cite>, <cite>thisTrialN</cite>, <cite>thisIndex</cite>,
+<cite>finished</cite>, <cite>intensities</cite></p>
+<p>If the trials have ended, calling this method will raise a
+StopIteration error. This can be handled with code such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">QuestHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">eachTrial</span> <span class="ow">in</span> <span class="n">staircase</span><span class="p">:</span>  <span class="c1"># automatically stops when done</span>
+    <span class="c1"># do stuff</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">QuestHandler</span><span class="p">(</span><span class="o">.......</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>  <span class="c1"># i.e. forever</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">thisTrial</span> <span class="o">=</span> <span class="n">staircase</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>  <span class="c1"># we got a StopIteration error</span>
+        <span class="k">break</span>  <span class="c1"># break out of the forever loop</span>
+    <span class="c1"># do stuff here for the trial</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.printAsText">
+<code class="descname">printAsText</code><span class="sig-paren">(</span><em>stimOut=None</em>, <em>dataOut=('all_mean'</em>, <em>'all_std'</em>, <em>'all_raw')</em>, <em>delim='\t'</em>, <em>matrixOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.printAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exactly like saveAsText() except that the output goes
+to the screen instead of a file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.quantile">
+<code class="descname">quantile</code><span class="sig-paren">(</span><em>p=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.quantile" title="Permalink to this definition">¶</a></dt>
+<dd><p>quantile of Quest posterior pdf</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.saveAsExcel">
+<code class="descname">saveAsExcel</code><span class="sig-paren">(</span><em>fileName</em>, <em>sheetName='data'</em>, <em>matrixOnly=False</em>, <em>appendFile=True</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.saveAsExcel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a summary data file in Excel OpenXML format workbook
+(<a class="reference internal" href="../general/glossary.html#term-xlsx"><span class="xref std std-term">xlsx</span></a>) for processing in most spreadsheet packages.
+This format is compatible with versions of Excel (2007 or greater)
+and and with OpenOffice (&gt;=3.0).</p>
+<p>It has the advantage over the simpler text files
+(see <a class="reference internal" href="#psychopy.data.TrialHandler.saveAsText" title="psychopy.data.TrialHandler.saveAsText"><code class="xref py py-func docutils literal"><span class="pre">TrialHandler.saveAsText()</span></code></a> ) that data can be stored
+in multiple named sheets within the file. So you could have a
+single file named after your experiment and then have one worksheet
+for each participant. Or you could have one file for each participant
+and then multiple sheets for repeated sessions etc.</p>
+<p>The file extension <cite>.xlsx</cite> will be added if not given already.</p>
+<p>The file will contain a set of values specifying the staircase level
+(&#8216;intensity&#8217;) at each reversal, a list of reversal indices
+(trial numbers), the raw staircase / intensity level on <em>every</em>
+trial and the corresponding responses of the participant on every
+trial.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName: string</dt>
+<dd><p class="first last">the name of the file to create or append. Can include
+relative or absolute path</p>
+</dd>
+<dt>sheetName: string</dt>
+<dd><p class="first last">the name of the worksheet within the file</p>
+</dd>
+<dt>matrixOnly: True or False</dt>
+<dd><p class="first last">If set to True then only the data itself will be output
+(no additional info)</p>
+</dd>
+<dt>appendFile: True or False</dt>
+<dd><p class="first last">If False any existing file with this name will be
+overwritten. If True then a new worksheet will be appended.
+If a worksheet already exists with that name a number will
+be added to make it unique.</p>
+</dd>
+<dt>fileCollisionMethod: string</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code>
+This is ignored if <code class="docutils literal"><span class="pre">append</span></code> is <code class="docutils literal"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.saveAsPickle">
+<code class="descname">saveAsPickle</code><span class="sig-paren">(</span><em>fileName</em>, <em>fileCollisionMethod='rename'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.saveAsPickle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basically just saves a copy of self (with data) to a pickle file.</p>
+<p>This can be reloaded if necess and further analyses carried out.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body">fileCollisionMethod: Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.saveAsText">
+<code class="descname">saveAsText</code><span class="sig-paren">(</span><em>fileName</em>, <em>delim=None</em>, <em>matrixOnly=False</em>, <em>fileCollisionMethod='rename'</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.saveAsText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a text file with the data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>fileName: a string</dt>
+<dd><p class="first last">The name of the file, including path if needed. The extension
+<cite>.tsv</cite> will be added if not included.</p>
+</dd>
+<dt>delim: a string</dt>
+<dd><p class="first last">the delimitter to be used (e.g. &#8216;       &#8216; for tab-delimitted,
+&#8216;,&#8217; for csv files)</p>
+</dd>
+<dt>matrixOnly: True/False</dt>
+<dd><p class="first last">If True, prevents the output of the <cite>extraInfo</cite> provided
+at initialisation.</p>
+</dd>
+<dt>fileCollisionMethod:</dt>
+<dd><p class="first last">Collision method passed to
+<code class="xref py py-func docutils literal"><span class="pre">handleFileCollision()</span></code></p>
+</dd>
+<dt>encoding:</dt>
+<dd><p class="first last">The encoding to use when saving a the file.
+Defaults to <cite>utf-8</cite>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.sd">
+<code class="descname">sd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.sd" title="Permalink to this definition">¶</a></dt>
+<dd><p>standard deviation of Quest posterior pdf</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.setExp">
+<code class="descname">setExp</code><span class="sig-paren">(</span><em>exp</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.setExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ExperimentHandler that this handler is attached to</p>
+<p>Do NOT attempt to set the experiment using:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">trials</span><span class="o">.</span><span class="n">_exp</span> <span class="o">=</span> <span class="n">myExperiment</span>
+</pre></div>
+</div>
+<p>because it needs to be performed using the <cite>weakref</cite> module.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.QuestHandler.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>tActual</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.QuestHandler.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a simulated user response to the next intensity level
+presented by Quest, need to supply the actual threshold level</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fitweibull">
+<h2><a class="reference internal" href="#psychopy.data.FitWeibull" title="psychopy.data.FitWeibull"><code class="xref py py-class docutils literal"><span class="pre">FitWeibull</span></code></a><a class="headerlink" href="#fitweibull" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.FitWeibull">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">FitWeibull</code><span class="sig-paren">(</span><em>xx</em>, <em>yy</em>, <em>sems=1.0</em>, <em>guess=None</em>, <em>display=1</em>, <em>expectedMin=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitWeibull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit a Weibull function (either 2AFC or YN)
+of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">chance</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">chance</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="p">(</span><span class="n">xx</span><span class="o">/</span><span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span> <span class="p">))</span>
+</pre></div>
+</div>
+<p>and with inverse:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">log</span><span class="p">((</span><span class="mf">1.0</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">chance</span><span class="p">)))</span><span class="o">**</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">beta</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After fitting the function you can evaluate an array of x-values
+with <code class="docutils literal"><span class="pre">fit.eval(x)</span></code>, retrieve the inverse of the function with
+<code class="docutils literal"><span class="pre">fit.inverse(y)</span></code> or retrieve the parameters from <code class="docutils literal"><span class="pre">fit.params</span></code>
+(a list with <code class="docutils literal"><span class="pre">[alpha,</span> <span class="pre">beta]</span></code>)</p>
+<dl class="method">
+<dt id="psychopy.data.FitWeibull.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>xx</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitWeibull.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate xx for the current parameters of the model, or for
+arbitrary params if these are given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.FitWeibull.inverse">
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>yy</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitWeibull.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate yy for the current parameters of the model,
+or for arbitrary params if these are given.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fitlogistic">
+<h2><a class="reference internal" href="#psychopy.data.FitLogistic" title="psychopy.data.FitLogistic"><code class="xref py py-class docutils literal"><span class="pre">FitLogistic</span></code></a><a class="headerlink" href="#fitlogistic" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.FitLogistic">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">FitLogistic</code><span class="sig-paren">(</span><em>xx</em>, <em>yy</em>, <em>sems=1.0</em>, <em>guess=None</em>, <em>display=1</em>, <em>expectedMin=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitLogistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit a Logistic function (either 2AFC or YN)
+of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">chance</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">chance</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">exp</span><span class="p">((</span><span class="n">PSE</span><span class="o">-</span><span class="n">xx</span><span class="p">)</span><span class="o">*</span><span class="n">JND</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and with inverse:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">PSE</span> <span class="o">-</span> <span class="n">log</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">chance</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">yy</span><span class="o">-</span><span class="n">chance</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">JND</span>
+</pre></div>
+</div>
+<p>After fitting the function you can evaluate an array of x-values
+with <code class="docutils literal"><span class="pre">fit.eval(x)</span></code>, retrieve the inverse of the function with
+<code class="docutils literal"><span class="pre">fit.inverse(y)</span></code> or retrieve the parameters from <code class="docutils literal"><span class="pre">fit.params</span></code>
+(a list with <code class="docutils literal"><span class="pre">[PSE,</span> <span class="pre">JND]</span></code>)</p>
+<dl class="method">
+<dt id="psychopy.data.FitLogistic.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>xx</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitLogistic.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate xx for the current parameters of the model, or for
+arbitrary params if these are given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.FitLogistic.inverse">
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>yy</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitLogistic.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate yy for the current parameters of the model,
+or for arbitrary params if these are given.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fitnakarushton">
+<h2><a class="reference internal" href="#psychopy.data.FitNakaRushton" title="psychopy.data.FitNakaRushton"><code class="xref py py-class docutils literal"><span class="pre">FitNakaRushton</span></code></a><a class="headerlink" href="#fitnakarushton" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.FitNakaRushton">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">FitNakaRushton</code><span class="sig-paren">(</span><em>xx</em>, <em>yy</em>, <em>sems=1.0</em>, <em>guess=None</em>, <em>display=1</em>, <em>expectedMin=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitNakaRushton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit a Naka-Rushton function
+of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yy</span> <span class="o">=</span> <span class="n">rMin</span> <span class="o">+</span> <span class="p">(</span><span class="n">rMax</span><span class="o">-</span><span class="n">rMin</span><span class="p">)</span> <span class="o">*</span> <span class="n">xx</span><span class="o">**</span><span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="n">xx</span><span class="o">**</span><span class="n">n</span><span class="o">+</span><span class="n">c50</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After fitting the function you can evaluate an array of x-values
+with <code class="docutils literal"><span class="pre">fit.eval(x)</span></code>, retrieve the inverse of the function with
+<code class="docutils literal"><span class="pre">fit.inverse(y)</span></code> or retrieve the parameters from <code class="docutils literal"><span class="pre">fit.params</span></code>
+(a list with <code class="docutils literal"><span class="pre">[rMin,</span> <span class="pre">rMax,</span> <span class="pre">c50,</span> <span class="pre">n]</span></code>)</p>
+<p>Note that this differs from most of the other functions in
+not using a value for the expected minimum. Rather, it fits this
+as one of the parameters of the model.</p>
+<dl class="method">
+<dt id="psychopy.data.FitNakaRushton.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>xx</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitNakaRushton.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate xx for the current parameters of the model, or for
+arbitrary params if these are given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.FitNakaRushton.inverse">
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>yy</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitNakaRushton.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate yy for the current parameters of the model,
+or for arbitrary params if these are given.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fitcumnormal">
+<h2><a class="reference internal" href="#psychopy.data.FitCumNormal" title="psychopy.data.FitCumNormal"><code class="xref py py-class docutils literal"><span class="pre">FitCumNormal</span></code></a><a class="headerlink" href="#fitcumnormal" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.data.FitCumNormal">
+<em class="property">class </em><code class="descclassname">psychopy.data.</code><code class="descname">FitCumNormal</code><span class="sig-paren">(</span><em>xx</em>, <em>yy</em>, <em>sems=1.0</em>, <em>guess=None</em>, <em>display=1</em>, <em>expectedMin=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitCumNormal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit a Cumulative Normal function (aka error function or erf)
+of the form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">chance</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">chance</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">special</span><span class="o">.</span><span class="n">erf</span><span class="p">((</span><span class="n">xx</span><span class="o">-</span><span class="n">xShift</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">sd</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and with inverse:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">xShift</span><span class="o">+</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">sd</span><span class="o">*</span><span class="p">(</span><span class="n">erfinv</span><span class="p">(((</span><span class="n">yy</span><span class="o">-</span><span class="n">chance</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">chance</span><span class="p">)</span><span class="o">-.</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>After fitting the function you can evaluate an array of x-values
+with fit.eval(x), retrieve the inverse of the function with
+fit.inverse(y) or retrieve the parameters from fit.params (a list
+with [centre, sd] for the Gaussian distribution forming the cumulative)</p>
+<p>NB: Prior to version 1.74 the parameters had different meaning, relating
+to xShift and slope of the function (similar to 1/sd). Although that is
+more in with the parameters for the Weibull fit, for instance, it is less
+in keeping with standard expectations of normal (Gaussian distributions)
+so in version 1.74.00 the parameters became the [centre,sd] of the normal
+distribution.</p>
+<dl class="method">
+<dt id="psychopy.data.FitCumNormal.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>xx</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitCumNormal.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate xx for the current parameters of the model, or for
+arbitrary params if these are given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.data.FitCumNormal.inverse">
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>yy</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.FitCumNormal.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate yy for the current parameters of the model,
+or for arbitrary params if these are given.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="importconditions">
+<h2><a class="reference internal" href="#psychopy.data.importConditions" title="psychopy.data.importConditions"><code class="xref py py-func docutils literal"><span class="pre">importConditions()</span></code></a><a class="headerlink" href="#importconditions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="psychopy.data.importConditions">
+<code class="descclassname">psychopy.data.</code><code class="descname">importConditions</code><span class="sig-paren">(</span><em>fileName</em>, <em>returnFieldNames=False</em>, <em>selection=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.importConditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports a list of conditions from an .xlsx, .csv, or .pkl file</p>
+<p>The output is suitable as an input to <a class="reference internal" href="#psychopy.data.TrialHandler" title="psychopy.data.TrialHandler"><code class="xref py py-class docutils literal"><span class="pre">TrialHandler</span></code></a>
+<cite>trialTypes</cite> or to <a class="reference internal" href="#psychopy.data.MultiStairHandler" title="psychopy.data.MultiStairHandler"><code class="xref py py-class docutils literal"><span class="pre">MultiStairHandler</span></code></a> as a <cite>conditions</cite> list.</p>
+<p>If <cite>fileName</cite> ends with:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>.csv:  import as a comma-separated-value file</dt>
+<dd><p class="first last">(header + row x col)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>.xlsx: import as Excel 2007 (xlsx) files.</dt>
+<dd><p class="first last">No support for older (.xls) is planned.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>.pkl:  import from a pickle file as list of lists</dt>
+<dd><p class="first last">(header + row x col)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>The file should contain one row per type of trial needed and one column
+for each parameter that defines the trial type. The first row should give
+parameter names, which should:</p>
+<blockquote>
+<div><ul class="simple">
+<li>be unique</li>
+<li>begin with a letter (upper or lower case)</li>
+<li>contain no spaces or other punctuation (underscores are permitted)</li>
+</ul>
+</div></blockquote>
+<p><cite>selection</cite> is used to select a subset of condition indices to be used
+It can be a list/array of indices, a python <cite>slice</cite> object or a string to
+be parsed as either option.
+e.g.:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8220;1,2,4&#8221; or [1,2,4] or (1,2,4) are the same</li>
+<li>&#8220;2:5&#8221;       # 2, 3, 4 (doesn&#8217;t include last whole value)</li>
+<li>&#8220;-10:2:&#8221;    # tenth from last to the last in steps of 2</li>
+<li>slice(-10, 2, None)  # the same as above</li>
+<li>random(5) * 8  # five random vals 0-8</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="functionfromstaircase">
+<h2><a class="reference internal" href="#psychopy.data.functionFromStaircase" title="psychopy.data.functionFromStaircase"><code class="xref py py-func docutils literal"><span class="pre">functionFromStaircase()</span></code></a><a class="headerlink" href="#functionfromstaircase" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="psychopy.data.functionFromStaircase">
+<code class="descclassname">psychopy.data.</code><code class="descname">functionFromStaircase</code><span class="sig-paren">(</span><em>intensities</em>, <em>responses</em>, <em>bins=10</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.functionFromStaircase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a psychometric function by binning data from a staircase
+procedure. Although the default is 10 bins Jon now always uses &#8216;unique&#8217;
+bins (fewer bins looks pretty but leads to errors in slope estimation)</p>
+<p>usage:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">intensity</span><span class="p">,</span> <span class="n">meanCorrect</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">functionFromStaircase</span><span class="p">(</span><span class="n">intensities</span><span class="p">,</span>
+                                                  <span class="n">responses</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>where:</dt>
+<dd><dl class="first last docutils">
+<dt>intensities</dt>
+<dd>are a list (or array) of intensities to be binned</dd>
+<dt>responses</dt>
+<dd>are a list of 0,1 each corresponding to the equivalent
+intensity value</dd>
+<dt>bins</dt>
+<dd>can be an integer (giving that number of bins) or &#8216;unique&#8217;
+(each bin is made from aa data for exactly one intensity
+value)</dd>
+<dt>intensity</dt>
+<dd>a numpy array of intensity values (where each is the center
+of an intensity bin)</dd>
+<dt>meanCorrect</dt>
+<dd>a numpy array of mean % correct in each bin</dd>
+<dt>n</dt>
+<dd>a numpy array of number of responses contributing to each mean</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="bootstraps">
+<h2><a class="reference internal" href="#psychopy.data.bootStraps" title="psychopy.data.bootStraps"><code class="xref py py-func docutils literal"><span class="pre">bootStraps()</span></code></a><a class="headerlink" href="#bootstraps" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="psychopy.data.bootStraps">
+<code class="descclassname">psychopy.data.</code><code class="descname">bootStraps</code><span class="sig-paren">(</span><em>dat</em>, <em>n=1</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.data.bootStraps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a list of n bootstrapped resamples of the data</p>
+<p>SLOW IMPLEMENTATION (Python for-loop)</p>
+<dl class="docutils">
+<dt>Usage:</dt>
+<dd><code class="docutils literal"><span class="pre">out</span> <span class="pre">=</span> <span class="pre">bootStraps(dat,</span> <span class="pre">n=1)</span></code></dd>
+<dt>Where:</dt>
+<dd><dl class="first last docutils">
+<dt>dat</dt>
+<dd>an NxM or 1xN array (each row is a different condition, each
+column is a different trial)</dd>
+<dt>n</dt>
+<dd>number of bootstrapped resamples to create</dd>
+<dt>out</dt>
+<dd><ul class="first last simple">
+<li>dim[0]=conditions</li>
+<li>dim[1]=trials</li>
+<li>dim[2]=resamples</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="encryption.html" title="Encryption"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="clock.html" title="psychopy.clock - Clocks and timers"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

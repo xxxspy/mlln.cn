@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="networkx入门"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>networkx入门 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/19/networkx入门/">
+                networkx入门
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="networkx入门"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年09月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建图"><span class="toc-number">1.</span> <span class="toc-text">创建图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点"><span class="toc-number">2.</span> <span class="toc-text">节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边"><span class="toc-number">3.</span> <span class="toc-text">边</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图可视化"><span class="toc-number">4.</span> <span class="toc-text">图可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除节点和边"><span class="toc-number">5.</span> <span class="toc-text">删除节点和边</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用边和邻居节点"><span class="toc-number">6.</span> <span class="toc-text">使用边和邻居节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有向图"><span class="toc-number">7.</span> <span class="toc-text">有向图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用有向图实现计算图"><span class="toc-number">8.</span> <span class="toc-text">利用有向图实现计算图</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+</ul>
+<p>这篇教程可以帮助您开始使用python NetworkX。NetworkX是一个Python包，用于创建，操作和研究复杂网络的结构，动态和功能。</p>
+<p>NetworkX提供：</p>
+<ul>
+<li>研究社会，生物和基础设施网络的结构和动态的工具;</li>
+<li>适用于许多应用的标准编程接口和图形实现;</li>
+<li>一个快速发展的多学科项目的环境;</li>
+<li>现有数值算法的接口和用C，C ++和FORTRAN编写的代码;和</li>
+<li>能够无痛地处理大型非标准数据集。</li>
+<li>使用NetworkX，您可以以标准和非标准数据格式加载和存储网络，生成多种类型的随机和经典网络，分析网络结构，构建网络模型，设计新的网络算法，绘制网络等等。</li>
+</ul>
+<h3 id="创建图"><a href="#创建图" class="headerlink" title="创建图"></a>创建图</h3><p>创建一个空图:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx</span><br><span class="line">g = nx.Graph()</span><br></pre></td></tr></table></figure>
+<p>根据定义，Graph是节点（顶点）的集合以及标识的节点对（称为边，链接等）。在NetworkX中，节点可以是任何可hashable对象，例如文本字符串，图像，XML对象，另一个图Graph，定制节点对象等。</p>
+<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>图可以以几种方式生长。 NetworkX包含许多图生成器功能和工具，可以以多种格式读写图形。为了开始，我们将看看简单的操作。您可以一次添加一个节点，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_node(<span class="string">'Node-1'</span>)</span><br></pre></td></tr></table></figure>
+<p>一次添加多个节点:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_nodes_from([<span class="string">'Node-2'</span>, <span class="string">'Node-3'</span>])</span><br></pre></td></tr></table></figure>
+<p>在添加节点的时候, 你还可以添加节点的属性, 只要传入一个tuple: (node, node_attribute_dict)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_nodes_from([(<span class="string">'Node-4'</span>, &#123;<span class="string">'id'</span>:<span class="number">1</span>, <span class="string">'operation'</span>: <span class="string">'add'</span>&#125;)])</span><br></pre></td></tr></table></figure>
+<p>我们在之后的教程中会继续讨论节点的属性。</p>
+<p>我们还可直接添加其他图的节点:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">h = nx.path_graph(<span class="number">10</span>)</span><br><span class="line">g.add_nodes_from(h)</span><br></pre></td></tr></table></figure>
+<p>现在图g包含了图h, 也就是图h实际上图g的一个节点。</p>
+<h3 id="边"><a href="#边" class="headerlink" title="边"></a>边</h3><p>图也可以通过增加边来生长:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_edge(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>也可以一次添加多个边:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_edges_from([(<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">3</span>)])</span><br></pre></td></tr></table></figure>
+<p>也可以从其他图中添加边:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_edges_from(h.edges)</span><br></pre></td></tr></table></figure>
+<p>当添加的边包含不存在的节点的时候, 程序并不会报错:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_edge(<span class="number">1000</span>, <span class="number">100000</span>)</span><br></pre></td></tr></table></figure>
+<p>目前为止, 查看一下图中到底有多少个节点和边:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.number_of_nodes()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    16
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.number_of_edges()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    11
+
+</div>
+
+<p>我们可以通过各种属性查看图的内部结构。四个基本图形属性有：G.nodes，G.edges，G.adj和G.degree。这些是图中节点，边，邻居（邻接）和节点度的集合。它们为图形结构提供了不断更新的只读视图。它们也类似于dict，因为您可以通过视图查找节点和边缘数据属性，并使用方法<code>.items</code>,<code>. data=（&#39;span&#39;）</code>迭代数据属性。如果您想要特定的容器类型而不是视图，则可以指定一个。这里我们使用列表，虽然<code>set，dicts，tuple</code>和其他容器在其他上下文中可能更好。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.nodes</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    NodeView(('Node-1', 'Node-2', 'Node-3', 'Node-4', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1000, 100000))
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.edges</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    EdgeView([(0, 1), (1, 2), (1, 3), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (1000, 100000)])
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.adj</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    AdjacencyView({'Node-1': {}, 'Node-2': {}, 'Node-3': {}, 'Node-4': {}, 0: {1: {}}, 1: {2: {}, 3: {}, 0: {}}, 2: {1: {}, 3: {}}, 3: {1: {}, 2: {}, 4: {}}, 4: {3: {}, 5: {}}, 5: {4: {}, 6: {}}, 6: {5: {}, 7: {}}, 7: {6: {}, 8: {}}, 8: {7: {}, 9: {}}, 9: {8: {}}, 1000: {100000: {}}, 100000: {1000: {}}})
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.degree</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    DegreeView({'Node-1': 0, 'Node-2': 0, 'Node-3': 0, 'Node-4': 0, 0: 1, 1: 3, 2: 2, 3: 3, 4: 2, 5: 2, 6: 2, 7: 2, 8: 2, 9: 1, 1000: 1, 100000: 1})
+
+</div>
+
+<h3 id="图可视化"><a href="#图可视化" class="headerlink" title="图可视化"></a>图可视化</h3><p>NetworkX主要不是图形绘图包，但包含使用Matplotlib的基本绘图以及使用开源Graphviz软件包的接口。这些是networkx.drawing模块的一部分，如果已经安装在环境中, 可以将他们导入进来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nx.draw(g, with_labels=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="output_33_0.png" alt="png"></p>
+<p>上面的图片看起来有点丑, 因为缺少必要的边把节点连起来。以后的教程中会专门介绍图的绘制。</p>
+<h3 id="删除节点和边"><a href="#删除节点和边" class="headerlink" title="删除节点和边"></a>删除节点和边</h3><p>你可以一次清理掉所有的边和节点, 不过这好像没有什么用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.clear()</span><br></pre></td></tr></table></figure>
+<p>当然可以单独删除一个或者多个节点, 当节点不存在的时候, 会报错:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g.remove_node(<span class="number">2</span>)</span><br><span class="line">g.remove_nodes_from([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+KeyError                                  Traceback (most recent call last)
+
+d:\mysites\deeplearning.ai-master\.env\lib\site-packages\networkx\classes\graph.py in remove_node(self, n)
+    584         try:
+--&gt; 585             nbrs = list(adj[n])  # list handles self-loops (allows mutation)
+    586             del self._node[n]
+
+
+KeyError: 2
+
+
+During handling of the above exception, another exception occurred:
+
+
+NetworkXError                             Traceback (most recent call last)
+
+&lt;ipython-input-22-4468ee9f3bbe&gt; in &lt;module&gt;()
+----&gt; 1 g.remove_node(2)
+      2 g.remove_nodes_from([2,3,4])
+
+
+d:\mysites\deeplearning.ai-master\.env\lib\site-packages\networkx\classes\graph.py in remove_node(self, n)
+    586             del self._node[n]
+    587         except KeyError:  # NetworkXError if n not in self
+--&gt; 588             raise NetworkXError(&quot;The node %s is not in the graph.&quot; % (n,))
+    589         for u in nbrs:
+    590             del adj[u][n]   # remove all edges n-u in graph
+
+
+NetworkXError: The node 2 is not in the graph.
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g.add_node(<span class="number">1</span>)</span><br><span class="line">g.add_node(<span class="number">2</span>)</span><br><span class="line">g.remove_nodes_from([<span class="number">1</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="使用边和邻居节点"><a href="#使用边和邻居节点" class="headerlink" title="使用边和邻居节点"></a>使用边和邻居节点</h3><p>上面有讲使用<code>Graph.edges</code>和<code>Graph.adj</code>来获取边和邻居节点, 不过我们还能使用切片的方式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">g.add_node(<span class="number">1</span>)</span><br><span class="line">g.add_node(<span class="number">2</span>)</span><br><span class="line">g.add_edge(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>获取节点1的邻居节点:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    AtlasView({2: {}})
+
+</div>
+
+<p>获取边:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.edges[<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    {}
+
+</div>
+
+<p>你可以设置边的属性:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.edges[<span class="number">1</span>, <span class="number">2</span>][<span class="string">'color'</span>] = <span class="string">'red'</span></span><br></pre></td></tr></table></figure>
+<p>你可以以循环的方式输出所有的节点对, 你可以:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> n, nbs <span class="keyword">in</span> g.adj.items():</span><br><span class="line">    print(nbs)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    {2: {'color': 'red'}}
+    <br>{1: {'color': 'red'}}
+    <br>
+</div>
+
+<h3 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h3><p>DiGraph类提供特定于有向边的附加属性，例如<code>DiGraph.out_edges（）</code>，<code>DiGraph.in_degree（）</code>，<code>DiGraph.predecessors（）</code>，<code>DiGraph.successors（）</code>等。为了使算法能够轻松地处理这两个类， <code>neighbor（）</code>的功能等同于<code>successors（）</code>，而<code>degree</code>会报告<code>in_degree</code>和<code>out_degree</code>的总和，即使有时可能会感觉不一致。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dg = nx.DiGraph()</span><br><span class="line">dg.add_weighted_edges_from([(<span class="number">1</span>, <span class="number">2</span>, <span class="number">0.5</span>), (<span class="number">3</span>, <span class="number">1</span>, <span class="number">0.75</span>)])</span><br><span class="line">dg.out_degree(<span class="number">1</span>, weight=<span class="string">'weight'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0.5
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dg.nodes</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    NodeView((1, 2, 3))
+
+</div>
+
+<p>获取节点1的子节点:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(dg.successors(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    [2]
+
+</div>
+
+<p>获取节点1的父节点:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(dg.predecessors(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    [3]
+
+</div>
+
+<p>在有向图中, <code>successors</code>和<code>neightbors</code>有相同的功能:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(dg.successors(<span class="number">1</span>)) == list(dg.neighbors(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    True
+
+</div>
+
+<p>绘制有向图:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nx.draw(dg, with_labels=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="output_61_0.png" alt="png"></p>
+<h3 id="利用有向图实现计算图"><a href="#利用有向图实现计算图" class="headerlink" title="利用有向图实现计算图"></a>利用有向图实现计算图</h3><p>类似tensorflow那样的计算图, 可以使用networkx来做一个原型, 这样我们可以把数据计算的流程可视化了:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">dg.clear()</span><br><span class="line">nodes1 = [</span><br><span class="line">    (<span class="string">'Variable'</span>, &#123;<span class="string">'name'</span>: <span class="string">'avariable'</span>, <span class="string">'table'</span>: <span class="string">'tablename'</span>&#125;),</span><br><span class="line">    (<span class="string">'Select'</span>, &#123;<span class="string">'conditions'</span>: &#123;<span class="string">'pro_code'</span>: <span class="number">44</span>&#125;&#125;),</span><br><span class="line">    (<span class="string">'GroupBy'</span>, &#123;<span class="string">'varname'</span>: <span class="string">'gender'</span>&#125;),</span><br><span class="line">    (<span class="string">'Mean'</span>, &#123;&#125;),</span><br><span class="line">    (<span class="string">'Which1'</span>, &#123;<span class="string">'level'</span>: <span class="number">1</span>&#125;),</span><br><span class="line">    (<span class="string">'Decimal1'</span>, &#123;<span class="string">'place'</span>: <span class="number">1</span>&#125;),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">nodes2 = [</span><br><span class="line">    (<span class="string">'Which1'</span>, &#123;<span class="string">'level'</span>: <span class="number">2</span>&#125;),</span><br><span class="line">    (<span class="string">'Decimal2'</span>, &#123;<span class="string">'place'</span>: <span class="number">1</span>&#125;),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">nodes3 = [</span><br><span class="line">    (<span class="string">'Add'</span>, &#123;&#125;)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">dg.add_nodes_from(nodes1)</span><br><span class="line">dg.add_nodes_from(nodes2)</span><br><span class="line">dg.add_nodes_from(nodes3)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dg.add_edges_from([</span><br><span class="line">    (<span class="string">'Variable'</span>, <span class="string">'Select'</span>),</span><br><span class="line">    (<span class="string">'Select'</span>, <span class="string">'GroupBy'</span>),</span><br><span class="line">    (<span class="string">'GroupBy'</span>, <span class="string">'Mean'</span>),</span><br><span class="line">    (<span class="string">'Mean'</span>, <span class="string">'Which1'</span>),</span><br><span class="line">    (<span class="string">'Mean'</span>, <span class="string">'Which2'</span>),</span><br><span class="line">    (<span class="string">'Which1'</span>, <span class="string">'Decimal1'</span>),</span><br><span class="line">    (<span class="string">'Which2'</span>, <span class="string">'Decimal2'</span>),</span><br><span class="line">    (<span class="string">'Decimal1'</span>, <span class="string">'Add'</span>),</span><br><span class="line">    (<span class="string">'Decimal2'</span>, <span class="string">'Add'</span>),</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nx.draw(dg, with_labels=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="output_66_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__hash__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> hash((<span class="number">1</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n1=Node()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.clear()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g.add_node(n1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nx.node_link_data(g)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    {'directed': False,
+    <br> 'multigraph': False,
+    <br> 'graph': {},
+    <br> 'nodes': [{'id': <__main__.node at="" 0x17b6a1f84a8="">}],
+    <br> 'links': []}
+
+</__main__.node></div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="networkx入门.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/networkx/">#networkx</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/networkx/">
+            networkx
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/19/networkx入门/">
+                    networkx入门
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

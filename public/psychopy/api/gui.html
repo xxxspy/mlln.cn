@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.gui - create dialogue boxes &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.hardware - hardware interfaces" href="hardware.html" />
+    <link rel="prev" title="psychopy.filters - helper functions for creating filters" href="filters.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hardware.html" title="psychopy.hardware - hardware interfaces"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="filters.html" title="psychopy.filters - helper functions for creating filters"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.gui</span></code> - create dialogue boxes</a><ul>
+<li><a class="reference internal" href="#dlgfromdict"><code class="docutils literal"><span class="pre">DlgFromDict</span></code></a></li>
+<li><a class="reference internal" href="#dlg"><code class="docutils literal"><span class="pre">Dlg</span></code></a></li>
+<li><a class="reference internal" href="#fileopendlg"><code class="docutils literal"><span class="pre">fileOpenDlg()</span></code></a></li>
+<li><a class="reference internal" href="#filesavedlg"><code class="docutils literal"><span class="pre">fileSaveDlg()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="filters.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.filters</span></code> - helper functions for creating filters</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="hardware.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.hardware</span></code> - hardware interfaces</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/gui.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="psychopy-gui-create-dialogue-boxes">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">psychopy.gui</span></code> - create dialogue boxes<a class="headerlink" href="#psychopy-gui-create-dialogue-boxes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dlgfromdict">
+<h2><a class="reference internal" href="#psychopy.gui.DlgFromDict" title="psychopy.gui.DlgFromDict"><code class="xref py py-class docutils literal"><span class="pre">DlgFromDict</span></code></a><a class="headerlink" href="#dlgfromdict" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.gui.DlgFromDict">
+<em class="property">class </em><code class="descclassname">psychopy.gui.</code><code class="descname">DlgFromDict</code><span class="sig-paren">(</span><em>dictionary</em>, <em>title=''</em>, <em>fixed=()</em>, <em>order=()</em>, <em>tip=None</em>, <em>screen=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.gui.DlgFromDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dialogue box that represents a dictionary of values.
+Any values changed by the user are change (in-place) by this
+dialogue box.
+e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Observer&#39;</span><span class="p">:</span><span class="s1">&#39;jwp&#39;</span><span class="p">,</span> <span class="s1">&#39;GratingOri&#39;</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;ExpVersion&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">,</span>
+        <span class="s1">&#39;Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;Control&#39;</span><span class="p">]}</span>
+<span class="n">dictDlg</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">DlgFromDict</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="n">info</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;TestExperiment&#39;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ExpVersion&#39;</span><span class="p">])</span>
+<span class="k">if</span> <span class="n">dictDlg</span><span class="o">.</span><span class="n">OK</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;User Cancelled&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the code above, the contents of <em>info</em> will be updated to the values
+returned by the dialogue box.</p>
+<p>If the user cancels (rather than pressing OK),
+then the dictionary remains unchanged. If you want to check whether
+the user hit OK, then check whether DlgFromDict.OK equals
+True or False</p>
+<p>See GUI.py for a usage demo, including order and tip (tooltip).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="dlg">
+<h2><a class="reference internal" href="#psychopy.gui.Dlg" title="psychopy.gui.Dlg"><code class="xref py py-class docutils literal"><span class="pre">Dlg</span></code></a><a class="headerlink" href="#dlg" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.gui.Dlg">
+<em class="property">class </em><code class="descclassname">psychopy.gui.</code><code class="descname">Dlg</code><span class="sig-paren">(</span><em>title=u'PsychoPy Dialog'</em>, <em>pos=None</em>, <em>size=None</em>, <em>style=None</em>, <em>labelButtonOK=u' OK '</em>, <em>labelButtonCancel=u' Cancel '</em>, <em>screen=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.gui.Dlg" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple dialogue box. You can add text or input boxes
+(sequentially) and then retrieve the values.</p>
+<p>see also the function <em>dlgFromDict</em> for an <strong>even simpler</strong> version</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy</span> <span class="kn">import</span> <span class="n">gui</span>
+
+<span class="n">myDlg</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">Dlg</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;JWP&#39;s experiment&quot;</span><span class="p">)</span>
+<span class="n">myDlg</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s1">&#39;Subject info&#39;</span><span class="p">)</span>
+<span class="n">myDlg</span><span class="o">.</span><span class="n">addField</span><span class="p">(</span><span class="s1">&#39;Name:&#39;</span><span class="p">)</span>
+<span class="n">myDlg</span><span class="o">.</span><span class="n">addField</span><span class="p">(</span><span class="s1">&#39;Age:&#39;</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">myDlg</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s1">&#39;Experiment Info&#39;</span><span class="p">)</span>
+<span class="n">myDlg</span><span class="o">.</span><span class="n">addField</span><span class="p">(</span><span class="s1">&#39;Grating Ori:&#39;</span><span class="p">,</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">myDlg</span><span class="o">.</span><span class="n">addField</span><span class="p">(</span><span class="s1">&#39;Group:&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Test&quot;</span><span class="p">,</span> <span class="s2">&quot;Control&quot;</span><span class="p">])</span>
+<span class="n">ok_data</span> <span class="o">=</span> <span class="n">myDlg</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># show dialog and wait for OK or Cancel</span>
+<span class="k">if</span> <span class="n">myDlg</span><span class="o">.</span><span class="n">OK</span><span class="p">:</span>  <span class="c1"># or if ok_data is not None</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">ok_data</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;user cancelled&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="psychopy.gui.Dlg.addField">
+<code class="descname">addField</code><span class="sig-paren">(</span><em>label=''</em>, <em>initial=''</em>, <em>color=''</em>, <em>choices=None</em>, <em>tip=''</em>, <em>enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.gui.Dlg.addField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a (labelled) input field to the dialogue box,
+optional text color and tooltip.</p>
+<p>If &#8216;initial&#8217; is a bool, a checkbox will be created.
+If &#8216;choices&#8217; is a list or tuple, a dropdown selector is created.
+Otherwise, a text line entry box is created.</p>
+<p>Returns a handle to the field (but not to the label).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.gui.Dlg.addFixedField">
+<code class="descname">addFixedField</code><span class="sig-paren">(</span><em>label=''</em>, <em>initial=''</em>, <em>color=''</em>, <em>choices=None</em>, <em>tip=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.gui.Dlg.addFixedField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a field to the dialog box (like addField) but the field cannot
+be edited. e.g. Display experiment version.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.gui.Dlg.show">
+<code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.gui.Dlg.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presents the dialog and waits for the user to press OK or CANCEL.</p>
+<p>If user presses OK button, function returns a list containing the
+updated values coming from each of the input fields created.
+Otherwise, None is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self.data</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fileopendlg">
+<h2><a class="reference internal" href="#psychopy.gui.fileOpenDlg" title="psychopy.gui.fileOpenDlg"><code class="xref py py-func docutils literal"><span class="pre">fileOpenDlg()</span></code></a><a class="headerlink" href="#fileopendlg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="psychopy.gui.fileOpenDlg">
+<code class="descclassname">psychopy.gui.</code><code class="descname">fileOpenDlg</code><span class="sig-paren">(</span><em>tryFilePath=''</em>, <em>tryFileName=''</em>, <em>prompt=u'Select file to open'</em>, <em>allowed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.gui.fileOpenDlg" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple dialogue allowing read access to the file system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>tryFilePath: string</dt>
+<dd><p class="first last">default file path on which to open the dialog</p>
+</dd>
+<dt>tryFileName: string</dt>
+<dd><p class="first last">default file name, as suggested file</p>
+</dd>
+<dt>prompt: string (default &#8220;Select file to open&#8221;)</dt>
+<dd><p class="first last">can be set to custom prompts</p>
+</dd>
+<dt>allowed: string (available since v1.62.01)</dt>
+<dd><p class="first last">a string to specify file filters.
+e.g. &#8220;Text files (*.txt) ;; Image files (*.bmp *.gif)&#8221;
+See <a class="reference external" href="http://pyqt.sourceforge.net/Docs/PyQt4/qfiledialog.html">http://pyqt.sourceforge.net/Docs/PyQt4/qfiledialog.html</a>
+#getOpenFileNames
+for further details</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If tryFilePath or tryFileName are empty or invalid then
+current path and empty names are used to start search.</p>
+<p>If user cancels, then None is returned.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="filesavedlg">
+<h2><a class="reference internal" href="#psychopy.gui.fileSaveDlg" title="psychopy.gui.fileSaveDlg"><code class="xref py py-func docutils literal"><span class="pre">fileSaveDlg()</span></code></a><a class="headerlink" href="#filesavedlg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="psychopy.gui.fileSaveDlg">
+<code class="descclassname">psychopy.gui.</code><code class="descname">fileSaveDlg</code><span class="sig-paren">(</span><em>initFilePath=''</em>, <em>initFileName=''</em>, <em>prompt=u'Select file to save'</em>, <em>allowed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.gui.fileSaveDlg" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple dialogue allowing write access to the file system.
+(Useful in case you collect an hour of data and then try to
+save to a non-existent directory!!)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>initFilePath: string</dt>
+<dd><p class="first last">default file path on which to open the dialog</p>
+</dd>
+<dt>initFileName: string</dt>
+<dd><p class="first last">default file name, as suggested file</p>
+</dd>
+<dt>prompt: string (default &#8220;Select file to open&#8221;)</dt>
+<dd><p class="first last">can be set to custom prompts</p>
+</dd>
+<dt>allowed: string</dt>
+<dd><p class="first last">a string to specify file filters.
+e.g. &#8220;Text files (*.txt) ;; Image files (*.bmp *.gif)&#8221;
+See <a class="reference external" href="http://pyqt.sourceforge.net/Docs/PyQt4/qfiledialog.html">http://pyqt.sourceforge.net/Docs/PyQt4/qfiledialog.html</a>
+#getSaveFileName
+for further details</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If initFilePath or initFileName are empty or invalid then
+current path and empty names are used to start search.</p>
+<p>If user cancels the None is returned.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hardware.html" title="psychopy.hardware - hardware interfaces"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="filters.html" title="psychopy.filters - helper functions for creating filters"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

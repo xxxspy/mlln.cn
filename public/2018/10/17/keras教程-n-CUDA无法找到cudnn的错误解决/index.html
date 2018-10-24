@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="keras教程-n-CUDA无法找到cudnn的错误解决"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>keras教程-n-CUDA无法找到cudnn的错误解决 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                keras教程-n-CUDA无法找到cudnn的错误解决
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-n-CUDA无法找到cudnn的错误解决"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年10月17日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题和解决方法"><span class="toc-number">1.</span> <span class="toc-text">问题和解决方法</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文适用于如下环境:</p>
+<ul>
+<li>ubuntu16</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+<li>tensorflow 1.x</li>
+<li>keras 2.x</li>
+</ul>
+<p>作者信息:</p>
+<ul>
+<li>邮箱: xxxspy[at]126.com</li>
+<li>QQ: 675495787</li>
+<li>转载请注明来自 mlln.cn</li>
+</ul>
+<p>今天在使用keras的时候发现一个错误, 主要的错误是<code>Unknown: Fail to find the dnn implementation</code>, 具体看traceback如下:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"> Unknown: <span class="title">Fail</span> <span class="title">to</span> <span class="title">find</span> <span class="title">the</span> <span class="title">dnn</span> <span class="title">implementation</span>.</span></span><br><span class="line"><span class="function"><span class="title">Traceback</span> (<span class="title">most</span> <span class="title">recent</span> <span class="title">call</span> <span class="title">last</span>):</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "<span class="title">train.py</span>", <span class="title">line</span> 33, <span class="title">in</span> &lt;<span class="title">module</span>&gt;</span></span><br><span class="line"><span class="function">    <span class="title">num_epochs</span>=20)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">textgenrnn</span>/<span class="title">textgenrnn.py</span>", <span class="title">line</span> 320, <span class="title">in</span> <span class="title">train_from_file</span></span></span><br><span class="line"><span class="function">    <span class="title">texts</span>, <span class="title">context_labels</span>=<span class="title">context_labels</span>, **<span class="title">kwargs</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">textgenrnn</span>/<span class="title">textgenrnn.py</span>", <span class="title">line</span> 291, <span class="title">in</span> <span class="title">train_new_model</span></span></span><br><span class="line"><span class="function">    **<span class="title">kwargs</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">textgenrnn</span>/<span class="title">textgenrnn.py</span>", <span class="title">line</span> 221, <span class="title">in</span> <span class="title">train_on_texts</span></span></span><br><span class="line"><span class="function">    <span class="title">validation_steps</span>=<span class="title">val_steps</span></span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">keras</span>/<span class="title">legacy</span>/<span class="title">interfaces.py</span>", <span class="title">line</span> 91, <span class="title">in</span> <span class="title">wrapper</span></span></span><br><span class="line"><span class="function">    <span class="title">return</span> <span class="title">func</span>(*<span class="title">args</span>, **<span class="title">kwargs</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">keras</span>/<span class="title">engine</span>/<span class="title">training.py</span>", <span class="title">line</span> 1415, <span class="title">in</span> <span class="title">fit_generator</span></span></span><br><span class="line"><span class="function">    <span class="title">initial_epoch</span>=<span class="title">initial_epoch</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">keras</span>/<span class="title">engine</span>/<span class="title">training_generator.py</span>", <span class="title">line</span> 213, <span class="title">in</span> <span class="title">fit_generator</span></span></span><br><span class="line"><span class="function">    <span class="title">class_weight</span>=<span class="title">class_weight</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">keras</span>/<span class="title">engine</span>/<span class="title">training.py</span>", <span class="title">line</span> 1215, <span class="title">in</span> <span class="title">train_on_batch</span></span></span><br><span class="line"><span class="function">    <span class="title">outputs</span> = <span class="title">self.train_function</span>(<span class="title">ins</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">keras</span>/<span class="title">backend</span>/<span class="title">tensorflow_backend.py</span>", <span class="title">line</span> 2666, <span class="title">in</span> <span class="title">__call__</span></span></span><br><span class="line"><span class="function">    <span class="title">return</span> <span class="title">self._call</span>(<span class="title">inputs</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">keras</span>/<span class="title">backend</span>/<span class="title">tensorflow_backend.py</span>", <span class="title">line</span> 2636, <span class="title">in</span> <span class="title">_call</span></span></span><br><span class="line"><span class="function">    <span class="title">fetched</span> = <span class="title">self._callable_fn</span>(*<span class="title">array_vals</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">tensorflow</span>/<span class="title">python</span>/<span class="title">client</span>/<span class="title">session.py</span>", <span class="title">line</span> 1454, <span class="title">in</span> <span class="title">__call__</span></span></span><br><span class="line"><span class="function">    <span class="title">self._session._session</span>, <span class="title">self._handle</span>, <span class="title">args</span>, <span class="title">status</span>, <span class="title">None</span>)</span></span><br><span class="line"><span class="function">  <span class="title">File</span> "/<span class="title">home</span>/<span class="title">bnu</span>/<span class="title">venvs</span>/<span class="title">deeplearning3</span>.6/<span class="title">lib</span>/<span class="title">python3</span>.6/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">tensorflow</span>/<span class="title">python</span>/<span class="title">framework</span>/<span class="title">errors_impl.py</span>", <span class="title">line</span> 519, <span class="title">in</span> <span class="title">__exit__</span></span></span><br><span class="line"><span class="function">    <span class="title">c_api.TF_GetCode</span>(<span class="title">self.status.status</span>))</span></span><br><span class="line"><span class="function"><span class="title">tensorflow.python.framework.errors_impl.UnknownError</span>: <span class="title">Fail</span> <span class="title">to</span> <span class="title">find</span> <span class="title">the</span> <span class="title">dnn</span> <span class="title">implementation</span>.</span></span><br><span class="line"><span class="function">         [[<span class="title">Node</span>: <span class="title">rnn_1_2</span>/<span class="title">CudnnRNN</span> = <span class="title">CudnnRNN</span>[<span class="title">T</span>=<span class="title">DT_FLOAT</span>, <span class="title">_class</span>=["<span class="title">loc</span>:@<span class="title">training</span>/<span class="title">RMSprop</span>/<span class="title">gradients</span>/<span class="title">rnn_1_2</span>/<span class="title">CudnnRNN_grad</span>/<span class="title">CudnnRNNBackprop</span>"], <span class="title">direction</span>="<span class="title">unidirectional</span>", <span class="title">dropout</span>=0, <span class="title">input_mode</span>="<span class="title">linear_input</span>", <span class="title">is_training</span>=<span class="title">true</span>, <span class="title">rnn_mode</span>="<span class="title">lstm</span>", <span class="title">seed</span>=87654321, <span class="title">seed2</span>=0, <span class="title">_device</span>="/<span class="title">job:localhost</span>/<span class="title">replica</span>:0/<span class="title">task</span>:0/<span class="title">device:GPU</span>:0"](<span class="title">rnn_1_2</span>/<span class="title">transpose</span>, <span class="title">rnn_1_2</span>/<span class="title">ExpandDims_1</span>, <span class="title">rnn_1_2</span>/<span class="title">ExpandDims_1</span>, <span class="title">rnn_1_2</span>/<span class="title">concat</span>)]]</span></span><br><span class="line"><span class="function">         [[<span class="title">Node</span>: <span class="title">loss_2</span>/<span class="title">mul</span>/<span class="title">_241</span> = <span class="title">_Recv</span>[<span class="title">client_terminated</span>=<span class="title">false</span>, <span class="title">recv_device</span>="/<span class="title">job:localhost</span>/<span class="title">replica</span>:0/<span class="title">task</span>:0/<span class="title">device:CPU</span>:0", <span class="title">send_device</span>="/<span class="title">job:localhost</span>/<span class="title">replica</span>:0/<span class="title">task</span>:0/<span class="title">device:GPU</span>:0", <span class="title">send_device_incarnation</span>=1, <span class="title">tensor_name</span>="<span class="title">edge_2251_loss_2</span>/<span class="title">mul</span>", <span class="title">tensor_type</span>=<span class="title">DT_FLOAT</span>, <span class="title">_device</span>="/<span class="title">job:localhost</span>/<span class="title">replica</span>:0/<span class="title">task</span>:0/<span class="title">device:CPU</span>:0"]()]]</span></span><br></pre></td></tr></table></figure>
+<h3 id="问题和解决方法"><a href="#问题和解决方法" class="headerlink" title="问题和解决方法"></a>问题和解决方法</h3><p>经过各种搜索以后, 我知道这是因为cuDNN安装错误或者根本没有安装导致的, 所以我们就重新安装一遍cuDNN即可, 下面就是我的解决步骤:</p>
+<ul>
+<li>下载cudnn压缩包</li>
+</ul>
+<p>为了避免你从官网下载(速度慢/还需要注册/填写问卷) ,我把要下载的cudnn放在了百度网盘:</p>
+<p>下载链接：<a href="https://pan.baidu.com/s/1Wz9G9KtzmrBuXv0fLDo2GQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1Wz9G9KtzmrBuXv0fLDo2GQ</a> </p>
+<p>提取码：zvp4</p>
+<ul>
+<li>重命名文件</li>
+</ul>
+<p>主要是加上文件后缀<code>.tgz</code>, 那么现在这个文件为<code>cudnn-9.0-linux-x64-v7.3.1.20.solitairetheme8.tgz</code></p>
+<ul>
+<li>文件放到某个文件夹</li>
+</ul>
+<p>后文用<code>cudnn_dir</code>来表示这个文件夹路径, cd到这个文件夹</p>
+<ul>
+<li>解压:</li>
+</ul>
+<p><code>`$tar -xzvf cudnn-9.0-linux-x64-v7.3.1.20.solitairetheme8.tgz</code></p>
+<p>你会看到在当前文件夹下多了一个文件夹<code>cuda</code></p>
+<ul>
+<li>复制文件到/usr/local/cuda中, 命令我都给你写好了:</li>
+</ul>
+<p><code>``
+$</code> sudo cp cuda/include/cudnn.h /usr/local/cuda/include<br><code>$ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+$</code></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="keras教程-n-CUDA无法找到cudnn的错误解决.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/keras教程/">#keras教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/keras教程/">
+            keras教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                    使用谷歌翻译接口进行句子翻译
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                    keras教程-n-CUDA无法找到cudnn的错误解决
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/16/keras教程-08-Dropout的原理和实现/">
+                    keras教程-08-Dropout的原理和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/03/keras教程-n-GAN对抗生成网络的理论和实践/">
+                    keras教程-n-GAN对抗生成网络的理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                    keras教程-n-10分钟入门LSTM
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                    keras教程-n-循环神经网络的注意力机制的理论和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/01/keras教程-06-优化器详细解释/">
+                    keras教程-06-优化器详细解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/30/keras基础-Dense的输入的秩大于2时的注意事项/">
+                    keras基础-Dense的输入的秩大于2时的注意事项
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                    keras教程-05-实验验证神经网络的深度-样本量-dropout
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                    keras教程-04-手写字体识别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/17/keras教程-03-深度学习基础和keras入门/">
+                    keras教程-03-深度学习基础和keras入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/16/keras教程-02-tensorflow和keras安装/">
+                    keras教程-02-tensorflow和keras安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/15/keras教程-01-神经网络图解和手动计算/">
+                    keras教程-01-神经网络图解和手动计算
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

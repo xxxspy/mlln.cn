@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="中文语料库构建过程详细教程"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>中文语料库构建过程详细教程 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/05/30/中文语料库构建过程详细教程/">
+                中文语料库构建过程详细教程
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="中文语料库构建过程详细教程"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年05月30日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录结构"><span class="toc-number">2.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TextDirectoryCorpus简单使用"><span class="toc-number">3.</span> <span class="toc-text">TextDirectoryCorpus简单使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分词和词典生成"><span class="toc-number">4.</span> <span class="toc-text">分词和词典生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#词典的使用"><span class="toc-number">5.</span> <span class="toc-text">词典的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预先分词"><span class="toc-number">6.</span> <span class="toc-text">预先分词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>今天我想简单记录一下自己构建语料库的过程, 方便自己查看和方便协作. 在工作中我们经常遇到一个问题就是每个研究者都有自己的语料库, 存储格式不同, 有用mysql这种结构化数据库的, 也有mogodb这种文档型数据库, 还有更多的是使用文本文件, 不管哪种形式, 都会导致数据交换出现困难. 他人使用这个语料库的时候需要自己写语料库的预处理函数, 否则语料库是不能进入计算的. 为了减少这种不必要的重复劳动, 我们就使用<code>gensim.corpora.textcorpus.TextDirectoryCorpus</code>类来管理语料. 也就是说, 我们的语料保存在文件夹中, 设置<code>lines_are_documents=False</code>来保证每个文件是一篇文档. 如果我们都以相同的方式管理语料库, 那么我们的协作就更顺畅.</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><p>因为<code>TextDirectoryCorpus</code>可以支持嵌套的文件夹, 只要指定<code>max_depth</code>和<code>min_depth</code>两个参数就能控制文件夹深度. 我通常是使用一个文件夹放所有文本文件. 比如我有这样一个目录作为语料库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">└─test-corpus         # 根目录</span><br><span class="line">    │  dictionary.model  # 字典数据</span><br><span class="line">    │  meta.csv       # 元信息</span><br><span class="line">    │</span><br><span class="line">    └─corpus         # 存放文档</span><br><span class="line">            01.txt</span><br><span class="line">            02.txt</span><br><span class="line">            03.txt</span><br><span class="line">            04.txt</span><br><span class="line">            05.txt</span><br><span class="line">            06.txt</span><br><span class="line">            07.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">re.compile(<span class="string">'.*\.txt'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    re.compile(r'.*\.txt', re.UNICODE)
+</div>
+
+<h3 id="TextDirectoryCorpus简单使用"><a href="#TextDirectoryCorpus简单使用" class="headerlink" title="TextDirectoryCorpus简单使用"></a>TextDirectoryCorpus简单使用</h3><p>先看以下基本用法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入用到的库</span></span><br><span class="line"><span class="keyword">from</span> gensim.corpora.textcorpus <span class="keyword">import</span> TextDirectoryCorpus</span><br><span class="line"><span class="keyword">import</span> locale</span><br><span class="line">locale.setlocale(locale.LC_ALL, <span class="string">'en_US.utf-8'</span>)</span><br><span class="line"><span class="comment"># 数据所在路径</span></span><br><span class="line">dpath = <span class="string">r'D:\mysites\notebooks\data\test-corpus'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个语料库, </span></span><br><span class="line"><span class="comment"># 遍历的最小深度是1</span></span><br><span class="line"><span class="comment"># 设置lines_are_documents为False</span></span><br><span class="line"><span class="comment"># 后缀为txt的文件才会被当作是一个文档</span></span><br><span class="line">corpus = MyTextDirCorpus(dpath, min_depth=<span class="number">1</span>, pattern=<span class="string">'.*\.txt'</span>,  lines_are_documents=<span class="keyword">False</span>)</span><br><span class="line">print(<span class="string">'语料库计数:'</span>, len(corpus))</span><br><span class="line">print(<span class="string">'第一条:'</span>,next(corpus.get_texts()))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    语料库计数: 7
+    第一条: ['树中路径的交集图']
+    
+</div>
+
+<h3 id="分词和词典生成"><a href="#分词和词典生成" class="headerlink" title="分词和词典生成"></a>分词和词典生成</h3><p>为了让同事之间的工作更有一致性, 我们通常要预先对语料库进行分词, 使得不同的人具有相同的分词结果. 我们就用最简单的方法, 使用pyltp模块进行分词, 然后生成一个词典.</p>
+<p>我们先来看看pyltp是如何进行分词的:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 分词测试</span></span><br><span class="line"><span class="keyword">from</span> pyltp <span class="keyword">import</span> Segmentor</span><br><span class="line">new_doc = <span class="string">'实验室中测量无序响应中时间'</span></span><br><span class="line">model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">segmentor.load(model_path)</span><br><span class="line">new_tokens = segmentor.segment(new_doc)</span><br><span class="line">print(<span class="string">'Tokens:'</span>, <span class="string">'\t'</span>.join(new_tokens))</span><br><span class="line">segmentor.release()  <span class="comment"># 释放模型</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    Tokens: 实验室	中	测量	无序	响应	中	时间
+    
+</div>
+
+<p>实现一个分词器:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input, **kwargs)</span>:</span></span><br><span class="line">        kwargs[<span class="string">'tokenizer'</span>] = self.tokenizer</span><br><span class="line">        super().__init__(input, **kwargs)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tokenizer</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">            segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">            segmentor.load(model_path)</span><br><span class="line">            self._segmentor = segmentor</span><br><span class="line">        segmentor = self._segmentor</span><br><span class="line">        <span class="keyword">return</span> segmentor.segment(text)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''释放资源'''</span></span><br><span class="line">        <span class="keyword">if</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            self._segmentor.release()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            super().__del__()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个语料库</span></span><br><span class="line"><span class="comment"># 注意我们传入了一个token_filters参数, 实际上是一个空列表, 意思是, 不要过滤词, 所有词都要</span></span><br><span class="line"><span class="comment"># 当然在有需要的情况下, 我们需要定义自己的token_filters</span></span><br><span class="line">corpus = MyTextDirCorpus(dpath, min_depth=<span class="number">1</span>, </span><br><span class="line">                         pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                         lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                         tokenizer=tokenizer, </span><br><span class="line">                         token_filters=[])</span><br><span class="line"><span class="comment"># 保存词典到本地硬盘</span></span><br><span class="line">dict_path = <span class="string">r'D:\mysites\notebooks\data\test-corpus\dictionary.model'</span></span><br><span class="line">corpus.dictionary.save_as_text(fname=dict_path)</span><br><span class="line"><span class="comment"># 查看词典内容</span></span><br><span class="line">corpus.dictionary.token2id</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    {'中': 0,
+     '交集图': 1,
+     '树': 2,
+     '的': 3,
+     '路径': 4,
+     '\ufeff': 5,
+     '无序': 6,
+     '生成': 7,
+     '随机二进制': 8,
+     '与': 9,
+     '关系': 10,
+     '响应': 11,
+     '感知': 12,
+     '时间': 13,
+     '测量': 14,
+     '用户': 15,
+     '误差': 16,
+     'eps': 17,
+     '人体': 18,
+     '和': 19,
+     '测试': 20,
+     '系统': 21,
+     '系统工程': 22,
+     '界面': 23,
+     '管理': 24,
+     '对': 25,
+     '看法': 26,
+     '计算机': 27,
+     '调查': 28,
+     '实验室': 29,
+     '应用': 30}
+</div>
+
+<p>你可以在<code>dict_path</code>这个路径下看到我们的字典内容, 使用任意一个文本编辑器即可打开, 如下图, 三列数据分别表示id/词/计数.</p>
+<p><img src="images/dictionary-example.png" title="语料库的字典" class="img-thumbnail"></p>
+<h3 id="词典的使用"><a href="#词典的使用" class="headerlink" title="词典的使用"></a>词典的使用</h3><p>生成了词典以后, 我们以后再使用语料库的时候, 可以不必每次都重新计算词典, 这个过程非常耗费资源, 所以我们使用已经存储在硬盘的词典数据.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gensim.corpora.dictionary <span class="keyword">import</span> Dictionary</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"><span class="comment"># 预加载字典</span></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    122 µs ± 435 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+    
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"><span class="comment"># 每次生成词典</span></span><br><span class="line">MyTextDirCorpus(dpath, </span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    190 ms ± 116 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+    
+</div>
+
+<p>通过上面的测试, 我们发现两种方式的差别很大, 这还是在小语料库上测试的, 如果是大语料库, 这个差别就是几个数量级的差别了.</p>
+<h3 id="预先分词"><a href="#预先分词" class="headerlink" title="预先分词"></a>预先分词</h3><p>其实, 很多人协作的情况下, 保证大家的分词结果的一致性是很有必要的, 不然很多结果都没有可比性. 与其每个人都分一遍词, 不如从一开始就分好词. 所以我们可以把词分好, 然后保存到硬盘.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> fpath <span class="keyword">in</span> corpus.iter_filepaths():</span><br><span class="line">    fpath = Path(fpath)</span><br><span class="line">    token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">    txt = fpath.read_text(encoding=<span class="string">'utf8'</span>).strip()</span><br><span class="line">    tokens = corpus.tokenizer(txt)</span><br><span class="line">    token_path.write_bytes(pickle.dumps(list(tokens)))</span><br></pre></td></tr></table></figure>
+<p>使用预先分好的词, 可以再给我们的<code>MyTextDirCorpus</code>添加一个方法<code>get_texts_from_tokens</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input, **kwargs)</span>:</span></span><br><span class="line">        kwargs[<span class="string">'tokenizer'</span>] = self.tokenizer</span><br><span class="line">        super().__init__(input, **kwargs)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tokenizer</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">            segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">            segmentor.load(model_path)</span><br><span class="line">            self._segmentor = segmentor</span><br><span class="line">        segmentor = self._segmentor</span><br><span class="line">        <span class="keyword">return</span> segmentor.segment(text)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''释放资源'''</span></span><br><span class="line">        <span class="keyword">if</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            self._segmentor.release()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            super().__del__()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_texts_from_tokens</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            fpath = Path(fpath)</span><br><span class="line">            token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">            <span class="keyword">yield</span> pickle.loads(token_path.read_bytes())</span><br></pre></td></tr></table></figure>
+<p>测试以下我们新的方法是不是更节省时间:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corpus.get_texts():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    154 ms ± 2.82 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+    
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corpus.get_texts_from_tokens():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出:
+    969 µs ± 7.14 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+    
+</div>
+
+<p>测试显示, 时间还是差了几个数量级, 而且第二种方法的好处是, 我们使用语料库时不必再依赖分词模块<code>pyltp</code>.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>现在我们基本上已经构建了一个标准统一的语料库, 而且预先进行了分词和词典生成. 现在我们把所有用到的代码都封装到<code>MyTextDirCorpus</code>类中. 看代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># author: mlln.cn</span></span><br><span class="line"><span class="comment"># email: xxxspy@126.com</span></span><br><span class="line"><span class="comment"># qq: 675495787</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input, **kwargs)</span>:</span></span><br><span class="line">        kwargs[<span class="string">'tokenizer'</span>] = self.tokenizer</span><br><span class="line">        super().__init__(input, **kwargs)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tokenizer</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">            segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">            segmentor.load(model_path)</span><br><span class="line">            self._segmentor = segmentor</span><br><span class="line">        segmentor = self._segmentor</span><br><span class="line">        <span class="keyword">return</span> segmentor.segment(text)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''释放资源'''</span></span><br><span class="line">        <span class="keyword">if</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            self._segmentor.release()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            super().__del__()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_texts_from_tokens</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            fpath = Path(fpath)</span><br><span class="line">            token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">            <span class="keyword">yield</span> pickle.loads(token_path.read_bytes())</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_tokens</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''保存tokens到硬盘, 只需要运行一次'''</span></span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            fpath = Path(fpath)</span><br><span class="line">            token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">            txt = fpath.read_text(encoding=<span class="string">'utf8'</span>).strip()</span><br><span class="line">            tokens = self.tokenizer(txt)</span><br><span class="line">            token_path.write_bytes(pickle.dumps(list(tokens)))</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_dictionary</span><span class="params">(self, dpath)</span>:</span></span><br><span class="line">        <span class="string">'''把字典保存到硬盘'''</span></span><br><span class="line">        self.dictionary.save_as_text(fname=dpath)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本为由mlln.cn原创, 转载请注明出处(mlln.cn), 本站保留版权. 欢迎童鞋在下方留言反馈.</p>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="中文语料库构建过程详细教程.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/语料库/">#语料库</a> <a href="/tags/gensim/">#gensim</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/语料库/">
+            语料库
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/11/中文情感分析语料库大全-带下载地址/">
+                    中文情感分析语料库大全-带下载地址
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/11/自然语言处理停用词大全-百度-哈工大-四川大学/">
+                    自然语言处理停用词大全-百度-哈工大-四川大学
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/26/机器翻译语料库大全(免费下)/">
+                    机器翻译语料库大全(免费下)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/02/[转]吊炸天的中文自然语言处理工具和语料库介绍/">
+                    (译)吊炸天的中文自然语言处理工具和语料库介绍
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/05/30/中文语料库构建过程详细教程/">
+                    中文语料库构建过程详细教程
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/gensim/">
+            gensim
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/06/21/大数据揭示心理学规律(利用gensim训练词向量)/">
+                    大数据揭示心理学规律(利用gensim训练词向量)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/20/gensim生成长本文中文摘要/">
+                    gensim生成长本文中文摘要
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/05/30/中文语料库构建过程详细教程/">
+                    中文语料库构建过程详细教程
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

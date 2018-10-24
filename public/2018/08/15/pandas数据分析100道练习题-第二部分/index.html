@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="pandas数据分析100道练习题-第二部分"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>pandas数据分析100道练习题-第二部分 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2018/08/15/pandas数据分析100道练习题-第二部分/index.html",
+    "appid": "1600845001263316",
+    "title": "pandas数据分析100道练习题-第二部分",
+    "images": [
+        "http://mlln.cn/2018/08/15/pandas数据分析100道练习题-第二部分/main.jpg"
+    ], 
+    "pubDate": "2018-08-15T06:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                pandas数据分析100道练习题-第二部分
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="pandas数据分析100道练习题-第二部分"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年08月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#series如何将一日期字符串转换为时间"><span class="toc-number">1.</span> <span class="toc-text">series如何将一日期字符串转换为时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#series如何从时间序列中提取年-月-天-小时-分钟-秒"><span class="toc-number">2.</span> <span class="toc-text">series如何从时间序列中提取年/月/天/小时/分钟/秒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从series中找出包含两个以上元音字母的单词"><span class="toc-number">3.</span> <span class="toc-text">从series中找出包含两个以上元音字母的单词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何过滤series中的有效电子邮件"><span class="toc-number">4.</span> <span class="toc-text">如何过滤series中的有效电子邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#series-A-以series-B为分组依据-然后计算分组后的平均值"><span class="toc-number">5.</span> <span class="toc-text">series A 以series B为分组依据, 然后计算分组后的平均值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何计算两个系列之间的欧氏距离"><span class="toc-number">6.</span> <span class="toc-text">如何计算两个系列之间的欧氏距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在数字系列中查找所有局部最大值（或峰值）"><span class="toc-number">7.</span> <span class="toc-text">如何在数字系列中查找所有局部最大值（或峰值）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何创建一个以’2000-01-02’开始包含10个周六的TimeSeries"><span class="toc-number">8.</span> <span class="toc-text">如何创建一个以’2000-01-02’开始包含10个周六的TimeSeries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何填补TimeSeires的缺失日期"><span class="toc-number">9.</span> <span class="toc-text">如何填补TimeSeires的缺失日期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何计算series的自相关"><span class="toc-number">10.</span> <span class="toc-text">如何计算series的自相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取csv时-间隔几行读取数据"><span class="toc-number">11.</span> <span class="toc-text">读取csv时, 间隔几行读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取csv时进行数据转换"><span class="toc-number">12.</span> <span class="toc-text">读取csv时进行数据转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取csv时只读取某列"><span class="toc-number">13.</span> <span class="toc-text">读取csv时只读取某列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取dataframe每列的数据类型"><span class="toc-number">14.</span> <span class="toc-text">读取dataframe每列的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取dataframe的行数和列数"><span class="toc-number">15.</span> <span class="toc-text">读取dataframe的行数和列数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取dataframe每列的基本描述统计"><span class="toc-number">16.</span> <span class="toc-text">获取dataframe每列的基本描述统计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从dataframe中找到a列最大值对应的行"><span class="toc-number">17.</span> <span class="toc-text">从dataframe中找到a列最大值对应的行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从dataframe中获取c列最大值所在的行号"><span class="toc-number">18.</span> <span class="toc-text">从dataframe中获取c列最大值所在的行号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在dataframe中根据行列数读取某个值"><span class="toc-number">19.</span> <span class="toc-text">在dataframe中根据行列数读取某个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在dataframe中根据index和列名称读取某个值"><span class="toc-number">20.</span> <span class="toc-text">在dataframe中根据index和列名称读取某个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataframe中重命名某一列"><span class="toc-number">21.</span> <span class="toc-text">dataframe中重命名某一列</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>这篇文章收集了网友们使用pandas进行数据分析时经常遇到的问题, 这些问题也可以检验你使用pandas的熟练程度, 所以他们更像是一个学习教材, 掌握这些技能, 可以使你数据数据分析的工作事半功倍。第一部分pandas练习题请访问: <a href="http://mlln.cn/2018/08/13/pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90100%E9%81%93%E7%BB%83%E4%B9%A0%E9%A2%98-%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86/">pandas数据分析100道练习题-第一部分</a>, 下面是第二部分:</p>
+<h3 id="series如何将一日期字符串转换为时间"><a href="#series如何将一日期字符串转换为时间" class="headerlink" title="series如何将一日期字符串转换为时间"></a>series如何将一日期字符串转换为时间</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">ser = pd.Series([<span class="string">'01 Jan 2010'</span>, </span><br><span class="line">                <span class="string">'02-02-2011'</span>, </span><br><span class="line">                 <span class="string">'20120303'</span>, </span><br><span class="line">                 <span class="string">'2013/04/04'</span>, </span><br><span class="line">                 <span class="string">'2014-05-05'</span>, </span><br><span class="line">                 <span class="string">'2015-06-06T12:20'</span>])</span><br><span class="line"></span><br><span class="line">pd.to_datetime(ser)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0   2010-01-01 00:00:00
+    <br>1   2011-02-02 00:00:00
+    <br>2   2012-03-03 00:00:00
+    <br>3   2013-04-04 00:00:00
+    <br>4   2014-05-05 00:00:00
+    <br>5   2015-06-06 12:20:00
+    <br>dtype: datetime64[ns]
+
+</div>
+
+<h3 id="series如何从时间序列中提取年-月-天-小时-分钟-秒"><a href="#series如何从时间序列中提取年-月-天-小时-分钟-秒" class="headerlink" title="series如何从时间序列中提取年/月/天/小时/分钟/秒"></a>series如何从时间序列中提取年/月/天/小时/分钟/秒</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">date = pd.Series([<span class="string">'01 Jan 2010'</span>, </span><br><span class="line">                <span class="string">'02-02-2011'</span>, </span><br><span class="line">                 <span class="string">'20120303'</span>, </span><br><span class="line">                 <span class="string">'2013/04/04'</span>, </span><br><span class="line">                 <span class="string">'2014-05-05'</span>, </span><br><span class="line">                 <span class="string">'2015-06-06T12:20'</span>])</span><br><span class="line">date = pd.to_datetime(date)</span><br><span class="line">date.dt.year</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0    2010
+    <br>1    2011
+    <br>2    2012
+    <br>3    2013
+    <br>4    2014
+    <br>5    2015
+    <br>dtype: int64
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date.dt.month</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0    1
+    <br>1    2
+    <br>2    3
+    <br>3    4
+    <br>4    5
+    <br>5    6
+    <br>dtype: int64
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date.dt.day</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0    1
+    <br>1    2
+    <br>2    3
+    <br>3    4
+    <br>4    5
+    <br>5    6
+    <br>dtype: int64
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date.dt.hour</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0     0
+    <br>1     0
+    <br>2     0
+    <br>3     0
+    <br>4     0
+    <br>5    12
+    <br>dtype: int64
+
+</div>
+
+<h3 id="从series中找出包含两个以上元音字母的单词"><a href="#从series中找出包含两个以上元音字母的单词" class="headerlink" title="从series中找出包含两个以上元音字母的单词"></a>从series中找出包含两个以上元音字母的单词</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="string">'Apple'</span>, <span class="string">'Orange'</span>, <span class="string">'Plan'</span>, <span class="string">'Python'</span>, <span class="string">'Money'</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(x)</span>:</span></span><br><span class="line">    aims = <span class="string">'aeiou'</span></span><br><span class="line">    c= <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> x:</span><br><span class="line">        <span class="keyword">if</span> i <span class="keyword">in</span> aims:</span><br><span class="line">            c += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line"></span><br><span class="line">counts = ser.map(<span class="keyword">lambda</span> x: count(x))</span><br><span class="line">ser[counts&gt;=<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    1    Orange
+    <br>4     Money
+    <br>dtype: object
+
+</div>
+
+<h3 id="如何过滤series中的有效电子邮件"><a href="#如何过滤series中的有效电子邮件" class="headerlink" title="如何过滤series中的有效电子邮件"></a>如何过滤series中的有效电子邮件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">emails = pd.Series([<span class="string">'buying books at amazom.com'</span>, </span><br><span class="line">                    <span class="string">'rameses@egypt.com'</span>, </span><br><span class="line">                    <span class="string">'matt@t.co'</span>,</span><br><span class="line">                    <span class="string">'narendra@modi.com'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern =<span class="string">'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]&#123;2,4&#125;'</span></span><br><span class="line">valid = emails.str.findall(pattern, flags=re.IGNORECASE)</span><br><span class="line">[x[<span class="number">0</span>] <span class="keyword">for</span> x <span class="keyword">in</span> valid <span class="keyword">if</span> len(x)]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    ['rameses@egypt.com', 'matt@t.co', 'narendra@modi.com']
+
+</div>
+
+<h3 id="series-A-以series-B为分组依据-然后计算分组后的平均值"><a href="#series-A-以series-B为分组依据-然后计算分组后的平均值" class="headerlink" title="series A 以series B为分组依据, 然后计算分组后的平均值"></a>series A 以series B为分组依据, 然后计算分组后的平均值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">fruit = pd.Series(np.random.choice([<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'carrot'</span>], <span class="number">10</span>))</span><br><span class="line">weights = pd.Series(np.linspace(<span class="number">1</span>, <span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"></span><br><span class="line">weights.groupby(fruit).mean()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    apple     9.00
+    <br>banana    4.75
+    <br>carrot    3.00
+    <br>dtype: float64
+
+</div>
+
+<h3 id="如何计算两个系列之间的欧氏距离"><a href="#如何计算两个系列之间的欧氏距离" class="headerlink" title="如何计算两个系列之间的欧氏距离"></a>如何计算两个系列之间的欧氏距离</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>])</span><br><span class="line">q = pd.Series([<span class="number">10</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">sum((p - q)**<span class="number">2</span>)**<span class="number">.5</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    18.16590212458495
+
+</div>
+
+<h3 id="如何在数字系列中查找所有局部最大值（或峰值）"><a href="#如何在数字系列中查找所有局部最大值（或峰值）" class="headerlink" title="如何在数字系列中查找所有局部最大值（或峰值）"></a>如何在数字系列中查找所有局部最大值（或峰值）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">2</span>, <span class="number">10</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">3</span>])</span><br><span class="line">dd = np.diff(np.sign(np.diff(ser)))</span><br><span class="line">peak_locs = np.where(dd == <span class="number">-2</span>)[<span class="number">0</span>] + <span class="number">1</span></span><br><span class="line">peak_locs</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    array([1, 5, 7], dtype=int64)
+
+</div>
+
+<h3 id="如何创建一个以’2000-01-02’开始包含10个周六的TimeSeries"><a href="#如何创建一个以’2000-01-02’开始包含10个周六的TimeSeries" class="headerlink" title="如何创建一个以’2000-01-02’开始包含10个周六的TimeSeries"></a>如何创建一个以’2000-01-02’开始包含10个周六的TimeSeries</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pd.Series(np.random.randint(<span class="number">1</span>,<span class="number">10</span>,<span class="number">10</span>), </span><br><span class="line">          pd.date_range(<span class="string">'2000-01-02'</span>, </span><br><span class="line">                        periods=<span class="number">10</span>, </span><br><span class="line">                        freq=<span class="string">'W-SAT'</span>))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    2000-01-08    5
+    <br>2000-01-15    4
+    <br>2000-01-22    2
+    <br>2000-01-29    1
+    <br>2000-02-05    4
+    <br>2000-02-12    8
+    <br>2000-02-19    1
+    <br>2000-02-26    6
+    <br>2000-03-04    6
+    <br>2000-03-11    2
+    <br>Freq: W-SAT, dtype: int32
+
+</div>
+
+<h3 id="如何填补TimeSeires的缺失日期"><a href="#如何填补TimeSeires的缺失日期" class="headerlink" title="如何填补TimeSeires的缺失日期"></a>如何填补TimeSeires的缺失日期</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>,<span class="number">10</span>,<span class="number">3</span>,np.nan], index=pd.to_datetime([<span class="string">'2000-01-01'</span>,</span><br><span class="line">                                                       <span class="string">'2000-01-03'</span>, </span><br><span class="line">                                                       <span class="string">'2000-01-06'</span>, </span><br><span class="line">                                                       <span class="string">'2000-01-08'</span>]))</span><br><span class="line"><span class="comment"># 使用前一个日期的数据填补</span></span><br><span class="line">ser.resample(<span class="string">'D'</span>).ffill()</span><br><span class="line"><span class="comment"># 如果使用后一个日期的数据填补, 可以使用bfill方法</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    2000-01-01     1.0
+    <br>2000-01-02     1.0
+    <br>2000-01-03    10.0
+    <br>2000-01-04    10.0
+    <br>2000-01-05    10.0
+    <br>2000-01-06     3.0
+    <br>2000-01-07     3.0
+    <br>2000-01-08     NaN
+    <br>Freq: D, dtype: float64
+
+</div>
+
+<h3 id="如何计算series的自相关"><a href="#如何计算series的自相关" class="headerlink" title="如何计算series的自相关"></a>如何计算series的自相关</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series(np.arange(<span class="number">20</span>) + np.random.normal(<span class="number">1</span>, <span class="number">10</span>, <span class="number">20</span>))</span><br><span class="line">autocorrelations = [ser.autocorr(i).round(<span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">11</span>)]</span><br><span class="line"></span><br><span class="line">autocorrelations</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    [1.0, 0.38, 0.12, 0.17, 0.44, 0.48, 0.25, -0.31, -0.1, 0.65, 0.05]
+
+</div>
+
+<h3 id="读取csv时-间隔几行读取数据"><a href="#读取csv时-间隔几行读取数据" class="headerlink" title="读取csv时, 间隔几行读取数据"></a>读取csv时, 间隔几行读取数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成用于测试的csv</span></span><br><span class="line">fpath = <span class="string">'testt.csv'</span></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">'a'</span>: range(<span class="number">100</span>), </span><br><span class="line">                   <span class="string">'b'</span>:np.random.choice([<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'carrot'</span>], <span class="number">100</span>)&#125;)</span><br><span class="line">df.to_csv(fpath, index=<span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 隔行读取csv</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(fpath, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    out = []</span><br><span class="line">    <span class="keyword">for</span> i, row <span class="keyword">in</span> enumerate(reader):</span><br><span class="line">        <span class="keyword">if</span> i%<span class="number">20</span> ==<span class="number">0</span>:</span><br><span class="line">            out.append(row)</span><br><span class="line">pd.DataFrame(out[<span class="number">1</span>:], columns=out[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>19</td>
+      <td>banana</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>39</td>
+      <td>carrot</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>59</td>
+      <td>banana</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>79</td>
+      <td>banana</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>99</td>
+      <td>apple</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="读取csv时进行数据转换"><a href="#读取csv时进行数据转换" class="headerlink" title="读取csv时进行数据转换"></a>读取csv时进行数据转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(fpath, </span><br><span class="line">            converters=&#123;</span><br><span class="line">                <span class="string">'a'</span>:<span class="keyword">lambda</span> x: <span class="string">'low'</span> <span class="keyword">if</span> int(x) &lt; <span class="number">50</span> <span class="keyword">else</span> <span class="string">'high'</span></span><br><span class="line">            &#125;).head()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>low</td>
+      <td>carrot</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>low</td>
+      <td>carrot</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>low</td>
+      <td>banana</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>low</td>
+      <td>apple</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>low</td>
+      <td>apple</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="读取csv时只读取某列"><a href="#读取csv时只读取某列" class="headerlink" title="读取csv时只读取某列"></a>读取csv时只读取某列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(fpath, usecols=[<span class="string">'a'</span>]).head()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="读取dataframe每列的数据类型"><a href="#读取dataframe每列的数据类型" class="headerlink" title="读取dataframe每列的数据类型"></a>读取dataframe每列的数据类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df=pd.DataFrame(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'a'</span>:range(<span class="number">100</span>),</span><br><span class="line">        <span class="string">'b'</span>:np.random.rand(<span class="number">100</span>),</span><br><span class="line">        <span class="string">'c'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]*<span class="number">25</span>,</span><br><span class="line">        <span class="string">'d'</span>:[<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'carrot'</span>]*<span class="number">33</span> + [<span class="string">'apple'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    a      int64
+    <br>b    float64
+    <br>c      int64
+    <br>d     object
+    <br>dtype: object
+
+</div>
+
+<h3 id="读取dataframe的行数和列数"><a href="#读取dataframe的行数和列数" class="headerlink" title="读取dataframe的行数和列数"></a>读取dataframe的行数和列数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.shape</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    (100, 4)
+
+</div>
+
+<h3 id="获取dataframe每列的基本描述统计"><a href="#获取dataframe每列的基本描述统计" class="headerlink" title="获取dataframe每列的基本描述统计"></a>获取dataframe每列的基本描述统计</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">df.describe()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>49.500000</td>
+      <td>0.515885</td>
+      <td>2.500000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>29.011492</td>
+      <td>0.281679</td>
+      <td>1.123666</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000605</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>24.750000</td>
+      <td>0.280289</td>
+      <td>1.750000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>49.500000</td>
+      <td>0.545348</td>
+      <td>2.500000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>74.250000</td>
+      <td>0.736113</td>
+      <td>3.250000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>99.000000</td>
+      <td>0.992075</td>
+      <td>4.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="从dataframe中找到a列最大值对应的行"><a href="#从dataframe中找到a列最大值对应的行" class="headerlink" title="从dataframe中找到a列最大值对应的行"></a>从dataframe中找到a列最大值对应的行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[df.a==np.max(df.a)]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>99</th>
+      <td>99</td>
+      <td>0.598169</td>
+      <td>4</td>
+      <td>apple</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="从dataframe中获取c列最大值所在的行号"><a href="#从dataframe中获取c列最大值所在的行号" class="headerlink" title="从dataframe中获取c列最大值所在的行号"></a>从dataframe中获取c列最大值所在的行号</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.where(df.c==np.max(df.c))</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    (array([ 3,  7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67,
+    <br>        71, 75, 79, 83, 87, 91, 95, 99], dtype=int64),)
+
+</div>
+
+<h3 id="在dataframe中根据行列数读取某个值"><a href="#在dataframe中根据行列数读取某个值" class="headerlink" title="在dataframe中根据行列数读取某个值"></a>在dataframe中根据行列数读取某个值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">row = <span class="number">4</span></span><br><span class="line">col = <span class="number">0</span></span><br><span class="line">print(<span class="string">f'行<span class="subst">&#123;row&#125;</span>列<span class="subst">&#123;col&#125;</span>的值是: <span class="subst">&#123;df.iat[row, col]&#125;</span>'</span>)</span><br><span class="line">row = <span class="number">4</span></span><br><span class="line">col = <span class="number">2</span></span><br><span class="line">print(<span class="string">f'行<span class="subst">&#123;row&#125;</span>列<span class="subst">&#123;col&#125;</span>的值是: <span class="subst">&#123;df.iat[row, col]&#125;</span>'</span>)</span><br><span class="line">row = <span class="number">0</span></span><br><span class="line">col = <span class="number">0</span></span><br><span class="line">print(<span class="string">f'行<span class="subst">&#123;row&#125;</span>列<span class="subst">&#123;col&#125;</span>的值是: <span class="subst">&#123;df.iat[row, col]&#125;</span>'</span>)</span><br><span class="line">row = <span class="number">33</span></span><br><span class="line">col = <span class="number">3</span></span><br><span class="line">print(<span class="string">f'行<span class="subst">&#123;row&#125;</span>列<span class="subst">&#123;col&#125;</span>的值是: <span class="subst">&#123;df.iat[row, col]&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    行4列0的值是: 4
+    <br>行4列2的值是: 1
+    <br>行0列0的值是: 0
+    <br>行33列3的值是: apple
+    <br>
+</div>
+
+<h3 id="在dataframe中根据index和列名称读取某个值"><a href="#在dataframe中根据index和列名称读取某个值" class="headerlink" title="在dataframe中根据index和列名称读取某个值"></a>在dataframe中根据index和列名称读取某个值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">index = <span class="number">0</span></span><br><span class="line">col = <span class="string">'d'</span></span><br><span class="line">print(<span class="string">f'index=<span class="subst">&#123;index&#125;</span>, col=<span class="subst">&#123;col&#125;</span> : <span class="subst">&#123;df.at[index, col]&#125;</span>'</span>)</span><br><span class="line">index = <span class="number">2</span></span><br><span class="line">col = <span class="string">'d'</span></span><br><span class="line">print(<span class="string">f'index=<span class="subst">&#123;index&#125;</span>, col=<span class="subst">&#123;col&#125;</span> : <span class="subst">&#123;df.at[index, col]&#125;</span>'</span>)</span><br><span class="line">index = <span class="number">4</span></span><br><span class="line">col = <span class="string">'d'</span></span><br><span class="line">print(<span class="string">f'index=<span class="subst">&#123;index&#125;</span>, col=<span class="subst">&#123;col&#125;</span> : <span class="subst">&#123;df.at[index, col]&#125;</span>'</span>)</span><br><span class="line">index = <span class="number">5</span></span><br><span class="line">col = <span class="string">'c'</span></span><br><span class="line">print(<span class="string">f'index=<span class="subst">&#123;index&#125;</span>, col=<span class="subst">&#123;col&#125;</span> : <span class="subst">&#123;df.at[index, col]&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    index=0, col=d : apple
+    <br>index=2, col=d : carrot
+    <br>index=4, col=d : banana
+    <br>index=5, col=c : 2
+    <br>
+</div>
+
+<h3 id="dataframe中重命名某一列"><a href="#dataframe中重命名某一列" class="headerlink" title="dataframe中重命名某一列"></a>dataframe中重命名某一列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.rename(columns=&#123;<span class="string">'d'</span>:<span class="string">'fruit'</span>&#125;).head()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.406456</td>
+      <td>1</td>
+      <td>apple</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.607407</td>
+      <td>2</td>
+      <td>banana</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.197953</td>
+      <td>3</td>
+      <td>carrot</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0.279180</td>
+      <td>4</td>
+      <td>apple</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0.193107</td>
+      <td>1</td>
+      <td>banana</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>今天的教程就到此为止了, 希望大家关注我的小站mlln.cn, 后面还会有关于pandas系列的练习题, 希望这些工作能帮助你学习pandas, 或者在面试的时候应付面试题。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="pandas数据分析100道练习题-第二部分.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
+                    文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量系列-如何基于拼音构建字向量/">
+                    文本向量系列-如何基于拼音构建字向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/17/文本向量化理论和实践教程/">
+                    文本向量化理论和实践教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/19/python3字符串format最佳实践/">
+                    python3字符串format最佳实践
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/pandas/">
+            pandas
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/09/18/pandas文本数据转整数分类编码的最佳实践/">
+                    pandas文本数据转整数分类编码的最佳实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/18/信息熵信息增益率基尼系数原理和pandas实战/">
+                    信息熵信息增益率基尼系数原理和pandas实战
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/07/05/pandas教程：[28]散点图添加趋势线/">
+                    pandas教程：[28]散点图添加趋势线
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/06/19/pandas教程：[31]箱形图/">
+                    pandas教程：[31]箱形图
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/05/23/pandas教程：[30]直方图/">
+                    pandas教程：[30]直方图
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/05/19/pandas教程：[8]数据分组/">
+                    pandas教程：[8]数据分组
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/04/15/pandas教程：[21]带有缺失值的计算/">
+                    pandas教程：[21]带有缺失值的计算
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/03/03/pandas教程：[7]筛选计数统计/">
+                    pandas教程：[7]筛选计数统计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/01/11/pandas教程：[4]Dataframe筛选数据/">
+                    pandas教程：[4]Dataframe筛选数据
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/10/23/pandas教程：[1]DataFrame入门/">
+                    pandas教程：[1]DataFrame入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/10/17/pandas教程：[14]按月分组/">
+                    pandas教程：[14]按月分组
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
