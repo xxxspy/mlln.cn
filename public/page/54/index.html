@@ -197,6 +197,70 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/02/23/python高级教程：[1]列表迭代/">
+                python高级教程：[1]列表迭代
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年02月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Python在列表迭代时有许多灵活的用法，如果不用心去设计会让你走很多弯路，比如我们设定一个这样的问题：我们想找到年龄大于30的人的名字，现在有两个列表一个为names，存放着所有人的名字，一个为ages存放有所有人的年龄：</p>
+<ul>
+<li><p>我们用菜鸟的方式来解决这个问题：</p>
+</li>
+<li><p>在这里，我们创建了一个空列表oldPeople用来存放那些年龄大于30的人的名字。然后通过循环来获得那些“老人”。</p>
+</li>
+</ul>
+<img src="/2015/02/23/python高级教程：[1]列表迭代/d4239b35e5dde71187a438b3a1efce1b9c1661c5.jpg" title="python高级教程：[1]列表迭代">
+<ul>
+<li><p>另一种菜鸟的方式也好不到哪里去：</p>
+</li>
+<li><p>我们增加了一个递增变量i,for name in names这种写法就可以不必每次都重新获取name值；</p>
+</li>
+</ul>
+<img src="/2015/02/23/python高级教程：[1]列表迭代/8640bf8b87d6277f3d33487d2e381f30e924fc17.jpg" title="python高级教程：[1]列表迭代">
+<ul>
+<li>我们首先可以想到enumerate可以即得到索引i，又得到列表元素name，但是这仍然不是最佳的方式</li>
+</ul>
+<img src="/2015/02/23/python高级教程：[1]列表迭代/3853ad1bb051f8191e04790fdcb44aed2e73e717.jpg" title="python高级教程：[1]列表迭代">
+<ul>
+<li>一种极具Python风格的写法，只需要一句代码就可以完成这个任务。</li>
+</ul>
+<img src="/2015/02/23/python高级教程：[1]列表迭代/b0742dfa828ba61e97cab36a4734970a304e590b.jpg" title="python高级教程：[1]列表迭代">
+<ul>
+<li>所谓的Python高级教程就是这些，我们提供一些实例来对比菜鸟和Python高手之间的区别，以便于菜鸟能够快速的晋级为高手，如果你觉得这篇文章对你有帮助，请收藏！如果想转载，请注明作者。</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/02/23/SPSS实例：[25]列联表相关/">
                 SPSS实例：[25]列联表相关
             </a>
@@ -807,69 +871,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/02/15/numpy函数：[14]数组的列表下标存取方法/">
-                numpy函数：[14]数组的列表下标存取方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年02月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>除了使用切片存取数组的元素之外，还可以使用整数列表作为下标存取方法。我们来看看具体的用法：</p>
-<ul>
-<li>先从numpy包引入所有</li>
-</ul>
-<img src="/2015/02/15/numpy函数：[14]数组的列表下标存取方法/b87985504fc2d56241674772e51190ef77c66c87.jpg" title="numpy函数：[14]数组的列表下标存取方法">
-<ul>
-<li>创建一个一位数组a</li>
-</ul>
-<img src="/2015/02/15/numpy函数：[14]数组的列表下标存取方法/a8ad9413632762d09da13320a2ec08fa503dc657.jpg" title="numpy函数：[14]数组的列表下标存取方法">
-<ul>
-<li>假如要读取下标为2,4,6,8的数组元素，我们可以写用列表[2,4,6,8]作为下标</li>
-</ul>
-<img src="/2015/02/15/numpy函数：[14]数组的列表下标存取方法/e6508eef76c6a7ef04493fb9fffaaf51f2de6687.jpg" title="numpy函数：[14]数组的列表下标存取方法">
-<ul>
-<li>换一个试试</li>
-</ul>
-<img src="/2015/02/15/numpy函数：[14]数组的列表下标存取方法/9c57e3faaf51f3de7bdd2efb96eef01f3b297987.jpg" title="numpy函数：[14]数组的列表下标存取方法">
-<ul>
-<li>由于这种方式获取的数组并不与原数组共享内存，所以改变一个数组的元素并不改变另一个数组中对应元素的值。</li>
-</ul>
-<img src="/2015/02/15/numpy函数：[14]数组的列表下标存取方法/8d158aeef01f3a29f9a742519b25bc315d607c87.jpg" title="numpy函数：[14]数组的列表下标存取方法">
-<ul>
-<li>我们还可以通过列表下表进行赋值</li>
-</ul>
-<img src="/2015/02/15/numpy函数：[14]数组的列表下标存取方法/99636c0e0cf3d7ca0469a8e9f01fbe096a63a957.jpg" title="numpy函数：[14]数组的列表下标存取方法">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/numpy/">#numpy</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -912,6 +913,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
             </li>
             
@@ -947,10 +952,6 @@
                 <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/09/25/python-graphviz图数据可视化入门/">python-graphviz图数据可视化入门</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -962,7 +963,7 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -970,11 +971,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -994,10 +995,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
@@ -1014,11 +1011,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
@@ -1034,6 +1031,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
         </span>
         
@@ -1043,10 +1044,6 @@
         
         <span>
             <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1062,11 +1059,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1074,11 +1067,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1090,6 +1087,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/jupyter/">jupyter</a>
         </span>
         
@@ -1098,7 +1099,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
         <span>
@@ -1106,15 +1107,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras基础/">keras基础</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1126,11 +1119,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
@@ -1139,6 +1132,10 @@
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1154,7 +1151,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
@@ -1162,11 +1159,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
@@ -1182,11 +1179,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1230,10 +1227,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/ORC/">ORC</a>
         </span>
         
@@ -1250,19 +1243,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1274,7 +1255,31 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1318,10 +1323,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
         </span>
         
@@ -1346,7 +1347,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
     </ul>
