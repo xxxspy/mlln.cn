@@ -228,15 +228,15 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"terminal.integrated.env.windows": &#123;</span><br><span class="line">    "PATH":"D:\\mygits\\script-lab\\.env;D:\\Python27;D:\\Python27\\scripts"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意， 我们还配置了python2的路径， 因为yarn安装依赖的时候用到了python2.</p>
 <h3 id="安装yarn"><a href="#安装yarn" class="headerlink" title="安装yarn"></a>安装yarn</h3><p>打开vscode 终端， 输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn</span><br></pre></td></tr></table></figure></p>
-
+<img src="/2017/12/20/officejs-script-lab本地部署过程/终端安装yarn.jpg">
 <h3 id="安装依赖库"><a href="#安装依赖库" class="headerlink" title="安装依赖库"></a>安装依赖库</h3><p>打开vscode 终端， 输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">D:\mygits\script-lab&gt;yarn install</span><br><span class="line">yarn install v1.3.2</span><br><span class="line">[1/5] Validating package.json...</span><br><span class="line">[2/5] Resolving packages...</span><br><span class="line">[3/5] Fetching packages...</span><br><span class="line">info fsevents@1.1.2: The platform &quot;win32&quot; is incompatible with this module.</span><br><span class="line">info &quot;fsevents@1.1.2&quot; is an optional dependency and failed compatibility check. Excluding it from installation.</span><br><span class="line">[4/5] Linking dependencies...</span><br><span class="line">warning &quot; &gt; @angular/core@4.0.0&quot; has unmet peer dependency &quot;rxjs@^5.0.1&quot;.</span><br><span class="line">warning &quot; &gt; @angular/http@4.0.0&quot; has unmet peer dependency &quot;rxjs@^5.0.1&quot;.</span><br><span class="line">warning &quot; &gt; @angular/router@4.0.0&quot; has unmet peer dependency &quot;rxjs@^5.0.1&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/core@1.2.0&quot; has unmet peer dependency &quot;rxjs@^5.0.0-beta.12&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/effects@2.0.2&quot; has incorrect peer dependency &quot;@angular/core@^2.0.0&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/effects@2.0.2&quot; has unmet peer dependency &quot;rxjs@^5.0.0-beta.12&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/store@2.2.1&quot; has incorrect peer dependency &quot;@angular/core@^2.0.0&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/store@2.2.1&quot; has unmet peer dependency &quot;rxjs@^5.0.0-beta.12&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/store-devtools@3.2.4&quot; has unmet peer dependency &quot;rxjs@^5.0.0-beta.12&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/store-log-monitor@3.0.2&quot; has unmet peer dependency &quot;rxjs@^5.0.0-beta.11&quot;.</span><br><span class="line">warning &quot; &gt; @ngrx/store-log-monitor@3.0.2&quot; has incorrect peer dependency &quot;@angular/core@^2.0.0-rc.6&quot;.</span><br><span class="line">[5/5] Building fresh packages...</span><br><span class="line">Done in 27.54s.</span><br></pre></td></tr></table></figure></p>
 <h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">D:\mygits\script-lab&gt;npm start</span><br><span class="line"></span><br><span class="line">&gt; script-lab@1.1.0 start D:\mygits\script-lab</span><br><span class="line">&gt; npm-run-all clean -p build:runtime_helpers:dev build:dev dev:*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; script-lab@1.1.0 clean D:\mygits\script-lab</span><br><span class="line">&gt; rimraf dist &amp;&amp; rimraf .awcache</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; script-lab@1.1.0 dev:copy D:\mygits\script-lab</span><br><span class="line">&gt; cpx &quot;src/server/**/!(*.ts)&quot; &quot;dist/server&quot; --watch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; script-lab@1.1.0 build:dev D:\mygits\script-lab</span><br><span class="line">&gt; webpack-dev-server --config config/webpack.dev.js --progress</span><br><span class="line"></span><br><span class="line">[..................] / : info using node@v6.11.5</span><br><span class="line">&gt; script-lab@1.1.0 dev:server D:\mygits\script-lab</span><br><span class="line">&gt; tsc -p tsconfig.server.json --watch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; script-lab@1.1.0 build:runtime_helpers:dev D:\mygits\script-lab</span><br><span class="line">&gt; tsc -p src/runtime-helpers/tsconfig.json --watch</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; script-lab@1.1.0 dev:config D:\mygits\script-lab</span><br><span class="line">&gt; cpx &quot;config/env.config.js&quot; &quot;dist/server/core&quot; --watch</span><br><span class="line"></span><br><span class="line"> 12% building modules 18/18 modules 0 active</span><br><span class="line">Project is running at https://localhost:3100/</span><br><span class="line">webpack output is served from /</span><br><span class="line">Content not from webpack is served from D:\mygits\script-lab\dist\client</span><br><span class="line">404s will fallback to /index.html</span><br><span class="line"> 12% building modules 18/19 modules 1 active ...lient\index.js?https://localhost:310012:55:57 - Compilation complete. Watching for file changes.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 12% building modules 22/40 modules 18 active ...s\script-lab\src\client\public\log.ts</span><br><span class="line">[at-loader] Using typescript@2.2.2 from typescript and &quot;tsconfig.json&quot; from D:\mygits\script-lab\tsconfig.webpack.json (in a forked process).</span><br><span class="line"></span><br><span class="line"> 22% building modules 101/119 modules 18 active ...s\script-lab\src\client\public\log.ts12:55:59 - Compilation complete. Watching for file changes.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 94% asset optimization</span><br><span class="line">[at-loader] Checking started in a separate process...</span><br><span class="line"></span><br><span class="line">[at-loader] Ok, 0.675 sec.</span><br><span class="line">[BS] Proxying: https://localhost:3100</span><br><span class="line">[BS] Access URLs:</span><br><span class="line"> ----------------------------------------</span><br><span class="line">       Local: https://localhost:3000</span><br><span class="line">    External: https://172.16.160.165:3000</span><br><span class="line"> ----------------------------------------</span><br><span class="line">          UI: http://localhost:3001</span><br><span class="line"> UI External: http://172.16.160.165:3001</span><br><span class="line"> ----------------------------------------</span><br></pre></td></tr></table></figure>
 <h3 id="在浏览器中打开"><a href="#在浏览器中打开" class="headerlink" title="在浏览器中打开"></a>在浏览器中打开</h3><p>看下图， 你会看到有证书问题， 忽略继续浏览即可。</p>
-
+<img src="/2017/12/20/officejs-script-lab本地部署过程/安全证书问题.jpg">
 <p>最后你会看到如图所示的界面， 说明你的服务器已经在本地部署完毕了。</p>
-
+<img src="/2017/12/20/officejs-script-lab本地部署过程/在浏览器中打开.jpg">
 <h3 id="在word中加载"><a href="#在word中加载" class="headerlink" title="在word中加载"></a>在word中加载</h3><p>参考我上一篇文章, 你就知道， 我们现在需要做的就是把manifest放到共享文件夹里， 因为我在上一篇文章中设置过一个共享文件夹， 现在只需要将manifest文件放到该文件夹中。 script lab 的manifest在manifet文件夹下， 我们选择script-lab-local.xml即可。</p>
-
+<img src="/2017/12/20/officejs-script-lab本地部署过程/加载插件.jpg">
     </div>
 
     
@@ -399,11 +399,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -423,11 +431,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -451,15 +459,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/人工智能/">人工智能</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
@@ -475,19 +483,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -503,6 +499,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
@@ -511,7 +523,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -520,18 +536,6 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -579,19 +583,11 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -599,7 +595,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -611,19 +619,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -635,6 +639,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
@@ -643,19 +651,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -668,14 +672,6 @@
         
         <span>
             <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -695,7 +691,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -711,23 +719,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -743,7 +747,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -759,11 +771,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
         </span>
         
         <span>
@@ -775,18 +787,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/hexo/">hexo</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
@@ -795,7 +795,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>

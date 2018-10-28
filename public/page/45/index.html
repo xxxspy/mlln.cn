@@ -197,6 +197,63 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/07/05/python高级教程：[3]生成器方法send throw clos/">
+                python高级教程：[3]生成器方法send throw clos
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年07月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>这一篇接着讲Python的生成器，生成器总共有四个方法你可以看一下：next方法已经说过了，接下来说一下其余的三个方法。</p>
+<ul>
+<li>send：用于传递参数，实现与生成器的交互，我们举一个例子，下面的函数dog代表一只狗。当程序运行到food=(yield)的时候就会被挂起，等待生成器调用send方法，这时候我调用d.send(u’骨头’)，骨头就会被传递到food这个变量中，然后程序就说”我吃饱了”。仔细看一下下面的输出内容你就会明白。所以，send实际上是把yield变成了一个输入入口。</li>
+</ul>
+<img src="/2015/07/05/python高级教程：[3]生成器方法send%20throw%20clos/2e6fa7389b504fc2fc62bdbae3dde71190ef6d14.jpg" title="python高级教程：[3]生成器方法send throw clos">
+<ul>
+<li>stop用于停止生成器，如果再stop之后调用next，就会引发StopIteration错误。</li>
+</ul>
+<img src="/2015/07/05/python高级教程：[3]生成器方法send%20throw%20clos/b29f8282d158ccbf2069b9851fd8bc3eb035417c.jpg" title="python高级教程：[3]生成器方法send throw clos">
+<ul>
+<li>throw用于给生成器传递一个error，结合stop，我们可以做一些有意思的事情：</li>
+</ul>
+<img src="/2015/07/05/python高级教程：[3]生成器方法send%20throw%20clos/346bd85c10385343ffbf889e9513b07ecb8088d9.jpg" title="python高级教程：[3]生成器方法send throw clos">
+<ul>
+<li><p>根据上面的例子我们可以知道，实际上stop可以在生成器内部引发一个GeneratorExit错误，我们可以使用try…except GeneratorExit句型捕获该错误，然后做一些善后的事情。</p>
+</li>
+<li><p>注意，在捕获GeneratorExit错误以后，你需要raise StopIteration错误，否则程序就没有终止的时候了。</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/">
                 Excel2013：[17]数据透视表有两个汇总项
             </a>
@@ -216,11 +273,11 @@
 <ul>
 <li>先插入一个数据透视表，如图所示</li>
 </ul>
-
+<img src="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/027a45b5c9ea15ce702a270eb4003af33b87b2b6.jpg" title="Excel2013：[17]数据透视表有两个汇总项">
 <ul>
 <li>打开一个对话框，我们默认在新的工作表放置数据透视表，点击确定按钮</li>
 </ul>
-
+<img src="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/e8112b2ac65c10381cba09c5b0119313b17e89b6.jpg" title="Excel2013：[17]数据透视表有两个汇总项">
 <ul>
 <li>看到界面的右侧出现了一个数据透视表字段，将行和列字段拖动到对应的位置</li>
 </ul>
@@ -228,23 +285,23 @@
 <ul>
 <li>接着讲想要统计的字段拖动到下面的值字段</li>
 </ul>
-
+<img src="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/b3ba5d166d224f4a06feb5140bf790529822d117.jpg" title="Excel2013：[17]数据透视表有两个汇总项">
 <ul>
 <li>设置值字段，我们点击【计数项：重量】，在打开的菜单中选择：值字段设置</li>
 </ul>
-
+<img src="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/caae68094b36acaf4a2451fb7ed98d1000e99cb6.jpg" title="Excel2013：[17]数据透视表有两个汇总项">
 <ul>
 <li>在打开的对话框中，我们选择【求和】，点击确定按钮</li>
 </ul>
-
+<img src="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/d68b65cb0a46f21f8f539854f4246b600c33ae17.jpg" title="Excel2013：[17]数据透视表有两个汇总项">
 <ul>
 <li>同样，设置第二个字段</li>
 </ul>
-
+<img src="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/b94f65ec54e736d140d74b0f99504fc2d46269b6.jpg" title="Excel2013：[17]数据透视表有两个汇总项">
 <ul>
 <li>至此，我们就完成了任务。</li>
 </ul>
-
+<img src="/2015/07/05/Excel2013：[17]数据透视表有两个汇总项/389aa8fd5266d016ccc8532f952bd40734fa35a1.jpg" title="Excel2013：[17]数据透视表有两个汇总项">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -287,36 +344,36 @@
 <ul>
 <li>首先，我们创建一个数据序列<br>查看数据序列：</li>
 </ul>
-
-
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/5202e5f2b21193133c3f72b466380cd791238d73.jpg" title="pandas教程：[18]匹配字符串">
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/1e71f724b899a90109ecd9321e950a7b0308f59e.jpg" title="pandas教程：[18]匹配字符串">
 <ul>
 <li>检测数据序列中哪些元素包含一个字母和一个数字的字符模式<br>匹配结果为：</li>
 </ul>
-
-
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/b13fd48065380cd701622fe9a244ad3459828173.jpg" title="pandas教程：[18]匹配字符串">
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/7d98931001e93901827e003a78ec54e736d19673.jpg" title="pandas教程：[18]匹配字符串">
 <ul>
 <li>我们可以使用na参数来规定出现NaN数据的时候匹配成True还是False<br>结果为：</li>
 </ul>
-
-
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/0d968f2397dda1443e75e1b6b1b7d0a20cf48673.jpg" title="pandas教程：[18]匹配字符串">
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/0b3a1c087bf40ad12e3d45e7542c11dfa8ecce9e.jpg" title="pandas教程：[18]匹配字符串">
 <ul>
 <li>match方法可以严格匹配字符串：<br>输出结果为：</li>
 </ul>
-
-
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/8640bf8b87d6277fa0cbb03c2b381f30e824fc9e.jpg" title="pandas教程：[18]匹配字符串">
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/55a628d12f2eb9383111f7f6d6628535e5dd6f73.jpg" title="pandas教程：[18]匹配字符串">
 <ul>
 <li><p>还有，我们可以检查字符串开始字符，假设我们想要查找以字母a开头的数据，可以用startswith或者contains，注意contains中第一个参数，不懂得童鞋可以去看Python的正则表达式</p>
 </li>
 <li><p>输出结果：</p>
 </li>
 </ul>
-
-
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/caae68094b36acafb39c1bf87fd98d1001e99c73.jpg" title="pandas教程：[18]匹配字符串">
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/4e83cb628535e5dd485028db75c6a7efce1b6273.jpg" title="pandas教程：[18]匹配字符串">
 <ul>
 <li>同样道理，可以检查结束字符串<br>输出结果为：</li>
 </ul>
-
-
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/9f6e190828381f30abc00fadaa014c086f06f09e.jpg" title="pandas教程：[18]匹配字符串">
+<img src="/2015/07/05/pandas教程：[18]匹配字符串/a8ad9413632762d0a3e726bba3ec08fa503dc69e.jpg" title="pandas教程：[18]匹配字符串">
 <ul>
 <li>还有很多字符串方法，这里不一一距离，你看一下简介用到的时候再去学</li>
 </ul>
@@ -363,23 +420,23 @@
 <ul>
 <li>首先我们在syntax编辑窗口中运行python，首先应该想到使用BEGIN PROGRAM.和END PROGRAM.来将python代码包括起来。</li>
 </ul>
-
+<img src="/2015/07/03/SPSS%20python教程：[4]startclient/42e89c26cffc1e178d6963a64890f603728de910.jpg" title="SPSS python教程：[4]startclient">
 <ul>
 <li>然后引入SpssClient模块，这样才能使用它的StartClient方法</li>
 </ul>
-
+<img src="/2015/07/03/SPSS%20python教程：[4]startclient/ac754782b2b7d0a2786eed0ac9ef76094a369a47.jpg" title="SPSS python教程：[4]startclient">
 <ul>
 <li>我们启动spss客户端的方法就是这样了，记住，通常使用完spss以后，要通过StopClient方法来关闭它。</li>
 </ul>
-
+<img src="/2015/07/03/SPSS%20python教程：[4]startclient/e78c65899e510fb3e5bb9e00db33c895d0430c4c.jpg" title="SPSS python教程：[4]startclient">
 <ul>
 <li>真正实现功能的是这两句代码，先不用管它什么意思</li>
 </ul>
-
+<img src="/2015/07/03/SPSS%20python教程：[4]startclient/73ca5910b912c8fc0e641f5afe039245d7882157.jpg" title="SPSS python教程：[4]startclient">
 <ul>
 <li>运行结果是输出了当前的工作文件夹：</li>
 </ul>
-
+<img src="/2015/07/03/SPSS%20python教程：[4]startclient/c28fddfdfc039245073608988594a4c27c1e2563.jpg" title="SPSS python教程：[4]startclient">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -425,28 +482,28 @@
 <li><p>我们先打开最优尺度回归的对话框，如图所示</p>
 </li>
 </ul>
-
+<img src="/2015/07/01/SPSS实例：[37]最优尺度回归/814b07d8bc3eb1350c32cd1fa41ea8d3fc1f4459.jpg" title="SPSS实例：[37]最优尺度回归">
 <ul>
 <li>将自变量和因变量都分别放入不同的框中，如图嗾使</li>
 </ul>
-
+<img src="/2015/07/01/SPSS实例：[37]最优尺度回归/b0742dfa828ba61eea1bb28b4334970a314e5959.jpg" title="SPSS实例：[37]最优尺度回归">
 <ul>
 <li>课程类别是分类变量，我们选中它，然后点【define scale】</li>
 </ul>
-
+<img src="/2015/07/01/SPSS实例：[37]最优尺度回归/3b6833f5e0fe9925969e13f436a85edf8cb17140.jpg" title="SPSS实例：[37]最优尺度回归">
 <ul>
 <li>在打开的对话框中，我们选择【nominal】，点击【continue】</li>
 </ul>
-
-
+<img src="/2015/07/01/SPSS实例：[37]最优尺度回归/9864a2315c6034a87370c225c913495408237640.jpg" title="SPSS实例：[37]最优尺度回归">
+<img src="/2015/07/01/SPSS实例：[37]最优尺度回归/d089b986c9177f3e2ac186a972cf3bc79e3d5659.jpg" title="SPSS实例：[37]最优尺度回归">
 <ul>
 <li>回到主对话框，点击【ok】就开始进行估计</li>
 </ul>
-
+<img src="/2015/07/01/SPSS实例：[37]最优尺度回归/0862c354564e9258e4a6fc4a9e82d158cdbf4e40.jpg" title="SPSS实例：[37]最优尺度回归">
 <ul>
 <li>结果输出基本上都是和其他回归方法没有太大差别，我们主要看对不同课程的评分，这个评分实际上是进入回归的分数，我们是用这个分数代表了不同的类别。</li>
 </ul>
-
+<img src="/2015/07/01/SPSS实例：[37]最优尺度回归/9e7ce6dcd100baa198d93d1f4510b912c9fc2e59.jpg" title="SPSS实例：[37]最优尺度回归">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -492,24 +549,24 @@
 <ul>
 <li>在菜单栏上执行：analyse–GLM–univariate，打开方差分析对话框</li>
 </ul>
-
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/6a600c338744ebf8b74dcffdd9f9d72a6059a730.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
 <ul>
 <li>将自变量、因变量放入各自的框中，如图所示，B和Z是两个自变量，他们是完全随机设计，点击ok按钮，开始运行数据</li>
 </ul>
-
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/a08b87d6277f9e2f7e17b6ca1f30e924b999f3d6.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
 <ul>
 <li>我们看到数据的处理效果，交互作用显著，所以我们需要进一步做简单效益的检验</li>
 </ul>
-
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/4d086e061d950a7b8140e5060ad162d9f3d3c9ff.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
 <ul>
 <li>如图所示，点击菜单栏上的按钮，打开刚才用过的univariate对话框</li>
 </ul>
-
-
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/4ec2d5628535e5dd0d5d0e1d76c6a7efcf1b62fb.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/203fb80e7bec54e7d481b1dcb9389b504ec26a87.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
 <ul>
 <li>点击下面的paste按钮，来到syntax的编辑窗口</li>
 </ul>
-
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/f3d3572c11dfa9ec016afdd562d0f703908fc1a8.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
 <ul>
 <li><p>在如图所示的位置，添加一个命令：/EMMEANS=TABLES(B*Z)COMPARE(B)ADJ(SIDAK)</p>
 </li>
@@ -520,11 +577,11 @@
 <li><p>单击运行按钮，开始处理数据并输出结果</p>
 </li>
 </ul>
-
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/8694a4c27d1ed21b3fe6b927ad6eddc450da3fc0.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
 <ul>
 <li>我们看到，简单主效应的分析已经出来，通过这个表格我们就能对自变量B各个水平进行精细比较</li>
 </ul>
-
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/1ad5ad6eddc451dab7dd9b29b6fd5266d11632cc.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -567,31 +624,31 @@
 <ul>
 <li>代码的前两行就不说了，引入了相关模块并创建了一个app</li>
 </ul>
-
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/0d968f2397dda1440ba4fcddb1b7d0a20df486f5.jpg" title="wxpython教程：[2]窗口风格">
 <ul>
 <li>接着是Frame的设置，我们先来看看style，他有很多可以设置的属性，不同的属性用竖线“|”连接，比如我们想要窗口上有最大化按钮，就设置wx.MAXIMIZE_BOX，如果想要增加最小化按钮，就写成style=wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX ，写一连串属性很麻烦，我们可以用wx.DEFAULT_FRAME_STYLE默认设置，它等于wx.MINIMIZE_BOX | wx.MAXIMIZE_BOX | wx.RESIZE_BORDER | wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX | wx.CLIP_CHILDREN<br>其他属性的意义我们直接从官网上看就可以，如下图：</li>
 </ul>
-
-
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/4abae5edab64034f575f5269acc379310b551d8b.jpg" title="wxpython教程：[2]窗口风格">
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/109eb7ec8a136327064f515c928fa0ec09fac784.jpg" title="wxpython教程：[2]窗口风格">
 <ul>
 <li><p>接着我们想要设置窗口的大小，用size参数，Frame（…size=(200,250))，这样就将窗口大小设置为200长，250高。</p>
 </li>
 <li><p>使用Move方法可以设置窗口的位置，比如（它表示窗口的左上角在屏幕上的位置）</p>
 </li>
 </ul>
-
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/ac754782b2b7d0a2a66494f2c8ef76094a369af5.jpg" title="wxpython教程：[2]窗口风格">
 <ul>
 <li>如果我们需要将窗口置于屏幕中央，可以使用Center方法</li>
 </ul>
-
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/b6045da98226cffc24b82fddba014a90f703ea94.jpg" title="wxpython教程：[2]窗口风格">
 <ul>
 <li>还有其他很多方法设置窗口位置，这里就不演示了：</li>
 </ul>
-
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/4e83cb628535e5dd279737b075c6a7efcf1b62e3.jpg" title="wxpython教程：[2]窗口风格">
 <ul>
 <li>最后就不用解释了，可以看看你创建的一个窗口</li>
 </ul>
-
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/8bc3a7014a90f6034c220c283a12b31bb151ed94.jpg" title="wxpython教程：[2]窗口风格">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -634,27 +691,27 @@
 <ul>
 <li>默认插入的批注是隐藏的，你的鼠标离开批注所在的单元格就是隐藏批注，所以要想打印批注，先要显示批注，右键单击该单元格，选择【显示/隐藏批注】</li>
 </ul>
-
+<img src="/2015/06/23/Excel2013：[43]如何打印批注/bd70426034a85edf860eb9444b540923dc547593.jpg" title="Excel2013：[43]如何打印批注">
 <ul>
 <li>现在你的鼠标随便放，批注都会是显示的</li>
 </ul>
-
+<img src="/2015/06/23/Excel2013：[43]如何打印批注/6f4703950a7b0208eb56788660d9f2d3562cc8ff.jpg" title="Excel2013：[43]如何打印批注">
 <ul>
 <li>切换到【页面布局】下，找到【打印标题】，点击它</li>
 </ul>
-
+<img src="/2015/06/23/Excel2013：[43]如何打印批注/570f8c58d109b3de883da30fcebf6c81810a4c93.jpg" title="Excel2013：[43]如何打印批注">
 <ul>
 <li>在打开的对话框中，我们切换到【工作表】标签，找到【批注】选项，我们设置为【如同工作表中的显示】，当然你也可以设置成【工作表末尾】，as you like，点击确定按钮</li>
 </ul>
-
+<img src="/2015/06/23/Excel2013：[43]如何打印批注/cdfe7281800a19d8a681c36231fa828ba71e4693.jpg" title="Excel2013：[43]如何打印批注">
 <ul>
 <li>在开始菜单中，点击【打印】可以预览一下打印效果</li>
 </ul>
-
+<img src="/2015/06/23/Excel2013：[43]如何打印批注/6dc09e0a19d8bc3eaa8a41ad808ba61ea9d34593.jpg" title="Excel2013：[43]如何打印批注">
 <ul>
 <li>至此我们看到了，这是打印的效果图，显然批注已经被打印出来了。</li>
 </ul>
-
+<img src="/2015/06/23/Excel2013：[43]如何打印批注/99636c0e0cf3d7cad4697811f01fbe096a63a9ff.jpg" title="Excel2013：[43]如何打印批注">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -697,19 +754,19 @@
 <ul>
 <li>首先强调一点，我们将numpy引入，名称为np</li>
 </ul>
-
+<img src="/2015/06/19/numpy函数：[3]数组对象/ac0acf1373f0820220f9f19849fbfbedaa641bea.jpg" title="numpy函数：[3]数组对象">
 <ul>
 <li>我们使用一个列表作为array的参数，然后看一下这个array输出的结果，就是一个数组对象，而且是一维的</li>
 </ul>
-
+<img src="/2015/06/19/numpy函数：[3]数组对象/0db2c9ca7bcb0a463c27eb9e6963f6246a60afd5.jpg" title="numpy函数：[3]数组对象">
 <ul>
 <li>假如我们要创建一个二维数组，我们就要用到一个列表的嵌套，看下面的ab列表就是一个嵌套。</li>
 </ul>
-
+<img src="/2015/06/19/numpy函数：[3]数组对象/0b14ad19ebc4b745cbffd7b1cdfc1e178b8215ea.jpg" title="numpy函数：[3]数组对象">
 <ul>
 <li>通过array()将ab列表转换成一个二维数组。</li>
 </ul>
-
+<img src="/2015/06/19/numpy函数：[3]数组对象/d66b7e59252dd42af50c610c013b5bb5c8eab8d5.jpg" title="numpy函数：[3]数组对象">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -752,88 +809,28 @@
 <ul>
 <li>我们使用type创建一个空类：只有一个名字，其他什么都没有，它的参数格式是：type(class_name,bases,dic)</li>
 </ul>
-
+<img src="/2015/06/19/python教程：[78]type()创建类/c8ab0bce36d3d53974894de33987e950352ab01f.jpg" title="python教程：[78]type()创建类">
 <ul>
 <li>我们用type来查看一下我们创建的cls的类型：</li>
 </ul>
-
+<img src="/2015/06/19/python教程：[78]type()创建类/906289dda144ad348c25c5a7d3a20cf431ad853d.jpg" title="python教程：[78]type()创建类">
 <ul>
 <li>查看cls的名称</li>
 </ul>
-
+<img src="/2015/06/19/python教程：[78]type()创建类/0db52fadcbef76099791dbbf2ddda3cc7cd99e3d.jpg" title="python教程：[78]type()创建类">
 <ul>
 <li>假如我们用比较熟悉的继承的方式来创建一个类，它跟cls是一样的：</li>
 </ul>
-
+<img src="/2015/06/19/python教程：[78]type()创建类/7d98931001e93901c598cf1e78ec54e736d1963d.jpg" title="python教程：[78]type()创建类">
 <ul>
 <li>当然，我们可以通过参数dic来设置其他任何类的属性，比如：</li>
 </ul>
-
+<img src="/2015/06/19/python教程：[78]type()创建类/207ea60e7bec54e7de76583eba389b504fc26a3d.jpg" title="python教程：[78]type()创建类">
 <ul>
 <li>现在cls2比cls多了属性<strong>doc</strong>,<strong>module</strong></li>
 </ul>
-
-
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/06/19/python教程：[77]lambda和filter的神奇/">
-                python教程：[77]lambda和filter的神奇
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年06月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们先分别讲一下这两个内置函数的用法，然后看看这两个结合起来产生的效果，以及通常我们用他们来干嘛。</p>
-<ul>
-<li>lambda通常是匿名函数的代名词，我们用到lambda的时候就是创建一个匿名函数：举个简单的例子：x代表了输入，x**2代表计算方法，也代表返回内容，也就是说这个函数输入一个数，返回这个数的平方。但是因为这个函数没有函数名，所以无法在其他地方调用</li>
-</ul>
-
-<ul>
-<li>除非我们将这个函数起一个名字：但通常我们不会这么做，匿名函数只是作为匿名使用。</li>
-</ul>
-
-<ul>
-<li>filter函数用法是：filter(fuction,list)：将list中每一个元素带入到function中，计算返回值，将返回值为True的list中的元素形成一个新的list，当然也可以是tuple。</li>
-</ul>
-
-
-<ul>
-<li>对于上面这个函数，我们可以用lambda来简化：它的意思是，如果alist中的值的平方小于5，就返回这个值，形成一个新的list</li>
-</ul>
-
-<ul>
-<li>通常，我们使用这两个内置函数的结合来过滤list里的空值：</li>
-</ul>
-
+<img src="/2015/06/19/python教程：[78]type()创建类/2e6fa7389b504fc238c5f225e6dde71190ef6d3d.jpg" title="python教程：[78]type()创建类">
+<img src="/2015/06/19/python教程：[78]type()创建类/d4239b35e5dde711614801d6a4efce1b9d16613d.jpg" title="python教程：[78]type()创建类">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -944,11 +941,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -968,11 +973,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -996,15 +1001,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/人工智能/">人工智能</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
@@ -1020,19 +1025,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1048,6 +1041,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
@@ -1056,7 +1065,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1065,18 +1078,6 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1124,19 +1125,11 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -1144,7 +1137,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -1156,19 +1161,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -1180,6 +1181,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
@@ -1188,19 +1193,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1213,14 +1214,6 @@
         
         <span>
             <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -1240,7 +1233,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1256,23 +1261,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -1288,7 +1289,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -1304,11 +1313,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
         </span>
         
         <span>
@@ -1320,18 +1329,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/hexo/">hexo</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
@@ -1340,7 +1337,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>

@@ -197,6 +197,69 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/10/03/SPSS实例：[36]分层卡方检验/">
+                SPSS实例：[36]分层卡方检验
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年10月03日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>现在我手头有一个研究数据，数据描述的是不同的年龄组儿童、不同的阅读顺序对是否受到干扰的影响。我们来看一下数据你就懂了。有两个年龄组分别为0和1代表；图书顺序也是两个分别为1和2，是否受到了干扰我们用0和1表示。我们想知道在不同的年龄组下图书顺序是否影响干扰。这时候用到了分层卡方检验，以年龄组作为分层变量。</p>
+<ul>
+<li>首先打开交叉表分析对话框</li>
+</ul>
+<img src="/2015/10/03/SPSS实例：[36]分层卡方检验/7d98931001e93901c59ec08979ec54e737d196ae.jpg" title="SPSS实例：[36]分层卡方检验">
+<ul>
+<li>将年龄组放入到分层变量框</li>
+</ul>
+<img src="/2015/10/03/SPSS实例：[36]分层卡方检验/55a628d12f2eb93870f13745d7628535e4dd6fae.jpg" title="SPSS实例：[36]分层卡方检验">
+<ul>
+<li>打开【statistics】对话框，勾选卡方和CMH统计量，点击继续</li>
+</ul>
+<img src="/2015/10/03/SPSS实例：[36]分层卡方检验/d4239b35e5dde711614e0e41a5efce1b9c1661ae.jpg" title="SPSS实例：[36]分层卡方检验">
+<ul>
+<li>我们看统计结果，首先是层间一致性检验。sig值显示差异不显著，说明不同年龄组中，图书顺序与干扰的关系是相同的。</li>
+</ul>
+<img src="/2015/10/03/SPSS实例：[36]分层卡方检验/faacb564034f78f0a967d7447b310a55b2191cdd.jpg" title="SPSS实例：[36]分层卡方检验">
+<ul>
+<li>接着看分层卡方检验结果，即考虑到年龄因素后，图书顺序与干扰的影响。这里显示图书顺序与干扰是无关的。隐私sig值均大于.05</li>
+</ul>
+<img src="/2015/10/03/SPSS实例：[36]分层卡方检验/78701455b319ebc4d3143b2e8026cffc1f1716dd.jpg" title="SPSS实例：[36]分层卡方检验">
+<ul>
+<li>最后要看的是优势比，主要看Estimate对应的值.861，关于优势比的概念，我们可以看我之前的一篇文章<a href="http://jingyan.baidu.com/article/bea41d437dbcb7b4c51be6be.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/bea41d437dbcb7b4c51be6be.html</a></li>
+</ul>
+<img src="/2015/10/03/SPSS实例：[36]分层卡方检验/cdfe7281800a19d8a89cc9b231fa828ba71e46ae.jpg" title="SPSS实例：[36]分层卡方检验">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/10/03/SPSS python教程：[5]SpssClient简介/">
                 SPSS python教程：[5]SpssClient简介
             </a>
@@ -216,11 +279,11 @@
 <ul>
 <li>先来看看SpssClient模块下有哪些类我们可以在python中使用。主要的大类有五个：DataDocList，SyntaxDocsList，OutputDocsList，SpssServerConfList，SpssScriptContext，我们下面分别介绍这五个类别</li>
 </ul>
-
+<img src="/2015/10/03/SPSS%20python教程：[5]SpssClient简介/4651a712c8fcc3ce50afebab9045d688d53f20ff.jpg" title="SPSS python教程：[5]SpssClient简介">
 <ul>
 <li>DataDocList，就是spss的数据文件列表。用它来读取、修改、操作数据，数据文件的后缀名是sav</li>
 </ul>
-
+<img src="/2015/10/03/SPSS%20python教程：[5]SpssClient简介/509b9fcb39dbb6fdf1a3c8be0b24ab18962b376a.jpg" title="SPSS python教程：[5]SpssClient简介">
 <ul>
 <li>SyntaxDocsList，就是spss的syntax文件列表，里面都是syntax代码，或者可能掺杂有python代码，它用于读取、修改、操作syntax代码，syntax文件的后缀名是sps</li>
 </ul>
@@ -228,7 +291,7 @@
 <ul>
 <li>OutputDocsList，就是spss的统计结果输出文件列表，里面存放着spss的统计结果，我们可以在python中使用该类来修改、操作结果数据，结果输出文件的后缀名比较熟悉，就是spv</li>
 </ul>
-
+<img src="/2015/10/03/SPSS%20python教程：[5]SpssClient简介/d0526df082025aaf1cec5353f9edab64024f1a08.jpg" title="SPSS python教程：[5]SpssClient简介">
 <ul>
 <li><p>SpssServerConfList，该类用于spssserver，由于在我的工作中并没有用到过spss服务器，所以我的教程里不包括spssserver的相关内容</p>
 </li>
@@ -277,47 +340,47 @@
 <ul>
 <li>最简单的排序莫过于直接使用sort对一维的列表排序，创建一个列表</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/1cd4147b02087bf4bfd92fddf1d3572c11dfcf8a.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>使用sort就地排序（就地排序就是改变了原始list的排序，而sorted不改变原始list数据）</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/29790130e924b899073c010c6d061d950a7bf647.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>可以使用reverse参数进行反向排序。</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/a84052086e061d95b8464f0c78f40ad162d9ca47.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>创建一个二维列表</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/425773224f4a20a48a2b44f393529822720ed08a.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>使用operator进行排序，还是sort方法，使用key参数，下面根据第二列数据排序</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/8b527d2762d0f7032eb2ede80bfa513d2697c547.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>多维排序，先根据第一列排序，然而第二列，然后第三列</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/425773224f4a20a48a1e44f393529822720ed047.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>lambda用于写匿名函数，根据第二列数据排序，x表示列表中的元素，x[1]表示元素中的第二个值</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/eab9044c510fd9f937222d5d262dd42a2834a48a.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>反向排序</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/d56b3634349b033bbcbd84ee16ce36d3d539bd8a.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>元组排序和list排序一样，当然还可以对object构成的列表排序，下面创建一个元组构成的列表</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/3792cb39b6003af3d48fa454362ac65c1038b68a.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>使用operator</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/3bc6f750352ac65ce2301e47f8f2b21193138a8a.jpg" title="python教程：[74]列表排序">
 <ul>
 <li>使用lambda</li>
 </ul>
-
+<img src="/2015/10/03/python教程：[74]列表排序/35da1d3b5bb5c9eafcf37bd7d639b6003af3b347.jpg" title="python教程：[74]列表排序">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -360,32 +423,32 @@
 <ul>
 <li>假如，我们要给每个一名字创建一个文件夹</li>
 </ul>
-
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/83cab81ea8d3fd1f6383e629324e251f94ca5fdf.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
 <ul>
 <li>在B1输入公式=”MD “ &amp; A1  ，注意这个公式中，MD后面还有一个额空格，公式的意思就是在名字前面增加了一个MD和空格</li>
 </ul>
-
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/faacb564034f78f092e4dee07b310a55b2191cf2.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
 <ul>
 <li>向下拖拽，快速填充所有的行</li>
 </ul>
-
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/c856613e6709c93d5d784ae49d3df8dcd00054df.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
 <ul>
 <li>我们会看到生成这么一列，我们需要将其复制下来</li>
 </ul>
-
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/4bd1e803738da9774fc0c238b251f8198718e3f3.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
 <ul>
 <li>粘贴到文本文件里，然后保存为bat文件</li>
 </ul>
-
-
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/310f3b1f95cad1c88f62b8347d3e6709c83d518c.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/6648d73d70cf3bc7b0d989ffd300baa1cc112a8c.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
 <ul>
 <li>我们看到这个文件就在这里呢，双击打开运行</li>
 </ul>
-
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/e78c65899e510fb35b243084db33c895d1430ca0.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
 <ul>
 <li>批量创建的文件夹就在这里喽。</li>
 </ul>
-
+<img src="/2015/10/03/Excel2013：[2]从单元格批量创建文件夹/43e6c733c895d143f44ba33071f082025aaf07a0.jpg" title="Excel2013：[2]从单元格批量创建文件夹">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -431,36 +494,36 @@
 <li><p>引入numpy模块</p>
 </li>
 </ul>
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/d7c9ca3f8794a4c2561254dc0cf41bd5ac6e39d0.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li>创建一个方阵A</li>
 </ul>
-
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/b5ce925494eef01fcac0a832e2fe9925bd317d36.jpg" title="python 线性代数：[11]判断正定矩阵">
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/1a94b36eddc451dab3c7bf1cb4fd5266d11632d0.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li>将方阵转换成对称阵的方法是：</li>
 </ul>
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/fab3ac119313b07e75a3e2ff0ed7912396dd8ce8.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li>求对称阵A的特征值</li>
 </ul>
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/00a82701213fb80eac8fd32034d12f2eb83894a8.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li>判断是不是所有的特征值都大于0，用到了all函数，显然对称阵A不是正定的</li>
 </ul>
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/389aa8fd5266d0163e282ddf952bd40734fa35d0.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li>我们来创建一个单位矩阵，它肯定是对称的，同样的方法检验是不是正定矩阵</li>
 </ul>
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/9dc3cf58ccbf6c8185e09c1fbe3eb13532fa4036.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li>网上查到更简便的方法是对对称阵进行cholesky分解，如果像这样没有提示出错，就说明它是正定的</li>
 </ul>
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/aa59892bd40735fadac1fd4e9c510fb30e2408d0.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li>如果提示出错，就说明它不是正定矩阵，你可以使用try函数捕获错误值</li>
 </ul>
-
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/a992e31f4134970a20a4a0d897cad1c8a6865d36.jpg" title="python 线性代数：[11]判断正定矩阵">
 <ul>
 <li><p>以下是今天用到的部分代码：</p>
 </li>
@@ -767,59 +830,59 @@
 <ul>
 <li>第一种方式，我们可以在Python shell里面运行Python代码，点击它打开</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/5327ce160924ab1887e97a6636fae6cd7a890ba0.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>一开始我们会看到这个界面，出现了欢迎信息，说明你的datanitro Python shell是可以工作的。</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/b3f6cea20cf431ad6860d8684836acaf2fdd98f6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>输入一个简单的命令：Cell(1,1).value=’hello world’（注意大小写）；按回车就可以执行</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/adee30dda3cc7cd9279faf883a01213fb90e91f6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>这段代码的效果就是单元格A1赋值为hello world</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/d002b34bd11373f09dc0f4cea70f4bfbfaed04a0.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>我们可以使用Python中已经安装的包：</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/7aad4ae736d12f2e0ab735314cc2d562843568f6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>我们可以先建立一个Python的脚本文件**.py，然后引入该文件：点击import</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/e49cf91190ef76c61b60607a9e16fdfaae5167f6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>找到该Python文件并打开</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/42e89c26cffc1e17b84017604990f603728de9a1.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>你会看到这个文件已经被引入，点击editor就可以编辑该文件</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/8bc3a7014a90f603454f07163a12b31bb151eda1.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>编辑器也是够难看的！但是我们可以先输入以下代码试试：注意#号表示注释，没有任何作用，实质上只有一句话有用：Cell(1,3).value=u’中文’</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/8cf0d513495409230fdbf82f9158d109b2de49f6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>然后回到excel，点击run，就可以执行命令</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/570f8c58d109b3de4b0d7f39cfbf6c81810a4cf6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>用过excel函数的都知道它有多么强大，现在我们有机会写自己的函数了，我们需要先建立一个名字为functions.py的文件</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/d048adde9c82d1581530c2e0830a19d8bd3e42f6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>在里面写入一个function并保存</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/a84052086e061d955bb9ac6978f40ad163d9caa1.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>记得检查在设置里面是否有允许使用Python自定义函数，如果你没有选，你需要选上他，然后重启excel</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/4075890a304e251f7d457fa9a486c9177e3e53f6.jpg" title="DataNitro：[2]调用Python的方法">
 <ul>
 <li>现在在单元格里使用一下该函数，你可以看到效果：</li>
 </ul>
-
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/964b2e4e251f95ca384709e7ca177f3e660952f6.jpg" title="DataNitro：[2]调用Python的方法">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -862,45 +925,45 @@
 <ul>
 <li>新建一个excel工作簿：右键单击空白位置，然后选择新建–excel</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/0df431adcbef7609123bb7012edda3cc7cd99e7f.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>打开excel，在工具栏上执行：审阅—保护工作簿</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/adaf2edda3cc7cd9d31d1a473901213fb80e917f.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>打开一个下拉列表，在这个列表里选择【限制访问】</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/203fb80e7bec54e753dc3480b9389b504fc26a7f.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>弹出权限对话框，在这个对话框里，我们勾选【限制对此工作簿的权限】，然后你就能对下面的内容进行更改。</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/7aec54e736d12f2ede3580fe4fc2d5628535687f.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>在这里输入允许查看和更改该工作簿的用户的ID，有人问这个ID是什么，这是在微软里注册的账号，如果你没有微软的账号是不允许设置权限的，你根本看不到该页面。它会提示你注册账号。</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/8435e5dde71190ef19cbbc41ce1b9d16fdfa607f.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>点击【其他选项】进行更高级的设置</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/cb8065380cd79123d8c2baeaad345982b2b78009.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>打开高级设置对话框，这里可以设置文件的有效期，过了有效期加密文件就会失效。点击下拉列表可以选择到期时间。</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/a044ad345982b2b784bd175a31adcbef76099b09.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>下面三个选项是用户可选的三个具体权限，你想要允许他人进行哪些操作：打印，复制，还是编程</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/f11f3a292df5e0fee428a79f5c6034a85edf727f.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li>最后填写一下索取权限的邮件地址，也就是你的邮件的地址，当用户想要更改自己的权限的时候，就可以给你发送邮件。</li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/5d6034a85edf8db1481e52fa0923dd54564e747f.jpg" title="excel2007如何设置访问权限">
 <ul>
 <li><p>设置完成后，保存文档即可。</p>
 </li>
 <li></li>
 </ul>
-
+<img src="/2015/10/01/excel2007如何设置访问权限/7dd98d1001e939014020a3a07bec54e736d19609.jpg" title="excel2007如何设置访问权限">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -946,39 +1009,39 @@
 <ul>
 <li>打开spss，先打开一个sav文件，然后在菜单栏上执行：data—merge files–add cases，打开合并文件的窗口</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/9358d109b3de9c8289ac83626c81800a18d84315.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>接下来你看到的这个窗口可能有两种情况，一个情况是你只打开了一个要合并的sav文件，另一个文件没有打开，那么你要选择第二个选项，如图所示，然后点击浏览按钮</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/42166d224f4a20a4ac51592a90529822730ed094.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>打开浏览窗口，找到你的第二个数据，然后选中它，点击打开，这样就完成了基本的合并文件的操作</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/838ba61ea8d3fd1f2250c7d7304e251f94ca5f85.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>回到了合并文件的主对话框，点击continue按钮，进入合并数据向导。</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/023b5bb5c9ea15ce3ebd85e4b6003af33b87b28f.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>如果我们同时打开了两个数据文件，那么在合并文件对话框中，你会看到第一个选项中有第二个文件，如图所示，这时候你直接在这里选择该文件即可，同样是点击continue即可合并数据</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/503d269759ee3d6db110e22643166d224e4ade0d.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>在该向导里，你会遇到两种情况，第一个情况是在upaired variables列表里有有量，如图所示，这时候你要决定这个变量有没有用，如果没用就不用管他，在新的数据里他就不会出现。如果这个变量是有用的，选中这个变量，点击下面的rename</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/aec379310a55b31941c0e69843a98226cffc1725.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>打开一个rename对话框，输入新的名称，然后点击continue，回到上面的对话框</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/37d12f2eb9389b507c3684bf8535e5dde6116e15.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>点击添加按钮，即可完成变量的添加，注意，因为该变量只存在于一个sav文件中，所以合并数据以后，有部分case在该变量上是没有值得。</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/9358d109b3de9c8287859d626c81800a18d8437e.jpg" title="spss怎样将两批数据合并">
 <ul>
 <li>点击ok按钮，数据合并完成。</li>
 </ul>
-
+<img src="/2015/09/23/spss怎样将两批数据合并/d833c895d143ad4b4b7e212d82025aafa50f068e.jpg" title="spss怎样将两批数据合并">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -1024,39 +1087,39 @@
 <ul>
 <li>首先打开spss，以如图所示的方式录入数据，week和day是两个需要控制的变量，music是自变量，score是因变量</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/242dd42a2834349b2b1d7744c9ea15ce37d3bed3.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>数据准备好以后，在菜单栏上执行：analyse–GLM–univariate，打开方差分析对话框</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/63d9f2d3572c11df55bba6e2632762d0f603c28d.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>打开对话框以后，先将自变量和因变量放入各自的位置，如图所示</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/6a600c338744ebf805d87dfed9f9d72a6159a741.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>点击model按钮，设置一下模型</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/b151f8198618367a3b2e661c2e738bd4b21ce548.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>系统默认的是full factorial，我们要勾选custom</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/c2cec3fdfc0392457688f9ce8794a4c27d1e2535.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>将三个自变量放入右侧的model框中</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/cdbf6c81800a19d8c3399cc433fa828ba61e463c.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>将type设置为main effect ，因为我们默认这三个变量是没有交互作用的</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/a044ad345982b2b792a9210531adcbef76099b38.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>返回到主菜单，点击ok开始运行数据处理，并输出结果</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/a8014c086e061d95f9622ff97bf40ad163d9cacf.jpg" title="spss中拉丁方设计如何进行方差分析">
 <ul>
 <li>我们看方差检验的结果，三个变量中，music和day对应的sig值小于0.05，说明这两个变量的效应是显著的。</li>
 </ul>
-
+<img src="/2015/09/23/spss中拉丁方设计如何进行方差分析/63d0f703918fa0ec0a9e7ccc269759ee3c6ddb91.jpg" title="spss中拉丁方设计如何进行方差分析">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -1099,85 +1162,27 @@
 <ul>
 <li>首先我们来初始化一个list（列表）</li>
 </ul>
-
+<img src="/2015/09/23/Python教程：[40]列表与字符串相互转换/11794d43fbf2b211f7135056c88065380cd78eae.jpg" title="Python教程：[40]列表与字符串相互转换">
 <ul>
 <li>使用join方法来转换列表，将列表转换成字符串，注意join是字符串的方法，前面必须是字符串，我用的是“;”,也就是分号，然后连接成的字符串就是用分号来进行元素的分割的。</li>
 </ul>
-
+<img src="/2015/09/23/Python教程：[40]列表与字符串相互转换/9252ae7eca80653864d7710b95dda144ad3482ae.jpg" title="Python教程：[40]列表与字符串相互转换">
 <ul>
 <li>我们再试试其他的字符串，你感受一下</li>
 </ul>
-
+<img src="/2015/09/23/Python教程：[40]列表与字符串相互转换/4bd1e803738da97731d76c33b251f8198718e3eb.jpg" title="Python教程：[40]列表与字符串相互转换">
 <ul>
 <li>当然，我们还有能力将字符串转换回去，看下面，设置叹号为分隔符，然后对字符串进行切割，得到列表</li>
 </ul>
-
+<img src="/2015/09/23/Python教程：[40]列表与字符串相互转换/a8362712b31bb051f3dc5930347adab44bede0eb.jpg" title="Python教程：[40]列表与字符串相互转换">
 <ul>
 <li>split函数还有第二个参数，你猜猜这是干什么用的，对了，它指的是分割的次数</li>
 </ul>
-
+<img src="/2015/09/23/Python教程：[40]列表与字符串相互转换/b110e6198618367ad47195c52c738bd4b21ce5eb.jpg" title="Python教程：[40]列表与字符串相互转换">
 <ul>
 <li>假如我们分割两次呢，你看看效果。</li>
 </ul>
-
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/09/23/python高级教程：[3]yield生成器/">
-                python高级教程：[3]yield生成器
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年09月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>基于yield这个指令，Python可以挂起一个程序并返回中间结果，被挂起的程序会保持自己的执行环境，在必要的时候再重启它。</p>
-<ul>
-<li>先看看yield的简单用法：yield_example表示一个2的n次方的无穷数列，我们想要它输出前10项，就用[ye.next() for a in range(10)]</li>
-</ul>
-
-<ul>
-<li><p>一个生成器的next()方法可以让程序运行，并输出yield的值，然后再次被挂起，直到下一个next被调用。这句I是一个生成器。我们经常使用生成器来表示一个无穷数列，下面看一个复杂的例子。</p>
-</li>
-<li><p>用yield写一个分组数列，分组数列的定义是：</p>
-</li>
-</ul>
-
-
-<ul>
-<li>实现分组数列的代码：</li>
-</ul>
-
-<ul>
-<li>为什么使用字典作为sublist函数的参数，这是因为在传参的时候，如果参数是字典，那么传递的是一个指针，而不是字典的数据，因此当sublist改变了字典的数据的时候，位于fenqunlist函数中的kwargs字典的数据也会发生改变，这是我所希望的。</li>
-</ul>
+<img src="/2015/09/23/Python教程：[40]列表与字符串相互转换/30ecd5ef76094b36d9afcef5a1cc7cd98d109dae.jpg" title="Python教程：[40]列表与字符串相互转换">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -1288,11 +1293,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -1312,11 +1325,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1340,15 +1353,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/人工智能/">人工智能</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
@@ -1364,19 +1377,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1392,6 +1393,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
@@ -1400,7 +1417,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1409,18 +1430,6 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1468,19 +1477,11 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -1488,7 +1489,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -1500,19 +1513,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -1524,6 +1533,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
@@ -1532,19 +1545,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1557,14 +1566,6 @@
         
         <span>
             <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -1584,7 +1585,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1600,23 +1613,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -1632,7 +1641,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -1648,11 +1665,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
         </span>
         
         <span>
@@ -1664,18 +1681,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/hexo/">hexo</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
@@ -1684,7 +1689,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>

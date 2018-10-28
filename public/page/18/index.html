@@ -197,6 +197,60 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/06/13/神经网络python库keras在windows下部署过程，带下载链接/">
+                神经网络python库keras在windows下部署过程，带下载链接
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月13日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
+<li>64位win10</li>
+<li>python 3.5 64 bit</li>
+</ul>
+<p>keras的官方文档说，他们只支持python2.7-python3.5。</p>
+<h3 id="下载wheels"><a href="#下载wheels" class="headerlink" title="下载wheels"></a>下载wheels</h3><p>因为numpy和scipy在windows平台上安装会出现编译问题，因为他们依赖一些c库会找不到，所以我们就安装wheel格式的库，他们是预先编译好的。</p>
+<p>下载链接：<a href="http://pan.baidu.com/s/1dETxbwd" target="_blank" rel="noopener">http://pan.baidu.com/s/1dETxbwd</a> 密码：5jwl</p>
+<p>在这里你能看到有很多<code>.whl</code>格式的文件，如果你跟我的python版本一样，你可以下载，否则你需要下载适合你自己版本的安装文件。</p>
+<img src="/2017/06/13/神经网络python库keras在windows下部署过程，带下载链接/baiduyun.jpg">
+<h3 id="安装numpy和scipy"><a href="#安装numpy和scipy" class="headerlink" title="安装numpy和scipy"></a>安装numpy和scipy</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> wheel文件所在的文件夹</span><br><span class="line">pip install "numpy-<span class="number">1</span>.<span class="number">11</span>.<span class="number">3</span>+mkl-cp35-cp35m-win_amd64.whl"</span><br><span class="line">pip install "scipy-<span class="number">0</span>.<span class="number">19</span>.<span class="number">0</span>-cp35-cp35m-win_amd64.whl"</span><br></pre></td></tr></table></figure>
+<h3 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h3><p>tensorflow是keras的神经网络计算引擎，但是安装keras的时候，不会自动安装它，因为这是一个可选包，所以你的自己安装。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow</span><br></pre></td></tr></table></figure>
+<h3 id="安装keras"><a href="#安装keras" class="headerlink" title="安装keras"></a>安装keras</h3><p>因为在安装麻烦的库已经安装好了，现在可以安装keras了。keras还依赖一些其他的库，比如six/tensorflow/pyyaml等，不过他们可以在安装keras的时候，自动被安装，所以不需要你手动安装。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install keras</span><br></pre></td></tr></table></figure>
+<h3 id="hello-keras"><a href="#hello-keras" class="headerlink" title="hello keras"></a>hello keras</h3><p>打开python shell，可以在cmd中输入python来打开。</p>
+<p>首先来构建一个网络结构</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Activation</span><br><span class="line">model.add(Dense(units=<span class="number">25</span>, input_dim=<span class="number">64</span>))</span><br><span class="line">model=Sequential()   <span class="comment">#网络基本结构</span></span><br><span class="line">model.add(Dense(units=<span class="number">25</span>, input_dim=<span class="number">8</span>*<span class="number">8</span>))  <span class="comment">#添加一个隐层，有25个节点，64个输入</span></span><br><span class="line">model.add(Activation(<span class="string">"sigmoid"</span>))  <span class="comment">#设置激活函数logistic</span></span><br><span class="line">model.add(Dense(units=<span class="number">10</span>))  <span class="comment">#增加一个输出层</span></span><br><span class="line">model.add(Activation(<span class="string">'sigmoid'</span>))  <span class="comment"># 设置激活函数</span></span><br></pre></td></tr></table></figure>
+<p>准备数据，我们要得到输入和输出矩阵，输入矩阵每一行是一个64维的向量，输出矩阵每一行是一个10维矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data=open(<span class="string">'orc-data.csv'</span>,<span class="string">'r'</span>).readlines()</span><br><span class="line">data=[line.strip().split(<span class="string">','</span>) <span class="keyword">for</span> line <span class="keyword">in</span> data]</span><br><span class="line">data=[list(map(row, int)) <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">data=[list(map(int, row)) <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">X=[row[<span class="number">1</span>:] <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">temp_Y=[row[<span class="number">0</span>] <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">Y=[]</span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> temp_Y:</span><br><span class="line">	v=[<span class="number">0</span>]*<span class="number">10</span></span><br><span class="line">	v[y]=<span class="number">1</span></span><br><span class="line">	Y.append(v)</span><br></pre></td></tr></table></figure>
+<p>现在我们得到了两个矩阵X和Y。网络结构已经建好，我们可以训练这个模型了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">				optimizer=<span class="string">'adam'</span>,</span><br><span class="line">				metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fid(X, Y, batch_size=<span class="number">100</span>, nb_epoch=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/机器学习/">#机器学习</a> <a href="/tags/keras/">#keras</a> <a href="/tags/神经网络/">#神经网络</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
                 人工神经网络入门+代码实现ORC
             </a>
@@ -727,16 +781,16 @@ if ('d3' in window){
 <p>或者你可以从chromedriver的官方网站下载所有版本的chromedriver，包括mac和linux版。地址：<code>https://sites.google.com/a/chromium.org/chromedriver/downloads</code></p>
 <p>chromedriver的版本和chrome的版本必须匹配，比如chrome版本在59-61之间，可以使用chromedriver-2.32，截止发稿日，这是最新的版本。</p>
 <p>你会得到一个<code>chromedriver.exe</code>文件，不需要安装，但是你得把它放到python能找到它的地方，你可以通过下图的方式找到python安装在哪里，如图所示，<code>C:\Users\wangluobu\AppData\Local\Programs\Python\Python35\Scripts\</code>就是我要找的位置，我就把<code>chromedriver.exe</code>放到这个目录下。</p>
-
+<img src="/2017/06/10/selenim数据采集入门-for-psychologist/find-python.jpg" title="find-python">
 <p>第三步， 测试是否能从python启动chrome浏览器。</p>
 <p>新建一个python程序文件，任何一个以<code>.py</code>结尾的文本文件都可以，你可以把一个记事本文件的后缀名改为<code>py</code>，创建好该文件后，右键单击该文件，选择<code>Edit With IDLE</code>，输入如下代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> selenium</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver=webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">"http://mlln.cn/"</span>)</span><br></pre></td></tr></table></figure>
 <p>代码填好了，按下快捷键<code>F5</code>就应该能看到chrome浏览器打开，并定位到网站<code>mlln.cn</code>。</p>
 <h3 id="chrome网页调试工具"><a href="#chrome网页调试工具" class="headerlink" title="chrome网页调试工具"></a>chrome网页调试工具</h3><p>网页开发人员经常会用调试工具来查看网页的源码。chrome浏览器自带调试工具，用chrome打开网址<code>mlln.cn</code>，然后按下F2可以看到调试工具。</p>
 <p>你要会定位一个网页元素，进而查看它的源码。使用这个位于左上角的小工具，点击它。</p>
-
+<img src="/2017/06/10/selenim数据采集入门-for-psychologist/debug-tools1.jpg">
 <p>然后点击网页上的标题，你会再代码窗口看到网页标题对应的代码。</p>
-
+<img src="/2017/06/10/selenim数据采集入门-for-psychologist/debug-tools2.jpg">
 <p>假如现在我们想要采集的数据就是该网页的标题，我们需要写一个python脚本：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> selenium</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver=webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">"http://mlln.cn/"</span>)</span><br><span class="line">h1 = driver.find_element_by_id(<span class="string">'main-title'</span>)  <span class="comment"># 根据id获取元素H1</span></span><br><span class="line">print(h1.text)  <span class="comment">#打印H1标签内的文本</span></span><br></pre></td></tr></table></figure>
 <p>你现在知道了，只有配合网页调试工具，我们才能知道我们要的数据在哪里。</p>
@@ -1221,45 +1275,45 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 <ul>
 <li>第一步是录入数据，我们录入数据的方式如下图：class是分组变量，0值代表A组，1代表B组，effect是是否敏感变量，0代表不敏感，1代表敏感，num是频次，也就是各个组的个案数目。你可以比对上面的交叉表来看看spss数据结构</li>
 </ul>
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/5beeba0f4bfbfbed4aedf0be79f0f736aec31f78.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li>接着，我们要对数据进行加权，很多人问为什么要加权，实际上我们采用上图所示的数据结构就决定了我们必须用频次进行加权，这样可以让上面的那种数据结构表示呈交叉表。如果没有加权的话，会出现错误，我们待会会看到一个错误的结果，就是没有加权的结果。加权的方法是data–weight cases</li>
 </ul>
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/2f9cbdcc7cd98d10692ecaf0203fb80e7aec903e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li>将频次放入变量框，然后点击ok按钮，加权成成功</li>
 </ul>
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/3790312eb9389b503d0526938435e5dde6116e3e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li>接着在菜单栏上执行：analyse–descriptive statistics–crosstabs，打开交叉表对话框</li>
 </ul>
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/08b68e529822720e2134243b7acb0a46f31fab3e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li>在这个对话框中，我们需要将行和列变量放入各自的框中，注意看行和列变量不要弄颠倒了，回顾上面的数据结构，你自己对比一下，哪一个是行变量</li>
 </ul>
-
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/8759287adab44aedd3fa7825b21c8701a08bfb79.jpg" title="SPSS实例：[2]卡方检验百分比差异">
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/263e802f0708283818ba1ad5b999a9014d08f179.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li>点击statistic按钮，设置卡方统计量</li>
 </ul>
-
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/246cca2a2834349b41fca844c8ea15ce37d3be3e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/b74124f33a87e95079ed35ad11385343faf2b43e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li>点击cells按钮，选择输出的参数</li>
 </ul>
-
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/62667cd0f703918fbc66fb0b503d269758eec479.jpg" title="SPSS实例：[2]卡方检验百分比差异">
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/3c2c4bfbb2fb431648a8bcbb21a4462308f7d379.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li>最后出现的是卡方检验的结果了，第一个表格是交叉表，显示了期望值和实际值</li>
 </ul>
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/246cca2a2834349b41b1a844c8ea15ce37d3be79.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <ul>
 <li><p>接着是卡方检验表，这是最关键的结果。我们根据样本量的大小来决定看哪一行的指标</p>
 </li>
 <li><p>假如我们的总样本数N》40且交叉表中每一个cells中频数均大于5，卡方检验的结果是精确的，可以参考第一行的指标，也就是pearson-chi-square（显然我们的案例满足这个条件）sig值小于.05，说明差异显著，说明两组病人对药物的反应是不同的；假如样本总量N&lt;40，或者cells中有一个频数小于5，我们只能看校正后的卡方值，也就是第二行数据，或者我们看fisher精确概率法获得的值，也就是第四行，这两行都得到了显著的结果；</p>
 </li>
 </ul>
-
+<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/3bb22487e950352a8bd6e3c95243fbf2b3118b79.jpg" title="SPSS实例：[2]卡方检验百分比差异">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -1302,31 +1356,31 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 <ul>
 <li>第一步要在我们创建的站点文件夹下面新建一个view.py文件，如图所示。当然你创建文件的名称是任意的，你可以叫别的名字。但是要跟后面要写的代码一致，后面还会用到view.py，如果你的文件名不是view，后面你需要做出相应的调整</li>
 </ul>
-
+<img src="/2016/10/23/Django教程：[4]制作第一个网页/b3508d13b07eca80277f099d932397dda1448316.jpg" title="Django教程：[4]制作第一个网页">
 <ul>
 <li>我们将该文件写入代码：如图所示。代码的意义是，首先引入HttpResponse类，后面我们会详细介绍这个类，现在我们只知道它用于返回网页中显示的代码。接着我们定义了一个名为hello的函数，它有一个参数为req，这个参数是django.http.HttpRequest的一个实例，我们暂时用不到这个参数，但是它却是一个必须的参数，参数的名称可以任意。hello函数它仅仅返回一个HttpResponse对象，这个对象包含了文本“Hello world”</li>
 </ul>
-
+<img src="/2016/10/23/Django教程：[4]制作第一个网页/d8b8c92a6059252df86d2d7e369b033b5bb5b916.jpg" title="Django教程：[4]制作第一个网页">
 <ul>
 <li>现在保存好这个view文件</li>
 </ul>
-
+<img src="/2016/10/23/Django教程：[4]制作第一个网页/148f28d3d539b6000cb43fcdeb50352ac65cb716.jpg" title="Django教程：[4]制作第一个网页">
 <ul>
 <li>接下来我们需要修改urls.py文件，这个文件可以将url和调用的函数对应起来。比如，我想当我在浏览器地址栏输入<a href="http://127.0.0.1:8001/hello/的时候就能调用view.hello方法，那么我们必须在urls.py中进行添加" target="_blank" rel="noopener">http://127.0.0.1:8001/hello/的时候就能调用view.hello方法，那么我们必须在urls.py中进行添加</a></li>
 </ul>
-
+<img src="/2016/10/23/Django教程：[4]制作第一个网页/8b527d2762d0f7039674a6a60afa513d2797c542.jpg" title="Django教程：[4]制作第一个网页">
 <ul>
 <li>首先要引用我们企图调用的方法，然后在urlpatterns中添加url(r’^hello/$’,hello),；注意最后面的逗号不能省略。这个代码就是将url同调用的函数联系起来。</li>
 </ul>
-
+<img src="/2016/10/23/Django教程：[4]制作第一个网页/0db2c9ca7bcb0a46efc6b8436963f6246a60afa0.jpg" title="Django教程：[4]制作第一个网页">
 <ul>
 <li>最后，我们在dos下开启开发服务器，如果你还不知道如何开启开发服务器，你需要看下面的参考资料里的传送门。</li>
 </ul>
-
+<img src="/2016/10/23/Django教程：[4]制作第一个网页/08b68e529822720e1677d28079cb0a46f31fabcb.jpg" title="Django教程：[4]制作第一个网页">
 <ul>
 <li>打开浏览器，地址栏输入地址：127.0.0.1:8001/hello/，你就会看到我们制作的第一个页面了。你学会了吗？</li>
 </ul>
-
+<img src="/2016/10/23/Django教程：[4]制作第一个网页/21e5582309f7905280a677440ef3d7ca7acbd5cb.jpg" title="Django教程：[4]制作第一个网页">
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -1369,19 +1423,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 <ul>
 <li>首先我们引入socket的所有属性，引入时间戳函数ctime，后面要用到时间戳</li>
 </ul>
-
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/bf487563f6246b6025f2785fe9f81a4c500fa2da.jpg" title="Python教程：[14]快速创建TCP服务器">
 <ul>
 <li>设置主机地址，主机地址为空说明我们可以使用任意可以使用的地址；端口号是我随意写的，只要不超过一定的范围就可以了，你可以搜索一下端口号的范围；ADDR连接地址包括主机地址和端口号。</li>
 </ul>
-
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/4651a712c8fcc3ce685903189045d688d53f20c5.jpg" title="Python教程：[14]快速创建TCP服务器">
 <ul>
 <li>我们使用socket方法来创建一个套接字；使用bind方法绑定到地址上；使用listen设定最多可以连接5个客户端。</li>
 </ul>
-
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/504ec7f9d72a605914ec2b312a34349b023bbada.jpg" title="Python教程：[14]快速创建TCP服务器">
 <ul>
 <li>下面是最重要的部分，我们使用无限循环来保证随时接受链接请求，accept方法可以接受请求，并返回客户端tcpclisock和客户端地址。使用recv方法来接受数据，send方法发送数据。如果一开始接受到了数据，后来数据为空，则跳出循环。</li>
 </ul>
-
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/d66b7e59252dd42a1bf5cb80013b5bb5c8eab8da.jpg" title="Python教程：[14]快速创建TCP服务器">
 <ul>
 <li><p>下面是所有的代码：</p>
 </li>
@@ -1537,61 +1591,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/19/numpy函数：[2]tile函数用法/">
-                numpy函数：[2]tile函数用法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>tile函数位于python模块 numpy.lib.shape_base中，他的功能是重复某个数组。比如tile(A,n)，功能是将数组A重复n次，构成一个新的数组，我们还是使用具体的例子来说明问题：</p>
-<ul>
-<li>先来引入numpy下的所有方法</li>
-</ul>
-
-<ul>
-<li>我们创建一个a，如图下图，使用tile来创建b，注意看b的数据结构</li>
-</ul>
-
-<ul>
-<li>假如我们输入一个元组(1,2)，我们会得到一样的结果，与上面相同的b</li>
-</ul>
-
-<ul>
-<li>当然，我们想要a变为一个二维数组，就要换一种重复的方式了。</li>
-</ul>
-
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/numpy/">#numpy</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -1684,11 +1683,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -1708,11 +1715,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1736,15 +1743,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/人工智能/">人工智能</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
@@ -1760,19 +1767,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1788,6 +1783,22 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
@@ -1796,7 +1807,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1805,18 +1820,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1864,19 +1867,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -1884,7 +1879,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -1896,19 +1903,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -1920,6 +1923,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
@@ -1928,19 +1935,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1953,14 +1956,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -1980,7 +1975,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1996,23 +2003,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -2028,7 +2031,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -2044,11 +2055,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
         </span>
         
         <span>
@@ -2060,18 +2071,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/hexo/">hexo</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
@@ -2080,7 +2079,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>
