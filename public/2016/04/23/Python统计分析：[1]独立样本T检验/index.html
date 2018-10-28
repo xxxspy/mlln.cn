@@ -220,37 +220,37 @@
 <ul>
 <li>引入相关的模块，ttest_ind是用于独立样本t检验的（independent samples t test），pandas主要用到它的DataFrame</li>
 </ul>
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/5f9e93b1cb1349547392d817554e9258d0094af1.jpg" title="Python统计分析：[1]独立样本T检验">
+
 <ul>
 <li>读取数据并查看一下数据的前五行<br>我们可以看到数据包含三列，最后一列group表示不同的组，只有1、2两组</li>
 </ul>
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/8367d1fc1e178a8265b04fd3f503738da877e8f2.jpg" title="Python统计分析：[1]独立样本T检验">
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/8a95ad1c8701a18b6967223c9d2f07082938fef2.jpg" title="Python统计分析：[1]独立样本T检验">
+
+
 <ul>
 <li>我们用到了DataFrame的一个筛选数据的功能，比如筛选1组数据<br>我们可以得到这样的数据</li>
 </ul>
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/8b527d2762d0f7039705a6af0bfa513d2797c5ca.jpg" title="Python统计分析：[1]独立样本T检验">
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/476217f7905298226abc09b0d4ca7bcb0b46d4f2.jpg" title="Python统计分析：[1]独立样本T检验">
+
+
 <ul>
 <li>假如现在我们想要比较两组数据在scoreA上是否有差异，我们可以分别筛选得到1组的scoreA和2组的scoreA，然进行t检验<br>检验的结果得到一个tuple，第一个元素是t值，第二个元素是p值，根据p值就知道两列数据均值差异不显著</li>
 </ul>
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/21e5582309f790528ee7744d0ff3d7ca7acbd58d.jpg" title="Python统计分析：[1]独立样本T检验">
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/27d647ee3d6d55fbbd6946556e224f4a21a4ddd2.jpg" title="Python统计分析：[1]独立样本T检验">
+
+
 <ul>
 <li>如果我们想要同时比较scoreA和scoreB也可以，筛选数据的时候加上scoreB即可<br>结果得到的是tuple构成的tuple，第一个tuple元素表示t值，根据结果我们就知道t（scoreA）=1.366，t（scoreB）=0.601,另一个tuple就不解释了吧</li>
 </ul>
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/1f569482b9014a90289276ceaa773912b21beed2.jpg" title="Python统计分析：[1]独立样本T检验">
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/08b68e529822720e1561d28978cb0a46f31fabd2.jpg" title="Python统计分析：[1]独立样本T检验">
+
+
 <ul>
 <li>当然我们还需要注意，ttest_ind默认两组数据方差齐性的，如果想要设置默认方差不齐，可以设置equal_var=False，下面比较一下这两种情况结果的差异</li>
 </ul>
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/148f28d3d539b6000f613fc4ea50352ac75cb7d2.jpg" title="Python统计分析：[1]独立样本T检验">
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/c8ab0bce36d3d53982b23fb03987e950342ab0f2.jpg" title="Python统计分析：[1]独立样本T检验">
+
+
 <ul>
 <li>那么，问题来了（挖掘机到底哪家强？），我们用什么检验两组数据的方差齐性呢——levene test<br>检验结果为p&gt;0.05所以，可以认为方差是相等的。</li>
 </ul>
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/373bc4b44aed2e736145b65f8401a18b86d6fad2.jpg" title="Python统计分析：[1]独立样本T检验">
-<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/0d729944ebf81a4c77bddcbad42a6059242da6f2.jpg" title="Python统计分析：[1]独立样本T检验">
+
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -417,6 +417,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
             </li>
             
@@ -452,10 +456,6 @@
                 <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -471,7 +471,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -479,19 +479,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
@@ -515,15 +507,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -563,6 +555,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -572,10 +568,6 @@
         
         <span>
             <a class="footer-post" href="/tags/语料库/">语料库</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -596,6 +588,10 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -651,19 +647,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -676,6 +660,14 @@
         
         <span>
             <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -696,6 +688,10 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -723,6 +719,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
@@ -731,11 +731,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -755,27 +763,27 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -791,22 +799,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
@@ -816,6 +808,10 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -831,6 +827,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
@@ -843,19 +855,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
     </ul>

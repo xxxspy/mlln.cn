@@ -216,47 +216,47 @@
 <ul>
 <li>引入相关模块，pandas主要用到了他的DataFrame，sm用到了回归分析，patsy.dmatrices用于生成design matrix</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/7a8a1446f21fbe09d996846668600c338644adbd.jpg" title="Statsmodels：[2]快速入门">
+
 <ul>
 <li>先获取数据，本例子用到的数据保存在网上的csv文件，我们可以使用pandas.read_csv方便的读取数据（url=’<a href="http://vincentarelbundock.github.com/Rdatasets/csv/HistData/Guerry.csv&#39;）" target="_blank" rel="noopener">http://vincentarelbundock.github.com/Rdatasets/csv/HistData/Guerry.csv&#39;）</a></li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/6a22e8246b600c3331b199ba194c510fd8f9a1bd.jpg" title="Statsmodels：[2]快速入门">
+
 <ul>
 <li>查看一下数据的前五行，有很多列，显示有点混乱</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/eab9044c510fd9f96cdf121b262dd42a2934a4bd.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/b25d9901a18b87d6a669ed6d040828381f30fd5e.jpg" title="Statsmodels：[2]快速入门">
+
+
 <ul>
 <li>下面筛选出我们需要的列：<br>这是最后得到的数据：</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/246cca2a2834349bc2ce29f7caea15ce37d3bebd.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/91ae68c6a7efce1b67e38fb8ac51f3deb58f65bd.jpg" title="Statsmodels：[2]快速入门">
+
+
 <ul>
 <li>由于最后一行有NaN值，所以需要使用dropna删除该行数据</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/718e25c79f3df8dcff16c9e3ce11728b4710285d.jpg" title="Statsmodels：[2]快速入门">
+
 <ul>
 <li>生成design matrix，我们建立的模型是y=BX，因此需要分别求得y和X矩阵，而dmatrices就是干这个的<br>这是y<br>这是X矩阵：我们会发现分类变量自动的转换成了哑变量</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/3792cb39b6003af3f3729b12362ac65c1138b6bd.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/b5ce925494eef01f38df5fb7e3fe9925bd317dbd.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/109eb7ec8a136327f5c68441928fa0ec08fac75e.jpg" title="Statsmodels：[2]快速入门">
+
+
+
 <ul>
 <li>OLS指的是一般最小二乘，fit方法对回归方程进行估计，summary保存着计算的结果<br>这是输出的模型的估计结果：</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/a583631ed21b0ef45bc3de2cdec451da81cb3e5d.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/27d647ee3d6d55fb13ed30546e224f4a20a4dd5e.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/4e0b3ea4462309f73844eb60710e0cf3d7cad65e.jpg" title="Statsmodels：[2]快速入门">
+
+
+
 <ul>
 <li>现在我们要进一步检验数据是不是适合使用OLS，我们暂且先检验一下数据是否为线性，虚无假设是线性的，采用Rainbow test<br>输出结果为：第一个为F值，第二个为P值，显然未能拒绝虚无假设</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/0e655ca7d933c8958755de09d21373f08202005d.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/6648d73d70cf3bc7b2cb8a9ed200baa1cc112abd.jpg" title="Statsmodels：[2]快速入门">
+
+
 <ul>
 <li>接着，我们绘制偏回归线观察数据点是否分布在估计得到的直线的附近（图为控制了Rgion和Literacy后wealth对lottery的回归关系）</li>
 </ul>
-<img src="/2015/03/11/Statsmodels：[2]快速入门/b258f5c4b74543a9e830bcbe1d178a82b901145d.jpg" title="Statsmodels：[2]快速入门">
-<img src="/2015/03/11/Statsmodels：[2]快速入门/b110e6198618367aa3a239af2d738bd4b31ce55e.jpg" title="Statsmodels：[2]快速入门">
+
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -302,53 +302,53 @@
 <ul>
 <li>打开数据以后，菜单栏上依次点击：analyse–regression–binary logistic，打开二分回归对话框</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/e850352ac65c1038bd6b882fb2119313b17e89c2.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>将因变量和自变量放入格子的列表里，如图所示，上面的是因变量，下面的是自变量，我们看到这里有三个自变量</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/d788d43f8794a4c22380a1c60ef41bd5ac6e39bf.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>设置回归方法，这里选择最简单的方法：enter，它指的是将所有的变量一次纳入到方程。其他方法都是逐步进入的方法，在前面的文章中有介绍，这里就不再熬述。</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/2f738bd4b31c8701013bf40b277f9e2f0608ff4a.jpg" title="spss二分类的logistic回归的操作和分析方法">
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/060828381f30e9241f17dddc4c086e061c95f7a8.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
+
 <ul>
 <li>点击ok，开始处理数据并检验回归方程，等待一会就会弹出数据结果窗口</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/962bd40735fae6cd1494ea8c0fb30f2442a70f3e.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>看到的第一个结果是对case的描述，第一个列表告诉你有多少数据参与的计算，有多少数据是缺省值；第二个列表告诉你因变量的编码方式，得分为1代表患病，得分为0代表没有患病</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/c75c10385343fbf25d16e7ceb07eca8065388f21.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>这个列表告诉你在没有任何自变量进入以前，预测所有的case都是患病的正确率，正确率为%52.6</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/9345d688d43f8794f85f09c3d21b0ef41ad53abe.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>下面这个列表告诉你在没有任何自变量进入以前，常数项的预测情况。B是没有引入自变量时常数项的估计值，SE它的标准误，Wald是对总体回归系数是否为0进行统计学检验的卡方。</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/00e93901213fb80e72b2213a36d12f2eb83894ff.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>下面这个表格结果，通过sig值可以知道如果将模型外的各个变量纳入模型，则整个模型的拟合优度改变是否有统计学意义。 sig值小于0.05说明有统计学意义</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/9d82d158ccbf6c81b40b6f05bc3eb13533fa401a.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>这个表格是对模型的全局检验，为似然比检验，供给出三个结果：同样sig值&lt;0.05表明有统计学意义。</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/55e736d12f2eb938968c391fd5628535e4dd6f7d.jpg" title="spss二分类的logistic回归的操作和分析方法">
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/09fa513d269759ee816d2226b2fb43166d22df1a.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
+
 <ul>
 <li>下面的结果展示了-2log似然值和两个伪决定系数。两个伪决定系数反应的是自变量解释了因变量的变异占因变量的总变异的比例。他们俩的值不同因为使用的方法不同。</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/e7cd7b899e510fb361763a7ad933c895d0430ceb.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>分类表，这里展示了使用该回归方程对case进行分类，其准确度为%71.8。</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/08f790529822720ecb13af177bcb0a46f31fab7a.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <ul>
 <li>最后是输出回归方程中的各变量的系数和对系数的检验额值，sig值表明该系数是否具有统计学意义。到此，回归方程就求出来了。</li>
 </ul>
-<img src="/2015/03/11/spss二分类的logistic回归的操作和分析方法/d058ccbf6c81800a2bcbc5e3b13533fa828b4734.jpg" title="spss二分类的logistic回归的操作和分析方法">
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -391,23 +391,23 @@
 <ul>
 <li>首先，我们看一下第一个例子，用到三个参数，第一个参数表示起始点、第二个参数表示终止点，第三个参数表示数列的个数。</li>
 </ul>
-<img src="/2015/03/11/numpy函数：[7]linspace创建等差数列/834344afa40f4bfb989dc4c9014f78f0f636189a.jpg" title="numpy函数：[7]linspace创建等差数列">
+
 <ul>
 <li>我经常用它创建一个元素全部是1的等差数列，或者你也可以让所有元素为0</li>
 </ul>
-<img src="/2015/03/11/numpy函数：[7]linspace创建等差数列/0fb505d5ad6eddc41915ee663bdbb6fd53663379.jpg" title="numpy函数：[7]linspace创建等差数列">
+
 <ul>
 <li>我们看一下linspace创建的数组的元素的数据格式，当然是浮点型</li>
 </ul>
-<img src="/2015/03/11/numpy函数：[7]linspace创建等差数列/ae8267310a55b31980f3c7e841a98226cefc17e1.jpg" title="numpy函数：[7]linspace创建等差数列">
+
 <ul>
 <li>我们还可以使用参数endpoint来决定是否包含终止值，如果不设置这个参数，默认是True。我们看一下例子：注意步长改变了。</li>
 </ul>
-<img src="/2015/03/11/numpy函数：[7]linspace创建等差数列/c8ab0bce36d3d5397f554b5e3887e950342ab080.jpg" title="numpy函数：[7]linspace创建等差数列">
+
 <ul>
 <li>我试了试两个参数，也是可以的，但是创建的这个数组，我不太清楚是什么意义，有懂得人可以给我留言</li>
 </ul>
-<img src="/2015/03/11/numpy函数：[7]linspace创建等差数列/e8112b2ac65c103899088c5fb0119313b17e89fe.jpg" title="numpy函数：[7]linspace创建等差数列">
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -450,43 +450,43 @@
 <ul>
 <li>假如，我们要隐藏B列，先选中它</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/d019d2bf6c81800ae2b22c72b33533fa828b473c.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>右键单击该列，然后在右键菜单里选择【隐藏】</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/bd7faf3533fa828ba675389fff1f4134970a5a3c.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>看到了吧，隐藏了B列</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/7ac880510fb30f2475f8497fca95d143ad4b0328.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>接下来点击左上角，选中所有单元格，然后按下快捷键Ctrl+1</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/d002b34bd11373f0bc5dcae3a60f4bfbfbed0428.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>打开了一个对话框，我们切换到【保护】标签，然后确保下面两个选项是未选中的，如图所示，点击确定。</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/bbe0d311728b4710ae7958b0c1cec3fdfc03233c.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>在审阅标签下，找到【保护工作表选项】，打开它</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/b853d6fcc3cec3fde7680209d488d43f8794273c.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>输入密码，勾选前两个选项，点击确定</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/c9bdddcec3fdfc038e2e46c4d63f8794a4c2263c.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>输入确认密码，对，和上面的密码一样，点击确定</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/9304c888d43f879484a9ed52d01b0ef41bd53a3c.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>现在你看看，尝试显示隐藏列的时候，它的选项就是灰色的了，无法使用。</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/8367d1fc1e178a82eb5edadcf403738da977e829.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>想要撤销隐藏列，必须先撤销保护工作表，这时候会提示你输入密码。</li>
 </ul>
-<img src="/2015/03/03/Excel2013：[33]如何取消隐藏时输入密码/aa59892bd40735fad472ebc59c510fb30e240888.jpg" title="Excel2013：[33]如何取消隐藏时输入密码">
+
 <ul>
 <li>但是，这种方法并不是万无一失的，像我这种专业做数据的人，一看就知道如何查看你隐藏的列，不信，你看我接下来的一篇文章介绍【Excel2013 如何查看加密隐藏单元格】</li>
 </ul>
@@ -532,22 +532,22 @@
 <ul>
 <li>引入相关模块</li>
 </ul>
-<img src="/2015/03/03/pandas教程：[24]删除缺失数据/e78c65899e510fb36d342190da33c895d1430c4c.jpg" title="pandas教程：[24]删除缺失数据">
+
 <ul>
 <li>创建一个带有缺失值的数据框：<br>查看一下数据内容：</li>
 </ul>
-<img src="/2015/03/03/pandas教程：[24]删除缺失数据/5af4d7ea15ce36d30012d53739f33a87e950b160.jpg" title="pandas教程：[24]删除缺失数据">
-<img src="/2015/03/03/pandas教程：[24]删除缺失数据/0b907cd9f2d3572cb2cfcadb8913632762d0c34d.jpg" title="pandas教程：[24]删除缺失数据">
+
+
 <ul>
 <li>通常情况下，我们选择删除行，使用参数axis=0，这是最常用的方法<br>删除后的结果为：</li>
 </ul>
-<img src="/2015/03/03/pandas教程：[24]删除缺失数据/a84052086e061d95966b613f78f40ad162d9ca4d.jpg" title="pandas教程：[24]删除缺失数据">
-<img src="/2015/03/03/pandas教程：[24]删除缺失数据/906289dda144ad34b0a9d180d3a20cf431ad8560.jpg" title="pandas教程：[24]删除缺失数据">
+
+
 <ul>
 <li>还有可能的是，我们选择删除列，这种情况不多，因为通常我们选择用列表示一个变量或者指标，我们通常不会因为有几个缺失值就删除一个变量<br>输出结果为：</li>
 </ul>
-<img src="/2015/03/03/pandas教程：[24]删除缺失数据/0b3a1c087bf40ad1c2c991e4542c11dfa9ecce4d.jpg" title="pandas教程：[24]删除缺失数据">
-<img src="/2015/03/03/pandas教程：[24]删除缺失数据/90cebeec08fa513d8b873ad93e6d55fbb2fbd94d.jpg" title="pandas教程：[24]删除缺失数据">
+
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -696,23 +696,23 @@
 <ul>
 <li>首先，我们打开下载得到的文件夹，找到【破解教程】这个压缩包</li>
 </ul>
-<img src="/2015/03/01/SPSS实例：[26]如何使用注册码安装spss22.0/9dc3cf58ccbf6c81a70f7ab7be3eb13533fa4071.jpg" title="SPSS实例：[26]如何使用注册码安装spss22.0">
+
 <ul>
 <li>接着，在这个压缩包里，你会看到有一个readme文件，我们双击打开它</li>
 </ul>
-<img src="/2015/03/01/SPSS实例：[26]如何使用注册码安装spss22.0/c87c6ecf3bc79f3dc6d9b26fb8a1cd11728b2971.jpg" title="SPSS实例：[26]如何使用注册码安装spss22.0">
+
 <ul>
 <li>接着，我们会看到有一列乱码，这就是序列码，将其复制下来</li>
 </ul>
-<img src="/2015/03/01/SPSS实例：[26]如何使用注册码安装spss22.0/c9d4cf43ad4bd113199ae16d58afa40f4afb05de.jpg" title="SPSS实例：[26]如何使用注册码安装spss22.0">
+
 <ul>
 <li>打开spss22.0的安装文件，然后一直点击下一步即可</li>
 </ul>
-<img src="/2015/03/01/SPSS实例：[26]如何使用注册码安装spss22.0/d35a10f41bd5ad6e8ec132b583cb39dbb6fd3c71.jpg" title="SPSS实例：[26]如何使用注册码安装spss22.0">
+
 <ul>
 <li>直到我们看到输入序列码的提示，输入刚才复制的代码，然后点击下一步，你就完成了！</li>
 </ul>
-<img src="/2015/03/01/SPSS实例：[26]如何使用注册码安装spss22.0/7e7f7909c93d70cf0631fd52fadcd100bba12b62.jpg" title="SPSS实例：[26]如何使用注册码安装spss22.0">
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -755,35 +755,35 @@
 <ul>
 <li>在赋值中使用if语句，如果b等于c，返回a，否则返回c</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/2e6fa7389b504fc2a6947426e6dde71191ef6d8f.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <ul>
 <li>and符号表示如果a为零则返回a，否则返回b，也就是and总是返回第一个为零的数，当然，如果都不为零，则返回最后一个数</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/9f1011b30f2442a70ffc3986d243ad4bd01302e0.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <ul>
 <li>如果我们交换ab，返回的仍然是d=0</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/8474fbdde71190ef0e3056fccd1b9d16fcfa608f.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <ul>
 <li>如果换成两个不为零的数，总是返回后者</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/e6508eef76c6a7efb4ed6c05fefaaf51f2de668f.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <ul>
 <li>返回后者</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/d002b34bd11373f05ecdabbca70f4bfbfaed04e0.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <ul>
 <li>or语句总是返回第一个不为零的数，下面返回的是a</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/d0526df082025aaf7ac0bae8f8edab64024f1ae0.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <ul>
 <li>下面返回的还是a（两个不为零的数）</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/7787b9efce1b9d16810c5e42f0deb48f8d54648f.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <ul>
 <li>如果交换这两个数，则返回c</li>
 </ul>
-<img src="/2015/03/01/python教程：[79]赋值运算中的条件语句/ae10eddeb48f8c541518010c39292df5e1fe7f8f.jpg" title="python教程：[79]赋值运算中的条件语句">
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -830,23 +830,23 @@
 <ul>
 <li>了解amos建立模型的步骤：很多人用惯了spss就认为amos也是和spss一样可以自己导出模型。但是amos的模型建立是依据你的理论知识的，比如上图中，我们看忠诚度由三个指标：重复购买，交叉购买，推荐情况。这三个指标是我们在构建模型之前就已经知道的，所以将这三个指标放入到模型当中。所以在验证模型之前，我们要在amos中绘制出这个模型，这需要你的理论知识作为支撑。当你把模型绘制好了以后就可以使用数据验证模型了。</li>
 </ul>
-<img src="/2015/03/01/amos21.0教程：[1]amos介绍以及下载方法/adee30dda3cc7cd97bcf655b3801213fb90e9117.jpg" title="amos21.0教程：[1]amos介绍以及下载方法">
+
 <ul>
 <li>学习amos需要什么数学知识：如果你不是统计学专业的学生，我并不建议你去学习amos的数学知识，一是非常浪费时间，你要对矩阵运算了如指掌才可以；而是完全没有必要掌握数学基础，这么说有些偏颇，掌握数学基础对你理解amos的操作非常有帮助，但是如果你不理解数学基础你仍然可以理解amos的操作以及结果，我们的教程不涉及任何数学基础，只是有时候告诉你一些简单的统计知识，所以你不必畏惧，我们鼓励你学好自己的专业知识，而不要在数学软件上浪费太多时间。</li>
 </ul>
-<img src="/2015/03/01/amos21.0教程：[1]amos介绍以及下载方法/0b907cd9f2d3572cb2b1cc5e8b13632763d0c3a6.jpg" title="amos21.0教程：[1]amos介绍以及下载方法">
+
 <ul>
 <li>都有谁在用amos：心理学可能是使用amos最多的领域，不过现在最热的应该是mplus；还有一些搞问卷设计的人他们也会用amos分析问卷的信效度；经济学人士也有amos的使用者；社会学也可以使用。其他领域我个人就不是很了解了。</li>
 </ul>
-<img src="/2015/03/01/amos21.0教程：[1]amos介绍以及下载方法/f15e24292df5e0fe8d53d9835d6034a85fdf72ad.jpg" title="amos21.0教程：[1]amos介绍以及下载方法">
+
 <ul>
 <li>多长时间学会amos：其实amos是非常小的软件，其功能还不如spss多，所以如果你又spss的学习基础，看我写的教程一个月可以精通amos，如果没有学过spss也不怕，两个月搞定它。学习的关键是要经常使用，经常提问，所以有问题大家都可以去问我。</li>
 </ul>
-<img src="/2015/03/01/amos21.0教程：[1]amos介绍以及下载方法/f6428f8fa0ec08fafdbd432558ee3d6d54fbdab0.jpg" title="amos21.0教程：[1]amos介绍以及下载方法">
+
 <ul>
 <li>去哪里下载amos：我这里提供一个amos21.0的下载地址，已经上传到百度网盘，你们自己下载，如果想要破解也可以自己去找教程，网上有很多，不过我还是鼓励大家使用正版，在下面的参考资料里有我提供的下载链接。</li>
 </ul>
-<img src="/2015/03/01/amos21.0教程：[1]amos介绍以及下载方法/3792cb39b6003af3e33b8de2342ac65c1138b674.jpg" title="amos21.0教程：[1]amos介绍以及下载方法">
+
 <blockquote>
 <p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
 <p>邮箱: 675495787@qq.com </p>
@@ -907,6 +907,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
             </li>
             
@@ -942,10 +946,6 @@
                 <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -961,7 +961,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -969,19 +969,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
@@ -1005,15 +997,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -1053,6 +1045,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -1062,10 +1058,6 @@
         
         <span>
             <a class="footer-post" href="/tags/语料库/">语料库</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1086,6 +1078,10 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1141,19 +1137,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1166,6 +1150,14 @@
         
         <span>
             <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -1186,6 +1178,10 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -1213,6 +1209,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
@@ -1221,11 +1221,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -1245,27 +1253,27 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1281,22 +1289,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
@@ -1306,6 +1298,10 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1321,6 +1317,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
@@ -1333,19 +1345,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
     </ul>

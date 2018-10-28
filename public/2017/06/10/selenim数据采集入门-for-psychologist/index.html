@@ -281,16 +281,16 @@
 <p>或者你可以从chromedriver的官方网站下载所有版本的chromedriver，包括mac和linux版。地址：<code>https://sites.google.com/a/chromium.org/chromedriver/downloads</code></p>
 <p>chromedriver的版本和chrome的版本必须匹配，比如chrome版本在59-61之间，可以使用chromedriver-2.32，截止发稿日，这是最新的版本。</p>
 <p>你会得到一个<code>chromedriver.exe</code>文件，不需要安装，但是你得把它放到python能找到它的地方，你可以通过下图的方式找到python安装在哪里，如图所示，<code>C:\Users\wangluobu\AppData\Local\Programs\Python\Python35\Scripts\</code>就是我要找的位置，我就把<code>chromedriver.exe</code>放到这个目录下。</p>
-<img src="/2017/06/10/selenim数据采集入门-for-psychologist/find-python.jpg" title="find-python">
+
 <p>第三步， 测试是否能从python启动chrome浏览器。</p>
 <p>新建一个python程序文件，任何一个以<code>.py</code>结尾的文本文件都可以，你可以把一个记事本文件的后缀名改为<code>py</code>，创建好该文件后，右键单击该文件，选择<code>Edit With IDLE</code>，输入如下代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> selenium</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver=webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">"http://mlln.cn/"</span>)</span><br></pre></td></tr></table></figure>
 <p>代码填好了，按下快捷键<code>F5</code>就应该能看到chrome浏览器打开，并定位到网站<code>mlln.cn</code>。</p>
 <h3 id="chrome网页调试工具"><a href="#chrome网页调试工具" class="headerlink" title="chrome网页调试工具"></a>chrome网页调试工具</h3><p>网页开发人员经常会用调试工具来查看网页的源码。chrome浏览器自带调试工具，用chrome打开网址<code>mlln.cn</code>，然后按下F2可以看到调试工具。</p>
 <p>你要会定位一个网页元素，进而查看它的源码。使用这个位于左上角的小工具，点击它。</p>
-<img src="/2017/06/10/selenim数据采集入门-for-psychologist/debug-tools1.jpg">
+
 <p>然后点击网页上的标题，你会再代码窗口看到网页标题对应的代码。</p>
-<img src="/2017/06/10/selenim数据采集入门-for-psychologist/debug-tools2.jpg">
+
 <p>假如现在我们想要采集的数据就是该网页的标题，我们需要写一个python脚本：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> selenium</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver=webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">"http://mlln.cn/"</span>)</span><br><span class="line">h1 = driver.find_element_by_id(<span class="string">'main-title'</span>)  <span class="comment"># 根据id获取元素H1</span></span><br><span class="line">print(h1.text)  <span class="comment">#打印H1标签内的文本</span></span><br></pre></td></tr></table></figure>
 <p>你现在知道了，只有配合网页调试工具，我们才能知道我们要的数据在哪里。</p>
@@ -565,6 +565,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
             </li>
             
@@ -600,10 +604,6 @@
                 <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -619,7 +619,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -627,19 +627,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
@@ -663,15 +655,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -711,6 +703,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -720,10 +716,6 @@
         
         <span>
             <a class="footer-post" href="/tags/语料库/">语料库</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -744,6 +736,10 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -799,19 +795,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -824,6 +808,14 @@
         
         <span>
             <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -844,6 +836,10 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -871,6 +867,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
@@ -879,11 +879,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -903,27 +911,27 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -939,22 +947,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
@@ -964,6 +956,10 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -979,6 +975,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
@@ -991,19 +1003,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
     </ul>

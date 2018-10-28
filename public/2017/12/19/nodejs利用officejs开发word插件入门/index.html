@@ -234,7 +234,7 @@
 </li>
 <li>完成以后的目录结构如下图</li>
 </ul>
-<img src="/2017/12/19/nodejs利用officejs开发word插件入门/目录结构.jpg">
+
 <h3 id="https证书安装"><a href="#https证书安装" class="headerlink" title="https证书安装"></a>https证书安装</h3><p>office插件必须使用https协议与服务器通讯， 所以我们需要事先安装一个证书。<code>yo office</code> 命令已经为你生成了一个开发环境的证书， 你直接安装它即可。</p>
 <ul>
 <li>在certs目录下</li>
@@ -255,7 +255,7 @@
 <li>把文件夹共享给自己</li>
 </ul>
 <p>参考下图：</p>
-<img src="/2017/12/19/nodejs利用officejs开发word插件入门/创建共享文件夹.jpg">
+
 <h4 id="复制manifest文件"><a href="#复制manifest文件" class="headerlink" title="复制manifest文件"></a>复制manifest文件</h4><p>你可以在你的工程目录下找到这个manifest文件， 这是命令<code>yo office</code>替你创建的一个文件。我的文件名是<code>my-office-add-in-manifest.xml</code>，这个文件的名字跟你设置的addin的名称一样。</p>
 <p>这个文件的内容是(关于如何写manifest文件， 我会在接下来的文章中介绍):</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">OfficeApp</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/office/appforoffice/1.1"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:bt</span>=<span class="string">"http://schemas.microsoft.com/office/officeappbasictypes/1.0"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:ov</span>=<span class="string">"http://schemas.microsoft.com/office/taskpaneappversionoverrides"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:type</span>=<span class="string">"TaskPaneApp"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Id</span>&gt;</span>09a337df-4cbf-437c-8665-6c0ed4189344<span class="tag">&lt;/<span class="name">Id</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!--Version. Updates from the store only get triggered if there is a version change. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Version</span>&gt;</span>1.0.0.0<span class="tag">&lt;/<span class="name">Version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ProviderName</span>&gt;</span>[Provider name]<span class="tag">&lt;/<span class="name">ProviderName</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">DefaultLocale</span>&gt;</span>en-US<span class="tag">&lt;/<span class="name">DefaultLocale</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">DisplayName</span> <span class="attr">DefaultValue</span>=<span class="string">"My Office Add-in"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Description</span> <span class="attr">DefaultValue</span>=<span class="string">"[Document Add-in description]"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- Icon for your add-in. Used on installation screens and the add-ins dialog. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">IconUrl</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/assets/icon-32.png"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">HighResolutionIconUrl</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/assets/icon-80.png"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below--&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--&lt;SupportUrl DefaultValue="[Insert the URL of a page that provides support information for the app]"&gt;--&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">AppDomains</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AppDomain</span>&gt;</span>AppDomain1<span class="tag">&lt;/<span class="name">AppDomain</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AppDomain</span>&gt;</span>AppDomain2<span class="tag">&lt;/<span class="name">AppDomain</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AppDomain</span>&gt;</span>AppDomain3<span class="tag">&lt;/<span class="name">AppDomain</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">AppDomains</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--End Basic Settings. --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Hosts</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Host</span> <span class="attr">Name</span>=<span class="string">"Document"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Hosts</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">DefaultSettings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">SourceLocation</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/index.html"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">DefaultSettings</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- End TaskPane Mode integration.  --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">Permissions</span>&gt;</span>ReadWriteDocument<span class="tag">&lt;/<span class="name">Permissions</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- Begin Add-in Commands Mode integration. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">VersionOverrides</span> <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/office/taskpaneappversionoverrides"</span> <span class="attr">xsi:type</span>=<span class="string">"VersionOverridesV1_0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- The Hosts node is required. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Hosts</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- Each host can have a different set of commands. --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- Excel host is Workbook, Word host is Document, and PowerPoint host is Presentation. --&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Host</span> <span class="attr">xsi:type</span>=<span class="string">"Document"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Form factor. Currently only DesktopFormFactor is supported. --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DesktopFormFactor</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."--&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">GetStarted</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- Title of the Getting Started callout. resid points to a ShortString resource --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Title</span> <span class="attr">resid</span>=<span class="string">"Contoso.GetStarted.Title"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- Description of the Getting Started callout. resid points to a LongString resource --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Description</span> <span class="attr">resid</span>=<span class="string">"Contoso.GetStarted.Description"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- Point to a url resource which details how the add-in should be used. --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">LearnMoreUrl</span> <span class="attr">resid</span>=<span class="string">"Contoso.GetStarted.LearnMoreUrl"</span>/&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">GetStarted</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called.</span></span><br><span class="line"><span class="comment">            Think of the FunctionFile as the code behind ExecuteFunction. --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">FunctionFile</span> <span class="attr">resid</span>=<span class="string">"Contoso.DesktopFunctionFile.Url"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- PrimaryCommandSurface is the main Office Ribbon. --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">ExtensionPoint</span> <span class="attr">xsi:type</span>=<span class="string">"PrimaryCommandSurface"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">OfficeTab</span> <span class="attr">id</span>=<span class="string">"TabHome"</span>&gt;</span></span><br><span class="line">              <span class="comment">&lt;!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. --&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">Group</span> <span class="attr">id</span>=<span class="string">"Contoso.Group1"</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Label for your group. resid must point to a ShortString resource. --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Label</span> <span class="attr">resid</span>=<span class="string">"Contoso.Group1Label"</span> /&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. --&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Use PNG icons. All URLs on the resources section must use HTTPS. --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Icon</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">size</span>=<span class="string">"16"</span> <span class="attr">resid</span>=<span class="string">"Contoso.tpicon_16x16"</span> /&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">size</span>=<span class="string">"32"</span> <span class="attr">resid</span>=<span class="string">"Contoso.tpicon_32x32"</span> /&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">size</span>=<span class="string">"80"</span> <span class="attr">resid</span>=<span class="string">"Contoso.tpicon_80x80"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">Icon</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">&lt;!-- Control. It can be of type "Button" or "Menu". --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Control</span> <span class="attr">xsi:type</span>=<span class="string">"Button"</span> <span class="attr">id</span>=<span class="string">"Contoso.TaskpaneButton"</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">Label</span> <span class="attr">resid</span>=<span class="string">"Contoso.TaskpaneButton.Label"</span> /&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">Supertip</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- ToolTip title. resid must point to a ShortString resource. --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">Title</span> <span class="attr">resid</span>=<span class="string">"Contoso.TaskpaneButton.Label"</span> /&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- ToolTip description. resid must point to a LongString resource. --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">Description</span> <span class="attr">resid</span>=<span class="string">"Contoso.TaskpaneButton.Tooltip"</span> /&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">Supertip</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">Icon</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">size</span>=<span class="string">"16"</span> <span class="attr">resid</span>=<span class="string">"Contoso.tpicon_16x16"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">size</span>=<span class="string">"32"</span> <span class="attr">resid</span>=<span class="string">"Contoso.tpicon_32x32"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">size</span>=<span class="string">"80"</span> <span class="attr">resid</span>=<span class="string">"Contoso.tpicon_80x80"</span> /&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">Icon</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                  <span class="comment">&lt;!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. --&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">Action</span> <span class="attr">xsi:type</span>=<span class="string">"ShowTaskpane"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">TaskpaneId</span>&gt;</span>ButtonId1<span class="tag">&lt;/<span class="name">TaskpaneId</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- Provide a url resource id for the location that will be displayed on the task pane. --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">SourceLocation</span> <span class="attr">resid</span>=<span class="string">"Contoso.Taskpane.Url"</span> /&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">Action</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">Control</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">Group</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">OfficeTab</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">ExtensionPoint</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">DesktopFormFactor</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Hosts</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- You can use resources across hosts and form factors. --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Resources</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bt:Images</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">id</span>=<span class="string">"Contoso.tpicon_16x16"</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/assets/icon-16.png"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">id</span>=<span class="string">"Contoso.tpicon_32x32"</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/assets/icon-32.png"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:Image</span> <span class="attr">id</span>=<span class="string">"Contoso.tpicon_80x80"</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/assets/icon-80.png"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">bt:Images</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bt:Urls</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:Url</span> <span class="attr">id</span>=<span class="string">"Contoso.Taskpane.Url"</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/index.html"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:Url</span> <span class="attr">id</span>=<span class="string">"Contoso.GetStarted.LearnMoreUrl"</span> <span class="attr">DefaultValue</span>=<span class="string">"https://go.microsoft.com/fwlink/?LinkId=276812"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:Url</span> <span class="attr">id</span>=<span class="string">"Contoso.DesktopFunctionFile.Url"</span> <span class="attr">DefaultValue</span>=<span class="string">"https://localhost:3000/function-file/function-file.html"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">bt:Urls</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- ShortStrings max characters==125. --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bt:ShortStrings</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:String</span> <span class="attr">id</span>=<span class="string">"Contoso.TaskpaneButton.Label"</span> <span class="attr">DefaultValue</span>=<span class="string">"Show Taskpane"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:String</span> <span class="attr">id</span>=<span class="string">"Contoso.Group1Label"</span> <span class="attr">DefaultValue</span>=<span class="string">"Commands Group"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:String</span> <span class="attr">id</span>=<span class="string">"Contoso.GetStarted.Title"</span> <span class="attr">DefaultValue</span>=<span class="string">"Get started with your sample add-in!"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">bt:ShortStrings</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- LongStrings max characters==250. --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bt:LongStrings</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:String</span> <span class="attr">id</span>=<span class="string">"Contoso.TaskpaneButton.Tooltip"</span> <span class="attr">DefaultValue</span>=<span class="string">"Click to Show a Taskpane"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bt:String</span> <span class="attr">id</span>=<span class="string">"Contoso.GetStarted.Description"</span> <span class="attr">DefaultValue</span>=<span class="string">"Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">bt:LongStrings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Resources</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">VersionOverrides</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- End Add-in Commands Mode integration. --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">OfficeApp</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -266,13 +266,13 @@
 <li>点击<code>确定</code></li>
 </ul>
 <p>参考下图：</p>
-<img src="/2017/12/19/nodejs利用officejs开发word插件入门/添加共享位置.jpg">
+
 <h4 id="添加加载项"><a href="#添加加载项" class="headerlink" title="添加加载项"></a>添加加载项</h4><p>现在你就可以在word的如下位置找到你所创建的插件了。</p>
-<img src="/2017/12/19/nodejs利用officejs开发word插件入门/添加加载项.jpg">
+
 <h4 id="查看加载项"><a href="#查看加载项" class="headerlink" title="查看加载项"></a>查看加载项</h4><p>你会在如下位置看到你的插件启动按钮。</p>
-<img src="/2017/12/19/nodejs利用officejs开发word插件入门/展示效果.jpg">
+
 <p>打开你的加载项看看效果</p>
-<img src="/2017/12/19/nodejs利用officejs开发word插件入门/加载项打开.jpg">
+
 
     </div>
 
@@ -386,6 +386,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
             </li>
             
@@ -421,10 +425,6 @@
                 <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -440,7 +440,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -448,19 +448,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
@@ -484,15 +476,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -532,6 +524,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -541,10 +537,6 @@
         
         <span>
             <a class="footer-post" href="/tags/语料库/">语料库</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -565,6 +557,10 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -620,19 +616,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -645,6 +629,14 @@
         
         <span>
             <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -665,6 +657,10 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -692,6 +688,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
@@ -700,11 +700,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -724,27 +732,27 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -760,22 +768,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
@@ -785,6 +777,10 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -800,6 +796,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
@@ -812,19 +824,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
     </ul>

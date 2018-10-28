@@ -224,25 +224,25 @@
 <p>我们先来用一个随机数据, 观察它的时序图:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">import</span> random </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置中文字体</span></span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>]=[<span class="string">'SimHei'</span>]</span><br><span class="line"></span><br><span class="line">DATA_DIR=<span class="string">'../data/sample/'</span></span><br><span class="line"><span class="comment">#固定随机数， 以便每次生成相同的随机数</span></span><br><span class="line">random.seed(<span class="number">10</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_sequence_chart</span><span class="params">()</span>:</span></span><br><span class="line">    dpath = os.path.join(DATA_DIR, <span class="string">'附录1.1.xls'</span>)</span><br><span class="line">    data=pd.read_excel(dpath)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(data.shape[<span class="number">0</span>]):</span><br><span class="line">        data.iloc[i, <span class="number">1</span>]=random.randint(<span class="number">20</span>, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    print(data)</span><br><span class="line">    fig, ax = plt.subplots()</span><br><span class="line">    ax.plot(data[<span class="string">'年份'</span>], data[<span class="string">'黑子数'</span>])</span><br><span class="line">    ax.set(xlabel=<span class="string">'年份'</span>, ylabel=<span class="string">'黑子数'</span>, title=<span class="string">'随机生成的黑子数'</span>)</span><br><span class="line">    plt.savefig(<span class="string">'../imgs/random-sunspots.png'</span>)</span><br><span class="line"></span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">random_sequence_chart()</span><br></pre></td></tr></table></figure>
 <p>你会看到如下所示的时序图, 你大概就能看出这是一个完全随机的序列图.</p>
-<img src="/2017/10/26/python时间序列分析-纯随机性检验/random-sunspots.png">
+
 <p>但是, 对比一下真实的数据, 我们把历年的真实太阳黑子数绘制在时序图上:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sequence_chart</span><span class="params">()</span>:</span></span><br><span class="line">    dpath = os.path.join(DATA_DIR, <span class="string">'附录1.1.xls'</span>)</span><br><span class="line">    data=pd.read_excel(dpath)</span><br><span class="line">    fig, ax = plt.subplots()</span><br><span class="line">    ax.plot(data[<span class="string">'年份'</span>], data[<span class="string">'黑子数'</span>])</span><br><span class="line">    ax.set(xlabel=<span class="string">'年份'</span>, ylabel=<span class="string">'黑子数'</span>, title=<span class="string">'黑子数'</span>)</span><br><span class="line">    plt.savefig(<span class="string">'../imgs/sunspots.png'</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">sequence_chart()</span><br></pre></td></tr></table></figure>
 <p>生成如下图:</p>
-<img src="/2017/10/26/python时间序列分析-纯随机性检验/sunspots.png">
+
 <h2 id="自相关图"><a href="#自相关图" class="headerlink" title="自相关图"></a>自相关图</h2><p>自相关图就是将n步自相关系数绘制成一个折线图. 注意统计学意义上的aotucorrelation和信号处理中用到的autocorrelation是不同的. 如果你用<code>matplotlib.pyplot.acorr</code>来绘制自相关图, 得到的是信号处理中常用的算法. 而如果使用pandas中的<code>pandas.plotting.autocorrelation_plot</code>得到的就是n步的皮尔逊相关.</p>
 <p>下面我们对比一下完全随机序列和非随机序列的自相关图的差异:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">autocorr</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">from</span> pandas.plotting <span class="keyword">import</span> autocorrelation_plot</span><br><span class="line">    <span class="comment"># get data</span></span><br><span class="line">    dpath = os.path.join(DATA_DIR, <span class="string">'附录1.1.xls'</span>)</span><br><span class="line">    data=pd.read_excel(dpath)</span><br><span class="line">    <span class="comment"># plot</span></span><br><span class="line">    <span class="comment"># print(data['黑子数'])</span></span><br><span class="line">    fig, axes=plt.subplots(nrows=<span class="number">2</span>, ncols=<span class="number">1</span>)</span><br><span class="line">    autocorrelation_plot(data[<span class="string">'黑子数'</span>], ax=axes[<span class="number">0</span>])</span><br><span class="line">    axes[<span class="number">0</span>].set_title(<span class="string">'真实黑子数'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 随机化黑子数</span></span><br><span class="line">    x=[random.randint(<span class="number">1</span>, <span class="number">200</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(data.shape[<span class="number">0</span>])]</span><br><span class="line">    autocorrelation_plot(x, ax=axes[<span class="number">1</span>])</span><br><span class="line">    axes[<span class="number">1</span>].set_title(<span class="string">'随机黑子数'</span>)</span><br><span class="line">    plt.savefig(<span class="string">'../imgs/autocorr.png'</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    autocorr()</span><br></pre></td></tr></table></figure>
 <p>可以生成如图所示的自相关图:</p>
-<img src="/2017/10/26/python时间序列分析-纯随机性检验/autocorr.png">
+
 <p>从图中可以看出, 如果数据呈周期性变化, 自相关图就会呈周期性变化. 而完全随机的序列数据是没有规律的, 并且绝大部分相关值都集中在0附近.</p>
 <h2 id="假设检验原理"><a href="#假设检验原理" class="headerlink" title="假设检验原理"></a>假设检验原理</h2><p>假设检验的原理来自于&lt;应用时间序列分析(王燕)&gt;:</p>
-<img src="/2017/10/26/python时间序列分析-纯随机性检验/barlett.png">
-<img src="/2017/10/26/python时间序列分析-纯随机性检验/q.png">
-<img src="/2017/10/26/python时间序列分析-纯随机性检验/lb.png">
+
+
+
 <h2 id="Q和LB统计量的计算"><a href="#Q和LB统计量的计算" class="headerlink" title="Q和LB统计量的计算"></a>Q和LB统计量的计算</h2><p>下面我们通过python代码来实现对Q统计量的检验. 计算Q统计量和LB统计量都是用python中statsmodels模块中的acorr_ljungbox方法. 默认情况下, acorr_ljungbox只计算LB统计量, 只有当参数boxpierce=True时, 才会输出Q统计量.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">boxpierce_test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''计算box pierce 和 box ljung统计量'''</span></span><br><span class="line">    <span class="keyword">from</span> statsmodels.sandbox.stats.diagnostic <span class="keyword">import</span> acorr_ljungbox</span><br><span class="line">    dpath = os.path.join(DATA_DIR, <span class="string">'附录1.1.xls'</span>)</span><br><span class="line">    data=pd.read_excel(dpath)</span><br><span class="line">    x=data[<span class="string">'黑子数'</span>]</span><br><span class="line">    qljungbox, pval, qboxpierce, pvalbp=acorr_ljungbox(x, boxpierce=<span class="keyword">True</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(pval)):</span><br><span class="line">        print(<span class="string">'真实数据：qljungbox, pval, qboxpierce, pvalbp:'</span>,qljungbox[i], pval[i], qboxpierce[i], pvalbp[i])</span><br><span class="line">    fig, axes = plt.subplots(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">    axes[<span class="number">0</span>,<span class="number">0</span>].plot(qljungbox, label=<span class="string">'qljungbox'</span>);axes[<span class="number">0</span>,<span class="number">0</span>].set_ylabel(<span class="string">'真实-Q'</span>)</span><br><span class="line">    axes[<span class="number">0</span>,<span class="number">0</span>].plot(qboxpierce, label=<span class="string">'qboxpierce'</span>)</span><br><span class="line"></span><br><span class="line">    axes[<span class="number">0</span>,<span class="number">1</span>].plot(pval, label=<span class="string">'pval'</span>);axes[<span class="number">0</span>,<span class="number">1</span>].set_ylabel(<span class="string">'P'</span>)</span><br><span class="line">    axes[<span class="number">0</span>,<span class="number">1</span>].plot(pvalbp, label=<span class="string">'pvalbp'</span>)</span><br><span class="line"></span><br><span class="line">    x=[random.randint(<span class="number">1</span>, <span class="number">200</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(data.shape[<span class="number">0</span>])]</span><br><span class="line">    qljungbox, pval, qboxpierce, pvalbp=acorr_ljungbox(x, boxpierce=<span class="keyword">True</span>)</span><br><span class="line">    axes[<span class="number">1</span>,<span class="number">0</span>].plot(qljungbox, label=<span class="string">'qljungbox'</span>);axes[<span class="number">1</span>,<span class="number">0</span>].set_ylabel(<span class="string">'随机-Q'</span>)</span><br><span class="line">    axes[<span class="number">1</span>,<span class="number">0</span>].plot(qboxpierce, label=<span class="string">'qboxpierce'</span>)</span><br><span class="line"></span><br><span class="line">    axes[<span class="number">1</span>,<span class="number">1</span>].plot(pval, label=<span class="string">'pval'</span>);axes[<span class="number">1</span>,<span class="number">1</span>].set_ylabel(<span class="string">'P'</span>)</span><br><span class="line">    axes[<span class="number">1</span>,<span class="number">1</span>].plot(pvalbp, label=<span class="string">'pvalbp'</span>)</span><br><span class="line">    axes[<span class="number">0</span>,<span class="number">0</span>].legend()</span><br><span class="line">    axes[<span class="number">0</span>,<span class="number">1</span>].legend()</span><br><span class="line">    axes[<span class="number">1</span>,<span class="number">0</span>].legend()</span><br><span class="line">    axes[<span class="number">1</span>,<span class="number">1</span>].legend()</span><br><span class="line">    plt.savefig(<span class="string">'../imgs/boxpierce_test.png'</span>)</span><br><span class="line">    plt.show()</span><br><span class="line">    print(<span class="string">'随机数据：qljungbox, pval, qboxpierce, pvalbp:'</span>,qljungbox, pval, qboxpierce, pvalbp)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    boxpierce_test()</span><br></pre></td></tr></table></figure>
 <p>输出可视化的结果是:</p>
-<img src="/2017/10/26/python时间序列分析-纯随机性检验/boxpierce_test.png">
+
 <p>从图中, 我们可以看出随机时间序列数据的p值基本都在0.5以上, 也就是说不能推翻虚无假设, 虚无假设可能是正确的, 也就是说这是一个白噪音序列.</p>
 <p>而真实数据的p值都在0.05以下, 说明虚无假设的成立时小概率事件, 所以虚无假设更大的可能是不成立的, 也就是说这个不是一个白噪音序列.</p>
 
@@ -424,6 +424,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
             </li>
             
@@ -459,10 +463,6 @@
                 <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -478,7 +478,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -486,19 +486,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
@@ -522,15 +514,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -570,6 +562,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -579,10 +575,6 @@
         
         <span>
             <a class="footer-post" href="/tags/语料库/">语料库</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -603,6 +595,10 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -658,19 +654,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -683,6 +667,14 @@
         
         <span>
             <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -703,6 +695,10 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -730,6 +726,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
@@ -738,11 +738,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -762,27 +770,27 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -798,22 +806,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
@@ -823,6 +815,10 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -838,6 +834,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
@@ -850,19 +862,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
     </ul>

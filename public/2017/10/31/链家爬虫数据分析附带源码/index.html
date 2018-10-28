@@ -224,29 +224,29 @@
 <h2 id="行政区域成交情况"><a href="#行政区域成交情况" class="headerlink" title="行政区域成交情况"></a>行政区域成交情况</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_district = df[<span class="string">'区域'</span>].value_counts()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_district.plot(kind=<span class="string">"bar"</span>, title=<span class="string">"区域销量图"</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1d179421ba8&gt;
-</code></pre><img src="/2017/10/31/链家爬虫数据分析附带源码/output_6_1.png">
+</code></pre>
 <h2 id="成交量与房屋量比"><a href="#成交量与房屋量比" class="headerlink" title="成交量与房屋量比"></a>成交量与房屋量比</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ss_district_trade_house_ratio = ss_district.copy()</span><br><span class="line"><span class="keyword">for</span> district <span class="keyword">in</span> ss_district.index:</span><br><span class="line">    ss_district_trade_house_ratio.set_value(label=district,</span><br><span class="line">                                            value=df_i[df_i[<span class="string">'区域'</span>] == district][<span class="string">'总户数'</span>].sum())</span><br><span class="line">ss_district_trade_house_ratio = (ss_district / ss_district_trade_house_ratio.values).sort_values(ascending=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_district_trade_house_ratio.plot(kind=<span class="string">'bar'</span>, title=<span class="string">"区域成交房屋数量比"</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1d10000bd68&gt;
-</code></pre><img src="/2017/10/31/链家爬虫数据分析附带源码/output_9_1.png">
+</code></pre>
 <h2 id="季度成交统计"><a href="#季度成交统计" class="headerlink" title="季度成交统计"></a>季度成交统计</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_season = df[<span class="string">'季度'</span>].value_counts().sort_index()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_season.plot(kind=<span class="string">"bar"</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1d10055cef0&gt;
-</code></pre><img src="/2017/10/31/链家爬虫数据分析附带源码/output_12_1.png">
+</code></pre>
 <h2 id="月销量直方图"><a href="#月销量直方图" class="headerlink" title="月销量直方图"></a>月销量直方图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_month = df[df[<span class="string">'成交月份'</span>].astype(str) &gt;= <span class="string">"2015.01"</span>][<span class="string">'成交月份'</span>].value_counts().sort_index()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_month.plot(kind=<span class="string">"bar"</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1d176aba940&gt;
-</code></pre><img src="/2017/10/31/链家爬虫数据分析附带源码/output_15_1.png">
+</code></pre>
 <h2 id="销量同比增速"><a href="#销量同比增速" class="headerlink" title="销量同比增速"></a>销量同比增速</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">count_districts = len(ss_district)</span><br><span class="line">count_seasons = len(ss_season)</span><br><span class="line">df_district_season = pd.DataFrame(columns=ss_district.index.astype(str))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> season <span class="keyword">in</span> ss_season.index:</span><br><span class="line">    ss_district_season = df[df[<span class="string">'季度'</span>] == season][<span class="string">'区域'</span>].value_counts().sort_index()</span><br><span class="line">    ss_district_season.name = season</span><br><span class="line">    df_district_season = df_district_season.append(ss_district_season)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df_district_season_acc = df_district_season.drop([<span class="string">"2013Q1"</span>, <span class="string">"2013Q2"</span>, <span class="string">"2013Q3"</span>, <span class="string">"2013Q4"</span>], axis=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(df_district_season) - <span class="number">4</span>):</span><br><span class="line">    df_district_season_acc.ix[i] = <span class="number">100</span> * (df_district_season.ix[i+<span class="number">4</span>] / df_district_season.ix[i] - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_district_season_acc.plot().legend(loc=<span class="string">'center left'</span>, bbox_to_anchor=(<span class="number">1</span>, <span class="number">0.5</span>))</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;matplotlib.legend.Legend at 0x1d178d8fa90&gt;
-</code></pre><img src="/2017/10/31/链家爬虫数据分析附带源码/output_20_1.png">
+</code></pre>
 <h2 id="热门小区"><a href="#热门小区" class="headerlink" title="热门小区"></a>热门小区</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_xiaoqu = df[<span class="string">'小区名称'</span>].value_counts()[:<span class="number">20</span>]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss_xiaoqu.plot(kind=<span class="string">"bar"</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1d1786ffb38&gt;
-</code></pre><img src="/2017/10/31/链家爬虫数据分析附带源码/output_23_1.png">
+</code></pre>
 <h2 id="保存新的excel"><a href="#保存新的excel" class="headerlink" title="保存新的excel"></a>保存新的excel</h2><p><strong>注意，只会生成一个sheet，因此先保存成不一样的文件，再手工拷贝过去</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">"./成都小区信息_new.xlsx"</span>)</span><br><span class="line">df.to_excel(writer, <span class="string">"成交记录"</span>)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
 <p>本文章转载自于ipython notebook <a href="数据分析.ipynb">链家爬虫数据分析附带源码</a>.</p>
@@ -284,8 +284,26 @@
     <div class="page_list">
         
             <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
+                    jupyter notebook 扩展开发之  文件保存钩子
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/">
                     jupyter notebook 扩展开发之 Custom bundler extensions
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之内容API/">
+                    jupyter notebook 扩展开发之内容API
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
+                    jupyter notebook扩展开发之前端插件开发
                 </a>
             </div>
             
@@ -298,24 +316,6 @@
             <div class="archive-post">
                 <a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/">
                     jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
-                    jupyter notebook扩展开发之前端插件开发
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
-                    jupyter notebook 扩展开发之  文件保存钩子
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/03/31/jupyter notebook 扩展开发之内容API/">
-                    jupyter notebook 扩展开发之内容API
                 </a>
             </div>
             
@@ -373,6 +373,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
             </li>
             
@@ -408,10 +412,6 @@
                 <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -427,7 +427,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -435,19 +435,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
@@ -471,15 +463,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -519,6 +511,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -528,10 +524,6 @@
         
         <span>
             <a class="footer-post" href="/tags/语料库/">语料库</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -552,6 +544,10 @@
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -607,19 +603,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -632,6 +616,14 @@
         
         <span>
             <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -652,6 +644,10 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -679,6 +675,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
@@ -687,11 +687,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -711,27 +719,27 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -747,22 +755,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
@@ -772,6 +764,10 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -787,6 +783,22 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
@@ -799,19 +811,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
     </ul>
