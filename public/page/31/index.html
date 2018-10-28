@@ -197,6 +197,76 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/05/03/Python统计分析：[9]2因素卡方检验/">
+                Python统计分析：[9]2因素卡方检验
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年05月03日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>2因素卡方检验主要是检验两个因素之间是否存在关联，或者叫相互影响，我们举一个例子，学习成绩和性别有没有关系，我们首先想到的可能是方差分析来检验平均数的差异，但是如果我们拿到的数据是计数数据，比如成绩分为高分组和低分组，这样只能用卡方检验了。</p>
+<ul>
+<li>引入相关模块，这里介绍一下Counter这个对象，它用于生成一个迭代器，关于迭代器你们百度一下；list可以生成一列表<br>我们可以看到迭代器是一个itertools.chain<br>那么这个迭代器生成的这个列表就是：</li>
+</ul>
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/b3508d13b07eca802d23f285922397dda144836b.jpg" title="Python统计分析：[9]2因素卡方检验">
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/d1e312f431adcbef2212b564afaf2edda3cc9f6b.jpg" title="Python统计分析：[9]2因素卡方检验">
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/207ea60e7bec54e757cad17cba389b504fc26a6b.jpg" title="Python统计分析：[9]2因素卡方检验">
+<ul>
+<li>了解了迭代器，我们下面就用Couter来生成我们需要的分类数据</li>
+</ul>
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/72ccb7773912b31b5a6d064b8518367adab4e115.jpg" title="Python统计分析：[9]2因素卡方检验">
+<ul>
+<li>打印一下结果，看看具体的数据是啥样子的<br>这是数据</li>
+</ul>
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/647912d7912397dded5f53665a82b2b7d0a2876b.jpg" title="Python统计分析：[9]2因素卡方检验">
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/29790130e924b899543db25a6d061d950a7bf615.jpg" title="Python统计分析：[9]2因素卡方检验">
+<ul>
+<li>最后运行卡方检验</li>
+</ul>
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/dbf554ed2e738bd441207953a28b87d6277ff915.jpg" title="Python统计分析：[9]2因素卡方检验">
+<ul>
+<li>首先输出的结果还是描述统计，括号内的数字表示期望值（根据虚无假设计算的值）</li>
+</ul>
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/e865a699a9014c08913ae3c7097b02087bf4f415.jpg" title="Python统计分析：[9]2因素卡方检验">
+<ul>
+<li>接着是卡方检验</li>
+</ul>
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/b9d8b7014c086e061da8f42901087bf40ad1cb15.jpg" title="Python统计分析：[9]2因素卡方检验">
+<ul>
+<li>这是最后得到的统计量</li>
+</ul>
+<img src="/2016/05/03/Python统计分析：[9]2因素卡方检验/e49cf91190ef76c6cbf430499e16fdfaaf51676b.jpg" title="Python统计分析：[9]2因素卡方检验">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/05/03/Excel2013：[40]美化单元格立体来点立体感/">
                 Excel2013：[40]美化单元格立体来点立体感
             </a>
@@ -820,69 +890,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/04/15/Python教程：[67]itemgetter对列表排序/">
-                Python教程：[67]itemgetter对列表排序
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年04月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>上一篇文章讲了如何对list进行排序【请看传送门<a href="http://jingyan.baidu.com/article/90808022a546b8fd90c80f48.html】，今天我们进一步加深学习，使用" target="_blank" rel="noopener">http://jingyan.baidu.com/article/90808022a546b8fd90c80f48.html】，今天我们进一步加深学习，使用</a> itemgetter来加速排序，并且可以减少代码的写作难度，我们来看看具体的例子，如何使用itemgetter：</p>
-<ul>
-<li>首先装载一下operator模块</li>
-</ul>
-<img src="/2016/04/15/Python教程：[67]itemgetter对列表排序/eab9044c510fd9f9a7c3dee9272dd42a2934a41f.jpg" title="Python教程：[67]itemgetter对列表排序">
-<ul>
-<li>创建一个列表，列表由元组构成</li>
-</ul>
-<img src="/2016/04/15/Python教程：[67]itemgetter对列表排序/d8b8c92a6059252da7c39684369b033b5ab5b91f.jpg" title="Python教程：[67]itemgetter对列表排序">
-<ul>
-<li>使用itemgetter来进行排序，使用元组的第二个元素进行排序</li>
-</ul>
-<img src="/2016/04/15/Python教程：[67]itemgetter对列表排序/3a86813df8dcd1005f1573a1708b4710b8122f62.jpg" title="Python教程：[67]itemgetter对列表排序">
-<ul>
-<li>使用元组的第一个元素进行排序</li>
-</ul>
-<img src="/2016/04/15/Python教程：[67]itemgetter对列表排序/29752a9b033b5bb5b103ab7e34d3d539b700bc1f.jpg" title="Python教程：[67]itemgetter对列表排序">
-<ul>
-<li>甚至我们可以先对元组的第2个元素进行排序，然后对第一个元素进行排序，形成多级排序。</li>
-</ul>
-<img src="/2016/04/15/Python教程：[67]itemgetter对列表排序/5af4d7ea15ce36d3aed008b038f33a87e850b11f.jpg" title="Python教程：[67]itemgetter对列表排序">
-<ul>
-<li>当然，我们还可以使用reverse来进行逆序排列</li>
-</ul>
-<img src="/2016/04/15/Python教程：[67]itemgetter对列表排序/3bc6f750352ac65c92d1edf3f9f2b21192138a1f.jpg" title="Python教程：[67]itemgetter对列表排序">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -925,6 +932,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
             </li>
             
@@ -960,10 +971,6 @@
                 <a class="footer-post" href="/2018/10/11/中文情感分析语料库大全-带下载地址/">中文情感分析语料库大全-带下载地址</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/09/26/在线绘制中介效应图/">在线绘制中介效应图</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -975,15 +982,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -991,7 +994,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -1007,14 +1022,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
         </span>
         
@@ -1027,7 +1034,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
         </span>
         
         <span>
@@ -1036,6 +1047,10 @@
         
         <span>
             <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
@@ -1059,6 +1074,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -1079,15 +1098,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1096,10 +1119,6 @@
         
         <span>
             <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1115,15 +1134,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras基础/">keras基础</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -1131,7 +1142,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -1167,11 +1178,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -1231,6 +1242,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
@@ -1259,15 +1274,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1283,26 +1294,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/“python/">“python&quot;</a>
         </span>
         
@@ -1312,6 +1303,22 @@
         
         <span>
             <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
         </span>
         
         <span>
@@ -1347,23 +1354,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
     </ul>
