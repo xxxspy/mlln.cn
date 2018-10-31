@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="keras教程-n-图片风格转换理论和实践"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>keras教程-n-图片风格转换理论和实践 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">
+                keras教程-n-图片风格转换理论和实践
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-n-图片风格转换理论和实践"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年10月31日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#总体步骤"><span class="toc-number">1.</span> <span class="toc-text">总体步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关于VGG19"><span class="toc-number">1.1.</span> <span class="toc-text">关于VGG19</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">2.</span> <span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#准备数据"><span class="toc-number">2.1.</span> <span class="toc-text">准备数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构建输入张量并下载模型"><span class="toc-number">2.2.</span> <span class="toc-text">构建输入张量并下载模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义损失函数"><span class="toc-number">2.3.</span> <span class="toc-text">定义损失函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#内容损失函数"><span class="toc-number">2.3.1.</span> <span class="toc-text">内容损失函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#风格损失函数"><span class="toc-number">2.3.2.</span> <span class="toc-text">风格损失函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方差损失"><span class="toc-number">2.3.3.</span> <span class="toc-text">方差损失</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#梯度和损失"><span class="toc-number">2.4.</span> <span class="toc-text">梯度和损失</span></a></li></ol></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>本文代码运行环境:</p>
+<ul>
+<li>windows10</li>
+<li>python3.6</li>
+<li>jupyter notebook</li>
+<li>tensorflow 1.x</li>
+<li>keras 2.x</li>
+</ul>
+<p>这必须是最酷的机器学习实现之一。如果你不知道什么是<code>neural style transfer</code>，它的大概意思就是将一个图片的内容和两个图片的风格融合构成一个新的图片。</p>
+<p>例如:</p>
+<p><img src="images/style-trans.png"></p>
+<p>在本教程中，我们将学习如何使用深度学习将图片的风格进行转换。这被称为<code>neural style transfer</code>！这是Leon A. Gatys的论文“A Neural Algorithm of Artistic Style,”中概述的一种技术，这个论很好，你一定要看看它:<a href="https://arxiv.org/abs/1508.06576" target="_blank" rel="noopener">https://arxiv.org/abs/1508.06576</a></p>
+<p>Neural style transfer is an optimization technique used to take three images, a content image, a style reference image (such as an artwork by a famous painter), and the input image you want to style — and blend them together such that the input image is transformed to look like the content image, but “painted” in the style of the style image.</p>
+<p>Neural style transfer的原理是定义两个距离函数，一个描述两个图像的内容有多么不同，<code>$L_{content}$</code>，一个描述两个图像之间的风格<code>$L_{style}$</code></p>
+<h3 id="总体步骤"><a href="#总体步骤" class="headerlink" title="总体步骤"></a>总体步骤</h3><ul>
+<li>数据的准备</li>
+<li>定义损失函数</li>
+<li>构建模型(使用预训练权重)</li>
+<li>训练模型</li>
+</ul>
+<p>本篇文章主要面向使用过keras的人, 大约阅读实践50分钟。</p>
+<h4 id="关于VGG19"><a href="#关于VGG19" class="headerlink" title="关于VGG19"></a>关于VGG19</h4><p>如果你自己训练过类似的模型, 你就会发现, 想要得到一个良好的风格转换模型是需要很长的训练时间的, 所以我们可以使用一些预训练模型。最流行的图片分类预训练模型就是VGG, 它是由Oxford的一些人在ImageNet数据集上训练得到的。原始版的VGG使用了Caffe进行训练, 所以没法直接在Tensorflow中直接使用。不过, Keras提供了一个VGG19的类, 它可以下载官方支持的Keras权重。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>引入用到的库并设置图片的高和宽:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorflow.contrib.keras.api.keras.backend <span class="keyword">as</span> K</span><br><span class="line"><span class="keyword">from</span> scipy.misc <span class="keyword">import</span> imsave, imresize</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> fmin_l_bfgs_b</span><br><span class="line"><span class="keyword">from</span> tensorflow.contrib.keras.api.keras.applications <span class="keyword">import</span> vgg19</span><br><span class="line"><span class="keyword">from</span> tensorflow.contrib.keras.api.keras.preprocessing.image <span class="keyword">import</span> load_img, img_to_array</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片的高和宽</span></span><br><span class="line">img_h = <span class="number">80</span></span><br><span class="line">img_w = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 两张图片</span></span><br><span class="line">CONTENT_IMG_PATH = <span class="string">'./images/content.jpg'</span></span><br><span class="line">STYLE_IMG_PATH = <span class="string">'./images/style.jpg'</span></span><br><span class="line"></span><br><span class="line">Image(filename=CONTENT_IMG_PATH, width=<span class="string">'200'</span>, height=<span class="string">'180'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="output_9_0.jpeg" alt="jpeg"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image(filename=STYLE_IMG_PATH, width=<span class="string">'200'</span>, height=<span class="string">'180'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="output_10_0.jpeg" alt="jpeg"></p>
+<h4 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h4><p>图片预处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preprocess</span><span class="params">(img_path)</span>:</span></span><br><span class="line">    img = load_img(img_path)</span><br><span class="line">    img = img_to_array(img)</span><br><span class="line">    <span class="comment"># 图片缩放到设置的大小</span></span><br><span class="line">    img = imresize(img, (img_h, img_w, <span class="number">3</span>))</span><br><span class="line">    img = img.astype(<span class="string">'float64'</span>)</span><br><span class="line">    <span class="comment"># 增加一个维度, 为了将三张图片在这个维度上合并</span></span><br><span class="line">    img = np.expand_dims(img, axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 图片处理成vgg模型需要的</span></span><br><span class="line">    img = vgg19.preprocess_input(img)</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 只是为了测试</span></span><br><span class="line">print(preprocess(CONTENT_IMG_PATH).shape)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    (1, 80, 100, 3)
+    <br>
+</div>
+
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:5: DeprecationWarning: `imresize` is deprecated!
+    <br>`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+    <br>Use ``skimage.transform.resize`` instead.
+    <br>  """
+    <br>
+</div>
+
+<h4 id="构建输入张量并下载模型"><a href="#构建输入张量并下载模型" class="headerlink" title="构建输入张量并下载模型"></a>构建输入张量并下载模型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">content_img = K.variable(preprocess(CONTENT_IMG_PATH))</span><br><span class="line">style_img = K.variable(preprocess(STYLE_IMG_PATH))</span><br><span class="line">gen_img = K.placeholder(shape=(<span class="number">1</span>, img_h, img_w, <span class="number">3</span>))</span><br><span class="line"><span class="comment"># 注意: 三个图片构成一个输入张量, 而每个图像所在位置要记住</span></span><br><span class="line">input_tensor = K.concatenate([content_img, style_img, gen_img], axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">model = vgg19.VGG19(include_top=<span class="keyword">False</span>, weights=<span class="string">'imagenet'</span>, input_tensor=input_tensor)</span><br><span class="line">print(<span class="string">'Model loaded'</span>)</span><br><span class="line"></span><br><span class="line">outputs_dict = dict([(layer.name, layer.output) <span class="keyword">for</span> layer <span class="keyword">in</span> model.layers])</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:5: DeprecationWarning: `imresize` is deprecated!
+    <br>`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+    <br>Use ``skimage.transform.resize`` instead.
+    <br>  """
+    <br>
+</div>
+
+
+<div class="output">
+输出(stream):<br>
+    Downloading data from https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5
+    <br>80142336/80134624 [==============================] - 70s 1us/step
+    <br>Model loaded
+    <br>
+</div>
+
+<p>我们可以大概看一下预训练的模型的基本结构:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outputs_dict</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    {'input_1': <tf.tensor 'concat:0'="" shape="(3," 80,="" 100,="" 3)="" dtype="float32">,
+    <br> 'block1_conv1': <tf.tensor 'block1_conv1="" relu:0'="" shape="(3," 80,="" 100,="" 64)="" dtype="float32">,
+    <br> 'block1_conv2': <tf.tensor 'block1_conv2="" relu:0'="" shape="(3," 80,="" 100,="" 64)="" dtype="float32">,
+    <br> 'block1_pool': <tf.tensor 'block1_pool="" maxpool:0'="" shape="(3," 40,="" 50,="" 64)="" dtype="float32">,
+    <br> 'block2_conv1': <tf.tensor 'block2_conv1="" relu:0'="" shape="(3," 40,="" 50,="" 128)="" dtype="float32">,
+    <br> 'block2_conv2': <tf.tensor 'block2_conv2="" relu:0'="" shape="(3," 40,="" 50,="" 128)="" dtype="float32">,
+    <br> 'block2_pool': <tf.tensor 'block2_pool="" maxpool:0'="" shape="(3," 20,="" 25,="" 128)="" dtype="float32">,
+    <br> 'block3_conv1': <tf.tensor 'block3_conv1="" relu:0'="" shape="(3," 20,="" 25,="" 256)="" dtype="float32">,
+    <br> 'block3_conv2': <tf.tensor 'block3_conv2="" relu:0'="" shape="(3," 20,="" 25,="" 256)="" dtype="float32">,
+    <br> 'block3_conv3': <tf.tensor 'block3_conv3="" relu:0'="" shape="(3," 20,="" 25,="" 256)="" dtype="float32">,
+    <br> 'block3_conv4': <tf.tensor 'block3_conv4="" relu:0'="" shape="(3," 20,="" 25,="" 256)="" dtype="float32">,
+    <br> 'block3_pool': <tf.tensor 'block3_pool="" maxpool:0'="" shape="(3," 10,="" 12,="" 256)="" dtype="float32">,
+    <br> 'block4_conv1': <tf.tensor 'block4_conv1="" relu:0'="" shape="(3," 10,="" 12,="" 512)="" dtype="float32">,
+    <br> 'block4_conv2': <tf.tensor 'block4_conv2="" relu:0'="" shape="(3," 10,="" 12,="" 512)="" dtype="float32">,
+    <br> 'block4_conv3': <tf.tensor 'block4_conv3="" relu:0'="" shape="(3," 10,="" 12,="" 512)="" dtype="float32">,
+    <br> 'block4_conv4': <tf.tensor 'block4_conv4="" relu:0'="" shape="(3," 10,="" 12,="" 512)="" dtype="float32">,
+    <br> 'block4_pool': <tf.tensor 'block4_pool="" maxpool:0'="" shape="(3," 5,="" 6,="" 512)="" dtype="float32">,
+    <br> 'block5_conv1': <tf.tensor 'block5_conv1="" relu:0'="" shape="(3," 5,="" 6,="" 512)="" dtype="float32">,
+    <br> 'block5_conv2': <tf.tensor 'block5_conv2="" relu:0'="" shape="(3," 5,="" 6,="" 512)="" dtype="float32">,
+    <br> 'block5_conv3': <tf.tensor 'block5_conv3="" relu:0'="" shape="(3," 5,="" 6,="" 512)="" dtype="float32">,
+    <br> 'block5_conv4': <tf.tensor 'block5_conv4="" relu:0'="" shape="(3," 5,="" 6,="" 512)="" dtype="float32">,
+    <br> 'block5_pool': <tf.tensor 'block5_pool="" maxpool:0'="" shape="(3," 2,="" 3,="" 512)="" dtype="float32">}
+
+</tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></tf.tensor></div>
+
+<h4 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h4><p>损失函数是这个教程最重要的部分,它决定了你是否能理解这个风格转换模型。所以, 让我们亲手把损失函数写出来:</p>
+<h5 id="内容损失函数"><a href="#内容损失函数" class="headerlink" title="内容损失函数"></a>内容损失函数</h5><p>内容损失函数只是对应像素值的差值的平方和(具体内容看注释):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内容图片和生成图片的像素点数值的差的平方和</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">content_loss</span><span class="params">(content, gen)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> K.sum(K.square(gen-content))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内容损失权重</span></span><br><span class="line">CONTENT_WEIGHT  = <span class="number">0.025</span></span><br><span class="line"><span class="comment"># 初始损失值为0</span></span><br><span class="line">loss = <span class="number">0.</span></span><br><span class="line"><span class="comment"># 我们并不是选择最后一层作为输出层</span></span><br><span class="line"><span class="comment"># 因为我们希望提取的是一些基本特征, 比如直线/斜线等</span></span><br><span class="line"><span class="comment"># 而越靠后的层的特征越倾向于识别更宏观的特征, 比如眼睛</span></span><br><span class="line">layer_features = outputs_dict[<span class="string">'block5_conv2'</span>]</span><br><span class="line"><span class="comment"># 内容图片位于第一</span></span><br><span class="line">content_img_features = layer_features[<span class="number">0</span>, :, :, :]</span><br><span class="line"><span class="comment"># 生成的图片位于最后</span></span><br><span class="line">gen_img_features = layer_features[<span class="number">2</span>, :, :, :]</span><br><span class="line"><span class="comment"># 损失值是需要加权的</span></span><br><span class="line">loss += CONTENT_WEIGHT * content_loss(content_img_features, gen_img_features)</span><br></pre></td></tr></table></figure>
+<h5 id="风格损失函数"><a href="#风格损失函数" class="headerlink" title="风格损失函数"></a>风格损失函数</h5><p>风格损失函数有点复杂, 它需要用到gram矩阵, 它是衡量特征之间的相关关系, 所以风格损失函数就是为了最小化风格图片和生成图片之间的特征相关矩阵的欧式距离。</p>
+<ul>
+<li>K.batch_flatten: 将一个n阶张量转变为2阶张量，其第一维度保留不变</li>
+<li>K.permute_dimensions: 转置</li>
+<li>gram matrix: 编码了不同特征之间的相关关系</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gram_matrix</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> K.ndim(x) == <span class="number">3</span></span><br><span class="line">    <span class="comment"># 将一个3阶张量转变为2阶张量，其第一维度保留不变</span></span><br><span class="line">    features = K.batch_flatten(K.permute_dimensions(x, (<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>)))</span><br><span class="line">    gram = K.dot(features, K.transpose(features))</span><br><span class="line">    <span class="keyword">return</span> gram</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">style_loss</span><span class="params">(style, gen)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> K.ndim(style) == <span class="number">3</span></span><br><span class="line">    <span class="keyword">assert</span> K.ndim(gen) == <span class="number">3</span></span><br><span class="line">    S = gram_matrix(style)</span><br><span class="line">    G = gram_matrix(gen)</span><br><span class="line">    channels = <span class="number">3</span></span><br><span class="line">    size = img_h * img_w</span><br><span class="line">    <span class="keyword">return</span> K.sum(K.square(S - G)) / (<span class="number">4.</span> * (channels ** <span class="number">2</span>) * (size ** <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意加权</span></span><br><span class="line">STYLE_WEIGHT = <span class="number">1</span></span><br><span class="line">feature_layer_names = [<span class="string">'block1_conv1'</span>, <span class="string">'block2_conv1'</span>, <span class="string">'block3_conv1'</span>, <span class="string">'block4_conv1'</span>, <span class="string">'block5_conv1'</span>]</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> feature_layer_names:</span><br><span class="line">    layer_features = outputs_dict[name]</span><br><span class="line">    style_features = layer_features[<span class="number">1</span>, :, :, :]</span><br><span class="line">    gen_img_features = layer_features[<span class="number">2</span>, :, :, :]</span><br><span class="line">    s1 = style_loss(style_features, gen_img_features)</span><br><span class="line">    loss += (STYLE_WEIGHT / len(feature_layer_names)) * s1</span><br></pre></td></tr></table></figure>
+<h5 id="方差损失"><a href="#方差损失" class="headerlink" title="方差损失"></a>方差损失</h5><p>还是有第三个损失函数, 是为了使生成的图片平滑, 减少噪音的产生, 具体看注释:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">total_variation_loss</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> K.ndim(x) == <span class="number">4</span></span><br><span class="line">    <span class="comment"># 纵向 相邻像素点差值的平方</span></span><br><span class="line">    a = K.square(x[:, :img_h - <span class="number">1</span>, :img_w - <span class="number">1</span>, :] - x[:, <span class="number">1</span>:, :img_w - <span class="number">1</span>, :])</span><br><span class="line">    <span class="comment"># 横向 相邻像素点差值的平方</span></span><br><span class="line">    b = K.square(x[:, :img_h - <span class="number">1</span>, :img_w - <span class="number">1</span>, :] - x[:, :img_h - <span class="number">1</span>, <span class="number">1</span>:, :])</span><br><span class="line">    <span class="keyword">return</span> K.sum(K.pow(a + b, <span class="number">1.25</span>))</span><br></pre></td></tr></table></figure>
+<p>所有的损失加和:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TV_WEIGHT = <span class="number">1</span></span><br><span class="line">loss += TV_WEIGHT * total_variation_loss(gen_img)</span><br></pre></td></tr></table></figure>
+<h4 id="梯度和损失"><a href="#梯度和损失" class="headerlink" title="梯度和损失"></a>梯度和损失</h4><p>梯度很容易计算。我们只是将生成的图像和损失函数传递给K.gradients（）函数即可。</p>
+<p>我们还需要定义一个Keras函数，用于计算优化过程中的损失和梯度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">grads = K.gradients(loss, gen_img)</span><br><span class="line"></span><br><span class="line">outputs = [loss]</span><br><span class="line"><span class="keyword">if</span> isinstance(grads, (list, tuple)):</span><br><span class="line">    outputs += grads</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    outputs.append(grads)</span><br><span class="line"></span><br><span class="line">f_output = K.function([gen_img], outputs)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eval_loss_and_grads</span><span class="params">(x)</span>:</span></span><br><span class="line">    x = x.reshape((<span class="number">1</span>, img_h, img_w, <span class="number">3</span>))</span><br><span class="line">    outs = f_output([x])</span><br><span class="line">    loss_value = outs[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> len(outs[<span class="number">1</span>:]) == <span class="number">1</span>:</span><br><span class="line">        grad_values = outs[<span class="number">1</span>].flatten().astype(<span class="string">'float64'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        grad_values = np.array(outs[<span class="number">1</span>:]).flatten().astype(<span class="string">'float64'</span>)</span><br><span class="line">    <span class="keyword">return</span> loss_value, grad_values</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Evaluator</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.loss_value = <span class="keyword">None</span></span><br><span class="line">        self.grads_value = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">loss</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">assert</span> self.loss_value <span class="keyword">is</span> <span class="keyword">None</span></span><br><span class="line">        loss_value, grad_value = eval_loss_and_grads(x)</span><br><span class="line">        self.loss_value = loss_value</span><br><span class="line">        self.grads_value = grad_value</span><br><span class="line">        <span class="keyword">return</span> self.loss_value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">grads</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">assert</span> self.loss_value <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span></span><br><span class="line">        grads_values = np.copy(self.grads_value)</span><br><span class="line">        self.loss_value = <span class="keyword">None</span></span><br><span class="line">        self.grads_value = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">return</span> grads_values</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">evaluator = Evaluator()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run L-BFGS optimizer</span></span><br><span class="line">x = preprocess(CONTENT_IMG_PATH)</span><br><span class="line"></span><br><span class="line">x, min_val, info = fmin_l_bfgs_b(evaluator.loss, x.flatten(), fprime=evaluator.grads, maxiter=<span class="number">100</span>)</span><br><span class="line">print(<span class="string">'    loss: &#123;&#125;'</span>.format(min_val))</span><br><span class="line"><span class="comment"># Save img</span></span><br><span class="line"><span class="comment"># print(x.reshape(img_h, img_w, 3))</span></span><br><span class="line">img = x.reshape(img_h, img_w, <span class="number">3</span>)</span><br><span class="line">imsave(<span class="string">'./output/img0.jpg'</span>, img)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:5: DeprecationWarning: `imresize` is deprecated!
+    <br>`imresize` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+    <br>Use ``skimage.transform.resize`` instead.
+    <br>  """
+    <br>
+</div>
+
+
+<div class="output">
+输出(stream):<br>
+        loss: 1516893568.0
+    <br>
+</div>
+
+
+<div class="output">
+输出(stream):<br>
+    d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:11: DeprecationWarning: `imsave` is deprecated!
+    <br>`imsave` is deprecated in SciPy 1.0.0, and will be removed in 1.2.0.
+    <br>Use ``imageio.imwrite`` instead.
+    <br>  # This is added back by InteractiveShellApp.init_path()
+    <br>
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Image(filename = <span class="string">'./output/img0.jpg'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="output_34_0.jpeg" alt="jpeg"></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="keras教程-n-图片风格转换理论和实践.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/keras教程/">#keras教程</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/keras教程/">
+            keras教程
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">
+                    keras教程-n-图片风格转换理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">
+                    使用谷歌翻译接口进行句子翻译
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">
+                    keras教程-n-CUDA无法找到cudnn的错误解决
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/16/keras教程-08-Dropout的原理和实现/">
+                    keras教程-08-Dropout的原理和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/03/keras教程-n-GAN对抗生成网络的理论和实践/">
+                    keras教程-n-GAN对抗生成网络的理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-循环神经网络的注意力机制的理论和实现/">
+                    keras教程-n-循环神经网络的注意力机制的理论和实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/02/keras教程-n-10分钟入门LSTM/">
+                    keras教程-n-10分钟入门LSTM
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/01/keras教程-06-优化器详细解释/">
+                    keras教程-06-优化器详细解释
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/30/keras基础-Dense的输入的秩大于2时的注意事项/">
+                    keras基础-Dense的输入的秩大于2时的注意事项
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/">
+                    keras教程-05-实验验证神经网络的深度-样本量-dropout
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/20/keras教程-04-手写字体识别/">
+                    keras教程-04-手写字体识别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/17/keras教程-03-深度学习基础和keras入门/">
+                    keras教程-03-深度学习基础和keras入门
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/16/keras教程-02-tensorflow和keras安装/">
+                    keras教程-02-tensorflow和keras安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/07/15/keras教程-01-神经网络图解和手动计算/">
+                    keras教程-01-神经网络图解和手动计算
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">keras教程-n-图片风格转换理论和实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

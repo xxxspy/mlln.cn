@@ -197,6 +197,65 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/02/01/Excel2013：[25]如何输入分数/">
+                Excel2013：[25]如何输入分数
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年02月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>在Excel单元格里输入分数会自动转换成日期，我们可以在前面输入0+空格来解决这个问题，如果你不理解就看下面的具体过程：</p>
+<ul>
+<li>我们先输入一个分数看看效果，按下回车键</li>
+</ul>
+<img src="/2015/02/01/Excel2013：[25]如何输入分数/bd70426034a85edfcd94f65a4b540923dd54756b.jpg" title="Excel2013：[25]如何输入分数">
+<ul>
+<li>自动的转换成了日期1月2日</li>
+</ul>
+<img src="/2015/02/01/Excel2013：[25]如何输入分数/ca5257540923dd54136baf11d309b3de9c82486b.jpg" title="Excel2013：[25]如何输入分数">
+<ul>
+<li>我们接着用正确的方法试一遍，先输入0和一个空格</li>
+</ul>
+<img src="/2015/02/01/Excel2013：[25]如何输入分数/9319cf09b3de9c829b7df1f66e81800a19d8436b.jpg" title="Excel2013：[25]如何输入分数">
+<ul>
+<li>在输入分数1/2，按下回车键</li>
+</ul>
+<img src="/2015/02/01/Excel2013：[25]如何输入分数/adee30dda3cc7cd991193ca03b01213fb80e9157.jpg" title="Excel2013：[25]如何输入分数">
+<ul>
+<li>这时候你看到的才是一个分数，在公示栏显示的值为0.5，大功告成</li>
+</ul>
+<img src="/2015/02/01/Excel2013：[25]如何输入分数/a28d62d98d1001e927081c76ba0e7bec54e79757.jpg" title="Excel2013：[25]如何输入分数">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/02/01/pandas教程：[13]agg分组多种计算/">
                 pandas教程：[13]agg分组多种计算
             </a>
@@ -826,95 +885,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/01/11/Python教程：[71]类的继承/">
-                Python教程：[71]类的继承
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年01月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>类（class），可以继承基类以便形成具有自己独特属性的类，我们在面向对象的编程中，经常用到类及其继承，可以说没有什么不是类的，今天我们就来详细探讨一下在python中，类的继承是如何做的。</p>
-<ul>
-<li>我们假设有一个类叫做point，顾名思义，point就是一个点，它有横坐标和纵坐标。我们在python中创建一个point类（书上说类名称都要开头字母大写，这是国际惯例）</li>
-</ul>
-<img src="/2015/01/11/Python教程：[71]类的继承/0e655ca7d933c895234d75f3d31373f0830200cc.jpg" title="Python教程：[71]类的继承">
-<ul>
-<li>最简单的继承类的方式是这样：只需要在生命类的时候加一个括号和基类</li>
-</ul>
-<img src="/2015/01/11/Python教程：[71]类的继承/4e0b3ea4462309f7d403409a700e0cf3d6cad68f.jpg" title="Python教程：[71]类的继承">
-<ul>
-<li><p>这种方法并没有声明该类的构造器，这样它会隐性调用基类的构造器，所以，在实例化的时候，也要注意基类的构造器需要哪些参数，不要出现这样的错误：这种错误容易发生是因为我们在子类的声明中并没有看到什么参数，在使用的时候就容易忘记基类中需要的参数</p>
-</li>
-<li><p>Traceback (most recent call last):</p>
-</li>
-<li><p>File “<pyshell#11>“, line 1, in <module></module></pyshell#11></p>
-</li>
-<li><p>a=point1()</p>
-</li>
-<li><p>TypeError: <strong>init</strong>() takes exactly 3 arguments (1 given)</p>
-</li>
-</ul>
-<img src="/2015/01/11/Python教程：[71]类的继承/d35a10f41bd5ad6e0302896283cb39dbb7fd3c04.jpg" title="Python教程：[71]类的继承">
-<ul>
-<li>这样来用就没问题了。</li>
-</ul>
-<img src="/2015/01/11/Python教程：[71]类的继承/a84052086e061d952d27dbb079f40ad163d9ca92.jpg" title="Python教程：[71]类的继承">
-<ul>
-<li>类的继承一般情况下，我们都是要重写类的构造器，然后再调用基类的构造器，不然基类的构造器在这种情况下不会自动调用。应该这样写：类point2比基类增加了一个属性z</li>
-</ul>
-<img src="/2015/01/11/Python教程：[71]类的继承/a992e31f4134970a8cc0fca797cad1c8a6865d4c.jpg" title="Python教程：[71]类的继承">
-<ul>
-<li>实例化：</li>
-</ul>
-<img src="/2015/01/11/Python教程：[71]类的继承/30ecd5ef76094b36d019f765a1cc7cd98c109d74.jpg" title="Python教程：[71]类的继承">
-<ul>
-<li><p>我们看这样一个写法特别容易出错：你能看出哪里错了吗？<br>错误代码：</p>
-</li>
-<li><p>Traceback (most recent call last):</p>
-</li>
-<li><p>File “<pyshell#50>“, line 1, in <module></module></pyshell#50></p>
-</li>
-<li><p>b=point2(1,2,3)</p>
-</li>
-<li><p>File “<pyshell#45>“, line 3, in <strong>init</strong></pyshell#45></p>
-</li>
-<li><p>point.<strong>init</strong>(x,y)</p>
-</li>
-<li><p>TypeError: unbound method <strong>init</strong>() must be called with point instance as first argument (got int instance instead)</p>
-</li>
-</ul>
-<img src="/2015/01/11/Python教程：[71]类的继承/bd7faf3533fa828b103c726bff1f4134960a5ad8.jpg" title="Python教程：[71]类的继承">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -957,6 +927,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">keras教程-n-图片风格转换理论和实践</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
             </li>
             
@@ -992,10 +966,6 @@
                 <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/13/机器学习的评估方法有哪些/">机器学习的评估方法有哪些</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1007,23 +977,15 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -1035,11 +997,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/django/">django</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
@@ -1055,19 +1017,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
@@ -1079,6 +1037,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
@@ -1087,11 +1049,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1107,19 +1077,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
@@ -1127,7 +1093,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1139,11 +1105,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1199,19 +1165,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -1227,15 +1193,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1243,11 +1205,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sublime/">sublime</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
         </span>
         
         <span>
@@ -1259,11 +1221,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
@@ -1271,15 +1233,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -1299,15 +1261,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
@@ -1327,6 +1289,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/可视化/">可视化</a>
         </span>
         
@@ -1335,11 +1305,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
@@ -1352,6 +1318,10 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1379,19 +1349,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/hexo/">hexo</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
         </span>
         
         <span>
@@ -1404,6 +1370,10 @@
         
         <span>
             <a class="footer-post" href="/tags/停用词/">停用词</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
         </span>
         
     </ul>
