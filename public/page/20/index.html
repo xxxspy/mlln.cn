@@ -197,6 +197,86 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/10/03/SPSS python教程：[6]读取PivotTable行标签/">
+                SPSS python教程：[6]读取PivotTable行标签
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年10月03日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>spss输出的结果文档用到最多的就是数据透视表（pivot table），在spss中，数据透视表被分为三个部分：行标签列表、列标签列表、数据列表。你可能还不理解这些内容。我们从这篇开始介绍数据透视表的行标签，并用python读取行标签，然后输出。看看代码吧：</p>
+<ul>
+<li>这是在spss结果文档中输出的一个数据透视表，我们要读取它的行标签</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/8b527d2762d0f7036208ba450afa513d2797c5b6.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>这就是行标签，但是它并不像我们看到的那么简单，我们试着读取行标签就知道了</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/6c63514a20a4462308668afb9a22720e0df3d7bf.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>创建一个python脚本文件：outputTrim.py，下图中你可以看到该文件存放的目录</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/48151723dd54564efa5acaa0b1de9c82d1584f28.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>接着先写入代码StartClient和stopclient，所有操作spss的代码都应该放在这两句之间。</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/dc15484e9258d109d807862bd358ccbf6d814d07.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>我们详细讲解一下代码的意义，先看这两句，假如我们只打开了一个结果文档，我们使用第一句代码可以获取该文档的句柄；第二句获取该文档下所有的输出项目，里面包含但不仅限于数据透视表，outputItems是一个列表</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/9864a2315c6034a83fae9618c91349540823769f.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>通过循环，我们可以找到名称为’Descriptive Statistics’的数据透视表。我们看下面的if语句，首先判断输出项是不是PIVOT，然后判断该输出项的标题为’Descriptive Statistics’的PIVOT，获取标题用的是GetDescription</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/263e802f07082838c19ff28dba99a9014d08f15e.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>这句代码是将找到的这个输出项转换为数据透视表，这样才能使用数据透视表所具有的类和方法</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/814b07d8bc3eb13540169922a41ea8d3fc1f4412.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>这一句就是获取数据透视表的行标签</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/9304c888d43f879430a461b7d01b0ef41ad53a94.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>我们用这个循环来输出所有的行标签，看看输出结果是啥样的</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/35e940df8db1cb132a38158adf54564e93584b92.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<ul>
+<li>这就是输出结果，跟数据透视表对比一下，你就知道行标签到底代表着什么。</li>
+</ul>
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/6f4703950a7b02089dae167860d9f2d3562cc881.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<img src="/2016/10/03/SPSS%20python教程：[6]读取PivotTable行标签/6c63514a20a4462308668afb9a22720e0df3d7bf.jpg" title="SPSS python教程：[6]读取PivotTable行标签">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/10/03/SPSS实例：[31]统计选项频数/">
                 SPSS实例：[31]统计选项频数
             </a>
@@ -954,65 +1034,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/23/Python教程：[59]读取txt内容/">
-                Python教程：[59]读取txt内容
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年09月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>前三篇文章主要将写入txt，今天我们讲读取txt，读取txt其实就是以r模式打开txt文件，然后读取其内容，下面看一下代码吧：</p>
-<ul>
-<li>以可读模式打开txt文件：</li>
-</ul>
-<img src="/2016/09/23/Python教程：[59]读取txt内容/55a628d12f2eb9387f1b3072d7628535e4dd6ff9.jpg" title="Python教程：[59]读取txt内容">
-<ul>
-<li>读取第一行内容，保存在line中，然后打印出line</li>
-</ul>
-<img src="/2016/09/23/Python教程：[59]读取txt内容/8474fbdde71190ef9dffd85fcc1b9d16fcfa60ef.jpg" title="Python教程：[59]读取txt内容">
-<ul>
-<li>通过循环就能读出所有行：注意readine每调用一次就会读取下一行</li>
-</ul>
-<img src="/2016/09/23/Python教程：[59]读取txt内容/9c57e3faaf51f3de46b6f3e496eef01f3b2979ef.jpg" title="Python教程：[59]读取txt内容">
-<ul>
-<li>还可以使用这个方法读取所有的行</li>
-</ul>
-<img src="/2016/09/23/Python教程：[59]读取txt内容/ae10eddeb48f8c5460d78faf38292df5e1fe7fef.jpg" title="Python教程：[59]读取txt内容">
-<ul>
-<li>速度更快的方法是直接使用多行读取的方法：readlines，参数5表示读取5行</li>
-</ul>
-<img src="/2016/09/23/Python教程：[59]读取txt内容/8d158aeef01f3a29dacc9f4e9b25bc315d607cef.jpg" title="Python教程：[59]读取txt内容">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -1055,6 +1076,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">keras教程-n-图片风格转换理论和实践</a>
             </li>
             
@@ -1090,10 +1115,6 @@
                 <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1105,11 +1126,15 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -1137,6 +1162,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
         </span>
         
@@ -1145,15 +1174,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -1177,10 +1206,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
         </span>
         
@@ -1190,6 +1215,10 @@
         
         <span>
             <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1209,7 +1238,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1218,10 +1247,6 @@
         
         <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1261,11 +1286,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1274,10 +1303,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1293,19 +1318,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1321,19 +1346,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
@@ -1357,11 +1382,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -1369,7 +1390,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1393,6 +1418,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
         </span>
         
@@ -1405,23 +1434,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1433,23 +1446,23 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/stata/">stata</a>
         </span>
         
         <span>
@@ -1465,6 +1478,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
@@ -1477,6 +1502,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
         </span>
         
@@ -1485,23 +1518,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/hexo/">hexo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
         </span>
         
     </ul>

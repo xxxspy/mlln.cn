@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+    <meta name="google-site-verification" content="9u46OktHbeTxNDz-JxV9VkIriabOgsvCZ4HQs4t3BZE" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="安装stata并在jupyter notebook中调用"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>安装stata并在jupyter notebook中调用 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<div class="navbar navbar-default navbar-fixed-top hidden-sm-down">
+    <div class="container">
+        <a class="navbar-brand" href="/">DataScience</a>
+        <div class="collapse navbar-collapse show" id="nav-links">
+        <ul class="navbar-nav">
+            <a href="/tags/tensorflow教程/" class="btn navbar-btn col-sm-10 col-md-3">Tensorflow教程</a>
+            <a href="/tags/python/" class="btn navbar-btn col-sm-10 col-md-3">Python教程</a>
+        </ul></div>
+        <a class="btn navbar-btn col-sm-5 col-md-1" data-toggle="collapse" id="toggle-nav" data-target="#nav-links">收起菜单</a>
+    </div>
+</div>
+
+
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/11/01/安装stata并在jupyter-notebook中调用/">
+                安装stata并在jupyter notebook中调用
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="安装stata并在jupyter notebook中调用"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年11月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>Stata是做生物统计/计量经济学的重要统计工具, 而python是做数据科学的利器, ipystata将stata和python结合在一起, 并能够在jupyter notebook中使用, 使得我们的工作效率大大提升。下面我们介绍一下, 如何安装stata, 如何在python中使用stata, 并进行stata的一些自动化操作。</p>
+<p>目前来看, 在jupyternotebook中使用stata有两种方案:</p>
+<ul>
+<li>方案一: 使用ipystata模块, 这个模块提供了<code>%%stata</code>魔法函数, 可以把notebook的cell可以执行stata语句</li>
+<li>方案二: 使用stata_kernel, 它实际上是一个notebook kernel, 使用stata kernel创建的notebook, 只能执行stata语句</li>
+</ul>
+<p>下面我们分别介绍两种方案。</p>
+<a id="more"></a>
+<h2 id="安装stata"><a href="#安装stata" class="headerlink" title="安装stata"></a>安装stata</h2><p>安装stata非常简单, 基本上都是一路next, 不过我把一些需要注意的步骤贴在下面, 便于你选择:</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>链接：<a href="https://pan.baidu.com/s/15cWE_4mxKmOiT08yhG8GXQ" target="_blank" rel="noopener">https://pan.baidu.com/s/15cWE_4mxKmOiT08yhG8GXQ</a><br>提取码：zuaz </p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>双击安装:<br><img src="install01.png"><br>注意选择stata/SE:<br><img src="install02.png"><br>这里不用改, 只需要记住stata的安装目录, 后面会用到:<br><img src="install03.png"><br>安装好了以后, 来到安装目录, 打开stata:<br><img src="install04.png"><br>注意, 不需要注册:<br><img src="install05.png"><br>最好不要让他自动更新:<br><img src="install06.png"><br>输入注册码:<br><img src="注册码.jpg"></p>
+<h3 id="命令行注册"><a href="#命令行注册" class="headerlink" title="命令行注册"></a>命令行注册</h3><p>这是windows的安装方法, 如果你是linux, 也是类似的道理, 需要运行stata命令来注册。</p>
+<p>使用管理员模式打开powershell:</p>
+<p><img src="powershell.png"></p>
+<p>工作目录调整到stata的安装目录, 然后执行命令<code>.\StataSE-64.exe /Register</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\syd&gt; cd c:/</span><br><span class="line">PS C:\&gt; cd <span class="string">'.\Program Files (x86)\'</span></span><br><span class="line">PS C:\Program Files (x86)&gt; cd .\Starth\</span><br><span class="line">PS C:\Program Files (x86)\Starth&gt; cd ..</span><br><span class="line">PS C:\Program Files (x86)&gt; cd .\Stata15\</span><br><span class="line">PS C:\Program Files (x86)\Stata15&gt; .\StataSE-<span class="number">64</span>.exe /Register</span><br><span class="line">PS C:\Program Files (x86)\Stata15&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="方案一-使用stata魔法函数"><a href="#方案一-使用stata魔法函数" class="headerlink" title="方案一: 使用stata魔法函数"></a>方案一: 使用stata魔法函数</h2><h3 id="安装python模块"><a href="#安装python模块" class="headerlink" title="安装python模块"></a>安装python模块</h3><p>(假设你已经安装好了jupyter notebook)</p>
+<p>你需要使用pip安装两个模块:</p>
+<p>‘’’<br>pip install ipystata<br>pip install psutil<br>‘’’</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>自己随便新建一个notebook , 然后先设置stata的路径:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ipystata  </span><br><span class="line"><span class="keyword">from</span> ipystata.config <span class="keyword">import</span> config_stata  </span><br><span class="line">config_stata(<span class="string">r'C:\Program Files (x86)\Stata15\StataSE-64.exe'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后你可以使用魔法函数<code>%%stata</code>运行一个stata的输出命令:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">display</span> <span class="string">"hello world"</span></span><br></pre></td></tr></table></figure>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>把pandas.DataFrame发送给stata使用:</p>
+<p>在python中提前定义好一个df(DataFrame), 然后:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%%stata -d df</span><br></pre></td></tr></table></figure>
+<p>或者把数据从stata输出到python:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%%stata -o df</span><br></pre></td></tr></table></figure></p>
+<p>为了调试, 运行stata的时候, 可以设置打开stata的操作界面:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%%stata -os</span><br></pre></td></tr></table></figure>
+<p>输出图表:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%%stata -gr</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>还有很多用法请参考github地址: <a href="https://github.com/TiesdeKok/ipystata/blob/master/ipystata/Example.ipynb" target="_blank" rel="noopener">https://github.com/TiesdeKok/ipystata/blob/master/ipystata/Example.ipynb</a></p>
+<h2 id="方案二-使用stata-kernel"><a href="#方案二-使用stata-kernel" class="headerlink" title="方案二: 使用stata kernel"></a>方案二: 使用stata kernel</h2><h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>在<code>powershell</code>中执行下面两条命令即可:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install stata_kernel</span><br><span class="line">python -m stata_kernel.install</span><br></pre></td></tr></table></figure>
+<p>安装输出:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">Looking in indexes: https://mirrors.ustc.edu.cn/pypi/web/simple</span><br><span class="line">Collecting stata_kernel</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/10/5c/b0bebe1214f09d50439622ad812fb165b5a8caba1fd0f83d51b67ebc7e4f/stata_kernel-1.5.5-py3-none-any.whl (60kB)</span><br><span class="line">    100% |████████████████████████████████| 61kB 2.2MB/s</span><br><span class="line">Collecting requests&gt;=2.19.1 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/65/47/7e02164a2a3db50ed6d8a6ab1d6d60b69c4c3fdf57a284257925dfc12bda/requests-2.19.1-py2.py3-none-any.whl (91kB)</span><br><span class="line">    100% |████████████████████████████████| 92kB 1.6MB/s</span><br><span class="line">Collecting packaging&gt;=17.1 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/89/d1/92e6df2e503a69df9faab187c684585f0136662c12bb1f36901d426f3fab/packaging-18.0-py2.py3-none-any.whl</span><br><span class="line">Requirement already satisfied: jupyter&gt;=1.0.0 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from stata_kernel) (1.0.0)</span><br><span class="line">Requirement already satisfied: pygments&gt;=2.2.0 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from stata_kernel) (2.2.0)</span><br><span class="line">Requirement already satisfied: jupyter-client&gt;=5.2.3 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from stata_kernel) (5.2.3)</span><br><span class="line">Requirement already satisfied: pywin32&gt;=223; platform_system == &quot;Windows&quot; in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from stata_kernel) (224)</span><br><span class="line">Collecting pexpect&gt;=4.6.0 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/89/e6/b5a1de8b0cc4e07ca1b305a4fcc3f9806025c1b651ea302646341222f88b/pexpect-4.6.0-py2.py3-none-any.whl (57kB)</span><br><span class="line">    100% |████████████████████████████████| 61kB 20.5MB/s</span><br><span class="line">Collecting pandas&gt;=0.23.4 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/0e/67/def5bfaf4d3324fdb89048889ec523c0903c5efab1a64c8dbe0ac8eec13c/pandas-0.23.4-cp36-cp36m-win_amd64.whl (7.7MB)</span><br><span class="line">    100% |████████████████████████████████| 7.7MB 34.2MB/s</span><br><span class="line">Collecting regex&gt;=2018.7.11 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/15/a5/cdb73862c207dcbb2dec5a4c64f850314910c55097dfa12cdfc533892502/regex-2018.08.29-cp36-none-win_amd64.whl (255kB)</span><br><span class="line">    100% |████████████████████████████████| 256kB 1.9MB/s</span><br><span class="line">Requirement already satisfied: ipykernel&gt;=4.8.2 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from stata_kernel) (4.8.2)</span><br><span class="line">Collecting IPython&gt;=6.5.0 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/a0/27/29d66ed395a5c2c3a912332d446a54e2bc3277c36b0bbd22bc71623e0193/ipython-7.0.1-py3-none-any.whl (760kB)</span><br><span class="line">    100% |████████████████████████████████| 768kB 3.5MB/s</span><br><span class="line">Collecting beautifulsoup4&gt;=4.6.3 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/21/0a/47fdf541c97fd9b6a610cb5fd518175308a7cc60569962e776ac52420387/beautifulsoup4-4.6.3-py3-none-any.whl (90kB)</span><br><span class="line">    100% |████████████████████████████████| 92kB 452kB/s</span><br><span class="line">Collecting pillow&gt;=5.2.0 (from stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/bd/39/c76eaf781343162bdb1cf4854cb3bd5947a87ee44363e5acd6c48d69c4a1/Pillow-5.3.0-cp36-cp36m-win_amd64.whl (1.6MB)</span><br><span class="line">    100% |████████████████████████████████| 1.6MB 11.4MB/s</span><br><span class="line">Requirement already satisfied: certifi&gt;=2017.4.17 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests&gt;=2.19.1-&gt;stata_kernel) (2018.4.16)</span><br><span class="line">Requirement already satisfied: urllib3&lt;1.24,&gt;=1.21.1 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests&gt;=2.19.1-&gt;stata_kernel) (1.22)</span><br><span class="line">Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests&gt;=2.19.1-&gt;stata_kernel) (3.0.4)</span><br><span class="line">Requirement already satisfied: idna&lt;2.8,&gt;=2.5 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from requests&gt;=2.19.1-&gt;stata_kernel) (2.6)</span><br><span class="line">Requirement already satisfied: six in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from packaging&gt;=17.1-&gt;stata_kernel) (1.11.0)</span><br><span class="line">Requirement already satisfied: pyparsing&gt;=2.0.2 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from packaging&gt;=17.1-&gt;stata_kernel) (2.2.0)</span><br><span class="line">Requirement already satisfied: notebook in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter&gt;=1.0.0-&gt;stata_kernel) (5.5.0)</span><br><span class="line">Requirement already satisfied: ipywidgets in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter&gt;=1.0.0-&gt;stata_kernel) (7.2.1)</span><br><span class="line">Requirement already satisfied: jupyter-console in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter&gt;=1.0.0-&gt;stata_kernel) (5.2.0)</span><br><span class="line">Requirement already satisfied: nbconvert in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter&gt;=1.0.0-&gt;stata_kernel) (5.3.1)</span><br><span class="line">Requirement already satisfied: qtconsole in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter&gt;=1.0.0-&gt;stata_kernel) (4.3.1)</span><br><span class="line">Requirement already satisfied: python-dateutil&gt;=2.1 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter-client&gt;=5.2.3-&gt;stata_kernel) (2.7.3)</span><br><span class="line">Requirement already satisfied: pyzmq&gt;=13 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter-client&gt;=5.2.3-&gt;stata_kernel) (17.0.0)</span><br><span class="line">Requirement already satisfied: traitlets in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter-client&gt;=5.2.3-&gt;stata_kernel) (4.3.2)</span><br><span class="line">Requirement already satisfied: jupyter-core in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter-client&gt;=5.2.3-&gt;stata_kernel) (4.4.0)</span><br><span class="line">Requirement already satisfied: tornado&gt;=4.1 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jupyter-client&gt;=5.2.3-&gt;stata_kernel) (5.0.2)</span><br><span class="line">Collecting ptyprocess&gt;=0.5 (from pexpect&gt;=4.6.0-&gt;stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/d1/29/605c2cc68a9992d18dada28206eeada56ea4bd07a239669da41674648b6f/ptyprocess-0.6.0-py2.py3-none-any.whl</span><br><span class="line">Requirement already satisfied: pytz&gt;=2011k in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from pandas&gt;=0.23.4-&gt;stata_kernel) (2018.4)</span><br><span class="line">Requirement already satisfied: numpy&gt;=1.9.0 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from pandas&gt;=0.23.4-&gt;stata_kernel) (1.14.1)</span><br><span class="line">Requirement already satisfied: colorama; sys_platform == &quot;win32&quot; in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from IPython&gt;=6.5.0-&gt;stata_kernel) (0.3.9)</span><br><span class="line">Requirement already satisfied: decorator in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from IPython&gt;=6.5.0-&gt;stata_kernel) (4.3.0)</span><br><span class="line">Requirement already satisfied: pickleshare in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from IPython&gt;=6.5.0-&gt;stata_kernel) (0.7.4)</span><br><span class="line">Requirement already satisfied: simplegeneric&gt;0.8 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from IPython&gt;=6.5.0-&gt;stata_kernel) (0.8.1)</span><br><span class="line">Requirement already satisfied: setuptools&gt;=18.5 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from IPython&gt;=6.5.0-&gt;stata_kernel) (28.8.0)</span><br><span class="line">Requirement already satisfied: jedi&gt;=0.10 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from IPython&gt;=6.5.0-&gt;stata_kernel) (0.12.0)</span><br><span class="line">Collecting prompt-toolkit&lt;2.1.0,&gt;=2.0.0 (from IPython&gt;=6.5.0-&gt;stata_kernel)</span><br><span class="line">  Downloading https://mirrors.ustc.edu.cn/pypi/web/packages/e5/c5/f1ee6698bdcf615f171a77e81ca70293b16a6d82285f1760b388b4348263/prompt_toolkit-2.0.5-py3-none-any.whl (334kB)</span><br><span class="line">    100% |████████████████████████████████| 337kB 12.8MB/s</span><br><span class="line">Requirement already satisfied: backcall in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from IPython&gt;=6.5.0-&gt;stata_kernel) (0.1.0)</span><br><span class="line">Requirement already satisfied: Send2Trash in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (1.5.0)</span><br><span class="line">Requirement already satisfied: terminado&gt;=0.8.1 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (0.8.1)</span><br><span class="line">Requirement already satisfied: jinja2 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (2.10)</span><br><span class="line">Requirement already satisfied: nbformat in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (4.4.0)</span><br><span class="line">Requirement already satisfied: ipython-genutils in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (0.2.0)</span><br><span class="line">Requirement already satisfied: widgetsnbextension~=3.2.0 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from ipywidgets-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (3.2.1)</span><br><span class="line">Requirement already satisfied: mistune&gt;=0.7.4 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from nbconvert-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (0.8.3)</span><br><span class="line">Requirement already satisfied: bleach in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from nbconvert-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (1.5.0)</span><br><span class="line">Requirement already satisfied: entrypoints&gt;=0.2.2 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from nbconvert-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (0.2.3)</span><br><span class="line">Requirement already satisfied: testpath in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from nbconvert-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (0.3.1)</span><br><span class="line">Requirement already satisfied: pandocfilters&gt;=1.4.1 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from nbconvert-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (1.4.2)</span><br><span class="line">Requirement already satisfied: parso&gt;=0.2.0 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jedi&gt;=0.10-&gt;IPython&gt;=6.5.0-&gt;stata_kernel) (0.2.0)</span><br><span class="line">Requirement already satisfied: wcwidth in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from prompt-toolkit&lt;2.1.0,&gt;=2.0.0-&gt;IPython&gt;=6.5.0-&gt;stata_kernel) (0.1.7)</span><br><span class="line">Requirement already satisfied: pywinpty&gt;=0.5; os_name == &quot;nt&quot; in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from terminado&gt;=0.8.1-&gt;notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (0.5.1)</span><br><span class="line">Requirement already satisfied: MarkupSafe&gt;=0.23 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from jinja2-&gt;notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (1.0)</span><br><span class="line">Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from nbformat-&gt;notebook-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (2.6.0)</span><br><span class="line">Requirement already satisfied: html5lib!=0.9999,!=0.99999,&lt;0.99999999,&gt;=0.999 in d:\mysites\deeplearning.ai-master\.env\lib\site-packages (from bleach-&gt;nbconvert-&gt;jupyter&gt;=1.0.0-&gt;stata_kernel) (0.9999999)</span><br><span class="line">spacy 2.0.11 has requirement regex==2017.4.5, but you&apos;ll have regex 2018.8.29 which is incompatible.</span><br><span class="line">jupyter-console 5.2.0 has requirement prompt-toolkit&lt;2.0.0,&gt;=1.0.0, but you&apos;ll have prompt-toolkit 2.0.5 which is incompatible.</span><br><span class="line">Installing collected packages: requests, packaging, ptyprocess, pexpect, pandas, regex, prompt-toolkit, IPython, beautifulsoup4, pillow, stata-kernel</span><br><span class="line">  Found existing installation: requests 2.18.4</span><br><span class="line">    Uninstalling requests-2.18.4:</span><br><span class="line">      Successfully uninstalled requests-2.18.4</span><br><span class="line">  Found existing installation: pandas 0.23.0</span><br><span class="line">    Uninstalling pandas-0.23.0:</span><br><span class="line">      Successfully uninstalled pandas-0.23.0</span><br><span class="line">  Found existing installation: regex 2017.4.5</span><br><span class="line">    Uninstalling regex-2017.4.5:</span><br><span class="line">      Successfully uninstalled regex-2017.4.5</span><br><span class="line">  Found existing installation: prompt-toolkit 1.0.15</span><br><span class="line">    Uninstalling prompt-toolkit-1.0.15:</span><br><span class="line">      Successfully uninstalled prompt-toolkit-1.0.15</span><br><span class="line">  Found existing installation: ipython 6.4.0</span><br><span class="line">    Uninstalling ipython-6.4.0:</span><br><span class="line">      Successfully uninstalled ipython-6.4.0</span><br><span class="line">  Found existing installation: Pillow 5.1.0</span><br><span class="line">    Uninstalling Pillow-5.1.0:</span><br><span class="line">      Successfully uninstalled Pillow-5.1.0</span><br><span class="line">Successfully installed IPython-7.0.1 beautifulsoup4-4.6.3 packaging-18.0 pandas-0.23.4 pexpect-4.6.0 pillow-5.3.0 prompt-toolkit-2.0.5 ptyprocess-0.6.0 regex-2018.8.29 requests-2.19.1 stata-kernel-1.5.5</span><br><span class="line">You are using pip version 18.0, however version 18.1 is available.</span><br><span class="line">You should consider upgrading via the &apos;python -m pip install --upgrade pip&apos; command.</span><br></pre></td></tr></table></figure>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>打开你的notebook:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+<p>然后, 创建一个statanotebook:</p>
+<p><img src="stata.png"></p>
+<p>最后, 你就可以在cell中写stata命令了:</p>
+<p><img src="https://kylebarron.github.io/stata_kernel/img/starting_jupyter_notebook.gif"></p>
+<p>教程到这里就结束了, 希望大家关注mlln.cn, 以后还会有stata的教程。</p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/jupyter/">#jupyter</a> <a href="/tags/stata/">#stata</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/jupyter/">
+            jupyter
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/11/01/安装stata并在jupyter-notebook中调用/">
+                    安装stata并在jupyter notebook中调用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
+                    jupyter notebook 扩展开发之  文件保存钩子
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/">
+                    jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
+                    jupyter notebook扩展开发之前端插件开发
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/">
+                    jupyter notebook 扩展开发之 Custom bundler extensions
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之内容API/">
+                    jupyter notebook 扩展开发之内容API
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/">
+                    jupyter notebook 扩展开发之自定义请求处理程序
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/stata/">
+            stata
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/11/01/安装stata并在jupyter-notebook中调用/">
+                    安装stata并在jupyter notebook中调用
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">keras教程-n-图片风格转换理论和实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">炫技:用numpy和matplotlib绘制卡通人</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

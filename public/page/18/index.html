@@ -197,6 +197,81 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/06/14/远程数据库下载和查询教程/">
+                远程数据库下载和查询教程
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月14日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="使用ssh登录Linux"><a href="#使用ssh登录Linux" class="headerlink" title="使用ssh登录Linux"></a>使用ssh登录Linux</h2><ul>
+<li>新建链接，输入以下信息</li>
+</ul>
+<img src="/2017/06/14/远程数据库下载和查询教程/enter-host-user.jpg">
+<ul>
+<li>输入密码</li>
+</ul>
+<img src="/2017/06/14/远程数据库下载和查询教程/enter-password.jpg">
+<ul>
+<li>点击文件管理按钮</li>
+</ul>
+<img src="/2017/06/14/远程数据库下载和查询教程/open-download-dialog.jpg">
+<ul>
+<li>找到你要下载的文件，双击下载</li>
+</ul>
+<img src="/2017/06/14/远程数据库下载和查询教程/download.jpg">
+<h2 id="在mysql中做查询"><a href="#在mysql中做查询" class="headerlink" title="在mysql中做查询"></a>在mysql中做查询</h2><p>在mysql中做查询需要进入muysql的交互环境。</p>
+<ul>
+<li>进入mysql</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h[ip地址] -u[用户名] -p[密码]</span><br></pre></td></tr></table></figure>
+<p>以下命令都是在mysql交互环境中运行</p>
+<ul>
+<li>查询有哪些数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">databases</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>选择一个数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> name_of_databse;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> basic_child_info;</span><br></pre></td></tr></table></figure>
+<h2 id="下载数据库表"><a href="#下载数据库表" class="headerlink" title="下载数据库表"></a>下载数据库表</h2><ul>
+<li>把表下载到当前目录</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -h[ip地址] -u[username] -p[password] [databse name] [table name] &gt; [filename].sql;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导出表到本地</li>
+</ul>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/mysql/">#mysql</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/06/13/作文自动分类方案设计/">
                 作文自动分类方案设计
             </a>
@@ -1366,73 +1441,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/23/Django教程：[4]制作第一个网页/">
-                Django教程：[4]制作第一个网页
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>通过前面的三篇文章，我们现在已经有能力创建一个网页了。Django就是那么的有效率。我们创建第一个页面的目的是让你理解Django是如何工作的。不信往下看。进行下面的教程之前，如果你没有看我以前写的文章，可能会有疑惑。我前面的文章创建了一个站点djangoweb文件夹，下面要用到</p>
-<ul>
-<li>第一步要在我们创建的站点文件夹下面新建一个view.py文件，如图所示。当然你创建文件的名称是任意的，你可以叫别的名字。但是要跟后面要写的代码一致，后面还会用到view.py，如果你的文件名不是view，后面你需要做出相应的调整</li>
-</ul>
-<img src="/2016/10/23/Django教程：[4]制作第一个网页/b3508d13b07eca80277f099d932397dda1448316.jpg" title="Django教程：[4]制作第一个网页">
-<ul>
-<li>我们将该文件写入代码：如图所示。代码的意义是，首先引入HttpResponse类，后面我们会详细介绍这个类，现在我们只知道它用于返回网页中显示的代码。接着我们定义了一个名为hello的函数，它有一个参数为req，这个参数是django.http.HttpRequest的一个实例，我们暂时用不到这个参数，但是它却是一个必须的参数，参数的名称可以任意。hello函数它仅仅返回一个HttpResponse对象，这个对象包含了文本“Hello world”</li>
-</ul>
-<img src="/2016/10/23/Django教程：[4]制作第一个网页/d8b8c92a6059252df86d2d7e369b033b5bb5b916.jpg" title="Django教程：[4]制作第一个网页">
-<ul>
-<li>现在保存好这个view文件</li>
-</ul>
-<img src="/2016/10/23/Django教程：[4]制作第一个网页/148f28d3d539b6000cb43fcdeb50352ac65cb716.jpg" title="Django教程：[4]制作第一个网页">
-<ul>
-<li>接下来我们需要修改urls.py文件，这个文件可以将url和调用的函数对应起来。比如，我想当我在浏览器地址栏输入<a href="http://127.0.0.1:8001/hello/的时候就能调用view.hello方法，那么我们必须在urls.py中进行添加" target="_blank" rel="noopener">http://127.0.0.1:8001/hello/的时候就能调用view.hello方法，那么我们必须在urls.py中进行添加</a></li>
-</ul>
-<img src="/2016/10/23/Django教程：[4]制作第一个网页/8b527d2762d0f7039674a6a60afa513d2797c542.jpg" title="Django教程：[4]制作第一个网页">
-<ul>
-<li>首先要引用我们企图调用的方法，然后在urlpatterns中添加url(r’^hello/$’,hello),；注意最后面的逗号不能省略。这个代码就是将url同调用的函数联系起来。</li>
-</ul>
-<img src="/2016/10/23/Django教程：[4]制作第一个网页/0db2c9ca7bcb0a46efc6b8436963f6246a60afa0.jpg" title="Django教程：[4]制作第一个网页">
-<ul>
-<li>最后，我们在dos下开启开发服务器，如果你还不知道如何开启开发服务器，你需要看下面的参考资料里的传送门。</li>
-</ul>
-<img src="/2016/10/23/Django教程：[4]制作第一个网页/08b68e529822720e1677d28079cb0a46f31fabcb.jpg" title="Django教程：[4]制作第一个网页">
-<ul>
-<li>打开浏览器，地址栏输入地址：127.0.0.1:8001/hello/，你就会看到我们制作的第一个页面了。你学会了吗？</li>
-</ul>
-<img src="/2016/10/23/Django教程：[4]制作第一个网页/21e5582309f7905280a677440ef3d7ca7acbd5cb.jpg" title="Django教程：[4]制作第一个网页">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/django/">#django</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -1475,6 +1483,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">keras教程-n-图片风格转换理论和实践</a>
             </li>
             
@@ -1510,10 +1522,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
                 <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/14/sentimentpy模块进行中文文本情感分类/">sentimentpy模块进行中文文本情感分类</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1525,11 +1533,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -1557,6 +1569,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
         </span>
         
@@ -1565,15 +1581,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -1597,10 +1613,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
         </span>
         
@@ -1610,6 +1622,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1629,7 +1645,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1638,10 +1654,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1681,11 +1693,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1694,10 +1710,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1713,19 +1725,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1741,19 +1753,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
@@ -1777,11 +1789,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -1789,7 +1797,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1813,6 +1825,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
         </span>
         
@@ -1825,23 +1841,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1853,23 +1853,23 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/stata/">stata</a>
         </span>
         
         <span>
@@ -1885,6 +1885,18 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
@@ -1897,6 +1909,14 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
         </span>
         
@@ -1905,23 +1925,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/hexo/">hexo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
         </span>
         
     </ul>
