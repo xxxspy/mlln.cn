@@ -197,6 +197,233 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/09/23/python 线性代数：[6]逆矩阵 伴随矩阵/">
+                python 线性代数：[6]逆矩阵 伴随矩阵
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年09月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>设A是数域上的一个n阶方阵，若在相同数域上存在另一个n阶矩阵B，使得： AB=BA=E。 则我们称B是A的逆矩阵，而A则被称为可逆矩阵。当矩阵A的行列式|A|不等于0时才存在可逆矩阵。而伴随矩阵的定义我 从网上找到了一个：</p>
+<ul>
+<li>先来求一下矩阵的逆，先引入numpy</li>
+</ul>
+<img src="/2016/09/23/python%20线性代数：[6]逆矩阵%20伴随矩阵/72ccb7773912b31bea8677db8418367adbb4e11f.jpg" title="python 线性代数：[6]逆矩阵 伴随矩阵">
+<ul>
+<li>然后创建一个方阵A</li>
+</ul>
+<img src="/2016/09/23/python%20线性代数：[6]逆矩阵%20伴随矩阵/f6428f8fa0ec08fad0a9a9555bee3d6d54fbda5c.jpg" title="python 线性代数：[6]逆矩阵 伴随矩阵">
+<ul>
+<li>使用linalg.det求得方阵的行列式</li>
+</ul>
+<img src="/2016/09/23/python%20线性代数：[6]逆矩阵%20伴随矩阵/09bb4f3d269759eeb9f9da39b0fb43166c22df5c.jpg" title="python 线性代数：[6]逆矩阵 伴随矩阵">
+<ul>
+<li>使用linalg.inv求得方阵A的逆矩阵</li>
+</ul>
+<img src="/2016/09/23/python%20线性代数：[6]逆矩阵%20伴随矩阵/b25aae51f81986186bad557648ed2e738ad4e61f.jpg" title="python 线性代数：[6]逆矩阵 伴随矩阵">
+<ul>
+<li>接着我们利用公式：<br>numpy的计算方法：</li>
+</ul>
+<img src="/2016/09/23/python%20线性代数：[6]逆矩阵%20伴随矩阵/08b68e529822720e9c16580879cb0a46f31fab2d.jpg" title="python 线性代数：[6]逆矩阵 伴随矩阵">
+<img src="/2016/09/23/python%20线性代数：[6]逆矩阵%20伴随矩阵/f9589818367adab4153aa1b189d4b31c8601e41f.jpg" title="python 线性代数：[6]逆矩阵 伴随矩阵">
+<ul>
+<li><p>以下是今天用到的所有代码</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>import numpy as np</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A=np.array([[1,-2,1],[0,2,-1],[1,1,-2]])</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 1, -2,  1],</p>
+</li>
+<li><p>[ 0,  2, -1],</p>
+</li>
+<li><p>[ 1,  1, -2]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A_abs=np.linalg.det(A)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A_abs</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>-3.0000000000000004</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>B=np.linalg.inv(A)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>B</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 1.        ,  1.        ,  0.        ],</p>
+</li>
+<li><p>[ 0.33333333,  1.        , -0.33333333],</p>
+</li>
+<li><p>[ 0.66666667,  1.        , -0.66666667]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A_ni=B*A_abs</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A_ni</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[-3., -3., -0.],</p>
+</li>
+<li><p>[-1., -3.,  1.],</p>
+</li>
+<li><p>[-2., -3.,  2.]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A_bansui=B*A_abs</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A_bansui</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[-3., -3., -0.],</p>
+</li>
+<li><p>[-1., -3.,  1.],</p>
+</li>
+<li><p>[-2., -3.,  2.]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/09/23/Python教程：[59]读取txt内容/">
                 Python教程：[59]读取txt内容
             </a>
@@ -789,61 +1016,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/15/Excel2013：[13]如何设置数据有效性/">
-                Excel2013：[13]如何设置数据有效性
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年09月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Excel2013与其他版本有很大改变，其中数据有效性改名为了数据验证，所以很多人在网上问“数据有效性”在哪里。我现在用例子跟大家演示一下如何设置数据有效性。</p>
-<ul>
-<li>选中一列数据作为数据源，不要选中第一个行的标题</li>
-</ul>
-<img src="/2016/09/15/Excel2013：[13]如何设置数据有效性/fc5e5f34970a304e5623b6e1d3c8a786c9175c6c.jpg" title="Excel2013：[13]如何设置数据有效性">
-<ul>
-<li>在数据标签下找到【数据验证】</li>
-</ul>
-<img src="/2016/09/15/Excel2013：[13]如何设置数据有效性/964b2e4e251f95caa4f484adcb177f3e6709526c.jpg" title="Excel2013：[13]如何设置数据有效性">
-<ul>
-<li>选择设置选项下的【序列】</li>
-</ul>
-<img src="/2016/09/15/Excel2013：[13]如何设置数据有效性/245e8bcad1c8a786be2b5c156509c93d70cf506c.jpg" title="Excel2013：[13]如何设置数据有效性">
-<ul>
-<li>来源设置成刚才设置好的区域，点击确定</li>
-</ul>
-<img src="/2016/09/15/Excel2013：[13]如何设置数据有效性/8697397f9e2f0708fd6b3c1beb24b899a901f204.jpg" title="Excel2013：[13]如何设置数据有效性">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -886,6 +1058,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/07/python使用pywinauto实现lisrel自动化/">python使用pywinauto实现lisrel</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
             </li>
             
@@ -918,10 +1094,6 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
             </li>
             
@@ -936,7 +1108,7 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1136,11 +1308,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>

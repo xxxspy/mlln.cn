@@ -197,6 +197,111 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/05/17/Python教程：[51]删除文件及文件夹/">
+                Python教程：[51]删除文件及文件夹
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年05月17日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>假如有一个txt文件，我想要使用python命令删除它，怎么弄？这里用到了Python的os模块，我们使用例子来说明如何如何删除文件及目录。</p>
+<ul>
+<li>在d盘下有一个tt文本文件，我们来删除它</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/8697397f9e2f0708688ca795eb24b899a801f25f.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>首先引入os模块</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/e865a699a9014c0828b2a530087b02087af4f45f.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>使用os下的remove命令来删除该文件，参数是r’d:/tt.txt’，通常路径字符串都是用r字符串</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/1e71f724b899a90109c1d6a31f950a7b0308f574.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>现在改文件已经被删除，现在我们再运行一下该命令，看看有什么提示错误</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/0b3a1c087bf40ad12e6d4a76552c11dfa8ecce5f.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>这就是提示的错误，为了写出更见健壮的程序，我们通常要在删除文件前，先检验该文件是否存在。</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/48151723dd54564e598869acb1de9c82d0584f73.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>使用path.exists命令来检验文件是否存在，参数仍然是路径字符串</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/6dc09e0a19d8bc3e64e58b5f808ba61ea9d34573.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>配合if语句，我们就可以写出一个健壮的删除文件的命令。</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/83cab81ea8d3fd1f9ae42faf324e251f94ca5f73.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>上面讲到了如何删除文件，下面说一下如何删除文件夹。我们用到了rmdir方法，它可以直接删除空文件夹</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/814b07d8bc3eb135e7b4382ea41ea8d3fc1f44f1.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li><p>假如文件夹非空，会提示这样的错误：</p>
+</li>
+<li><p>Traceback (most recent call last):</p>
+</li>
+<li><p>File “<pyshell#8>“, line 1, in <module></module></pyshell#8></p>
+</li>
+<li><p>os.rmdir(r’d:/tt/‘)</p>
+</li>
+<li><p>WindowsError: [Error 145] : ‘d:/tt/‘</p>
+</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/9252ae7eca80653882d42b8695dda144ad34822e.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li><p>假如文件夹不存在，会提示这样的错误：</p>
+</li>
+<li><p>Traceback (most recent call last):</p>
+</li>
+<li><p>File “<pyshell#16>“, line 1, in <module></module></pyshell#16></p>
+</li>
+<li><p>os.rmdir(r’d:/tt/‘)</p>
+</li>
+<li><p>WindowsError: [Error 2] : ‘d:/tt/‘</p>
+</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/5beeba0f4bfbfbedb239b9ea7af0f736aec31f87.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>怎么删除非空文件夹？我们用到了shutil模块</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/32bb9c8ba61ea8d32551fb91950a304e241f58f1.jpg" title="Python教程：[51]删除文件及文件夹">
+<ul>
+<li>用rmtree命令可以直接删除文件夹，包括内部文件</li>
+</ul>
+<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/83cab81ea8d3fd1f987a2daf324e251f94ca5ff1.jpg" title="Python教程：[51]删除文件及文件夹">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/05/17/numpy函数：[17]diag函数/">
                 numpy函数：[17]diag函数
             </a>
@@ -1041,75 +1146,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/05/11/python 线性代数：[22]习题1.10求逆矩阵/">
-                python 线性代数：[22]习题1.10求逆矩阵
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年05月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>接着以前的文章，我们继续学习用Python解线性代数的问题。今天我们要练习一下《线性代数.同济大学出版.第一章习题10》,演示一下如何求矩阵的逆矩阵和验证结果是否正确。</p>
-<ul>
-<li>这是今天我们要做的习题：只做前三题</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/0b14ad19ebc4b745eef1ac06cbfc1e178a82157d.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<ul>
-<li>将这三个矩阵录入到excel当中</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/8bc3a7014a90f603c6d587573d12b31bb051ed7e.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<ul>
-<li>开始写代码，先引入这两个库</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/8474fbdde71190ef4ce989cfca1b9d16fdfa6054.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<ul>
-<li>先来计算第一个矩阵的逆矩阵，用np.linalg.inv来计算arr矩阵的逆矩阵，如果你看不太懂代码，应该去翻看我前两篇文章，里面讲得很详细<br>这是输出的结果：</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/3b6833f5e0fe9925f51e724030a85edf8db17154.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/30ecd5ef76094b3688b401fda7cc7cd98d109db8.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<ul>
-<li><p>现在计算第第二个矩阵，我们发现这个矩阵是带有符号的，所以我们用sympy这个库中的Matrix对象来进行计算。我们可以使用Matrix.inv来计算逆矩阵，默认情况下，它使用高斯消去法，如果传入参数LU，它</p>
-</li>
-<li><p>这是输出的两个矩阵：</p>
-</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/d048adde9c82d158949042a1840a19d8bc3e4254.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/ae8267310a55b31941a3986547a98226cffc170c.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<ul>
-<li>最后一题，和第一题一样，都是数字，但是现在我想验证一下计算结果，让两个矩阵点乘，如果结果是一个单位矩阵，那么久可以证明两个矩阵互为逆矩阵<br>输出结果为：</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/8b527d2762d0f7034cd78ecc0cfa513d2697c57e.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<img src="/2016/05/11/python%20线性代数：[22]习题1.10求逆矩阵/29752a9b033b5bb5ca4e24ee32d3d539b700bcc1.jpg" title="python 线性代数：[22]习题1.10求逆矩阵">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -1152,6 +1188,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/07/python使用pywinauto实现lisrel自动化/">python使用pywinauto实现lisrel</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
             </li>
             
@@ -1184,10 +1224,6 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
             </li>
             
@@ -1202,7 +1238,7 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1402,11 +1438,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>

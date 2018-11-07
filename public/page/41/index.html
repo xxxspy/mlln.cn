@@ -197,6 +197,83 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/">
+                spss逻辑回归中哑变量的设置和分析方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年09月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>逻辑回归中，有些自变量是分类变量，同时有两个以上的分类，这就导致了我们在做回归的时候就默认的把该变量当成了等距数据，最后造成了更大的误差。哑变量就是要解决这个问题，下面是具体的方法。<br>方法/步骤</p>
+<ul>
+<li>在spss中打开数据，确定要设置哪个变量为哑变量以后，我们打开逻辑回归对话框，操作方法：analyse–regression–binary logistic</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/8644ebf81a4c510f1d0e5ef76059252dd52aa511.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>将是否吸烟这个变量放到因变量中，将种族放到自变量中，如图所示</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/63d0f703918fa0ecac9ddae0269759ee3c6ddb81.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>选择变量进入方程的方法是enter，因为所有的哑变量必须是同时进入，否则就没有统计学意义了。</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/5882b2b7d0a20cf4d723403276094b36adaf99a8.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>接下来要设置哑变量了，点击categrio按钮，打开变量分类对话框</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/ac345982b2b7d0a2e986ba70cbef76094a369a94.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>将要设置哑变量的变量放入右侧窗口中</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/80cb39dbb6fd5266819582f9ab18972bd50736a4.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>到了最关键的部分，我们要选择哪个分类作为参考分类，设置参考分类必须使参考分类有意义，比如这个例子中，种族类别包括黑人、白人和其他种族，那么其他种族一般被设置为参考分类，那么你怎么知道参考分类是第一个还是最后一个呢，后面要设置last和first。下面一个步骤告诉你</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/622762d0f703918f02e48427513d269759eec422.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>回到变量视图中，找到种族这个变量，在value中可以查看变量值，我们看到其他种族这个分类为3，上面那一步应该设置为last</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/9f2f070828381f3067e83444a9014c086f06f06e.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/6f061d950a7b0208ed38860c62d9f2d3562cc86e.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/b8389b504fc2d5627cf46800e71190ef77c66c5b.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>点击ok，开始输出统计结果</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/dcc451da81cb39dbfb58dfbbd0160924aa183046.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<ul>
+<li>输出了一大堆数据，我们不用管，因为这里要教大家如何分析哑变量，所以直奔主题，找到variables in the equation表，这个表中，你可以看到有race（1）和race（2）这两个变量，他们就是race的哑变量，B是系数，因为他们都是跟其他种族相比，图中的数据可以看到，白种人比其他种族的人更容以吸烟，黑种人比其他种族更容易吸烟，白种人和黑种人相比，黑种人可能比白种人更容易吸烟，但是需要进一步的检验。</li>
+</ul>
+<img src="/2015/09/15/spss逻辑回归中哑变量的设置和分析方法/77c6a7efce1b9d16fc37228cf3deb48f8d54646e.jpg" title="spss逻辑回归中哑变量的设置和分析方法">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/09/11/没有数据分析功能怎么办：[1]Excel数据分析/">
                 没有数据分析功能怎么办：[1]Excel数据分析
             </a>
@@ -781,72 +858,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/09/01/Excel2013教程-彻底隐藏工作表不能取消的方法/">
-                Excel2013教程-彻底隐藏工作表不能取消的方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年09月01日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们都知道Excel工作表可以隐藏也可以显示，就是在工作表上右键单击–选择隐藏（取消隐藏），但是对于一个Excel高手来说，你隐藏的还不够，我们可以轻易的查看隐藏的工作表，那么怎么做才能彻底隐藏呢？这里交给大家一个方法，那就是使用vba加密的方法，这里不需要任何vba知识，都是手工操作，没有代码。</p>
-<ul>
-<li><p>首先我们打开Ｅｘｃｅｌ，按下ａｌｔ＋Ｆ１１打开ｖｂａ界面</p>
-</li>
-<li><p>接着我们选中要隐藏的工作表，然后点击菜单栏上的【视图】</p>
-</li>
-</ul>
-<img src="/2015/09/01/Excel2013教程-彻底隐藏工作表不能取消的方法/507c389759ee3d6d216e13c742166d224e4aded7.jpg" title="Excel2013教程-彻底隐藏工作表不能取消的方法">
-<ul>
-<li>视图菜单下找到【属性窗口】打开属性窗口</li>
-</ul>
-<img src="/2015/09/01/Excel2013教程-彻底隐藏工作表不能取消的方法/d68b65cb0a46f21f3ab6ca5ff7246b600d33aef9.jpg" title="Excel2013教程-彻底隐藏工作表不能取消的方法">
-<ul>
-<li>在属性窗口中找到ｖｉｓｉｂｌｅ选项，我们将其设置为２，如图所示</li>
-</ul>
-<img src="/2015/09/01/Excel2013教程-彻底隐藏工作表不能取消的方法/6a22e8246b600c330efb4ac41b4c510fd8f9a1f9.jpg" title="Excel2013教程-彻底隐藏工作表不能取消的方法">
-<ul>
-<li>接着我们在菜单栏上设置【工具】－－ｖｂａ属性</li>
-</ul>
-<img src="/2015/09/01/Excel2013教程-彻底隐藏工作表不能取消的方法/d66b7e59252dd42aba8b95a7023b5bb5c8eab8f9.jpg" title="Excel2013教程-彻底隐藏工作表不能取消的方法">
-<ul>
-<li>切换到保护选项下，我们输入密码和确认密码，然后点击确定按钮</li>
-</ul>
-<img src="/2015/09/01/Excel2013教程-彻底隐藏工作表不能取消的方法/35da1d3b5bb5c9ea827197efd439b6003bf3b3f9.jpg" title="Excel2013教程-彻底隐藏工作表不能取消的方法">
-<ul>
-<li>好了，我们看看，右键单击工作表，取消隐藏的选项已经变成灰色了。如果你想要显示工作表，还是要在ｖｂａ中设置属性就可以了，只不过打开ｖｂａ的时候需要输入你刚才设置的密码</li>
-</ul>
-<img src="/2015/09/01/Excel2013教程-彻底隐藏工作表不能取消的方法/504ec7f9d72a6059b5b875162934349b023bbad7.jpg" title="Excel2013教程-彻底隐藏工作表不能取消的方法">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -889,6 +900,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/07/python使用pywinauto实现lisrel自动化/">python使用pywinauto实现lisrel</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
             </li>
             
@@ -921,10 +936,6 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2018/10/16/keras教程-08-Dropout的原理和实现/">keras教程-08-Dropout的原理和实现</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
             </li>
             
@@ -939,7 +950,7 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1139,11 +1150,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
