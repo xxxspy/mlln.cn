@@ -197,6 +197,77 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/05/19/pandas教程：[8]数据分组/">
+                pandas教程：[8]数据分组
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年05月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>使用groupby()可以给数据分组，数据分组的好处是你可以一次性计算得到所有分组中的统计量，比如想计算男女学生的平均成绩分别是多少，可以先按照男女分组，然后计算平均数，我们不用计算完女生然后在计算男生，实际上是一次性完成的，这就是分组的好处。</p>
+<ul>
+<li>先引入模块，并创建一个DataFrame</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/6398ecd3572c11dfa2e57637602762d0f703c2ab.jpg" title="pandas教程：[8]数据分组">
+<ul>
+<li>打印出DataFrame来查看一下结果</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/109eb7ec8a1363276cd90b27928fa0ec08fac7ab.jpg" title="pandas教程：[8]数据分组">
+<ul>
+<li>我们可以以A列进行分组，使用groupby</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/504ec7f9d72a605911f62f0e2b34349b023bba85.jpg" title="pandas教程：[8]数据分组">
+<ul>
+<li>打印出来的grouped.first()为每一组的第一行数据</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/90cebeec08fa513d329ea5ca3e6d55fbb2fbd9ab.jpg" title="pandas教程：[8]数据分组">
+<ul>
+<li>我们还可以以两列以上进行分组，groupby参数为一个列表</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/3c2c4bfbb2fb4316772bb36e23a4462309f7d3ab.jpg" title="pandas教程：[8]数据分组">
+<ul>
+<li>打印出来的是这样的情况，last表示每一组的最后一行数据</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/734f12f3d7ca7bcb2f4f0e3bbd096b63f624a8ab.jpg" title="pandas教程：[8]数据分组">
+<ul>
+<li>我们还可以根据列来分组，先创建一个get_type函数，如果列名为abem中之一，就分为组别vowel，反之为consonant</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/346bd85c10385343bd2949359013b07ecb808885.jpg" title="pandas教程：[8]数据分组">
+<ul>
+<li>打印第一组看看分组情况。</li>
+</ul>
+<img src="/2016/05/19/pandas教程：[8]数据分组/6a2112338744ebf83445ad2bdaf9d72a6059a7ab.jpg" title="pandas教程：[8]数据分组">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/05/17/Python教程：[51]删除文件及文件夹/">
                 Python教程：[51]删除文件及文件夹
             </a>
@@ -1071,81 +1142,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/05/11/python 线性代数：[1]矩阵操作/">
-                python 线性代数：[1]矩阵操作
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年05月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>今天是这一个系列入门教程的第一篇，简单介绍一下python中是如何操作maxtrix（矩阵）的，然后我们后面就开始用python中的numpy来解决线性代数的问题，比如解方程等，下面我们开始吧：</p>
-<ul>
-<li>我先引入numpy，以后的教程中，我们都引用为np作为简写</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/3c2c4bfbb2fb431647d6a28a22a4462308f7d332.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>使用mat函数创建一个2X3矩阵</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/aa59892bd40735fa34b98b499c510fb30e2408b2.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>使用shape可以获取矩阵的大小</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/0e655ca7d933c8950b375d8bd31373f0830200b2.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>使用下标读取矩阵中的元素</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/e49cf91190ef76c6dc473edb9f16fdfaae51676e.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>进行行列转换：</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/263e802f07082838164519e4ba99a9014d08f1b3.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>实际上官方文档建议我们使用二维数组代替矩阵来进行矩阵运算；因为二维数组用得较多，而且基本可取代矩阵。比如：可见矩阵和数组基本上都可以</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/0865b518972bd407e5c3170d79899e510eb309ff.jpg" title="python 线性代数：[1]矩阵操作">
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/c9d4cf43ad4bd113afc973c258afa40f4afb05ff.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>加减法也是一样的：</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/7ab514d162d9f2d3426fe01fabec8a136227cc81.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>当然列表是不能这么尽兴加减的：</li>
-</ul>
-<img src="/2016/05/11/python%20线性代数：[1]矩阵操作/99636c0e0cf3d7ca4b83fb86f01fbe096a63a98e.jpg" title="python 线性代数：[1]矩阵操作">
-<ul>
-<li>好啦，我们今天就介绍到这里啦，下一篇继续哈。</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -1188,6 +1184,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/09/html技术构建python桌面程序-利用eel/">html技术构建python桌面程序-利用eel</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/07/python使用pywinauto实现lisrel自动化/">python使用pywinauto实现lisrel</a>
             </li>
             
@@ -1221,10 +1221,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/10/17/keras教程-n-CUDA无法找到cudnn的错误解决/">keras教程-n-CUDA无法找到cudnn的错</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/10/16/textgenrnn-demo/">使用textgenrnn生成文本(最后生成中文)</a>
             </li>
             
         </ul>
