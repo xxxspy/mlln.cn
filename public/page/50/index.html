@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
+                    python3的__new__和__init__方法的比较和使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/11/11/python做双十一抢券神器/">
                     python做双十一抢券神器
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/09/17/00.00-Preface/">
                     什么是数据科学-Python数据科学教程
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
-                    给博客增加实时运行python代码的功能
                 </a>
             </div>
             
@@ -272,20 +272,20 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
-                    李宏毅机器学习教程3-2：梯度下降法案例
+                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
+                    李宏毅机器学习教程23-2：Policy-Gradient
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
+                    李宏毅机器学习教程14：无监督学习-词嵌入模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
+                    李宏毅机器学习教程3-2：梯度下降法案例
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
                 </a>
             </div>
             
@@ -428,6 +428,101 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/05/05/Excel2013：[57]文本日期互转/">
+                Excel2013：[57]文本日期互转
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年05月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>Excel中日期格式是一个非常头疼的问题，很多时候我们都搞不清楚自己的数据是日期格式还是文本格式，更别提两者的相互转化了。今天我们详细讲解一下这个问题，以及这两种格式如何互转。</p>
+<ul>
+<li>如何判断自己的数据是日期格式还是文本格式？大部分人都回答错误！因为大部分人都知道查看单元格格式可以知道！这是及其错误的，比如，有一个单元格，里面填写了一个字符“a”，通过设置单元格格式，你将这个单元格设置为数字格式，试试看。一个字母竟然可以成为一个数字格式。这就是说虽然我们可以任意设置单元格的格式，但是当Excel无法转换格式的时候，就保留了原先的格式。</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/246cca2a2834349bf3261892caea15ce36d3be42.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>所以，当我们想知道一个单元格是文本还是日期时，看单元格格式是不保险的。比如这一列日期，你可以在自己的电脑上录入这一列数据。我们将A列设置为日期格式，但是这一列数据仍然是文本，Excel并没有转换格式。因为Excel并不认识这种日期格式，所以就无法将其转换为日期，仍然保留了文本格式，虽然Excel显示的是日期格式。</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/58af236d55fbb2fb91162e054c4a20a44623dcad.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>除了Excel不识别的日期格式外，还有一种情况可以造成Excel无法将文本转换为日期：在下面这种情况下，我们先设置c列为文本，然后设置d列默认格式为常规。在两列都输入同样的“2013-1-1”，你会发现他们的不同：C列数据保持了你输入的内容不变；D列内容自动转换格式为Excel默认的日期格式。这说明你预先设置了c列的格式为文本，导致后面再输入数据都按照文本来保存数据了。</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/f6428f8fa0ec08fa9d3d65b05aee3d6d55fbdaad.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>如何鉴别到底是日期格式还是文本格式？很简单。当单元格为日期时，你在格式设置下啦菜单中，可以看到短日期和长日期格式不同，短日期下面显示2013/1/1，长日期下显示2013年1月1日。</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/b3ba5d166d224f4af29200040af790529822d15b.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>如果单元格为文本格式，你会发现，短日期和长日期显示相同的格式，说明Excel并没有正确的识别日期。</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/9252ae7eca8065380e22d40494dda144ac348299.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>现在我们有一列文本格式的日期，想要转换为日期格式</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/0db2c9ca7bcb0a462d1ffd2e6863f6246b60afad.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>先将这一列设置为日期格式</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/bf487563f6246b60e833c463e8f81a4c510fa2ad.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>按下ctrl+F，利用替换，将“.”替换为“-”,这样可以将Excel不认识的格式转换为它认识的格式</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/3c2c4bfbb2fb4316be3f0c6d23a4462309f7d342.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>结果就是这样了：显然Excel自动识别了日期。</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/29752a9b033b5bb53bea56e935d3d539b600bcad.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>但是有时候单元格内不是2013.1.1这种形式，而是2013-1-1，也很简单</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/1899a23eb13533fac4e4ee39abd3fd1f41345b13.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>还是用这个方法，先将该列设置为日期格式，然后将“-”替换为“/”即可</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/9c57e3faaf51f3de9cfec47397eef01f3a29791d.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>反过来，有些时候我们必须将日期格式转换为文本格式，还是这一列数据，它现在是日期格式</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/29752a9b033b5bb53bea56e935d3d539b600bcad.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>在B2单元格输入公式：=TEXT(A2,”yyyy-m-d”)，按下回车看一下结果</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/c9bdddcec3fdfc03f4c493afd73f8794a4c2262d.jpg" title="Excel2013：[57]文本日期互转">
+<ul>
+<li>向下拖动单元格右下角，可以快速填充以下的单元格，完成日期向文本的转换。</li>
+</ul>
+<img src="/2015/05/05/Excel2013：[57]文本日期互转/c2bce2039245d688bcbec2b3a7c27d1ed21b242d.jpg" title="Excel2013：[57]文本日期互转">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1244,70 +1339,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/04/23/pandas教程：[17]字符串提取数据/">
-                pandas教程：[17]字符串提取数据
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年04月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>很多时候数据都是以字符串的形式保存的，比如多选题的答案，很多人都是用‘ABCD’这种形式保存数据，那么我们怎样将这样的数据提取出来，转换成可以统计的数据呢？pandas的extract可以做到这些。</p>
-<ul>
-<li>先来创建一个数据序列<br>查看一下数据内容</li>
-</ul>
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9a1151c2d56285351b988f2593ef76c6a7ef637f.jpg" title="pandas教程：[17]字符串提取数据">
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/4e83cb628535e5dd1865f8db75c6a7efce1b622e.jpg" title="pandas教程：[17]字符串提取数据">
-<ul>
-<li>使用extract方法提取数字：它的第一个参数是正则表达式，括号表示要提取的部分<br>输出内容为：（注意无法匹配的内容用NaN表示）</li>
-</ul>
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/e49cf91190ef76c6a59aa62f9e16fdfaaf51672e.jpg" title="pandas教程：[17]字符串提取数据">
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/91ae68c6a7efce1b996395ceac51f3deb48f652e.jpg" title="pandas教程：[17]字符串提取数据">
-<ul>
-<li>假如我们要提取多个数据，可以使用多个括号<br>输出内容为：</li>
-</ul>
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9864a2315c6034a84d99e585c81349540923767f.jpg" title="pandas教程：[17]字符串提取数据">
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/f29faa8f8c5494eefb6a521d2ef5e0fe99257e2e.jpg" title="pandas教程：[17]字符串提取数据">
-<ul>
-<li>你要灵活使用问号，它表示可有可无，下面的方式可以匹配字符“c”<br>输出内容为：</li>
-</ul>
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/95afee1f3a292df5ee8bf111bf315c6034a8732e.jpg" title="pandas教程：[17]字符串提取数据">
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9864a2315c6034a84daae585c81349540923762e.jpg" title="pandas教程：[17]字符串提取数据">
-<ul>
-<li>如果我们想要让输出的结果包含变量名（列名），我们可以使用下面的写法：<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9319cf09b3de9c82cf1ea48b6f81800a19d8437f.jpg" title="pandas教程：[17]字符串提取数据">
-<img src="/2015/04/23/pandas教程：[17]字符串提取数据/814b07d8bc3eb13516bceabfa51ea8d3fd1f447f.jpg" title="pandas教程：[17]字符串提取数据">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/pandas/">#pandas</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1349,6 +1380,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
             </li>
             
@@ -1384,10 +1419,6 @@
                 <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1399,11 +1430,15 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1415,15 +1450,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1439,14 +1470,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
         </span>
         
@@ -1456,6 +1479,18 @@
         
         <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1479,19 +1514,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1500,6 +1523,14 @@
         
         <span>
             <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1523,7 +1554,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1532,10 +1571,6 @@
         
         <span>
             <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
@@ -1551,10 +1586,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1563,15 +1594,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1580,10 +1615,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1599,11 +1630,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -1631,11 +1662,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1643,19 +1674,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/sublime/">sublime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
         </span>
         
         <span>
@@ -1667,11 +1690,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
@@ -1679,7 +1710,39 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1699,47 +1762,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
         </span>
         
         <span>
@@ -1759,27 +1794,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
@@ -1796,6 +1815,18 @@
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>

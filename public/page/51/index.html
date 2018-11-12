@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
+                    python3的__new__和__init__方法的比较和使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/11/11/python做双十一抢券神器/">
                     python做双十一抢券神器
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/09/17/00.00-Preface/">
                     什么是数据科学-Python数据科学教程
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
-                    给博客增加实时运行python代码的功能
                 </a>
             </div>
             
@@ -272,20 +272,20 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
-                    李宏毅机器学习教程3-2：梯度下降法案例
+                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
+                    李宏毅机器学习教程23-2：Policy-Gradient
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
+                    李宏毅机器学习教程14：无监督学习-词嵌入模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
+                    李宏毅机器学习教程3-2：梯度下降法案例
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
                 </a>
             </div>
             
@@ -428,6 +428,70 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/04/23/pandas教程：[17]字符串提取数据/">
+                pandas教程：[17]字符串提取数据
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>很多时候数据都是以字符串的形式保存的，比如多选题的答案，很多人都是用‘ABCD’这种形式保存数据，那么我们怎样将这样的数据提取出来，转换成可以统计的数据呢？pandas的extract可以做到这些。</p>
+<ul>
+<li>先来创建一个数据序列<br>查看一下数据内容</li>
+</ul>
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9a1151c2d56285351b988f2593ef76c6a7ef637f.jpg" title="pandas教程：[17]字符串提取数据">
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/4e83cb628535e5dd1865f8db75c6a7efce1b622e.jpg" title="pandas教程：[17]字符串提取数据">
+<ul>
+<li>使用extract方法提取数字：它的第一个参数是正则表达式，括号表示要提取的部分<br>输出内容为：（注意无法匹配的内容用NaN表示）</li>
+</ul>
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/e49cf91190ef76c6a59aa62f9e16fdfaaf51672e.jpg" title="pandas教程：[17]字符串提取数据">
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/91ae68c6a7efce1b996395ceac51f3deb48f652e.jpg" title="pandas教程：[17]字符串提取数据">
+<ul>
+<li>假如我们要提取多个数据，可以使用多个括号<br>输出内容为：</li>
+</ul>
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9864a2315c6034a84d99e585c81349540923767f.jpg" title="pandas教程：[17]字符串提取数据">
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/f29faa8f8c5494eefb6a521d2ef5e0fe99257e2e.jpg" title="pandas教程：[17]字符串提取数据">
+<ul>
+<li>你要灵活使用问号，它表示可有可无，下面的方式可以匹配字符“c”<br>输出内容为：</li>
+</ul>
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/95afee1f3a292df5ee8bf111bf315c6034a8732e.jpg" title="pandas教程：[17]字符串提取数据">
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9864a2315c6034a84daae585c81349540923762e.jpg" title="pandas教程：[17]字符串提取数据">
+<ul>
+<li>如果我们想要让输出的结果包含变量名（列名），我们可以使用下面的写法：<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/9319cf09b3de9c82cf1ea48b6f81800a19d8437f.jpg" title="pandas教程：[17]字符串提取数据">
+<img src="/2015/04/23/pandas教程：[17]字符串提取数据/814b07d8bc3eb13516bceabfa51ea8d3fd1f447f.jpg" title="pandas教程：[17]字符串提取数据">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1304,73 +1368,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/04/15/Python教程：[2]pythonwin安装与下载/">
-                Python教程：[2]pythonwin安装与下载
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年04月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>很多人并不习惯在dos窗口中编辑python，包括我，我还是习惯在一些比较成熟的开发环境中编辑python，所以我们需要配置一个Pythonwin作为windows下的开发环境，当然你是用Linux就不关我的事情了，我不懂Linux，只能再windows下面来做，下面是安装的过程，在最下面的参考资料有提供Pythonwin的下载链接。因为我安装的python版本号是3.2，所以要下载对应版本的Pythonwin，下面我们先来看看如何知道自己python的版本号。</p>
-<ul>
-<li>打开windows的运行窗口，输入cmd，点击确定，打开命令窗口</li>
-</ul>
-<img src="/2015/04/15/Python教程：[2]pythonwin安装与下载/246cca2a2834349b7a32e0afcbea15ce36d3bea1.jpg" title="Python教程：[2]pythonwin安装与下载">
-<ul>
-<li>在命令窗口中输入python，你就会看到python的版本号，如图所示</li>
-</ul>
-<img src="/2015/04/15/Python教程：[2]pythonwin安装与下载/346bd85c103853437cfb090b9113b07eca8088a1.jpg" title="Python教程：[2]pythonwin安装与下载">
-<ul>
-<li>如果你的python版本为3.2，你可以直接从下面的参考资料里下载pythonwin；如果你的版本不对，你可以看下面参考资料里第二个链接，可以让你找到所有版本的下载，打开这个界面以后，你会看到这个列表，版本号就在红色方框里。</li>
-</ul>
-<img src="/2015/04/15/Python教程：[2]pythonwin安装与下载/34bbf8cd7b899e51058ab43e40a7d933c8950d50.jpg" title="Python教程：[2]pythonwin安装与下载">
-<ul>
-<li>安装就非常简单了，下载下来以后，我们双击打开，你会看到软件自己读取了python的安装目录，你什么都不用做，点击下一步。</li>
-</ul>
-<img src="/2015/04/15/Python教程：[2]pythonwin安装与下载/9252ae7eca80653881de2a3995dda144ad3482a1.jpg" title="Python教程：[2]pythonwin安装与下载">
-<ul>
-<li>接着点击下一步开始安装，等待一分钟就能安装完毕。</li>
-</ul>
-<img src="/2015/04/15/Python教程：[2]pythonwin安装与下载/4e83cb628535e5dd49c02af574c6a7efcf1b62e9.jpg" title="Python教程：[2]pythonwin安装与下载">
-<ul>
-<li>安装完成以后，在开始菜单中就能找到Pythonwin，打开它</li>
-</ul>
-<img src="/2015/04/15/Python教程：[2]pythonwin安装与下载/d872d695d143ad4bc0cec8ea80025aafa50f06fc.jpg" title="Python教程：[2]pythonwin安装与下载">
-<ul>
-<li>这就是pythonwin的界面了，在这个界面你可以编辑python语句。</li>
-</ul>
-<img src="/2015/04/15/Python教程：[2]pythonwin安装与下载/34bbf8cd7b899e51057bb43e40a7d933c9950de7.jpg" title="Python教程：[2]pythonwin安装与下载">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1412,6 +1409,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
             </li>
             
@@ -1447,10 +1448,6 @@
                 <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1462,11 +1459,15 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1478,15 +1479,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1502,14 +1499,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
         </span>
         
@@ -1519,6 +1508,18 @@
         
         <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1542,19 +1543,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1563,6 +1552,14 @@
         
         <span>
             <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1586,7 +1583,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1595,10 +1600,6 @@
         
         <span>
             <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
@@ -1614,10 +1615,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1626,15 +1623,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1643,10 +1644,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1662,11 +1659,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -1694,11 +1691,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1706,19 +1703,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/sublime/">sublime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
         </span>
         
         <span>
@@ -1730,11 +1719,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
@@ -1742,7 +1739,39 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1762,47 +1791,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
         </span>
         
         <span>
@@ -1822,27 +1823,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
@@ -1859,6 +1844,18 @@
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>

@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
+                    python3的__new__和__init__方法的比较和使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/11/11/python做双十一抢券神器/">
                     python做双十一抢券神器
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/09/17/00.00-Preface/">
                     什么是数据科学-Python数据科学教程
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
-                    给博客增加实时运行python代码的功能
                 </a>
             </div>
             
@@ -272,20 +272,20 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
-                    李宏毅机器学习教程3-2：梯度下降法案例
+                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
+                    李宏毅机器学习教程23-2：Policy-Gradient
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
+                    李宏毅机器学习教程14：无监督学习-词嵌入模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
+                    李宏毅机器学习教程3-2：梯度下降法案例
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
                 </a>
             </div>
             
@@ -428,6 +428,55 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/09/07/python-selenium撰写自动化功能测试脚本/">
+                python-selenium撰写自动化功能测试脚本
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年09月07日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>你需要参考<a href="/2017/06/10/selenim%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%85%A5%E9%97%A8-for-psychologist/">selenium入门</a><br>来指导你安装python和selenium，<br>同时你还需要安装chrome和chromedriver，在这篇文章中有详细的介绍。</p>
+<h2 id="撰写用例"><a href="#撰写用例" class="headerlink" title="撰写用例"></a>撰写用例</h2><p>在写功能测试脚本之前，需要先指导测什么。这就是用例的作用。用例要详细描述一个用户的操作行为，用到的数据，得到的反馈等。<br>比如我们想要测试网站的登录功能，我们可以这么写：</p>
+<blockquote>
+<p>打开网址<code>http://www.mlln.cn</code><br>点击<code>登录</code>按钮<br>输入用户名和密码<br>点击登录<br>验证登录是否成功</p>
+</blockquote>
+<p>用例要列出所有可能的反馈，测试也要测试到所有可能情况。比如简单的登录功能，首先要测试成功登录的情况，然后要测试用户名或密码错误的情况。<br>网站应当根据不同的用户操作给出不同的反馈。</p>
+<h2 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h2><p>脚本就是一段代码，用于执行一个特定的功能。通常一个<code>*.py</code>文件存放一个脚本，一个测试脚本的大体结构应当是这样的：</p>
+<blockquote>
+<blockquote>
+<p>文件中最上面写用例, 用三个引号表示。比如<code>&#39;&#39;&#39;这是一个测试用例的描述文字 &#39;&#39;&#39;</code><br>准备阶段：准备好测试用到的数据，比如你要测试的是登录功能，你需要提前写入数据一个账号和密码，用于测试，写入数据的过程就是准备过程<br>测试阶段：写代码执行测试<br>销毁阶段：在准备阶段写入的数据应当在销毁阶段销毁，也就是删除测试账号。关闭任何打开过的浏览器或其他软件。</p>
+</blockquote>
+</blockquote>
+<p>测试脚本文件名称以<code>test_</code>开头。</p>
+<p>下面是一个测试脚本的样例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">这里描述测试用例</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">import</span> selenium</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prepare</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''准备阶段'''</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''测试阶段'''</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">destroy</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''销毁阶段'''</span></span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/selenium/">#selenium</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1358,88 +1407,6 @@ if ('d3' in window){
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/06/05/抽样系统备注文本信息自动化分类器/">
-                抽样系统备注文本信息自动化分类器
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017年06月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="第一步：-构建潜在语义空间"><a href="#第一步：-构建潜在语义空间" class="headerlink" title="第一步： 构建潜在语义空间"></a>第一步： 构建潜在语义空间</h2><ul>
-<li>分词：将备注信息切分成词</li>
-<li>清理：将标点符号清理掉</li>
-<li>构建词在备注信息中的词频矩阵, 如：</li>
-</ul>
-<p><code>\[
-    \begin{array}{c | ccc}
-    \text{matrix} &amp; \text{备注1} &amp; \text{备注2} &amp; \text{备注n...} \\
-    \hline
-    \text{残疾} &amp; 0 &amp; 1 &amp; \cdots \\
-    \text{父母} &amp; 1 &amp; 1 &amp; \cdots \\
-    \text{建议} &amp; 0 &amp; 2 &amp; \cdots \\
-    \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
-    \end{array}
-\]</code></p>
-<ul>
-<li><p>进行加权，用<code>tf-idf</code>方法</p>
-</li>
-<li><p>根据如下公式对矩阵进行svd分解</p>
-</li>
-</ul>
-<p><code>\[
-\{X\}=\{W\}\{S\}\{P\}
-\]</code></p>
-<p>如果你使用python，你可以使用<code>numpy.linalg.SVD</code>函数来做这个分解。</p>
-<ul>
-<li><p>筛选对角矩阵<code>S</code>中最大的n个特征值，然后选出<code>W</code>和<code>P</code>中与特征值对应的特征向量，组合起来形成相应的<code>\(W&#39;\)</code>和<code>\(P&#39;\)</code></p>
-</li>
-<li><p>最后根据公式反向计算词文矩阵<code>X&#39;</code>，得到潜在语义空间：</p>
-</li>
-</ul>
-<p><code>\[
-\{W&#39;\}\{S&#39;\}\{P&#39;\}=\{X&#39;\}
-\]</code></p>
-<p>得到的X’矩阵中，每一行都是一个词向量。</p>
-<ul>
-<li>求备注向量</li>
-</ul>
-<p>在原始的词频矩阵X中，每一列代表一个备注中，词的词频，我们把它叫做备注的词频向量——<code>\(V_i\)</code>，其中下标<code>i</code>表示第i<br>个备注。由于在上一步中我们求得了每个词的语义向量。所以备注的词频向量就可以转换成词所在的语义空间向量<code>\(V&#39;_i\)</code>。让向量<code>\(w_j\)</code>表示X’中j词的语义向量。假如矩阵中有n个词。</p>
-<p><code>\[
-M = X&#39;.T * V_i = \left[ \begin{array} \vdots\\ w_j \\ \vdots \end{array} \right] * V_i
- = \left[ \begin{array} \vdots\\ w&#39;_j \\ \vdots \end{array} \right]
-\]</code><br><code>\[
-V&#39;_i = \sum_{j=0}^n w&#39;_j
-\]</code></p>
-<h2 id="第二步：使用机器学习算法预测备注是否能参加测试"><a href="#第二步：使用机器学习算法预测备注是否能参加测试" class="headerlink" title="第二步：使用机器学习算法预测备注是否能参加测试"></a>第二步：使用机器学习算法预测备注是否能参加测试</h2><ul>
-<li><code>\( V&#39;_i \)</code> 就是备注文档的语义向量，这样我们就得到了备注文档的语义。以此为输入，以该备注的被试是否能够参加测试为输出，使用适当的机器学习方法即可预测一个备注是否能够参加测试。</li>
-</ul>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/“python/">#“python"</a> <a href="/tags/lsa/">#lsa</a> <a href="/tags/潜在语义分析/">#潜在语义分析</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1481,6 +1448,10 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
             </li>
             
@@ -1516,10 +1487,6 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
                 <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1531,11 +1498,15 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1547,15 +1518,11 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1571,14 +1538,6 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
         </span>
         
@@ -1588,6 +1547,18 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         
         <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1611,19 +1582,7 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1632,6 +1591,14 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         
         <span>
             <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1655,7 +1622,15 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1664,10 +1639,6 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         
         <span>
             <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
@@ -1683,10 +1654,6 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1695,15 +1662,19 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1712,10 +1683,6 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1731,11 +1698,11 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -1763,11 +1730,11 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1775,19 +1742,11 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/sublime/">sublime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
         </span>
         
         <span>
@@ -1799,11 +1758,19 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
@@ -1811,7 +1778,39 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1831,47 +1830,19 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
         </span>
         
         <span>
@@ -1891,27 +1862,11 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
@@ -1928,6 +1883,18 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>

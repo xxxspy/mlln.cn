@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
+                    python3的__new__和__init__方法的比较和使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/11/11/python做双十一抢券神器/">
                     python做双十一抢券神器
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/09/17/00.00-Preface/">
                     什么是数据科学-Python数据科学教程
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
-                    给博客增加实时运行python代码的功能
                 </a>
             </div>
             
@@ -272,20 +272,20 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
-                    李宏毅机器学习教程3-2：梯度下降法案例
+                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
+                    李宏毅机器学习教程23-2：Policy-Gradient
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
+                    李宏毅机器学习教程14：无监督学习-词嵌入模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
+                    李宏毅机器学习教程3-2：梯度下降法案例
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
                 </a>
             </div>
             
@@ -428,6 +428,64 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/08/11/python教程：[76]mro()解析/">
+                python教程：[76]mro()解析
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年08月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>今天在看django-xadmin源码的时候看到的一个mro方法，我这种小白还不太懂python里比较深入的内容，所以百度了很多文章来看，现在总结一下。</p>
+<ul>
+<li>这个方法用于返回某个类的基类以及基类的基类，我们举一个简单的例子：创建一个类A，然后调用mro，它返回了一个列表，列表元素是类A本身和它的基类</li>
+</ul>
+<img src="/2015/08/11/python教程：[76]mro()解析/d002b34bd11373f04c42a5a4a70f4bfbfbed0449.jpg" title="python教程：[76]mro()解析">
+<ul>
+<li>假如我们再创建一个类B，继承于A，然后调用mro，现在列表里多了内容，看到了吧，mro总是返回类本身和其基类的列表</li>
+</ul>
+<img src="/2015/08/11/python教程：[76]mro()解析/ac2fc3c451da81cb80aa49f65166d0160924317a.jpg" title="python教程：[76]mro()解析">
+<ul>
+<li>假如把类的继承关系弄的复杂一些，类C和类B都继承自A，D继承B和C，这时候调用D.mro，我们看到这时候列表的顺序为：D-B-C-A</li>
+</ul>
+<img src="/2015/08/11/python教程：[76]mro()解析/d048adde9c82d158444d938a830a19d8bd3e42fb.jpg" title="python教程：[76]mro()解析">
+<ul>
+<li>在负责一些，增加类E继承类A，F继承自E和D，然后调用F.mro，这时候你就可以看到类A总是列表的最后一个元素，列表的顺序是：F-E-D-B-C-A</li>
+</ul>
+<img src="/2015/08/11/python教程：[76]mro()解析/814b07d8bc3eb135be7d8287a51ea8d3fd1f4410.jpg" title="python教程：[76]mro()解析">
+<ul>
+<li>记住这个列表的顺序很有用，因为以后再复制的类调用的时候，可能会考虑到初始化类的顺序，它们遵循的就是mro的顺序</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1028,69 +1086,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/07/17/numpy函数：[1]shape用法/">
-                numpy函数：[1]shape用法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年07月17日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>shape函数是numpy.core.fromnumeric中的函数，它的功能是读取矩阵的长度，比如shape[0]就是读取矩阵第一维度的长度。它的输入参数可以使一个整数表示维度，也可以是一个矩阵。这么说你可能不太理解，我们还是用各种例子来说明他的用法：</p>
-<ul>
-<li>一维矩阵[1]返回值为(1L,)                   </li>
-</ul>
-<img src="/2015/07/17/numpy函数：[1]shape用法/a6c7d7177f3e67093192d5f339c79f3df9dc55e9.jpg" title="numpy函数：[1]shape用法">
-<ul>
-<li>二维矩阵，返回两个值                                  </li>
-</ul>
-<img src="/2015/07/17/numpy函数：[1]shape用法/9304c888d43f8794af72d822d01b0ef41ad53ae9.jpg" title="numpy函数：[1]shape用法">
-<ul>
-<li>一个单独的数字，返回值为空       </li>
-</ul>
-<img src="/2015/07/17/numpy函数：[1]shape用法/5327ce160924ab188d9b713b37fae6cd7a890be9.jpg" title="numpy函数：[1]shape用法">
-<ul>
-<li>我们还可以将shape作为矩阵的方法来调用，下面先创建了一个单位矩阵e     </li>
-</ul>
-<img src="/2015/07/17/numpy函数：[1]shape用法/b25aae51f819861871ca7f8848ed2e738ad4e6ea.jpg" title="numpy函数：[1]shape用法">
-<ul>
-<li>我们可以快速读取e的形状            </li>
-</ul>
-<img src="/2015/07/17/numpy函数：[1]shape用法/58af236d55fbb2fb32a6c81e4d4a20a44723dcea.jpg" title="numpy函数：[1]shape用法">
-<ul>
-<li>假如我们只想读取e的第一维度长度，使用shape[0]        </li>
-</ul>
-<img src="/2015/07/17/numpy函数：[1]shape用法/5202e5f2b211931310ce6fbc67380cd790238dea.jpg" title="numpy函数：[1]shape用法">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/numpy/">#numpy</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1132,6 +1127,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
             </li>
             
@@ -1167,10 +1166,6 @@
                 <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/18/使用谷歌翻译接口进行句子翻译/">使用谷歌翻译接口进行句子翻译</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1182,11 +1177,15 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1198,15 +1197,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1222,14 +1217,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
         </span>
         
@@ -1239,6 +1226,18 @@
         
         <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1262,19 +1261,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1283,6 +1270,14 @@
         
         <span>
             <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1306,7 +1301,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1315,10 +1318,6 @@
         
         <span>
             <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
@@ -1334,10 +1333,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1346,15 +1341,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1363,10 +1362,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1382,11 +1377,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -1414,11 +1409,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1426,19 +1421,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/sublime/">sublime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
         </span>
         
         <span>
@@ -1450,11 +1437,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
@@ -1462,7 +1457,39 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1482,47 +1509,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
         </span>
         
         <span>
@@ -1542,27 +1541,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
@@ -1579,6 +1562,18 @@
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>
