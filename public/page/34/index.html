@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2018/12/09/python模拟数据的生成/">
+                    python模拟数据的生成
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
                     python3的__new__和__init__方法的比较和使用
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">
                     python3中class,type,instance,object的概念和相互区别
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/17/00.00-Preface/">
-                    什么是数据科学-Python数据科学教程
                 </a>
             </div>
             
@@ -428,6 +428,80 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/03/15/spss聚类分析如何对分类结果进行检验/">
+                spss聚类分析如何对分类结果进行检验
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年03月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>聚类分析的结果都知道，就是获得几个类别，那么我们怎么知道这些类别是合理的呢？这里提供一个方法，就是利用means方法，检验各个类别在所有变量上的差异，如果差异显著，我们就可以认为分类结果是可靠的。<br>方法/步骤</p>
+<ul>
+<li>假设我们现在已经得到了聚类的结果，所有的case都已经分类了，我们看到在数据窗口已经形成了若干个新的变量，显示了case的分类结果，如图所示，这里显示了三个聚类的结果，分别是把数据分为3、4、5类的结果</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/f7246b600c338744ad481ea9510fd9f9d62aa051.jpg" title="spss聚类分析如何对分类结果进行检验">
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/b7003af33a87e9506ff8c2b910385343faf2b473.jpg" title="spss聚类分析如何对分类结果进行检验">
+<ul>
+<li>在菜单栏上执行：analyse–compare means–means，打开平均数对话框</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/6d81800a19d8bc3e18e6371f828ba61ea9d3457c.jpg" title="spss聚类分析如何对分类结果进行检验">
+<ul>
+<li>将指标变量都放入因变量框中，然后将分组变量（聚类分析得到的变量）放入因变量中</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/b17eca8065380cd7f4db9338a144ad3458828119.jpg" title="spss聚类分析如何对分类结果进行检验">
+<ul>
+<li>点击ok按钮，开始运行数据，并显示结果</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/5ab5c9ea15ce36d380dbb2e53af33a87e850b103.jpg" title="spss聚类分析如何对分类结果进行检验">
+<ul>
+<li>我们会看到三种分类结果各自的平均数，下面的三个表格分别是将case分为5、4、3类的结果，当然这种方法只能计算出各组平均数，如何检验平均数的差异就要用到下面的方法</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/902397dda144ad3431eab752d0a20cf430ad8589.jpg" title="spss聚类分析如何对分类结果进行检验">
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/622762d0f703918f89c40d1f513d269758eec4c9.jpg" title="spss聚类分析如何对分类结果进行检验">
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/d53f8794a4c27d1e1f510b111bd5ad6edcc438eb.jpg" title="spss聚类分析如何对分类结果进行检验">
+<ul>
+<li>在菜单栏上执行：analyse–compare means–one way anova</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/d01373f082025aaf4f5a4e1efbedab64024f1afe.jpg" title="spss聚类分析如何对分类结果进行检验">
+<ul>
+<li>将指标变量放到因变量列表，将分组变量放入factor中，然后点击ok，开始处理数据</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/b17eca8065380cd7f5a69238a144ad34588281ae.jpg" title="spss聚类分析如何对分类结果进行检验">
+<ul>
+<li>我们看到下面的这个表格就是对平均数的差异的检验了，看sig这一列，除了一个指标，其他指标都达到了显著的水平，这说明这种分类还是比较有效的。</li>
+</ul>
+<img src="/2016/03/15/spss聚类分析如何对分类结果进行检验/503d269759ee3d6d7a57b71e43166d224e4ade55.jpg" title="spss聚类分析如何对分类结果进行检验">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1079,56 +1153,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/02/23/python 字符串类型错误/">
-                python 字符串类型错误
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年02月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>今天调程序发现总出现错误TypeError: ‘str’ does not support the buffer interface，研究了很久才发现，错误在与python的版本不同，我们来看看如何更改。</p>
-<ul>
-<li>这是我的源码，是不是和你的挺像？红色方框的位置出现了错误。也就是在sendto函数这里，我们发送一个字符串，但是提示我们类型错误</li>
-</ul>
-<img src="/2016/02/23/python%20字符串类型错误/b6045da98226cffc9fd6d59ebb014a90f703eadb.jpg" title="python 字符串类型错误">
-<ul>
-<li>新版本的python对字符串对象做了很大的更改，使得原先的函数产生了很大的不同，所以我们需要添加一个参数。这个问题就解决了。</li>
-</ul>
-<img src="/2016/02/23/python%20字符串类型错误/4651a712c8fcc3ce8812a31f9045d688d53f2088.jpg" title="python 字符串类型错误">
-<ul>
-<li>但是，还有一个问题，这种方法发送的字符串发送的结果是b’hello，怎么办呢，我们使用转码函数试试。print(cs.recv(1024).decode(‘utf-8’))</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1170,6 +1194,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
             </li>
             
@@ -1203,10 +1231,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
             </li>
             
         </ul>

@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2018/12/09/python模拟数据的生成/">
+                    python模拟数据的生成
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
                     python3的__new__和__init__方法的比较和使用
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">
                     python3中class,type,instance,object的概念和相互区别
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/17/00.00-Preface/">
-                    什么是数据科学-Python数据科学教程
                 </a>
             </div>
             
@@ -428,6 +428,56 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/02/23/python 字符串类型错误/">
+                python 字符串类型错误
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年02月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>今天调程序发现总出现错误TypeError: ‘str’ does not support the buffer interface，研究了很久才发现，错误在与python的版本不同，我们来看看如何更改。</p>
+<ul>
+<li>这是我的源码，是不是和你的挺像？红色方框的位置出现了错误。也就是在sendto函数这里，我们发送一个字符串，但是提示我们类型错误</li>
+</ul>
+<img src="/2016/02/23/python%20字符串类型错误/b6045da98226cffc9fd6d59ebb014a90f703eadb.jpg" title="python 字符串类型错误">
+<ul>
+<li>新版本的python对字符串对象做了很大的更改，使得原先的函数产生了很大的不同，所以我们需要添加一个参数。这个问题就解决了。</li>
+</ul>
+<img src="/2016/02/23/python%20字符串类型错误/4651a712c8fcc3ce8812a31f9045d688d53f2088.jpg" title="python 字符串类型错误">
+<ul>
+<li>但是，还有一个问题，这种方法发送的字符串发送的结果是b’hello，怎么办呢，我们使用转码函数试试。print(cs.recv(1024).decode(‘utf-8’))</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1020,112 +1070,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/">
-                Excel2013：[26]如何将ABCD替换成数字
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年02月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>经常给别人做数据分析，拿到的数据都是很不规范的，比如下面这个例子，单元格中的数据是ABCD而不是数字1234，这样的数据是无法放入到spss中进行处理的，所以我们需要对这个进行重新编码，在Excel中使用vba是比较快速的方法，这里我跟大家分享一下我的方法：</p>
-<ul>
-<li>明确目标：把ABCD转换成1234，如图所示，题目1这一列是我转换完成的，题目3这一列是还没有进行转换的。</li>
-</ul>
-<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/a8362712b31bb051727be651347adab44aede029.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
-<ul>
-<li>我们使用快捷键alt + F11，打开vbe编辑窗口</li>
-</ul>
-<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/8640bf8b87d6277f084d67412a381f30e924fc29.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
-<ul>
-<li>掺入一个模块：菜单上执行【插入】-【模块】</li>
-</ul>
-<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/d1571724ab18972bb45255b3e4cd7b899e510a1b.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
-<ul>
-<li><p>将这段代码粘贴到模块中：</p>
-</li>
-<li><p>Sub 替换abcd()</p>
-</li>
-<li><p>Dim iRng As Range</p>
-</li>
-<li><p>Set iRng = Selection</p>
-</li>
-<li><p>For Each icell In iRng</p>
-</li>
-<li><p>txt = icell.Value</p>
-</li>
-<li><p>Select Case txt</p>
-</li>
-<li><p>Case “A”</p>
-</li>
-<li><p>icell.Value = 1</p>
-</li>
-<li><p>Case “B”</p>
-</li>
-<li><p>icell.Value = 2</p>
-</li>
-<li><p>Case “C”</p>
-</li>
-<li><p>icell.Value = 3</p>
-</li>
-<li><p>Case “D”</p>
-</li>
-<li><p>icell.Value = 4</p>
-</li>
-<li><p>Case “E”</p>
-</li>
-<li><p>icell.Value = 5</p>
-</li>
-<li><p>End Select</p>
-</li>
-<li><p>Next icell</p>
-</li>
-<li><p>End Sub</p>
-</li>
-</ul>
-<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/0b3a1c087bf40ad1c6bb929a552c11dfa9ecce29.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
-<ul>
-<li>保存并关闭vbe窗口，然后按下快捷键alt+F8，打开宏编辑窗口，选中这个唯一的宏，然后点击【选项】按钮</li>
-</ul>
-<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/f392492c11dfa9ec2371036e60d0f703918fc129.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
-<ul>
-<li>设置快捷键为Ctrl+q，然后点击确定按钮</li>
-</ul>
-<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/0b14ad19ebc4b7453efce26fcdfc1e178a82151b.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
-<ul>
-<li>下面开始使用这个宏来转化数据，如图，先选中要转换的这一列，然后按下快捷键【Ctrl+q】，你可以看到数据快速得到转换。abcd都变成了1234</li>
-</ul>
-<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/58af236d55fbb2fbf5740d6b4d4a20a44623dc29.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1167,6 +1111,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
             </li>
             
@@ -1200,10 +1148,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/10/23/李宏毅机器学习教程系列/">李宏毅机器学习教程系列</a>
             </li>
             
         </ul>
