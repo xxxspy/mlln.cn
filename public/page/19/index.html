@@ -433,6 +433,143 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/06/11/测试d3-js在hexo博客中的效果/">
+                测试d3.js在hexo博客中的效果
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>d3.js可以在hexo博客中使用，如下图所示。但是有一些坑需要你提前知道如何填。</p>
+<h4 id="json数据"><a href="#json数据" class="headerlink" title="json数据"></a>json数据</h4><p>d3经常需要用到json格式的数据文件，如果放在代码里不太好，加载js的时候比较慢，<br>所以通常我们都是用<code>d3.json</code>方法，它需要你准备一个可被调用的json文件。<br>那么，我的做法是，在文章（post）的同名资源文件夹中加入json文件，但是我遇到一个问题，<br>就是json文件会被hexo当做一篇post给渲染，导致你的网站中会出现一篇无名的文章，<br>内容就是json文件的内容。你可能想到在<code>_config.yml</code>中配置<code>skip_render</code>，但是，<br>这个选项还有一些bug，我也懒得去改，这么做并不能防止生成一篇莫名文章。<br>我想到没有后缀名的文件是不会被渲染的，所以我就把json文件的后缀名给去掉，这样就可以了。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>hexo中想要嵌入到文章中的代码通常写在<code>{ raw }your html code{ endraw }</code>中(标签中百分号没写)，<br>我也是这么做的。但是你一定要注意，文章不仅会出现在文章页面，还可能会出现在index(home)页，<br>这就麻烦了，因为你的JavaScript很可能影响到首页。如果你加载太多JavaScript库，还会导致首页加载速度过慢，<br>如果你在意用户体验或者SEO，你就需要注意这点。</p>
+<p>我的方法是在文章开始输入一个配置变量，这是我这篇文章的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 测试d3.js在hexo博客中的效果</span><br><span class="line">date: 2017-06-11 08:12:09</span><br><span class="line">tags: [hexo, d3js]</span><br><span class="line">d3js: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>你可以看到d3js这个变量。但是它还不能发挥作用，因为我们还得修改网站的模板。让模板侦测该变量，<br>如果为true就加载d3.js这个库。所以我们先增加一个partial文件，在主题文件夹下<code>layout/_partial/d3js.ejs</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://d3js.org/d3.v4.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后再修改<code>head.ejs</code>, 增加如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span>(page.d3js)&#123; %&gt;</span><br><span class="line">    &lt;!-- d3js --&gt;</span><br><span class="line">    &lt;%- partial(<span class="string">'d3js'</span>) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>到此，我们已经成功了一半了（怎么还有一半？）</p>
+<h4 id="探测d3是否加载"><a href="#探测d3是否加载" class="headerlink" title="探测d3是否加载"></a>探测d3是否加载</h4><p>在写post的时候，你如果直接用d3这个变量，会引发错误，因为在index页面我们不允许加载d3，但是文章出现在首页的时候，<br>错误就发生了，告诉你d3是undefined。所以在使用d3前，你需要判断d3是否为undefined。你可以用in操作符即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">"d3"</span> <span class="keyword">in</span> <span class="built_in">window</span>)&#123;</span><br><span class="line">    <span class="comment">// code to run</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><p>OK, 是时候让你看到我文章中写的全部代码了，而代码的运行效果就是下图。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d3js-example-content"</span>&gt;</span></span><br><span class="line">    这里是文章自定义内容，你需要进入该文章才能看到。</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"># input-button &#123;</span></span><br><span class="line"><span class="undefined">  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;</span></span><br><span class="line"><span class="undefined">  position: relative;</span></span><br><span class="line"><span class="undefined">  left: 10px;</span></span><br><span class="line"><span class="undefined">  top: 10px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">if</span> (<span class="string">'d3'</span> <span class="keyword">in</span> <span class="built_in">window</span>)&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> html=<span class="string">''</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> contentDiv=<span class="built_in">document</span>.getElementById(<span class="string">"d3js-example-content"</span>);</span></span><br><span class="line"><span class="xml">    contentDiv.innerHTML='<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"960"</span> <span class="attr">height</span>=<span class="string">"600"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span>' +</span></span><br><span class="line"><span class="xml">                            '<span class="tag">&lt;<span class="name">label</span> <span class="attr">id</span>=<span class="string">"input-button"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">style</span>=<span class="string">"width:240px;"</span> <span class="attr">type</span>=<span class="string">"range"</span> <span class="attr">min</span>=<span class="string">"0"</span> <span class="attr">max</span>=<span class="string">"1"</span> <span class="attr">step</span>=<span class="string">"any"</span> <span class="attr">value</span>=<span class="string">"0.5"</span>&gt;</span>'+</span></span><br><span class="line"><span class="javascript">                            <span class="string">' Link Strength&lt;/label&gt;'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">"canvas"</span>),</span></span><br><span class="line"><span class="javascript">        context = canvas.getContext(<span class="string">"2d"</span>),</span></span><br><span class="line"><span class="undefined">        width = canvas.width,</span></span><br><span class="line"><span class="undefined">        height = canvas.height;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> simulation = d3.forceSimulation()</span></span><br><span class="line"><span class="javascript">        .force(<span class="string">"link"</span>, d3.forceLink().id(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;).strength(<span class="number">0.5</span>))</span></span><br><span class="line"><span class="javascript">        .force(<span class="string">"charge"</span>, d3.forceManyBody())</span></span><br><span class="line"><span class="javascript">        .force(<span class="string">"center"</span>, d3.forceCenter(width / <span class="number">2</span>, height / <span class="number">2</span>))</span></span><br><span class="line"><span class="javascript">        <span class="comment">// .alphaDecay(0);</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    d3.select(<span class="string">"input[type=range]"</span>)</span></span><br><span class="line"><span class="javascript">        .on(<span class="string">"input"</span>, inputted);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    d3.json(<span class="string">"miserables"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, graph</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      simulation</span></span><br><span class="line"><span class="undefined">          .nodes(graph.nodes)</span></span><br><span class="line"><span class="javascript">          .on(<span class="string">"tick"</span>, ticked);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      simulation.force(<span class="string">"link"</span>)</span></span><br><span class="line"><span class="undefined">          .links(graph.links);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">ticked</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        context.clearRect(0, 0, width, height);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        context.beginPath();</span></span><br><span class="line"><span class="undefined">        graph.links.forEach(drawLink);</span></span><br><span class="line"><span class="javascript">        context.strokeStyle = <span class="string">"#aaa"</span>;</span></span><br><span class="line"><span class="undefined">        context.stroke();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        context.beginPath();</span></span><br><span class="line"><span class="undefined">        graph.nodes.forEach(drawNode);</span></span><br><span class="line"><span class="undefined">        context.fill();</span></span><br><span class="line"><span class="javascript">        context.strokeStyle = <span class="string">"#fff"</span>;</span></span><br><span class="line"><span class="undefined">        context.stroke();</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">inputted</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      simulation.force(<span class="string">"link"</span>).strength(+<span class="keyword">this</span>.value);</span></span><br><span class="line"><span class="undefined">      simulation.alpha(1).restart();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">drawLink</span>(<span class="params">d</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      context.moveTo(d.source.x, d.source.y);</span></span><br><span class="line"><span class="undefined">      context.lineTo(d.target.x, d.target.y);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">drawNode</span>(<span class="params">d</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      context.moveTo(d.x + 3, d.y);</span></span><br><span class="line"><span class="javascript">      context.arc(d.x, d.y, <span class="number">3</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<div id="d3js-example-content">
+    这是特殊内容，你需要进入该文章才能看到。
+</div>  
+
+<style>
+
+# input-button {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+</style>
+
+<script>
+
+if ('d3' in window){
+    var html=''
+    var contentDiv=document.getElementById("d3js-example-content");
+    contentDiv.innerHTML='<canvas width="960" height="600"></canvas>' +
+                            '<label id="input-button"><input style="width:240px;" type="range" min="0" max="1" step="any" value="0.5">'+
+                            ' Link Strength</label>';
+
+    var canvas = document.querySelector("canvas"),
+        context = canvas.getContext("2d"),
+        width = canvas.width,
+        height = canvas.height;
+
+    var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) { return d.id; }).strength(0.5))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        // .alphaDecay(0);
+
+    d3.select("input[type=range]")
+        .on("input", inputted);
+
+    d3.json("miserables", function(error, graph) {
+      if (error) throw error;
+
+      simulation
+          .nodes(graph.nodes)
+          .on("tick", ticked);
+
+      simulation.force("link")
+          .links(graph.links);
+
+      function ticked() {
+        context.clearRect(0, 0, width, height);
+
+        context.beginPath();
+        graph.links.forEach(drawLink);
+        context.strokeStyle = "#aaa";
+        context.stroke();
+
+        context.beginPath();
+        graph.nodes.forEach(drawNode);
+        context.fill();
+        context.strokeStyle = "#fff";
+        context.stroke();
+      }
+    });
+
+    function inputted() {
+      simulation.force("link").strength(+this.value);
+      simulation.alpha(1).restart();
+    }
+
+    function drawLink(d) {
+      context.moveTo(d.source.x, d.source.y);
+      context.lineTo(d.target.x, d.target.y);
+    }
+
+    function drawNode(d) {
+      context.moveTo(d.x + 3, d.y);
+      context.arc(d.x, d.y, 3, 0, 2 * Math.PI);
+    }
+
+
+
+
+}
+
+
+</script>
+
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/hexo/">#hexo</a> <a href="/tags/d3js/">#d3js</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/06/10/selenim数据采集入门-for-psychologist/">
                 selenium数据采集入门(for psychologist)
             </a>
@@ -1393,86 +1530,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/19/numpy函数：[12]数组切片/">
-                numpy函数：[12]数组切片
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们可以向使用列表切片一样使用数组切片，如果会使用liest切片，那么这篇文章就是温习一下而已，下面我们来看看具体的数组切片是如何使用的。</p>
-<ul>
-<li>从numpy中引入所有</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/c71d0e385343fbf21a8108bcb27eca8064388f45.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>创建一个包含10个元素的一位数组</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/d1571724ab18972bf1a4ae55e4cd7b899f510a57.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>我们可以使用一个下标获取数组中相应的值，也可以更改它的值</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/b3508d13b07eca80c9a89778932397dda0448345.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>使用冒号获取连续的几个元素，如获取第四个到第五个元素</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/34bbf8cd7b899e512510948b40a7d933c9950d57.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>省略冒号前的数字，表示从头开始</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/43e6c733c895d1439de84abc71f082025baf0757.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>使用负数表示从后往前数，-1表示从后往前数第一个数</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/30ecd5ef76094b36163fb572a1cc7cd98c109d45.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>-2表示从后往前第二个，以此类推</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/a28d62d98d1001e9f991ba90ba0e7bec55e79745.jpg" title="numpy函数：[12]数组切片">
-<img src="/2016/10/19/numpy函数：[12]数组切片/b258f5c4b74543a9c18554531c178a82b8011457.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>还可以设置步长来读取数组元素</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/b6045da98226cffc5bb4112dbb014a90f703ea50.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>步长为-1，其他参数不设置，就是将数组进行了倒序排列</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/1f569482b9014a90bfa0e822ab773912b21bee50.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>使用负数步长需要让第一个下表大于第二个下标</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/a005b3345982b2b7635e905b33adcbef77099b29.jpg" title="numpy函数：[12]数组切片">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/numpy/">#numpy</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1514,6 +1571,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
             </li>
             
@@ -1547,10 +1608,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
             
             <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
             </li>
             
         </ul>

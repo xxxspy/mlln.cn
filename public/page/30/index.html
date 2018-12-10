@@ -433,6 +433,68 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/05/19/Python教程：[68]字典排序方法大全/">
+                Python教程：[68]字典排序方法大全
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年05月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>怎样对字典进行排序？其实和列表有点类似，方法差不多，但是有细微的差别。鉴于前几篇文章都写的是列表排序，所以有些内容不不详细讲了，不知道的可以翻看前几篇文章。我在文章中也会提示哪篇文章可以看。</p>
+<ul>
+<li>先创建一个字典a，字典a有三个元素</li>
+</ul>
+<img src="/2016/05/19/Python教程：[68]字典排序方法大全/346bd85c103853437ba670a19113b07ecb808882.jpg" title="Python教程：[68]字典排序方法大全">
+<ul>
+<li>我们使用key进行排序，注意这是第一个参数用的是a.items，而列表排序的时候用的是列表本身，不是其元素。我们看这种方法返回了一个列表b，而不再是字典了。列表排序这篇文章详细讲解了key的用法【<a href="http://jingyan.baidu.com/article/90808022a546b8fd90c80f48.html】" target="_blank" rel="noopener">http://jingyan.baidu.com/article/90808022a546b8fd90c80f48.html】</a></li>
+</ul>
+<img src="/2016/05/19/Python教程：[68]字典排序方法大全/b13fd48065380cd71677556da344ad3458828182.jpg" title="Python教程：[68]字典排序方法大全">
+<ul>
+<li>注意看下面这个方法，有略微的区别，但是返回的b都是一样的</li>
+</ul>
+<img src="/2016/05/19/Python教程：[68]字典排序方法大全/0db2c9ca7bcb0a4693957cb96963f6246a60afb8.jpg" title="Python教程：[68]字典排序方法大全">
+<ul>
+<li>我们也可以使用更加高效也更加简洁的方法：引入itemgetter</li>
+</ul>
+<img src="/2016/05/19/Python教程：[68]字典排序方法大全/30ecd5ef76094b363ffbec6da1cc7cd98c109d82.jpg" title="Python教程：[68]字典排序方法大全">
+<ul>
+<li>假如我们想要使用字典的值进行排序，就写参数key=itemgetter(1)</li>
+</ul>
+<img src="/2016/05/19/Python教程：[68]字典排序方法大全/00a82701213fb80ee7b8965734d12f2eb8389482.jpg" title="Python教程：[68]字典排序方法大全">
+<ul>
+<li>假如要用字典的键进行排序，可以使用itemgetter(0)</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/05/19/spss析因设计的操作和分析方法/">
                 spss析因设计的操作和分析方法
             </a>
@@ -1356,76 +1418,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/05/15/spss如何使用变量的取值模式进行聚类/">
-                spss如何使用变量的取值模式进行聚类
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年05月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>spss聚类分析中，默认的聚类方法是按照变量的取值水平进行聚类，但是有时候，为了符合我们研究的要求，需要按照变量的取值模式进行聚类，这时候就用到了这里提到的一个方法：By case<br>工具/原料</p>
-<ul>
-<li>spss20.0<br>方法/步骤</li>
-</ul>
-<ul>
-<li>先在spss中打开你要处理的数据，然后点击菜单：analyse–classify–hierarchical cluster，打开聚类分析的对话框</li>
-</ul>
-<img src="/2016/05/15/spss如何使用变量的取值模式进行聚类/bf096b63f6246b604ca28fa1ebf81a4c500fa2b2.jpg" title="spss如何使用变量的取值模式进行聚类">
-<ul>
-<li>将指标变量放入independent列表，然后把地区放入标签栏，因为地区可以作为case的标签</li>
-</ul>
-<img src="/2016/05/15/spss如何使用变量的取值模式进行聚类/80cb39dbb6fd526603e700c1ab18972bd5073612.jpg" title="spss如何使用变量的取值模式进行聚类">
-<ul>
-<li>点击method按钮，这就是我们的重头戏，在在方法对话框中，我们需要设置Z分数的计算方法</li>
-</ul>
-<img src="/2016/05/15/spss如何使用变量的取值模式进行聚类/77094b36acaf2eddcd37753c8d1001e938019324.jpg" title="spss如何使用变量的取值模式进行聚类">
-<ul>
-<li>如图所示，将standardised设置为Z score，然后勾选by case</li>
-</ul>
-<img src="/2016/05/15/spss如何使用变量的取值模式进行聚类/c75c10385343fbf2eb1299f6b07eca8065388f2c.jpg" title="spss如何使用变量的取值模式进行聚类">
-<ul>
-<li>点击ok，开始处理数据，等会就输出结果</li>
-</ul>
-<img src="/2016/05/15/spss如何使用变量的取值模式进行聚类/a71ea8d3fd1f41343caf39ab251f95cad0c85e4e.jpg" title="spss如何使用变量的取值模式进行聚类">
-<ul>
-<li>第一个表格是聚类过程表，从聚类系数可以帮助我们判断将数据分为几类最合适，判断的方法是，相邻的两个数据变化的幅度显著大于前面的系数的变化范围，这时候分类在这里就是最好的</li>
-</ul>
-<img src="/2016/05/15/spss如何使用变量的取值模式进行聚类/b03533fa828ba61e0fd9f7fa4134970a304e592b.jpg" title="spss如何使用变量的取值模式进行聚类">
-<ul>
-<li>这里叫做层次聚类谱系图，该图也是帮助我们查看聚类过程的，我们看到如图所示，沿着垂直方向画一条线，这条线与图中的水平线交叉点就是分的类别，有几个交叉点就有几个类别。当然，你所画的线可以决定你的数据分成了几类，越往右边，分类数目越少</li>
-</ul>
-<img src="/2016/05/15/spss如何使用变量的取值模式进行聚类/7af40ad162d9f2d34b591b3aa9ec8a136227cc9e.jpg" title="spss如何使用变量的取值模式进行聚类">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1467,6 +1459,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
             </li>
             
@@ -1500,10 +1496,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
             </li>
             
         </ul>

@@ -433,6 +433,69 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/08/19/python 线性代数：[13]求相关矩阵/">
+                python 线性代数：[13]求相关矩阵
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年08月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>求n个变量之间的相关系数，我们直接求这几个变量之间的相关矩阵即可。上一篇讲了求身高体重之间的协方差，我们现在就来求他们之间的相关系数矩阵。</p>
+<ul>
+<li>引入numpy模块</li>
+</ul>
+<img src="/2015/08/19/python%20线性代数：[13]求相关矩阵/0d729944ebf81a4ccb294b3ed52a6059242da6eb.jpg" title="python 线性代数：[13]求相关矩阵">
+<ul>
+<li>身高用s表示，体重用t表示，采集了三个人的数据，如下</li>
+</ul>
+<img src="/2015/08/19/python%20线性代数：[13]求相关矩阵/29752a9b033b5bb56dcc870934d3d539b700bceb.jpg" title="python 线性代数：[13]求相关矩阵">
+<ul>
+<li>创建矩阵y</li>
+</ul>
+<img src="/2015/08/19/python%20线性代数：[13]求相关矩阵/346bd85c103853434bd420d69113b07ecb8088eb.jpg" title="python 线性代数：[13]求相关矩阵">
+<ul>
+<li>我们使用numpy.corrcoef方法求相关矩阵，左下角或者右上角就是身高与体重的相关系数，而对角线上元素是t与t或者s与s的相关系数</li>
+</ul>
+<img src="/2015/08/19/python%20线性代数：[13]求相关矩阵/adee30dda3cc7cd94a36932e3b01213fb90e91eb.jpg" title="python 线性代数：[13]求相关矩阵">
+<ul>
+<li>再增加一个变量</li>
+</ul>
+<img src="/2015/08/19/python%20线性代数：[13]求相关矩阵/dc15484e9258d10940a80e45d358ccbf6d814dbb.jpg" title="python 线性代数：[13]求相关矩阵">
+<ul>
+<li>求相关矩阵：</li>
+</ul>
+<img src="/2015/08/19/python%20线性代数：[13]求相关矩阵/2e6fa7389b504fc2064417f2e7dde71191ef6deb.jpg" title="python 线性代数：[13]求相关矩阵">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/08/19/Python统计分析：[3]单因素方差分析/">
                 Python统计分析：[3]单因素方差分析
             </a>
@@ -1071,77 +1134,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/">
-                spss如何用散点图检验两个变量之间的交互作用
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年08月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>散点图如图所示， 就是由一些点所构成的图，他是怎么看出交互作用的呢？好吧，我们一步一步来做你就懂了，下面是具体的过程。<br>工具/原料</p>
-<ul>
-<li>spss<br>方法/步骤</li>
-</ul>
-<ul>
-<li>首先在spss中准备好数据，然后在菜单栏上执行：graphs–散点图，如图所示，我这里是spss20.0，如果你要是其他的版本，菜单是不一样的，你得找找散点图在哪里</li>
-</ul>
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/4e4a20a4462309f7380b0cd1720e0cf3d6cad689.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<ul>
-<li>弹出一个窗口，让你选择使用哪个散点图，我们选择第一个最简单的散点图</li>
-</ul>
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/64380cd7912397dd762039c75982b2b7d1a2879c.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<ul>
-<li>因为我们要检验摸底考试成绩与教学方法之间的交互作用，所以你看好了，期末考试是因变量，也就是在y轴，而摸底考试成绩在x轴，分类变量是教学方法</li>
-</ul>
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/91529822720e0cf37ba3ef380a46f21fbf09aa99.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<ul>
-<li>点击ok按钮，开始输出散点图，如图所示，那是一个初步的散点图</li>
-</ul>
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/8b82b9014a90f60303803c843912b31bb151edc5.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/d788d43f8794a4c2411047e80ef41bd5ac6e39c5.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<ul>
-<li>在散点图上右键单击，然后选择在新的窗口中编辑</li>
-</ul>
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/9e3df8dcd100baa1e203e7784710b912c9fc2ec1.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<ul>
-<li>我们要用到上面两个按钮，第一个是所有的点拟合直线，其实就是忽略教学方法这个变量，得到一条回归曲线，但是我们为了比较教学方法，所以需要给不同的教学方法分别绘制回归线，所以点击右侧的按钮</li>
-</ul>
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/7af40ad162d9f2d3c619842ca9ec8a136227cced.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<ul>
-<li>出现了两条回归线，这两条回归线代表不同的教学方法，这两条线如果是平行的就可以认为他们是没有交互作用的，显然这个线有交叉的取向，我们只能先假定有交互作用的取向，但是还无法说达到了显著的水平。</li>
-</ul>
-<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/9922720e0cf3d7cad7ea9fb5f21fbe096a63a9d1.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1183,6 +1175,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
             </li>
             
@@ -1216,10 +1212,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">python3中class,type,instan</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/10/26/决策树通俗理解和代码实践/">决策树通俗理解和代码实践</a>
             </li>
             
         </ul>
