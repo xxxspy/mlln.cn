@@ -278,20 +278,20 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
-                    李宏毅机器学习教程14：无监督学习-词嵌入模型
+                <a href="/2018/09/21/李宏毅机器学习教程16：无监督学习-自编码器/">
+                    李宏毅机器学习教程16：无监督学习-自编码器
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
-                    李宏毅机器学习教程12：半监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
+                    李宏毅机器学习教程01:机器学习简介
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
-                    李宏毅机器学习教程3-2：梯度下降法案例
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：tensorflow教程/">
+                    李宏毅机器学习教程9-3：tensorflow教程
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程20：支持向量机/">
+                    李宏毅机器学习教程20：支持向量机
                 </a>
             </div>
             
@@ -428,6 +428,89 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/04/05/pandas教程：[26]值替换/">
+                pandas教程：[26]值替换
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>有时候我们需要将数据中的某些值替换为其他值，replace()方法就是干这个用的，不同的情况下使用replace的方法也不同，下面我们用离子来说明一下：</p>
+<ul>
+<li>引入相关模块并创建一个Series</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/00a82701213fb80ee7b595d035d12f2eb9389416.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>具体数值的替换，方法很简单：将0替换为6<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/9a1151c2d56285354084262693ef76c6a7ef6316.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/346bd85c103853437bc173269013b07eca808868.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>列表到列表的替换，这种方法经常用到，有些问卷的题目是反向计分，所以要在处理数据的时候将分数再翻转一下：<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/91ae68c6a7efce1b364f3ccdac51f3deb48f6516.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/5d212aa85edf8db1774a88630a23dd54564e7416.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>还可以使用字典映射：将1替换为11，将2替换为12<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/fcbbb151f3deb48f3c0d55d9f31f3a292df57816.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/cbc17b380cd791231fee6073ae345982b2b78068.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>以上方法同样适用于DataFrame对象<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/d66b7e59252dd42a5807f5ac003b5bb5c9eab868.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/570f8c58d109b3de58db106fcfbf6c81800a4c16.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>假如DataFrame中只有一列数据需要替换数值，我们可以单独操作者一列<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/d56b3634349b033b288608dd16ce36d3d539bd68.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/adee30dda3cc7cd91a23c0de3a01213fb80e9168.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>假如有多个列进行相同的替换操作，我们可以同时选择多个列：<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/3792cb39b6003af340b42867362ac65c1038b668.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/814b07d8bc3eb135ffa343bca51ea8d3fd1f4416.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>若多个列中不同的值都要替换为一个相同的值，可以使用字典的方法表示所有需要被替换的值：<br>输出结果为：</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/3b6833f5e0fe99250b689d5737a85edf8db17116.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/32bb9c8ba61ea8d32d468003940a304e251f5816.jpg" title="pandas教程：[26]值替换">
+<ul>
+<li>插值法同样可以用于替换数值，只要使用参数method即可</li>
+</ul>
+<img src="/2015/04/05/pandas教程：[26]值替换/b74124f33a87e9504e97046b13385343faf2b4f2.jpg" title="pandas教程：[26]值替换">
+<img src="/2015/04/05/pandas教程：[26]值替换/346bd85c10385343844f70269013b07ecb8088f2.jpg" title="pandas教程：[26]值替换">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1054,83 +1137,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/03/15/Python教程：[53]matplotlib安装错误/">
-                Python教程：[53]matplotlib安装错误
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年03月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>引用matplotlib包的时候出现一个问题，百度一下才知道问题再哪里，我们先来看看问题是什么。错误提示为：ImportError: matplotlib requires dateutil</p>
-<ul>
-<li>我使用二进制安装文件来安装这个包，安装过程没有出现任何问题</li>
-</ul>
-<img src="/2015/03/15/Python教程：[53]matplotlib安装错误/310f3b1f95cad1c855686ebd7d3e6709c83d511e.jpg" title="Python教程：[53]matplotlib安装错误">
-<ul>
-<li><p>在我使用【import matplotlib】引入该模块的时候，出现了这个错误：</p>
-</li>
-<li><p>Traceback (most recent call last):</p>
-</li>
-<li><p>File “<pyshell#0>“, line 1, in <module></module></pyshell#0></p>
-</li>
-<li><p>import matplotlib</p>
-</li>
-<li><p>File “D:\Python27\lib\site-packages\matplotlib__init__.py”, line 111, in <module></module></p>
-</li>
-<li><p>raise ImportError(“matplotlib requires dateutil”)</p>
-</li>
-<li><p>ImportError: matplotlib requires dateutil</p>
-</li>
-<li><p>其实就是引入matplotlib模块需要用到dateutil模块，那么我们可以通过easy_install命令来安装：假如你没用过easy_install ，你可以看这篇文章<a href="http://jingyan.baidu.com/article/2a1383284db4e2074a134f2c.html假如你没有安装setuptools,我们可以看这篇文章进行安装：http://jingyan.baidu.com/article/b907e627dd80df46e7891c2c.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/2a1383284db4e2074a134f2c.html假如你没有安装setuptools,我们可以看这篇文章进行安装：http://jingyan.baidu.com/article/b907e627dd80df46e7891c2c.html</a></p>
-</li>
-<li><p>打开cmd窗口</p>
-</li>
-</ul>
-<img src="/2015/03/15/Python教程：[53]matplotlib安装错误/b8405490f603738d947290b8b11bb051f819ec35.jpg" title="Python教程：[53]matplotlib安装错误">
-<ul>
-<li>输入这个，找不到这个模块</li>
-</ul>
-<img src="/2015/03/15/Python教程：[53]matplotlib安装错误/b25aae51f8198618728e721e48ed2e738ad4e624.jpg" title="Python教程：[53]matplotlib安装错误">
-<ul>
-<li>我们得用：easy_install python-dateutil</li>
-</ul>
-<img src="/2015/03/15/Python教程：[53]matplotlib安装错误/8759287adab44aed6876227eb11c8701a18bfb35.jpg" title="Python教程：[53]matplotlib安装错误">
-<img src="/2015/03/15/Python教程：[53]matplotlib安装错误/8a95ad1c8701a18bccd38ed59c2f07082838fe35.jpg" title="Python教程：[53]matplotlib安装错误">
-<ul>
-<li>安装好了以后，我们就可以正确引用matplotlib</li>
-</ul>
-<img src="/2015/03/15/Python教程：[53]matplotlib安装错误/fc5e5f34970a304ec85d3c60d3c8a786c8175cea.jpg" title="Python教程：[53]matplotlib安装错误">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1172,6 +1178,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/12/stata教程05-自相关的检验和处理/">stata教程05-自相关的检验和处理</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/11/stata教程03-异方差的检验和处理/">stata教程03-异方差的检验和处理</a>
             </li>
             
@@ -1207,10 +1217,6 @@
                 <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/10/31/keras教程-n-图片风格转换理论和实践/">keras教程-n-图片风格转换理论和实践</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1222,7 +1228,7 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
@@ -1230,7 +1236,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -1238,15 +1244,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1254,11 +1252,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
         </span>
         
         <span>
@@ -1274,15 +1280,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1294,15 +1300,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1350,7 +1352,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1358,11 +1364,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1387,6 +1389,10 @@
         
         <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1422,19 +1428,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -1446,15 +1452,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/数据采集/">数据采集</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/淘宝/">淘宝</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1470,6 +1476,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/sublime/">sublime</a>
         </span>
         
@@ -1478,15 +1488,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
@@ -1502,10 +1512,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
         </span>
         
@@ -1514,27 +1520,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
         </span>
         
         <span>
@@ -1554,23 +1548,27 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/stata/">stata</a>
         </span>
         
         <span>
@@ -1586,11 +1584,27 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
         </span>
         
         <span>
@@ -1606,19 +1620,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/d3js/">d3js</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/问卷/">问卷</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/离线/">离线</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/停用词/">停用词</a>
         </span>
         
     </ul>

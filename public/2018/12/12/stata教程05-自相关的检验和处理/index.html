@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="stata教程05-自相关的检验和处理"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>stata教程05-自相关的检验和处理 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/12/12/stata教程05-自相关的检验和处理/">
+                stata教程05-自相关的检验和处理
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="stata教程05-自相关的检验和处理"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年12月12日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据介绍"><span class="toc-number">1.</span> <span class="toc-text">数据介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载数据-amp-查看旗本情况"><span class="toc-number">2.</span> <span class="toc-text">加载数据&amp;查看旗本情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回归分析"><span class="toc-number">3.</span> <span class="toc-text">回归分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自相关的检验"><span class="toc-number">4.</span> <span class="toc-text">自相关的检验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制残差和滞后残差的散点图"><span class="toc-number">4.1.</span> <span class="toc-text">绘制残差和滞后残差的散点图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自相关图"><span class="toc-number">4.2.</span> <span class="toc-text">自相关图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#偏自相关图"><span class="toc-number">4.3.</span> <span class="toc-text">偏自相关图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BT检验"><span class="toc-number">4.4.</span> <span class="toc-text">BT检验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q检验"><span class="toc-number">4.5.</span> <span class="toc-text">Q检验</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异方差自相关稳健的标准误-HAC"><span class="toc-number">5.</span> <span class="toc-text">异方差自相关稳健的标准误(HAC)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广义最小二乘法-FGLS"><span class="toc-number">6.</span> <span class="toc-text">广义最小二乘法(FGLS)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CO估计法"><span class="toc-number">6.1.</span> <span class="toc-text">CO估计法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PW估计法"><span class="toc-number">6.2.</span> <span class="toc-text">PW估计法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增加解释变量"><span class="toc-number">6.3.</span> <span class="toc-text">增加解释变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-number">7.</span> <span class="toc-text">结论</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>OLS回归不满足球形扰动怎么办? 模型存在自相关怎么办? 怎么检验数据是否存在自相关? 下面我们就回答这些问题。<br><span></span><br><a id="more"></a></p>
+<h3 id="数据介绍"><a href="#数据介绍" class="headerlink" title="数据介绍"></a>数据介绍</h3><p>以Hildreth and Lu对冰激淋需求函数的研究为例。数据集icecream.dta包含30个月度时间序列数据, 变量有: consumption(人均冰激淋的消费量), income(平均家庭收入), price(冰激淋价格), temp(平均温度), time(时间)。</p>
+<h3 id="加载数据-amp-查看旗本情况"><a href="#加载数据-amp-查看旗本情况" class="headerlink" title="加载数据&amp;查看旗本情况"></a>加载数据&amp;查看旗本情况</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> data/icecream.dta, <span class="keyword">clear</span></span><br></pre></td></tr></table></figure>
+<p>因为是时间序列数据, 所以我们需要设置哪个变量是时间变量:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tsset</span> time</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+            time variable:  time, 1 to 30
+                    delta:  1 unit
+    
+</div>
+
+<p>描述一下数据的基本情况:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">describe</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    Contains data from data/icecream.dta
+      obs:            30                          
+     vars:             6                          16 Sep 2010 09:53
+     size:           720                          
+    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                  storage   display    value
+    variable name   type    format     label      variable label
+    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    time            float   %9.0g                 
+    consumption     float   %9.0g                 
+    price           float   %9.0g                 
+    income          float   %9.0g                 
+    temp            float   %9.0g                 
+    temp100         float   %9.0g                 temp/100
+    ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    Sorted by: time
+    
+</div>
+
+<p>直观上, 我们可能觉得气温和冰激淋的消费量是相关的, 气温越高冰激淋的消费量可能越高, 而气温又和时间和季节有关, 所以我们可以画一个图来看下他们的情况:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">graph</span> <span class="keyword">twoway</span> connect consumption temp100 time</span><br></pre></td></tr></table></figure>
+<p><img src="output_9_0.svg" alt="svg"></p>
+<p>上面的命令解释:</p>
+<pre><code>- graph 绘图命令
+- twoway 二维图
+- connect 折线图
+- 剩下的都是变量, 最后一个变量指的是x轴
+</code></pre><h3 id="回归分析"><a href="#回归分析" class="headerlink" title="回归分析"></a>回归分析</h3><p>下面我们使用三个变量来预测冰激淋的消费量:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> consumption temp price income</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+          Source |       SS           df       MS      Number of obs   =        30
+    -------------+----------------------------------   F(3, 26)        =     22.17
+           Model |  .090250523         3  .030083508   Prob > F        =    0.0000
+        Residual |  .035272835        26  .001356647   R-squared       =    0.7190
+    -------------+----------------------------------   Adj R-squared   =    0.6866
+           Total |  .125523358        29  .004328392   Root MSE        =    .03683
+    
+    ------------------------------------------------------------------------------
+     consumption |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+    -------------+----------------------------------------------------------------
+            temp |   .0034584   .0004455     7.76   0.000     .0025426    .0043743
+           price |  -1.044413    .834357    -1.25   0.222    -2.759458    .6706322
+          income |   .0033078   .0011714     2.82   0.009     .0008999    .0057156
+           _cons |   .1973149   .2702161     0.73   0.472    -.3581223     .752752
+    ------------------------------------------------------------------------------
+    
+</div>
+
+<p>结果现实temp和income的系数都是显著的, 但是因为这是时间序列数据, 我们需要检验是否存在自相关。</p>
+<h3 id="自相关的检验"><a href="#自相关的检验" class="headerlink" title="自相关的检验"></a>自相关的检验</h3><h4 id="绘制残差和滞后残差的散点图"><a href="#绘制残差和滞后残差的散点图" class="headerlink" title="绘制残差和滞后残差的散点图"></a>绘制残差和滞后残差的散点图</h4><p>计算残差</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">predict</span> e1 ,res</span><br></pre></td></tr></table></figure>
+<p>计算残差的1阶滞后</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">g</span> e2 = <span class="keyword">L</span>.e1</span><br></pre></td></tr></table></figure>
+<p>绘制散点图(scatter), 绘制线性拟合曲线(lfit)</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">twoway</span> (<span class="keyword">scatter</span> e1 e2) (<span class="keyword">lfit</span> e1 e2)</span><br></pre></td></tr></table></figure>
+<p><img src="output_21_0.svg" alt="svg"></p>
+<h4 id="自相关图"><a href="#自相关图" class="headerlink" title="自相关图"></a>自相关图</h4><p>自相关图指的是变量和变量的n阶滞后的相关, 我们通常查看自相关图来决定自相关的阶数:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ac</span> e1</span><br></pre></td></tr></table></figure>
+<p><img src="output_23_0.svg" alt="svg"></p>
+<p>这个图的x轴指的是滞后阶数n, y轴指的是自相关系数的大小, 我们可以从图中看到, 自相关主要是1阶, 因为2/3/4阶的相关都比较小, 而更高阶的相关基本不考虑。</p>
+<h4 id="偏自相关图"><a href="#偏自相关图" class="headerlink" title="偏自相关图"></a>偏自相关图</h4><p>我们还可以查看偏自相关图:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pac</span> e1</span><br></pre></td></tr></table></figure>
+<p><img src="output_26_0.svg" alt="svg"></p>
+<h4 id="BT检验"><a href="#BT检验" class="headerlink" title="BT检验"></a>BT检验</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">estat</span> <span class="keyword">bgodfrey</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    Breusch-Godfrey LM test for autocorrelation
+    ---------------------------------------------------------------------------
+        lags(p)  |          chi2               df                 Prob > chi2
+    -------------+-------------------------------------------------------------
+           1     |          4.237               1                   0.0396
+    ---------------------------------------------------------------------------
+                            H0: no serial correlation
+    
+</div>
+
+<p>p值小于0.05, 可以拒绝虚无假设: 不存在自相关。</p>
+<h4 id="Q检验"><a href="#Q检验" class="headerlink" title="Q检验"></a>Q检验</h4><p>再来做一下Q检验:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wntestq</span> e1</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    Portmanteau test for white noise
+    ---------------------------------------
+     Portmanteau (Q) statistic =    26.1974
+     Prob > chi2(13)           =     0.0160
+    
+</div>
+
+<p>Q检验的结果同样显示存在着自相关。</p>
+<h3 id="异方差自相关稳健的标准误-HAC"><a href="#异方差自相关稳健的标准误-HAC" class="headerlink" title="异方差自相关稳健的标准误(HAC)"></a>异方差自相关稳健的标准误(HAC)</h3><p>该方法需要提前确定Newey-West估计量的滞后阶数p, 一般公式是<code>$p=n^{1/4}$</code> 或者 <code>$p=0.75n^{1/3}$</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">newey</span> consumption temp price income, lag(3)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    Regression with Newey-West standard errors      Number of obs     =         30
+    maximum lag: 3                                  F(  3,        26) =      27.63
+                                                    Prob > F          =     0.0000
+    
+    ------------------------------------------------------------------------------
+                 |             Newey-West
+     consumption |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+    -------------+----------------------------------------------------------------
+            temp |   .0034584   .0004002     8.64   0.000     .0026357    .0042811
+           price |  -1.044413   .9772494    -1.07   0.295    -3.053178    .9643518
+          income |   .0033078   .0013278     2.49   0.019     .0005783    .0060372
+           _cons |   .1973149   .3378109     0.58   0.564    -.4970655    .8916952
+    ------------------------------------------------------------------------------
+    
+</div>
+
+<p>结果显示, Newey-West的标准误与OLS标准误相差无几, 所以我们的结果基本没有变化。同时我们考虑p取不同的值会不会导致结果发生变化, 以便考察统计量对p的稳健性。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">newey</span> consumption temp price income, lag(6)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    Regression with Newey-West standard errors      Number of obs     =         30
+    maximum lag: 6                                  F(  3,        26) =      52.97
+                                                    Prob > F          =     0.0000
+    
+    ------------------------------------------------------------------------------
+                 |             Newey-West
+     consumption |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+    -------------+----------------------------------------------------------------
+            temp |   .0034584   .0003504     9.87   0.000     .0027382    .0041787
+           price |  -1.044413   .9821798    -1.06   0.297    -3.063313    .9744864
+          income |   .0033078     .00132     2.51   0.019     .0005945     .006021
+           _cons |   .1973149   .3299533     0.60   0.555    -.4809139    .8755437
+    ------------------------------------------------------------------------------
+    
+</div>
+
+<p>结果显示, 统计量没有太大变化, 说明HAC还算稳健。</p>
+<h3 id="广义最小二乘法-FGLS"><a href="#广义最小二乘法-FGLS" class="headerlink" title="广义最小二乘法(FGLS)"></a>广义最小二乘法(FGLS)</h3><p>广义最小二乘法在具体实现细节上又可以分为几种方法, 这里我们演示一下CO(Cochrane-Orcutt)和PW(Prais and Winsten)估计法。</p>
+<h4 id="CO估计法"><a href="#CO估计法" class="headerlink" title="CO估计法"></a>CO估计法</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">prais</span> consumption temp price income, <span class="keyword">corc</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    Iteration 0:  rho = 0.0000
+    Iteration 1:  rho = 0.4006
+    Iteration 2:  rho = 0.4008
+    Iteration 3:  rho = 0.4009
+    Iteration 4:  rho = 0.4009
+    Iteration 5:  rho = 0.4009
+    Iteration 6:  rho = 0.4009
+    Iteration 7:  rho = 0.4009
+    
+    Cochrane-Orcutt AR(1) regression -- iterated estimates
+    
+          Source |       SS           df       MS      Number of obs   =        29
+    -------------+----------------------------------   F(3, 25)        =     15.40
+           Model |  .047040596         3  .015680199   Prob > F        =    0.0000
+        Residual |  .025451894        25  .001018076   R-squared       =    0.6489
+    -------------+----------------------------------   Adj R-squared   =    0.6068
+           Total |  .072492491        28  .002589018   Root MSE        =    .03191
+    
+    ------------------------------------------------------------------------------
+     consumption |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+    -------------+----------------------------------------------------------------
+            temp |   .0035584   .0005547     6.42   0.000      .002416    .0047008
+           price |  -.8923963   .8108501    -1.10   0.282    -2.562373    .7775807
+          income |   .0032027   .0015461     2.07   0.049     .0000186    .0063869
+           _cons |   .1571479   .2896292     0.54   0.592    -.4393546    .7536504
+    -------------+----------------------------------------------------------------
+             rho |   .4009256
+    ------------------------------------------------------------------------------
+    Durbin-Watson statistic (original)    1.021169
+    Durbin-Watson statistic (transformed) 1.548837
+    
+</div>
+
+<p>在结果的最后输出了DW值, DW估计量是评价是否存在自相关的, 由于DW初始值为1.02, 离2很远, 可以认为存在自相关, 然后再采用了CO估计法后, DW值改进为1.5。</p>
+<h4 id="PW估计法"><a href="#PW估计法" class="headerlink" title="PW估计法"></a>PW估计法</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">prais</span> consumption temp price income, nolog</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    
+    Prais-Winsten AR(1) regression -- iterated estimates
+    
+          Source |       SS           df       MS      Number of obs   =        30
+    -------------+----------------------------------   F(3, 26)        =     14.35
+           Model |   .04494596         3  .014981987   Prob > F        =    0.0000
+        Residual |  .027154354        26  .001044398   R-squared       =    0.6234
+    -------------+----------------------------------   Adj R-squared   =    0.5799
+           Total |  .072100315        29  .002486218   Root MSE        =    .03232
+    
+    ------------------------------------------------------------------------------
+     consumption |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+    -------------+----------------------------------------------------------------
+            temp |   .0029541   .0007109     4.16   0.000     .0014929    .0044152
+           price |  -1.048854    .759751    -1.38   0.179    -2.610545    .5128361
+          income |  -.0008022   .0020458    -0.39   0.698    -.0050074    .0034029
+           _cons |   .5870049   .2952699     1.99   0.057    -.0199311    1.193941
+    -------------+----------------------------------------------------------------
+             rho |   .8002264
+    ------------------------------------------------------------------------------
+    Durbin-Watson statistic (original)    1.021169
+    Durbin-Watson statistic (transformed) 1.846795
+    
+</div>
+
+<p>参数nolog表示不显示迭代过程, 上表的结果显示, 收入income的系数变成了负数, 并且统计上不显著。</p>
+<h4 id="增加解释变量"><a href="#增加解释变量" class="headerlink" title="增加解释变量"></a>增加解释变量</h4><p>前面提到, 自相关可能是因为模型设定不正确, 我们可以考虑增加解释变量, 下面我们增加temp变量的滞后值, 然后进行OLS回归:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> consumption temp <span class="keyword">L</span>.temp price income</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+          Source |       SS           df       MS      Number of obs   =        29
+    -------------+----------------------------------   F(4, 24)        =     28.98
+           Model |  .103387183         4  .025846796   Prob > F        =    0.0000
+        Residual |  .021406049        24  .000891919   R-squared       =    0.8285
+    -------------+----------------------------------   Adj R-squared   =    0.7999
+           Total |  .124793232        28  .004456901   Root MSE        =    .02987
+    
+    ------------------------------------------------------------------------------
+     consumption |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+    -------------+----------------------------------------------------------------
+            temp |
+             --. |   .0053321   .0006704     7.95   0.000     .0039484    .0067158
+             L1. |  -.0022039   .0007307    -3.02   0.006    -.0037119   -.0006959
+                 |
+           price |  -.8383021   .6880205    -1.22   0.235    -2.258307    .5817025
+          income |   .0028673   .0010533     2.72   0.012     .0006934    .0050413
+           _cons |   .1894822   .2323169     0.82   0.423    -.2899963    .6689607
+    ------------------------------------------------------------------------------
+    
+</div>
+
+<p>结果显示气温的滞后项的系数为负数, 并且是显著的, 这说明气温的滞后项越高冰激淋的消费量反而越低, 我还不能理解这其中的意义。不过, 我们下面再检验一下模型是否存在自相关的现象。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">estat</span> <span class="keyword">bgodfrey</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(stream):<br>
+    
+    Breusch-Godfrey LM test for autocorrelation
+    ---------------------------------------------------------------------------
+        lags(p)  |          chi2               df                 Prob > chi2
+    -------------+-------------------------------------------------------------
+           1     |          0.120               1                   0.7292
+    ---------------------------------------------------------------------------
+                            H0: no serial correlation
+    
+</div>
+
+<p>结果显示, 自相关已经不存在了。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>好了上面就是我们检查自相关/解决自相关的方法, 至于为什么使用多种方法主要是为了检验你的结论是否具有方法的稳健性, 如果不同方法出现相互矛盾的结果, 我们可以列出是所有的结果, 然后做出自己的分析。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="stata教程05-自相关的检验和处理.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/stata/">#stata</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/stata/">
+            stata
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/12/12/stata教程05-自相关的检验和处理/">
+                    stata教程05-自相关的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-异方差的检验和处理/">
+                    stata教程03-异方差的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">
+                    stata教程03-数据的正态性检验和变量正态化
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">
+                    stata教程02-线性回归分析小样本和大样本OLS
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/01/安装stata并在jupyter-notebook中调用/">
+                    安装stata并在jupyter notebook中调用
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/12/stata教程05-自相关的检验和处理/">stata教程05-自相关的检验和处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/11/stata教程03-异方差的检验和处理/">stata教程03-异方差的检验和处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">stata教程03-数据的正态性检验和变量正态化</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/09/html技术构建python桌面程序-利用eel/">html技术构建python桌面程序-利用eel</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/07/python使用pywinauto实现lisrel自动化/">python使用pywinauto实现lisrel</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/01/安装stata并在jupyter-notebook中调用/">安装stata并在jupyter notebook</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
