@@ -433,6 +433,169 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/06/01/SPSS自动化：[2]ispssdatadoc对象方法用法/">
+                SPSS自动化：[2]ispssdatadoc对象方法用法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年06月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>   ispssdatadoc对象从属于document对象，其方法有很多，今天我们来一一介绍，包括他的功能和用法，可能有不太详尽的地方，大家多提意见，欢迎有志于spss自动化的网友交流。</p>
+<ul>
+<li><p>1&gt;clear方法：清除数据。</p>
+</li>
+<li><p>使用方法：objdatadoc.selectcells（”a”,”b”,19,29)</p>
+</li>
+<li><p>Objdatadoc.clear</p>
+</li>
+<li><p>2&gt;copy方法：复制数据。</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>objdatadoc.copy</p>
+</li>
+<li><p>3&gt;cut方法：</p>
+</li>
+<li><p>剪贴对象到剪贴板。使用方法：</p>
+</li>
+<li><p>objoutputdoc.selectalltables</p>
+</li>
+<li><p>Objoutputdoc.cut</p>
+</li>
+<li><p>4&gt;delete方法：删除选定的数据。</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>objoutputdoc.selectlastutput</p>
+</li>
+<li><p>Objoutputdoc.remove</p>
+</li>
+<li><p>5&gt;deletemenuitem方法：删除菜单项</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Objdatadoc.deletemenuitem(“edit”)</p>
+</li>
+<li><p>6&gt;deletemenuitemfromall方法：从所有数据窗中中删除菜单项，用法同上。</p>
+</li>
+<li><p>7&gt;getbannertext方法：获取标题文本</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Banner=objoutputdoc.getbannertext</p>
+</li>
+<li><p>8&gt;getdocumentpath方法：获取文档路径</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Path=objoutputdoc.getdocumentpath</p>
+</li>
+<li><p>9&gt;getfiltervariable方法：获取变量名或者带有标签的变量名</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Objdatadoc.getfiltervariable(false)   ‘false表示只获得变量名不要标签</p>
+</li>
+<li><p>10&gt;getnumberofcases方法：获取case数量</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Num=objdatadoc.getnumberofcases</p>
+</li>
+<li><p>11&gt;gettextdata方法：获取范围内文本格式的数据</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>array=objdatadoc.gettextdata(“a列”,”b列”,12,14)</p>
+</li>
+<li><p>12&gt;getvariables方法：返回一个一维变量数组，可以选择接收变量还变量标签。功能是获得变量名或者带标签的变量名。</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Variablelist=objdatadoc.getvariables(boolean)           ‘boolean取1为获取变量名和标签，取0为仅获取变量名</p>
+</li>
+<li><p>13&gt;getweightingvariable方法：获取加权变量。</p>
+</li>
+<li><p>使用方法：string=objdatadoc.getweightingvariable(boolean)          ‘boolean是1则返回变量名和标签</p>
+</li>
+<li><p>14&gt;invokedialogandexcutesyntax方法：激活一个对话框并运行命令。</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Objdatadoc.invokedialogandexecutesyntax(strpath,spsswindoparent,true)     ‘strpath是菜单路径，例如”analyze&gt;survival&gt;lifetables”；spsswindoparent是父对话框，可取1或者0；true指的是同步，也就是运行命令以后立刻获得控制权。</p>
+</li>
+<li><p>15&gt;invokedialogandreturnsyntax方法：返回一个syntax命令。</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>String=objdatadoc.invokedialogandreturnssyntax(strpath,spsswindoparent)</p>
+</li>
+<li><p>16&gt;paste方法：粘贴</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Objdatadoc.selectcells(‘a列’,’b列’,20,23)    ‘选择区域粘贴</p>
+</li>
+<li><p>Objdatadoc.paste</p>
+</li>
+<li><p>17&gt;printdoc方法：打印</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Objdatadoc.printdoc     ‘使用ispssprintoptions和printrange确定打印内容和方法。</p>
+</li>
+<li><p>18&gt;saveas方法：另存为</p>
+</li>
+<li><p>使用方法：objdatadoc.saveas(“d:\fuck.sav”)</p>
+</li>
+<li><p>19&gt;selectcases方法：选择case</p>
+</li>
+<li><p>使用方法：objdatadoc.selectcases(1,100)     ‘选择1到100的case</p>
+</li>
+<li><p>20&gt;selectcells方法：选择单元格</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Objdatadoc.selectcells(‘a列’,’b列’,1,100)</p>
+</li>
+<li><p>21&gt;selectvariables方法：选择一定范围内的变量</p>
+</li>
+<li><p>使用方法：</p>
+</li>
+<li><p>Objdatadoc.selectvariables(‘a列’,’b列’)</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/05/23/pandas教程：[30]直方图/">
                 pandas教程：[30]直方图
             </a>
@@ -1085,111 +1248,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/05/17/Python教程：[51]删除文件及文件夹/">
-                Python教程：[51]删除文件及文件夹
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年05月17日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>假如有一个txt文件，我想要使用python命令删除它，怎么弄？这里用到了Python的os模块，我们使用例子来说明如何如何删除文件及目录。</p>
-<ul>
-<li>在d盘下有一个tt文本文件，我们来删除它</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/8697397f9e2f0708688ca795eb24b899a801f25f.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>首先引入os模块</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/e865a699a9014c0828b2a530087b02087af4f45f.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>使用os下的remove命令来删除该文件，参数是r’d:/tt.txt’，通常路径字符串都是用r字符串</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/1e71f724b899a90109c1d6a31f950a7b0308f574.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>现在改文件已经被删除，现在我们再运行一下该命令，看看有什么提示错误</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/0b3a1c087bf40ad12e6d4a76552c11dfa8ecce5f.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>这就是提示的错误，为了写出更见健壮的程序，我们通常要在删除文件前，先检验该文件是否存在。</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/48151723dd54564e598869acb1de9c82d0584f73.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>使用path.exists命令来检验文件是否存在，参数仍然是路径字符串</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/6dc09e0a19d8bc3e64e58b5f808ba61ea9d34573.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>配合if语句，我们就可以写出一个健壮的删除文件的命令。</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/83cab81ea8d3fd1f9ae42faf324e251f94ca5f73.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>上面讲到了如何删除文件，下面说一下如何删除文件夹。我们用到了rmdir方法，它可以直接删除空文件夹</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/814b07d8bc3eb135e7b4382ea41ea8d3fc1f44f1.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li><p>假如文件夹非空，会提示这样的错误：</p>
-</li>
-<li><p>Traceback (most recent call last):</p>
-</li>
-<li><p>File “<pyshell#8>“, line 1, in <module></module></pyshell#8></p>
-</li>
-<li><p>os.rmdir(r’d:/tt/‘)</p>
-</li>
-<li><p>WindowsError: [Error 145] : ‘d:/tt/‘</p>
-</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/9252ae7eca80653882d42b8695dda144ad34822e.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li><p>假如文件夹不存在，会提示这样的错误：</p>
-</li>
-<li><p>Traceback (most recent call last):</p>
-</li>
-<li><p>File “<pyshell#16>“, line 1, in <module></module></pyshell#16></p>
-</li>
-<li><p>os.rmdir(r’d:/tt/‘)</p>
-</li>
-<li><p>WindowsError: [Error 2] : ‘d:/tt/‘</p>
-</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/5beeba0f4bfbfbedb239b9ea7af0f736aec31f87.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>怎么删除非空文件夹？我们用到了shutil模块</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/32bb9c8ba61ea8d32551fb91950a304e241f58f1.jpg" title="Python教程：[51]删除文件及文件夹">
-<ul>
-<li>用rmtree命令可以直接删除文件夹，包括内部文件</li>
-</ul>
-<img src="/2016/05/17/Python教程：[51]删除文件及文件夹/83cab81ea8d3fd1f987a2daf324e251f94ca5ff1.jpg" title="Python教程：[51]删除文件及文件夹">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1231,6 +1289,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/13/stata教程07-常见样本量估计/">stata教程07-常见样本量估计</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/12/stata教程06-计算AIC和BIC决定变量个数/">stata教程06-计算AIC和BIC决定变量个数</a>
             </li>
             
@@ -1264,10 +1326,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/11/09/html技术构建python桌面程序-利用eel/">html技术构建python桌面程序-利用eel</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/07/python使用pywinauto实现lisrel自动化/">python使用pywinauto实现lisrel</a>
             </li>
             
         </ul>
