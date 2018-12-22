@@ -433,6 +433,84 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/">
+                SPSS二因素完全随机设计的简单效应检验方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年07月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>spss在做简单效应的时候没有现成的菜单选项，需要你自己编写syntax，所以比较麻烦，在这个教程了，我交给大家一个办法，不用学太多的syntax就能自己做简单效应，下面是具体的方法：<br>工具/原料</p>
+<ul>
+<li>spss20.0<br>方法/步骤</li>
+</ul>
+<ul>
+<li>在菜单栏上执行：analyse–GLM–univariate，打开方差分析对话框</li>
+</ul>
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/6a600c338744ebf8b74dcffdd9f9d72a6059a730.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<ul>
+<li>将自变量、因变量放入各自的框中，如图所示，B和Z是两个自变量，他们是完全随机设计，点击ok按钮，开始运行数据</li>
+</ul>
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/a08b87d6277f9e2f7e17b6ca1f30e924b999f3d6.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<ul>
+<li>我们看到数据的处理效果，交互作用显著，所以我们需要进一步做简单效益的检验</li>
+</ul>
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/4d086e061d950a7b8140e5060ad162d9f3d3c9ff.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<ul>
+<li>如图所示，点击菜单栏上的按钮，打开刚才用过的univariate对话框</li>
+</ul>
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/4ec2d5628535e5dd0d5d0e1d76c6a7efcf1b62fb.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/203fb80e7bec54e7d481b1dcb9389b504ec26a87.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<ul>
+<li>点击下面的paste按钮，来到syntax的编辑窗口</li>
+</ul>
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/f3d3572c11dfa9ec016afdd562d0f703908fc1a8.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<ul>
+<li><p>在如图所示的位置，添加一个命令：/EMMEANS=TABLES(B*Z)COMPARE(B)ADJ(SIDAK)</p>
+</li>
+<li><p>其中：EMMEANSE是estimated marginal means subcommand的缩写，意思是估计边际平均数  </p>
+</li>
+<li><p>ADJ是比较的方法，还可以用lsd ，bonferroni和sidak这三种方法。</p>
+</li>
+<li><p>单击运行按钮，开始处理数据并输出结果</p>
+</li>
+</ul>
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/8694a4c27d1ed21b3fe6b927ad6eddc450da3fc0.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<ul>
+<li>我们看到，简单主效应的分析已经出来，通过这个表格我们就能对自变量B各个水平进行精细比较</li>
+</ul>
+<img src="/2015/07/01/SPSS二因素完全随机设计的简单效应检验方法/1ad5ad6eddc451dab7dd9b29b6fd5266d11632cc.jpg" title="SPSS二因素完全随机设计的简单效应检验方法">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/07/01/wxpython教程：[2]窗口风格/">
                 wxpython教程：[2]窗口风格
             </a>
@@ -1029,91 +1107,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/06/15/Python教程：[17]UDP客户端程序/">
-                Python教程：[17]UDP客户端程序
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年06月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>python可以快速的写成一个udp客户端程序，前面的文章中我们介绍了如何写udp服务器，服务器其实和客户端的程序时非常类似的，你看了下面的代码就知道了。</p>
-<ul>
-<li>先引入socket模块</li>
-</ul>
-<img src="/2015/06/15/Python教程：[17]UDP客户端程序/9e7ce6dcd100baa195843e974510b912c8fc2e36.jpg" title="Python教程：[17]UDP客户端程序">
-<ul>
-<li>设置几个参数：host主机地址，Port端口，bufsiz缓存大小</li>
-</ul>
-<img src="/2015/06/15/Python教程：[17]UDP客户端程序/e1bf8725bc315c601b4e12c38fb1cb1348547787.jpg" title="Python教程：[17]UDP客户端程序">
-<ul>
-<li>创建一个udp套接字类型，如图所示，关键参数是第二个SOCK_DGRAM</li>
-</ul>
-<img src="/2015/06/15/Python教程：[17]UDP客户端程序/c28fddfdfc039245b71d98238594a4c27d1e2536.jpg" title="Python教程：[17]UDP客户端程序">
-<ul>
-<li>下面的代码用于向服务器发送数据，并接受服务器传来的数据</li>
-</ul>
-<img src="/2015/06/15/Python教程：[17]UDP客户端程序/9319cf09b3de9c82eabe80a36e81800a18d84387.jpg" title="Python教程：[17]UDP客户端程序">
-<ul>
-<li><p>下面是完整的代码。</p>
-</li>
-<li><p>from socket import *</p>
-</li>
-<li><p>host=’localhost’  #本地服务器地址</p>
-</li>
-<li><p>port=12345  #客户端端口(确保和服务器的端口一致</p>
-</li>
-<li><p>bufsiz=2048 #缓存大小</p>
-</li>
-<li><p>addc=(host, port) #地址+端口</p>
-</li>
-<li><p>udpclisock=socket(AF_INET,SOCK_DGRAM)  #创建UDP的套接字类型。</p>
-</li>
-<li><p>while True:</p>
-</li>
-<li><p>udpclisock.sendto(b’hello’, addc)</p>
-</li>
-<li><p>data,adds=udpclisock.recvfrom(bufsiz)</p>
-</li>
-<li><p>if not data:</p>
-</li>
-<li><p>break</p>
-</li>
-<li><p>print(data)</p>
-</li>
-<li><p>udpclisock.close()</p>
-</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1155,6 +1148,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">stata教程09-项目反应理论IRT的Rash模</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/22/stata教程08-中介效应分析/">stata教程08-中介效应分析</a>
             </li>
             
@@ -1188,10 +1185,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
             </li>
             
         </ul>

@@ -433,6 +433,73 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/02/11/pandas教程：[12]transformation标准化数据/">
+                pandas教程：[12]transformation标准化数据
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年02月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>假如有一列数据需要转换为以1为标准差以0为平均数的标准分数，如何用pandas实现？今天我们一边介绍数据的标准化，一边感受一下transformation的用法。要知道transformation不仅仅可以实现数据的标准化，它可以实现任何你能想到的数据转换。</p>
+<ul>
+<li>引入相关模块</li>
+</ul>
+<img src="/2015/02/11/pandas教程：[12]transformation标准化数据/8a95ad1c8701a18b1c5a7f599d2f07082838fe30.jpg" title="pandas教程：[12]transformation标准化数据">
+<ul>
+<li>创建一个series对象<br>可以查看一下数据的前五行：</li>
+</ul>
+<img src="/2015/02/11/pandas教程：[12]transformation标准化数据/263e802f07082838bfbcb102bb99a9014c08f130.jpg" title="pandas教程：[12]transformation标准化数据">
+<img src="/2015/02/11/pandas教程：[12]transformation标准化数据/72b19c025aafa40f33cda3cba864034f78f01959.jpg" title="pandas教程：[12]transformation标准化数据">
+<ul>
+<li>我们使用两个lambda函数key和zscore，其中zscore是transform的参数，key是groupby的参数</li>
+</ul>
+<img src="/2015/02/11/pandas教程：[12]transformation标准化数据/4abae5edab64034f04c6af10acc379310a551d59.jpg" title="pandas教程：[12]transformation标准化数据">
+<ul>
+<li>经过这样的转换，每个月的数据已经转换为标准分数（每月数据平均数为0标准差为1），查看一下得到的结果的数据类型，它还是一个series对象</li>
+</ul>
+<img src="/2015/02/11/pandas教程：[12]transformation标准化数据/0b907cd9f2d3572cbf53f1ca8913632762d0c330.jpg" title="pandas教程：[12]transformation标准化数据">
+<ul>
+<li>验证一下结果是否正确，我们先按照月分组数据，然后再计算标准差和平均数</li>
+</ul>
+<img src="/2015/02/11/pandas教程：[12]transformation标准化数据/f392492c11dfa9ec3a9f3b0161d0f703918fc130.jpg" title="pandas教程：[12]transformation标准化数据">
+<ul>
+<li>输出的结果很明显：已经完成了数据的转换。</li>
+</ul>
+<img src="/2015/02/11/pandas教程：[12]transformation标准化数据/0b14ad19ebc4b745c79fda00ccfc1e178a821559.jpg" title="pandas教程：[12]transformation标准化数据">
+<ul>
+<li>欢迎有志于数据分析的人一起交流学习。</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/02/05/SVN教程：[5]部署django到SAE全过程/">
                 SVN教程：[5]部署django到SAE全过程
             </a>
@@ -1099,75 +1166,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/01/19/pandas教程：[15]移动复制删除列/">
-                pandas教程：[15]移动复制删除列
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年01月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>pandas的DataFrame非常灵活，我们可以快速的移动、复制、删除列，今天就用案例来说明一下具体的工作是如何完成的。</p>
-<ul>
-<li>首先我们创建一个dataframe<br>打印一下：</li>
-</ul>
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/b74124f33a87e95019c1d76f13385343faf2b49b.jpg" title="pandas教程：[15]移动复制删除列">
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/62667cd0f703918f5bcc1ac9523d269759eec451.jpg" title="pandas教程：[15]移动复制删除列">
-<ul>
-<li>增加列，我们可以把df当作一个object，给它增加一个属性c，如下：<br>这是增加c列以后的数据：</li>
-</ul>
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/0d729944ebf81a4c482ecbcad42a6059252da651.jpg" title="pandas教程：[15]移动复制删除列">
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/4a77b2af2edda3cc3a329c2302e93901203f929b.jpg" title="pandas教程：[15]移动复制删除列">
-<ul>
-<li>我们还可以插入一列数据到任意位置：比如插入到第二列<br>插入后的数据：</li>
-</ul>
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/61183b2dd42a283414ba110858b5c9ea15cebf51.jpg" title="pandas教程：[15]移动复制删除列">
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/148f28d3d539b60012d228b4ea50352ac65cb751.jpg" title="pandas教程：[15]移动复制删除列">
-<ul>
-<li>永久删除一列数据用del，虽然我们不建议你这么武断的删除c列：<br>删除后的数据：</li>
-</ul>
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/3790312eb9389b501d29c4518635e5dde6116e9b.jpg" title="pandas教程：[15]移动复制删除列">
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/cbc17b380cd79123a0fcb377ae345982b2b78051.jpg" title="pandas教程：[15]移动复制删除列">
-<ul>
-<li>更明智的方法是使用drop，它不改变原有的df中的数据，而是返回另一个dataframe来存放删除后的数据<br>这是df2中的数据：</li>
-</ul>
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/d4239b35e5dde711c70467f5a4efce1b9c16619b.jpg" title="pandas教程：[15]移动复制删除列">
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/91ae68c6a7efce1bc6fdecc9ac51f3deb58f659b.jpg" title="pandas教程：[15]移动复制删除列">
-<ul>
-<li>移动列也很简单，假如我们想要将c列移动到第一列，我们可以使用pop来输出并删除b列，然后再将b列插入到第一列，这样就完成了移动<br>移动后的结果为：</li>
-</ul>
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/d4239b35e5dde711c6ce64f5a4efce1b9d166151.jpg" title="pandas教程：[15]移动复制删除列">
-<img src="/2015/01/19/pandas教程：[15]移动复制删除列/ae10eddeb48f8c54f505e12c39292df5e1fe7f9b.jpg" title="pandas教程：[15]移动复制删除列">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/pandas/">#pandas</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1209,6 +1207,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">stata教程09-项目反应理论IRT的Rash模</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/22/stata教程08-中介效应分析/">stata教程08-中介效应分析</a>
             </li>
             
@@ -1242,10 +1244,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
             </li>
             
         </ul>
