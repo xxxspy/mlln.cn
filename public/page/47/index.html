@@ -433,6 +433,73 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/07/01/wxpython教程：[2]窗口风格/">
+                wxpython教程：[2]窗口风格
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年07月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>这篇文章接着介绍wxpython.Frame，我们需要设置一下窗口的大小、位置等。下面看一下今天要写的所有代码。</p>
+<ul>
+<li>代码的前两行就不说了，引入了相关模块并创建了一个app</li>
+</ul>
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/0d968f2397dda1440ba4fcddb1b7d0a20df486f5.jpg" title="wxpython教程：[2]窗口风格">
+<ul>
+<li>接着是Frame的设置，我们先来看看style，他有很多可以设置的属性，不同的属性用竖线“|”连接，比如我们想要窗口上有最大化按钮，就设置wx.MAXIMIZE_BOX，如果想要增加最小化按钮，就写成style=wx.MAXIMIZE_BOX|wx.MINIMIZE_BOX ，写一连串属性很麻烦，我们可以用wx.DEFAULT_FRAME_STYLE默认设置，它等于wx.MINIMIZE_BOX | wx.MAXIMIZE_BOX | wx.RESIZE_BORDER | wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX | wx.CLIP_CHILDREN<br>其他属性的意义我们直接从官网上看就可以，如下图：</li>
+</ul>
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/4abae5edab64034f575f5269acc379310b551d8b.jpg" title="wxpython教程：[2]窗口风格">
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/109eb7ec8a136327064f515c928fa0ec09fac784.jpg" title="wxpython教程：[2]窗口风格">
+<ul>
+<li><p>接着我们想要设置窗口的大小，用size参数，Frame（…size=(200,250))，这样就将窗口大小设置为200长，250高。</p>
+</li>
+<li><p>使用Move方法可以设置窗口的位置，比如（它表示窗口的左上角在屏幕上的位置）</p>
+</li>
+</ul>
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/ac754782b2b7d0a2a66494f2c8ef76094a369af5.jpg" title="wxpython教程：[2]窗口风格">
+<ul>
+<li>如果我们需要将窗口置于屏幕中央，可以使用Center方法</li>
+</ul>
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/b6045da98226cffc24b82fddba014a90f703ea94.jpg" title="wxpython教程：[2]窗口风格">
+<ul>
+<li>还有其他很多方法设置窗口位置，这里就不演示了：</li>
+</ul>
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/4e83cb628535e5dd279737b075c6a7efcf1b62e3.jpg" title="wxpython教程：[2]窗口风格">
+<ul>
+<li>最后就不用解释了，可以看看你创建的一个窗口</li>
+</ul>
+<img src="/2015/07/01/wxpython教程：[2]窗口风格/8bc3a7014a90f6034c220c283a12b31bb151ed94.jpg" title="wxpython教程：[2]窗口风格">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/wxpython/">#wxpython</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/06/23/Excel2013：[43]如何打印批注/">
                 Excel2013：[43]如何打印批注
             </a>
@@ -1047,77 +1114,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/06/15/pandas教程：[5]读取csv数据/">
-                pandas教程：[5]读取csv数据
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年06月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>很多数据是从网上下载而来，数据的格式可能是csv，那么pandas可以很容易的从csv格式的文件中读取数据，下面我们来看看具体的过程：</p>
-<ul>
-<li>引入pandas</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/7787b9efce1b9d161dd32272f0deb48f8c54644a.jpg" title="pandas教程：[5]读取csv数据">
-<ul>
-<li>使用pandas下的read_csv方法，读取csv文件，参数是文件的路径，这是一个相对路径，是相对于当前工作目录的，那么如何知道当前的工作目录呢？</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/bd7faf3533fa828ba41825f0fe1f4134970a5aae.jpg" title="pandas教程：[5]读取csv数据">
-<ul>
-<li>使用os.getcwd()方法获取当前工作目录</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/1cd4147b02087bf47fe5effaf1d3572c11dfcf5d.jpg" title="pandas教程：[5]读取csv数据">
-<ul>
-<li>读取前三后数据，查看一下是否读取正确，显然都是乱码，这是什么问题呢？</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/95afee1f3a292df509d71406bf315c6034a8734a.jpg" title="pandas教程：[5]读取csv数据">
-<ul>
-<li>我们需要设定参数encoding，也就是编码方式，如果你不设定编码方式，默认是utf8，现在csv文件是gbk编码的，所以需要使用encoding=’gbk’</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/2cb4fefe9925bc31b049b98b5ddf8db1cb13704a.jpg" title="pandas教程：[5]读取csv数据">
-<ul>
-<li>我用的编辑器是eric4，注意，eric4默认是不支持中文的，如果你想要显示中文，前提是设置正确的编码，在preferences中</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/c87c6ecf3bc79f3debda5c23b9a1cd11728b29ae.jpg" title="pandas教程：[5]读取csv数据">
-<ul>
-<li>设置成utf8即可</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/d041a4a1cd11728b5f163431cbfcc3cec3fd2cae.jpg" title="pandas教程：[5]读取csv数据">
-<ul>
-<li>回到pandas，我们可以有更多选项来设置打开数据时的操作：</li>
-</ul>
-<img src="/2015/06/15/pandas教程：[5]读取csv数据/808a27dbb6fd5266fd228707a818972bd407365c.jpg" title="pandas教程：[5]读取csv数据">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/pandas/">#pandas</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1159,6 +1155,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/22/stata教程08-中介效应分析/">stata教程08-中介效应分析</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/13/stata教程07-常见样本量估计/">stata教程07-常见样本量估计</a>
             </li>
             
@@ -1192,10 +1192,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/09/html技术构建python桌面程序-利用eel/">html技术构建python桌面程序-利用eel</a>
             </li>
             
         </ul>

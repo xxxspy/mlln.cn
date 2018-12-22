@@ -433,6 +433,71 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/07/05/excel怎样隐藏公式/">
+                excel怎样隐藏公式
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年07月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>我们看看下面的这个工作表，点击一个有公式单元格，在公式栏就会出现单元格的公式，有时候我们不想让别人知道我们的计算方法，所以有必要隐藏公式，隐藏公式的具体方法如下：<br>步骤/方法</p>
+<ul>
+<li>打开一个工作表，在D2单元格输入一个公式，公式任意，我们的目的就是要隐藏这个公式</li>
+</ul>
+<img src="/2016/07/05/excel怎样隐藏公式/377adab44aed2e7391c6458a8701a18b87d6fa6d.jpg" title="excel怎样隐藏公式">
+<ul>
+<li>点击工作表的左上角的位置，如图所示，选中整个工作表，右键单击工作表，选择【设置单元格格式】</li>
+</ul>
+<img src="/2016/07/05/excel怎样隐藏公式/6159252dd42a283469bff5ad5bb5c9ea15cebf7f.jpg" title="excel怎样隐藏公式">
+<ul>
+<li>在设置单元格格式对话框中，我们切换到【保护】面板，然后点击【隐藏】，点击确定按钮。返回到工作表</li>
+</ul>
+<img src="/2016/07/05/excel怎样隐藏公式/37d3d539b6003af35ca31fc6352ac65c1038b67f.jpg" title="excel怎样隐藏公式">
+<ul>
+<li>接着我们在菜单栏上执行：审阅–保护工作表</li>
+</ul>
+<img src="/2016/07/05/excel怎样隐藏公式/c75c10385343fbf2df356585b07eca8065388f7f.jpg" title="excel怎样隐藏公式">
+<ul>
+<li>弹出了保护工作表对话框，我们勾选如图所示的选项，然后输入保护密码。点击确定</li>
+</ul>
+<img src="/2016/07/05/excel怎样隐藏公式/5243fbf2b2119313df5a3c1665380cd791238d7f.jpg" title="excel怎样隐藏公式">
+<ul>
+<li><p>弹出确认密码对话框，再次输入刚才的密码，点击确定。</p>
+</li>
+<li><p>回到工作表，点击D2单元格，在公示栏中已经没有公式了，这样就可以保护公式了。</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/07/05/pandas教程：[28]散点图添加趋势线/">
                 pandas教程：[28]散点图添加趋势线
             </a>
@@ -1091,75 +1156,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/06/19/python教程：[75]HTMLParser采集网页数据/">
-                python教程：[75]HTMLParser采集网页数据
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年06月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>HTMLParser是python自带的处理html文件的模块，用起来非常简单，但很有实用价值，下面我们通过一个简单的例子来说明它的工作机制，然后对它所包含的所有方法进行一个说明。</p>
-<ul>
-<li>先看一个简单的例子，我们先引入HTMLParser，然后声明一个类，继承自HTMLPaerser，然后定义了一个方法，这个方法继承自HTMLParser</li>
-</ul>
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/5beeba0f4bfbfbedc8be6c497bf0f736aec31fe5.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<ul>
-<li>这一段代码的运行结果是：从结果中我们可以看到feed方法是将要处理的html字符串传递给HTMLParser，处理的过程是从前到后逐个处理html文件的标签，当遇到一个标签的时候，就调用handle_starttag方法，我们写的这个方法就是将tag名打印出来，所以就出现了下面这个结果：</li>
-</ul>
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/718e25c79f3df8dce066caa7ce11728b47102869.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<ul>
-<li><p>feed()和handle_starttag()已经说了，这里不再重复</p>
-</li>
-<li><p>handle_endtag()：处理结束标签，比如就是一个结束标签，当遇到结束标签的时候调用该方法</p>
-</li>
-<li><p>handle_data():处理数据，比如<a>这是数据</a>，“这是数据”就是data，当遇到data的时候调用该方法。</p>
-</li>
-<li><p>handle_entityref()：处理“&gt;”“&#62;”“&#x3E;”这样的字符串，他们各有自己指代的字符，处理的方法是使用name2codepoint将其转换，就可以知道gt原来是&gt;的意思</p>
-</li>
-</ul>
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/b25aae51f81986184ee3a9b249ed2e738bd4e625.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/29790130e924b89921983f0e6d061d950a7bf625.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<ul>
-<li><p>handle_charref()处理十进制或十六进制“&#x3E;”这样的字符串，可以将其转换为&amp;gt</p>
-</li>
-<li><p>handle_comment()处理<!--comment-->内的内容</p>
-</li>
-<li><p>handle_decl()处理html文档类型声明，例如&lt;!coctype html&gt;</p>
-</li>
-<li><p>大部分方法都列在上面了，还有一些不常用就没有写，这些相信已经够你用了。</p>
-</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1201,6 +1197,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/22/stata教程08-中介效应分析/">stata教程08-中介效应分析</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/13/stata教程07-常见样本量估计/">stata教程07-常见样本量估计</a>
             </li>
             
@@ -1234,10 +1234,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/09/html技术构建python桌面程序-利用eel/">html技术构建python桌面程序-利用eel</a>
             </li>
             
         </ul>

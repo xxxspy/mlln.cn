@@ -433,6 +433,75 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/02/17/SPSS实例：[11]如何检验调节作用/">
+                SPSS实例：[11]如何检验调节作用
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年02月17日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>我们今天用到了spss中的分层回归，这种方法其实和回归没有太大差异，只是在回归的时候，分两个步骤进行，然后对两步中的R方值的改变大小进行显著性检验，如果达到了预先设置的显著性水平，就可以证明调节作用。我们来看看具体的步骤：</p>
+<ul>
+<li><p>明确变量类型：我们今天使用的自变量、调节变量、因变量都是连续性变量，或者说是等距变量。</p>
+</li>
+<li><p>我们在菜单栏上执行：分析——回归——线性回归，如图所示</p>
+</li>
+</ul>
+<img src="/2015/02/17/SPSS实例：[11]如何检验调节作用/b6045da98226cffc7dc6f7a0bb014a90f703eaf1.jpg" title="SPSS实例：[11]如何检验调节作用">
+<ul>
+<li>接着，我们要输入变量，放入因变量，然后放入自变量和调节变量，自变量和调节变量都在independent框中，图中没有列出调节变量，你别跟着犯错。点击next按钮，进入第二层</li>
+</ul>
+<img src="/2015/02/17/SPSS实例：[11]如何检验调节作用/5f9e93b1cb1349540abca076544e9258d0094ac6.jpg" title="SPSS实例：[11]如何检验调节作用">
+<ul>
+<li>在第二层中，independent框中不仅仅有自变量和调节变量，还有自变量和调节变量的交互项，假如你不知道这个交互项是从哪里来的，你可以在百度经验中搜索【回归模型中如何增加交互项】。这里就不再详述了。</li>
+</ul>
+<img src="/2015/02/17/SPSS实例：[11]如何检验调节作用/43e6c733c895d143e009af3171f082025aaf0761.jpg" title="SPSS实例：[11]如何检验调节作用">
+<ul>
+<li>我们点击statistics按钮，进行设置</li>
+</ul>
+<img src="/2015/02/17/SPSS实例：[11]如何检验调节作用/0e655ca7d933c8959c80d069d31373f0830200e2.jpg" title="SPSS实例：[11]如何检验调节作用">
+<ul>
+<li>在这里需要重点勾选R方改变值或者其他你感兴趣的指标，如图所示，然后点击继续</li>
+</ul>
+<img src="/2015/02/17/SPSS实例：[11]如何检验调节作用/b110e6198618367aaa6537cf2c738bd4b21ce5f1.jpg" title="SPSS实例：[11]如何检验调节作用">
+<ul>
+<li>我们先看R方的改变值是否达到了显著水平，如果达到了显著水平，然后找到模型的系数检验结果，因为保密原因，我把变量的名称都隐去了，你可以看到红色方框中就是交互项的系数检验，B值达到显著水平，说明调节作用得到了证明。</li>
+</ul>
+<img src="/2015/02/17/SPSS实例：[11]如何检验调节作用/fab3ac119313b07ef982761b0ed7912397dd8ca2.jpg" title="SPSS实例：[11]如何检验调节作用">
+<ul>
+<li>为了进一步看到调节变量是如何起到调节作用的，也就是具体的调节方向，我们需要进一步来进行探究，因为篇幅太长，我们在下一篇文章中讲【检验调节变量的调节方向】</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/02/17/pandas教程：[19]读写sql数据库/">
                 pandas教程：[19]读写sql数据库
             </a>
@@ -1063,110 +1132,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/02/05/SVN教程：[5]部署django到SAE全过程/">
-                SVN教程：[5]部署django到SAE全过程
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年02月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>之前写过一篇在SAE上部署django的教程，现在返回来看犯了很多错误，所以在这里更正一篇，希望大家见谅，其实我也不是什么高手，难免有错误，下面看看在新浪sae上部署django的完整过程吧。</p>
-<ul>
-<li>先去新浪sae上登陆，找到你建立的应用，然后点击【创建一个版本】，如果你没有创建过版本，可能只有一个版本</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/1899a23eb13533fa86fe2d63aad3fd1f40345bf7.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>输入版本号，这个数字是任意的，我就按照版本3来做</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/a992e31f4134970a3a3bae6297cad1c8a6865df7.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>回到Deltatest文件夹，如果你看过前面的文章就知道这个文件夹是什么，如果你没有跟着做，你看一下这篇文章就知道：<a href="http://jingyan.baidu.com/article/6525d4b135bb1dac7d2e94ad.html看完这篇文章，右键单击这个文件夹，然后选择【svn更新】" target="_blank" rel="noopener">http://jingyan.baidu.com/article/6525d4b135bb1dac7d2e94ad.html看完这篇文章，右键单击这个文件夹，然后选择【svn更新】</a></li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/a6c7d7177f3e6709db48fbb239c79f3df9dc55f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>更新完毕以后，你会看到这里多了一个文件夹3，这个文件夹就跟sae上的版本3相同了。</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/718e25c79f3df8dcc67531dccf11728b461028f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>点击进入文件夹3，可以看到有这两个文件。</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/c87c6ecf3bc79f3dee1f5a7db8a1cd11738b2945.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>打开cmd命令窗口，我们先进入文件夹3，如图所示的命令：</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/9e7ce6dcd100baa1d4d2f9f64510b912c9fc2e45.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>接着，我们在该文件夹下面创建一个新工程，比如工程名称叫做Deltatest</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/cc506c8b4710b912d53f48b3c1fdfc0393452245.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>回到文件夹3，这里就会多了一个文件夹deltatest，双击进入deltatest文件夹</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/9304c888d43f87948101f663d01b0ef41ad53a45.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>这里面还有一个Deltatest文件夹<br>这是deltatest文件夹内的文件</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/a583631ed21b0ef432a02613dfc451da80cb3ef7.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/1a94b36eddc451daacbeb2a6b4fd5266d11632f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>我们将这两个文件剪切</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/aa59892bd40735fad1b8f0f49c510fb30e2408f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>复制到这里，也就是文件夹3下面</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/1f569482b9014a90afc0f8f0ab773912b21bee46.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>好了后面就简单了，我们要配置一下两个文件，第一个是index.wsgi文件，里面写这些内容：</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/6391e903918fa0ec88c3de40249759ee3d6ddb3c.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>第二个文件是config.yawm</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/9f6e190828381f30826237e4ab014c086f06f0c1.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>最后，提交一下</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/f7426d8da9773912ea023f2cfa198618367ae21c.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>注意点选【全部】，不然漏掉某些文件，你就失败了。</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/79b1e936afc3793140603c64e9c4b74543a91137.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<ul>
-<li>在浏览器输入你的app的网址，看看能不能出现django的欢迎界面吧！！有问题可以在下面留言奥。</li>
-</ul>
-<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/dbf554ed2e738bd4d5690c7ca38b87d6267ff9f0.jpg" title="SVN教程：[5]部署django到SAE全过程">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/django/">#django</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1208,6 +1173,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/22/stata教程08-中介效应分析/">stata教程08-中介效应分析</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/13/stata教程07-常见样本量估计/">stata教程07-常见样本量估计</a>
             </li>
             
@@ -1241,10 +1210,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/09/html技术构建python桌面程序-利用eel/">html技术构建python桌面程序-利用eel</a>
             </li>
             
         </ul>

@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="stata教程08-中介效应分析"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>stata教程08-中介效应分析 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/12/22/stata教程08-中介效应分析/">
+                stata教程08-中介效应分析
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="stata教程08-中介效应分析"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年12月22日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#中介分析原理"><span class="toc-number">1.</span> <span class="toc-text">中介分析原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本案例的数据介绍"><span class="toc-number">2.</span> <span class="toc-text">本案例的数据介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过滤缺失值"><span class="toc-number">3.</span> <span class="toc-text">过滤缺失值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回归1-自变量预测因变量"><span class="toc-number">4.</span> <span class="toc-text">回归1: 自变量预测因变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回归2-自变量预测中介变量"><span class="toc-number">5.</span> <span class="toc-text">回归2: 自变量预测中介变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回归3-自变量和中介变量预测因变量"><span class="toc-number">6.</span> <span class="toc-text">回归3: 自变量和中介变量预测因变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-number">7.</span> <span class="toc-text">结论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用插件"><span class="toc-number">8.</span> <span class="toc-text">使用插件</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<h3 id="中介分析原理"><a href="#中介分析原理" class="headerlink" title="中介分析原理"></a>中介分析原理</h3><p>下面是我之前写过的关于中介效应的文章, 大家看后就知道原理了:</p>
+<p><a href="/2015/05/23/SPSS实例：[16]中介效应的检验过程/"><br>    <span class="archive-date"><br>        May 2015<br>    </span><br>    SPSS实例：[16]中介效应的检验过程<br></a><br><a href="/2016/02/01/SPSS实例：[18]中介效应占总效应百分比/"><br>    <span class="archive-date"><br>        Feb 2016<br>    </span><br>    SPSS实例：[18]中介效应占总效应百分比<br></a></p>
+<p><a href="/2016/01/11/SPSS实例：[20]检验中介效应的操作方法/"><br>    <span class="archive-date"><br>        Jan 2016<br>    </span><br>    SPSS实例：[20]检验中介效应的操作方法<br></a></p>
+<p><a href="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/"><br>    <span class="archive-date"><br>        Oct 2016<br>    </span><br>    SPSS实例：[17]进行sobel检验(小白教程)<br></a></p>
+<p><a href="https://mlln.cn/2018/09/26/%E5%9C%A8%E7%BA%BF%E7%BB%98%E5%88%B6%E4%B8%AD%E4%BB%8B%E6%95%88%E5%BA%94%E5%9B%BE/"><br>    <span class="archive-date"><br>        Oct 2016<br>    </span><br>    在线绘制中介效应图<br></a></p>
+<p>在这里我重新声明一下具体的过程:</p>
+<p>下面的回归模型中都带有控制变量，只不过为了简洁，没有在下面描述。首先使用自变量ind预测因变量dep, 得到模型1(<code>dep=c1 * ind +e1</code>), 然后使用自变量ind预测中介变量med, 得到模型2(<code>med=a * ind +e2</code>), 最后使用自变量ind和中介变量med预测因变量dep, 得到模型3(<code>dep=b* med + c2 * ind + e3</code>)。</p>
+<h3 id="本案例的数据介绍"><a href="#本案例的数据介绍" class="headerlink" title="本案例的数据介绍"></a>本案例的数据介绍</h3><p>本案例使用的是自己编制的数据，自变量就是ind, 因变量就是dep, 中介变量就是med, 其他控制变量都以<code>control+数字</code>的格式命名。</p>
+<p>下面加载这个数据:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="string">"data/mediator-data.dta"</span>, <span class="keyword">clear</span></span><br></pre></td></tr></table></figure>
+<h3 id="过滤缺失值"><a href="#过滤缺失值" class="headerlink" title="过滤缺失值"></a>过滤缺失值</h3><p>我们需要做三个回归分析, 但是因为回归分析涉及的变量不同, 如果变量存在缺失值, 那么很有可能造成三个回归方程使用的观测数据有差异(因为有不同的缺失值), 所以我们再做回归之前, 先要生成一个miss_num变量, 如果自变量/中介变量/因变量/控制变量都没有缺失, 那么miss_num=0, 否则miss_num&gt;0。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">egen</span> miss_num = rowmiss(dep med ind control1 control2 control3 control4 control5)</span><br></pre></td></tr></table></figure>
+<p>看一下缺失情况: 从下表可以看出, 没有缺失的有861个样本。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tab</span> miss_num</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+   miss_num |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        861       73.72       73.72
+          1 |        298       25.51       99.23
+          2 |          1        0.09       99.32
+          3 |          1        0.09       99.40
+          4 |          7        0.60      100.00
+------------+-----------------------------------
+      Total |      1,168      100.00
+
+</div>
+
+<h3 id="回归1-自变量预测因变量"><a href="#回归1-自变量预测因变量" class="headerlink" title="回归1: 自变量预测因变量"></a>回归1: 自变量预测因变量</h3><p><code>dep=c1 * ind +e1</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> dep ind control1 control2 control3 control4 control5 <span class="keyword">if</span> miss_num==0</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+      Source |       SS           df       MS      Number of obs   =       861
+-------------+----------------------------------   F(6, 854)       =      2.76
+       Model |  .459843972         6  .076640662   Prob > F        =    0.0115
+    Residual |  23.6942548       854  .027745029   R-squared       =    0.0190
+-------------+----------------------------------   Adj R-squared   =    0.0121
+       Total |  24.1540988       860  .028086161   Root MSE        =    .16657
+
+------------------------------------------------------------------------------
+         dep |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         ind |  -.0745096   .0352931    -2.11   0.035    -.1437809   -.0052382
+    control1 |  -.0003018   .0043662    -0.07   0.945    -.0088715     .008268
+    control2 |  -.0133247     .00578    -2.31   0.021    -.0246693     -.00198
+    control3 |  -.0044711   .0044726    -1.00   0.318    -.0132497    .0043075
+    control4 |   .1799002   .0983623     1.83   0.068      -.01316    .3729603
+    control5 |   .0340114   .0191444     1.78   0.076    -.0035642    .0715871
+       _cons |   .7167078   .2593365     2.76   0.006     .2076962     1.22572
+------------------------------------------------------------------------------
+
+</div>
+
+<p>从上面的结果中可以看到, c1这个系数是显著的, c1 = -.0745096, sc1 = .0352931</p>
+<h3 id="回归2-自变量预测中介变量"><a href="#回归2-自变量预测中介变量" class="headerlink" title="回归2: 自变量预测中介变量"></a>回归2: 自变量预测中介变量</h3><p><code>med=a * ind +e2</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> med ind control1 control2 control3 control4 control5 <span class="keyword">if</span> miss_num == 0</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+      Source |       SS           df       MS      Number of obs   =       861
+-------------+----------------------------------   F(6, 854)       =      2.90
+       Model |  3.83093084         6  .638488473   Prob > F        =    0.0083
+    Residual |  187.834574       854  .219946808   R-squared       =    0.0200
+-------------+----------------------------------   Adj R-squared   =    0.0131
+       Total |  191.665505       860  .222866867   Root MSE        =    .46898
+
+------------------------------------------------------------------------------
+         med |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         ind |  -.1950457   .0993702    -1.96   0.050    -.3900841   -7.35e-06
+    control1 |   .0279925   .0122933     2.28   0.023     .0038638    .0521211
+    control2 |   .0083398    .016274     0.51   0.608    -.0236019    .0402814
+    control3 |   .0271718   .0125929     2.16   0.031     .0024551    .0518885
+    control4 |   .8851904   .2769459     3.20   0.001     .3416161    1.428765
+    control5 |   .0229235   .0539025     0.43   0.671    -.0828733    .1287204
+       _cons |   2.094221     .73018     2.87   0.004     .6610633    3.527379
+------------------------------------------------------------------------------
+
+</div>
+
+<p>从上面的结果中可以看到, 这个系数是显著的, a =-.1950457, sa = .0993702</p>
+<h3 id="回归3-自变量和中介变量预测因变量"><a href="#回归3-自变量和中介变量预测因变量" class="headerlink" title="回归3: 自变量和中介变量预测因变量"></a>回归3: 自变量和中介变量预测因变量</h3><p><code>dep=b* med + c2 * ind + e3</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> dep med ind control1 control2 control3 control4 control5 <span class="keyword">if</span> miss_num == 0</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+      Source |       SS           df       MS      Number of obs   =       861
+-------------+----------------------------------   F(7, 853)       =      2.99
+       Model |  .578216371         7  .082602339   Prob > F        =    0.0042
+    Residual |  23.5758824       853  .027638784   R-squared       =    0.0239
+-------------+----------------------------------   Adj R-squared   =    0.0159
+       Total |  24.1540988       860  .028086161   Root MSE        =    .16625
+
+------------------------------------------------------------------------------
+         dep |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         med |  -.0251037   .0121303    -2.07   0.039    -.0489124   -.0012949
+         ind |  -.0794059   .0353048    -2.25   0.025    -.1487004   -.0101114
+    control1 |    .000401    .004371     0.09   0.927    -.0081783    .0089802
+    control2 |  -.0131153   .0057698    -2.27   0.023      -.02444   -.0017906
+    control3 |   -.003789   .0044762    -0.85   0.398    -.0125746    .0049966
+    control4 |   .2021217   .0987592     2.05   0.041     .0082821    .3959613
+    control5 |   .0345869   .0191098     1.81   0.071    -.0029208    .0720946
+       _cons |   .7692805   .2600831     2.96   0.003     .2588026    1.279758
+------------------------------------------------------------------------------
+
+</div>
+
+<p>从上面的结果中可以看到, 这个b系数是显著的, b =–.0251037, sb =  .0121303</p>
+<p>c2系数也是显著的: c2 = -.0794059, sc2 = .0353048</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>因为所有系数都是显著的, 所以我们可以认为中介效应是存在的, 并且属于部分中介效应。中介的效应量可以这样计算:</p>
+<p><code>m = a*b</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">display</span> -.1950457 * -.0251037</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+.00489637
+
+</div>
+
+<p>中介效应占总效应的百分比就是:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">display</span> (-.1950457 * -.0251037) /  -.0745096 * 100</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+-6.5714602
+
+</div>
+
+<h3 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h3><p>实际上我们可以把以上的代码都封装成一个命令, 恰好我在网上找到了一段代码, 可以做中介效应。你需要把以下代码保存到stata安装目录的这个路径下:</p>
+<p><code>Stata15\ado\base\s</code>, 在这个文件夹下创建一个文件名为<code>sgmediation.ado</code>, 把以下代码贴进去, 然后重启stata。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">*! version 1.1.1 -- 5/17/06 -- pbe</span></span><br><span class="line"><span class="comment">*! verion 1.0 -- 2/28/05 -- pbe</span></span><br><span class="line"><span class="keyword">program</span> define sgmediation</span><br><span class="line"><span class="comment">/* sobel-goodman mediation tests */</span></span><br><span class="line"><span class="keyword">version</span> 8.0</span><br><span class="line"><span class="keyword">syntax</span> <span class="keyword">varlist</span>(max=1) [<span class="keyword">if</span>/] [<span class="keyword">in</span>], iv(<span class="keyword">varlist</span> numeric max=1) <span class="comment">///</span></span><br><span class="line">   mv(<span class="keyword">varlist</span> numeric max=1) [ cv(<span class="keyword">varlist</span> numeric) <span class="keyword">BOOTstrap</span> reps(integer 200) level(integer 95)]</span><br><span class="line"><span class="keyword">marksample</span> touse</span><br><span class="line"><span class="keyword">markout</span> <span class="symbol">`touse'</span> <span class="symbol">`varlist'</span> <span class="symbol">`mv'</span> <span class="symbol">`iv'</span> <span class="symbol">`cv'</span></span><br><span class="line"><span class="keyword">tempname</span> coef emat</span><br><span class="line"></span><br><span class="line"><span class="keyword">display</span></span><br><span class="line"><span class="keyword">tabulate</span>  <span class="symbol">`mv'</span> <span class="keyword">if</span> <span class="symbol">`touse'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">display</span></span><br><span class="line"><span class="keyword">display</span> <span class="keyword">as</span> text <span class="string">"Model with dv regressed on iv"</span></span><br><span class="line"><span class="keyword">regress</span> <span class="symbol">`varlist'</span> <span class="symbol">`iv'</span> <span class="symbol">`cv'</span> <span class="keyword">if</span> <span class="symbol">`touse'</span></span><br><span class="line"><span class="keyword">local</span> ccoef=_b[<span class="symbol">`iv'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">display</span></span><br><span class="line"><span class="keyword">display</span> <span class="string">"Model with mediator regressed on iv"</span></span><br><span class="line"><span class="keyword">regress</span> <span class="symbol">`mv'</span> <span class="symbol">`iv'</span> <span class="symbol">`cv'</span> <span class="keyword">if</span> <span class="symbol">`touse'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> acoef=_b[<span class="symbol">`iv'</span>]</span><br><span class="line"><span class="keyword">local</span> avar=_se[<span class="symbol">`iv'</span>]^2</span><br><span class="line"></span><br><span class="line"><span class="keyword">display</span></span><br><span class="line"><span class="keyword">display</span> <span class="string">"Model with dv regressed on mediator and iv"</span></span><br><span class="line"><span class="keyword">regress</span> <span class="symbol">`varlist'</span> <span class="symbol">`mv'</span> <span class="symbol">`iv'</span> <span class="symbol">`cv'</span> <span class="keyword">if</span> <span class="symbol">`touse'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> bcoef=_b[<span class="symbol">`mv'</span>]</span><br><span class="line"><span class="keyword">local</span> bvar=_se[<span class="symbol">`mv'</span>]^2</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> sobel =(<span class="symbol">`acoef'</span>*<span class="symbol">`bcoef'</span>)</span><br><span class="line"><span class="keyword">local</span> serr=<span class="built_in">sqrt</span>(<span class="symbol">`bcoef'</span>^2*<span class="symbol">`avar'</span> + <span class="symbol">`acoef'</span>^2*<span class="symbol">`bvar'</span>)</span><br><span class="line"><span class="keyword">local</span> stest=<span class="symbol">`sobel'</span>/<span class="symbol">`serr'</span></span><br><span class="line"><span class="keyword">local</span> g1err=<span class="built_in">sqrt</span>(<span class="symbol">`bcoef'</span>^2*<span class="symbol">`avar'</span> + <span class="symbol">`acoef'</span>^2*<span class="symbol">`bvar'</span> + <span class="symbol">`avar'</span>*<span class="symbol">`bvar'</span>)</span><br><span class="line"><span class="keyword">local</span> good1=<span class="symbol">`sobel'</span>/<span class="symbol">`g1err'</span></span><br><span class="line"><span class="keyword">local</span> g2err=<span class="built_in">sqrt</span>(<span class="symbol">`bcoef'</span>^2*<span class="symbol">`avar'</span> + <span class="symbol">`acoef'</span>^2*<span class="symbol">`bvar'</span> - <span class="symbol">`avar'</span>*<span class="symbol">`bvar'</span>)</span><br><span class="line"><span class="keyword">local</span> good2=<span class="symbol">`sobel'</span>/<span class="symbol">`g2err'</span></span><br><span class="line"><span class="keyword">local</span> toteff = <span class="symbol">`sobel'</span>/((<span class="symbol">`acoef'</span>*<span class="symbol">`bcoef'</span>)+(<span class="symbol">`ccoef'</span>-(<span class="symbol">`acoef'</span>*<span class="symbol">`bcoef'</span>)))</span><br><span class="line"><span class="keyword">local</span> <span class="keyword">ratio</span> = <span class="symbol">`sobel'</span>/((<span class="symbol">`ccoef'</span>-(<span class="symbol">`acoef'</span>*<span class="symbol">`bcoef'</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">display</span></span><br><span class="line"><span class="keyword">display</span> <span class="string">"Sobel-Goodman Mediation Tests"</span></span><br><span class="line"><span class="keyword">display</span></span><br><span class="line"><span class="keyword">display</span> <span class="string">"             Coef         Std Err     Z           P&gt;|Z|"</span></span><br><span class="line"><span class="keyword">display</span> <span class="keyword">as</span> txt <span class="string">"Sobel       "</span> <span class="keyword">as</span> res <span class="symbol">`sobel'</span> _skip(4) <span class="symbol">`serr'</span>  %8.4g <span class="comment">///</span></span><br><span class="line"><span class="symbol">`stest'</span>, _skip(5) 2*(1-<span class="built_in">norm</span>(<span class="built_in">abs</span>(<span class="symbol">`stest'</span>)))</span><br><span class="line"><span class="keyword">display</span> <span class="keyword">as</span> txt <span class="string">"Goodman-1   "</span> <span class="keyword">as</span> res <span class="symbol">`sobel'</span> _skip(4) <span class="symbol">`g1err'</span> %8.4g <span class="comment">///</span></span><br><span class="line"><span class="symbol">`good1'</span>, _skip(5) 2*(1-<span class="built_in">norm</span>(<span class="built_in">abs</span>(<span class="symbol">`good1'</span>)))</span><br><span class="line"><span class="keyword">display</span> <span class="keyword">as</span> txt <span class="string">"Goodman-2   "</span> <span class="keyword">as</span> res <span class="symbol">`sobel'</span> _skip(4) <span class="symbol">`g2err'</span> %8.4g <span class="comment">///</span></span><br><span class="line"><span class="symbol">`good2'</span>, _skip(5) 2*(1-<span class="built_in">norm</span>(<span class="built_in">abs</span>(<span class="symbol">`good2'</span>)))</span><br><span class="line"><span class="keyword">display</span></span><br><span class="line"><span class="keyword">display</span> <span class="keyword">as</span> txt <span class="string">"Pecent of total effect that is mediated: "</span>, <span class="keyword">as</span> res <span class="comment">///</span></span><br><span class="line">%5.2f 100*<span class="symbol">`toteff'</span>,<span class="string">"%"</span></span><br><span class="line"><span class="keyword">display</span> <span class="keyword">as</span> txt <span class="string">"Ratio of indirect to direct effect:     "</span>, <span class="keyword">as</span> res %8.4f <span class="symbol">`ratio'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"`bootstrap'"</span>~=<span class="string">""</span> &#123;</span><br><span class="line">  <span class="keyword">display</span> </span><br><span class="line">  <span class="keyword">display</span> <span class="keyword">as</span> txt <span class="string">"Percentile and Bias-corrected bootstrap results for Sobel: `reps' replications"</span></span><br><span class="line">  <span class="keyword">display</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">quietly</span> <span class="keyword">bootstrap</span> coef=<span class="built_in">r</span>(sobel), reps(<span class="symbol">`reps'</span>) level(<span class="symbol">`level'</span>): sgboot <span class="symbol">`varlist'</span> , mv(<span class="symbol">`mv'</span>) iv(<span class="symbol">`iv'</span>) cv(<span class="symbol">`cv'</span> )</span><br><span class="line">  <span class="keyword">estat</span> <span class="keyword">bootstrap</span>, bc percentile noheader</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>最后你在使用的时候, 就可以直接调用这个命令即可:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sgmediation dep, mv(med) iv(ind) cv(control1 control2 control3 control4 control5  )</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+
+        med |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        573       66.55       66.55
+          1 |        288       33.45      100.00
+------------+-----------------------------------
+      Total |        861      100.00
+
+        med |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        730       62.50       62.50
+          1 |        438       37.50      100.00
+------------+-----------------------------------
+      Total |      1,168      100.00
+
+Model with dv regressed on iv
+
+      Source |       SS           df       MS      Number of obs   =       861
+-------------+----------------------------------   F(6, 854)       =      2.76
+       Model |  .459843972         6  .076640662   Prob > F        =    0.0115
+    Residual |  23.6942548       854  .027745029   R-squared       =    0.0190
+-------------+----------------------------------   Adj R-squared   =    0.0121
+       Total |  24.1540988       860  .028086161   Root MSE        =    .16657
+
+------------------------------------------------------------------------------
+         dep |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         ind |  -.0745096   .0352931    -2.11   0.035    -.1437809   -.0052382
+    control1 |  -.0003018   .0043662    -0.07   0.945    -.0088715     .008268
+    control2 |  -.0133247     .00578    -2.31   0.021    -.0246693     -.00198
+    control3 |  -.0044711   .0044726    -1.00   0.318    -.0132497    .0043075
+    control4 |   .1799002   .0983623     1.83   0.068      -.01316    .3729603
+    control5 |   .0340114   .0191444     1.78   0.076    -.0035642    .0715871
+       _cons |   .7167078   .2593365     2.76   0.006     .2076962     1.22572
+------------------------------------------------------------------------------
+
+Model with mediator regressed on iv
+
+      Source |       SS           df       MS      Number of obs   =       861
+-------------+----------------------------------   F(6, 854)       =      2.90
+       Model |  3.83093084         6  .638488473   Prob > F        =    0.0083
+    Residual |  187.834574       854  .219946808   R-squared       =    0.0200
+-------------+----------------------------------   Adj R-squared   =    0.0131
+       Total |  191.665505       860  .222866867   Root MSE        =    .46898
+
+------------------------------------------------------------------------------
+         med |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         ind |  -.1950457   .0993702    -1.96   0.050    -.3900841   -7.35e-06
+    control1 |   .0279925   .0122933     2.28   0.023     .0038638    .0521211
+    control2 |   .0083398    .016274     0.51   0.608    -.0236019    .0402814
+    control3 |   .0271718   .0125929     2.16   0.031     .0024551    .0518885
+    control4 |   .8851904   .2769459     3.20   0.001     .3416161    1.428765
+    control5 |   .0229235   .0539025     0.43   0.671    -.0828733    .1287204
+       _cons |   2.094221     .73018     2.87   0.004     .6610633    3.527379
+------------------------------------------------------------------------------
+
+Model with dv regressed on mediator and iv
+
+      Source |       SS           df       MS      Number of obs   =       861
+-------------+----------------------------------   F(7, 853)       =      2.99
+       Model |  .578216371         7  .082602339   Prob > F        =    0.0042
+    Residual |  23.5758824       853  .027638784   R-squared       =    0.0239
+-------------+----------------------------------   Adj R-squared   =    0.0159
+       Total |  24.1540988       860  .028086161   Root MSE        =    .16625
+
+------------------------------------------------------------------------------
+         dep |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         med |  -.0251037   .0121303    -2.07   0.039    -.0489124   -.0012949
+         ind |  -.0794059   .0353048    -2.25   0.025    -.1487004   -.0101114
+    control1 |    .000401    .004371     0.09   0.927    -.0081783    .0089802
+    control2 |  -.0131153   .0057698    -2.27   0.023      -.02444   -.0017906
+    control3 |   -.003789   .0044762    -0.85   0.398    -.0125746    .0049966
+    control4 |   .2021217   .0987592     2.05   0.041     .0082821    .3959613
+    control5 |   .0345869   .0191098     1.81   0.071    -.0029208    .0720946
+       _cons |   .7692805   .2600831     2.96   0.003     .2588026    1.279758
+------------------------------------------------------------------------------
+
+Sobel-Goodman Mediation Tests
+
+             Coef         Std Err     Z           P>|Z|
+Sobel       .00489637    .       .      .
+Goodman-1   .00489637    .       .      .
+Goodman-2   .00489637    .       .      .
+
+Pecent of total effect that is mediated:  -6.57 %
+Ratio of indirect to direct effect:       -0.0617
+
+</div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="stata教程08-中介效应分析.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/stata/">#stata</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/stata/">
+            stata
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/12/22/stata教程08-中介效应分析/">
+                    stata教程08-中介效应分析
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/13/stata教程07-常见样本量估计/">
+                    stata教程07-常见样本量估计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/12/stata教程06-计算AIC和BIC决定变量个数/">
+                    stata教程06-计算AIC和BIC决定变量个数
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/12/stata教程05-自相关的检验和处理/">
+                    stata教程05-自相关的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-异方差的检验和处理/">
+                    stata教程03-异方差的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">
+                    stata教程03-数据的正态性检验和变量正态化
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">
+                    stata教程02-线性回归分析小样本和大样本OLS
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/01/安装stata并在jupyter-notebook中调用/">
+                    安装stata并在jupyter notebook中调用
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/22/stata教程08-中介效应分析/">stata教程08-中介效应分析</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/13/stata教程07-常见样本量估计/">stata教程07-常见样本量估计</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/12/stata教程06-计算AIC和BIC决定变量个数/">stata教程06-计算AIC和BIC决定变量个数</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/12/stata教程05-自相关的检验和处理/">stata教程05-自相关的检验和处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/11/stata教程03-异方差的检验和处理/">stata教程03-异方差的检验和处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">stata教程03-数据的正态性检验和变量正态化</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/11/11/python做双十一抢券神器/">python做双十一抢券神器</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
