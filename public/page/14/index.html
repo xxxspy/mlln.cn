@@ -272,14 +272,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程5：逻辑回归/">
-                    李宏毅机器学习教程5：逻辑回归
+                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
+                    李宏毅机器学习教程3-2：梯度下降法案例
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
-                    李宏毅机器学习教程17：深度生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
                 </a>
             </div>
             
@@ -290,8 +290,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程20：支持向量机/">
+                    李宏毅机器学习教程20：支持向量机
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程21-1：循环神经网络/">
+                    李宏毅机器学习教程21-1：循环神经网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-2：梯度下降法案例/">
-                    李宏毅机器学习教程3-2：梯度下降法案例
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：tensorflow教程/">
+                    李宏毅机器学习教程9-3：tensorflow教程
                 </a>
             </div>
             
@@ -433,6 +433,85 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2018/04/21/chrome浏览本地页面发生Failded-to-load-file/">
+                chrome浏览本地页面发生Failded to load file
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018年04月21日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>有时候从网上下载一堆静态页面, 在本地打开, 如果你用的是chrome(别的应该也不行), 会遇到错误:<code>Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.</code> 这种问题其实是chrome的安全机制, 不允许网页访问本地的文件. 有一种解决方案是禁用chrome的安全机制, 但是风险显而易见就是chrome不安全了. 其实, 本地查看静态页面, 最好的方式就是开启一个静态页面的服务器, 看似复杂, 其实就一条命令搞定.</p>
+        </div>
+        <a href="/2018/04/21/chrome浏览本地页面发生Failded-to-load-file/" class="read-more">Read More</a>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/nodejs/">#nodejs</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/04/12/python-win32com开发office插件时问题汇总/">
+                python win32com开发office插件时问题汇总
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018年04月12日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>#### </p>
+<p>事先我用如下代码开发并注册了一个COM:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pythoncom</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PythonUtilities</span>:</span></span><br><span class="line">    _public_methods_ = [ <span class="string">'add_watermark'</span> ]</span><br><span class="line">    _reg_progid_ = <span class="string">"PythonDemo.Utilities"</span></span><br><span class="line">    <span class="comment"># NEVER copy the following ID</span></span><br><span class="line">    <span class="comment"># Use "print pythoncom.CreateGuid()" to make a new one.</span></span><br><span class="line">    _reg_clsid_ = <span class="string">"&#123;B7E3EE50-5E2A-4044-8241-4F76B1DAB885&#125;"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    print( <span class="string">"Registering COM server..."</span>)</span><br><span class="line">    <span class="keyword">import</span> win32com.server.register</span><br><span class="line">    win32com.server.register.UseCommandLine(PythonUtilities)</span><br></pre></td></tr></table></figure>
+<p>在python种使用<code>win32com.client.Dipatch</code>可以调用该COM, 但是在VBA种却报错:<code>specific module coundn&#39;t be found</code>:</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Test()</span><br><span class="line">    <span class="comment">' Create the Python COM objects.</span></span><br><span class="line">    <span class="keyword">Set</span> stringmod = CreateObject(<span class="string">"PythonDemo.Utilities"</span>)</span><br><span class="line">    <span class="comment">' Call string.split</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解决方法就是, 没有找到<code>pythoncom35.dll</code>和<code>pywintypes35.dll</code>这两个DLL导致的. </p>
+</blockquote>
+<p>这两个文件位于<code>Lib/site-packages/pywin32_system32</code>下, 把他们复制到<code>pythondir/Scripts</code>这个文件夹下就行了. 因为通常这个文件夹是添加到环境变量Path种的.</p>
+<p>有啥问题可以直接在下面留言奥.</p>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
                 jupyter notebook 扩展开发之  文件保存钩子
             </a>
@@ -451,41 +530,6 @@
             <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
         </div>
         <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/jupyter/">#jupyter</a> <a href="/tags/notebook/">#notebook</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/">
-                jupyter notebook 扩展开发之 Custom bundler extensions
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018年03月31日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
-        </div>
-        <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/" class="read-more">Read More</a>
     
 
     
@@ -538,41 +582,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
-                jupyter notebook扩展开发之前端插件开发
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018年03月31日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
-        </div>
-        <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/jupyter/">#jupyter</a> <a href="/tags/notebook/">#notebook</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/">
                 jupyter notebook 扩展开发之自定义请求处理程序
             </a>
@@ -608,6 +617,41 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
+                jupyter notebook扩展开发之前端插件开发
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018年03月31日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
+        </div>
+        <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/" class="read-more">Read More</a>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/jupyter/">#jupyter</a> <a href="/tags/notebook/">#notebook</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/">
                 jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发
             </a>
@@ -626,6 +670,41 @@
             <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
         </div>
         <a href="/2018/03/31/jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发/" class="read-more">Read More</a>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/jupyter/">#jupyter</a> <a href="/tags/notebook/">#notebook</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/">
+                jupyter notebook 扩展开发之 Custom bundler extensions
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018年03月31日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
+        </div>
+        <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/" class="read-more">Read More</a>
     
 
     
@@ -746,77 +825,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/09/psychopy设置window和显示器参数/">
-                psychopy设置window和显示器参数
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018年03月09日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>有时候我们会发现, 做好的程序放到不同的电脑上会有不同的显示效果, 图形的位置和大小会发生变化, 这是因为我们不懂得psychopy对图形的尺寸和位置的控制方式. 通常来说, 换一个电脑你都要设置显示器和窗口属性, 以便刺激能够正确显示.</p>
-<p>psychopy的windows(窗口)和monitor(显示器)的设置很重要, 直接关系到你的整个实验的各种刺激尺寸(size). 下面我们用图文的方式介绍一下需要设置的参数以及如何设置他们.</p>
-        </div>
-        <a href="/2018/03/09/psychopy设置window和显示器参数/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/psychopy/">#psychopy</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/09/psychopy免安装版设置方法/">
-                psychopy免安装版设置方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018年03月09日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>摘要: 无</p>
-        </div>
-        <a href="/2018/03/09/psychopy免安装版设置方法/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/psychopy/">#psychopy</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -858,6 +866,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">stata教程09-项目反应理论IRT的Rash模</a>
             </li>
             
@@ -889,14 +905,6 @@
                 <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/12/09/python模拟数据的生成/">python模拟数据的生成</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">python3的__new__和__init__方</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -908,11 +916,15 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
@@ -924,19 +936,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/django/">django</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+            <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
@@ -956,6 +964,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
@@ -964,7 +976,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -988,19 +1000,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1020,11 +1020,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1036,11 +1040,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1052,7 +1052,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1072,11 +1080,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
@@ -1108,15 +1116,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -1140,11 +1144,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1156,15 +1160,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/stata/">stata</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/sublime/">sublime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
         <span>
@@ -1176,6 +1180,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
@@ -1184,15 +1192,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
         </span>
         
         <span>
@@ -1212,19 +1220,31 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1236,15 +1256,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1272,10 +1288,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/sklearn/">sklearn</a>
         </span>
         
@@ -1285,10 +1297,6 @@
         
         <span>
             <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>

@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="stata教程10-项目反应使用irt命令进行单参数logit参数估计"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>stata教程10-项目反应使用irt命令进行单参数logit参数估计 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">
+                stata教程10-项目反应使用irt命令进行单参数logit参数估计
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="stata教程10-项目反应使用irt命令进行单参数logit参数估计"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2018年12月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载数据"><span class="toc-number">1.</span> <span class="toc-text">加载数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拟合模型"><span class="toc-number">2.</span> <span class="toc-text">拟合模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>上一篇文章我们介绍了如何使用clogit命令估计题目的难度参数, 从这篇文章开始我们主要是介绍一下stata进行项目反应分析的原理。下面我们开始使用stata本身就支持的irt命令, 用更好的工具进行项目特征的分析。</p>
+<h3 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h3><p>我们仍然使用上一篇的数据, 可以直接从网络中加载数据:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> http:<span class="comment">//www.stata.com/support/faqs/dta/raschfaq, clear</span></span><br></pre></td></tr></table></figure>
+<p>这个数据是有10题目, 120个学生作答，编码为1（正确）和0（不正确）。我们想知道10个题目的难度和120个学生的能力值。</p>
+<p>下面加载我们列出数据的前几行看看数据的结构:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">list</span> <span class="keyword">in</span> 1/10</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+     +-----------------------------------------------------------------------------------------------------------------------------+
+     |   math1     math2       math3       math4       math5       math6       math7       math8       math9      math10   subj_id |
+     |-----------------------------------------------------------------------------------------------------------------------------|
+  1. | correct   correct     correct   incorrect   incorrect   incorrect   incorrect   incorrect   incorrect   incorrect         1 |
+  2. | correct   correct   incorrect   incorrect     correct     correct     correct   incorrect   incorrect   incorrect         2 |
+  3. | correct   correct   incorrect   incorrect     correct   incorrect   incorrect   incorrect   incorrect   incorrect         3 |
+  4. | correct   correct     correct   incorrect     correct   incorrect     correct   incorrect   incorrect   incorrect         4 |
+  5. | correct   correct     correct   incorrect   incorrect     correct     correct     correct   incorrect   incorrect         5 |
+     |-----------------------------------------------------------------------------------------------------------------------------|
+  6. | correct   correct     correct   incorrect     correct   incorrect   incorrect     correct     correct   incorrect         6 |
+  7. | correct   correct     correct   incorrect   incorrect     correct   incorrect   incorrect   incorrect   incorrect         7 |
+  8. | correct   correct     correct   incorrect     correct     correct   incorrect     correct     correct     correct         8 |
+  9. | correct   correct     correct   incorrect     correct     correct     correct   incorrect     correct   incorrect         9 |
+ 10. | correct   correct     correct     correct     correct   incorrect   incorrect     correct     correct   incorrect        10 |
+     +-----------------------------------------------------------------------------------------------------------------------------+
+
+</div>
+
+<p>变量math1-math10是10道题目的得分, 他们显示成了文本”incorrect”和”correct”, 这只是分数的标签, 实际上他们存储的是0和1。最后一列是被试的id。</p>
+<h3 id="拟合模型"><a href="#拟合模型" class="headerlink" title="拟合模型"></a>拟合模型</h3><p>我们使用irt 1pl命令进行单参数logit模型的拟合, 后的变量制定了10个math变量。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irt 1pl math1-math10</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+Fitting fixed-effects model:
+
+Iteration 0:   log likelihood = -724.16318  
+Iteration 1:   log likelihood = -723.35014  
+Iteration 2:   log likelihood = -723.34959  
+Iteration 3:   log likelihood = -723.34959  
+
+Fitting full model:
+
+Iteration 0:   log likelihood = -705.13593  
+Iteration 1:   log likelihood = -695.54708  
+Iteration 2:   log likelihood = -695.52399  
+Iteration 3:   log likelihood = -695.52398  
+
+One-parameter logistic model                    Number of obs     =        120
+Log likelihood = -695.52398
+------------------------------------------------------------------------------
+             |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     Discrim |   .9176656   .1159959     7.91   0.000     .6903179    1.145013
+-------------+----------------------------------------------------------------
+math1        |
+        Diff |  -1.818811   .3417085    -5.32   0.000    -2.488548   -1.149075
+-------------+----------------------------------------------------------------
+math2        |
+        Diff |   -1.56836   .3161411    -4.96   0.000    -2.187985   -.9487346
+-------------+----------------------------------------------------------------
+math3        |
+        Diff |  -.9815245   .2683143    -3.66   0.000    -1.507411   -.4556381
+-------------+----------------------------------------------------------------
+math4        |
+        Diff |  -.2567456   .2369981    -1.08   0.279    -.7212534    .2077622
+-------------+----------------------------------------------------------------
+math5        |
+        Diff |   -.170697   .2356485    -0.72   0.469    -.6325597    .2911656
+-------------+----------------------------------------------------------------
+math6        |
+        Diff |    .257779   .2369481     1.09   0.277    -.2066307    .7221887
+-------------+----------------------------------------------------------------
+math7        |
+        Diff |   .3878777   .2399687     1.62   0.106    -.0824523    .8582077
+-------------+----------------------------------------------------------------
+math8        |
+        Diff |   1.081058   .2749384     3.93   0.000     .5421885    1.619927
+-------------+----------------------------------------------------------------
+math9        |
+        Diff |   1.341659   .2953618     4.54   0.000     .7627609    1.920558
+-------------+----------------------------------------------------------------
+math10       |
+        Diff |   2.027436   .3650985     5.55   0.000     1.311856    2.743016
+------------------------------------------------------------------------------
+
+</div>
+
+<p>对于单参数模型, 由于区分度参数对于所有项目都是相同的，因此仅列出一次。估计<br>0.92表示区分度较差; 也就是说，在给定的难度估计附近，任何两个<br>具有不同能力的学生将具有类似的预测成功概率。如果项目具有较好的区分度，则计算出的概率为<br>彼此相距甚远。</p>
+<p>难度参数的估计对应于能力等级上Pr（Y = 1 |θ）= 0.5的点<br>。因为我们假设θ为零均值，所以如果题目难度分数为负数, 则相对容易<br>如果难度估计为正，则题目的难度相对较难。</p>
+<p>在下文中，我们使用<code>estat report</code>命令来重新显示估计的IRT参数和<br>输出报告。我们使用<code>byparm</code>选项，它通过参数排列输出结果,<br>而不是按项目，使用sort（b）选项，它以升序显示题目难度。这使得很容易看到math1最简单，而math10最难。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">estat</span> <span class="keyword">report</span>, byparm <span class="keyword">sort</span>(b)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+One-parameter logistic model                    Number of obs     =        120
+Log likelihood = -695.52398
+------------------------------------------------------------------------------
+             |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     Discrim |   .9176656   .1159959     7.91   0.000     .6903179    1.145013
+-------------+----------------------------------------------------------------
+Diff         |
+       math1 |  -1.818811   .3417085    -5.32   0.000    -2.488548   -1.149075
+       math2 |   -1.56836   .3161411    -4.96   0.000    -2.187985   -.9487346
+       math3 |  -.9815245   .2683143    -3.66   0.000    -1.507411   -.4556381
+       math4 |  -.2567456   .2369981    -1.08   0.279    -.7212534    .2077622
+       math5 |   -.170697   .2356485    -0.72   0.469    -.6325597    .2911656
+       math6 |    .257779   .2369481     1.09   0.277    -.2066307    .7221887
+       math7 |   .3878777   .2399687     1.62   0.106    -.0824523    .8582077
+       math8 |   1.081058   .2749384     3.93   0.000     .5421885    1.619927
+       math9 |   1.341659   .2953618     4.54   0.000     .7627609    1.920558
+      math10 |   2.027436   .3650985     5.55   0.000     1.311856    2.743016
+------------------------------------------------------------------------------
+
+</div>
+
+<p>下面我们绘制ICC曲线。ICC曲线横坐标是能力, 纵坐标是回答正确的概率, 而不同颜色的曲线代表不同的题目。下面, 我们使用<code>irtgraph icc</code>来绘制ICC曲线。<code>blocation</code>参数用于显示50%正确率对应的能力值(也就是难度), <code>legend</code>用来控制图例, </p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irtgraph icc, blocation</span><br></pre></td></tr></table></figure>
+<p><img src="output_16_0.svg" alt="svg"></p>
+<p>测验特征曲线TCC使用估计的1PL参数将试卷平均得分绘制为<code>$\theta$</code>的函数。我们用<br><code>irtgraph tcc</code>绘制TCC。对于10个二分得分题，很明显总得分范围从0到10.<br><code>thetalines</code> 选项在指定的<code>$\theta$</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irtgraph tcc, thetalines(-1.96 0 1.96)</span><br></pre></td></tr></table></figure>
+<p><img src="output_18_0.svg" alt="svg"></p>
+<p>这个图告诉我们对不同能力水平的人有什么样的试卷分数。<br>例如，我们可以预期高于平均水平的人得分4.94或以上。</p>
+<p>使用标准正态分布（-1.96和1.96）的95％临界值，该图<br>还告诉我们，我们可以预期95％的随机选择的人得分在1.85和8.08分之间。<br>同样，更现实的说法是，我们预计大约95％的随机选择的人得分<br>在2到8之间。</p>
+<p><code>irtgraph iif</code>可以绘制每个题目的信息函数（IIF）。</p>
+<p>信息函数可作为描述、挑选测验试题、以及比对测验的相对效能的实用方法，且作为建立、分析与诊断测验的参考依据。 试题信息函数定义如下：</p>
+<p><img src="images/information-function.png"></p>
+<ul>
+<li><code>$I_i$</code>: 能力θ在试题i的试题信息</li>
+<li><code>$P_i$</code>: 能力θ在试题i的答对几率</li>
+<li><code>$Q_i$</code>: 能力θ在试题i的答错几率</li>
+<li><code>$P&#39;_i$</code></li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irtgraph iif</span><br></pre></td></tr></table></figure>
+<p><img src="output_22_0.svg" alt="svg"></p>
+<p>测试信息函数:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irtgraph tif</span><br></pre></td></tr></table></figure>
+<p><img src="output_24_0.svg" alt="svg"></p>
+<p>我们还有一个常用的功能就是需要估计每个学生的能力值, 用下面的命令:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">predict</span> Theta, latent</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+(option ebmeans assumed)
+(using 7 quadrature points)
+
+</div>
+
+<p>可以看一下Theta的基本情况:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">codebook</span>  Theta</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Theta                                                                                                                                                                                                                           empirical Bayes means for Theta
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                  type:  numeric (float)
+
+                 range:  [-1.8855176,1.9160916]       units:  1.000e-09
+         unique values:  11                       missing .:  0/120
+
+                  mean:   5.9e-08
+              std. dev:   .777321
+
+           percentiles:        10%       25%       50%       75%       90%
+                          -.884093  -.335998    .01916    .37397   .920238
+
+</div>
+
+<p>用能力值, 我们可以将每一个题目的正确率和学生的能力值会知道icc图上, 方便比较模型拟合情况与实际得分情况的对比:</p>
+<p>下面我们以Theta作为分组变量, 然后求取所有题目的平均分:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">collapse</span> math*, <span class="keyword">by</span>(Theta)</span><br></pre></td></tr></table></figure>
+<p>看一下目前的数据基本情况:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">list</span></span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+     +-------------------------------------------------------------------------------------------------------------------------+
+     |     Theta      math1      math2      math3      math4      math5      math6      math7      math8      math9     math10 |
+     |-------------------------------------------------------------------------------------------------------------------------|
+  1. | -1.885518          0          0          0          0          0          0          0          0          0          0 |
+  2. | -1.464075          1          0          0          0          0          0          0          0          0          0 |
+  3. | -1.070907          0         .5        .75         .5        .25          0          0          0          0          0 |
+  4. | -.6972789        .75        .75      .3125        .25      .1875        .25      .1875      .0625       .125       .125 |
+  5. | -.3359977   .7619048   .7619048   .6666667   .4761905   .4285714   .4761905   .2380952    .047619    .047619   .0952381 |
+     |-------------------------------------------------------------------------------------------------------------------------|
+  6. |  .0191601   .8333333       .875       .625       .625   .7083333       .375         .5   .1666667   .2083333   .0833333 |
+  7. |  .3739702   .8636364   .8636364   .9545454   .6818182   .5454546   .4545455         .5   .3636364   .3636364   .4090909 |
+  8. |  .7342338          1   .8461539   .9230769   .6923077   .7692308   .7692308   .6923077   .7692308   .3846154   .1538462 |
+  9. |  1.106242          1          1          1        .75          1        .75        .75          1         .5        .25 |
+ 10. |  1.497267          1          1          1          1          1          1          1          1          1          0 |
+     |-------------------------------------------------------------------------------------------------------------------------|
+ 11. |  1.916092          1          1          1          1          1          1          1          1          1          1 |
+     +-------------------------------------------------------------------------------------------------------------------------+
+
+</div>
+
+<p>我们可以把第一题math1的icc和能力与平均分绘制道图上:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irtgraph icc math1, addplot(<span class="keyword">scatter</span> math1 Theta)</span><br></pre></td></tr></table></figure>
+<p><img src="output_35_0.svg" alt="svg"></p>
+<p>从上图中可以看出, 我们模型的拟合情况不太好, 尤其是低能力端, 点离曲线很远。</p>
+<p>下面再看第二道题:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">irtgraph icc math2, addplot(<span class="keyword">scatter</span> math2 Theta)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+(note: file C:/Users/syd/.stata_kernel_cache/graph7.svg not found)
+
+</div>
+
+<p><img src="output_37_1.svg" alt="svg"></p>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+
+
+</div>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Stata官方支持的进行IRT分析的工具就这些了, 再多就是更多的模型了, 而缺少一些基本的模型拟合指标和其他一些高级的分析工具, 不过下一篇文章我们测试一下raschtest模块, 这是一个第三方模块, 可以补充一些缺失的功能。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="stata教程10-项目反应使用irt命令进行单参数logit参数估计.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/stata/">#stata</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/stata/">
+            stata
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">
+                    stata教程11-raschtest模块进行项目反应试题分析
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">
+                    stata教程10-项目反应使用irt命令进行单参数logit参数估计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">
+                    stata教程09-项目反应理论IRT的Rash模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/22/stata教程08-中介效应分析/">
+                    stata教程08-中介效应分析
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/13/stata教程07-常见样本量估计/">
+                    stata教程07-常见样本量估计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/12/stata教程06-计算AIC和BIC决定变量个数/">
+                    stata教程06-计算AIC和BIC决定变量个数
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/12/stata教程05-自相关的检验和处理/">
+                    stata教程05-自相关的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-异方差的检验和处理/">
+                    stata教程03-异方差的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">
+                    stata教程03-数据的正态性检验和变量正态化
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">
+                    stata教程02-线性回归分析小样本和大样本OLS
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/01/安装stata并在jupyter-notebook中调用/">
+                    安装stata并在jupyter notebook中调用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/01/03/stata教程12-回归模型的非线性检验/">
+                    stata教程12-回归模型的非线性检验
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">stata教程09-项目反应理论IRT的Rash模</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/22/stata教程08-中介效应分析/">stata教程08-中介效应分析</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/13/stata教程07-常见样本量估计/">stata教程07-常见样本量估计</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/12/stata教程06-计算AIC和BIC决定变量个数/">stata教程06-计算AIC和BIC决定变量个数</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/12/stata教程05-自相关的检验和处理/">stata教程05-自相关的检验和处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/11/stata教程03-异方差的检验和处理/">stata教程03-异方差的检验和处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">stata教程03-数据的正态性检验和变量正态化</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
