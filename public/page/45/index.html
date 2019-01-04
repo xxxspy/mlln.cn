@@ -272,14 +272,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-3：强化学习(包括Qlearning)/">
-                    李宏毅机器学习教程23-3：强化学习(包括Qlearning)
+                <a href="/2018/09/21/李宏毅机器学习教程3-1：梯度下降法/">
+                    李宏毅机器学习教程3-1：梯度下降法
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程16：无监督学习-自编码器/">
-                    李宏毅机器学习教程16：无监督学习-自编码器
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
@@ -290,8 +290,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
-                    李宏毅机器学习教程11：为什么使用深度网络
+                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
+                    李宏毅机器学习教程18：无监督生成模型
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
-                    李宏毅机器学习教程2：误差来自哪里
+                <a href="/2018/09/21/李宏毅机器学习教程7：反向传播算法/">
+                    李宏毅机器学习教程7：反向传播算法
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-1：梯度下降法/">
-                    李宏毅机器学习教程3-1：梯度下降法
+                <a href="/2018/09/21/李宏毅机器学习教程20：支持向量机/">
+                    李宏毅机器学习教程20：支持向量机
                 </a>
             </div>
             
@@ -428,6 +428,107 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/08/11/SPSS自动化：[4]/">
+                SPSS自动化：[4]
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年08月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>syntax是spss中的命令，在spss有syntax文档对象，这个对象有哪些属性呢？</p>
+<ul>
+<li><p>1&gt;designated属性：为当前输出文档、语法文档或草稿文档返回或设置指定的窗口状态。指定的窗口（designatedwindow）是spss传送输出、粘贴或运行语法命令的窗口。当一个新的输出窗口打开以后它就成为了指定窗口。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Intcount=objdocuments.outputdoccount</p>
+</li>
+<li><p>Set objoutputdoc=objdocuments.getoutputdoc(intcount-1)</p>
+</li>
+<li><p>Objoutputdoc.designated=true</p>
+</li>
+<li><p>‘本实例将最后一个输出文档设置成指定文档接收新的输出。</p>
+</li>
+<li><p>2&gt;height和width属性、left和top属性、modified属性在前面其他对象中有介绍，这里省略。</p>
+</li>
+<li><p>3&gt;papersource属性：设置打印时候纸张的来源，它有四个值：</p>
+</li>
+<li><p>1    Upper</p>
+</li>
+<li><p>2    Lower</p>
+</li>
+<li><p>3    Middle</p>
+</li>
+<li><p>4    envelop</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Setobjprintoptions=objoutputdoc.printoptions</p>
+</li>
+<li><p>‘设置打印选项</p>
+</li>
+<li><p>Printoptions.papersource-2</p>
+</li>
+<li><p>4&gt;rtftext属性：返回或设置语法窗口中的格式化文本，或rich文本框中的rtf文本编辑器。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>String=objsyntaxdoc.text</p>
+</li>
+<li><p>Objsyntaxdoc.rtftext=string</p>
+</li>
+<li><p>Objsyntaxdoc.run</p>
+</li>
+<li><p>5&gt;text属性：在语法窗口或者激活的rtf文本编辑器中返回或设置文本，可以使用该属性写成或接收未格式化的文本。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Dim syntaxcommands as string</p>
+</li>
+<li><p>Syntaxcommands=objdatadoc.invokedialogandreturnsyntax(“analyze&gt;compare means&gt;paired-samples t test”,1)</p>
+</li>
+<li><p>‘获取了syntax命令</p>
+</li>
+<li><p>Dim objsyntaxdoc as ispsssyntaxdoc</p>
+</li>
+<li><p>Set objsyntaxdoc=objspssapp.newsyntaxdoc</p>
+</li>
+<li><p>Objsyntaxdoc.text=syntaxcommands</p>
+</li>
+<li><p>6&gt;toolbarvisible属性、visible属性、windowstate属性略去。</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1046,65 +1147,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/07/23/wxpython教程：[4]菜单中的图标/">
-                wxpython教程：[4]菜单中的图标
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年07月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们看到的菜单中多半是有一个图标的，那么今天我们就来做一个菜单，菜单选项左侧有一个图标。要达到这个目的我们必须手动创建一个选项。下面是今天代码的全部：由于这些大部分代码在之前的文章中有讲解，所以这篇文章就着重讲不同的部分。</p>
-<ul>
-<li>先创建一个选项：注意第二个参数设定了该选项的id，以后绑定方法的时候可以用id来表示该选项</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/0e655ca7d933c895c3031a14d21373f082020024.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>设置选项的图标用到了方法：SetBitmap，该方法需要传入一个Bitmap对象：exit.jpg是我自己做的一个图片</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/c9d4cf43ad4bd11366b0355d59afa40f4bfb0524.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>将创建好的选项添加到菜单</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/72b19c025aafa40f52bb4cb2a864034f78f01924.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>将选项与方法绑定，这样点击该菜单选项就能执行OnQuit动作。注意现在用id来表示跟哪个选项进行的绑定，因为我们在</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/55a628d12f2eb9383071f89dd6628535e5dd6f06.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>这是最后做出来的效果图</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/b25d9901a18b87d61b3c2670040828381f30fd20.jpg" title="wxpython教程：[4]菜单中的图标">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a> <a href="/tags/wxpython/">#wxpython</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1146,6 +1188,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/01/04/瑞文标准推理测验在线换算标准分-怎样计算百分等级/">瑞文标准推理测验在线换算标准分,怎样计算百分等级</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
             </li>
             
@@ -1181,10 +1227,6 @@
                 <a class="footer-post" href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">stata教程03-数据的正态性检验和变量正态化</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">stata教程02-线性回归分析小样本和大样本OL</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1196,19 +1238,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1220,11 +1262,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/django/">django</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
@@ -1232,7 +1274,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1280,6 +1322,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
@@ -1292,7 +1338,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
@@ -1308,19 +1354,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1332,11 +1374,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1344,11 +1390,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/notebook/">notebook</a>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1364,7 +1406,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1373,10 +1423,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据分析/">数据分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pandas/">pandas</a>
         </span>
         
         <span>
@@ -1392,31 +1438,27 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
         </span>
         
         <span>
@@ -1428,19 +1470,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
@@ -1456,10 +1494,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
@@ -1468,7 +1502,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
@@ -1500,15 +1534,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -1524,15 +1558,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
         </span>
         
         <span>
@@ -1560,7 +1590,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1569,6 +1607,14 @@
         
         <span>
             <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
         </span>
         
         <span>
@@ -1588,11 +1634,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷/">问卷</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/离线/">离线</a>
+            <a class="footer-post" href="/tags/统计工具/">统计工具</a>
         </span>
         
     </ul>
