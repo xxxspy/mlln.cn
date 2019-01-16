@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="stata教程15-回归变动的检验"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>stata教程15-回归变动的检验 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/01/11/stata教程15-回归变动的检验/">
+                stata教程15-回归变动的检验
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="stata教程15-回归变动的检验"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2019年01月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步-所有样本构建回归方程"><span class="toc-number">1.</span> <span class="toc-text">第一步, 所有样本构建回归方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步-构建1992年之前的样本的回归模型"><span class="toc-number">2.</span> <span class="toc-text">第二步, 构建1992年之前的样本的回归模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三步-构建1992年之后的样本的回归模型"><span class="toc-number">3.</span> <span class="toc-text">第三步, 构建1992年之后的样本的回归模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第四步-计算F统计量"><span class="toc-number">4.</span> <span class="toc-text">第四步, 计算F统计量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#另外一种方法"><span class="toc-number">5.</span> <span class="toc-text">另外一种方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>如果一根直线解决不了问题, 我们就用两根直线。</p>
+<p><img src="images/jingjibiandong.png"></p>
+<p>很多时候, 经济规律会随着时间的推移在某个时间点发生变化, 这个时间点就叫做断点, 就如上图所示的样子。为了检验断点是否存在, 我们可以使用下面的方法:</p>
+<p>(如上图所示)</p>
+<ul>
+<li>先做(-0.5, 0.5)之间的样本的回归</li>
+<li>再做(-0.5, 0)之间的样本的回归</li>
+<li>最后做(0, 0.5)之间的样本的回归</li>
+</ul>
+<p>利用三个回归的残差平方和根据公式计算F统计量, 利用F分布来给出显著性检验, 如果F显著, 则拒绝原假设(不存在断点), 否则认为不存在断点。</p>
+<p>F(K, n-2K):</p>
+<p><code>$$
+F = { {(ssr - ssr1 - ssr2)/K} \over {(ssr1 + ssr2)/(n - 2K)} }
+$$</code></p>
+<p>下面以陈强教授书中的案例演示一下:</p>
+<p>数据是中国1978-2006年人均消费和人均GDP数据, 下面加载数据, 然后看一下数据的基本情况:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> data/consumption_china.dta, <span class="keyword">clear</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sum</span></span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |         29        1992    8.514693       1978       2006
+           c |         29    2005.897    1828.339        184       6138
+           y |         29     4569.31    4571.836        381      16165
+
+</div>
+
+<p>数据中变量的解释:</p>
+<ul>
+<li>year: 年份</li>
+<li>c: 居民人均消费</li>
+<li>y: 居民人均GDP</li>
+</ul>
+<p>绘制两个变量的时间趋势图, 我们的目的是想要检测一下在1992年是否存在经济的变动点:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">graph</span> <span class="keyword">twoway</span> connect c y <span class="built_in">year</span></span><br></pre></td></tr></table></figure>
+<p><img src="output_9_0.svg" alt="svg"></p>
+<h3 id="第一步-所有样本构建回归方程"><a href="#第一步-所有样本构建回归方程" class="headerlink" title="第一步, 所有样本构建回归方程"></a>第一步, 所有样本构建回归方程</h3><p>使用人均GDP预测人均消费:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> c <span class="built_in">y</span></span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+      Source |       SS           df       MS      Number of obs   =        29
+-------------+----------------------------------   F(1, 27)        =   2441.51
+       Model |  92575330.6         1  92575330.6   Prob > F        =    0.0000
+    Residual |   1023766.1        27  37917.2631   R-squared       =    0.9891
+-------------+----------------------------------   Adj R-squared   =    0.9887
+       Total |  93599096.7        28  3342824.88   Root MSE        =    194.72
+
+------------------------------------------------------------------------------
+           c |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           y |   .3977205   .0080491    49.41   0.000     .3812051     .414236
+       _cons |    188.588   51.57697     3.66   0.001     82.76078    294.4152
+------------------------------------------------------------------------------
+
+</div>
+
+<p>计算残差平方和:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">scalar</span> ssr=<span class="built_in">e</span>(rss)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dis</span> ssr</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+1023766.1
+
+</div>
+
+<h3 id="第二步-构建1992年之前的样本的回归模型"><a href="#第二步-构建1992年之前的样本的回归模型" class="headerlink" title="第二步, 构建1992年之前的样本的回归模型"></a>第二步, 构建1992年之前的样本的回归模型</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> c y <span class="keyword">if</span> year &lt; 1992</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+      Source |       SS           df       MS      Number of obs   =        14
+-------------+----------------------------------   F(1, 12)        =   4381.66
+       Model |  829144.945         1  829144.945   Prob > F        =    0.0000
+    Residual |   2270.7688        12  189.230733   R-squared       =    0.9973
+-------------+----------------------------------   Adj R-squared   =    0.9970
+       Total |  831415.714        13  63955.0549   Root MSE        =    13.756
+
+------------------------------------------------------------------------------
+           c |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           y |   .4995544   .0075468    66.19   0.000     .4831113    .5159975
+       _cons |   12.98254    7.87353     1.65   0.125    -4.172404    30.13749
+------------------------------------------------------------------------------
+
+</div>
+
+<p>计算该方程的残差平方和:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">scalar</span> ssr1 = <span class="built_in">e</span>(rss)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dis</span> ssr1</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+2270.7688
+
+</div>
+
+<h3 id="第三步-构建1992年之后的样本的回归模型"><a href="#第三步-构建1992年之后的样本的回归模型" class="headerlink" title="第三步, 构建1992年之后的样本的回归模型"></a>第三步, 构建1992年之后的样本的回归模型</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> c y <span class="keyword">if</span> year &gt;= 1992</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+      Source |       SS           df       MS      Number of obs   =        15
+-------------+----------------------------------   F(1, 13)        =    764.58
+       Model |  28749474.3         1  28749474.3   Prob > F        =    0.0000
+    Residual |  488822.141        13  37601.7031   R-squared       =    0.9833
+-------------+----------------------------------   Adj R-squared   =    0.9820
+       Total |  29238296.4        14  2088449.74   Root MSE        =    193.91
+
+------------------------------------------------------------------------------
+           c |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           y |    .359886   .0130153    27.65   0.000     .3317682    .3880038
+       _cons |   566.4531   115.2172     4.92   0.000     317.5415    815.3646
+------------------------------------------------------------------------------
+
+</div>
+
+<p>计算该方程的残差平方和:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">scalar</span> ssr2 = <span class="built_in">e</span>(rss)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dis</span> ssr2</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+488822.14
+
+</div>
+
+<h3 id="第四步-计算F统计量"><a href="#第四步-计算F统计量" class="headerlink" title="第四步, 计算F统计量"></a>第四步, 计算F统计量</h3><p>根据上面的公式, 我们可以计算F统计量:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">scalar</span> F = ((ssr-ssr1-ssr2)/2)/((ssr1+ssr2) / 25)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dis</span> <span class="built_in">F</span></span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+13.558361
+
+</div>
+
+<p>得到F统计量, 我们查找F分布表就能知道假设是否成立了。</p>
+<h3 id="另外一种方法"><a href="#另外一种方法" class="headerlink" title="另外一种方法"></a>另外一种方法</h3><p>上面的方法有些繁琐, 我们还可以使用构建虚拟变量的方法, 思路是这样的:</p>
+<ul>
+<li>构建虚拟变量d, 标志数据是否来自1992年之后, 是则取1, 否则取0</li>
+<li>计算d和自变量y的交互项: yd</li>
+<li>构建回归方程, reg c y d yd</li>
+</ul>
+<p>下面我们来快速做一下:</p>
+<p>生成虚拟变量d:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">gen</span> <span class="keyword">d</span> = (year &gt; 1991)</span><br></pre></td></tr></table></figure>
+<p>生成交互项变量:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">gen</span> yd = y*<span class="built_in">d</span></span><br></pre></td></tr></table></figure>
+<p>回归分析:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> c y <span class="keyword">d</span> yd</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+      Source |       SS           df       MS      Number of obs   =        29
+-------------+----------------------------------   F(3, 25)        =   1579.95
+       Model |  93108003.8         3  31036001.3   Prob > F        =    0.0000
+    Residual |   491092.91        25  19643.7164   R-squared       =    0.9948
+-------------+----------------------------------   Adj R-squared   =    0.9941
+       Total |  93599096.7        28  3342824.88   Root MSE        =    140.16
+
+------------------------------------------------------------------------------
+           c |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           y |   .4995544   .0768917     6.50   0.000      .341193    .6579158
+           d |   553.4705   115.6304     4.79   0.000     315.3252    791.6159
+          yd |  -.1396684    .077465    -1.80   0.083    -.2992106    .0198738
+       _cons |   12.98254   80.22052     0.16   0.873    -152.2347    178.1998
+------------------------------------------------------------------------------
+
+</div>
+
+<p>最后计算d与yd的联合显著性:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">test</span> <span class="keyword">d</span> yd</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+ ( 1)  d = 0
+ ( 2)  yd = 0
+
+       F(  2,    25) =   13.56
+            Prob > F =    0.0001
+
+</div>
+
+<p>上面计算得到的F统计量和第一种方法计算得到的F是相同的。</p>
+<p>如果你怀疑在1992年前后的样本扰动项是异方差的, 那么我们可以进行异方差稳健的回归分析:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> c y <span class="keyword">d</span> yd, <span class="built_in">r</span></span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+Linear regression                               Number of obs     =         29
+                                                F(3, 25)          =    2290.56
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.9948
+                                                Root MSE          =     140.16
+
+------------------------------------------------------------------------------
+             |               Robust
+           c |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           y |   .4995544   .0104615    47.75   0.000     .4780085    .5211003
+           d |   553.4705   138.6738     3.99   0.001     267.8665    839.0746
+          yd |  -.1396684   .0186167    -7.50   0.000    -.1780103   -.1013265
+       _cons |   12.98254   8.966059     1.45   0.160    -5.483399    31.44849
+------------------------------------------------------------------------------
+
+</div>
+
+<p>然后进行d和yd的联合显著性检验:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">test</span> <span class="keyword">d</span> yd</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+
+ ( 1)  d = 0
+ ( 2)  yd = 0
+
+       F(  2,    25) =   34.01
+            Prob > F =    0.0000
+
+</div>
+
+<p>虽然F值不同, 但是最终的结论是一样的。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>陈强[高级计量经济学]</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="stata教程15-回归变动的检验.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/stata/">#stata</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/stata/">
+            stata
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/01/11/stata教程15-回归变动的检验/">
+                    stata教程15-回归变动的检验
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/01/10/stata教程14-极端数据处理/">
+                    stata教程14-极端数据处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/01/10/stata教程13-回归中多重共线性的检验/">
+                    stata教程13-回归中多重共线性的检验
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">
+                    stata教程10-项目反应使用irt命令进行单参数logit参数估计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">
+                    stata教程11-raschtest模块进行项目反应试题分析
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">
+                    stata教程09-项目反应理论IRT的Rash模型
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/22/stata教程08-中介效应分析/">
+                    stata教程08-中介效应分析
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/13/stata教程07-常见样本量估计/">
+                    stata教程07-常见样本量估计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/12/stata教程06-计算AIC和BIC决定变量个数/">
+                    stata教程06-计算AIC和BIC决定变量个数
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/12/stata教程05-自相关的检验和处理/">
+                    stata教程05-自相关的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-异方差的检验和处理/">
+                    stata教程03-异方差的检验和处理
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/11/stata教程03-数据的正态性检验和变量正态化/">
+                    stata教程03-数据的正态性检验和变量正态化
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/10/stata教程02-线性回归分析小样本和大样本OLS/">
+                    stata教程02-线性回归分析小样本和大样本OLS
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/01/安装stata并在jupyter-notebook中调用/">
+                    安装stata并在jupyter notebook中调用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/01/03/stata教程12-回归模型的非线性检验/">
+                    stata教程12-回归模型的非线性检验
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">DataNitro教程系列(python控制Exc</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/04/瑞文标准推理测验在线换算标准分-怎样计算百分等级/">瑞文标准推理测验在线换算标准分,怎样计算百分等级</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">stata教程09-项目反应理论IRT的Rash模</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
