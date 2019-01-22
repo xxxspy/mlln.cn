@@ -433,6 +433,55 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/09/07/python-selenium撰写自动化功能测试脚本/">
+                python-selenium撰写自动化功能测试脚本
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年09月07日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>你需要参考<a href="/2017/06/10/selenim%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%85%A5%E9%97%A8-for-psychologist/">selenium入门</a><br>来指导你安装python和selenium，<br>同时你还需要安装chrome和chromedriver，在这篇文章中有详细的介绍。</p>
+<h2 id="撰写用例"><a href="#撰写用例" class="headerlink" title="撰写用例"></a>撰写用例</h2><p>在写功能测试脚本之前，需要先指导测什么。这就是用例的作用。用例要详细描述一个用户的操作行为，用到的数据，得到的反馈等。<br>比如我们想要测试网站的登录功能，我们可以这么写：</p>
+<blockquote>
+<p>打开网址<code>http://www.mlln.cn</code><br>点击<code>登录</code>按钮<br>输入用户名和密码<br>点击登录<br>验证登录是否成功</p>
+</blockquote>
+<p>用例要列出所有可能的反馈，测试也要测试到所有可能情况。比如简单的登录功能，首先要测试成功登录的情况，然后要测试用户名或密码错误的情况。<br>网站应当根据不同的用户操作给出不同的反馈。</p>
+<h2 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h2><p>脚本就是一段代码，用于执行一个特定的功能。通常一个<code>*.py</code>文件存放一个脚本，一个测试脚本的大体结构应当是这样的：</p>
+<blockquote>
+<blockquote>
+<p>文件中最上面写用例, 用三个引号表示。比如<code>&#39;&#39;&#39;这是一个测试用例的描述文字 &#39;&#39;&#39;</code><br>准备阶段：准备好测试用到的数据，比如你要测试的是登录功能，你需要提前写入数据一个账号和密码，用于测试，写入数据的过程就是准备过程<br>测试阶段：写代码执行测试<br>销毁阶段：在准备阶段写入的数据应当在销毁阶段销毁，也就是删除测试账号。关闭任何打开过的浏览器或其他软件。</p>
+</blockquote>
+</blockquote>
+<p>测试脚本文件名称以<code>test_</code>开头。</p>
+<p>下面是一个测试脚本的样例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">这里描述测试用例</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">import</span> selenium</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prepare</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''准备阶段'''</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''测试阶段'''</span></span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">destroy</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="string">'''销毁阶段'''</span></span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/selenium/">#selenium</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/06/28/svd和pca的区别和联系，附代码实现/">
                 svd和pca的区别和联系，附代码实现
             </a>
@@ -1358,88 +1407,6 @@ if ('d3' in window){
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/06/05/抽样系统备注文本信息自动化分类器/">
-                抽样系统备注文本信息自动化分类器
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017年06月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="第一步：-构建潜在语义空间"><a href="#第一步：-构建潜在语义空间" class="headerlink" title="第一步： 构建潜在语义空间"></a>第一步： 构建潜在语义空间</h2><ul>
-<li>分词：将备注信息切分成词</li>
-<li>清理：将标点符号清理掉</li>
-<li>构建词在备注信息中的词频矩阵, 如：</li>
-</ul>
-<p><code>\[
-    \begin{array}{c | ccc}
-    \text{matrix} &amp; \text{备注1} &amp; \text{备注2} &amp; \text{备注n...} \\
-    \hline
-    \text{残疾} &amp; 0 &amp; 1 &amp; \cdots \\
-    \text{父母} &amp; 1 &amp; 1 &amp; \cdots \\
-    \text{建议} &amp; 0 &amp; 2 &amp; \cdots \\
-    \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
-    \end{array}
-\]</code></p>
-<ul>
-<li><p>进行加权，用<code>tf-idf</code>方法</p>
-</li>
-<li><p>根据如下公式对矩阵进行svd分解</p>
-</li>
-</ul>
-<p><code>\[
-\{X\}=\{W\}\{S\}\{P\}
-\]</code></p>
-<p>如果你使用python，你可以使用<code>numpy.linalg.SVD</code>函数来做这个分解。</p>
-<ul>
-<li><p>筛选对角矩阵<code>S</code>中最大的n个特征值，然后选出<code>W</code>和<code>P</code>中与特征值对应的特征向量，组合起来形成相应的<code>\(W&#39;\)</code>和<code>\(P&#39;\)</code></p>
-</li>
-<li><p>最后根据公式反向计算词文矩阵<code>X&#39;</code>，得到潜在语义空间：</p>
-</li>
-</ul>
-<p><code>\[
-\{W&#39;\}\{S&#39;\}\{P&#39;\}=\{X&#39;\}
-\]</code></p>
-<p>得到的X’矩阵中，每一行都是一个词向量。</p>
-<ul>
-<li>求备注向量</li>
-</ul>
-<p>在原始的词频矩阵X中，每一列代表一个备注中，词的词频，我们把它叫做备注的词频向量——<code>\(V_i\)</code>，其中下标<code>i</code>表示第i<br>个备注。由于在上一步中我们求得了每个词的语义向量。所以备注的词频向量就可以转换成词所在的语义空间向量<code>\(V&#39;_i\)</code>。让向量<code>\(w_j\)</code>表示X’中j词的语义向量。假如矩阵中有n个词。</p>
-<p><code>\[
-M = X&#39;.T * V_i = \left[ \begin{array} \vdots\\ w_j \\ \vdots \end{array} \right] * V_i
- = \left[ \begin{array} \vdots\\ w&#39;_j \\ \vdots \end{array} \right]
-\]</code><br><code>\[
-V&#39;_i = \sum_{j=0}^n w&#39;_j
-\]</code></p>
-<h2 id="第二步：使用机器学习算法预测备注是否能参加测试"><a href="#第二步：使用机器学习算法预测备注是否能参加测试" class="headerlink" title="第二步：使用机器学习算法预测备注是否能参加测试"></a>第二步：使用机器学习算法预测备注是否能参加测试</h2><ul>
-<li><code>\( V&#39;_i \)</code> 就是备注文档的语义向量，这样我们就得到了备注文档的语义。以此为输入，以该备注的被试是否能够参加测试为输出，使用适当的机器学习方法即可预测一个备注是否能够参加测试。</li>
-</ul>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/“python/">#“python"</a> <a href="/tags/lsa/">#lsa</a> <a href="/tags/潜在语义分析/">#潜在语义分析</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1481,6 +1448,10 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
             </li>
             
@@ -1489,11 +1460,11 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
+                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
+                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
             </li>
             
             <li>
@@ -1514,10 +1485,6 @@ V&#39;_i = \sum_{j=0}^n w&#39;_j
             
             <li>
                 <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">stata教程09-项目反应理论IRT的Rash模</a>
             </li>
             
         </ul>

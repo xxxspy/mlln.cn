@@ -433,6 +433,88 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/06/05/抽样系统备注文本信息自动化分类器/">
+                抽样系统备注文本信息自动化分类器
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="第一步：-构建潜在语义空间"><a href="#第一步：-构建潜在语义空间" class="headerlink" title="第一步： 构建潜在语义空间"></a>第一步： 构建潜在语义空间</h2><ul>
+<li>分词：将备注信息切分成词</li>
+<li>清理：将标点符号清理掉</li>
+<li>构建词在备注信息中的词频矩阵, 如：</li>
+</ul>
+<p><code>\[
+    \begin{array}{c | ccc}
+    \text{matrix} &amp; \text{备注1} &amp; \text{备注2} &amp; \text{备注n...} \\
+    \hline
+    \text{残疾} &amp; 0 &amp; 1 &amp; \cdots \\
+    \text{父母} &amp; 1 &amp; 1 &amp; \cdots \\
+    \text{建议} &amp; 0 &amp; 2 &amp; \cdots \\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+    \end{array}
+\]</code></p>
+<ul>
+<li><p>进行加权，用<code>tf-idf</code>方法</p>
+</li>
+<li><p>根据如下公式对矩阵进行svd分解</p>
+</li>
+</ul>
+<p><code>\[
+\{X\}=\{W\}\{S\}\{P\}
+\]</code></p>
+<p>如果你使用python，你可以使用<code>numpy.linalg.SVD</code>函数来做这个分解。</p>
+<ul>
+<li><p>筛选对角矩阵<code>S</code>中最大的n个特征值，然后选出<code>W</code>和<code>P</code>中与特征值对应的特征向量，组合起来形成相应的<code>\(W&#39;\)</code>和<code>\(P&#39;\)</code></p>
+</li>
+<li><p>最后根据公式反向计算词文矩阵<code>X&#39;</code>，得到潜在语义空间：</p>
+</li>
+</ul>
+<p><code>\[
+\{W&#39;\}\{S&#39;\}\{P&#39;\}=\{X&#39;\}
+\]</code></p>
+<p>得到的X’矩阵中，每一行都是一个词向量。</p>
+<ul>
+<li>求备注向量</li>
+</ul>
+<p>在原始的词频矩阵X中，每一列代表一个备注中，词的词频，我们把它叫做备注的词频向量——<code>\(V_i\)</code>，其中下标<code>i</code>表示第i<br>个备注。由于在上一步中我们求得了每个词的语义向量。所以备注的词频向量就可以转换成词所在的语义空间向量<code>\(V&#39;_i\)</code>。让向量<code>\(w_j\)</code>表示X’中j词的语义向量。假如矩阵中有n个词。</p>
+<p><code>\[
+M = X&#39;.T * V_i = \left[ \begin{array} \vdots\\ w_j \\ \vdots \end{array} \right] * V_i
+ = \left[ \begin{array} \vdots\\ w&#39;_j \\ \vdots \end{array} \right]
+\]</code><br><code>\[
+V&#39;_i = \sum_{j=0}^n w&#39;_j
+\]</code></p>
+<h2 id="第二步：使用机器学习算法预测备注是否能参加测试"><a href="#第二步：使用机器学习算法预测备注是否能参加测试" class="headerlink" title="第二步：使用机器学习算法预测备注是否能参加测试"></a>第二步：使用机器学习算法预测备注是否能参加测试</h2><ul>
+<li><code>\( V&#39;_i \)</code> 就是备注文档的语义向量，这样我们就得到了备注文档的语义。以此为输入，以该备注的被试是否能够参加测试为输出，使用适当的机器学习方法即可预测一个备注是否能够参加测试。</li>
+</ul>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/“python/">#“python"</a> <a href="/tags/lsa/">#lsa</a> <a href="/tags/潜在语义分析/">#潜在语义分析</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/06/02/MathJax入门/">
                 MathJax入门
             </a>
@@ -1356,65 +1438,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/">
-                SPSS实例：[17]进行sobel检验(小白教程)
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>通常我们在做中介效应的时候，遇到有一个系数没有达到显著性水平，我们需要进行sobel检验，但是sobel检验的公式非常麻烦，如果你按计算器就很麻烦了，更何况你还有很多中介效应去验证，所以今天我给大家分享一个Excel可以很快的计算。</p>
-<ul>
-<li>从下面的参考资料里下载一个Excel文件</li>
-</ul>
-<img src="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/d478a8003af33a879120f002c45c10385343b51e.jpg" title="SPSS实例：[17]进行sobel检验(小白教程)">
-<ul>
-<li>下载下来以后，打开Excel，你会看到一个这样的表格</li>
-</ul>
-<img src="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/cdfe7281800a19d87b53741d31fa828ba61e4613.jpg" title="SPSS实例：[17]进行sobel检验(小白教程)">
-<ul>
-<li>将你的三个模型的三线表粘贴过来</li>
-</ul>
-<img src="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/c856613e6709c93da9a2feef9d3df8dcd1005413.jpg" title="SPSS实例：[17]进行sobel检验(小白教程)">
-<ul>
-<li>我们在对应的位置写入对应的值，soble值会自动的计算出来，是否显著这一栏会告诉是否显著，如果显著说明中介效应显著</li>
-</ul>
-<img src="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/bd7faf3533fa828b6d736dfbff1f4134970a5a13.jpg" title="SPSS实例：[17]进行sobel检验(小白教程)">
-<ul>
-<li>跟大家分享一下各个单元格的公式，看下面的公示栏就知道了。</li>
-</ul>
-<img src="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/bbe0d311728b47105b7f0dd4c1cec3fdfc032313.jpg" title="SPSS实例：[17]进行sobel检验(小白教程)">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1456,6 +1479,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
             </li>
             
@@ -1464,11 +1491,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
+                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
+                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
             </li>
             
             <li>
@@ -1489,10 +1516,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
             
             <li>
                 <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/12/22/stata教程09-项目反应理论IRT的Rash模型/">stata教程09-项目反应理论IRT的Rash模</a>
             </li>
             
         </ul>

@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="pandas练习-多层索引的创建和各种操作(multiindex)第一部分"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>pandas练习-多层索引的创建和各种操作(multiindex)第一部分 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/index.html",
+    "appid": "1600845001263316",
+    "title": "pandas练习-多层索引的创建和各种操作(multiindex)第一部分",
+    "images": [
+        "http://mlln.cn/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/main.jpg"
+    ], 
+    "pubDate": "2019-01-22T08:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">
+                pandas练习-多层索引的创建和各种操作(multiindex)第一部分
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="pandas练习-多层索引的创建和各种操作(multiindex)第一部分"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2019年01月22日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建MultiIndex"><span class="toc-number">1.</span> <span class="toc-text">创建MultiIndex</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#from-tuples"><span class="toc-number">1.1.</span> <span class="toc-text">from_tuples</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#from-arrays"><span class="toc-number">1.2.</span> <span class="toc-text">from_arrays</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#from-product"><span class="toc-number">1.3.</span> <span class="toc-text">from_product</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MultiIndex-names"><span class="toc-number">2.</span> <span class="toc-text">MultiIndex.names</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MultiIndex可以作为列名称"><span class="toc-number">3.</span> <span class="toc-text">MultiIndex可以作为列名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取各水平的值"><span class="toc-number">4.</span> <span class="toc-text">获取各水平的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择数据"><span class="toc-number">5.</span> <span class="toc-text">选择数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择行"><span class="toc-number">6.</span> <span class="toc-text">选择行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据对齐"><span class="toc-number">7.</span> <span class="toc-text">数据对齐</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>分层/多级索引非常令人兴奋，因为它为一些非常复杂的数据分析和操作提供了可能性，特别是对于处理更高维度的数据。从本质上讲，它使你能在较低维度的数据结构(如Series（1d）和DataFrame（2d）)中存储和操作具有任意数量维度的数据。</p>
+<p>在这篇文章中, 你将会学到什么是”MultiIndex”, 以及如何创建和操作MultiIndex。</p>
+<h3 id="创建MultiIndex"><a href="#创建MultiIndex" class="headerlink" title="创建MultiIndex"></a>创建MultiIndex</h3><p>MultiIndex对象是标准Index对象的扩展, 你可以将MultiIndex视为元组构成的列表，其中每个元组都是唯一的, 它与Index的区别是, Index可以视为数字或者字符串构成的列表。可以从数组列表（使用MultiIndex.from_arrays），元组列表（使用MultiIndex.from_tuples）或交叉迭代集（使用MultiIndex.from_product）创建MultiIndex。当构造函数传递元组列表时，它将尝试返回MultiIndex。以下示例演示了创建MultiIndexes的不同方法。</p>
+<h4 id="from-tuples"><a href="#from-tuples" class="headerlink" title="from_tuples"></a>from_tuples</h4><p>下面先创建一个元祖构成的列表:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">arrays = [[<span class="string">'bar'</span>, <span class="string">'bar'</span>, <span class="string">'baz'</span>, <span class="string">'baz'</span>, <span class="string">'foo'</span>, <span class="string">'foo'</span>, <span class="string">'qux'</span>, <span class="string">'qux'</span>],</span><br><span class="line">            [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>]]</span><br><span class="line"></span><br><span class="line">tuples = list(zip(*arrays))</span><br><span class="line">tuples</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    [('bar', 'one'),
+    <br> ('bar', 'two'),
+    <br> ('baz', 'one'),
+    <br> ('baz', 'two'),
+    <br> ('foo', 'one'),
+    <br> ('foo', 'two'),
+    <br> ('qux', 'one'),
+    <br> ('qux', 'two')]
+
+</div>
+
+<p>使用from_tuples来创建MultiIndex:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index = pd.MultiIndex.from_tuples(tuples, names=[<span class="string">'first'</span>, <span class="string">'second'</span>])</span><br><span class="line">index</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    MultiIndex(levels=[['bar', 'baz', 'foo', 'qux'], ['one', 'two']],
+    <br>           labels=[[0, 0, 1, 1, 2, 2, 3, 3], [0, 1, 0, 1, 0, 1, 0, 1]],
+    <br>           names=['first', 'second'])
+
+</div>
+
+<p>创建一个series, 并设置它的index:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">s = pd.Series(np.random.randn(<span class="number">8</span>), index=index)</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    first  second
+    <br>bar    one       1.457857
+    <br>       two       0.999506
+    <br>baz    one      -1.556818
+    <br>       two       1.716127
+    <br>foo    one      -1.562564
+    <br>       two       0.313624
+    <br>qux    one       0.537644
+    <br>       two       1.178401
+    <br>dtype: float64
+
+</div>
+
+<h4 id="from-arrays"><a href="#from-arrays" class="headerlink" title="from_arrays"></a>from_arrays</h4><p>如果说from_tuples接受的参数是”行”的列表, 那么 from_arrays接受的参数是就是”列”的列表:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arrays = [[<span class="string">'bar'</span>, <span class="string">'bar'</span>, <span class="string">'baz'</span>, <span class="string">'baz'</span>, <span class="string">'foo'</span>, <span class="string">'foo'</span>, <span class="string">'qux'</span>, <span class="string">'qux'</span>],</span><br><span class="line">            [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>]]</span><br><span class="line"></span><br><span class="line">index = pd.MultiIndex.from_arrays(arrays)</span><br><span class="line">s = pd.Series(np.random.randn(<span class="number">8</span>), index=index)</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    bar  one   -1.754944
+    <br>     two    1.111560
+    <br>baz  one   -1.291416
+    <br>     two    1.556595
+    <br>foo  one    0.147699
+    <br>     two    1.379124
+    <br>qux  one   -0.981192
+    <br>     two    0.292709
+    <br>dtype: float64
+
+</div>
+
+<p>不过为了简便, 我们通常可以直接在Series的构造函数中使用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">arrays = [[<span class="string">'bar'</span>, <span class="string">'bar'</span>, <span class="string">'baz'</span>, <span class="string">'baz'</span>, <span class="string">'foo'</span>, <span class="string">'foo'</span>, <span class="string">'qux'</span>, <span class="string">'qux'</span>],</span><br><span class="line">            [<span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>]]</span><br><span class="line"></span><br><span class="line">s = pd.Series(np.random.randn(<span class="number">8</span>), index=arrays)</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    bar  one    0.507618
+    <br>     two   -2.190117
+    <br>baz  one   -0.138124
+    <br>     two   -2.175832
+    <br>foo  one   -0.570554
+    <br>     two   -0.851560
+    <br>qux  one   -0.784552
+    <br>     two    0.003748
+    <br>dtype: float64
+
+</div>
+
+<h4 id="from-product"><a href="#from-product" class="headerlink" title="from_product"></a>from_product</h4><p>假如我们有两个list, 这两个list内的元素相互交叉, 两两搭配, 这就是两个list的product:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lists = [[<span class="string">'bar'</span>, <span class="string">'baz'</span>, <span class="string">'foo'</span>, <span class="string">'qux'</span>], [<span class="string">'one'</span>, <span class="string">'two'</span>]]</span><br><span class="line"></span><br><span class="line">index = pd.MultiIndex.from_product(lists, names=[<span class="string">'first'</span>, <span class="string">'second'</span>])</span><br><span class="line">s = pd.Series(np.random.randn(len(index)), index=index)</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    first  second
+    <br>bar    one      -1.209379
+    <br>       two       0.497207
+    <br>baz    one       0.592290
+    <br>       two      -0.769594
+    <br>foo    one      -0.935071
+    <br>       two       0.201014
+    <br>qux    one      -0.176715
+    <br>       two      -0.183346
+    <br>dtype: float64
+
+</div>
+
+<h3 id="MultiIndex-names"><a href="#MultiIndex-names" class="headerlink" title="MultiIndex.names"></a>MultiIndex.names</h3><p>你可以为MultiIndex的各个层起名字, 这就是names属性:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我们还没有设置名称</span></span><br><span class="line">s.index.names</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    FrozenList([None, None])
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s.index.names = [<span class="string">'FirstLevel'</span>, <span class="string">'SecondLevel'</span>]</span><br><span class="line"></span><br><span class="line">s.index</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    MultiIndex(levels=[['bar', 'baz', 'foo', 'qux'], ['one', 'two']],
+    <br>           labels=[[0, 0, 1, 1, 2, 2, 3, 3], [0, 1, 0, 1, 0, 1, 0, 1]],
+    <br>           names=['FirstLevel', 'SecondLevel'])
+
+</div>
+
+<h3 id="MultiIndex可以作为列名称"><a href="#MultiIndex可以作为列名称" class="headerlink" title="MultiIndex可以作为列名称"></a>MultiIndex可以作为列名称</h3><p>Series和DataFrame的列名称属性就是columns, 他也可以是一个MultiIndex对象:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">3</span>, <span class="number">8</span>), index=[<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>], columns=index)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>FirstLevel</th>
+      <th colspan="2" halign="left">bar</th>
+      <th colspan="2" halign="left">baz</th>
+      <th colspan="2" halign="left">foo</th>
+      <th colspan="2" halign="left">qux</th>
+    </tr>
+    <tr>
+      <th>SecondLevel</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.014034</td>
+      <td>1.464162</td>
+      <td>-0.753476</td>
+      <td>-0.163394</td>
+      <td>-0.198990</td>
+      <td>0.116046</td>
+      <td>-0.555008</td>
+      <td>-0.965797</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-1.314244</td>
+      <td>-1.263142</td>
+      <td>1.523974</td>
+      <td>0.541391</td>
+      <td>-0.217874</td>
+      <td>0.019695</td>
+      <td>1.188791</td>
+      <td>-1.003912</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1.175155</td>
+      <td>-0.587370</td>
+      <td>0.352587</td>
+      <td>-0.047469</td>
+      <td>-0.896502</td>
+      <td>0.280792</td>
+      <td>0.806554</td>
+      <td>0.132662</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="获取各水平的值"><a href="#获取各水平的值" class="headerlink" title="获取各水平的值"></a>获取各水平的值</h3><p>方法get_level_values将返回特定级别的每个位置的标签向量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index.get_level_values(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    Index(['bar', 'bar', 'baz', 'baz', 'foo', 'foo', 'qux', 'qux'], dtype='object', name='FirstLevel')
+
+</div>
+
+<p>如果你给index设置了名称, 那么你可以直接使用名称来获取水平值:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index.get_level_values(<span class="string">'FirstLevel'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    Index(['bar', 'bar', 'baz', 'baz', 'foo', 'foo', 'qux', 'qux'], dtype='object', name='FirstLevel')
+
+</div>
+
+<h3 id="选择数据"><a href="#选择数据" class="headerlink" title="选择数据"></a>选择数据</h3><p>这可能是MultiIndex最重要的功能之一。</p>
+<p>先看下我们的df的结构:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>FirstLevel</th>
+      <th colspan="2" halign="left">bar</th>
+      <th colspan="2" halign="left">baz</th>
+      <th colspan="2" halign="left">foo</th>
+      <th colspan="2" halign="left">qux</th>
+    </tr>
+    <tr>
+      <th>SecondLevel</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.014034</td>
+      <td>1.464162</td>
+      <td>-0.753476</td>
+      <td>-0.163394</td>
+      <td>-0.198990</td>
+      <td>0.116046</td>
+      <td>-0.555008</td>
+      <td>-0.965797</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-1.314244</td>
+      <td>-1.263142</td>
+      <td>1.523974</td>
+      <td>0.541391</td>
+      <td>-0.217874</td>
+      <td>0.019695</td>
+      <td>1.188791</td>
+      <td>-1.003912</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1.175155</td>
+      <td>-0.587370</td>
+      <td>0.352587</td>
+      <td>-0.047469</td>
+      <td>-0.896502</td>
+      <td>0.280792</td>
+      <td>0.806554</td>
+      <td>0.132662</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>获取FirstLevel是bar的所有数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'bar'</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>SecondLevel</th>
+      <th>one</th>
+      <th>two</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.014034</td>
+      <td>1.464162</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-1.314244</td>
+      <td>-1.263142</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1.175155</td>
+      <td>-0.587370</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>获取FirstLevel是bar, SecondLevel是one的所有数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'bar'</span>, <span class="string">'one'</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    A    1.014034
+    <br>B   -1.314244
+    <br>C   -1.175155
+    <br>Name: (bar, one), dtype: float64
+
+</div>
+
+<p>我更喜欢这样来用, 意义更明确:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'bar'</span>][<span class="string">'one'</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    A    1.014034
+    <br>B   -1.314244
+    <br>C   -1.175155
+    <br>Name: one, dtype: float64
+
+</div>
+
+<p>需要注意的是, 结果选择输出的结果的columns已经改变:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'bar'</span>].columns</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    Index(['one', 'two'], dtype='object', name='SecondLevel')
+
+</div>
+
+<p>如果你要选择第二层的列名为one的所有数据, 你需要借助xs方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.xs(<span class="string">'one'</span>, level=<span class="number">1</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>FirstLevel</th>
+      <th>bar</th>
+      <th>baz</th>
+      <th>foo</th>
+      <th>qux</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.014034</td>
+      <td>-0.753476</td>
+      <td>-0.198990</td>
+      <td>-0.555008</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-1.314244</td>
+      <td>1.523974</td>
+      <td>-0.217874</td>
+      <td>1.188791</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1.175155</td>
+      <td>0.352587</td>
+      <td>-0.896502</td>
+      <td>0.806554</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>或者使用名称代替数字:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.xs(<span class="string">'one'</span>, level=<span class="string">'SecondLevel'</span>, axis=<span class="string">'columns'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>FirstLevel</th>
+      <th>bar</th>
+      <th>baz</th>
+      <th>foo</th>
+      <th>qux</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.014034</td>
+      <td>-0.753476</td>
+      <td>-0.198990</td>
+      <td>-0.555008</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-1.314244</td>
+      <td>1.523974</td>
+      <td>-0.217874</td>
+      <td>1.188791</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-1.175155</td>
+      <td>0.352587</td>
+      <td>-0.896502</td>
+      <td>0.806554</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>我喜欢xs的原因是, 它不仅可以用来选择列, 也可以用来选择行:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    FirstLevel  SecondLevel
+    <br>bar         one           -1.754944
+    <br>            two            1.111560
+    <br>baz         one           -1.291416
+    <br>            two            1.556595
+    <br>foo         one            0.147699
+    <br>            two            1.379124
+    <br>qux         one           -0.981192
+    <br>            two            0.292709
+    <br>dtype: float64
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.xs(<span class="string">'one'</span>, level=<span class="string">'SecondLevel'</span>, axis=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    FirstLevel
+    <br>bar   -1.754944
+    <br>baz   -1.291416
+    <br>foo    0.147699
+    <br>qux   -0.981192
+    <br>dtype: float64
+
+</div>
+
+<h3 id="选择行"><a href="#选择行" class="headerlink" title="选择行"></a>选择行</h3><p>下面我们把df进行转置, 然后看看一些选择行的操作:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = df.T</span><br><span class="line"></span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>FirstLevel</th>
+      <th>SecondLevel</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">bar</th>
+      <th>one</th>
+      <td>1.014034</td>
+      <td>-1.314244</td>
+      <td>-1.175155</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>1.464162</td>
+      <td>-1.263142</td>
+      <td>-0.587370</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>-0.753476</td>
+      <td>1.523974</td>
+      <td>0.352587</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.163394</td>
+      <td>0.541391</td>
+      <td>-0.047469</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">foo</th>
+      <th>one</th>
+      <td>-0.198990</td>
+      <td>-0.217874</td>
+      <td>-0.896502</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.116046</td>
+      <td>0.019695</td>
+      <td>0.280792</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">qux</th>
+      <th>one</th>
+      <td>-0.555008</td>
+      <td>1.188791</td>
+      <td>0.806554</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.965797</td>
+      <td>-1.003912</td>
+      <td>0.132662</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>选择FirstLevel是bar, SecondLevel是two的数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[(<span class="string">'bar'</span>, <span class="string">'two'</span>)]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    A    1.464162
+    <br>B   -1.263142
+    <br>C   -0.587370
+    <br>Name: (bar, two), dtype: float64
+
+</div>
+
+<p>下面的用法是等效的:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[<span class="string">'bar'</span>].loc[<span class="string">'two'</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    A    1.464162
+    <br>B   -1.263142
+    <br>C   -0.587370
+    <br>Name: two, dtype: float64
+
+</div>
+
+<p>选择行的同时也能选择列:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[(<span class="string">'bar'</span>, <span class="string">'two'</span>), <span class="string">'A'</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    1.4641615518687836
+
+</div>
+
+<p>我们还能使用切片操作:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[<span class="string">'baz'</span>: <span class="string">'foo'</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>FirstLevel</th>
+      <th>SecondLevel</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>-0.753476</td>
+      <td>1.523974</td>
+      <td>0.352587</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.163394</td>
+      <td>0.541391</td>
+      <td>-0.047469</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">foo</th>
+      <th>one</th>
+      <td>-0.198990</td>
+      <td>-0.217874</td>
+      <td>-0.896502</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.116046</td>
+      <td>0.019695</td>
+      <td>0.280792</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>或许, 使用更多的是这样:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[(<span class="string">'bar'</span>, <span class="string">'two'</span>): (<span class="string">'baz'</span>, <span class="string">'two'</span>)]</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>FirstLevel</th>
+      <th>SecondLevel</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bar</th>
+      <th>two</th>
+      <td>1.464162</td>
+      <td>-1.263142</td>
+      <td>-0.587370</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>-0.753476</td>
+      <td>1.523974</td>
+      <td>0.352587</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.163394</td>
+      <td>0.541391</td>
+      <td>-0.047469</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<p>当然, 我还是推荐大家使用xs, 它可以使你的代码更容易被别人理解, 而且选择行和列都用统一的方式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.xs(<span class="string">'two'</span>, level=<span class="string">'SecondLevel'</span>, axis=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(html):<br>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>FirstLevel</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bar</th>
+      <td>1.464162</td>
+      <td>-1.263142</td>
+      <td>-0.587370</td>
+    </tr>
+    <tr>
+      <th>baz</th>
+      <td>-0.163394</td>
+      <td>0.541391</td>
+      <td>-0.047469</td>
+    </tr>
+    <tr>
+      <th>foo</th>
+      <td>0.116046</td>
+      <td>0.019695</td>
+      <td>0.280792</td>
+    </tr>
+    <tr>
+      <th>qux</th>
+      <td>-0.965797</td>
+      <td>-1.003912</td>
+      <td>0.132662</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<h3 id="数据对齐"><a href="#数据对齐" class="headerlink" title="数据对齐"></a>数据对齐</h3><p>如果你需要对数据进行运算, 那么设置好了index可以给你带来很多便利:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    FirstLevel  SecondLevel
+    <br>bar         one           -1.754944
+    <br>            two            1.111560
+    <br>baz         one           -1.291416
+    <br>            two            1.556595
+    <br>foo         one            0.147699
+    <br>            two            1.379124
+    <br>qux         one           -0.981192
+    <br>            two            0.292709
+    <br>dtype: float64
+
+</div>
+
+<p>假设我们只需要对第二个元素之后的数据进行运算, 我们的pandas为我们做了按照index的自动数据对齐:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s + s[<span class="number">2</span>:]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    FirstLevel  SecondLevel
+    <br>bar         one                 NaN
+    <br>            two                 NaN
+    <br>baz         one           -2.582832
+    <br>            two            3.113191
+    <br>foo         one            0.295398
+    <br>            two            2.758247
+    <br>qux         one           -1.962383
+    <br>            two            0.585417
+    <br>dtype: float64
+
+</div>
+
+<p>或许下面这个看起来更有用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s + s[::<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    FirstLevel  SecondLevel
+    <br>bar         one           -3.509889
+    <br>            two                 NaN
+    <br>baz         one           -2.582832
+    <br>            two                 NaN
+    <br>foo         one            0.295398
+    <br>            two                 NaN
+    <br>qux         one           -1.962383
+    <br>            two                 NaN
+    <br>dtype: float64
+
+</div>
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="pandas练习-多层索引的创建和各种操作(multiindex">notebook</a>第一部分.ipynb)<br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/pandas/">
+            pandas
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">
+                    pandas练习-多层索引的创建和各种操作(multiindex)第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/18/pandas文本数据转整数分类编码的最佳实践/">
+                    pandas文本数据转整数分类编码的最佳实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/18/信息熵信息增益率基尼系数原理和pandas实战/">
+                    信息熵信息增益率基尼系数原理和pandas实战
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/16/pandas数据分析100道练习题-第三部分/">
+                    pandas数据分析100道练习题-第三部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/15/pandas数据分析100道练习题-第二部分/">
+                    pandas数据分析100道练习题-第二部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/13/pandas数据分析100道练习题-第一部分/">
+                    pandas数据分析100道练习题-第一部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/07/05/pandas教程：[28]散点图添加趋势线/">
+                    pandas教程：[28]散点图添加趋势线
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/06/19/pandas教程：[31]箱形图/">
+                    pandas教程：[31]箱形图
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/05/23/pandas教程：[30]直方图/">
+                    pandas教程：[30]直方图
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/05/19/pandas教程：[8]数据分组/">
+                    pandas教程：[8]数据分组
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/04/15/pandas教程：[21]带有缺失值的计算/">
+                    pandas教程：[21]带有缺失值的计算
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/03/03/pandas教程：[7]筛选计数统计/">
+                    pandas教程：[7]筛选计数统计
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/01/11/pandas教程：[4]Dataframe筛选数据/">
+                    pandas教程：[4]Dataframe筛选数据
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/10/23/pandas教程：[1]DataFrame入门/">
+                    pandas教程：[1]DataFrame入门
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">DataNitro教程系列(python控制Exc</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/04/瑞文标准推理测验在线换算标准分-怎样计算百分等级/">瑞文标准推理测验在线换算标准分,怎样计算百分等级</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
