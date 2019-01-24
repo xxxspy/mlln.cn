@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="数学小白用python做极大似然估计MLE"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>数学小白用python做极大似然估计MLE - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+        <!-- xiongzhang -->
+        <!-- xiongzhang -->
+<script type="application/ld+json">
+
+
+{
+    "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+    "@id": "http://mlln.cn/2019/01/24/数学小白用python做极大似然估计MLE/index.html",
+    "appid": "1600845001263316",
+    "title": "数学小白用python做极大似然估计MLE",
+    "images": [
+        "http://mlln.cn/2019/01/24/数学小白用python做极大似然估计MLE/main.jpg"
+    ], 
+    "pubDate": "2019-01-24T09:17:55" 
+}
+</script>
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/01/24/数学小白用python做极大似然估计MLE/">
+                数学小白用python做极大似然估计MLE
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="数学小白用python做极大似然估计MLE"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2019年01月24日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#估计参数"><span class="toc-number">1.</span> <span class="toc-text">估计参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据样本选择分布"><span class="toc-number">2.</span> <span class="toc-text">根据样本选择分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实战"><span class="toc-number">3.</span> <span class="toc-text">实战</span></a></li></ol>
+    </div>
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p><span></span><br><a id="more"></a></p>
+<p>我们需要从模型中估计一个参数。通常，我们选择一个模型 - 比如说线性回归 - 并使用观测数据X来估计模型的参数θ。</p>
+<p>那么模型参数到底是如何估计出来的呢?例如, 我们从均值为<code>mu</code>标准差为<code>sd</code>的总体中随机抽取样本<code>x</code>, 我们的目标就是估计mu和sd的值。</p>
+<p>设想你正在做一个线性回归, 并且你要估计出模型自变量x的系数:</p>
+<h3 id="估计参数"><a href="#估计参数" class="headerlink" title="估计参数"></a>估计参数</h3><p>我们从正态分布的概率密度函数(PDF)出发, 讲一些数学知识。</p>
+<p><code>$$
+f(x) =
+\frac{1}{\sigma \sqrt{2\pi}} \exp\left(−\frac{(x−\mu)^2}{2\sigma^2}\right).
+$$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> norm</span><br><span class="line"></span><br><span class="line">norm.pdf(<span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0.3989422804014327
+
+</div>
+
+<p>如果总体参数是<code>$\mu=7$</code>和<code>$\sigma=2$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">norm.pdf(<span class="number">3</span>, <span class="number">7</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    0.02699548325659403
+
+</div>
+
+<p>综上所述, pdf告诉我们, 一个样本来自于某个总体的概率的大小。 那么我们的样本量不是1, 而是大于1呢? 其实也很简单, 根据概率公式, 多个独立事件出现的概率就是每个事件概率之积。</p>
+<p>比如现在有两个样本x=[2, 7], 那么他们来自总体N($(2, 1)的概率是:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">norm.pdf(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>) * norm.pdf(<span class="number">7</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    5.931152735254122e-07
+
+</div>
+
+<h3 id="根据样本选择分布"><a href="#根据样本选择分布" class="headerlink" title="根据样本选择分布"></a>根据样本选择分布</h3><p>假如现在给你两个可能分布N(2, 1)和N(3, 2), 让你猜测, 样本x=[2, 7]来自哪个分布?</p>
+<p>我们很容易想到, 分别求出样本x来自两个总体的概率即可:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p1 = norm.pdf(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>) * norm.pdf(<span class="number">7</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">p2 = norm.pdf(<span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>) * norm.pdf(<span class="number">7</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">print(<span class="string">'p1:'</span>, p1)</span><br><span class="line">print(<span class="string">'p2:'</span>, p2)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+p1: 5.931152735254122e-07
+p2: 0.0047520868169464775
+
+</div>
+
+<p>所以我们说, 样本更有可能来自于N(3, 2)。</p>
+<p>到这里我们就大概知道MLE在做什么了, MLE就是知道一个样本, 让你求参θ(比如pdf的<code>$\mu$</code>和<code>$\sigma$</code></p>
+<p>用数学来表达这件事就是, 我们知道x出现的概率可以这样计算:</p>
+<p><code>$$
+f(x) =
+\frac{1}{\sigma \sqrt{2\pi}} \exp\left(−\frac{(x−\mu)^2}{2\sigma^2}\right).
+$$</code></p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>根据高中知识, 求函数的最大值, 可以使用求导的方式, 让导数为0 ,就可以得到极值点。</p>
+<p>因为我比较懒, 不喜欢求导数, 所以我用了一个求导数的python模块sympy, 下面我们先写出上面的公式<code>$\log p$</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> symbols, pi, exp, log</span><br><span class="line"><span class="keyword">from</span> sympy.stats <span class="keyword">import</span> Probability, Normal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 样本</span></span><br><span class="line">X = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>, <span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,]</span><br><span class="line">x = symbols(<span class="string">'x'</span>)</span><br><span class="line"><span class="comment"># 总体 mu 和 sigma</span></span><br><span class="line">m, s = symbols(<span class="string">'m s'</span>)</span><br><span class="line"><span class="comment"># pdf</span></span><br><span class="line">pdf = <span class="number">1</span>/ (s * (<span class="number">2</span>*pi)**<span class="number">0.5</span>)*exp( -(x-m)**<span class="number">2</span> / (<span class="number">2</span>*s**<span class="number">2</span>) )</span><br><span class="line">logpdf = log(pdf)</span><br><span class="line">logpdf</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    log(0.707106781186547*pi**(-0.5)*exp(-(-m + x)**2/(2*s**2))/s)
+
+</div>
+
+<p>上面输出的内容就是logpdf公式。</p>
+<p>下面我们求已知样本后的累加log联合概率, 也叫似然函数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logP = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> xi <span class="keyword">in</span> X:</span><br><span class="line">    logP += logpdf.subs(&#123;x: xi&#125;)</span><br><span class="line">    </span><br><span class="line">logP</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    log(0.707106781186547*pi**(-0.5)*exp(-(-m + 1)**2/(2*s**2))/s) + 2*log(0.707106781186547*pi**(-0.5)*exp(-(-m + 2)**2/(2*s**2))/s) + 2*log(0.707106781186547*pi**(-0.5)*exp(-(-m + 3)**2/(2*s**2))/s) + 2*log(0.707106781186547*pi**(-0.5)*exp(-(-m + 4)**2/(2*s**2))/s) + 2*log(0.707106781186547*pi**(-0.5)*exp(-(-m + 5)**2/(2*s**2))/s) + log(0.707106781186547*pi**(-0.5)*exp(-(-m + 6)**2/(2*s**2))/s)
+
+</div>
+
+<p>然后我们知道, 要求logP的最大值, 只需要分别求得m和s的偏导数, 然后让偏导数为0可以得到联立方程组:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> diff</span><br><span class="line"></span><br><span class="line">logp_diff_m = diff(logP, m)</span><br><span class="line">logp_diff_s = diff(logP, s)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'m偏导数:'</span>, str(logp_diff_m))</span><br><span class="line">print(<span class="string">'s偏导数:'</span>, str(logp_diff_s))</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+m偏导数: -0.5*(2*m - 12)/s**2 - 1.0*(2*m - 10)/s**2 - 1.0*(2*m - 8)/s**2 - 1.0*(2*m - 6)/s**2 - 1.0*(2*m - 4)/s**2 - 0.5*(2*m - 2)/s**2
+s偏导数: 1.4142135623731*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 1)**2/(2*s**2))/s**2 + 0.707106781186547*pi**(-0.5)*(-m + 1)**2*exp(-(-m + 1)**2/(2*s**2))/s**4)*exp((-m + 1)**2/(2*s**2)) + 2.82842712474619*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 2)**2/(2*s**2))/s**2 + 0.707106781186547*pi**(-0.5)*(-m + 2)**2*exp(-(-m + 2)**2/(2*s**2))/s**4)*exp((-m + 2)**2/(2*s**2)) + 2.82842712474619*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 3)**2/(2*s**2))/s**2 + 0.707106781186547*pi**(-0.5)*(-m + 3)**2*exp(-(-m + 3)**2/(2*s**2))/s**4)*exp((-m + 3)**2/(2*s**2)) + 2.82842712474619*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 4)**2/(2*s**2))/s**2 + 0.707106781186547*pi**(-0.5)*(-m + 4)**2*exp(-(-m + 4)**2/(2*s**2))/s**4)*exp((-m + 4)**2/(2*s**2)) + 2.82842712474619*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 5)**2/(2*s**2))/s**2 + 0.707106781186547*pi**(-0.5)*(-m + 5)**2*exp(-(-m + 5)**2/(2*s**2))/s**4)*exp((-m + 5)**2/(2*s**2)) + 1.4142135623731*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 6)**2/(2*s**2))/s**2 + 0.707106781186547*pi**(-0.5)*(-m + 6)**2*exp(-(-m + 6)**2/(2*s**2))/s**4)*exp((-m + 6)**2/(2*s**2))
+
+</div>
+
+<p>我们知道让logp_diff_m=0和logp_diff_s=0可以得到联立方程组,然后解方程就可以得到参数的值, 但是我好像不会解这样的方程!!!</p>
+<p>先化简一下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line"></span><br><span class="line">logp_diff_m = simplify(logp_diff_m)</span><br><span class="line">logp_diff_m</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    (-10.0*m + 35.0)/s**2
+
+</div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logp_diff_s= simplify(logp_diff_s)</span><br><span class="line">logp_diff_s</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    (10.0*m**2 - 70.0*m - 10.0*s**2 + 145.0)/s**3
+
+</div>
+
+<p>其实你看到上面化简的式子就能够手动解这个方程了, 不过我还是太懒了, 我想sympy一定能解!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> solve</span><br><span class="line"></span><br><span class="line">funcs = [logp_diff_s, logp_diff_m]</span><br><span class="line">solve(funcs, [m, s])</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    [(3.50000000000000, -1.50000000000000), (3.50000000000000, 1.50000000000000)]
+
+</div>
+
+<p>好了上面得到了m和s的值, 有两组解, 但是我们知道s&gt;0, 所以第二组解是对的。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="数学小白用python做极大似然估计MLE.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/numpy/">#numpy</a> <a href="/tags/scipy/">#scipy</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/numpy/">
+            numpy
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/01/24/数学小白用python做极大似然估计MLE/">
+                    数学小白用python做极大似然估计MLE
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/28/炫技-用numpy和matplotlib绘制卡通人物/">
+                    炫技:用numpy和matplotlib绘制卡通人物
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/18/AUC和ROC的解读和numpy实现/">
+                    AUC和ROC的解读和numpy实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/19/numpy函数：[2]tile函数用法/">
+                    numpy函数：[2]tile函数用法
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/19/numpy函数：[12]数组切片/">
+                    numpy函数：[12]数组切片
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/17/numpy函数：[8]logspace()创建等比数列数组/">
+                    numpy函数：[8]logspace()创建等比数列数组
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/03/numpy函数：[11]fromfunction以函数式创建数组/">
+                    numpy函数：[11]fromfunction以函数式创建数组
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/07/01/numpy函数：[10]ones和empty创建数组/">
+                    numpy函数：[10]ones和empty创建数组
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/05/17/numpy函数：[17]diag函数/">
+                    numpy函数：[17]diag函数
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/01/19/numpy函数：[4]reshape用法/">
+                    numpy函数：[4]reshape用法
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/01/17/numpy函数：[16]多维数组切片存取/">
+                    numpy函数：[16]多维数组切片存取
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/10/11/numpy函数：[18]all()和any()比较矩阵/">
+                    numpy函数：[18]all()和any()比较矩阵
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/08/05/numpy函数：[13]切片数组共享内存/">
+                    numpy函数：[13]切片数组共享内存
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/07/17/numpy函数：[1]shape用法/">
+                    numpy函数：[1]shape用法
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2015/07/05/numpy函数：[9]zeros创建0矩阵/">
+                    numpy函数：[9]zeros创建0矩阵
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/scipy/">
+            scipy
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/01/24/数学小白用python做极大似然估计MLE/">
+                    数学小白用python做极大似然估计MLE
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/11/15/python计算卡方统计值及其矫正值/">
+                    python计算四格表卡方统计值及其矫正值
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/04/23/scipy教程：[1]64位下载安装/">
+                    scipy教程：[1]64位下载安装
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://ojbk.cn">
+                 数据分析论坛OJBK
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/24/数学小白用python做极大似然估计MLE/">数学小白用python做极大似然估计MLE</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/24/pandas练习-多层索引的创建和各种操作(multiindex)第二部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">DataNitro教程系列(python控制Exc</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/04/瑞文标准推理测验在线换算标准分-怎样计算百分等级/">瑞文标准推理测验在线换算标准分,怎样计算百分等级</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/视频教程/">视频教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/hexo/">hexo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br/>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
