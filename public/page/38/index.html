@@ -433,6 +433,112 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/">
+                Excel2013：[26]如何将ABCD替换成数字
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年02月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>经常给别人做数据分析，拿到的数据都是很不规范的，比如下面这个例子，单元格中的数据是ABCD而不是数字1234，这样的数据是无法放入到spss中进行处理的，所以我们需要对这个进行重新编码，在Excel中使用vba是比较快速的方法，这里我跟大家分享一下我的方法：</p>
+<ul>
+<li>明确目标：把ABCD转换成1234，如图所示，题目1这一列是我转换完成的，题目3这一列是还没有进行转换的。</li>
+</ul>
+<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/a8362712b31bb051727be651347adab44aede029.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
+<ul>
+<li>我们使用快捷键alt + F11，打开vbe编辑窗口</li>
+</ul>
+<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/8640bf8b87d6277f084d67412a381f30e924fc29.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
+<ul>
+<li>掺入一个模块：菜单上执行【插入】-【模块】</li>
+</ul>
+<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/d1571724ab18972bb45255b3e4cd7b899e510a1b.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
+<ul>
+<li><p>将这段代码粘贴到模块中：</p>
+</li>
+<li><p>Sub 替换abcd()</p>
+</li>
+<li><p>Dim iRng As Range</p>
+</li>
+<li><p>Set iRng = Selection</p>
+</li>
+<li><p>For Each icell In iRng</p>
+</li>
+<li><p>txt = icell.Value</p>
+</li>
+<li><p>Select Case txt</p>
+</li>
+<li><p>Case “A”</p>
+</li>
+<li><p>icell.Value = 1</p>
+</li>
+<li><p>Case “B”</p>
+</li>
+<li><p>icell.Value = 2</p>
+</li>
+<li><p>Case “C”</p>
+</li>
+<li><p>icell.Value = 3</p>
+</li>
+<li><p>Case “D”</p>
+</li>
+<li><p>icell.Value = 4</p>
+</li>
+<li><p>Case “E”</p>
+</li>
+<li><p>icell.Value = 5</p>
+</li>
+<li><p>End Select</p>
+</li>
+<li><p>Next icell</p>
+</li>
+<li><p>End Sub</p>
+</li>
+</ul>
+<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/0b3a1c087bf40ad1c6bb929a552c11dfa9ecce29.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
+<ul>
+<li>保存并关闭vbe窗口，然后按下快捷键alt+F8，打开宏编辑窗口，选中这个唯一的宏，然后点击【选项】按钮</li>
+</ul>
+<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/f392492c11dfa9ec2371036e60d0f703918fc129.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
+<ul>
+<li>设置快捷键为Ctrl+q，然后点击确定按钮</li>
+</ul>
+<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/0b14ad19ebc4b7453efce26fcdfc1e178a82151b.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
+<ul>
+<li>下面开始使用这个宏来转化数据，如图，先选中要转换的这一列，然后按下快捷键【Ctrl+q】，你可以看到数据快速得到转换。abcd都变成了1234</li>
+</ul>
+<img src="/2016/02/05/Excel2013：[26]如何将ABCD替换成数字/58af236d55fbb2fbf5740d6b4d4a20a44623dc29.jpg" title="Excel2013：[26]如何将ABCD替换成数字">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/02/05/Python教程：[33]setuptools安装扩展库的方法/">
                 Python教程：[33]setuptools安装扩展库的方法
             </a>
@@ -1041,69 +1147,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/01/19/Excel2013：[51]数字怎么以“万”为单位/">
-                Excel2013：[51]数字怎么以“万”为单位
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年01月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>由一列数据是营业额，数字太大不容易看，我们最好是以万元为单位来显示数据，现在看看我们怎么转换单位。</p>
-<ul>
-<li>先来看看原始数据</li>
-</ul>
-<img src="/2016/01/19/Excel2013：[51]数字怎么以“万”为单位/bd7faf3533fa828b711711bcff1f4134970a5a7e.jpg" title="Excel2013：[51]数字怎么以“万”为单位">
-<ul>
-<li>选中要转换的数字</li>
-</ul>
-<img src="/2016/01/19/Excel2013：[51]数字怎么以“万”为单位/e6508eef76c6a7ef7d7b2479fffaaf51f2de66d5.jpg" title="Excel2013：[51]数字怎么以“万”为单位">
-<ul>
-<li>我们打开数据格式面板，点击折叠按钮</li>
-</ul>
-<img src="/2016/01/19/Excel2013：[51]数字怎么以“万”为单位/245e8bcad1c8a786281ec6516509c93d70cf507e.jpg" title="Excel2013：[51]数字怎么以“万”为单位">
-<ul>
-<li>切换到自定义选项下，然后输入通用格式</li>
-</ul>
-<img src="/2016/01/19/Excel2013：[51]数字怎么以“万”为单位/2cb4fefe9925bc319d008dc75cdf8db1ca1370d5.jpg" title="Excel2013：[51]数字怎么以“万”为单位">
-<ul>
-<li>想转换为万元为单位，那么我们就输入这个通用格式：0!.0,”万元”</li>
-</ul>
-<img src="/2016/01/19/Excel2013：[51]数字怎么以“万”为单位/e1bf8725bc315c60f6c8e7b08fb1cb13485477d5.jpg" title="Excel2013：[51]数字怎么以“万”为单位">
-<ul>
-<li>最后，我们看看转换完成的数据喽。</li>
-</ul>
-<img src="/2016/01/19/Excel2013：[51]数字怎么以“万”为单位/48151723dd54564e58386866b1de9c82d0584fd5.jpg" title="Excel2013：[51]数字怎么以“万”为单位">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1145,6 +1188,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/01/24/pandas练习-多层索引的创建和各种操作(multiindex)第二部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
             </li>
             
@@ -1178,10 +1225,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
             </li>
             
         </ul>

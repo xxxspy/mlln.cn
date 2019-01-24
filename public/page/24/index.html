@@ -433,6 +433,69 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/09/17/Python教程：[21]url转码方法/">
+                Python教程：[21]url转码方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年09月17日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>在url中有一些是不能被打印或者不被web服务器作为有效url的字符必须转码以后再能使用，所以我们就用到了quote函数，quote函数的语法如下：quote(urldata,safe+’/‘)；逗号、下划线、句点斜线和字母数字这类符号是不需要转化的，通常中文是需要转换的。那些被转换的字符前面会加上一个百分号，同时转换成了16进制字符。</p>
+<ul>
+<li>先引入urllib模块</li>
+</ul>
+<img src="/2016/09/17/Python教程：[21]url转码方法/ac754782b2b7d0a2e49d59b0c9ef76094b369a0c.jpg" title="Python教程：[21]url转码方法">
+<ul>
+<li>假如我们要对下面的url进行转码，注意观察各种字符的变化</li>
+</ul>
+<img src="/2016/09/17/Python教程：[21]url转码方法/8d158aeef01f3a29239f88e39b25bc315c607c0c.jpg" title="Python教程：[21]url转码方法">
+<ul>
+<li>使用quote方法，进行转码</li>
+</ul>
+<img src="/2016/09/17/Python教程：[21]url转码方法/f15e24292df5e0fe894fd42c5e6034a85edf720c.jpg" title="Python教程：[21]url转码方法">
+<ul>
+<li>我们看看转码得到的结果：</li>
+</ul>
+<img src="/2016/09/17/Python教程：[21]url转码方法/4abae5edab64034f15769f2badc379310a551d20.jpg" title="Python教程：[21]url转码方法">
+<ul>
+<li>我们想要得到原先的url，可以使用quote的逆函数unquote</li>
+</ul>
+<img src="/2016/09/17/Python教程：[21]url转码方法/020e66f0f736afc309b76248b119ebc4b7451220.jpg" title="Python教程：[21]url转码方法">
+<ul>
+<li>得到反转码以后的url，我们看到这种方法并没有返回中文字符。</li>
+</ul>
+<img src="/2016/09/17/Python教程：[21]url转码方法/8cf0d51349540923c43e3e539058d109b3de490c.jpg" title="Python教程：[21]url转码方法">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/09/15/Python教程：[55]matplotlib安装下载方法/">
                 Python教程：[55]matplotlib安装下载方法
             </a>
@@ -1146,77 +1209,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/">
-                spss用单样本k-s检验验证正态分布的方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年09月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p> k-s检验是用来检验数据是否符合正态分布的，因为在检验之前我们并不知道该数据是否符合正态分布，所以这种检验属于非参数检验。对要检验的数据也没有限制，只要数据量够大就可以，数据量偏少会造成检验不准确。下面来具体介绍k-s检验的过程和结果分析。<br>方法/步骤</p>
-<ul>
-<li><p>在spss中打开数据，怎么打开就不介绍了，打开数据以后，在菜单栏上执行：analyze–非参检验–legacy disalogs–1 sample k-s</p>
-</li>
-<li></li>
-</ul>
-<img src="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/d439b6003af33a87c56f04ebc65c10385243b5c4.jpg" title="spss用单样本k-s检验验证正态分布的方法">
-<ul>
-<li>将你要检验正态的变量放到test variables list，勾选下面的normal，这是正态的意思。</li>
-</ul>
-<img src="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/adaf2edda3cc7cd9c51530283901213fb80e9102.jpg" title="spss用单样本k-s检验验证正态分布的方法">
-<ul>
-<li>点击exact，进入选择检验方法的对话框</li>
-</ul>
-<img src="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/a2cc7cd98d1001e9730410feb80e7bec54e79702.jpg" title="spss用单样本k-s检验验证正态分布的方法">
-<ul>
-<li><p>这里有三个选项可以选择，第一个asymptotic的意思是基于渐进分布的显著性水平的检验指标，适于大样本，如果样本过小或者分布不好，就会影响检验的效力；monte carlo适用于精确显著性水平的无偏估计，如果样本过大，数据处理过程太长，就应该使用这个选项；exact精确计算概率值，可以设定数据处理的时间，如果数据处理时间超过了你设定时间30分钟，就应该使用monte carlo</p>
-</li>
-<li></li>
-</ul>
-<img src="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/e850352ac65c1038637cca33b2119313b17e89c4.jpg" title="spss用单样本k-s检验验证正态分布的方法">
-<ul>
-<li>回到k-s检验对话框，点击options按钮，设置输出的参数</li>
-</ul>
-<img src="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/3801213fb80e7bec1ae207102f2eb9389b506b02.jpg" title="spss用单样本k-s检验验证正态分布的方法">
-<ul>
-<li>勾选descriptive和quartiles，这两个的意思分别是输出描述性统计和四分位数，点击continue按钮</li>
-</ul>
-<img src="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/5243fbf2b21193138441fb4165380cd790238dc4.jpg" title="spss用单样本k-s检验验证正态分布的方法">
-<ul>
-<li>我们可以看到对数据的检验结果，最后的显著性检验值为0.000，非常显著。我们首先要知道在做显著性检验的时候虚无假设是数据符合正态分布，因为检验显著，所以否定虚无假设，所以数据是不符合显著性的要求的。</li>
-</ul>
-<img src="/2016/09/05/spss用单样本k-s检验验证正态分布的方法/7aec54e736d12f2ee83daa914fc2d56285356802.jpg" title="spss用单样本k-s检验验证正态分布的方法">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1258,6 +1250,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/01/24/pandas练习-多层索引的创建和各种操作(multiindex)第二部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
             </li>
             
@@ -1291,10 +1287,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
             </li>
             
         </ul>

@@ -433,6 +433,213 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/01/05/python 线性代数：[9]求矩阵的秩/">
+                python 线性代数：[9]求矩阵的秩
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年01月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>矩阵的秩，课本上是这么定义的：</p>
+<ul>
+<li>先引入numpy模块</li>
+</ul>
+<img src="/2015/01/05/python%20线性代数：[9]求矩阵的秩/834344afa40f4bfba7e0dda3014f78f0f63618d1.jpg" title="python 线性代数：[9]求矩阵的秩">
+<ul>
+<li>创建一个单位矩阵i</li>
+</ul>
+<img src="/2015/01/05/python%20线性代数：[9]求矩阵的秩/020e66f0f736afc31b3c7c92b119ebc4b64512d1.jpg" title="python 线性代数：[9]求矩阵的秩">
+<ul>
+<li>计算单位矩阵i的秩</li>
+</ul>
+<img src="/2015/01/05/python%20线性代数：[9]求矩阵的秩/a84052086e061d95802574cf79f40ad163d9caa3.jpg" title="python 线性代数：[9]求矩阵的秩">
+<ul>
+<li>改变一下i右下角元素的值，设置为0</li>
+</ul>
+<img src="/2015/01/05/python%20线性代数：[9]求矩阵的秩/1cd4147b02087bf4878f141ef0d3572c10dfcfa3.jpg" title="python 线性代数：[9]求矩阵的秩">
+<ul>
+<li>重新计算矩阵的秩，得到3</li>
+</ul>
+<img src="/2015/01/05/python%20线性代数：[9]求矩阵的秩/f392492c11dfa9ec194d15e060d0f703908fc1a3.jpg" title="python 线性代数：[9]求矩阵的秩">
+<ul>
+<li><p>以下是我们用到的所有代码：</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>import numpy</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>i=numpy.eye(4)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>i</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 1.,  0.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  1.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  1.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  0.,  1.]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>numpy.matrix_rank(i)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>Traceback (most recent call last):</p>
+</li>
+<li><p>File “<pyshell#6>“, line 1, in <module></module></pyshell#6></p>
+</li>
+<li><p>numpy.matrix_rank(i)</p>
+</li>
+<li><p>AttributeError: ‘module’ object has no attribute ‘matrix_rank’</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>numpy.linalg.matrix_rank(i)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>4</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>i[-1,-1]=0</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>i</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 1.,  0.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  1.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  1.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  0.,  0.]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>i[1,1]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>1.0</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>numpy.linalg.matrix_rank(i)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>3</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/01/05/Excel2013：[52]月日年格式的日期转换为年月日/">
                 Excel2013：[52]月日年格式的日期转换为年月日
             </a>
@@ -727,6 +934,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/01/24/pandas练习-多层索引的创建和各种操作(multiindex)第二部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
             </li>
             
@@ -760,10 +971,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
             </li>
             
         </ul>

@@ -433,6 +433,61 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/10/17/numpy函数：[8]logspace()创建等比数列数组/">
+                numpy函数：[8]logspace()创建等比数列数组
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年10月17日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>上一篇介绍了numpy.linspace用于创建等差数列，现在介绍logspace用于创建等比数列。其实用法差不多，但是有一个特殊的地方需要注意。</p>
+<ul>
+<li>先来看一个例子，我们让开始点位0，结束点为0，元素个数为10，看看输出结果。为什么是酱紫呢？难道不都是0么？</li>
+</ul>
+<img src="/2016/10/17/numpy函数：[8]logspace()创建等比数列数组/a992e31f4134970ad07f90b297cad1c8a6865de4.jpg" title="numpy函数：[8]logspace()创建等比数列数组">
+<ul>
+<li>因为logspace中，开始点和结束点是10的幂，0代表10的0次方，9代表10的9次方。我们看看下面的例子。<br>】</li>
+</ul>
+<img src="/2016/10/17/numpy函数：[8]logspace()创建等比数列数组/964b2e4e251f95ca32f9122bcb177f3e660952e4.jpg" title="numpy函数：[8]logspace()创建等比数列数组">
+<ul>
+<li>假如，我们想要改变基数，不让它以10为底数，我们可以改变base参数，将其设置为2试试</li>
+</ul>
+<img src="/2016/10/17/numpy函数：[8]logspace()创建等比数列数组/d089b986c9177f3e80387c9072cf3bc79e3d56e4.jpg" title="numpy函数：[8]logspace()创建等比数列数组">
+<ul>
+<li>假如我们想要不包含结束点，可以设置endpoint为0</li>
+</ul>
+<img src="/2016/10/17/numpy函数：[8]logspace()创建等比数列数组/c87c6ecf3bc79f3d14ed64adb8a1cd11738b29e4.jpg" title="numpy函数：[8]logspace()创建等比数列数组">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/numpy/">#numpy</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/">
                 SPSS实例：[17]进行sobel检验(小白教程)
             </a>
@@ -1062,69 +1117,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/03/Python教程：[3]input和raw_input函数/">
-                Python教程：[3]input和raw_input函数
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月03日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>今天使用python3.2来编辑程序的时候，突然发现一个错误name ‘raw_input’ is not defined，原因是从版本3.0 开始去掉了raw_input 函数，改用input。所以两个函数合并在了一起，所以今天只讲input函数就可以了。input函数用于弹出一个对话框，提示用户输入内容，输入的内容可以直接显示出来，也可以赋值给某个变量。</p>
-<ul>
-<li>基本用法是：input(‘输入要显示的文字’)</li>
-</ul>
-<img src="/2016/10/03/Python教程：[3]input和raw_input函数/f7426d8da97739129adc0f4bfa198618377ae2e7.jpg" title="Python教程：[3]input和raw_input函数">
-<ul>
-<li>弹出一个对话框，让你输入，假如我们输入“你好”</li>
-</ul>
-<img src="/2016/10/03/Python教程：[3]input和raw_input函数/a8362712b31bb051d3de3902347adab44bede0e7.jpg" title="Python教程：[3]input和raw_input函数">
-<ul>
-<li>立刻会出现这个输入的内容。</li>
-</ul>
-<img src="/2016/10/03/Python教程：[3]input和raw_input函数/4bac30738bd4b31cb4c61e9185d6277f9f2ff8e7.jpg" title="Python教程：[3]input和raw_input函数">
-<ul>
-<li>我们输入</li>
-</ul>
-<img src="/2016/10/03/Python教程：[3]input和raw_input函数/ca5257540923dd54952c2d42d309b3de9c82487a.jpg" title="Python教程：[3]input和raw_input函数">
-<ul>
-<li>弹出对话框，假如我们输入“www”</li>
-</ul>
-<img src="/2016/10/03/Python教程：[3]input和raw_input函数/ac2fc3c451da81cbc3f609e75066d0160924314d.jpg" title="Python教程：[3]input和raw_input函数">
-<ul>
-<li>a的值就是“www”</li>
-</ul>
-<img src="/2016/10/03/Python教程：[3]input和raw_input函数/a28d62d98d1001e9a225e125ba0e7bec54e79744.jpg" title="Python教程：[3]input和raw_input函数">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1166,6 +1158,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/01/24/pandas练习-多层索引的创建和各种操作(multiindex)第二部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
             </li>
             
@@ -1199,10 +1195,6 @@
             
             <li>
                 <a class="footer-post" href="/2018/12/23/stata教程10-项目反应使用irt命令进行单参数logit参数估计/">stata教程10-项目反应使用irt命令进行单参</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/12/23/stata教程11-raschtest模块进行项目反应试题分析/">stata教程11-raschtest模块进行项目</a>
             </li>
             
         </ul>
