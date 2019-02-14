@@ -433,6 +433,375 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
+                人工神经网络入门+代码实现ORC
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            
+<div class="row" id="content-body">
+    <div id="orc-container" class="col-md-6 col-lg-6 col-sm-12"></div>
+    <div class="controls col-md-6 col-lg-6 col-sm-12">
+        在表格里写入一个一个数字(0-9)<br>
+        <button class="clear btn btn-default"> 清空 </button>
+        <button class="recognize btn btn-default">识别</button>
+        <div>预测结果： <span class="prediction"> ?? </span> </div>
+        信度：<div class="confidence"></div>
+        <div class="confidences">
+        </div>
+    </div>
+</div>
+<div class="row" id="network-container"></div>
+<div class="row btn-group" id="network-buttons">
+    <button class="btn btn-lg btn-default" id="reduce-neuron">减少神经元</button>
+    <input id="num-nodes" type="number" class="btn btn-default btn-large form-group" value="25" title="隐层神经元个数" height="100%">
+    <button class="btn btn-lg btn-default" id="add-neuron">增加神经元</button>
+    <button class="btn btn-lg btn-default" id="network-run">训练</button>
+</div>
+
+
+<!-- orc -->
+   <style>
+        body {
+          margin: 0;
+          font-family: Helvetica;
+          font-weight: 100;
+        }
+        svg {
+          shape-rendering: crispEdges;
+          cursor: pointer;
+        }
+        .controls {
+        }
+    </style>
+    
+    <!-- draw a grid -->
+    <script type="text/javascript">
+
+        if ('d3' in window){
+            var gL=50, gridN=8, boxLength=gL * gridN
+            var svg=d3.select('#orc-container').append('svg').attr("width",boxLength)
+                .attr("height",boxLength)
+            var data=d3.range(gridN*gridN).map(function(d){
+                return {i: d%gridN, j:Math.floor(d/gridN), id: d, active:0}
+            })
+
+            var grids=svg.append('g').attr('class', 'grids')
+                .selectAll('rect').data(data).enter().append('rect')
+                .attr("width", gL).attr("height", gL)
+                .attr('x', function(d){return gL*d.i})
+                .attr('y', function(d){return gL*d.j})
+                .style('stroke', 'rgba(255, 255, 255, 0.2)')
+
+            function updateGrid(g){
+                g.style('fill', function(d){
+                    return d.active ? 'rgba(255,255,255,1)':'black'
+                })
+
+            }
+            var conf = d3.select('.confidences').selectAll('div')
+                .data(d3.range(10)).enter()
+                .append('div').text(function(d){return d + ': '})
+
+            var bar=conf.append('div').attr('class', 'bg')
+                .style("width",'60px')
+                .style("height", '20px')
+                .style("display", 'inline-block')
+
+            bar.append('div').attr('class', 'fg')
+                .style("width", '20%')
+                .style("height", '100%')
+                .style('background-color', 'rgba(0, 0, 0, 0.8)')
+
+            svg.on('mousedown', function(){
+                grids.on('mousemove',function(d){
+                    d.active=1
+                    updateGrid(d3.select(this))
+                })
+            }).on('mouseup',function(){
+                grids.on('mousemove',null)
+            })
+
+            function updateState(){
+                var input = data.map(function(d){return d.active})
+                var output = window.network.activate(input)
+                var max = -1, maxId = -1
+                output.forEach(function(d, i) { if (d > max) max = d, maxId = i })
+                conf.data(output).select('.fg')
+                    .style('width', function(d) { return d * 100 + '%' })
+                d3.select('.prediction').text(maxId)
+                d3.select('.confidence').text(max)
+
+            }
+            d3.select('button.clear').on('click', resetBlocks)
+            d3.select('button.recognize').on('click', updateState)
+
+            function resetBlocks() {
+              grids.each(function(d) { d.active = 0 }).call(updateGrid)
+            }
+        }else{
+            document.getElementById('content-body').innerHTML='本篇文章内容特殊，只有打开文章才能看到。'
+            document.getElementById('network-buttons').innerHTML=''
+        }
+    </script>
+
+
+
+   <!-- network graph -->
+    <style type="text/css">
+        text {
+          pointer-events: none;
+        }
+
+        .node:hover {
+          stroke: #999;
+          stroke-opacity: .6;
+          stroke-width: 4px;
+        }
+
+        .link {
+          stroke: #999;
+          stroke-opacity: .6;
+        }
+    </style>
+    <script type="text/javascript">
+    if ('d3' in window){
+        var width = 960,
+            height = 1400,
+            nodeSize = 10;
+
+        var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+        var svg = d3.select("#network-container").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+
+        window.show_network=function(network) {
+            
+            svg.selectAll('*').remove()
+            // get network size
+            var netsize = {}
+            allLayers=[network.layers.input]
+            network.layers.hidden.forEach(function(l){
+                allLayers.push(l)
+            })
+            allLayers.push(network.layers.output)
+
+            // calc distances between nodes
+            largestLayerSize=0
+            allLayers.forEach(function(d){if(d.size>largestLayerSize){
+                largestLayerSize=d.size
+            }})
+
+            var xdist = width / allLayers.length,
+                ydist = height / largestLayerSize;
+
+            // create node locations
+            layerCount=0
+            var links = [];
+            allLayers.map(function(layer) {
+                layerCount +=1
+                layer.layerCount=layerCount
+                neurons=layer.neurons()
+                nNeurons=neurons.length
+                maxYDistance=nNeurons * ydist
+                startY=(height-maxYDistance)/2
+                neuCount=0
+                neurons.forEach(function(neuron){
+                    neuCount +=1
+                    neuron.x=(layerCount - 0.5) * xdist
+                    neuron.y=(neuCount - 0.5 ) * ydist + startY
+                    connections=neuron.connections.projected
+                    keys=Object.keys(connections)
+                    keys.forEach(function(id){
+                        links.push(connections[id])
+                    })
+                })
+            });
+
+            // draw links
+            var link = svg.selectAll(".link")
+                .data(links)
+              .enter().append("line")
+                .attr("class", "link")
+                .attr("x1", function(d) { return d.from.x; })
+                .attr("y1", function(d) { return d.from.y; })
+                .attr("x2", function(d) { return d.to.x; })
+                .attr("y2", function(d) { return d.to.y; })
+                .style("stroke-width", function(d) { return d.weight * 10; });
+
+            // draw nodes
+            console.log(network.neurons())
+            var node = svg.selectAll(".node")
+                .data(network.neurons())
+              .enter().append("g")
+                .attr("transform", function(d) {
+                    return "translate(" + d.neuron.x + "," + d.neuron.y + ")"; }
+                );
+
+            var circle = node.append("circle")
+                .attr("class", "node")
+                .attr("r", nodeSize)
+                .style("fill", function(d) { return color(d.layer.layerCount); });
+
+
+            node.append("text")
+                .attr("dx", "-.35em")
+                .attr("dy", ".35em")
+                .text(function(d, i) { return i; })
+        }
+
+        var numInput=document.getElementById('num-nodes')
+        var addBtn=d3.select('#add-neuron').on('click', function(){
+            value=numInput.value
+            console.log(value)
+            value = parseInt(value)
+            // numInput.attr('value', value + 1)  #这个方法不能动态显示更改后的数据
+            numInput.value=value +1
+        })
+        var reduceBtn=d3.select('#reduce-neuron').on('click', function(){
+            value= parseInt(numInput.value)
+            value = (value > 1)? value -1 : 0
+            numInput.value=value
+            
+        })
+        var runBtn= d3.select('#network-run').on('click', function(){
+            num=parseInt(numInput.value)
+            if(num>0){
+                myNetwork=new synaptic.Architect.Perceptron(64, num, 10)
+                trainer=new synaptic.Trainer(myNetwork)
+                window.train(trainer)
+                window.show_network(myNetwork)
+                window.network=myNetwork
+                window.trainer=trainer
+                alert('训练完成')
+            }else{
+                alert('神经元的数量必须大于0')
+            }
+        })
+    }
+    </script>
+
+
+
+    <script type="text/javascript">
+        if('synaptic' in window){
+            var myNetwork = new synaptic.Architect.Perceptron(64, 25, 10)
+            var trainer = new synaptic.Trainer(myNetwork)
+
+            function train(trainer){
+                d3.text('data', function(err, data) {
+                  if (err) {
+                    throw err
+                  }
+                  var ts, te, idx
+                  data = d3.csvParseRows(data, function(row) { return row.map(Number) })
+                    .map(function(d) {
+                    // Expected output.
+                    var t = d3.range(10).map(function() { return 0 })
+                    t[d[0]] = 1
+                    return { input: d.slice(1), output: t }
+                  })
+                    ts=Date.now()
+                    trainer.train(data)
+                    te=Date.now()
+                    console.log('Time Spend: '+ (te-ts))
+                })
+            }
+            window.train=train
+            train(trainer)
+            window.network=myNetwork
+            window.trianer=trainer
+            window.show_network(myNetwork)
+        }
+    </script>
+
+<h3 id="计算计算过程"><a href="#计算计算过程" class="headerlink" title="计算计算过程"></a>计算计算过程</h3><h4 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h4><p>假设网络中所有的参数已知，根据一个输入向量x，求输出向量y。</p>
+<p>首先输入是一个64维向量：</p>
+<p><code>\[ x=\left[ x_1, x_2,\dots x_d \right] \](d=64)</code></p>
+<p>而输出向量应该是一个10维的向量，用来表征10个数字的识别概率。</p>
+<p><code>\[ \hat y=\left [ \hat y_1, \hat y_2,\dots \hat y_l \right](l=10) \]</code></p>
+<h4 id="已知条件："><a href="#已知条件：" class="headerlink" title="已知条件："></a>已知条件：</h4><ul>
+<li>输入层到隐层神经元之间的链接权重<code>v</code>：</li>
+</ul>
+<p><code>\[ v=\left| { \begin{array}{c}
+v_{11} &amp; v_{12} &amp; \dots &amp; v_{1d}\\
+v_{21} &amp; v_{22} &amp; \dots &amp; v_{2d}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+v_{q1} &amp; v_{q2} &amp; \dots &amp; v_{qd}
+\end{array} }\right| (d=64, q=\text{count of hidden layer neurons})\]</code></p>
+<ul>
+<li>隐层神经元的阈值b</li>
+</ul>
+<p><code>\[ b=[b_1, b_2, \dots, b_q](q=\text{count of hidden layer neurons}) \]</code></p>
+<ul>
+<li>隐层到输出层的权重<code>w</code>：</li>
+</ul>
+<p><code>\[
+w=\left| { \begin{array}{c}
+w_{11} &amp; w_{12} &amp; \dots &amp; w_{1q}\\
+w_{21} &amp; w_{22} &amp; \dots &amp; w_{2q}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+w_{l1} &amp; w_{l2} &amp; \dots &amp; w_{lq}
+\end{array} }\right| (l=10, q=\text{count of hidden layer neurons})
+\]</code></p>
+<ul>
+<li>输出层的阈值<code>\( \theta \)</code></li>
+</ul>
+<p><code>\[ \theta=[\theta_1, \theta_2,\dots,\theta_l](l=10) \]</code></p>
+<ul>
+<li>激活函数</li>
+</ul>
+<p><code>\[ f(x)={ 1 \over { 1 + e^{-x} } } \]</code></p>
+<h4 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h4><ul>
+<li>隐层神经元的输入</li>
+</ul>
+<p><code>\[ \alpha = v · x^T + b  \]</code></p>
+<ul>
+<li>隐层神经元的激活</li>
+</ul>
+<p><code>\[ \beta=f(\alpha) \]</code></p>
+<ul>
+<li>输出神经元输入</li>
+</ul>
+<p><code>\[\gamma = w · \beta + \theta\]</code></p>
+<ul>
+<li>输出神经元的激活</li>
+</ul>
+<p><code>\[f(\gamma)\]</code></p>
+<h3 id="synaptic-js实现神经网络"><a href="#synaptic-js实现神经网络" class="headerlink" title="synaptic.js实现神经网络"></a>synaptic.js实现神经网络</h3><p>为了演示我们就用一个前端库来做一个神经网络。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myNetwork = <span class="keyword">new</span> synaptic.Architect.Perceptron(<span class="number">64</span>, <span class="number">25</span>, <span class="number">10</span>)</span><br><span class="line"><span class="keyword">var</span> trainer = <span class="keyword">new</span> synaptic.Trainer(myNetwork)</span><br><span class="line">data=[</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;</span><br><span class="line">]</span><br><span class="line">trainer.train(data)</span><br><span class="line">new_input=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> output = network.activate(new_input)</span><br></pre></td></tr></table></figure>
+<p>### </p>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/ORC/">#ORC</a> <a href="/tags/神经网络/">#神经网络</a> <a href="/tags/3djs/">#3djs</a> <a href="/tags/synaptic/">#synaptic</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/06/11/测试d3-js在hexo博客中的效果/">
                 测试d3.js在hexo博客中的效果
             </a>
@@ -1459,77 +1828,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/19/SPSS实例：[23]如何对数据进行排序/">
-                SPSS实例：[23]如何对数据进行排序
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们今天来学习一个简单的功能，在spss中如何对数据进行排序，虽然简单，但是很重要。我刚才处理的数据是从Excel中导入的，接着还有其他Excel中的数据要粘贴到spss中，我需要先让spss中的数据按照年级、专业排序，然后才能保证粘贴数据的时候能够按照年级和专业的顺序去粘贴，下面我们来看看如何排序吧。</p>
-<ul>
-<li>在菜单中执行：data-sort cases，打开排序对话框</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/58af236d55fbb2fb93e62b704d4a20a44723dc40.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>我们想要让spss按照年级排序，当case与case的年级相同的时候，按照专业进行排序，如图所示，将年级和专业按照先后顺序放入sort by框中</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/bf487563f6246b60eed4c116e9f81a4c500fa2bf.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>设置排序的方式是【升序】，如图所示，选择ascending，相反你可以选择desceding来降序</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/7787b9efce1b9d16d51fe903f1deb48f8d5464bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>接着，我们其实可以点击ok来完成排序，但是没用一次spss就看一下它的syntax是非常好的习惯，这样你很快就能学会基本的syntax操作，学会syntax好处就是你比别人处理数据的速度大大提升，十倍百倍的速度提升，点击paste可以看到syntax</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/b5ce925494eef01f15cc6ba7e2fe9925bd317dbc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>你看到了，其实只需要用两句简单的代码就能实现排序的功能</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/95afee1f3a292df5d11bdf77be315c6035a873bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>我们还是回到界面中，点击ok</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/9864a2315c6034a8683acbe3c9134954082376bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>排序好了以后，你最好保存一下结果</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/5f9e93b1cb13495433c69b06544e9258d0094abc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>现在的数据就是按照年级和专业进行的排序，你学会了吗？请关注我的系列教程：spss实例教程，你将看到一个专业的数据分析员是如何在工作中使用spss的。</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/d019d2bf6c81800a5c3dfa6cb33533fa838b47bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1571,6 +1869,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/02/14/招聘兼职数据分析师/">招聘兼职数据分析师</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/01/24/数学小白用python做极大似然估计MLE/">数学小白用python做极大似然估计MLE</a>
             </li>
             
@@ -1591,11 +1893,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
+                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
+                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
             </li>
             
             <li>
@@ -1604,10 +1906,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
             
             <li>
                 <a class="footer-post" href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">DataNitro教程系列(python控制Exc</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/04/瑞文标准推理测验在线换算标准分-怎样计算百分等级/">瑞文标准推理测验在线换算标准分,怎样计算百分等级</a>
             </li>
             
         </ul>
