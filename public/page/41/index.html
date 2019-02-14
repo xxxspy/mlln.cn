@@ -433,6 +433,120 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/10/23/pandas教程：[1]DataFrame入门/">
+                pandas教程：[1]DataFrame入门
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年10月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>pandas是python环境下最有名的数据统计包，而DataFrame翻译为数据框，是一种数据组织方式，这么说你可能无法从感性上认识它，举个例子，你大概用过Excel，而它也是一种数据组织和呈现的方式，简单说就是表格，而在在pandas中用DataFrame组织数据，如果你不print DataFrame，你看不到这些数据，下面我们来看看DataFrame是如何使用的。</p>
+<ul>
+<li>首先是引入pandas和numpy，这是经常配合使用的两个包，pandas依赖于numpy，引入以后我们可以直接使用np/pd来表示这个两个模块</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/0ef2112442a7d9335e64e347ae4bd11372f001f2.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>先创建一个时间索引，所谓的索引（index)就是每一行数据的id，可以标识每一行的唯一值</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/21e5582309f7905271fa410a0ff3d7ca7acbd5da.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>为了快速入门，我们看一下如何创建一个6X4的数据：randn函数用于创建随机数，参数表示行数和列数，dates是上一步创建的索引列</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/c9d4cf43ad4bd113e90db00659afa40f4afb0586.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>我们还可以使用字典来创建数据框，例如创建一个列名为A的数据框，索引是自动创建的整数</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/aa251d4f78f0f7360b324b350955b319eac413f2.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>这又是一个字典创建DataFrame的例子</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/ea85a94543a98226630d2c138982b9014b90ebf3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>假如字典内的数据长度不同，以最长的数据为准，比如B列有4行：</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/b8405490f603738d1a8a0b16b01bb051f919ec87.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>可以使用dtypes来查看各行的数据格式</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/b110e6198618367a604978e92d738bd4b21ce587.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>接着看一下如何查看数据框中的数据，看一下所有的数据</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/e865a699a9014c08a5f72f91097b02087af4f4f3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>使用head查看前几行数据（默认是前5行），不过你可以指定前几行</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/b25d9901a18b87d6e58eac2b040828381e30fdf3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>查看前三行数据</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/6f4703950a7b0208b40538d561d9f2d3562cc8f3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>使用tail查看后5行数据</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/1cd4147b02087bf4da2050ddf1d3572c10dfcff3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>查看数据框的索引</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/6398ecd3572c11df7c1db817602762d0f603c2f3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>查看列名用columns</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/8b527d2762d0f7034b7e92e80bfa513d2797c5f3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>查看数据值，用values</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/507c389759ee3d6db40a80ff40166d224e4adef3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>查看描述性统计，用describe</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/b3ba5d166d224f4ac65574270af790529922d1f3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>使用type看一下输出的描述性统计是什么样的数据类型——DataFrame数据</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/08b68e529822720ee002e5ce78cb0a46f31fabf3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>使用T来转置数据，也就是行列转换</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/0db2c9ca7bcb0a4602ee8c0d6863f6246a60aff3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>对数据进行排序，用到了sort，参数可以指定根据哪一列数据进行排序。</li>
+</ul>
+<img src="/2015/10/23/pandas教程：[1]DataFrame入门/0d729944ebf81a4ca8feebfdd42a6059242da6f3.jpg" title="pandas教程：[1]DataFrame入门">
+<ul>
+<li>好了，这篇入门教程到这里，后面还有很多，希望有志同道合的朋友一起交流学习，有什么说的不对的地方，请批评指正。</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/10/19/VBA如何判断一个日期是星期几[2]Excel2013教程/">
                 VBA如何判断一个日期是星期几[2]Excel2013教程
             </a>
@@ -1440,67 +1554,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/10/03/SPSS python教程：[5]SpssClient简介/">
-                SPSS python教程：[5]SpssClient简介
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年10月03日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>SpssClient是用python实现spss操作的必定要引入的一个模块，我们今天就来看一下该模块下有哪些子模块，然后简单说一下我们按照什么顺序来写这一系列教程，重点讲什么，看看你自己是否需要看这篇教程。</p>
-<ul>
-<li>先来看看SpssClient模块下有哪些类我们可以在python中使用。主要的大类有五个：DataDocList，SyntaxDocsList，OutputDocsList，SpssServerConfList，SpssScriptContext，我们下面分别介绍这五个类别</li>
-</ul>
-<img src="/2015/10/03/SPSS%20python教程：[5]SpssClient简介/4651a712c8fcc3ce50afebab9045d688d53f20ff.jpg" title="SPSS python教程：[5]SpssClient简介">
-<ul>
-<li>DataDocList，就是spss的数据文件列表。用它来读取、修改、操作数据，数据文件的后缀名是sav</li>
-</ul>
-<img src="/2015/10/03/SPSS%20python教程：[5]SpssClient简介/509b9fcb39dbb6fdf1a3c8be0b24ab18962b376a.jpg" title="SPSS python教程：[5]SpssClient简介">
-<ul>
-<li>SyntaxDocsList，就是spss的syntax文件列表，里面都是syntax代码，或者可能掺杂有python代码，它用于读取、修改、操作syntax代码，syntax文件的后缀名是sps</li>
-</ul>
-<img src="/2015/10/03/SPSS%20python教程：[5]SpssClient简介/0ef2112442a7d9337976c9ebaf4bd11372f00108.jpg" title="SPSS python教程：[5]SpssClient简介">
-<ul>
-<li>OutputDocsList，就是spss的统计结果输出文件列表，里面存放着spss的统计结果，我们可以在python中使用该类来修改、操作结果数据，结果输出文件的后缀名比较熟悉，就是spv</li>
-</ul>
-<img src="/2015/10/03/SPSS%20python教程：[5]SpssClient简介/d0526df082025aaf1cec5353f9edab64024f1a08.jpg" title="SPSS python教程：[5]SpssClient简介">
-<ul>
-<li><p>SpssServerConfList，该类用于spssserver，由于在我的工作中并没有用到过spss服务器，所以我的教程里不包括spssserver的相关内容</p>
-</li>
-<li><p>SpssScriptContext，该类用于返回脚本文件的环境，现在还不涉及，以后用可能用到，但不是现在。</p>
-</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a> <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1562,11 +1615,11 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
+                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
+                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
             </li>
             
             <li>
