@@ -272,8 +272,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程7：反向传播算法/">
-                    李宏毅机器学习教程7：反向传播算法
+                <a href="/2018/09/21/李宏毅机器学习教程3-3：梯度下降法案例(我的世界)/">
+                    李宏毅机器学习教程3-3：梯度下降法案例(我的世界)
                 </a>
             </div>
             
@@ -284,14 +284,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
-                    李宏毅机器学习教程11：为什么使用深度网络
+                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
+                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程5：逻辑回归/">
-                    李宏毅机器学习教程5：逻辑回归
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
+                    李宏毅机器学习教程10：卷积神经网络
                 </a>
             </div>
             
@@ -428,6 +428,74 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/10/03/Python统计分析：[2]相关样本T检验/">
+                Python统计分析：[2]相关样本T检验
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年10月03日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>上一篇文章介绍了独立样本T检验，现在接着使用Python进行相关样本的T检验，主要用到了scipy.stats.ttest_rel，我们先来看看其基本的用法：</p>
+<ul>
+<li>引入相关模块，这次我们使用stats的</li>
+</ul>
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/8640bf8b87d6277f111a614c2b381f30e924fc7f.jpg" title="Python统计分析：[2]相关样本T检验">
+<ul>
+<li>产生两列随机变量，用到了stats。norm.rvs，参数loc表示平均数，scale表示标准差，size是样本量<br>这是产生的两个变量的数据的一部分</li>
+</ul>
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/1b0d4f0fd9f9d72aa8094369d72a2834349bbb12.jpg" title="Python统计分析：[2]相关样本T检验">
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/99636c0e0cf3d7cac1fe6c02f11fbe096b63a97f.jpg" title="Python统计分析：[2]相关样本T检验">
+<ul>
+<li>ttest_rel的用法：输出t和p值<br>从p值可以看出，这两列数据是没有差异的。</li>
+</ul>
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/29790130e924b8993c342a4c6d061d950a7bf67f.jpg" title="Python统计分析：[2]相关样本T检验">
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/734f12f3d7ca7bcbb173945bbd096b63f624a87f.jpg" title="Python统计分析：[2]相关样本T检验">
+<ul>
+<li>当然，ttest_rel还可以接受pandas.DataFrame数据，先从excel中读取数据<br>我们可以看一下数据的基本内容：</li>
+</ul>
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/d56b3634349b033b95e5afae16ce36d3d539bd12.jpg" title="Python统计分析：[2]相关样本T检验">
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/969cbf44ad34598255e7b6e60ff431adcbef8412.jpg" title="Python统计分析：[2]相关样本T检验">
+<ul>
+<li>我们可以选择scoreA和ScoreB这两列数据进行T检验<br>输出的结果可见两列变量均值无差异</li>
+</ul>
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/54baacfb43166d22fe7f46e0452309f79052d27f.jpg" title="Python统计分析：[2]相关样本T检验">
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/b3f6cea20cf431ad20bf104d4836acaf2edd9812.jpg" title="Python统计分析：[2]相关样本T检验">
+<ul>
+<li>我们还可以同时对多个变量进行检验，比如：<br>这是产生的结果可见：第一个array表示t值，两个表示p值，因此我们可以知道p(scoreA)=0.126&gt;0.05</li>
+</ul>
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/d478a8003af33a873f00536ec55c10385343b512.jpg" title="Python统计分析：[2]相关样本T检验">
+<img src="/2016/10/03/Python统计分析：[2]相关样本T检验/0db52fadcbef7609a666caeb2ddda3cc7cd99e12.jpg" title="Python统计分析：[2]相关样本T检验">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+<p>邮箱: 675495787@qq.com </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1181,75 +1249,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/23/Python统计分析：[7]混合设计的方差分析/">
-                Python统计分析：[7]混合设计的方差分析
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年09月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>混合设计的方差分析就是既有组内变量又有组间变量的方差分析。想要进行这样的方差分析，如果还是用python.statsmodels就不太方便了，因此用到了Python的另一个还比较年轻的统计包pyvttbl,它对anova的支持更全面，使用也更方便，这里我们就看看如何用pyvttbl来实现混合设计的方差分析。</p>
-<ul>
-<li>引入DataFrame对象，注意此Dataframe不是pandas.DataFrame</li>
-</ul>
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/cebd00178a82b90162ea4c4f708da9773812efcc.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<ul>
-<li>读取数据</li>
-</ul>
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/b8405490f603738d820d835eb01bb051f919eccc.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<ul>
-<li>我们看一下pyvttbl.DataFrame的结构，有一个变量是必须的——SUBJECT，也就是被试编号，同一个被试有相同的编号，这是我们必须提供的，否则在后面的分析中会出错。</li>
-</ul>
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/373bc4b44aed2e73beae09508401a18b86d6facc.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<ul>
-<li>我们用anova方法进行混合设计的方差分析，需要制定因变量score，组间变量group，组内变量test</li>
-</ul>
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/2f3295d4b31c870199f13d9a247f9e2f0608ffcc.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<ul>
-<li>打印出来的结果有很多，首先看组间效应的检验，group的F和sig值<br>与此相对应，我们输出spss中的结果</li>
-</ul>
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/9f6e190828381f30d65e02d5aa014c086f06f0cc.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/5beeba0f4bfbfbedb3cbb9037bf0f736aec31ff8.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<ul>
-<li>接着是组间效应的检验，包括交互效应<br>以下是spss中的输出结果</li>
-</ul>
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/8367d1fc1e178a829eaef0dcf503738da877e8f9.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/4bd1e803738da97715bd0957b351f8198718e3f9.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<ul>
-<li>最后是边际均值</li>
-</ul>
-<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/8759287adab44aed1adc3198b01c8701a08bfbf9.jpg" title="Python统计分析：[7]混合设计的方差分析">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-<p>邮箱: 675495787@qq.com </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1291,6 +1290,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/14/招聘兼职数据分析师/">招聘兼职数据分析师</a>
             </li>
             
@@ -1326,10 +1329,6 @@
                 <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">DataNitro教程系列(python控制Exc</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1341,19 +1340,39 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
         <span>
@@ -1365,27 +1384,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/EM/">EM</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
         </span>
         
         <span>
@@ -1397,15 +1400,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1429,7 +1432,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1445,6 +1448,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -1457,11 +1464,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
@@ -1469,15 +1472,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
         <span>
@@ -1489,15 +1484,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/jupyter/">jupyter</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/notebook/">notebook</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1533,10 +1536,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/psychopy/">psychopy</a>
         </span>
         
@@ -1549,11 +1548,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/python/">python</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1589,11 +1588,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
         </span>
         
         <span>
@@ -1605,6 +1604,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
@@ -1613,15 +1620,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -1653,6 +1660,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
@@ -1669,14 +1684,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
@@ -1686,14 +1693,6 @@
         
         <span>
             <a class="footer-post" href="/tags/词向量/">词向量</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
         </span>
         
         <span>
