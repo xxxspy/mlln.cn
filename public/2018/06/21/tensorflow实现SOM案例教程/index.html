@@ -2,15 +2,15 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
 
 <!-- Head tag -->
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
     <!--Description-->
     
         <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
@@ -23,26 +23,26 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="tensorflow实现som案例教程"/>
+        <meta property="og:title" content="tensorflow实现som案例教程">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="DataScience"/>
+    <meta property="og:site_name" content="DataScience">
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     
 
     <!-- Title -->
@@ -63,7 +63,7 @@
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -155,7 +155,7 @@
     
     
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -248,7 +248,7 @@
         </h1>
         <div class="weibo-share">
             <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
-            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="tensorflow实现som案例教程"></wb:share-button>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="tensorflow实现som案例教程"></wb:share-button>
         </div>
         <div class="post-info">
             
@@ -285,23 +285,23 @@
 <li>每个节点的权重都被随机初始化。</li>
 </ol>
 </li>
-<li><ol>
+<li><ol start="2">
 <li>从训练数据集中随机选择向量x并将其输入到网格。</li>
 </ol>
 </li>
-<li><ol>
+<li><ol start="3">
 <li>检查每个输出层节点以计算哪一个的权重最像输入向量。获胜节点通常被称为最佳匹配单元（BMU）或激活单元。</li>
 </ol>
 </li>
-<li><ol>
+<li><ol start="4">
 <li>现在计算BMU邻域节点, 以BMU为圆心, 处于半径R内的节点都被称为邻域。R是一个开始较大的值，通常设置为输出层的“半径”，但会随着训练逐步减小。在该半径内发现的任何节点都被视为在BMU的邻域内。</li>
 </ol>
 </li>
-<li><ol>
+<li><ol start="5">
 <li>调整每个邻域节点（步骤4中找到的节点）权重以使它们更像输入向量。节点越靠近BMU，其权重调整的就越大。</li>
 </ol>
 </li>
-<li><ol>
+<li><ol start="6">
 <li>N次迭代重复步骤2。</li>
 </ol>
 </li>
@@ -358,7 +358,7 @@ $$</code></p>
 <h4 id="训练数据"><a href="#训练数据" class="headerlink" title="训练数据"></a>训练数据</h4><p>训练数据就是15种颜色. 将这些数据迭代1000次.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">colors = np.array(</span><br><span class="line">     [[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.5</span>],</span><br><span class="line">      [<span class="number">0.125</span>, <span class="number">0.529</span>, <span class="number">1.0</span>],</span><br><span class="line">      [<span class="number">0.33</span>, <span class="number">0.4</span>, <span class="number">0.67</span>],</span><br><span class="line">      [<span class="number">0.6</span>, <span class="number">0.5</span>, <span class="number">1.0</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">      [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">      [<span class="number">.33</span>, <span class="number">.33</span>, <span class="number">.33</span>],</span><br><span class="line">      [<span class="number">.5</span>, <span class="number">.5</span>, <span class="number">.5</span>],</span><br><span class="line">      [<span class="number">.66</span>, <span class="number">.66</span>, <span class="number">.66</span>]])</span><br><span class="line">color_names = [<span class="string">'black'</span>, <span class="string">'blue'</span>, <span class="string">'darkblue'</span>, <span class="string">'skyblue'</span>,</span><br><span class="line">     <span class="string">'greyblue'</span>, <span class="string">'lilac'</span>, <span class="string">'green'</span>, <span class="string">'red'</span>,</span><br><span class="line">     <span class="string">'cyan'</span>, <span class="string">'violet'</span>, <span class="string">'yellow'</span>, <span class="string">'white'</span>,</span><br><span class="line">     <span class="string">'darkgrey'</span>, <span class="string">'mediumgrey'</span>, <span class="string">'lightgrey'</span>]</span><br></pre></td></tr></table></figure>
 <h4 id="输出层可视化函数"><a href="#输出层可视化函数" class="headerlink" title="输出层可视化函数"></a>输出层可视化函数</h4><p>这个函数用于监控在训练过程种输出层权重的变化.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> IPython <span class="keyword">import</span> display</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_image</span><span class="params">(data, iter_step, radius, lrate)</span>:</span></span><br><span class="line">    l = int(data.shape[<span class="number">0</span>]**<span class="number">0.5</span>)</span><br><span class="line">    data = data.reshape([l, l,<span class="number">3</span>])</span><br><span class="line">    display.clear_output(wait=<span class="keyword">True</span>)</span><br><span class="line">    plt.clf()</span><br><span class="line">    _ = plt.imshow(data, aspect=<span class="string">"auto"</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.8</span>, <span class="string">f'radius: <span class="subst">&#123;radius&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.7</span>, <span class="string">f'lrate: <span class="subst">&#123;lrate&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.6</span>, <span class="string">f'iter_step: <span class="subst">&#123;iter_step&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    display.display(plt.gcf())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> IPython <span class="keyword">import</span> display</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_image</span><span class="params">(data, iter_step, radius, lrate)</span>:</span></span><br><span class="line">    l = int(data.shape[<span class="number">0</span>]**<span class="number">0.5</span>)</span><br><span class="line">    data = data.reshape([l, l,<span class="number">3</span>])</span><br><span class="line">    display.clear_output(wait=<span class="literal">True</span>)</span><br><span class="line">    plt.clf()</span><br><span class="line">    _ = plt.imshow(data, aspect=<span class="string">"auto"</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.8</span>, <span class="string">f'radius: <span class="subst">&#123;radius&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.7</span>, <span class="string">f'lrate: <span class="subst">&#123;lrate&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    plt.figtext(<span class="number">0.5</span>, <span class="number">0.6</span>, <span class="string">f'iter_step: <span class="subst">&#123;iter_step&#125;</span>'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">    display.display(plt.gcf())</span><br></pre></td></tr></table></figure>
 <h4 id="训练函数"><a href="#训练函数" class="headerlink" title="训练函数"></a>训练函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(colors, num_iters, shape=<span class="params">(<span class="number">13</span>,<span class="number">13</span>)</span>,  dim=<span class="number">3</span>, learning_rate=<span class="number">0.5</span>, print_step=<span class="number">40</span>)</span>:</span></span><br><span class="line">    <span class="string">'''训练函数</span></span><br><span class="line"><span class="string">    colors: 颜色向量</span></span><br><span class="line"><span class="string">    num_iters: 总训练次数</span></span><br><span class="line"><span class="string">    shape: 输出层shape</span></span><br><span class="line"><span class="string">    dim: 输出层向量维度</span></span><br><span class="line"><span class="string">    learning_rate: 初始学习率'''</span></span><br><span class="line">    params = init(shape = shape, dim=dim, num_iters=num_iters, learning_rate=learning_rate)</span><br><span class="line">    bmu = calculate_bmu(params[<span class="string">'weights'</span>], params[<span class="string">'x'</span>])</span><br><span class="line">    iter_step = tf.placeholder(tf.float64, [<span class="number">1</span>], name=<span class="string">"iter-step"</span>)</span><br><span class="line">    radius, lrate = calculate_radius_lrate(iter_step, params[<span class="string">'num_iters'</span>], params[<span class="string">'radius'</span>], params[<span class="string">'learning_rate'</span>])</span><br><span class="line">    nbs = neighbors(radius, bmu, params[<span class="string">'locations'</span>])</span><br><span class="line">    theta_ = theta(radius, nbs[<span class="string">'dist_square'</span>])</span><br><span class="line">    new_weights = update_weights(params[<span class="string">'weights'</span>], nbs[<span class="string">'mask'</span>], params[<span class="string">'x'</span>], lrate, theta_)</span><br><span class="line">    train_op = tf.assign(params[<span class="string">'weights'</span>], new_weights)</span><br><span class="line">    <span class="comment"># 初始化所有变量</span></span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iters):</span><br><span class="line">        </span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> i == (num_iters<span class="number">-1</span>):</span><br><span class="line">            positions = []</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(colors.shape[<span class="number">0</span>]):</span><br><span class="line">            x = colors[j].reshape([<span class="number">1</span>,<span class="number">3</span>])</span><br><span class="line">            x.astype(<span class="string">'float64'</span>)</span><br><span class="line">            radius_, lrate_,bmu_, new_weights_, _ = sess.run([ radius, lrate,bmu,new_weights,train_op], feed_dict=&#123;</span><br><span class="line">                params[<span class="string">'x'</span>]:x,</span><br><span class="line">                iter_step:[i+<span class="number">1</span>]</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">if</span> i == (num_iters<span class="number">-1</span>):</span><br><span class="line">                positions.append(bmu_)</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">if</span> i % print_step == <span class="number">0</span> :</span><br><span class="line">            show_image(new_weights_, i, radius_, lrate_)</span><br><span class="line">    print(<span class="string">'Train Finished'</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'weights'</span>:  new_weights_,</span><br><span class="line">        <span class="string">'positions'</span>:positions</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">data = train(colors, <span class="number">200</span>, print_step=<span class="number">1</span>, shape=(<span class="number">150</span>,<span class="number">150</span>))</span><br></pre></td></tr></table></figure>
 <p><img src="output_28_0.png" alt="png"></p>
@@ -476,14 +476,14 @@ $$</code></p>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
-                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
-                    文本向量系列-基于潜在语义分析的词向量
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
                 </a>
             </div>
             
@@ -505,14 +505,14 @@ $$</code></p>
     <div class="page_list">
         
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
-                    tensorflow教程03-入门必知数据模型和相关概念
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
-                    tensorflow教程02-计算图及其实践
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
                 </a>
             </div>
             
@@ -587,6 +587,18 @@ $$</code></p>
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -614,18 +626,6 @@ $$</code></p>
                 <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -637,7 +637,19 @@ $$</code></p>
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -649,23 +661,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -677,15 +677,19 @@ $$</code></p>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
@@ -709,19 +713,7 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
@@ -733,31 +725,19 @@ $$</code></p>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
@@ -769,27 +749,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -801,6 +765,14 @@ $$</code></p>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -809,23 +781,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -841,19 +801,19 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -877,15 +837,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -901,7 +857,7 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
@@ -913,19 +869,7 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -933,19 +877,23 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -957,19 +905,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -978,18 +918,6 @@ $$</code></p>
         
         <span>
             <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1017,15 +945,15 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
         </span>
         
         <span>
@@ -1034,6 +962,78 @@ $$</code></p>
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷设计/">问卷设计</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
@@ -1106,9 +1106,9 @@ $$</code></p>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
                     @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-                    <br/>
+                    <br>
                     <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
-                </div>
+                </a></div>
             </div>
         </div>
     </div>

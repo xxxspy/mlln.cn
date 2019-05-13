@@ -2,15 +2,15 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
 
 <!-- Head tag -->
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
     <!--Description-->
     
         <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
@@ -23,26 +23,26 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="keras教程-06-优化器详细解释"/>
+        <meta property="og:title" content="keras教程-06-优化器详细解释">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="DataScience"/>
+    <meta property="og:site_name" content="DataScience">
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     
 
     <!-- Title -->
@@ -63,7 +63,7 @@
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -99,7 +99,7 @@
     
     
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -192,7 +192,7 @@
         </h1>
         <div class="weibo-share">
             <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
-            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-06-优化器详细解释"></wb:share-button>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="keras教程-06-优化器详细解释"></wb:share-button>
         </div>
         <div class="post-info">
             
@@ -238,7 +238,7 @@
 <p>下面代码来自上一篇文章: <a href="/2018/07/25/keras教程-05-实验验证神经网络的深度-样本量-dropout/" title="keras教程-05-实验验证神经网络的深度-样本量-dropout">keras教程-05-实验验证神经网络的深度-样本量-dropout</a></p>
 <p>我们采用上一篇文章的代码是为了快速测试不同的优化器。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rcParams[<span class="string">'figure.figsize'</span>] = (<span class="number">7</span>,<span class="number">7</span>) <span class="comment"># Make the figures a bit bigger</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers.core <span class="keyword">import</span> Dense, Dropout, Activation</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> np_utils</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prepare_data</span><span class="params">(n=<span class="number">6000</span>, test_n=<span class="number">3000</span>)</span>:</span></span><br><span class="line">    <span class="string">'''准备用到的数据'''</span></span><br><span class="line">    nb_classes = <span class="number">10</span></span><br><span class="line">    <span class="comment"># 这个方法可以加载数据</span></span><br><span class="line">    (X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line">    X_train = X_train.reshape(<span class="number">60000</span>, <span class="number">784</span>)</span><br><span class="line">    X_train = X_train[:n, :]</span><br><span class="line">    y_train = y_train[:n]</span><br><span class="line">    X_test = X_test.reshape(<span class="number">10000</span>, <span class="number">784</span>)</span><br><span class="line">    X_test = X_test[:test_n, :]</span><br><span class="line">    y_test = y_test[:test_n]</span><br><span class="line">    X_train = X_train.astype(<span class="string">'float32'</span>)</span><br><span class="line">    X_test = X_test.astype(<span class="string">'float32'</span>)</span><br><span class="line">    X_train /= <span class="number">255</span></span><br><span class="line">    X_test /= <span class="number">255</span></span><br><span class="line">    Y_train = np_utils.to_categorical(y_train, nb_classes)</span><br><span class="line">    Y_test = np_utils.to_categorical(y_test, nb_classes)</span><br><span class="line">    <span class="keyword">return</span> (X_train, Y_train), (X_test, Y_test)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">net_work</span><span class="params">(n_layer, has_dropout=False)</span>:</span></span><br><span class="line">    model = Sequential()</span><br><span class="line">    <span class="keyword">assert</span> n_layer &gt;= <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n_layer):</span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            model.add(Dense(<span class="number">512</span>, input_shape=(<span class="number">784</span>,)))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            model.add(Dense(<span class="number">512</span>))</span><br><span class="line">        model.add(Activation(<span class="string">'relu'</span>))</span><br><span class="line">        <span class="keyword">if</span> has_dropout:</span><br><span class="line">            model.add(Dropout(<span class="number">0.2</span>))</span><br><span class="line">    <span class="comment"># 输出层</span></span><br><span class="line">    model.add(Dense(<span class="number">10</span>))</span><br><span class="line">    <span class="comment"># 分类任务的输出通常是softmax, 这保证的所有的输出值都在0-1之间, 并且他们之和为1</span></span><br><span class="line">    model.add(Activation(<span class="string">'softmax'</span>)) </span><br><span class="line">    <span class="keyword">return</span> model</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### 请注意, 这里我们可以传入一个参数: optimizer</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(model, train_data, test_data, optimizer)</span>:</span></span><br><span class="line">    X_train, y_train = train_data</span><br><span class="line">    X_test, y_test = test_data</span><br><span class="line">    model.compile(loss=<span class="string">'categorical_crossentropy'</span>, optimizer=optimizer, metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">    <span class="keyword">return</span> model.fit(X_train, y_train,</span><br><span class="line">          batch_size=<span class="number">128</span>, epochs=<span class="number">20</span>,</span><br><span class="line">          validation_data=(X_test, y_test))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># prepare_data的第一个参数就是训练样本的样本量</span></span><br><span class="line">train_data, test_data = prepare_data(<span class="number">8192</span>)</span><br><span class="line">results = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环模型的层数</span></span><br><span class="line"><span class="keyword">for</span> opt <span class="keyword">in</span> (<span class="string">'sgd'</span>, <span class="string">'RMSprop'</span>, <span class="string">'Adagrad'</span>, <span class="string">'Adadelta'</span>, <span class="string">'Adam'</span>, <span class="string">'Adamax'</span>, <span class="string">'Nadam'</span>):</span><br><span class="line">    print(<span class="string">f'Using optimizer: <span class="subst">&#123;opt&#125;</span> ###################'</span>)</span><br><span class="line">    model = net_work(<span class="number">2</span>, <span class="keyword">True</span>)</span><br><span class="line">    results[opt] = train(model, train_data, test_data, opt)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># prepare_data的第一个参数就是训练样本的样本量</span></span><br><span class="line">train_data, test_data = prepare_data(<span class="number">8192</span>)</span><br><span class="line">results = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环模型的层数</span></span><br><span class="line"><span class="keyword">for</span> opt <span class="keyword">in</span> (<span class="string">'sgd'</span>, <span class="string">'RMSprop'</span>, <span class="string">'Adagrad'</span>, <span class="string">'Adadelta'</span>, <span class="string">'Adam'</span>, <span class="string">'Adamax'</span>, <span class="string">'Nadam'</span>):</span><br><span class="line">    print(<span class="string">f'Using optimizer: <span class="subst">&#123;opt&#125;</span> ###################'</span>)</span><br><span class="line">    model = net_work(<span class="number">2</span>, <span class="literal">True</span>)</span><br><span class="line">    results[opt] = train(model, train_data, test_data, opt)</span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出(stream):<br>
@@ -706,6 +706,18 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -733,18 +745,6 @@
                 <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -756,7 +756,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -768,23 +780,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -796,15 +796,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
@@ -828,19 +832,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
@@ -852,31 +844,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
@@ -888,27 +868,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -920,6 +884,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -928,23 +900,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -960,19 +920,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -996,15 +956,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1020,7 +976,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
@@ -1032,19 +988,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -1052,19 +996,23 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1076,19 +1024,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -1097,18 +1037,6 @@
         
         <span>
             <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1136,15 +1064,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
         </span>
         
         <span>
@@ -1153,6 +1081,78 @@
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷设计/">问卷设计</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
@@ -1225,9 +1225,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
                     @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-                    <br/>
+                    <br>
                     <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
-                </div>
+                </a></div>
             </div>
         </div>
     </div>

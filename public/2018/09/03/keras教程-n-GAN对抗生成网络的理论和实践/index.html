@@ -2,15 +2,15 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
 
 <!-- Head tag -->
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
     <!--Description-->
     
         <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
@@ -23,26 +23,26 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="keras教程-n-GAN对抗生成网络的理论和实践"/>
+        <meta property="og:title" content="keras教程-n-GAN对抗生成网络的理论和实践">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="DataScience"/>
+    <meta property="og:site_name" content="DataScience">
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     
 
     <!-- Title -->
@@ -63,7 +63,7 @@
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -99,7 +99,7 @@
     
     
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -192,7 +192,7 @@
         </h1>
         <div class="weibo-share">
             <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
-            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-n-GAN对抗生成网络的理论和实践"></wb:share-button>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="keras教程-n-GAN对抗生成网络的理论和实践"></wb:share-button>
         </div>
         <div class="post-info">
             
@@ -268,7 +268,7 @@
 <p>GAN的每一方都可以压倒另一方。如果判别器太好，它将返回如此接近0或1的值，生成器将难以读取梯度。如果生成器太好，它将持续利用鉴别器中的弱点导致漏报。这可以通过网络各自的学习率来缓解。</p>
 <p>GAN需要很长时间才能进行训练。在单个GPU上，GAN可能需要数小时，而在单个CPU上则需要一天以上。虽然难以调试和使用，但GAN已经激发了许多有趣的研究和写作。</p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> Adam</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GAN</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 图片的大小</span></span><br><span class="line">        self.img_rows = <span class="number">28</span> </span><br><span class="line">        self.img_cols = <span class="number">28</span></span><br><span class="line">        self.channels = <span class="number">1</span></span><br><span class="line">        self.img_shape = (self.img_rows, self.img_cols, self.channels)</span><br><span class="line"></span><br><span class="line">        optimizer = Adam(<span class="number">0.0002</span>, <span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建并编译判别器</span></span><br><span class="line">        self.discriminator = self.build_discriminator()</span><br><span class="line">        self.discriminator.compile(loss=<span class="string">'binary_crossentropy'</span>, </span><br><span class="line">            optimizer=optimizer,</span><br><span class="line">            metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建和编译生成器</span></span><br><span class="line">        self.generator = self.build_generator()</span><br><span class="line">        self.generator.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=optimizer)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成器输入的是随机噪声</span></span><br><span class="line">        z = Input(shape=(<span class="number">100</span>,))</span><br><span class="line">        img = self.generator(z)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 只训练生成器, 所以要固定判别器</span></span><br><span class="line">        self.discriminator.trainable = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 判别器输入生成的图片, 并判断其真实性</span></span><br><span class="line">        valid = self.discriminator(img)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 整合模型</span></span><br><span class="line">        <span class="comment"># 随机噪声图片 =&gt; 生成图片 =&gt; 判断真实性 </span></span><br><span class="line">        self.combined = Model(z, valid)</span><br><span class="line">        self.combined.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=optimizer)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_generator</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''构建生成器'''</span></span><br><span class="line">        noise_shape = (<span class="number">100</span>,)</span><br><span class="line">        </span><br><span class="line">        model = Sequential()</span><br><span class="line"></span><br><span class="line">        model.add(Dense(<span class="number">256</span>, input_shape=noise_shape))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(BatchNormalization(momentum=<span class="number">0.8</span>))</span><br><span class="line">        model.add(Dense(<span class="number">512</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(BatchNormalization(momentum=<span class="number">0.8</span>))</span><br><span class="line">        model.add(Dense(<span class="number">1024</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(BatchNormalization(momentum=<span class="number">0.8</span>))</span><br><span class="line">        model.add(Dense(np.prod(self.img_shape), activation=<span class="string">'tanh'</span>))</span><br><span class="line">        model.add(Reshape(self.img_shape))</span><br><span class="line"></span><br><span class="line">        model.summary()</span><br><span class="line"></span><br><span class="line">        noise = Input(shape=noise_shape)</span><br><span class="line">        img = model(noise)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Model(noise, img)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_discriminator</span><span class="params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        img_shape = (self.img_rows, self.img_cols, self.channels)</span><br><span class="line">        </span><br><span class="line">        model = Sequential()</span><br><span class="line"></span><br><span class="line">        model.add(Flatten(input_shape=img_shape))</span><br><span class="line">        model.add(Dense(<span class="number">512</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(Dense(<span class="number">256</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</span><br><span class="line">        model.summary()</span><br><span class="line"></span><br><span class="line">        img = Input(shape=img_shape)</span><br><span class="line">        validity = model(img)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Model(img, validity)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self, epochs, batch_size=<span class="number">128</span>, save_interval=<span class="number">50</span>)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load the dataset</span></span><br><span class="line">        (X_train, _), (_, _) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Rescale -1 to 1</span></span><br><span class="line">        X_train = (X_train.astype(np.float32) - <span class="number">127.5</span>) / <span class="number">127.5</span></span><br><span class="line">        X_train = np.expand_dims(X_train, axis=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        half_batch = int(batch_size / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</span><br><span class="line"></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line">            <span class="comment">#  训练判别器</span></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 随机选择一半的batch</span></span><br><span class="line">            idx = np.random.randint(<span class="number">0</span>, X_train.shape[<span class="number">0</span>], half_batch)</span><br><span class="line">            imgs = X_train[idx]</span><br><span class="line"></span><br><span class="line">            noise = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (half_batch, <span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 一半样本由生成器生成</span></span><br><span class="line">            gen_imgs = self.generator.predict(noise)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 训练判别器</span></span><br><span class="line">            d_loss_real = self.discriminator.train_on_batch(imgs, np.ones((half_batch, <span class="number">1</span>)))</span><br><span class="line">            d_loss_fake = self.discriminator.train_on_batch(gen_imgs, np.zeros((half_batch, <span class="number">1</span>)))</span><br><span class="line">            d_loss = <span class="number">0.5</span> * np.add(d_loss_real, d_loss_fake)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line">            <span class="comment">#  训练生成器</span></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line"></span><br><span class="line">            noise = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (batch_size, <span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 生成器希望生成的图片被判别器判别为1, 也就是真实图片</span></span><br><span class="line">            valid_y = np.array([<span class="number">1</span>] * batch_size)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 训练生成器</span></span><br><span class="line">            g_loss = self.combined.train_on_batch(noise, valid_y)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 绘制过程</span></span><br><span class="line">            <span class="keyword">print</span> (<span class="string">"%d [D loss: %f, acc.: %.2f%%] [G loss: %f]"</span> % (epoch, d_loss[<span class="number">0</span>], <span class="number">100</span>*d_loss[<span class="number">1</span>], g_loss))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 隔段时间保存图片</span></span><br><span class="line">            <span class="keyword">if</span> epoch % save_interval == <span class="number">0</span>:</span><br><span class="line">                self.save_imgs(epoch)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(self, epoch)</span>:</span></span><br><span class="line">        r, c = <span class="number">5</span>, <span class="number">5</span></span><br><span class="line">        noise = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (r * c, <span class="number">100</span>))</span><br><span class="line">        gen_imgs = self.generator.predict(noise)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Rescale images 0 - 1</span></span><br><span class="line">        gen_imgs = <span class="number">0.5</span> * gen_imgs + <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">        fig, axs = plt.subplots(r, c)</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(r):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(c):</span><br><span class="line">                axs[i,j].imshow(gen_imgs[cnt, :,:,<span class="number">0</span>], cmap=<span class="string">'gray'</span>)</span><br><span class="line">                axs[i,j].axis(<span class="string">'off'</span>)</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">        fig.savefig(<span class="string">"data/gan/mnist_%d.png"</span> % epoch)</span><br><span class="line">        plt.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    gan = GAN()</span><br><span class="line">    gan.train(epochs=<span class="number">30000</span>, batch_size=<span class="number">32</span>, save_interval=<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GAN</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 图片的大小</span></span><br><span class="line">        self.img_rows = <span class="number">28</span> </span><br><span class="line">        self.img_cols = <span class="number">28</span></span><br><span class="line">        self.channels = <span class="number">1</span></span><br><span class="line">        self.img_shape = (self.img_rows, self.img_cols, self.channels)</span><br><span class="line"></span><br><span class="line">        optimizer = Adam(<span class="number">0.0002</span>, <span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建并编译判别器</span></span><br><span class="line">        self.discriminator = self.build_discriminator()</span><br><span class="line">        self.discriminator.compile(loss=<span class="string">'binary_crossentropy'</span>, </span><br><span class="line">            optimizer=optimizer,</span><br><span class="line">            metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建和编译生成器</span></span><br><span class="line">        self.generator = self.build_generator()</span><br><span class="line">        self.generator.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=optimizer)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成器输入的是随机噪声</span></span><br><span class="line">        z = Input(shape=(<span class="number">100</span>,))</span><br><span class="line">        img = self.generator(z)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 只训练生成器, 所以要固定判别器</span></span><br><span class="line">        self.discriminator.trainable = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 判别器输入生成的图片, 并判断其真实性</span></span><br><span class="line">        valid = self.discriminator(img)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 整合模型</span></span><br><span class="line">        <span class="comment"># 随机噪声图片 =&gt; 生成图片 =&gt; 判断真实性 </span></span><br><span class="line">        self.combined = Model(z, valid)</span><br><span class="line">        self.combined.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=optimizer)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_generator</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''构建生成器'''</span></span><br><span class="line">        noise_shape = (<span class="number">100</span>,)</span><br><span class="line">        </span><br><span class="line">        model = Sequential()</span><br><span class="line"></span><br><span class="line">        model.add(Dense(<span class="number">256</span>, input_shape=noise_shape))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(BatchNormalization(momentum=<span class="number">0.8</span>))</span><br><span class="line">        model.add(Dense(<span class="number">512</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(BatchNormalization(momentum=<span class="number">0.8</span>))</span><br><span class="line">        model.add(Dense(<span class="number">1024</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(BatchNormalization(momentum=<span class="number">0.8</span>))</span><br><span class="line">        model.add(Dense(np.prod(self.img_shape), activation=<span class="string">'tanh'</span>))</span><br><span class="line">        model.add(Reshape(self.img_shape))</span><br><span class="line"></span><br><span class="line">        model.summary()</span><br><span class="line"></span><br><span class="line">        noise = Input(shape=noise_shape)</span><br><span class="line">        img = model(noise)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Model(noise, img)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build_discriminator</span><span class="params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        img_shape = (self.img_rows, self.img_cols, self.channels)</span><br><span class="line">        </span><br><span class="line">        model = Sequential()</span><br><span class="line"></span><br><span class="line">        model.add(Flatten(input_shape=img_shape))</span><br><span class="line">        model.add(Dense(<span class="number">512</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(Dense(<span class="number">256</span>))</span><br><span class="line">        model.add(LeakyReLU(alpha=<span class="number">0.2</span>))</span><br><span class="line">        model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</span><br><span class="line">        model.summary()</span><br><span class="line"></span><br><span class="line">        img = Input(shape=img_shape)</span><br><span class="line">        validity = model(img)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Model(img, validity)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(self, epochs, batch_size=<span class="number">128</span>, save_interval=<span class="number">50</span>)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Load the dataset</span></span><br><span class="line">        (X_train, _), (_, _) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Rescale -1 to 1</span></span><br><span class="line">        X_train = (X_train.astype(np.float32) - <span class="number">127.5</span>) / <span class="number">127.5</span></span><br><span class="line">        X_train = np.expand_dims(X_train, axis=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">        half_batch = int(batch_size / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</span><br><span class="line"></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line">            <span class="comment">#  训练判别器</span></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 随机选择一半的batch</span></span><br><span class="line">            idx = np.random.randint(<span class="number">0</span>, X_train.shape[<span class="number">0</span>], half_batch)</span><br><span class="line">            imgs = X_train[idx]</span><br><span class="line"></span><br><span class="line">            noise = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (half_batch, <span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 一半样本由生成器生成</span></span><br><span class="line">            gen_imgs = self.generator.predict(noise)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 训练判别器</span></span><br><span class="line">            d_loss_real = self.discriminator.train_on_batch(imgs, np.ones((half_batch, <span class="number">1</span>)))</span><br><span class="line">            d_loss_fake = self.discriminator.train_on_batch(gen_imgs, np.zeros((half_batch, <span class="number">1</span>)))</span><br><span class="line">            d_loss = <span class="number">0.5</span> * np.add(d_loss_real, d_loss_fake)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line">            <span class="comment">#  训练生成器</span></span><br><span class="line">            <span class="comment"># ---------------------</span></span><br><span class="line"></span><br><span class="line">            noise = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (batch_size, <span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 生成器希望生成的图片被判别器判别为1, 也就是真实图片</span></span><br><span class="line">            valid_y = np.array([<span class="number">1</span>] * batch_size)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 训练生成器</span></span><br><span class="line">            g_loss = self.combined.train_on_batch(noise, valid_y)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 绘制过程</span></span><br><span class="line">            <span class="keyword">print</span> (<span class="string">"%d [D loss: %f, acc.: %.2f%%] [G loss: %f]"</span> % (epoch, d_loss[<span class="number">0</span>], <span class="number">100</span>*d_loss[<span class="number">1</span>], g_loss))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 隔段时间保存图片</span></span><br><span class="line">            <span class="keyword">if</span> epoch % save_interval == <span class="number">0</span>:</span><br><span class="line">                self.save_imgs(epoch)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(self, epoch)</span>:</span></span><br><span class="line">        r, c = <span class="number">5</span>, <span class="number">5</span></span><br><span class="line">        noise = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, (r * c, <span class="number">100</span>))</span><br><span class="line">        gen_imgs = self.generator.predict(noise)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Rescale images 0 - 1</span></span><br><span class="line">        gen_imgs = <span class="number">0.5</span> * gen_imgs + <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">        fig, axs = plt.subplots(r, c)</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(r):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(c):</span><br><span class="line">                axs[i,j].imshow(gen_imgs[cnt, :,:,<span class="number">0</span>], cmap=<span class="string">'gray'</span>)</span><br><span class="line">                axs[i,j].axis(<span class="string">'off'</span>)</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">        fig.savefig(<span class="string">"data/gan/mnist_%d.png"</span> % epoch)</span><br><span class="line">        plt.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    gan = GAN()</span><br><span class="line">    gan.train(epochs=<span class="number">30000</span>, batch_size=<span class="number">32</span>, save_interval=<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出(stream):<br>
@@ -5805,6 +5805,18 @@ KeyboardInterrupt:
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -5832,18 +5844,6 @@ KeyboardInterrupt:
                 <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -5855,7 +5855,19 @@ KeyboardInterrupt:
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -5867,23 +5879,11 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -5895,15 +5895,19 @@ KeyboardInterrupt:
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
@@ -5927,19 +5931,7 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
@@ -5951,31 +5943,19 @@ KeyboardInterrupt:
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
@@ -5987,27 +5967,11 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -6019,6 +5983,14 @@ KeyboardInterrupt:
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -6027,23 +5999,11 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -6059,19 +6019,19 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -6095,15 +6055,11 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -6119,7 +6075,7 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
@@ -6131,19 +6087,7 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -6151,19 +6095,23 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -6175,19 +6123,11 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -6196,18 +6136,6 @@ KeyboardInterrupt:
         
         <span>
             <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -6235,15 +6163,15 @@ KeyboardInterrupt:
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
         </span>
         
         <span>
@@ -6252,6 +6180,78 @@ KeyboardInterrupt:
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷设计/">问卷设计</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
@@ -6324,9 +6324,9 @@ KeyboardInterrupt:
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
                     @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-                    <br/>
+                    <br>
                     <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
-                </div>
+                </a></div>
             </div>
         </div>
     </div>

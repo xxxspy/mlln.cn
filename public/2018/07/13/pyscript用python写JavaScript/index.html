@@ -2,15 +2,15 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
 
 <!-- Head tag -->
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
     <!--Description-->
     
         <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
@@ -23,26 +23,26 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="pyscript用python写JavaScript"/>
+        <meta property="og:title" content="pyscript用python写JavaScript">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="DataScience"/>
+    <meta property="og:site_name" content="DataScience">
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     
 
     <!-- Title -->
@@ -63,7 +63,7 @@
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -116,7 +116,7 @@
 </script>
     
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -209,7 +209,7 @@
         </h1>
         <div class="weibo-share">
             <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
-            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="pyscript用python写JavaScript"></wb:share-button>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="pyscript用python写JavaScript"></wb:share-button>
         </div>
         <div class="post-info">
             
@@ -255,7 +255,7 @@
 <li>访问不存在的属性不会引发AttributeError但会产生undefined, 这是JavaScript的特性</li>
 <li>类上的魔术函数（例如，用于运算符重载）不起作用。</li>
 <li>调用以大写字母开头的对象被假定为类实例化（使用new）：PyScript类必须以大写字母开头，而任何其他callables都不能。</li>
-<li>如果函数具有<em>* kwargs参数或</em> args之后的命名参数，则函数可以接受它。将关键字传递给不处理关键字参数的函数可能会导致混淆错误。</li>
+<li>如果函数具有*<em> kwargs参数或</em> args之后的命名参数，则函数可以接受它。将关键字传递给不处理关键字参数的函数可能会导致混淆错误。</li>
 </ul>
 <h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>为了在notebook中实时显示python转JavaScript的过程, 我们注册一个魔法函数, 功能很简单, 就是把python代码转成JavaScript, 并显示在输出区域。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> IPython.core.magic <span class="keyword">import</span> register_cell_magic</span><br><span class="line"><span class="keyword">from</span> IPython.display <span class="keyword">import</span> Markdown</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@register_cell_magic</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">py2js</span><span class="params">(line, cell)</span>:</span></span><br><span class="line">    <span class="keyword">from</span> pscript <span class="keyword">import</span> py2js</span><br><span class="line">    js= py2js(cell)</span><br><span class="line">    <span class="keyword">return</span> Markdown(<span class="string">f'```javascript\n<span class="subst">&#123;js&#125;</span>\n```'</span>)</span><br></pre></td></tr></table></figure>
@@ -263,7 +263,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line"><span class="comment"># Simple operations</span></span><br><span class="line"><span class="number">3</span> + <span class="number">4</span> <span class="number">-1</span></span><br><span class="line"><span class="number">3</span> * <span class="number">7</span> / <span class="number">9</span></span><br><span class="line"><span class="number">5</span>**<span class="number">2</span></span><br><span class="line">pow(<span class="number">5</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">7</span> // <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _pyfunc_pow = <span class="built_in">Math</span>.pow;</span><br><span class="line">(<span class="number">3</span> + <span class="number">4</span>) - <span class="number">1</span>;</span><br><span class="line">(<span class="number">3</span> * <span class="number">7</span>) / <span class="number">9</span>;</span><br><span class="line"><span class="built_in">Math</span>.pow(<span class="number">5</span>, <span class="number">2</span>);</span><br><span class="line">_pyfunc_pow(<span class="number">5</span>, <span class="number">2</span>);</span><br><span class="line"><span class="built_in">Math</span>.floor(<span class="number">7</span>/<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line">[<span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">None</span>]</span><br><span class="line"></span><br><span class="line">foo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">bar = &#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line">[<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">None</span>]</span><br><span class="line"></span><br><span class="line">foo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">bar = &#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bar, foo;</span><br><span class="line">[<span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">null</span>];</span><br><span class="line">foo = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">bar = (&#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line">a = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">a.sort()</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _pymeth_sort = <span class="function"><span class="keyword">function</span> (<span class="params">key, reverse</span>) </span>&#123; <span class="comment">// nargs: 0 1 2</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(<span class="keyword">this</span>)) <span class="keyword">return</span> <span class="keyword">this</span>.sort.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">var</span> comp = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;a = key(a); b = key(b);</span><br><span class="line">        <span class="keyword">if</span> (a&lt;b) &#123;<span class="keyword">return</span> <span class="number">-1</span>;&#125; <span class="keyword">if</span> (a&gt;b) &#123;<span class="keyword">return</span> <span class="number">1</span>;&#125; <span class="keyword">return</span> <span class="number">0</span>;&#125;;</span><br><span class="line">    comp = <span class="built_in">Boolean</span>(key) ? comp : <span class="literal">undefined</span>; </span><br><span class="line">    <span class="keyword">this</span>.sort(comp);</span><br><span class="line">    <span class="keyword">if</span> (reverse) <span class="keyword">this</span>.reverse();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">a = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">_pymeth_sort.call(a, <span class="literal">undefined</span>, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
@@ -299,7 +299,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _pyfunc_op_contains = <span class="function"><span class="keyword">function</span> <span class="title">op_contains</span> (<span class="params">a, b</span>) </span>&#123; <span class="comment">// nargs: 2</span></span><br><span class="line">    <span class="keyword">if</span> (b == <span class="literal">null</span>) &#123;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(b)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;b.length; i++) &#123;<span class="keyword">if</span> (_pyfunc_op_equals(a, b[i]))</span><br><span class="line">                                           <span class="keyword">return</span> <span class="literal">true</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b.constructor === <span class="built_in">Object</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> b) &#123;<span class="keyword">if</span> (a == k) <span class="keyword">return</span> <span class="literal">true</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b.constructor == <span class="built_in">String</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> b.indexOf(a) &gt;= <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">var</span> e = <span class="built_in">Error</span>(<span class="string">'Not a container: '</span> + b); e.name=<span class="string">'TypeError'</span>; <span class="keyword">throw</span> e;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> _pyfunc_op_equals = <span class="function"><span class="keyword">function</span> <span class="title">op_equals</span> (<span class="params">a, b</span>) </span>&#123; <span class="comment">// nargs: 2</span></span><br><span class="line">    <span class="keyword">if</span> (a == <span class="literal">null</span> || b == <span class="literal">null</span>) &#123;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(a) &amp;&amp; <span class="built_in">Array</span>.isArray(b)) &#123;</span><br><span class="line">        <span class="keyword">var</span> i = <span class="number">0</span>, iseq = a.length == b.length;</span><br><span class="line">        <span class="keyword">while</span> (iseq &amp;&amp; i &lt; a.length) &#123;iseq = op_equals(a[i], b[i]); i+=<span class="number">1</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> iseq;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a.constructor === <span class="built_in">Object</span> &amp;&amp; b.constructor === <span class="built_in">Object</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> akeys = <span class="built_in">Object</span>.keys(a), bkeys = <span class="built_in">Object</span>.keys(b);</span><br><span class="line">        akeys.sort(); bkeys.sort();</span><br><span class="line">        <span class="keyword">var</span> i=<span class="number">0</span>, k, iseq = op_equals(akeys, bkeys);</span><br><span class="line">        <span class="keyword">while</span> (iseq &amp;&amp; i &lt; akeys.length)</span><br><span class="line">            &#123;k=akeys[i]; iseq = op_equals(a[k], b[k]); i+=<span class="number">1</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> iseq;</span><br><span class="line">    &#125; <span class="keyword">return</span> a == b;</span><br><span class="line">&#125;;</span><br><span class="line">_pyfunc_op_contains(<span class="string">"foo"</span>, <span class="string">"this has foo in it"</span>);</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line"><span class="number">3</span> <span class="keyword">in</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _pyfunc_op_contains = <span class="function"><span class="keyword">function</span> <span class="title">op_contains</span> (<span class="params">a, b</span>) </span>&#123; <span class="comment">// nargs: 2</span></span><br><span class="line">    <span class="keyword">if</span> (b == <span class="literal">null</span>) &#123;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(b)) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;b.length; i++) &#123;<span class="keyword">if</span> (_pyfunc_op_equals(a, b[i]))</span><br><span class="line">                                           <span class="keyword">return</span> <span class="literal">true</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b.constructor === <span class="built_in">Object</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> b) &#123;<span class="keyword">if</span> (a == k) <span class="keyword">return</span> <span class="literal">true</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b.constructor == <span class="built_in">String</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> b.indexOf(a) &gt;= <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">var</span> e = <span class="built_in">Error</span>(<span class="string">'Not a container: '</span> + b); e.name=<span class="string">'TypeError'</span>; <span class="keyword">throw</span> e;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> _pyfunc_op_equals = <span class="function"><span class="keyword">function</span> <span class="title">op_equals</span> (<span class="params">a, b</span>) </span>&#123; <span class="comment">// nargs: 2</span></span><br><span class="line">    <span class="keyword">if</span> (a == <span class="literal">null</span> || b == <span class="literal">null</span>) &#123;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(a) &amp;&amp; <span class="built_in">Array</span>.isArray(b)) &#123;</span><br><span class="line">        <span class="keyword">var</span> i = <span class="number">0</span>, iseq = a.length == b.length;</span><br><span class="line">        <span class="keyword">while</span> (iseq &amp;&amp; i &lt; a.length) &#123;iseq = op_equals(a[i], b[i]); i+=<span class="number">1</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> iseq;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a.constructor === <span class="built_in">Object</span> &amp;&amp; b.constructor === <span class="built_in">Object</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> akeys = <span class="built_in">Object</span>.keys(a), bkeys = <span class="built_in">Object</span>.keys(b);</span><br><span class="line">        akeys.sort(); bkeys.sort();</span><br><span class="line">        <span class="keyword">var</span> i=<span class="number">0</span>, k, iseq = op_equals(akeys, bkeys);</span><br><span class="line">        <span class="keyword">while</span> (iseq &amp;&amp; i &lt; akeys.length)</span><br><span class="line">            &#123;k=akeys[i]; iseq = op_equals(a[k], b[k]); i+=<span class="number">1</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> iseq;</span><br><span class="line">    &#125; <span class="keyword">return</span> a == b;</span><br><span class="line">&#125;;</span><br><span class="line">_pyfunc_op_contains(<span class="number">3</span>, [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
-<h4 id="Truthy和Falsy"><a href="#Truthy和Falsy" class="headerlink" title="Truthy和Falsy"></a>Truthy和Falsy</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这些值都被判定为false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># These evaluate to False:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">NaN</span><br><span class="line"><span class="string">""</span>  <span class="comment"># empty string</span></span><br><span class="line"><span class="keyword">None</span>  <span class="comment"># JS null</span></span><br><span class="line">undefined</span><br><span class="line">[]</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Truthy和Falsy"><a href="#Truthy和Falsy" class="headerlink" title="Truthy和Falsy"></a>Truthy和Falsy</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这些值都被判定为false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># These evaluate to False:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">NaN</span><br><span class="line"><span class="string">""</span>  <span class="comment"># empty string</span></span><br><span class="line"><span class="literal">None</span>  <span class="comment"># JS null</span></span><br><span class="line">undefined</span><br><span class="line">[]</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>;</span><br><span class="line"><span class="literal">NaN</span>;</span><br><span class="line"><span class="string">""</span>;</span><br><span class="line"><span class="literal">null</span>;</span><br><span class="line"><span class="literal">undefined</span>;</span><br><span class="line">[];</span><br><span class="line">(&#123;&#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%%py2js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 支持这样的操作</span></span><br><span class="line">a = []</span><br><span class="line">a = a <span class="keyword">or</span> [<span class="number">1</span>]  <span class="comment"># a is now [1]</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _pyfunc_truthy = <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (v === <span class="literal">null</span> || <span class="keyword">typeof</span> v !== <span class="string">"object"</span>) &#123;<span class="keyword">return</span> v;&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (v.length !== <span class="literal">undefined</span>) &#123;<span class="keyword">return</span> v.length ? v : <span class="literal">false</span>;&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (v.byteLength !== <span class="literal">undefined</span>) &#123;<span class="keyword">return</span> v.byteLength ? v : <span class="literal">false</span>;&#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (v.constructor !== <span class="built_in">Object</span>) &#123;<span class="keyword">return</span> <span class="literal">true</span>;&#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;<span class="keyword">return</span> <span class="built_in">Object</span>.getOwnPropertyNames(v).length ? v : <span class="literal">false</span>;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">a = [];</span><br><span class="line">a = _pyfunc_truthy(a) || [<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
@@ -504,14 +504,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
-                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
-                    文本向量系列-基于潜在语义分析的词向量
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
                 </a>
             </div>
             
@@ -586,6 +586,18 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -613,18 +625,6 @@
                 <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -636,7 +636,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -648,23 +660,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -676,15 +676,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
@@ -708,19 +712,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
@@ -732,31 +724,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
@@ -768,27 +748,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -800,6 +764,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -808,23 +780,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -840,19 +800,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -876,15 +836,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -900,7 +856,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
@@ -912,19 +868,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -932,19 +876,23 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -956,19 +904,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -977,18 +917,6 @@
         
         <span>
             <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1016,15 +944,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
         </span>
         
         <span>
@@ -1033,6 +961,78 @@
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷设计/">问卷设计</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
@@ -1105,9 +1105,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
                     @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-                    <br/>
+                    <br>
                     <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
-                </div>
+                </a></div>
             </div>
         </div>
     </div>

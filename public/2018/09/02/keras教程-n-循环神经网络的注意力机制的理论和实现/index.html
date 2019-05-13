@@ -2,15 +2,15 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
 
 <!-- Head tag -->
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
     <!--Description-->
     
         <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
@@ -23,26 +23,26 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="keras教程-n-循环神经网络的注意力机制的理论和实现"/>
+        <meta property="og:title" content="keras教程-n-循环神经网络的注意力机制的理论和实现">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="DataScience"/>
+    <meta property="og:site_name" content="DataScience">
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     
 
     <!-- Title -->
@@ -63,7 +63,7 @@
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -99,7 +99,7 @@
     
     
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -192,7 +192,7 @@
         </h1>
         <div class="weibo-share">
             <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
-            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="keras教程-n-循环神经网络的注意力机制的理论和实现"></wb:share-button>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="keras教程-n-循环神经网络的注意力机制的理论和实现"></wb:share-button>
         </div>
         <div class="post-info">
             
@@ -241,7 +241,7 @@
 <blockquote>
 <p>一个序列v(假如维度是10), 里面都是数字, 我们想要预测abs(v[1:4]-v[5:8])=?, 也就是序列中, 只有6位数是有效的, 其他的数字都是随机数, 我们想要求这6位数分成的两个三位数的差的绝对值是多少。那么我们可以使用注意力机制, 它可以有效的忽略随机数的干扰, 从而提取得到有效的信息。</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Dense, merge, Reshape, Flatten, RepeatVector, Permute, Lambda, LSTM</span><br><span class="line">BATCH_SIZE = <span class="number">12800</span></span><br><span class="line">TIME_STEP = <span class="number">10</span></span><br><span class="line">DEMESION = <span class="number">10</span></span><br><span class="line">OUTPUT_LEN = <span class="number">3</span></span><br><span class="line">num_sample = <span class="number">300000</span></span><br><span class="line">ONE_HOT = <span class="keyword">False</span></span><br><span class="line"><span class="comment"># 为了结果可重复性</span></span><br><span class="line">np.random.seed(<span class="number">1337</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_data</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="string">'''n: 样本量'''</span></span><br><span class="line">    </span><br><span class="line">    X = np.zeros((n, TIME_STEP), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    Y = np.zeros((n,), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    Y_one_hot = np.zeros((n, OUTPUT_LEN, DEMESION), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    X_one_hot = np.zeros((n, TIME_STEP, DEMESION), dtype=<span class="string">'int32'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        row = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, (TIME_STEP))</span><br><span class="line">        x1 = row[<span class="number">1</span>]*<span class="number">100</span>+row[<span class="number">2</span>]*<span class="number">10</span>+row[<span class="number">3</span>]</span><br><span class="line">        x2 = row[<span class="number">5</span>]*<span class="number">100</span>+row[<span class="number">6</span>]*<span class="number">10</span>+row[<span class="number">7</span>]</span><br><span class="line">        y = abs(x1-x2)</span><br><span class="line">        y_str = str(y).zfill(<span class="number">0</span>)</span><br><span class="line">        y_digits = [int(s) <span class="keyword">for</span> s <span class="keyword">in</span> y_str]</span><br><span class="line">        Y[i]=y</span><br><span class="line">        X[i] = row</span><br><span class="line">        <span class="keyword">for</span> c, r <span class="keyword">in</span> enumerate(y_digits):</span><br><span class="line">            Y_one_hot[i, c, r] =<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> c,r <span class="keyword">in</span> enumerate(row):</span><br><span class="line">            X_one_hot[i, c, r] =<span class="number">1</span></span><br><span class="line">            </span><br><span class="line"><span class="comment">#     for i in range(10):</span></span><br><span class="line"><span class="comment">#         print(X[i])</span></span><br><span class="line"><span class="comment">#         print(X_one_hot[i])</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'X'</span>: X / <span class="number">10</span>, </span><br><span class="line">        <span class="string">'Y'</span>:Y / <span class="number">1000</span>, </span><br><span class="line">        <span class="string">'X_one_hot'</span>:X_one_hot,</span><br><span class="line">        <span class="string">'Y_one_hot'</span>:Y_one_hot,</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Dense, merge, Reshape, Flatten, RepeatVector, Permute, Lambda, LSTM</span><br><span class="line">BATCH_SIZE = <span class="number">12800</span></span><br><span class="line">TIME_STEP = <span class="number">10</span></span><br><span class="line">DEMESION = <span class="number">10</span></span><br><span class="line">OUTPUT_LEN = <span class="number">3</span></span><br><span class="line">num_sample = <span class="number">300000</span></span><br><span class="line">ONE_HOT = <span class="literal">False</span></span><br><span class="line"><span class="comment"># 为了结果可重复性</span></span><br><span class="line">np.random.seed(<span class="number">1337</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_data</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="string">'''n: 样本量'''</span></span><br><span class="line">    </span><br><span class="line">    X = np.zeros((n, TIME_STEP), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    Y = np.zeros((n,), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    Y_one_hot = np.zeros((n, OUTPUT_LEN, DEMESION), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    X_one_hot = np.zeros((n, TIME_STEP, DEMESION), dtype=<span class="string">'int32'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        row = np.random.randint(<span class="number">0</span>, <span class="number">10</span>, (TIME_STEP))</span><br><span class="line">        x1 = row[<span class="number">1</span>]*<span class="number">100</span>+row[<span class="number">2</span>]*<span class="number">10</span>+row[<span class="number">3</span>]</span><br><span class="line">        x2 = row[<span class="number">5</span>]*<span class="number">100</span>+row[<span class="number">6</span>]*<span class="number">10</span>+row[<span class="number">7</span>]</span><br><span class="line">        y = abs(x1-x2)</span><br><span class="line">        y_str = str(y).zfill(<span class="number">0</span>)</span><br><span class="line">        y_digits = [int(s) <span class="keyword">for</span> s <span class="keyword">in</span> y_str]</span><br><span class="line">        Y[i]=y</span><br><span class="line">        X[i] = row</span><br><span class="line">        <span class="keyword">for</span> c, r <span class="keyword">in</span> enumerate(y_digits):</span><br><span class="line">            Y_one_hot[i, c, r] =<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> c,r <span class="keyword">in</span> enumerate(row):</span><br><span class="line">            X_one_hot[i, c, r] =<span class="number">1</span></span><br><span class="line">            </span><br><span class="line"><span class="comment">#     for i in range(10):</span></span><br><span class="line"><span class="comment">#         print(X[i])</span></span><br><span class="line"><span class="comment">#         print(X_one_hot[i])</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">'X'</span>: X / <span class="number">10</span>, </span><br><span class="line">        <span class="string">'Y'</span>:Y / <span class="number">1000</span>, </span><br><span class="line">        <span class="string">'X_one_hot'</span>:X_one_hot,</span><br><span class="line">        <span class="string">'Y_one_hot'</span>:Y_one_hot,</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出(stream):<br>
@@ -277,7 +277,7 @@
     <br>  if __name__ == '__main__':
     <br>d:\mysites\deeplearning.ai-master\.env\lib\site-packages\keras\legacy\layers.py:465: UserWarning: The `Merge` layer is deprecated and will be removed after 08/2017. Use instead layers from `keras.layers.merge`, e.g. `add`, `concatenate`, etc.
     <br>  name=name)
-    <br>d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:15: UserWarning: Update your `Model` call to the Keras 2 API: `Model(inputs=[<tf.tenso..., outputs="Tensor("de...)`" <br="">  from ipykernel import kernelapp as app
+    <br>d:\mysites\deeplearning.ai-master\.env\lib\site-packages\ipykernel_launcher.py:15: UserWarning: Update your `Model` call to the Keras 2 API: `Model(inputs=[<tf.tenso..., outputs="Tensor(" de...)`" <br>  from ipykernel import kernelapp as app
     <br>
 </tf.tenso...,></div>
 
@@ -313,7 +313,7 @@
 <div class="output">
 输出(plain):<br>
 
-    <keras.callbacks.history at="" 0x2b98e6108d0="">
+    <keras.callbacks.history at 0x2b98e6108d0>
 
 </keras.callbacks.history></div>
 
@@ -359,7 +359,7 @@
 <p>不过还有一种方式, 是所有时间步共享一个注意力分配向量, 如下图:</p>
 <p><img src="images/graph_single_attention.png"></p>
 <p>是时候实现一个注意机制的LSTM模型了, 在循环神经网络中, 输入的数据是二维的(TIME_STEP, DEMESION)。也就是说, 我们把每个数字编码成了one-hot向量, 具体做法参考创建数据的代码。而输出仍然是一个标量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_lstm_model</span><span class="params">(only_time_step=True)</span>:</span></span><br><span class="line">    inputs = Input(shape=(TIME_STEP, DEMESION))</span><br><span class="line">    <span class="comment"># 转置</span></span><br><span class="line">    a = Permute((<span class="number">2</span>,<span class="number">1</span>))(inputs)</span><br><span class="line">    <span class="comment"># 现在a的形状是: (DEMENSION, TIME_STEP)</span></span><br><span class="line">    <span class="comment"># 目的就是为了得到每个时间步的权重</span></span><br><span class="line">    a = Dense(TIME_STEP, activation=<span class="string">'softmax'</span>)(a)</span><br><span class="line">    <span class="keyword">if</span> only_time_step:</span><br><span class="line">        <span class="comment"># 降低一个维度, 使得得到长度为TIME_STEP的向量</span></span><br><span class="line">        a = Lambda(<span class="keyword">lambda</span> x: K.mean(x, axis=<span class="number">1</span>), name=<span class="string">'dim_reduction'</span>)(a)</span><br><span class="line">        weight = a</span><br><span class="line">        <span class="comment"># 出重复这个向量得到一个矩阵便于下一步计算</span></span><br><span class="line">        a = RepeatVector(DEMESION)(a)</span><br><span class="line">        <span class="comment"># 现在a的形状是(DEMESION, TIME_STEP)</span></span><br><span class="line">    <span class="comment"># 转置矩阵, 便于下一步计算乘法</span></span><br><span class="line">    a_probs = Permute((<span class="number">2</span>,<span class="number">1</span>), name=<span class="string">'attention_vec'</span>)(a)</span><br><span class="line">    <span class="comment"># 计算加权后的输入</span></span><br><span class="line">    weighted_inputs = merge([inputs, a_probs], name=<span class="string">'weighted_inputs'</span>, mode=<span class="string">'mul'</span>)</span><br><span class="line">    lstm_units = <span class="number">64</span></span><br><span class="line">    <span class="comment"># 只需要返回最后的结果</span></span><br><span class="line">    output = LSTM(lstm_units, return_sequences=<span class="keyword">False</span>)(weighted_inputs)</span><br><span class="line">    <span class="comment"># 经过全连接层</span></span><br><span class="line">    output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>)(output)</span><br><span class="line">    model = Model([inputs], output)</span><br><span class="line">    weight_model = Model([inputs], weight)</span><br><span class="line">    <span class="keyword">return</span> model, weight_model</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_lstm_model</span><span class="params">(only_time_step=True)</span>:</span></span><br><span class="line">    inputs = Input(shape=(TIME_STEP, DEMESION))</span><br><span class="line">    <span class="comment"># 转置</span></span><br><span class="line">    a = Permute((<span class="number">2</span>,<span class="number">1</span>))(inputs)</span><br><span class="line">    <span class="comment"># 现在a的形状是: (DEMENSION, TIME_STEP)</span></span><br><span class="line">    <span class="comment"># 目的就是为了得到每个时间步的权重</span></span><br><span class="line">    a = Dense(TIME_STEP, activation=<span class="string">'softmax'</span>)(a)</span><br><span class="line">    <span class="keyword">if</span> only_time_step:</span><br><span class="line">        <span class="comment"># 降低一个维度, 使得得到长度为TIME_STEP的向量</span></span><br><span class="line">        a = Lambda(<span class="keyword">lambda</span> x: K.mean(x, axis=<span class="number">1</span>), name=<span class="string">'dim_reduction'</span>)(a)</span><br><span class="line">        weight = a</span><br><span class="line">        <span class="comment"># 出重复这个向量得到一个矩阵便于下一步计算</span></span><br><span class="line">        a = RepeatVector(DEMESION)(a)</span><br><span class="line">        <span class="comment"># 现在a的形状是(DEMESION, TIME_STEP)</span></span><br><span class="line">    <span class="comment"># 转置矩阵, 便于下一步计算乘法</span></span><br><span class="line">    a_probs = Permute((<span class="number">2</span>,<span class="number">1</span>), name=<span class="string">'attention_vec'</span>)(a)</span><br><span class="line">    <span class="comment"># 计算加权后的输入</span></span><br><span class="line">    weighted_inputs = merge([inputs, a_probs], name=<span class="string">'weighted_inputs'</span>, mode=<span class="string">'mul'</span>)</span><br><span class="line">    lstm_units = <span class="number">64</span></span><br><span class="line">    <span class="comment"># 只需要返回最后的结果</span></span><br><span class="line">    output = LSTM(lstm_units, return_sequences=<span class="literal">False</span>)(weighted_inputs)</span><br><span class="line">    <span class="comment"># 经过全连接层</span></span><br><span class="line">    output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>)(output)</span><br><span class="line">    model = Model([inputs], output)</span><br><span class="line">    weight_model = Model([inputs], weight)</span><br><span class="line">    <span class="keyword">return</span> model, weight_model</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lstm_model, weight = build_lstm_model()</span><br><span class="line">lstm_model.compile(optimizer=<span class="string">'adam'</span>, loss=<span class="string">'MSE'</span>)</span><br></pre></td></tr></table></figure>
 
 <div class="output">
@@ -401,7 +401,7 @@
 <div class="output">
 输出(plain):<br>
 
-    <keras.callbacks.history at="" 0x2b98f218080="">
+    <keras.callbacks.history at 0x2b98f218080>
 
 </keras.callbacks.history></div>
 
@@ -412,7 +412,7 @@
 <div class="output">
 输出(plain):<br>
 
-    <barcontainer 10="" object="" of="" artists="">
+    <barcontainer 10 object of artists>
 
 </barcontainer></div>
 
@@ -582,6 +582,18 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -609,18 +621,6 @@
                 <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -632,7 +632,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -644,23 +656,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -672,15 +672,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
@@ -704,19 +708,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
@@ -728,31 +720,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
@@ -764,27 +744,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -796,6 +760,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -804,23 +776,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -836,19 +796,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -872,15 +832,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -896,7 +852,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
@@ -908,19 +864,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -928,19 +872,23 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -952,19 +900,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -973,18 +913,6 @@
         
         <span>
             <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -1012,15 +940,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
         </span>
         
         <span>
@@ -1029,6 +957,78 @@
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷设计/">问卷设计</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
@@ -1101,9 +1101,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
                     @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-                    <br/>
+                    <br>
                     <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
-                </div>
+                </a></div>
             </div>
         </div>
     </div>

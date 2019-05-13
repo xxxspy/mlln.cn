@@ -2,15 +2,15 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
 
 <!-- Head tag -->
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
     <!--Description-->
     
         <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
@@ -23,26 +23,26 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Tensorflow逐步实现记忆网络(Memory networks)第一部分"/>
+        <meta property="og:title" content="Tensorflow逐步实现记忆网络(Memory networks)第一部分">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="DataScience"/>
+    <meta property="og:site_name" content="DataScience">
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     
 
     <!-- Title -->
@@ -63,7 +63,7 @@
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -172,7 +172,7 @@
 </script>
     
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -265,7 +265,7 @@
         </h1>
         <div class="weibo-share">
             <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
-            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="Tensorflow逐步实现记忆网络(Memory networks)第一部分"></wb:share-button>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="Tensorflow逐步实现记忆网络(Memory networks)第一部分"></wb:share-button>
         </div>
         <div class="post-info">
             
@@ -322,7 +322,7 @@
 <h3 id="拆解记忆网络-MemN2N"><a href="#拆解记忆网络-MemN2N" class="headerlink" title="拆解记忆网络(MemN2N)"></a>拆解记忆网络(MemN2N)</h3><p>与早期的记忆网络中使用的硬注意力相反，MemN2N使用软注意来选择记忆。这是使用简单的softmax函数完成的。</p>
 <h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>(仔细观察图1你才能理解下面的话)</p>
 <p>我们使用不同的嵌入矩阵向量化所有句子（<code>$x_i$</code>），问题（<code>$q$</code>）和答案（<code>$a$</code>）。因此，我们保留了我们在数据集中看到的所有单词的字典<code>$ V $</code>。字典可以将每个单词都映射到一个索引(数字)。输入包括嵌入矩阵C，A和B.其中C和A分别映射到记忆向量（<code>$m_i$</code>）和输出向量（<code>$c_i$</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_create_placeholders</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="comment"># http://mlln.cn</span></span><br><span class="line">    <span class="comment"># 学习率</span></span><br><span class="line">    self._lr = tf.placeholder(tf.float32, [], name=<span class="string">"learning_rate"</span>)</span><br><span class="line">    <span class="comment"># 记忆</span></span><br><span class="line">    <span class="comment"># _memory_size: 记忆条数, 也可以理解为记忆中包括多少篇文章</span></span><br><span class="line">    <span class="comment"># _sentence_size: 句子长度, 也可以是文章长度</span></span><br><span class="line">    <span class="comment"># 这个矩阵的元素就是单词的索引值</span></span><br><span class="line">    self._stories = tf.placeholder(tf.int32, [<span class="keyword">None</span>, self._memory_size, self._sentence_size], name=<span class="string">"stories"</span>)</span><br><span class="line">    <span class="comment"># 问题向量, 向量内元素代表单词的索引值</span></span><br><span class="line">    self._queries = tf.placeholder(tf.int32, [<span class="keyword">None</span>, self._sentence_size], name=<span class="string">"queries"</span>)</span><br><span class="line">    <span class="comment"># 答案, 因为本文章设定问题的答案就是一个单词, 所以使用one-hot的方法编码答案</span></span><br><span class="line">    self._answers = tf.placeholder(tf.int32, [<span class="keyword">None</span>, self._vocab_size], name=<span class="string">"answers"</span>)</span><br><span class="line">    <span class="comment"># 无意义的词向量, 代表为被词典收录的词</span></span><br><span class="line">    nil_word = tf.zeros([<span class="number">1</span>, self._embedding_size])</span><br><span class="line">    <span class="comment"># </span></span><br><span class="line">    A_placeholder = tf.concat(axis=<span class="number">0</span>, values=</span><br><span class="line">        [nil_word, self._normal_init([self._vocab_size<span class="number">-1</span>, self._embedding_size])])</span><br><span class="line">    </span><br><span class="line">    C_placeholder = tf.concat(axis=<span class="number">0</span>, values=</span><br><span class="line">        [nil_word, self._normal_init([self._vocab_size<span class="number">-1</span>, self._embedding_size])])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"memn2n"</span>):</span><br><span class="line">        <span class="comment"># 我们将其命名为A_1，因为代码保持与论文所说的符号相关，如果你想理解权重的影响，你可以制作更多的A_k类型矩阵。</span></span><br><span class="line">        <span class="comment"># 我们遵循论文中描述的相邻权重共享，连续的A矩阵等于先前的C矩阵。        </span></span><br><span class="line">        self.A_1 = tf.Variable(A_placeholder, name=<span class="string">"A"</span>)</span><br><span class="line">        <span class="comment"># 现在我们添加了hop的概念，可以以相同的方式添加更多A类型矩阵。</span></span><br><span class="line">        self.C = []</span><br><span class="line">        <span class="comment"># 这里我们将矩阵添加到每一hop对应于C矩阵的数组中。存储器中的hop数由n_hops表示。</span></span><br><span class="line">        <span class="keyword">for</span> hop_number <span class="keyword">in</span> range(self._hops):</span><br><span class="line">            <span class="comment"># 每一hop都有自己的范围。</span></span><br><span class="line">            <span class="keyword">with</span> tf.variable_scope(<span class="string">"hop_number&#123;&#125;"</span>.format(hop_number)):</span><br><span class="line">                self.C.append(tf.Variable(C_placeholder, name=<span class="string">"C"</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_create_placeholders</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="comment"># http://mlln.cn</span></span><br><span class="line">    <span class="comment"># 学习率</span></span><br><span class="line">    self._lr = tf.placeholder(tf.float32, [], name=<span class="string">"learning_rate"</span>)</span><br><span class="line">    <span class="comment"># 记忆</span></span><br><span class="line">    <span class="comment"># _memory_size: 记忆条数, 也可以理解为记忆中包括多少篇文章</span></span><br><span class="line">    <span class="comment"># _sentence_size: 句子长度, 也可以是文章长度</span></span><br><span class="line">    <span class="comment"># 这个矩阵的元素就是单词的索引值</span></span><br><span class="line">    self._stories = tf.placeholder(tf.int32, [<span class="literal">None</span>, self._memory_size, self._sentence_size], name=<span class="string">"stories"</span>)</span><br><span class="line">    <span class="comment"># 问题向量, 向量内元素代表单词的索引值</span></span><br><span class="line">    self._queries = tf.placeholder(tf.int32, [<span class="literal">None</span>, self._sentence_size], name=<span class="string">"queries"</span>)</span><br><span class="line">    <span class="comment"># 答案, 因为本文章设定问题的答案就是一个单词, 所以使用one-hot的方法编码答案</span></span><br><span class="line">    self._answers = tf.placeholder(tf.int32, [<span class="literal">None</span>, self._vocab_size], name=<span class="string">"answers"</span>)</span><br><span class="line">    <span class="comment"># 无意义的词向量, 代表为被词典收录的词</span></span><br><span class="line">    nil_word = tf.zeros([<span class="number">1</span>, self._embedding_size])</span><br><span class="line">    <span class="comment"># </span></span><br><span class="line">    A_placeholder = tf.concat(axis=<span class="number">0</span>, values=</span><br><span class="line">        [nil_word, self._normal_init([self._vocab_size<span class="number">-1</span>, self._embedding_size])])</span><br><span class="line">    </span><br><span class="line">    C_placeholder = tf.concat(axis=<span class="number">0</span>, values=</span><br><span class="line">        [nil_word, self._normal_init([self._vocab_size<span class="number">-1</span>, self._embedding_size])])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"memn2n"</span>):</span><br><span class="line">        <span class="comment"># 我们将其命名为A_1，因为代码保持与论文所说的符号相关，如果你想理解权重的影响，你可以制作更多的A_k类型矩阵。</span></span><br><span class="line">        <span class="comment"># 我们遵循论文中描述的相邻权重共享，连续的A矩阵等于先前的C矩阵。        </span></span><br><span class="line">        self.A_1 = tf.Variable(A_placeholder, name=<span class="string">"A"</span>)</span><br><span class="line">        <span class="comment"># 现在我们添加了hop的概念，可以以相同的方式添加更多A类型矩阵。</span></span><br><span class="line">        self.C = []</span><br><span class="line">        <span class="comment"># 这里我们将矩阵添加到每一hop对应于C矩阵的数组中。存储器中的hop数由n_hops表示。</span></span><br><span class="line">        <span class="keyword">for</span> hop_number <span class="keyword">in</span> range(self._hops):</span><br><span class="line">            <span class="comment"># 每一hop都有自己的范围。</span></span><br><span class="line">            <span class="keyword">with</span> tf.variable_scope(<span class="string">"hop_number&#123;&#125;"</span>.format(hop_number)):</span><br><span class="line">                self.C.append(tf.Variable(C_placeholder, name=<span class="string">"C"</span>))</span><br></pre></td></tr></table></figure>
 <p>默认情况下，我们将hop数保持为k = 3，如论文中所报告的，这样可以有良好的结果, 并且每个hop共享权重。这就是论文的图示:</p>
 <p><img src="images/nHop.png" width="500px"></p>
 <center>图 2 </center>
@@ -419,14 +419,14 @@ $$</code></p>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
-                    tensorflow教程02-计算图及其实践
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
-                    tensorflow教程03-入门必知数据模型和相关概念
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
                 </a>
             </div>
             
@@ -466,14 +466,14 @@ $$</code></p>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
-                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
+                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
+                    作文自动评分-位置编码position-encoding(PE)解释
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
-                    作文自动评分-位置编码position-encoding(PE)解释
+                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
                 </a>
             </div>
             
@@ -489,14 +489,14 @@ $$</code></p>
     <div class="page_list">
         
             <div class="archive-post">
-                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
-                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
+                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
+                    作文自动评分-位置编码position-encoding(PE)解释
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/05/作文自动评分-位置编码position-encoding(PE)解释/">
-                    作文自动评分-位置编码position-encoding(PE)解释
+                <a href="/2018/07/05/Tensorflow逐步实现记忆网络(Memory networks)第一部分/">
+                    Tensorflow逐步实现记忆网络(Memory networks)第一部分
                 </a>
             </div>
             
@@ -542,6 +542,18 @@ $$</code></p>
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -569,18 +581,6 @@ $$</code></p>
                 <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -592,7 +592,19 @@ $$</code></p>
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -604,23 +616,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -632,15 +632,19 @@ $$</code></p>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
@@ -664,19 +668,7 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
@@ -688,31 +680,19 @@ $$</code></p>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
@@ -724,27 +704,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -756,6 +720,14 @@ $$</code></p>
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -764,23 +736,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -796,19 +756,19 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -832,15 +792,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -856,7 +812,7 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
@@ -868,19 +824,7 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -888,19 +832,23 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -912,19 +860,11 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -933,18 +873,6 @@ $$</code></p>
         
         <span>
             <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -972,15 +900,15 @@ $$</code></p>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
         </span>
         
         <span>
@@ -989,6 +917,78 @@ $$</code></p>
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷设计/">问卷设计</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
@@ -1061,9 +1061,9 @@ $$</code></p>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
                     @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-                    <br/>
+                    <br>
                     <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
-                </div>
+                </a></div>
             </div>
         </div>
     </div>

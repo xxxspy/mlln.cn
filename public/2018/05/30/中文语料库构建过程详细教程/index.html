@@ -2,15 +2,15 @@
 <html lang="en" xmlns:wb="http://open.weibo.com/wb">
 
 <!-- Head tag -->
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="MobileOptimized" content="width"/>
-    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
     <!--Description-->
     
         <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
@@ -23,26 +23,26 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="中文语料库构建过程详细教程"/>
+        <meta property="og:title" content="中文语料库构建过程详细教程">
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写" />
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
     
 
     <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="DataScience"/>
+    <meta property="og:site_name" content="DataScience">
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary">
     
 
     <!-- Title -->
@@ -63,7 +63,7 @@
     <![endif]-->
 
     <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -99,7 +99,7 @@
     
     
     <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 
 
@@ -192,7 +192,7 @@
         </h1>
         <div class="weibo-share">
             <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
-            <wb:share-button appkey="2694758202" addition="number" type="button" ralateUid="1312359657" default_text="中文语料库构建过程详细教程"></wb:share-button>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="中文语料库构建过程详细教程"></wb:share-button>
         </div>
         <div class="post-info">
             
@@ -227,7 +227,7 @@
 </div>
 
 <h3 id="TextDirectoryCorpus简单使用"><a href="#TextDirectoryCorpus简单使用" class="headerlink" title="TextDirectoryCorpus简单使用"></a>TextDirectoryCorpus简单使用</h3><p>先看以下基本用法:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入用到的库</span></span><br><span class="line"><span class="keyword">from</span> gensim.corpora.textcorpus <span class="keyword">import</span> TextDirectoryCorpus</span><br><span class="line"><span class="keyword">import</span> locale</span><br><span class="line">locale.setlocale(locale.LC_ALL, <span class="string">'en_US.utf-8'</span>)</span><br><span class="line"><span class="comment"># 数据所在路径</span></span><br><span class="line">dpath = <span class="string">r'D:\mysites\notebooks\data\test-corpus'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个语料库, </span></span><br><span class="line"><span class="comment"># 遍历的最小深度是1</span></span><br><span class="line"><span class="comment"># 设置lines_are_documents为False</span></span><br><span class="line"><span class="comment"># 后缀为txt的文件才会被当作是一个文档</span></span><br><span class="line">corpus = MyTextDirCorpus(dpath, min_depth=<span class="number">1</span>, pattern=<span class="string">'.*\.txt'</span>,  lines_are_documents=<span class="keyword">False</span>)</span><br><span class="line">print(<span class="string">'语料库计数:'</span>, len(corpus))</span><br><span class="line">print(<span class="string">'第一条:'</span>,next(corpus.get_texts()))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入用到的库</span></span><br><span class="line"><span class="keyword">from</span> gensim.corpora.textcorpus <span class="keyword">import</span> TextDirectoryCorpus</span><br><span class="line"><span class="keyword">import</span> locale</span><br><span class="line">locale.setlocale(locale.LC_ALL, <span class="string">'en_US.utf-8'</span>)</span><br><span class="line"><span class="comment"># 数据所在路径</span></span><br><span class="line">dpath = <span class="string">r'D:\mysites\notebooks\data\test-corpus'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个语料库, </span></span><br><span class="line"><span class="comment"># 遍历的最小深度是1</span></span><br><span class="line"><span class="comment"># 设置lines_are_documents为False</span></span><br><span class="line"><span class="comment"># 后缀为txt的文件才会被当作是一个文档</span></span><br><span class="line">corpus = MyTextDirCorpus(dpath, min_depth=<span class="number">1</span>, pattern=<span class="string">'.*\.txt'</span>,  lines_are_documents=<span class="literal">False</span>)</span><br><span class="line">print(<span class="string">'语料库计数:'</span>, len(corpus))</span><br><span class="line">print(<span class="string">'第一条:'</span>,next(corpus.get_texts()))</span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出:
@@ -247,7 +247,7 @@
 </div>
 
 <p>实现一个分词器:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input, **kwargs)</span>:</span></span><br><span class="line">        kwargs[<span class="string">'tokenizer'</span>] = self.tokenizer</span><br><span class="line">        super().__init__(input, **kwargs)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tokenizer</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">            segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">            segmentor.load(model_path)</span><br><span class="line">            self._segmentor = segmentor</span><br><span class="line">        segmentor = self._segmentor</span><br><span class="line">        <span class="keyword">return</span> segmentor.segment(text)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''释放资源'''</span></span><br><span class="line">        <span class="keyword">if</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            self._segmentor.release()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            super().__del__()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个语料库</span></span><br><span class="line"><span class="comment"># 注意我们传入了一个token_filters参数, 实际上是一个空列表, 意思是, 不要过滤词, 所有词都要</span></span><br><span class="line"><span class="comment"># 当然在有需要的情况下, 我们需要定义自己的token_filters</span></span><br><span class="line">corpus = MyTextDirCorpus(dpath, min_depth=<span class="number">1</span>, </span><br><span class="line">                         pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                         lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                         tokenizer=tokenizer, </span><br><span class="line">                         token_filters=[])</span><br><span class="line"><span class="comment"># 保存词典到本地硬盘</span></span><br><span class="line">dict_path = <span class="string">r'D:\mysites\notebooks\data\test-corpus\dictionary.model'</span></span><br><span class="line">corpus.dictionary.save_as_text(fname=dict_path)</span><br><span class="line"><span class="comment"># 查看词典内容</span></span><br><span class="line">corpus.dictionary.token2id</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input, **kwargs)</span>:</span></span><br><span class="line">        kwargs[<span class="string">'tokenizer'</span>] = self.tokenizer</span><br><span class="line">        super().__init__(input, **kwargs)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tokenizer</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">            segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">            segmentor.load(model_path)</span><br><span class="line">            self._segmentor = segmentor</span><br><span class="line">        segmentor = self._segmentor</span><br><span class="line">        <span class="keyword">return</span> segmentor.segment(text)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''释放资源'''</span></span><br><span class="line">        <span class="keyword">if</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            self._segmentor.release()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            super().__del__()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化一个语料库</span></span><br><span class="line"><span class="comment"># 注意我们传入了一个token_filters参数, 实际上是一个空列表, 意思是, 不要过滤词, 所有词都要</span></span><br><span class="line"><span class="comment"># 当然在有需要的情况下, 我们需要定义自己的token_filters</span></span><br><span class="line">corpus = MyTextDirCorpus(dpath, min_depth=<span class="number">1</span>, </span><br><span class="line">                         pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                         lines_are_documents=<span class="literal">False</span>, </span><br><span class="line">                         tokenizer=tokenizer, </span><br><span class="line">                         token_filters=[])</span><br><span class="line"><span class="comment"># 保存词典到本地硬盘</span></span><br><span class="line">dict_path = <span class="string">r'D:\mysites\notebooks\data\test-corpus\dictionary.model'</span></span><br><span class="line">corpus.dictionary.save_as_text(fname=dict_path)</span><br><span class="line"><span class="comment"># 查看词典内容</span></span><br><span class="line">corpus.dictionary.token2id</span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出:
@@ -288,7 +288,7 @@
 <p><img src="images/dictionary-example.png" title="语料库的字典" class="img-thumbnail"></p>
 <h3 id="词典的使用"><a href="#词典的使用" class="headerlink" title="词典的使用"></a>词典的使用</h3><p>生成了词典以后, 我们以后再使用语料库的时候, 可以不必每次都重新计算词典, 这个过程非常耗费资源, 所以我们使用已经存储在硬盘的词典数据.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> gensim.corpora.dictionary <span class="keyword">import</span> Dictionary</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"><span class="comment"># 预加载字典</span></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"><span class="comment"># 预加载字典</span></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="literal">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出:
@@ -296,7 +296,7 @@
     
 </div>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"><span class="comment"># 每次生成词典</span></span><br><span class="line">MyTextDirCorpus(dpath, </span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"><span class="comment"># 每次生成词典</span></span><br><span class="line">MyTextDirCorpus(dpath, </span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="literal">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出:
@@ -306,11 +306,11 @@
 
 <p>通过上面的测试, 我们发现两种方式的差别很大, 这还是在小语料库上测试的, 如果是大语料库, 这个差别就是几个数量级的差别了.</p>
 <h3 id="预先分词"><a href="#预先分词" class="headerlink" title="预先分词"></a>预先分词</h3><p>其实, 很多人协作的情况下, 保证大家的分词结果的一致性是很有必要的, 不然很多结果都没有可比性. 与其每个人都分一遍词, 不如从一开始就分好词. 所以我们可以把词分好, 然后保存到硬盘.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> fpath <span class="keyword">in</span> corpus.iter_filepaths():</span><br><span class="line">    fpath = Path(fpath)</span><br><span class="line">    token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">    txt = fpath.read_text(encoding=<span class="string">'utf8'</span>).strip()</span><br><span class="line">    tokens = corpus.tokenizer(txt)</span><br><span class="line">    token_path.write_bytes(pickle.dumps(list(tokens)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="literal">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> fpath <span class="keyword">in</span> corpus.iter_filepaths():</span><br><span class="line">    fpath = Path(fpath)</span><br><span class="line">    token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">    txt = fpath.read_text(encoding=<span class="string">'utf8'</span>).strip()</span><br><span class="line">    tokens = corpus.tokenizer(txt)</span><br><span class="line">    token_path.write_bytes(pickle.dumps(list(tokens)))</span><br></pre></td></tr></table></figure>
 <p>使用预先分好的词, 可以再给我们的<code>MyTextDirCorpus</code>添加一个方法<code>get_texts_from_tokens</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input, **kwargs)</span>:</span></span><br><span class="line">        kwargs[<span class="string">'tokenizer'</span>] = self.tokenizer</span><br><span class="line">        super().__init__(input, **kwargs)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tokenizer</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">            segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">            segmentor.load(model_path)</span><br><span class="line">            self._segmentor = segmentor</span><br><span class="line">        segmentor = self._segmentor</span><br><span class="line">        <span class="keyword">return</span> segmentor.segment(text)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''释放资源'''</span></span><br><span class="line">        <span class="keyword">if</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            self._segmentor.release()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            super().__del__()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_texts_from_tokens</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            fpath = Path(fpath)</span><br><span class="line">            token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">            <span class="keyword">yield</span> pickle.loads(token_path.read_bytes())</span><br></pre></td></tr></table></figure>
 <p>测试以下我们新的方法是不是更节省时间:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corpus.get_texts():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="literal">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corpus.get_texts():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出:
@@ -318,7 +318,7 @@
     
 </div>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="keyword">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corpus.get_texts_from_tokens():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line"></span><br><span class="line">dic = Dictionary.load_from_text(dict_path)</span><br><span class="line">corpus = MyTextDirCorpus(dpath, </span><br><span class="line">                dictionary=dic,</span><br><span class="line">                min_depth=<span class="number">1</span>, </span><br><span class="line">                 pattern=<span class="string">'.*\.txt$'</span>,  </span><br><span class="line">                 lines_are_documents=<span class="literal">False</span>, </span><br><span class="line">                 tokenizer=tokenizer, </span><br><span class="line">                 token_filters=[])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> corpus.get_texts_from_tokens():</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 
 <div class="output">
 输出:
@@ -331,6 +331,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># author: mlln.cn</span></span><br><span class="line"><span class="comment"># email: xxxspy@126.com</span></span><br><span class="line"><span class="comment"># qq: 675495787</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTextDirCorpus</span><span class="params">(TextDirectoryCorpus)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input, **kwargs)</span>:</span></span><br><span class="line">        kwargs[<span class="string">'tokenizer'</span>] = self.tokenizer</span><br><span class="line">        super().__init__(input, **kwargs)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tokenizer</span><span class="params">(self, text)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            model_path = <span class="string">r'D:\mysites\text-characters\tcharacters\ltp\ltp_data\cws.model'</span></span><br><span class="line">            segmentor = Segmentor()  <span class="comment"># 初始化实例</span></span><br><span class="line">            segmentor.load(model_path)</span><br><span class="line">            self._segmentor = segmentor</span><br><span class="line">        segmentor = self._segmentor</span><br><span class="line">        <span class="keyword">return</span> segmentor.segment(text)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''释放资源'''</span></span><br><span class="line">        <span class="keyword">if</span> hasattr(self, <span class="string">'_segmentor'</span>):</span><br><span class="line">            self._segmentor.release()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            super().__del__()</span><br><span class="line">        <span class="keyword">except</span> AttributeError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 为了强制使用'utf8'编码, 我们复写了这个方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getstream</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Yield documents from the underlying plain text collection (of one or more files).</span></span><br><span class="line"><span class="string">        Each item yielded from this method will be considered a document by subsequent</span></span><br><span class="line"><span class="string">        preprocessing methods.</span></span><br><span class="line"><span class="string">        If `lines_are_documents` was set to True, items will be lines from files. Otherwise</span></span><br><span class="line"><span class="string">        there will be one item per file, containing the entire contents of the file.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        num_texts = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            <span class="keyword">with</span> open(path, <span class="string">'rt'</span>, encoding=<span class="string">'utf8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">if</span> self.lines_are_documents:</span><br><span class="line">                    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">                        <span class="keyword">yield</span> line.strip()</span><br><span class="line">                        num_texts += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    content = f.read().strip()</span><br><span class="line">                    <span class="keyword">yield</span> content</span><br><span class="line">                    num_texts += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.length = num_texts</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_texts_from_tokens</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            fpath = Path(fpath)</span><br><span class="line">            token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">            <span class="keyword">yield</span> pickle.loads(token_path.read_bytes())</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_tokens</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''保存tokens到硬盘, 只需要运行一次'''</span></span><br><span class="line">        <span class="keyword">for</span> fpath <span class="keyword">in</span> self.iter_filepaths():</span><br><span class="line">            fpath = Path(fpath)</span><br><span class="line">            token_path = fpath.parent / (fpath.name + <span class="string">'.cached_tokens'</span>)</span><br><span class="line">            txt = fpath.read_text(encoding=<span class="string">'utf8'</span>).strip()</span><br><span class="line">            tokens = self.tokenizer(txt)</span><br><span class="line">            token_path.write_bytes(pickle.dumps(list(tokens)))</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_dictionary</span><span class="params">(self, dpath)</span>:</span></span><br><span class="line">        <span class="string">'''把字典保存到硬盘'''</span></span><br><span class="line">        self.dictionary.save_as_text(fname=dpath)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>本为由mlln.cn原创, 转载请注明出处(mlln.cn), 本站保留版权. 欢迎童鞋在下方留言反馈.</p>
+</blockquote>
+<blockquote>
 <p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="中文语料库构建过程详细教程.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
 </blockquote>
 
@@ -341,7 +343,7 @@
     
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a> <a href="/tags/语料库/">#语料库</a> <a href="/tags/gensim/">#gensim</a>
+            <a href="/tags/python/">#python</a> <a href="/tags/gensim/">#gensim</a> <a href="/tags/语料库/">#语料库</a>
         </div>
     
 
@@ -436,20 +438,49 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
-                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
-                </a>
-            </div>
-            
-            <div class="archive-post">
                 <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
                     文本向量系列-基于潜在语义分析的词向量
                 </a>
             </div>
             
             <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2018/08/18/文本向量系列-如何基于笔画+拼音构建字向量/">
                     文本向量系列-如何基于笔画+拼音构建字向量
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/gensim/">
+            gensim
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2018/06/21/大数据揭示心理学规律(利用gensim训练词向量)/">
+                    大数据揭示心理学规律(利用gensim训练词向量)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/06/20/gensim生成长本文中文摘要/">
+                    gensim生成长本文中文摘要
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/05/30/中文语料库构建过程详细教程/">
+                    中文语料库构建过程详细教程
                 </a>
             </div>
             
@@ -485,35 +516,6 @@
             <div class="archive-post">
                 <a href="/2018/06/02/[转]吊炸天的中文自然语言处理工具和语料库介绍/">
                     (译)吊炸天的中文自然语言处理工具和语料库介绍
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/05/30/中文语料库构建过程详细教程/">
-                    中文语料库构建过程详细教程
-                </a>
-            </div>
-            
-    </div>
-</div>
-
-<div class="related-posts">
-    <h3>
-        <a href="/tags/gensim/">
-            gensim
-        </a>
-    </h3>
-    <div class="page_list">
-        
-            <div class="archive-post">
-                <a href="/2018/06/21/大数据揭示心理学规律(利用gensim训练词向量)/">
-                    大数据揭示心理学规律(利用gensim训练词向量)
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/06/20/gensim生成长本文中文摘要/">
-                    gensim生成长本文中文摘要
                 </a>
             </div>
             
@@ -565,6 +567,18 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -592,18 +606,6 @@
                 <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程14-极端数据处理/">stata教程14-极端数据处理</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/10/stata教程13-回归中多重共线性的检验/">stata教程13-回归中多重共线性的检验</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/07/keras教程-n-内存模型(Memory-Neural)理论和实践/">keras教程-n-内存模型(Memory-Neu</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -615,7 +617,19 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -627,23 +641,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -655,15 +657,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
@@ -687,19 +693,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
@@ -711,31 +705,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
@@ -747,27 +729,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -779,6 +745,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -787,23 +761,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -819,19 +781,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -855,15 +817,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -879,7 +837,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
@@ -891,19 +849,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/vscode/">vscode</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
         </span>
         
         <span>
@@ -911,19 +857,23 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -935,19 +885,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -956,18 +898,6 @@
         
         <span>
             <a class="footer-post" href="/tags/visjs/">visjs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/词向量/">词向量</a>
         </span>
         
         <span>
@@ -995,15 +925,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sklearn/">sklearn</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/视频教程/">视频教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/李宏毅/">李宏毅</a>
+            <a class="footer-post" href="/tags/matplotlib/">matplotlib</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据可视化/">数据可视化</a>
         </span>
         
         <span>
@@ -1012,6 +942,78 @@
         
         <span>
             <a class="footer-post" href="/tags/d3js/">d3js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷/">问卷</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/离线/">离线</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷设计/">问卷设计</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
@@ -1084,9 +1086,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
                     @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
-                    <br/>
+                    <br>
                     <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
-                </div>
+                </a></div>
             </div>
         </div>
     </div>
