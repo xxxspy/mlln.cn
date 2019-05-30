@@ -272,14 +272,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
-                    李宏毅机器学习教程2：误差来自哪里
+                <a href="/2018/09/21/李宏毅机器学习教程23-3：强化学习(包括Qlearning)/">
+                    李宏毅机器学习教程23-3：强化学习(包括Qlearning)
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -290,8 +290,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
                 </a>
             </div>
             
@@ -365,8 +365,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
+                    李宏毅机器学习教程2：误差来自哪里
                 </a>
             </div>
             
@@ -428,6 +428,177 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/02/05/SVN教程：[5]部署django到SAE全过程/">
+                SVN教程：[5]部署django到SAE全过程
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年02月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>之前写过一篇在SAE上部署django的教程，现在返回来看犯了很多错误，所以在这里更正一篇，希望大家见谅，其实我也不是什么高手，难免有错误，下面看看在新浪sae上部署django的完整过程吧。</p>
+<ul>
+<li>先去新浪sae上登陆，找到你建立的应用，然后点击【创建一个版本】，如果你没有创建过版本，可能只有一个版本</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/1899a23eb13533fa86fe2d63aad3fd1f40345bf7.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>输入版本号，这个数字是任意的，我就按照版本3来做</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/a992e31f4134970a3a3bae6297cad1c8a6865df7.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>回到Deltatest文件夹，如果你看过前面的文章就知道这个文件夹是什么，如果你没有跟着做，你看一下这篇文章就知道：<a href="http://jingyan.baidu.com/article/6525d4b135bb1dac7d2e94ad.html看完这篇文章，右键单击这个文件夹，然后选择【svn更新】" target="_blank" rel="noopener">http://jingyan.baidu.com/article/6525d4b135bb1dac7d2e94ad.html看完这篇文章，右键单击这个文件夹，然后选择【svn更新】</a></li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/a6c7d7177f3e6709db48fbb239c79f3df9dc55f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>更新完毕以后，你会看到这里多了一个文件夹3，这个文件夹就跟sae上的版本3相同了。</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/718e25c79f3df8dcc67531dccf11728b461028f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>点击进入文件夹3，可以看到有这两个文件。</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/c87c6ecf3bc79f3dee1f5a7db8a1cd11738b2945.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>打开cmd命令窗口，我们先进入文件夹3，如图所示的命令：</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/9e7ce6dcd100baa1d4d2f9f64510b912c9fc2e45.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>接着，我们在该文件夹下面创建一个新工程，比如工程名称叫做Deltatest</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/cc506c8b4710b912d53f48b3c1fdfc0393452245.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>回到文件夹3，这里就会多了一个文件夹deltatest，双击进入deltatest文件夹</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/9304c888d43f87948101f663d01b0ef41ad53a45.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>这里面还有一个Deltatest文件夹<br>这是deltatest文件夹内的文件</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/a583631ed21b0ef432a02613dfc451da80cb3ef7.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/1a94b36eddc451daacbeb2a6b4fd5266d11632f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>我们将这两个文件剪切</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/aa59892bd40735fad1b8f0f49c510fb30e2408f7.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>复制到这里，也就是文件夹3下面</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/1f569482b9014a90afc0f8f0ab773912b21bee46.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>好了后面就简单了，我们要配置一下两个文件，第一个是index.wsgi文件，里面写这些内容：</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/6391e903918fa0ec88c3de40249759ee3d6ddb3c.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>第二个文件是config.yawm</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/9f6e190828381f30826237e4ab014c086f06f0c1.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>最后，提交一下</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/f7426d8da9773912ea023f2cfa198618367ae21c.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>注意点选【全部】，不然漏掉某些文件，你就失败了。</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/79b1e936afc3793140603c64e9c4b74543a91137.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<ul>
+<li>在浏览器输入你的app的网址，看看能不能出现django的欢迎界面吧！！有问题可以在下面留言奥。</li>
+</ul>
+<img src="/2015/02/05/SVN教程：[5]部署django到SAE全过程/dbf554ed2e738bd4d5690c7ca38b87d6267ff9f0.jpg" title="SVN教程：[5]部署django到SAE全过程">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/django/">#django</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/02/05/Python教程：[70]enumerate遍历列表/">
+                Python教程：[70]enumerate遍历列表
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年02月05日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>怎样遍历列表可能大家很少用enumerate，其实它的用处还挺大的，今天我们来举几个例子说明一下它跟别的遍历list方法有什么不同：</p>
+<ul>
+<li>创建一个列表，然后遍历它</li>
+</ul>
+<img src="/2015/02/05/Python教程：[70]enumerate遍历列表/d048adde9c82d158f9203f33820a19d8bd3e4256.jpg" title="Python教程：[70]enumerate遍历列表">
+<ul>
+<li>我们可以使用这样的方式遍历一个列表，但是缺点是无法读取索引index</li>
+</ul>
+<img src="/2015/02/05/Python教程：[70]enumerate遍历列表/bd7faf3533fa828b9bc7fb61ff1f4134960a5a08.jpg" title="Python教程：[70]enumerate遍历列表">
+<ul>
+<li>也可以使用索引的方法遍历，但写起来比较麻烦</li>
+</ul>
+<img src="/2015/02/05/Python教程：[70]enumerate遍历列表/a992e31f4134970a729776ad97cad1c8a6865d08.jpg" title="Python教程：[70]enumerate遍历列表">
+<ul>
+<li>使用enumerate就可以了，写法稍微简单了些</li>
+</ul>
+<img src="/2015/02/05/Python教程：[70]enumerate遍历列表/32bb9c8ba61ea8d3c2801286950a304e241f5856.jpg" title="Python教程：[70]enumerate遍历列表">
+<ul>
+<li>实际上enumerate返回的是一个enumerate对象</li>
+</ul>
+<img src="/2015/02/05/Python教程：[70]enumerate遍历列表/948bcfc8a786c91737e734bbcb3d70cf3ac75708.jpg" title="Python教程：[70]enumerate遍历列表">
+<ul>
+<li>上面的遍历相当于这样的写法</li>
+</ul>
+<img src="/2015/02/05/Python教程：[70]enumerate遍历列表/eab9044c510fd9f90d7634eb272dd42a2934a494.jpg" title="Python教程：[70]enumerate遍历列表">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1017,155 +1188,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/01/17/Python教程：[64]判断文件 文件夹/">
-                Python教程：[64]判断文件 文件夹
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年01月17日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>如何判断某个路径是不是存在、是不是文件夹、是不是文件？我们今天就来介绍一下判断文件、文件夹，同样也是用到了os.path模块，下面看看具体的例子：</p>
-<ul>
-<li>装载一下os模块，然后我们写一个路径，这个路径是真是存在的</li>
-</ul>
-<img src="/2015/01/17/Python教程：[64]判断文件%20文件夹/5f9e93b1cb134954fcd956e4544e9258d0094a28.jpg" title="Python教程：[64]判断文件 文件夹">
-<ul>
-<li>判断一下这个目录是不是文件夹，用isdir</li>
-</ul>
-<img src="/2015/01/17/Python教程：[64]判断文件%20文件夹/c87c6ecf3bc79f3dede45db0b8a1cd11738b29ed.jpg" title="Python教程：[64]判断文件 文件夹">
-<ul>
-<li>判断该路径是不是指向一个文件，用isfile</li>
-</ul>
-<img src="/2015/01/17/Python教程：[64]判断文件%20文件夹/9e7ce6dcd100baa1d529fe3b4510b912c9fc2eed.jpg" title="Python教程：[64]判断文件 文件夹">
-<ul>
-<li>判断一下该路径是不是绝对路径：用isabs</li>
-</ul>
-<img src="/2015/01/17/Python教程：[64]判断文件%20文件夹/b29f8282d158ccbf927b0bba1bd8bc3eb0354128.jpg" title="Python教程：[64]判断文件 文件夹">
-<ul>
-<li>判断一下，该路径是否存在：用exists</li>
-</ul>
-<img src="/2015/01/17/Python教程：[64]判断文件%20文件夹/cdfe7281800a19d8bdc53a8531fa828ba71e4628.jpg" title="Python教程：[64]判断文件 文件夹">
-<ul>
-<li>总结一下，os.path模块下的五个判断函数：</li>
-</ul>
-<img src="/2015/01/17/Python教程：[64]判断文件%20文件夹/d7c9ca3f8794a4c258265eab0cf41bd5ac6e39ed.jpg" title="Python教程：[64]判断文件 文件夹">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/01/15/spss简单因素分析的操作和结果分析方法/">
-                spss简单因素分析的操作和结果分析方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年01月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>因素分析是spss中一个重要的功能，他的作用是从多个变量中提取少数几个因子，达到减少指标的目的；有时候因素分析方法用在问卷编制中，可以从各个题项中提取中几个维度。下图看到就是我们要分析的数据，这里有x1–x8这8个变量需要进行因素分析。<br>工具/原料</p>
-<ul>
-<li>sps20.0<br>方法/步骤</li>
-</ul>
-<ul>
-<li>在菜单栏上执行：analyse–dimension reduction–factor ，打开了因素分析对话框</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/b17eca8065380cd783bec03ca144ad34588281ba.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>打开了因素分析对话框，将要分析的这8个变量放到variables框中，点击箭头按钮可以添加变量</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/21a4462309f790527e8625ef0cf3d7ca7acbd542.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>还是自因素分析的主对话框，点击descriptive按钮，打开描述统计的子对话框</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/fc1f4134970a304e7aadc22bd1c8a786c8175c57.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>在子对话框中，我们需要对因素分析是否合适进行检验，所以勾选如图所示的选项，点击continue返回到主对话框</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/9a504fc2d5628535cacbbff090ef76c6a7ef6333.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>还是在主对话框中，点击extration按钮，打开子对话框</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/8601a18b87d6277f20135fe928381f30e824fcda.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>在这个子对话框中，我们可以输出碎石图，这样可以更加直观的看到各个因素的特征根，对于碎石图的解释后面会有。点击continue，返回主对话框</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/ca1349540923dd541c63cab9d109b3de9d8248ca.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>在主对话框中，点击ok按钮，开始处理数据并输出结果</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/d009b3de9c82d1589c483460800a19d8bd3e421c.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>我们看到的第一个图就是KMO检验，如图所示，kmo值为0.6，这个值不是很理想，一般来说kmo大于0.7可以认为数据具有较好的相关性，因素分析的效果会好一些；当kmo值在0.5以下的时候，不适合做因素分析。接着我们看Bartlett检验，我们看sig值显著，说明应该拒绝变量相互独立的假设，这说明因素分析是合适的。</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/9358d109b3de9c829e98945e6c81800a18d84365.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>接着我们看碎石图，这个图的横轴是因素的序号，纵轴代表特征根，曲线的意思是，随着因素序号的增大，特征根迅速降低。后五个因素的特征根变化非常小，所以我们基本上认为得到三个因子是比较合适的。</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/e1fe9925bc315c60762d073e8db1cb13485477a2.jpg" title="spss简单因素分析的操作和结果分析方法">
-<ul>
-<li>最后看到的是因子载荷矩阵，从因子载荷矩阵中，我们可以知道各个因子在不同变量中的载荷，同时可以根据表格中的数据求出因子的计算公式我们举一个例子里计算第一个变量：ZX1=0884F1+0.385F2+0.12F3</li>
-</ul>
-<img src="/2015/01/15/spss简单因素分析的操作和结果分析方法/9e3df8dcd100baa1a68c2b6a4710b912c9fc2eba.jpg" title="spss简单因素分析的操作和结果分析方法">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1207,6 +1229,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/30/Tampermonkey开发浏览器插件快速入门教程/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/27/招聘心理学兼职学生主要负责eprime的程序代做/">招聘心理学兼职学生主要负责eprime的程序代做</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
             </li>
             
@@ -1238,14 +1268,6 @@
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1257,7 +1279,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1265,15 +1291,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -1294,14 +1324,6 @@
         
         <span>
             <a class="footer-post" href="/tags/VBA/">VBA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -1361,27 +1383,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/notebook/">notebook</a>
         </span>
         
         <span>
@@ -1393,6 +1403,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1401,11 +1423,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
@@ -1421,6 +1443,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1430,10 +1456,6 @@
         
         <span>
             <a class="footer-post" href="/tags/gui/">gui</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
@@ -1457,11 +1479,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1477,11 +1499,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1529,10 +1551,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/可视化/">可视化</a>
         </span>
         
@@ -1541,15 +1559,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -1562,6 +1572,26 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/招聘/">招聘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime代做/">eprime代做</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -1617,11 +1647,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1646,14 +1676,6 @@
         
         <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>

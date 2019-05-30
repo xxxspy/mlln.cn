@@ -272,14 +272,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
-                    李宏毅机器学习教程2：误差来自哪里
+                <a href="/2018/09/21/李宏毅机器学习教程23-3：强化学习(包括Qlearning)/">
+                    李宏毅机器学习教程23-3：强化学习(包括Qlearning)
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -290,8 +290,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
                 </a>
             </div>
             
@@ -365,8 +365,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
+                    李宏毅机器学习教程2：误差来自哪里
                 </a>
             </div>
             
@@ -428,6 +428,103 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/05/30/Tampermonkey开发浏览器插件快速入门教程/">
+                Untitled
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019年05月30日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Tampermonkey是一个开发JavaScript脚本的浏览器插件, 它帮助我们使用js来控制浏览器中的页面, 提供页面上的额外功能(比如下载视频), 扩展浏览器的功能(比如vpn代理)等。我们都知道不管是谷歌浏览器还是火狐浏览器, 他们都支持浏览器插件的开发, 但是他们对开发者并不友好, 也许你只想向页面添加一个临时用的小按钮, 用Tampermonkey只需要新建一个脚本写简单代码, 但是如果你从头开始写插件, 那就很麻烦了, 这就是Tampermonkey存在的意义。</p>
+<h3 id="安装Tempermonkey"><a href="#安装Tempermonkey" class="headerlink" title="安装Tempermonkey"></a>安装Tempermonkey</h3><p>安装它的方法很简单, 比如chrome浏览器只需要在chrome web store中搜索并点击安装就行, 这里不再赘述。</p>
+<p>安装好了以后可以在浏览器里看到这个插件:</p>
+<p><img src="images/tempermonkey-logo.png"></p>
+<p>点击这个按钮, 就可以看到所有的可操作菜单:</p>
+<p><img src="images/tm-menu.png"></p>
+<h3 id="新建脚本"><a href="#新建脚本" class="headerlink" title="新建脚本"></a>新建脚本</h3><p>为了开发自己的小工具, 我们需要新建一个脚本, 可以在上图所示的菜单中选择”添加新脚本”。</p>
+<p>接着你会看到一个脚本编辑器就打开了。</p>
+<p><img src="images/tampermonkey-editor.png"></p>
+<h3 id="脚本的基本设置"><a href="#脚本的基本设置" class="headerlink" title="脚本的基本设置"></a>脚本的基本设置</h3><p>在下面的代码部分, 我们有一些需要填写的关键字段, 我们在备注中有解释每个字段的意义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// ==UserScript==</span><br><span class="line">// @name         脚本的名称</span><br><span class="line">// @namespace    mlln.cn(脚本的命名空间)</span><br><span class="line">// @version      0.1(版本号)</span><br><span class="line">// @description  try to take over the world!(描述)</span><br><span class="line">// @author       You(作者名称)</span><br><span class="line">// @match        *study.163.com/*(脚本运行在哪些网址, 支持正则表达式)</span><br><span class="line">// @require       https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js(脚本依赖)</span><br><span class="line">// ==/UserScript==</span><br></pre></td></tr></table></figure>
+<p>正如你所见, 我的插件指定运行在”study.163.com”这个网址上, 其他网页不会启动。</p>
+<p>并且, 值得注意的是, 我习惯使用jquery, 所以我在require字段指定了可以调用的jquery库, 这样在我写的插件脚本中可以使用$符号进行元素查询和操作了, 是不是很方便!</p>
+<h3 id="脚本主函数"><a href="#脚本主函数" class="headerlink" title="脚本主函数"></a>脚本主函数</h3><p>你创建了新的脚本以后就可以看到这个空的主函数, 它是插件加载时候第一个运行的函数, 你的插件的所有功能都可以从这个主函数开始构建。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Your code here...</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h3><p>为了降低入门门槛, 我们先来开发一个简单的功能, 就是在你打开”study.163.com”这个网页的时候, 插件弹出一个”helloworld”问候, 表示我们的插件可以运行了。</p>
+<p>具体的代码很简单:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line"></span><br><span class="line">    alert(<span class="string">"Hello World!"</span>);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>效果见下图:</p>
+<p><img src="images/tm-helloworld.png"></p>
+<h3 id="抓取页面所有链接"><a href="#抓取页面所有链接" class="headerlink" title="抓取页面所有链接"></a>抓取页面所有链接</h3><p>现在我们想要抓取这个网页上的所有链接, 我们可以使用jquery帮助我们实现这个功能:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    'use strict'</span>;</span><br><span class="line">    <span class="keyword">let</span> hrefs = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">let</span> aa = <span class="string">`$('a');</span></span><br><span class="line"><span class="string">    aa.each(function(i, ele)&#123;</span></span><br><span class="line"><span class="string">        hrefs.push($`</span>(ele).attr(<span class="string">'href'</span>))</span><br><span class="line">&#125;)();</span><br><span class="line">    <span class="built_in">console</span>.log(hrefs);</span><br></pre></td></tr></table></figure>
+<p>注意, `$符号需要先声明才可以使用; 我们可以使用console.log来输出我们想看到的结果。</p>
+<p>但是不幸的是, 我们的脚本并没有输出我们想要的结果, 只给我输出了一个链接, 这显然是不对的, 脚本的问题在于, 页面需要加载时间较长, 但是脚本运行较快, 导致页面还没完全加载就已经执行完了脚本, 所以我们可以通过延时执行脚本来解决这个问题:</p>
+<p><code>`</code>js<br>(function() {<br>    ‘use strict’;<br>    let $<code>= window.</code>$;<br>    //console.log($<code>);
+    setTimeout(function(){
+    let hrefs = new Array();
+    let aa =</code>$(‘a’);<br>    aa.each(function(i, ele){<br>        hrefs.push($`</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>Templermonkey还有很多功能需要探索, 并且它可以整合chrome和firefox的一些插件的接口, 这些我们都会在以后的教程中接着跟大家分享, 这篇文章仅仅是一个快速入门的介绍性质的教程。</p>
+<p>另外想要做一个好的插件, 其实主要的技能是js的功底!</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="Tampermonkey开发浏览器插件快速入门教程.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/05/27/招聘心理学兼职学生主要负责eprime的程序代做/">
+                招聘心理学兼职学生主要负责eprime的程序代做
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019年05月27日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>因为本人平时经常替广大毕业学生代做eprime实验程序, 积累了大量的客户,<br>业务量逐渐增大, 所以需要招聘一些代做eprime程序的学生, 一般一个程序100-500元不等。<br>如果你做过心理学实验程序, 平时有一些业余时间, 可以与我联系, 在我这里可以赚点零花钱的同时, 学会更多eprime技术,<br>结交志同道合的朋友。</p>
+        </div>
+        <a href="/2019/05/27/招聘心理学兼职学生主要负责eprime的程序代做/" class="read-more">Read More</a>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/心理学/">#心理学</a> <a href="/tags/招聘/">#招聘</a> <a href="/tags/eprime代做/">#eprime代做</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -714,76 +811,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/15/Mplus安装和入门一文搞定/">
-                Mplus教程-Mplus安装和入门一文搞定
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019年01月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p><span></span><br>
-        </p></div>
-        <a href="/2019/01/15/Mplus安装和入门一文搞定/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/mplus/">#mplus</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/11/stata教程15-回归变动的检验/">
-                stata教程15-回归变动的检验
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019年01月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p><span></span><br>
-        </p></div>
-        <a href="/2019/01/11/stata教程15-回归变动的检验/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/stata/">#stata</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -825,6 +852,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/30/Tampermonkey开发浏览器插件快速入门教程/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/27/招聘心理学兼职学生主要负责eprime的程序代做/">招聘心理学兼职学生主要负责eprime的程序代做</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
             </li>
             
@@ -856,14 +891,6 @@
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -875,7 +902,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -883,15 +914,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -912,14 +947,6 @@
         
         <span>
             <a class="footer-post" href="/tags/VBA/">VBA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -979,27 +1006,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/notebook/">notebook</a>
         </span>
         
         <span>
@@ -1011,6 +1026,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1019,11 +1046,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
@@ -1039,6 +1066,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1048,10 +1079,6 @@
         
         <span>
             <a class="footer-post" href="/tags/gui/">gui</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
@@ -1075,11 +1102,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1095,11 +1122,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1147,10 +1174,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/可视化/">可视化</a>
         </span>
         
@@ -1159,15 +1182,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -1180,6 +1195,26 @@
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/招聘/">招聘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime代做/">eprime代做</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -1235,11 +1270,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1264,14 +1299,6 @@
         
         <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>

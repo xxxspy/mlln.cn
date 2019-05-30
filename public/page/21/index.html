@@ -272,14 +272,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
-                    李宏毅机器学习教程2：误差来自哪里
+                <a href="/2018/09/21/李宏毅机器学习教程23-3：强化学习(包括Qlearning)/">
+                    李宏毅机器学习教程23-3：强化学习(包括Qlearning)
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
-                    李宏毅机器学习教程13：无监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -290,8 +290,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
+                    李宏毅机器学习教程17：深度生成模型
                 </a>
             </div>
             
@@ -365,8 +365,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
-                    李宏毅机器学习教程23-2：Policy-Gradient
+                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
+                    李宏毅机器学习教程2：误差来自哪里
                 </a>
             </div>
             
@@ -428,6 +428,121 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/06/26/gitlab配置和基本使用方法/">
+                gitlab配置和基本使用方法(写给测试用)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月26日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>打开<a href="http://123.56.79.214:10080/users/sign_in" target="_blank" rel="noopener">gitlab</a>，注册一个账户。</p>
+<p>记住账号，并把账号发送给管理员，让管理员给你设置权限。</p>
+<p>打开网址查看项目<code>http://123.56.79.214:10080/ydsun/auto_report_client</code>，如果你看不到，说明你还没有权限。</p>
+<h2 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h2><p>在项目<a href="http://123.56.79.214:10080/ydsun/auto_report_client" target="_blank" rel="noopener">主页</a>，找到下载按钮，下载源码。下载得到一个zip压缩包，把压缩包解压到你想要放置源码的地方。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>打开项目<a href="http://123.56.79.214:10080/ydsun/auto_report_client" target="_blank" rel="noopener">主页</a>，在主页上可以看安装的过程。</p>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/gitlab/">#gitlab</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/06/22/报告模板书写规范培训/">
+                报告文字模板书写规范培训
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月22日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <blockquote>
+<p>注意，文章中所有 <code>{ {     } }</code> <code>{ %     % }</code> 中间没有空格</p>
+</blockquote>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>用<code>{ {     } }</code>来修饰变量，内部的值会被渲染成文本。比如 <code>我有{ { 1 + 1 } }个苹果</code>会被渲染成 <code>我有2个苹果</code>。</p>
+<p>通常我们会提前设置好一些变量，比如，我们在写模板的时候，为了方便起见，可以先设<code>pro_code=44</code>，即广东省的省代码，这些变量的设置可以在word的常量表里。那么我们在需要用到省代码的地方，可以写成<code>{ { pro_code } }</code>，如此便能在不同的省报告中使用不同的省代码了。</p>
+<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><p>我们除了可以设置一些常量(如<code>pro_code</code>)之外，我们还可以计算一些临时变量。比如<code>a = 500*600</code>，这样，我们就得到一个变量2，他的值为500和600的乘积。除此以外，我们更常用的是如下这种形式的计算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a2=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(2)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br></pre></td></tr></table></figure>
+<p>我们分别来说一下其中用到的一些方法。</p>
+<h3 id="Variable-和-table"><a href="#Variable-和-table" class="headerlink" title="Variable 和 table"></a>Variable 和 table</h3><p>表示变量的符号。上面的例子中，等号后面的式子，开头一个V表示<code>variable</code>，这是为了识别数据库中的变量。后面的参数就是变量名。<code>Variabel</code> 后面的 <code>table</code> 指明变量来自于哪一个表。为了方便起见，这两种写法是等价的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V(&quot;maths_level&quot;)|table(&quot;4stu&quot;) &lt;==&gt; V(&quot;maths_level&quot;, &quot;4stu&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><p><code>select</code>是对数据的选择。上面的例子指明了我们的数据限定在一个省。如果要计算全国数据，直接去掉select及其参数即可。如果需要使用多个筛选条件，比如要选择广东省的男生数据，那么可以用逗号隔开两个条件，写成如下形式：(province 和 gender都是数据库中的变量，他们都需要用引号包裹起来)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select(&#123;&quot;province&quot;:pro_code, &quot;gender&quot;:1&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="which"><a href="#which" class="headerlink" title="which"></a>which</h3><p><code>which</code>只有在计算百分比的时候有用，因为他指的是计算谁的百分比。上例中计算的是<code>maths_level</code>为2的百分比。</p>
+<h3 id="percent-amp-mean"><a href="#percent-amp-mean" class="headerlink" title="percent &amp; mean"></a>percent &amp; mean</h3><p>这两个函数都是指明计算方法，顾名思义，前者计算百分比，后者计算平均值。</p>
+<h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><p>顾名思义，<code>format</code>是用来描述数据格式的。参数<code>decimal</code>表明小数位数，<code>multi</code>表明乘数，按照上例来说，percent方法的计算结果都在(0,1)之间，所以我们让结果乘以100，保留1位小数, 另外再加上一个百分号。写法就是：(decimal、multi和suffix的前后顺序不影响结果)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100,&quot;suffix&quot;:&quot;%&quot;&#125;)</span><br></pre></td></tr></table></figure>
+<p>其实你可以省略format，这时候系统会使用默认的配置，保留一位小数。百分比的结果会乘以100以后再保留一位小数。</p>
+<p>有一个问题需要指出，就是你在计算一个变量的时候，什么时候保留小数位数你得自己设置。例如，如下两种写法是不同的：</p>
+<h4 id="第一种写法：先保留一位小数，再相加"><a href="#第一种写法：先保留一位小数，再相加" class="headerlink" title="第一种写法：先保留一位小数，再相加"></a>第一种写法：先保留一位小数，再相加</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a2=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(2)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line">a3=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(3)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line">aa=a2+a3</span><br></pre></td></tr></table></figure>
+<h4 id="第二种写法：先相加再保留1位小数"><a href="#第二种写法：先相加再保留1位小数" class="headerlink" title="第二种写法：先相加再保留1位小数"></a>第二种写法：先相加再保留1位小数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a2=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(2)|percent</span><br><span class="line">a3=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(3)|percent</span><br><span class="line">aa= (a2+a3)|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="groupby"><a href="#groupby" class="headerlink" title="groupby"></a>groupby</h3><p><code>groupby</code>是将数据分组，分组后再计算，这样每个组都会得到一个结果。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V(&quot;maths&quot;,&quot;4stu&quot;)|groupby(&quot;gender&quot;)|mean</span><br></pre></td></tr></table></figure>
+<p>这是计算两种性别下maths的平均值。</p>
+<h3 id="mi-amp-ma"><a href="#mi-amp-ma" class="headerlink" title="mi &amp; ma"></a>mi &amp; ma</h3><p>经常配合groupby使用，求最小值和最大值。因为groupby可以计算得到多个值，在多个值里面选择最大值和最小值就用<code>ma</code>和<code>mi</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V(&quot;maths&quot;,&quot;4stu&quot;)|groupby(&quot;gender&quot;)|mean|mi</span><br></pre></td></tr></table></figure>
+<h2 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h2><p>逻辑判断语句的基本写法是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123; % if a==b % &#125;</span><br><span class="line">a等于b</span><br><span class="line">&#123; % elif a&gt;b % &#125;</span><br><span class="line">a比b大&#123; &#123; a - b &#125; &#125;</span><br><span class="line">&#123; % else % &#125;</span><br><span class="line">a比b小&#123; &#123; b-a &#125; &#125;</span><br><span class="line">&#123; % end % &#125;</span><br></pre></td></tr></table></figure>
+<p>注意，逻辑判断语句用到的符号是<code>{ % ... % }</code>。其中 if 和 end 标明语句的开始和结尾，中间可以用elif增加判断语句，它是可选的，你可以不使用它，只用<code>if ... else ... end</code>, 你也可以用多个elif。还有就是，虽然我们写了很多行，但是最终渲染得到的内容是没有换行的，也就是任何换行符都会被删除。</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>在报告中，经常用到非常复杂的计算。例如看下面在报告模板中的真实写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">======Variables=======</span><br><span class="line"></span><br><span class="line">a2=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(2)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line"></span><br><span class="line">a3=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(3)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line"></span><br><span class="line">a4=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(4)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line"></span><br><span class="line">pa=a2+a3+a4</span><br><span class="line"></span><br><span class="line">a2=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|which(2)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line"></span><br><span class="line">a3=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|which(3)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line"></span><br><span class="line">a4=V(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|which(4)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br><span class="line"></span><br><span class="line">qga=a2+a3+a4</span><br><span class="line">=======Content========</span><br><span class="line"></span><br><span class="line">&#123; % if pa &gt; qga % &#125;</span><br><span class="line">高于全国均值&#123; &#123; pa - qga &#125; &#125;</span><br><span class="line">&#123; % elif pa == qga % &#125;</span><br><span class="line">等于全国均值</span><br><span class="line">&#123; % else % &#125;</span><br><span class="line">低于全国均值&#123; &#123; qga - pa &#125; &#125;</span><br><span class="line">&#123; % end % &#125;</span><br></pre></td></tr></table></figure>
+<p>其中有两个特殊的行<code>======Variables=======</code>和<code>=======Content========</code>，他们是分隔符，在两行中间可以定义各种用到的变量，这些变量不会被渲染。而content下面的内容是真正会被渲染的部分，但是这部分又用到了上面定义的变量。</p>
+<hr>
+<h1 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h1><hr>
+<h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><p>word中的图表都是由数据序列构成的，数据序列可以看成是一列数值，比如<code>(1, 2, 3, 4)</code>就是一个数据序列，我们的系统中，用如下方法表达一个序列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br></pre></td></tr></table></figure>
+<p>以上代码中，我们只使用选择了某个省的数据，指明了变量maths_level，并没有指明which，这样就会返回maths_level的所有水平的百分比。百分比会按照水平值从小到大排列，最终的结果就类似于<code>(1.2, 3.4, 90.0, 5.2)</code></p>
+<p>还有一种方法是使用groupby, 它的作用是将数据分组。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|groupby(&quot;gender_new&quot;)|which(1)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br></pre></td></tr></table></figure>
+<p>以上代码中，groupby指明数据按照性别分组，这样计算结果会得到类似这样的结果<code>(90.0, 5.2)</code>，两个数分别表示男生和女生的maths_level为1的百分比。</p>
+<p>另有一种特殊的情况是，一个数据序列由多用算法计算得到，比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v(&quot;maths_level&quot;)|table(&quot;4stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(1)|groupby(&quot;school_loc_new&quot;)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)| merge |v(&quot;maths_level&quot;)|table(&quot;8stu&quot;)|select(&#123;&quot;province&quot;:pro_code&#125;)|which(1)|groupby(&quot;school_loc_new&quot;)|percent|format(&#123;&quot;decimal&quot;:1,&quot;multi&quot;:100&#125;)</span><br></pre></td></tr></table></figure>
+<p>以上代码使用了merge算法，将前后两种计算结果合并在一起构成一个序列。merge之前计算结果为四年级的数据，如<code>(4.5, 6.5, 2.4)</code>，之后计算的是八年级的数据，结果为<code>(55.4, 34.2, 42.3)</code>，合并之后为<code>(4.5, 6.5, 2.4, 55.4, 34.2, 42.3)</code></p>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/报告系统/">#报告系统</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1554,131 +1669,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/01/08/探索过程数据在全球大规模机器考试中的应用/">
-                探索过程数据在全球大规模机器考试中的应用
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017年01月08日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            
-
-	<div class="row">
-    <embed src="/pdfs/探索过程数据在全球大规模机器考试中的应用.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/测量心理学/">#测量心理学</a> <a href="/tags/PISA/">#PISA</a> <a href="/tags/ETS/">#ETS</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/">
-                SPSS实例：[2]卡方检验百分比差异
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>今天讲的卡方检验只是多种卡方检验中的一种，你还看一去看我最新的几篇文章讲分层卡方、相关样本卡方、kappa一致性系数等，这里【<a href="http://jingyan.baidu.com/season/33651?pn=26】" target="_blank" rel="noopener">http://jingyan.baidu.com/season/33651?pn=26】</a></p>
-<ul>
-<li>第一步是录入数据，我们录入数据的方式如下图：class是分组变量，0值代表A组，1代表B组，effect是是否敏感变量，0代表不敏感，1代表敏感，num是频次，也就是各个组的个案数目。你可以比对上面的交叉表来看看spss数据结构</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/5beeba0f4bfbfbed4aedf0be79f0f736aec31f78.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li>接着，我们要对数据进行加权，很多人问为什么要加权，实际上我们采用上图所示的数据结构就决定了我们必须用频次进行加权，这样可以让上面的那种数据结构表示呈交叉表。如果没有加权的话，会出现错误，我们待会会看到一个错误的结果，就是没有加权的结果。加权的方法是data–weight cases</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/2f9cbdcc7cd98d10692ecaf0203fb80e7aec903e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li>将频次放入变量框，然后点击ok按钮，加权成成功</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/3790312eb9389b503d0526938435e5dde6116e3e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li>接着在菜单栏上执行：analyse–descriptive statistics–crosstabs，打开交叉表对话框</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/08b68e529822720e2134243b7acb0a46f31fab3e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li>在这个对话框中，我们需要将行和列变量放入各自的框中，注意看行和列变量不要弄颠倒了，回顾上面的数据结构，你自己对比一下，哪一个是行变量</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/8759287adab44aedd3fa7825b21c8701a08bfb79.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/263e802f0708283818ba1ad5b999a9014d08f179.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li>点击statistic按钮，设置卡方统计量</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/246cca2a2834349b41fca844c8ea15ce37d3be3e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/b74124f33a87e95079ed35ad11385343faf2b43e.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li>点击cells按钮，选择输出的参数</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/62667cd0f703918fbc66fb0b503d269758eec479.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/3c2c4bfbb2fb431648a8bcbb21a4462308f7d379.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li>最后出现的是卡方检验的结果了，第一个表格是交叉表，显示了期望值和实际值</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/246cca2a2834349b41b1a844c8ea15ce37d3be79.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<ul>
-<li><p>接着是卡方检验表，这是最关键的结果。我们根据样本量的大小来决定看哪一行的指标</p>
-</li>
-<li><p>假如我们的总样本数N》40且交叉表中每一个cells中频数均大于5，卡方检验的结果是精确的，可以参考第一行的指标，也就是pearson-chi-square（显然我们的案例满足这个条件）sig值小于.05，说明差异显著，说明两组病人对药物的反应是不同的；假如样本总量N&lt;40，或者cells中有一个频数小于5，我们只能看校正后的卡方值，也就是第二行数据，或者我们看fisher精确概率法获得的值，也就是第四行，这两行都得到了显著的结果；</p>
-</li>
-</ul>
-<img src="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/3bb22487e950352a8bd6e3c95243fbf2b3118b79.jpg" title="SPSS实例：[2]卡方检验百分比差异">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1720,6 +1710,14 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/05/30/Tampermonkey开发浏览器插件快速入门教程/">Untitled</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/27/招聘心理学兼职学生主要负责eprime的程序代做/">招聘心理学兼职学生主要负责eprime的程序代做</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
             </li>
             
@@ -1751,14 +1749,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/11/stata教程15-回归变动的检验/">stata教程15-回归变动的检验</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1770,7 +1760,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1778,15 +1772,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -1807,14 +1805,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/VBA/">VBA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -1874,27 +1864,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/notebook/">notebook</a>
         </span>
         
         <span>
@@ -1906,6 +1884,18 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1914,11 +1904,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
         </span>
         
         <span>
@@ -1934,6 +1924,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1943,10 +1937,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/gui/">gui</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
@@ -1970,11 +1960,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1990,11 +1980,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -2042,10 +2032,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/可视化/">可视化</a>
         </span>
         
@@ -2054,15 +2040,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
         </span>
         
         <span>
@@ -2075,6 +2053,26 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/ETS/">ETS</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/招聘/">招聘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime代做/">eprime代做</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -2130,11 +2128,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/NLP/">NLP</a>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -2159,14 +2157,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/决策树/">决策树</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ORC/">ORC</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>
