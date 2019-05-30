@@ -278,20 +278,20 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
-                    李宏毅机器学习教程12：半监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
+                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
                 </a>
             </div>
             
             <div class="archive-post">
                 <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
                     李宏毅机器学习教程14：无监督学习-词嵌入模型
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
-                    李宏毅机器学习教程17：深度生成模型
                 </a>
             </div>
             
@@ -311,14 +311,14 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
-                    tensorflow教程02-计算图及其实践
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
-                    tensorflow教程03-入门必知数据模型和相关概念
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
                 </a>
             </div>
             
@@ -428,77 +428,6 @@
         <!--Title and Logo-->
         <section class="main">
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/06/19/python教程：[75]HTMLParser采集网页数据/">
-                python教程：[75]HTMLParser采集网页数据
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年06月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>HTMLParser是python自带的处理html文件的模块，用起来非常简单，但很有实用价值，下面我们通过一个简单的例子来说明它的工作机制，然后对它所包含的所有方法进行一个说明。</p>
-<ul>
-<li>先看一个简单的例子，我们先引入HTMLParser，然后声明一个类，继承自HTMLPaerser，然后定义了一个方法，这个方法继承自HTMLParser</li>
-</ul>
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/5beeba0f4bfbfbedc8be6c497bf0f736aec31fe5.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<ul>
-<li>这一段代码的运行结果是：从结果中我们可以看到feed方法是将要处理的html字符串传递给HTMLParser，处理的过程是从前到后逐个处理html文件的标签，当遇到一个标签的时候，就调用handle_starttag方法，我们写的这个方法就是将tag名打印出来，所以就出现了下面这个结果：</li>
-</ul>
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/718e25c79f3df8dce066caa7ce11728b47102869.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<ul>
-<li><p>feed()和handle_starttag()已经说了，这里不再重复</p>
-</li>
-<li><p>handle_endtag()：处理结束标签，比如就是一个结束标签，当遇到结束标签的时候调用该方法</p>
-</li>
-<li><p>handle_data():处理数据，比如<a>这是数据</a>，“这是数据”就是data，当遇到data的时候调用该方法。</p>
-</li>
-<li><p>handle_entityref()：处理“&gt;”“&#62;”“&#x3E;”这样的字符串，他们各有自己指代的字符，处理的方法是使用name2codepoint将其转换，就可以知道gt原来是&gt;的意思</p>
-</li>
-</ul>
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/b25aae51f81986184ee3a9b249ed2e738bd4e625.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<img src="/2016/06/19/python教程：[75]HTMLParser采集网页数据/29790130e924b89921983f0e6d061d950a7bf625.jpg" title="python教程：[75]HTMLParser采集网页数据">
-<ul>
-<li><p>handle_charref()处理十进制或十六进制“&#x3E;”这样的字符串，可以将其转换为&amp;gt</p>
-</li>
-<li><p>handle_comment()处理<!--comment-->内的内容</p>
-</li>
-<li><p>handle_decl()处理html文档类型声明，例如&lt;!coctype html&gt;</p>
-</li>
-<li><p>大部分方法都列在上面了，还有一些不常用就没有写，这些相信已经够你用了。</p>
-</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
                 
 <div class="post">
 
@@ -1162,6 +1091,66 @@
 
 </div>
                     
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/06/01/Excel2013：[12]公式的自动计算和手动计算/">
+                Excel2013：[12]公式的自动计算和手动计算
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年06月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>假如你的工作表公式比较多，假如你修改一个数据，大量公式就要重新计算，那么你需要这篇文章，你需要将公式的自动计算设置成手动计算，修改数据以后，按下F9就能计算，下面是具体的教程：</p>
+<ul>
+<li>我们点击文件选项，打开开始页面</li>
+</ul>
+<img src="/2016/06/01/Excel2013：[12]公式的自动计算和手动计算/1899a23eb13533faa4f4cf34aad3fd1f41345b2e.jpg" title="Excel2013：[12]公式的自动计算和手动计算">
+<ul>
+<li>在这里，找到选项按钮，点击</li>
+</ul>
+<img src="/2016/06/01/Excel2013：[12]公式的自动计算和手动计算/00a82701213fb80e8e783dcd34d12f2eb83894c4.jpg" title="Excel2013：[12]公式的自动计算和手动计算">
+<ul>
+<li>在公式选项下，找到工作簿计算：自动重算、手动重算，按照你的需要自己进行切换</li>
+</ul>
+<img src="/2016/06/01/Excel2013：[12]公式的自动计算和手动计算/55a628d12f2eb93861c426e8d7628535e4dd6fc4.jpg" title="Excel2013：[12]公式的自动计算和手动计算">
+<ul>
+<li>或者你还可以在公式标签下，设置计算选项，取消勾选【自动】</li>
+</ul>
+<img src="/2016/06/01/Excel2013：[12]公式的自动计算和手动计算/b87985504fc2d56278a18cf7e51190ef77c66cc4.jpg" title="Excel2013：[12]公式的自动计算和手动计算">
+<ul>
+<li>在你修改了原数据以后，需要按下F9才能计算公式</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
         </section>
     </div>
 </div>
@@ -1219,10 +1208,6 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/03/06/hello-world/">Hello World</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
             </li>
             
@@ -1240,6 +1225,10 @@
             
             <li>
                 <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/15/Mplus安装和入门一文搞定/">Mplus教程-Mplus安装和入门一文搞定</a>
             </li>
             
         </ul>
@@ -1273,6 +1262,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
@@ -1281,19 +1274,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
         </span>
         
         <span>
@@ -1329,18 +1318,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/人工智能/">人工智能</a>
         </span>
         
@@ -1349,7 +1326,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1365,15 +1354,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/git/">git</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/gensim/">gensim</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1417,10 +1406,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1430,6 +1415,10 @@
         
         <span>
             <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
         <span>
@@ -1445,15 +1434,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/数据采集/">数据采集</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/淘宝/">淘宝</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1489,11 +1478,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
         </span>
         
         <span>
@@ -1537,15 +1526,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
         <span>
@@ -1557,15 +1546,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/lsa/">lsa</a>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+            <a class="footer-post" href="/tags/ETS/">ETS</a>
         </span>
         
         <span>
@@ -1649,7 +1638,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
         </span>
         
     </ul>
