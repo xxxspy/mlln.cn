@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="python+mongodb生态坏境部署和上手体验">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>python+mongodb生态坏境部署和上手体验 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                python+mongodb生态坏境部署和上手体验
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="python+mongodb生态坏境部署和上手体验"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2019年06月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>Python是一种功能强大的编程语言，用于开发社区中的许多不同类型的应用程序。许多人都知道它是一种灵活的语言，可以处理任何任务。</p>
+<p>那么，如果我们复杂的Python应用程序需要一个与语言本身一样灵活的数据库呢？</p>
+<p>这就是NoSQL，特别是MongoDB的用武之地。</p>
+<p>在这篇文章里, 我系统的介绍了mongodb的安装部署, 可视化管理, python相关库的安装和基本用法。</p>
+<a id="more"></a>
+<h3 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h3><ul>
+<li>windows10</li>
+<li>python3.6</li>
+</ul>
+<h3 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h3><ul>
+<li>下载地址: <a href="https://www.mongodb.com/download-center/community?jmp=docs" target="_blank" rel="noopener">https://www.mongodb.com/download-center/community?jmp=docs</a></li>
+<li>下载之后双击就能安装, 和安装qq一样简单</li>
+</ul>
+<p><img src="images/install-finish.png"></p>
+<ul>
+<li>mongodb安装完成以后, 你会得到一个compass, 它是用于可视化管理数据库的, 并且在桌面上已经为你创建好了一个compass快捷方式, 打开mongodb compass,<br>你会看到一个登录界面, 这个界面的默认参数都不要改, 直接点击connect就可以链接上你本地的数据库:</li>
+</ul>
+<p><img src="images/compass-logon.png" width="70%"></p>
+<h3 id="使用compass创建数据库和文档集"><a href="#使用compass创建数据库和文档集" class="headerlink" title="使用compass创建数据库和文档集"></a>使用compass创建数据库和文档集</h3><ul>
+<li><p>使用compass创建一个名为ip_poll的数据库</p>
+</li>
+<li><p>点击创建</p>
+</li>
+</ul>
+<p><img src="images/create-database.png"></p>
+<ul>
+<li>填写数据库名称, 并且你需要填写一个文档集名称, 只有填写了文档集名称才能为你创建数据库, 因为本质上, mongodb中的数据库只是一个”分组”的概念, 也就是文档集的分组, 如果没有文档集, 也就没有所谓的组。</li>
+</ul>
+<p><img src="images/create-database-infos.png"></p>
+<ul>
+<li>创建完成以后, 你就可以看到, 界面的左侧是数据库列表, 列表展开就是文档集列表, 界面右侧可以看到具体信息:</li>
+</ul>
+<p><img src="images/compass-show-collections.png"></p>
+<h3 id="安装和使用PyMongo"><a href="#安装和使用PyMongo" class="headerlink" title="安装和使用PyMongo"></a>安装和使用PyMongo</h3><p>Pymongo是mongodb开发团队为python提供的sdk, 所以为了在python中使用mongo, 我们最好是从pymongo开始学习。</p>
+<ul>
+<li>通过pip安装PyMongo</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install pymongo</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Collecting pymongo
+  Downloading https://files.pythonhosted.org/packages/c7/af/37efccd56d4d2498240eed09587394e27c5900238f3dc46715844385c202/pymongo-3.8.0-cp36-cp36m-win_amd64.whl (321kB)
+Installing collected packages: pymongo
+Successfully installed pymongo-3.8.0
+
+</div>
+
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+  Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.verifiedhttpsconnection object at 0x000002132815c160>: Failed to establish a new connection: [Errno 11002] getaddrinfo failed',)': /packages/c7/af/37efccd56d4d2498240eed09587394e27c5900238f3dc46715844385c202/pymongo-3.8.0-cp36-cp36m-win_amd64.whl
+  Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.verifiedhttpsconnection object at 0x000002132815ccc0>: Failed to establish a new connection: [Errno 11002] getaddrinfo failed',)': /packages/c7/af/37efccd56d4d2498240eed09587394e27c5900238f3dc46715844385c202/pymongo-3.8.0-cp36-cp36m-win_amd64.whl
+  Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.verifiedhttpsconnection object at 0x0000021328164358>: Failed to establish a new connection: [Errno 11002] getaddrinfo failed',)': /packages/c7/af/37efccd56d4d2498240eed09587394e27c5900238f3dc46715844385c202/pymongo-3.8.0-cp36-cp36m-win_amd64.whl
+  Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.verifiedhttpsconnection object at 0x0000021328164400>: Failed to establish a new connection: [Errno 11002] getaddrinfo failed',)': /packages/c7/af/37efccd56d4d2498240eed09587394e27c5900238f3dc46715844385c202/pymongo-3.8.0-cp36-cp36m-win_amd64.whl
+  Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.verifiedhttpsconnection object at 0x0000021328164550>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed',)': /packages/c7/af/37efccd56d4d2498240eed09587394e27c5900238f3dc46715844385c202/pymongo-3.8.0-cp36-cp36m-win_amd64.whl
+You are using pip version 19.0.3, however version 19.1.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+</pip._vendor.urllib3.connection.verifiedhttpsconnection></pip._vendor.urllib3.connection.verifiedhttpsconnection></pip._vendor.urllib3.connection.verifiedhttpsconnection></pip._vendor.urllib3.connection.verifiedhttpsconnection></pip._vendor.urllib3.connection.verifiedhttpsconnection></div>
+
+<ul>
+<li>快速入门pymongo</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引入客户端类</span></span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"><span class="comment"># 实例化, 这个过程就是与本地的mongodb建立链接</span></span><br><span class="line"><span class="comment"># 服务器地址是"localhost", 端口是默认的"27017"</span></span><br><span class="line">client = MongoClient()</span><br></pre></td></tr></table></figure>
+<p>当然你还可以使用下面两种可选方式建立链接, 效果和上面是一样的:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client = MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client = MongoClient(<span class="string">'mongodb://localhost:27017'</span>)</span><br></pre></td></tr></table></figure>
+<p>获取数据库对象, 比如我们上面创建了一个”ip_pool”数据库:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ipp = client.ip_pool</span><br><span class="line">ipp</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'ip_pool')
+
+</div>
+
+<p>或者你可以使用类似字典的方式获取数据库实例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ipp = client[<span class="string">'ip_pool'</span>]</span><br><span class="line">ipp</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'ip_pool')
+
+</div>
+
+<p>获取文档集(类似于mysql中的表的概念):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ips = ipp.ips</span><br><span class="line">ips</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    Collection(Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'ip_pool'), 'ips')
+
+</div>
+
+<p>下面演示一下基本的数据库的增改查删:</p>
+<p>先插入一条记录:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 插入一条记录</span></span><br><span class="line"></span><br><span class="line">ip = &#123;</span><br><span class="line">    <span class="string">'address'</span>: <span class="string">'17.2.3.4'</span>,</span><br><span class="line">    <span class="string">'location'</span>: <span class="string">'北京 西城区'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">result = ips.insert_one(ip)</span><br><span class="line">print(<span class="string">'result:'</span>, result)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+result: <pymongo.results.insertoneresult object at 0x0000020596b71048>
+
+</pymongo.results.insertoneresult></div>
+
+<p>当然我们可以一次性插入多条:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ip1 = &#123;</span><br><span class="line">    <span class="string">'address'</span>: <span class="string">'17.2.3.40'</span>,</span><br><span class="line">    <span class="string">'location'</span>: <span class="string">'北京 西城区'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ip2 = &#123;</span><br><span class="line">    <span class="string">'address'</span>: <span class="string">'17.2.3.41'</span>,</span><br><span class="line">    <span class="string">'location'</span>: <span class="string">'北京 西城区'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">result = ips.insert_many([ip1, ip2])</span><br><span class="line">print(<span class="string">'inserted ips:'</span>, result.inserted_ids)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+inserted ips: [ObjectId('5d09952dc7080f39b801c1bb'), ObjectId('5d09952dc7080f39b801c1bc')]
+
+</div>
+
+<p>下面插叙一下数据库中的ip:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找出一条ip</span></span><br><span class="line"></span><br><span class="line">ips.find_one()</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    {'_id': ObjectId('5d0993e1c7080f39b801c1b9'),
+    <br> 'address': '17.2.3.4',
+    <br> 'location': '北京 西城区'}
+
+</div>
+
+<p>找出北京西城区的一个ip:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ips.find_one(&#123;<span class="string">'location'</span>: <span class="string">'北京 西城区'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    {'_id': ObjectId('5d0993e1c7080f39b801c1b9'),
+    <br> 'address': '17.2.3.4',
+    <br> 'location': '北京 西城区'}
+
+</div>
+
+<p>找出北京西城区的所有ip:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ips.find(&#123;<span class="string">'location'</span>: <span class="string">'北京 西城区'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <pymongo.cursor.cursor at 0x205972ac438>
+
+</pymongo.cursor.cursor></div>
+
+<p>上面输出的结果可以看出, 当查询多条文档的时候, 我们并不能直接得到数据, 我们只是得到一个指针对象, 为了得到所有的数据, 我们需要循环:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> ips.find(&#123;<span class="string">'location'</span>: <span class="string">'北京 西城区'</span>&#125;):</span><br><span class="line">    print(ip)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+{'_id': ObjectId('5d0993e1c7080f39b801c1b9'), 'address': '17.2.3.4', 'location': '北京 西城区'}
+{'_id': ObjectId('5d09952dc7080f39b801c1bb'), 'address': '17.2.3.40', 'location': '北京 西城区'}
+{'_id': ObjectId('5d09952dc7080f39b801c1bc'), 'address': '17.2.3.41', 'location': '北京 西城区'}
+
+</div>
+
+<p>删除一条文档:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ips.delete_one(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <pymongo.results.deleteresult at 0x20596b75d08>
+
+</pymongo.results.deleteresult></div>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ips.update_one(&#123;&#125;, &#123;<span class="string">'$set'</span>: &#123;<span class="string">'ip'</span>: <span class="string">'1.1.1.1'</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <pymongo.results.updateresult at 0x20596b75c48>
+
+</pymongo.results.updateresult></div>
+
+<p>查看更改后的数据:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ip <span class="keyword">in</span> ips.find(&#123;<span class="string">'location'</span>: <span class="string">'北京 西城区'</span>&#125;):</span><br><span class="line">    print(ip)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+{'_id': ObjectId('5d09952dc7080f39b801c1bb'), 'address': '17.2.3.40', 'location': '北京 西城区', 'ip': '1.1.1.1'}
+{'_id': ObjectId('5d09952dc7080f39b801c1bc'), 'address': '17.2.3.41', 'location': '北京 西城区'}
+
+</div>
+
+<h3 id="MongoEngine面向对象的数据库操作"><a href="#MongoEngine面向对象的数据库操作" class="headerlink" title="MongoEngine面向对象的数据库操作"></a>MongoEngine面向对象的数据库操作</h3><p>虽然PyMongo非常易于使用，并且总体上是一个很棒的库，但对于许多项目而言，它可能有点太低级了。换句话说，你必须编写很多自己的代码来实现保存/检索和删除对象。</p>
+<p>一个在PyMongo之上提供更高抽象的库是MongoEngine。 MongoEngine是一个对象文档映射器（ODM），它大致相当于基于SQL的对象关系映射器（ORM）。 MongoEngine提供的抽象是基于类的，因此你创建的所有模型都是类。</p>
+<p>虽然有很多Python库可以帮助你使用MongoDB，但MongoEngine是最好的之一，因为它具有很好的功能/灵活性和社区支持。</p>
+<h4 id="安装MongoEngine"><a href="#安装MongoEngine" class="headerlink" title="安装MongoEngine"></a>安装MongoEngine</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install mongoengine</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Collecting mongoengine
+  Downloading https://files.pythonhosted.org/packages/4d/25/9af6b83b847f445303ec8fda97e0ac01ba6fa4a11ee4f04d8397369cfc77/mongoengine-0.18.0.tar.gz (152kB)
+Requirement already satisfied: pymongo>=3.4 in d:\venv\.common\lib\site-packages (from mongoengine) (3.8.0)
+Requirement already satisfied: six in d:\venv\.common\lib\site-packages (from mongoengine) (1.12.0)
+Building wheels for collected packages: mongoengine
+  Building wheel for mongoengine (setup.py): started
+  Building wheel for mongoengine (setup.py): finished with status 'done'
+  Stored in directory: C:\Users\syd\AppData\Local\pip\Cache\wheels\25\8f\00\7c0af82b6a41019b733502173dc00934ef68e5c6f57d494a6c
+Successfully built mongoengine
+Installing collected packages: mongoengine
+Successfully installed mongoengine-0.18.0
+
+</div>
+
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+You are using pip version 19.0.3, however version 19.1.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+</div>
+
+<h4 id="定义文档类"><a href="#定义文档类" class="headerlink" title="定义文档类"></a>定义文档类</h4><p>要设置我们的文档对象，我们需要定义文档对象所需的数据。与许多其他ORM类似，我们将通过继承Document类并提供我们想要的数据类型来实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ip</span><span class="params">(Document)</span>:</span></span><br><span class="line">    address = StringField(required=<span class="literal">True</span>)</span><br><span class="line">    location = StringField(required=<span class="literal">False</span>, max_length=<span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+<p>如果你直接去插入一个文档的话, 机会出现问题, 因为我们还没有与数据库建立连接:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip = Ip(address=<span class="string">'23.4.5.6'</span>, location=<span class="string">'河北省'</span>)</span><br><span class="line">ip.save() <span class="comment"># 相当于insert_one操作</span></span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+MongoEngineConnectionError                Traceback (most recent call last)
+
+&lt;ipython-input-26-40c2d38cec6d&gt; in &lt;module&gt;
+      1 ip = Ip(address=&apos;23.4.5.6&apos;, location=&apos;河北省&apos;)
+----&gt; 2 ip.save() # 相当于insert_one操作
+
+
+d:\venv\.common\lib\site-packages\mongoengine\document.py in save(self, force_insert, validate, clean, write_concern, cascade, cascade_kwargs, _refs, save_condition, signal_kwargs, **kwargs)
+    376 
+    377         if self._meta.get(&apos;auto_create_index&apos;, True):
+--&gt; 378             self.ensure_indexes()
+    379 
+    380         try:
+
+
+d:\venv\.common\lib\site-packages\mongoengine\document.py in ensure_indexes(cls)
+    852             warnings.warn(msg, DeprecationWarning)
+    853 
+--&gt; 854         collection = cls._get_collection()
+    855         # 746: when connection is via mongos, the read preference is not necessarily an indication that
+    856         # this code runs on a secondary
+
+
+d:\venv\.common\lib\site-packages\mongoengine\document.py in _get_collection(cls)
+    191                 cls._collection = cls._get_capped_collection()
+    192             else:
+--&gt; 193                 db = cls._get_db()
+    194                 collection_name = cls._get_collection_name()
+    195                 cls._collection = db[collection_name]
+
+
+d:\venv\.common\lib\site-packages\mongoengine\document.py in _get_db(cls)
+    174     def _get_db(cls):
+    175         &quot;&quot;&quot;Some Model using other db_alias&quot;&quot;&quot;
+--&gt; 176         return get_db(cls._meta.get(&apos;db_alias&apos;, DEFAULT_CONNECTION_NAME))
+    177 
+    178     @classmethod
+
+
+d:\venv\.common\lib\site-packages\mongoengine\connection.py in get_db(alias, reconnect)
+    323 
+    324     if alias not in _dbs:
+--&gt; 325         conn = get_connection(alias)
+    326         conn_settings = _connection_settings[alias]
+    327         db = conn[conn_settings[&apos;name&apos;]]
+
+
+d:\venv\.common\lib\site-packages\mongoengine\connection.py in get_connection(alias, reconnect)
+    233         else:
+    234             msg = &apos;Connection with alias &quot;%s&quot; has not been defined&apos; % alias
+--&gt; 235         raise MongoEngineConnectionError(msg)
+    236 
+    237     def _clean_settings(settings_dict):
+
+
+MongoEngineConnectionError: You have not defined a default connection
+</code></pre><p>我们需要先创建一个默认连接:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(<span class="string">'ip_pool'</span>, host=<span class="string">'localhost'</span>, port=<span class="number">27017</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True, read_preference=Primary())
+
+</div>
+
+<p>再去执行插入操作:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip = Ip(address=<span class="string">'23.4.5.6'</span>, location=<span class="string">'河北省'</span>)</span><br><span class="line">ip.save() <span class="comment"># 相当于insert_one操作</span></span><br></pre></td></tr></table></figure>
+
+<div class="output">
+输出(plain):<br>
+
+    <ip: ip object>
+
+</ip:></div>
+
+<p>有关<code>save</code>方法的一些注意事项：</p>
+<p>调用.save（）时，PyMongo将执行验证。这意味着它将根据你在类中声明的数据格式检查要保存的数据。如果违反了数据格式（或约束），则抛出异常并且不保存数据。<br>由于Mongo不支持真正的transaction，因此无法像在SQL数据库中那样“回滚”.save（）。</p>
+<h4 id="在类中添加自己的方法"><a href="#在类中添加自己的方法" class="headerlink" title="在类中添加自己的方法"></a>在类中添加自己的方法</h4><p>面向对象的好处就是, 把各种方法聚合到不同的类上, 同样MongoEngine也支持这样做:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ip</span><span class="params">(Document)</span>:</span></span><br><span class="line">    address = StringField(required=<span class="literal">True</span>)</span><br><span class="line">    location = StringField(required=<span class="literal">False</span>, max_length=<span class="number">50</span>)</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @queryset_manager</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">beijing_ips</span><span class="params">(clazz, queryset)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> queryset.filter(location=<span class="string">'北京 西城区'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="文档的互相引用"><a href="#文档的互相引用" class="headerlink" title="文档的互相引用"></a>文档的互相引用</h4><p>类似于关系型数据库中的外键, 你可以使用ReferenceField来声明一个外键:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Supplier</span><span class="params">(Document)</span>:</span></span><br><span class="line">    name = StringField()</span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ip</span><span class="params">(Document)</span>:</span></span><br><span class="line">    address = StringField(required=<span class="literal">True</span>)</span><br><span class="line">    location = StringField(required=<span class="literal">False</span>, max_length=<span class="number">50</span>)</span><br><span class="line">    sup = ReferenceField(Supplier)</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>由于Python是一种高级/高度可扩展的现代语言，它需要一个能够保持其潜力的数据库（和驱动程序），这就是为什么MongoDB非常适合的原因。</p>
+<p>我们在本文中看到了如何利用MongoDB的优势来构建高度灵活且可扩展的应用程序。</p>
+<p>持续关注mlln.cn, 我会经常更新有关python+mongodb的技术点。</p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="python+mongodb生态坏境部署和上手体验.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/mongodb/">#mongodb</a> <a href="/tags/pymongo/">#pymongo</a> <a href="/tags/mongoengine/">#mongoengine</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">
+                    DataNitro教程系列(python控制Excel自动化替代VBA) 
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/09/python模拟数据的生成/">
+                    python模拟数据的生成
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
+                    python3的__new__和__init__方法的比较和使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/11/python做双十一抢券神器/">
+                    python做双十一抢券神器
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/09/html技术构建python桌面程序-利用eel/">
+                    html技术构建python桌面程序-利用eel
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">
+                    python3中class,type,instance,object的概念和相互区别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-基于潜在语义分析的词向量/">
+                    文本向量系列-基于潜在语义分析的词向量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/mongodb/">
+            mongodb
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/pymongo/">
+            pymongo
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/mongoengine/">
+            mongoengine
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://jupyter.cn">
+                  问卷大全问卷案例下载
+            </a>
+            <a href="https://mlln.cn/2019/05/09/2019%E5%B9%B4%E5%A4%A7%E5%AD%A6%E7%94%9F%E9%97%AE%E5%8D%B7%E4%BA%92%E5%A1%AB%E7%BE%A4%E6%8E%A8%E8%8D%90/">
+                大学生互填问卷群推荐
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">python+mongodb生态坏境部署和上手体验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/04/nginx配置两个静态网站/">nginx配置两个静态网站</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/01/问卷星如何快速添加批量题目/">问卷星如何快速添加批量题目</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/29/Tampermonkey开发浏览器插件快速入门教程/">Tampermonkey开发浏览器插件快速入门教程</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/27/招聘心理学兼职学生主要负责eprime的程序代做/">招聘心理学兼职学生主要负责eprime的程序代做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/14/招聘兼职数据分析师/">招聘兼职数据分析师</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/24/数学小白用python做极大似然估计MLE/">数学小白用python做极大似然估计MLE</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/“python/">“python&quot;</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>

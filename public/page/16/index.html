@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">
                     DataNitro教程系列(python控制Excel自动化替代VBA) 
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/11/11/python做双十一抢券神器/">
                     python做双十一抢券神器
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/11/09/html技术构建python桌面程序-利用eel/">
-                    html技术构建python桌面程序-利用eel
                 </a>
             </div>
             
@@ -272,26 +272,26 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-3：强化学习(包括Qlearning)/">
-                    李宏毅机器学习教程23-3：强化学习(包括Qlearning)
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
-                    李宏毅机器学习教程14：无监督学习-词嵌入模型
+                <a href="/2018/09/21/李宏毅机器学习教程16：无监督学习-自编码器/">
+                    李宏毅机器学习教程16：无监督学习-自编码器
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
-                    李宏毅机器学习教程18：无监督生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -311,14 +311,14 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
-                    tensorflow教程02-计算图及其实践
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
-                    tensorflow教程03-入门必知数据模型和相关概念
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程22：集成模型/">
+                    李宏毅机器学习教程22：集成模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程9-1：训练深度神经网络的一些tips/">
-                    李宏毅机器学习教程9-1：训练深度神经网络的一些tips
+                <a href="/2018/09/21/李宏毅机器学习教程8-2：keras2.0入门/">
+                    李宏毅机器学习教程8-2：keras2.0入门
                 </a>
             </div>
             
@@ -433,6 +433,85 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2018/04/12/python-win32com开发office插件时问题汇总/">
+                python win32com开发office插件时问题汇总
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018年04月12日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>#### </p>
+<p>事先我用如下代码开发并注册了一个COM:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pythoncom</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PythonUtilities</span>:</span></span><br><span class="line">    _public_methods_ = [ <span class="string">'add_watermark'</span> ]</span><br><span class="line">    _reg_progid_ = <span class="string">"PythonDemo.Utilities"</span></span><br><span class="line">    <span class="comment"># NEVER copy the following ID</span></span><br><span class="line">    <span class="comment"># Use "print pythoncom.CreateGuid()" to make a new one.</span></span><br><span class="line">    _reg_clsid_ = <span class="string">"&#123;B7E3EE50-5E2A-4044-8241-4F76B1DAB885&#125;"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    print( <span class="string">"Registering COM server..."</span>)</span><br><span class="line">    <span class="keyword">import</span> win32com.server.register</span><br><span class="line">    win32com.server.register.UseCommandLine(PythonUtilities)</span><br></pre></td></tr></table></figure>
+<p>在python种使用<code>win32com.client.Dipatch</code>可以调用该COM, 但是在VBA种却报错:<code>specific module coundn&#39;t be found</code>:</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Test()</span><br><span class="line">    <span class="comment">' Create the Python COM objects.</span></span><br><span class="line">    <span class="keyword">Set</span> stringmod = CreateObject(<span class="string">"PythonDemo.Utilities"</span>)</span><br><span class="line">    <span class="comment">' Call string.split</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解决方法就是, 没有找到<code>pythoncom35.dll</code>和<code>pywintypes35.dll</code>这两个DLL导致的. </p>
+</blockquote>
+<p>这两个文件位于<code>Lib/site-packages/pywin32_system32</code>下, 把他们复制到<code>pythondir/Scripts</code>这个文件夹下就行了. 因为通常这个文件夹是添加到环境变量Path种的.</p>
+<p>有啥问题可以直接在下面留言奥.</p>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/">
+                jupyter notebook 扩展开发之 Custom bundler extensions
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018年03月31日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
+        </div>
+        <a href="/2018/03/31/jupyter notebook 扩展开发之 Custom bundler extensions/" class="read-more">Read More</a>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/jupyter/">#jupyter</a> <a href="/tags/notebook/">#notebook</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2018/03/31/jupyter notebook扩展开发之前端插件开发/">
                 jupyter notebook扩展开发之前端插件开发
             </a>
@@ -468,8 +547,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/">
-                jupyter notebook 扩展开发之自定义请求处理程序
+            <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
+                jupyter notebook 扩展开发之  文件保存钩子
             </a>
         </h1>
         <div class="post-info">
@@ -485,7 +564,7 @@
         <div class="content">
             <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
         </div>
-        <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/" class="read-more">Read More</a>
+        <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/" class="read-more">Read More</a>
     
 
     
@@ -573,8 +652,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/">
-                jupyter notebook 扩展开发之  文件保存钩子
+            <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/">
+                jupyter notebook 扩展开发之自定义请求处理程序
             </a>
         </h1>
         <div class="post-info">
@@ -590,7 +669,7 @@
         <div class="content">
             <p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
         </div>
-        <a href="/2018/03/31/jupyter notebook 扩展开发之  文件保存钩子/" class="read-more">Read More</a>
+        <a href="/2018/03/31/jupyter notebook 扩展开发之自定义请求处理程序/" class="read-more">Read More</a>
     
 
     
@@ -705,7 +784,7 @@
     
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/机器学习/">#机器学习</a> <a href="/tags/游戏/">#游戏</a> <a href="/tags/人工智能/">#人工智能</a> <a href="/tags/Q-learning/">#Q-learning</a> <a href="/tags/深度学习/">#深度学习</a>
+            <a href="/tags/人工智能/">#人工智能</a> <a href="/tags/Q-learning/">#Q-learning</a> <a href="/tags/机器学习/">#机器学习</a> <a href="/tags/深度学习/">#深度学习</a> <a href="/tags/游戏/">#游戏</a>
         </div>
     
 
@@ -735,76 +814,6 @@
 <p>psychopy的windows(窗口)和monitor(显示器)的设置很重要, 直接关系到你的整个实验的各种刺激尺寸(size). 下面我们用图文的方式介绍一下需要设置的参数以及如何设置他们.</p>
         </div>
         <a href="/2018/03/09/psychopy设置window和显示器参数/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/psychopy/">#psychopy</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/09/psychopy免安装版设置方法/">
-                psychopy免安装版设置方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018年03月09日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>摘要: 无</p>
-        </div>
-        <a href="/2018/03/09/psychopy免安装版设置方法/" class="read-more">Read More</a>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/psychopy/">#psychopy</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/07/psychopy绿色免安装版下载/">
-                psychopy绿色免安装版下载
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018年03月07日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>很多人反映无法安装psychopy, 安装过程总是出现这种那种问题, 所以我特地制作了一个免安装的版本. 在文末有下载地址.</p>
-        </div>
-        <a href="/2018/03/07/psychopy绿色免安装版下载/" class="read-more">Read More</a>
     
 
     
@@ -858,6 +867,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">python+mongodb生态坏境部署和上手体验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/04/nginx配置两个静态网站/">nginx配置两个静态网站</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/06/01/问卷星如何快速添加批量题目/">问卷星如何快速添加批量题目</a>
             </li>
             
@@ -889,14 +906,6 @@
                 <a class="footer-post" href="/2019/01/24/数学小白用python做极大似然估计MLE/">数学小白用python做极大似然估计MLE</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/24/pandas练习-多层索引的创建和各种操作(multiindex)第二部分/">pandas练习-多层索引的创建和各种操作(mul</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -908,11 +917,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -924,11 +933,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -936,7 +945,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
         </span>
         
         <span>
@@ -952,15 +977,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -980,23 +997,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1008,7 +1009,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1020,7 +1029,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
         </span>
         
         <span>
@@ -1029,6 +1038,10 @@
         
         <span>
             <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1048,10 +1061,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
@@ -1064,11 +1073,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1084,10 +1093,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1096,7 +1101,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
         </span>
         
         <span>
@@ -1132,11 +1145,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -1248,15 +1273,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1280,31 +1305,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/招聘/">招聘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/eprime代做/">eprime代做</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/“python/">“python&quot;</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
     </ul>

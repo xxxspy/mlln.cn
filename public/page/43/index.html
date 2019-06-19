@@ -182,6 +182,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">
                     DataNitro教程系列(python控制Excel自动化替代VBA) 
                 </a>
@@ -202,12 +208,6 @@
             <div class="archive-post">
                 <a href="/2018/11/11/python做双十一抢券神器/">
                     python做双十一抢券神器
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/11/09/html技术构建python桌面程序-利用eel/">
-                    html技术构建python桌面程序-利用eel
                 </a>
             </div>
             
@@ -272,26 +272,26 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程23-3：强化学习(包括Qlearning)/">
-                    李宏毅机器学习教程23-3：强化学习(包括Qlearning)
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程14：无监督学习-词嵌入模型/">
-                    李宏毅机器学习教程14：无监督学习-词嵌入模型
+                <a href="/2018/09/21/李宏毅机器学习教程16：无监督学习-自编码器/">
+                    李宏毅机器学习教程16：无监督学习-自编码器
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
-                    李宏毅机器学习教程18：无监督生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -311,14 +311,14 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
-                    tensorflow教程02-计算图及其实践
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
-                    tensorflow教程03-入门必知数据模型和相关概念
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程22：集成模型/">
+                    李宏毅机器学习教程22：集成模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程9-1：训练深度神经网络的一些tips/">
-                    李宏毅机器学习教程9-1：训练深度神经网络的一些tips
+                <a href="/2018/09/21/李宏毅机器学习教程8-2：keras2.0入门/">
+                    李宏毅机器学习教程8-2：keras2.0入门
                 </a>
             </div>
             
@@ -428,6 +428,444 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/10/01/python 线性代数：[11]判断正定矩阵/">
+                python 线性代数：[11]判断正定矩阵
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年10月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>正定矩阵的定义是：设M是n阶方阵，如果对任何非零向量z，都有 z’Mz &gt; 0，其中z’ 表示z的转置，就称M正定矩阵。这个定义你先搞懂，不懂的看课本去，我这里就直接用python来检验某个方阵是不是正定矩阵（用二维数组表示矩阵）。</p>
+<ul>
+<li><p>我们用到的一个重要性质是：判定定理1：对称阵A为正定的充分必要条件是：A的特征值全为正。所以我们只要求得对称阵A的所有特征值即可。</p>
+</li>
+<li><p>引入numpy模块</p>
+</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/d7c9ca3f8794a4c2561254dc0cf41bd5ac6e39d0.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li>创建一个方阵A</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/b5ce925494eef01fcac0a832e2fe9925bd317d36.jpg" title="python 线性代数：[11]判断正定矩阵">
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/1a94b36eddc451dab3c7bf1cb4fd5266d11632d0.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li>将方阵转换成对称阵的方法是：</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/fab3ac119313b07e75a3e2ff0ed7912396dd8ce8.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li>求对称阵A的特征值</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/00a82701213fb80eac8fd32034d12f2eb83894a8.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li>判断是不是所有的特征值都大于0，用到了all函数，显然对称阵A不是正定的</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/389aa8fd5266d0163e282ddf952bd40734fa35d0.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li>我们来创建一个单位矩阵，它肯定是对称的，同样的方法检验是不是正定矩阵</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/9dc3cf58ccbf6c8185e09c1fbe3eb13532fa4036.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li>网上查到更简便的方法是对对称阵进行cholesky分解，如果像这样没有提示出错，就说明它是正定的</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/aa59892bd40735fadac1fd4e9c510fb30e2408d0.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li>如果提示出错，就说明它不是正定矩阵，你可以使用try函数捕获错误值</li>
+</ul>
+<img src="/2015/10/01/python%20线性代数：[11]判断正定矩阵/a992e31f4134970a20a4a0d897cad1c8a6865d36.jpg" title="python 线性代数：[11]判断正定矩阵">
+<ul>
+<li><p>以下是今天用到的部分代码：</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>import numpy</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A=range(16)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A=numpy.array(A).reshape(4,4)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 0,  1,  2,  3],</p>
+</li>
+<li><p>[ 4,  5,  6,  7],</p>
+</li>
+<li><p>[ 8,  9, 10, 11],</p>
+</li>
+<li><p>[12, 13, 14, 15]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A=A+A.T</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 0,  5, 10, 15],</p>
+</li>
+<li><p>[ 5, 10, 15, 20],</p>
+</li>
+<li><p>[10, 15, 20, 25],</p>
+</li>
+<li><p>[15, 20, 25, 30]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>B=numpy.linalg.eigvals(A)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>B</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([  6.74165739e+01 +0.00000000e+00j,</p>
+</li>
+<li><p>-7.41657387e+00 +0.00000000e+00j,</p>
+</li>
+<li><p>-8.88285420e-17 +1.82759332e-15j,  -8.88285420e-17 -1.82759332e-15j])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>if numpy.all(B&gt;0):print ‘是正定矩阵’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>C=numpy.linalg.cholesky(A)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>Traceback (most recent call last):</p>
+</li>
+<li><p>File “&lt;pyshell#41&gt;”, line 1, in <module></module></p>
+</li>
+<li><p>C=numpy.linalg.cholesky(A)</p>
+</li>
+<li><p>File “D:Python27libsite-packages<br>umpy-1.8.0-py2.7-win-amd64.egg<br>umpylinalglinalg.py”, line 603, in cholesky</p>
+</li>
+<li><p>return wrap(gufunc(a, signature=signature, extobj=extobj).astype(result_t))</p>
+</li>
+<li><p>File “D:Python27libsite-packages<br>umpy-1.8.0-py2.7-win-amd64.egg<br>umpylinalglinalg.py”, line 93, in _raise_linalgerror_nonposdef</p>
+</li>
+<li><p>raise LinAlgError(“Matrix is not positive definite”)</p>
+</li>
+<li><p>LinAlgError: Matrix is not positive definite</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A=numpy.eye(4)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>A</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 1.,  0.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  1.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  1.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  0.,  1.]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>B=numpy.linalg.eigvals(A)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>B</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([ 1.,  1.,  1.,  1.])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>if numpy.all(B&gt;0):print ‘是正定矩阵’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>是正定矩阵</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>C=numpy.linalg.cholesky(A)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>C</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[ 1.,  0.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  1.,  0.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  1.,  0.],</p>
+</li>
+<li><p>[ 0.,  0.,  0.,  1.]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/10/01/DataNitro：[2]调用Python的方法/">
+                DataNitro：[2]调用Python的方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年10月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>作为入门的第二篇文章，我们还是要讲一些基础的东西，这篇文章我们介绍一下如何在datanitro下使用Python来操作excel。</p>
+<ul>
+<li>第一种方式，我们可以在Python shell里面运行Python代码，点击它打开</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/5327ce160924ab1887e97a6636fae6cd7a890ba0.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>一开始我们会看到这个界面，出现了欢迎信息，说明你的datanitro Python shell是可以工作的。</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/b3f6cea20cf431ad6860d8684836acaf2fdd98f6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>输入一个简单的命令：Cell(1,1).value=’hello world’（注意大小写）；按回车就可以执行</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/adee30dda3cc7cd9279faf883a01213fb90e91f6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>这段代码的效果就是单元格A1赋值为hello world</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/d002b34bd11373f09dc0f4cea70f4bfbfaed04a0.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>我们可以使用Python中已经安装的包：</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/7aad4ae736d12f2e0ab735314cc2d562843568f6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>我们可以先建立一个Python的脚本文件**.py，然后引入该文件：点击import</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/e49cf91190ef76c61b60607a9e16fdfaae5167f6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>找到该Python文件并打开</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/42e89c26cffc1e17b84017604990f603728de9a1.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>你会看到这个文件已经被引入，点击editor就可以编辑该文件</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/8bc3a7014a90f603454f07163a12b31bb151eda1.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>编辑器也是够难看的！但是我们可以先输入以下代码试试：注意#号表示注释，没有任何作用，实质上只有一句话有用：Cell(1,3).value=u’中文’</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/8cf0d513495409230fdbf82f9158d109b2de49f6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>然后回到excel，点击run，就可以执行命令</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/570f8c58d109b3de4b0d7f39cfbf6c81810a4cf6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>用过excel函数的都知道它有多么强大，现在我们有机会写自己的函数了，我们需要先建立一个名字为functions.py的文件</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/d048adde9c82d1581530c2e0830a19d8bd3e42f6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>在里面写入一个function并保存</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/a84052086e061d955bb9ac6978f40ad163d9caa1.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>记得检查在设置里面是否有允许使用Python自定义函数，如果你没有选，你需要选上他，然后重启excel</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/4075890a304e251f7d457fa9a486c9177e3e53f6.jpg" title="DataNitro：[2]调用Python的方法">
+<ul>
+<li>现在在单元格里使用一下该函数，你可以看到效果：</li>
+</ul>
+<img src="/2015/10/01/DataNitro：[2]调用Python的方法/964b2e4e251f95ca384709e7ca177f3e660952f6.jpg" title="DataNitro：[2]调用Python的方法">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/datanitro/">#datanitro</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1000,168 +1438,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/09/17/DataNitro：[8]workbook对象/">
-                DataNitro：[8]workbook对象
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年09月17日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>想一想，datanitro的内容还是挺少挺简单的，现在就讲到了workbook了，也就快讲完了。workbook对象也就是工作簿，也就是一个excel文件（擦！说的太直白了）。有些工作需要生成大量的工作簿，所以会用到它，下面来看看它有哪些可以用的属性和方法。</p>
-<ul>
-<li>save：保存工作簿，参数的可选的：</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/8605f5f81a4c510f995d3b496359252dd52aa58d.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>save_copy：保存副本，参数也是可选的。通常我们要用这个方法来备份一下工作进程。</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/d7c9ca3f8794a4c2b9593e780df41bd5ad6e3928.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>recalc_wkbk/recalc_mode：重新计算工作簿，适合有公式需要刷新的时候。你还可以通过recalc_mode来设置公式是自动计算还是手动计算。</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/1a94b36eddc451da4a8cd5b8b5fd5266d0163228.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>pivot_refresh：数据透视表的刷新。如果原始数据修改了，数据透视表需要刷新一下才能显示正确的结果。</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/e8112b2ac65c103807e71791b1119313b17e898d.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>active_wkbk:如果打开了多个工作簿，你可能要设定某个工作簿为激活状态，就用到了它。</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/11794d43fbf2b211c4b75c1dc98065380dd78e8d.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>open_wkbk/close_wkbk：打开工作簿</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/9252ae7eca80653857737d4094dda144ac34828d.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>new_wkbk：新建工作簿</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/0d968f2397dda144f290b5e1b1b7d0a20df4868d.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>all_wkbk返回打开的所有工作簿：</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/0b14ad19ebc4b745b3ee6e45ccfc1e178a821528.jpg" title="DataNitro：[8]workbook对象">
-<ul>
-<li>copy_sheet：复制工作表到特定的工作簿。</li>
-</ul>
-<img src="/2015/09/17/DataNitro：[8]workbook对象/0db52fadcbef76092c9240cc2ddda3cc7dd99e8d.jpg" title="DataNitro：[8]workbook对象">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/datanitro/">#datanitro</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/09/17/spss如何分组进行运算并生成新的变量/">
-                spss如何分组进行运算并生成新的变量
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年09月17日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p> spss中如果要给原始的分数加上相应的分数需要使用compute，我们看一个例子，下面是不同的班级的不同的分数，因为某些原因，我们要给1班的学生的分数加上三分，给二班的学生分数加上两分，这该怎么做呢？下面是具体的方法。<br>方法/步骤</p>
-<ul>
-<li>拿到数据以后，我们在菜单栏上执行：transform–compute variables</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/09fa513d269759ee4a1de947b2fb43166c22dfe9.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>打开一个对话框，我们在目标变量中输入新的变量的名称，我们这里输入新成绩</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/c75c10385343fbf215422fafb07eca8064388fd4.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>接着，因为不同的班级要加上不同的分数，所以我们需要添加条件，点击左下角的if按钮</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/a044ad345982b2b763f1b04831adcbef77099bd4.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>在这里，选择班级这个变量，添加到右侧的条件框中，记得要先勾选【include if case satisfies condition】。然后输入=1，也就是班级=1.最后点击continue按钮</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/7acb0a46f21fbe09e2134a986b600c338644ade9.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>回到数据转换对话框，将成绩这个变量添加到右侧的公式中，输入+3，这样我们基本完成了一个任务，就是当班级为1的时候，成绩加上1就形成了新成绩。但是，当班级为2的时候怎么办呢？</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/adaf2edda3cc7cd93043bd553901213fb90e91d4.jpg" title="spss如何分组进行运算并生成新的变量">
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/d8f9d72a6059252d415a9488349b033b5ab5b9e9.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>我们点击paste按钮，打开syntax窗口</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/e4dde71190ef76c668bc72a79d16fdfaae5167d4.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>这是我们看到的代码，模仿第二行的代码，我们写当班级为2的时候，新成绩等于成绩加上2.</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/2cf5e0fe9925bc31823388145edf8db1ca1370d4.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>这是我们写好的代码。</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/b90e7bec54e736d1ea5e05849b504fc2d46269e9.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li>在菜单栏上执行：run–all，运行命令</li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/ca1349540923dd54b01d2ee4d109b3de9d8248d4.jpg" title="spss如何分组进行运算并生成新的变量">
-<ul>
-<li><p>这是最后的结果，你看到了，这里生成了新的变量。</p>
-</li>
-<li></li>
-<li></li>
-</ul>
-<img src="/2015/09/17/spss如何分组进行运算并生成新的变量/8c1001e93901213f797ec75054e736d12e2e95e9.jpg" title="spss如何分组进行运算并生成新的变量">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1203,6 +1479,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">python+mongodb生态坏境部署和上手体验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/04/nginx配置两个静态网站/">nginx配置两个静态网站</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/06/01/问卷星如何快速添加批量题目/">问卷星如何快速添加批量题目</a>
             </li>
             
@@ -1234,14 +1518,6 @@
                 <a class="footer-post" href="/2019/01/24/数学小白用python做极大似然估计MLE/">数学小白用python做极大似然估计MLE</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/01/24/pandas练习-多层索引的创建和各种操作(multiindex)第二部分/">pandas练习-多层索引的创建和各种操作(mul</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/22/pandas练习-多层索引的创建和各种操作(multiindex)第一部分/">pandas练习-多层索引的创建和各种操作(mul</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1253,11 +1529,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1269,11 +1545,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/excel/">excel</a>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -1281,7 +1557,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
         </span>
         
         <span>
@@ -1297,15 +1589,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1325,23 +1609,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1353,7 +1621,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1365,7 +1641,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
         </span>
         
         <span>
@@ -1374,6 +1650,10 @@
         
         <span>
             <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1393,10 +1673,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
@@ -1409,11 +1685,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
         </span>
         
         <span>
@@ -1429,10 +1705,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1441,7 +1713,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
         </span>
         
         <span>
@@ -1477,11 +1757,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
         </span>
         
         <span>
@@ -1593,15 +1885,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
         </span>
         
         <span>
@@ -1625,31 +1917,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/招聘/">招聘</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/eprime代做/">eprime代做</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/PISA/">PISA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/ETS/">ETS</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/“python/">“python&quot;</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/lsa/">lsa</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/潜在语义分析/">潜在语义分析</a>
         </span>
         
     </ul>
