@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="mongodb解决textsearch搜索中文的问题">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>mongodb解决textsearch搜索中文的问题 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/06/21/mongodb解决textsearch搜索中文的问题/">
+                mongodb解决textsearch搜索中文的问题
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="mongodb解决textsearch搜索中文的问题"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2019年06月21日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>这篇文章我主要介绍一下自己是如何在mongodb中实现中文的全文搜索功能的!</p>
+<a id="more"></a>
+<p>我们都知道, mongodb有textsearch的功能, 也就是文本搜索, 但是实际上它并没有对中文提供很好的支持, 因为中文并没有像英文那样的词干和分词符号(空格), 所以你在使用mongodb的文本搜索功能的时候难免会发现–根本没卵用!!!</p>
+<p>为了解决这个问题, 我们其实可以给mongodb预先分好词, 为了简单起见, 我并不太追求分词的准确性, 使用的是最简单的jieba分词库, 这是python里的一个自然语言处理第三方库!</p>
+<p>为了实现以上目标, 我们的工作分为两步:</p>
+<ul>
+<li>将搜索字段进行分词, 并以空格为词的分隔符形成新的字符串</li>
+<li>在mongodb中设置文本索引</li>
+</ul>
+<h3 id="安装和使用jieba"><a href="#安装和使用jieba" class="headerlink" title="安装和使用jieba"></a>安装和使用jieba</h3><p>我们使用pip安装jieba:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install jieba</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Collecting jieba
+  Using cached https://files.pythonhosted.org/packages/71/46/c6f9179f73b818d5827202ad1c4a94e371a29473b7f043b736b4dab6b8cd/jieba-0.39.zip
+Building wheels for collected packages: jieba
+  Building wheel for jieba (setup.py): started
+  Building wheel for jieba (setup.py): finished with status 'done'
+  Stored in directory: C:\Users\syd\AppData\Local\pip\Cache\wheels\c9\c7\63\a9ec0322ccc7c365fd51e475942a82395807186e94f0522243
+Successfully built jieba
+Installing collected packages: jieba
+Successfully installed jieba-0.39
+
+</div>
+
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+You are using pip version 19.0.3, however version 19.1.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+</div>
+
+<p>jieba中有专门为搜索而设的分词接口: cut_for_search</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line">words = jieba.cut_for_search(<span class="string">'你好mlln.cn, 我可以被分词吗?'</span>)</span><br><span class="line"><span class="keyword">for</span> w <span class="keyword">in</span> words:</span><br><span class="line">    print(w)</span><br></pre></td></tr></table></figure>
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Building prefix dict from the default dictionary ...
+Dumping model to file cache C:\Users\syd\AppData\Local\Temp\jieba.cache
+Loading model cost 1.273 seconds.
+Prefix dict has been built succesfully.
+
+</div>
+
+
+<div class="output" contenteditable="true">
+输出(stream):<br>
+你好
+mlln
+.
+cn
+,
+ 
+我
+可以
+被
+分词
+吗
+?
+
+</div>
+
+<h3 id="设置mongodb的文本索引"><a href="#设置mongodb的文本索引" class="headerlink" title="设置mongodb的文本索引"></a>设置mongodb的文本索引</h3><p>我使用的是python中的mongoengine模块, 它可以帮助我们用类的方式组织Document, 我的其中一个需要搜索的Document的定义是这样的:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Questionaire</span><span class="params">(Document)</span>:</span></span><br><span class="line">    qtype = StringField(required=<span class="literal">True</span>)</span><br><span class="line">    source_id = StringField(required=<span class="literal">True</span>, unique=<span class="literal">True</span>)</span><br><span class="line">    title = StringField(required=<span class="literal">True</span>)</span><br><span class="line">    title_words = StringField(required=<span class="literal">False</span>)</span><br><span class="line">    des = StringField(required=<span class="literal">False</span>)</span><br><span class="line">    des_words = StringField(required=<span class="literal">False</span>)</span><br><span class="line">    has_factor = BooleanField(default=<span class="literal">False</span>)</span><br><span class="line">    has_data = BooleanField(default=<span class="literal">False</span>)</span><br><span class="line">    meta = &#123;</span><br><span class="line">        <span class="string">'indexes'</span>: [</span><br><span class="line">            <span class="string">'source_id'</span>, </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">'fields'</span>: [<span class="string">'$title_words'</span>, <span class="string">"$des_words"</span>],</span><br><span class="line">                <span class="string">'default_language'</span>: <span class="string">'english'</span>,</span><br><span class="line">                <span class="string">'weights'</span>: &#123;<span class="string">'title_words'</span>: <span class="number">10</span>, <span class="string">'des_words'</span>: <span class="number">2</span>&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>你不需要理解上面的代码, 你只需要看meta这个成员, 它定义了索引, 第二个索引就是一个文本索引:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    &#123;</span><br><span class="line">        &apos;fields&apos;: [&apos;`$title_words&apos;, &quot;$`</span><br><span class="line"></span><br><span class="line">### 分词</span><br><span class="line"></span><br><span class="line">使用jieba将需要分词的字段进行分词, 然后重新组合成分词后的字符串, 伪代码是这样的:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">def fenci(sentence: str)-&gt;str:</span><br><span class="line">    words = jieba.lcut_for_search(sentence)</span><br><span class="line">    return &apos; &apos;.join(words)</span><br></pre></td></tr></table></figure></p>
+<p>我们使用上面的方法分词以后, 将分词后的字符串保存到mongodb, 然后就可以进行搜索了:</p>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>核心的方式就是使用search_text方法进行搜索, 排序的话使用text_score, 这个text_score的定义就要看我们在构建索引的时候定义的计算权重:<code>&#39;weights&#39;: {&#39;title_words&#39;: 10, &#39;des_words&#39;: 2}</code>, 它的意思是title_words占10分, des_words占2分, 以这样的权重来计算text_score。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itembank <span class="keyword">import</span> models <span class="keyword">as</span> M </span><br><span class="line"><span class="keyword">from</span> itembank <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line">M.get_cnn(settings.DBNAME)</span><br><span class="line">qs = M.Questionaire.objects.search_text(<span class="string">'生活'</span>).order_by(<span class="string">'$text_score'</span>)</span><br><span class="line">print(qs)</span><br></pre></td></tr></table></figure>
+<p>搜索得到的结果就是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&lt;Questionaire: &lt;Questionaire 大学生生活体验调查问卷&gt;&gt;]</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="mongodb解决textsearch搜索中文的问题.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/mongodb/">#mongodb</a> <a href="/tags/jieba/">#jieba</a> <a href="/tags/mongoengine/">#mongoengine</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/python/">
+            python
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/21/mongodb解决textsearch搜索中文的问题/">
+                    mongodb解决textsearch搜索中文的问题
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/01/06/DataNitro教程系列-python控制Excel自动化替代VBA/">
+                    DataNitro教程系列(python控制Excel自动化替代VBA) 
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/12/09/python模拟数据的生成/">
+                    python模拟数据的生成
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/12/python3的__new__和__init__方法的比较和使用/">
+                    python3的__new__和__init__方法的比较和使用
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/11/python做双十一抢券神器/">
+                    python做双十一抢券神器
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/11/09/html技术构建python桌面程序-利用eel/">
+                    html技术构建python桌面程序-利用eel
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/10/27/python3中class,type,instance,object的概念和相互区别/">
+                    python3中class,type,instance,object的概念和相互区别
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/17/00.00-Preface/">
+                    什么是数据科学-Python数据科学教程
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/14/给博客增加实时运行python代码的功能/">
+                    给博客增加实时运行python代码的功能
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/13/EM算法详解和numpy代码实现/">
+                    EM算法详解和numpy代码实现
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/28/文本向量系列-词嵌入理论和实践/">
+                    文本向量系列-词嵌入理论和实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/pandas数据分析100道练习题-第四部分/">
+                    pandas数据分析100道练习题-第四部分
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/23/DataScience博客重大更新-在线运行示例代码/">
+                    DataScience博客重大更新-在线运行示例代码
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/08/18/文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量/">
+                    文本向量系列-如何基于词频矩阵和TF-IDF权重构建词向量
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/mongodb/">
+            mongodb
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/21/mongodb解决textsearch搜索中文的问题/">
+                    mongodb解决textsearch搜索中文的问题
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/jieba/">
+            jieba
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/21/mongodb解决textsearch搜索中文的问题/">
+                    mongodb解决textsearch搜索中文的问题
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+<div class="related-posts">
+    <h3>
+        <a href="/tags/mongoengine/">
+            mongoengine
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/06/21/mongodb解决textsearch搜索中文的问题/">
+                    mongodb解决textsearch搜索中文的问题
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">
+                    python+mongodb生态坏境部署和上手体验
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="https://jupyter.cn">
+                  问卷大全问卷案例下载
+            </a>
+            <a href="https://mlln.cn/2019/05/09/2019%E5%B9%B4%E5%A4%A7%E5%AD%A6%E7%94%9F%E9%97%AE%E5%8D%B7%E4%BA%92%E5%A1%AB%E7%BE%A4%E6%8E%A8%E8%8D%90/">
+                大学生互填问卷群推荐
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/21/mongodb解决textsearch搜索中文的问题/">mongodb解决textsearch搜索中文的问</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">python+mongodb生态坏境部署和上手体验</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/04/nginx配置两个静态网站/">nginx配置两个静态网站</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/06/01/问卷星如何快速添加批量题目/">问卷星如何快速添加批量题目</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/29/Tampermonkey开发浏览器插件快速入门教程/">Tampermonkey开发浏览器插件快速入门教程</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/27/招聘心理学兼职学生主要负责eprime的程序代做/">招聘心理学兼职学生主要负责eprime的程序代做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/13/问卷信度分几种怎么做/">问卷信度分几种怎么做</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/05/09/2019年大学生问卷互填群推荐/">2019年大学生问卷互填群推荐</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/26/Amos和Mplus中结构方程SEM因子分析CFA拟合指标详解/">Amos和Mplus中结构方程SEM因子分析CFA</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/14/招聘兼职数据分析师/">招聘兼职数据分析师</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jieba/">jieba</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/CCA/">CCA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/区块链/">区块链</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/笔记/">笔记</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/心理学/">心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pyltp/">pyltp</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/词向量/">词向量</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/可视化/">可视化</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/visjs/">visjs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/测量心理学/">测量心理学</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/PISA/">PISA</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
