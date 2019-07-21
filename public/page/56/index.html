@@ -182,6 +182,18 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2019/07/21/python3的logging模块的最佳实践/">
+                    python3的logging模块的最佳实践
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/07/13/python自带GUI根据url显示网络图片/">
+                    python自带GUI根据url显示网络图片
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2019/07/10/pychrome安装和入门/">
                     pychrome安装和入门
                 </a>
@@ -195,18 +207,6 @@
             
             <div class="archive-post">
                 <a href="/2019/06/26/requests(python)怎样持久化cookies以便复用/">
-                    mongodb解决textsearch搜索中文的问题
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/06/25/python文件信息查看和修改/">
-                    python文件信息查看和修改
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/06/21/mongodb解决textsearch搜索中文的问题/">
                     mongodb解决textsearch搜索中文的问题
                 </a>
             </div>
@@ -272,20 +272,20 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
-                    李宏毅机器学习教程01:机器学习简介
+                <a href="/2018/09/21/李宏毅机器学习教程2：误差来自哪里/">
+                    李宏毅机器学习教程2：误差来自哪里
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
+                    李宏毅机器学习教程18：无监督生成模型
                 </a>
             </div>
             
             <div class="archive-post">
                 <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
                     李宏毅机器学习教程13：无监督学习
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
-                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -311,14 +311,14 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
-                    tensorflow教程03-入门必知数据模型和相关概念
+                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
+                    tensorflow教程02-计算图及其实践
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/07/02/tensorflow教程02-计算图及其实践/">
-                    tensorflow教程02-计算图及其实践
+                <a href="/2018/07/02/tensorflow教程03-入门必知数据模型和相关概念/">
+                    tensorflow教程03-入门必知数据模型和相关概念
                 </a>
             </div>
             
@@ -365,14 +365,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
-                    李宏毅机器学习教程21-2：循环神经网络
+                <a href="/2018/09/21/李宏毅机器学习教程23-2：Policy-Gradient/">
+                    李宏毅机器学习教程23-2：Policy-Gradient
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程8-1：深度学习helloWorld/">
-                    李宏毅机器学习教程8-1：深度学习helloWorld
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
                 </a>
             </div>
             
@@ -428,6 +428,193 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/04/15/pandas教程：[3]DataFrame切片操作/">
+                pandas教程：[3]DataFrame切片操作
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>DataFrame数据框允许我们使用iloc方法来像操作array（数组）一样对DataFrame进行切片操作，其形式上，跟对数组进行切片是一样的，我们下面来演示一下一些典型的切片操作：</p>
+<ul>
+<li>先创建一个6行4列的DataFrame数据框</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/4e83cb628535e5dd397819eb75c6a7efce1b626b.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>使用iloc方法，提取第四行数据：</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/4abae5edab64034f33d47e32acc379310a551dad.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>我们可以看一下，这种方法得到的返回值是一个series数据</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/79b1e936afc3793145713a1de8c4b74543a911ad.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>返回4-5行，1-2列数据，用下面的写法，你可以看到跟array的切片操作是一模一样的额</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/b5ce925494eef01fd140a4f1e3fe9925bc317d6b.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>我们也可以提取不连续行和列的数</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/1f569482b9014a90ac27fa89aa773912b31beeae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>想要提取某一样或者某几行的数据，保证所有列都在，可以使用一个冒号来表示所有列</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/72ccb7773912b31bef75711d8518367adab4e1ae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>当然，所有行，也可以用冒号来表示</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/b110e6198618367ab990c3e92d738bd4b31ce5ae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>提取某一个值，去掉所有冒号，比如取第2行第2列的这个数</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/d019d2bf6c81800a18b2353ab23533fa828b476b.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>当然，iat是专门提取某个数的方法，它的效率高更高，因此建议在提取单个数的时候用iat</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/8640bf8b87d6277ff20b8e0c2b381f30e924fcae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/04/11/spss协方差分析的操作过程和结果分析方法/">
+                spss协方差分析的操作过程和结果分析方法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p> 协方差分析就是当研究中出现一个变量不是我们想要研究的变量，但是却会影响到我们的研究结果，我们不得不对其进行控制，这时候就可以用协方差分析的方法来控制，协方差分析一个最重要的假设是斜率同质假设，下面就要先检验斜率同质假设，然后才能进行协方差分析。<br>方法/步骤</p>
+<ul>
+<li>协方差分析之前，要先检验一下数据是否满足斜率同质假设，也就是检验自变量和斜变量之间有木有交互作用，如图所示，在菜单栏上执行：analyze–general linear model–univariate</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/9e3df8dcd100baa1d766d84c4710b912c9fc2efa.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>在打开的对话框中，将因变量、自变量、斜变量都放到各自的位置，如图所示，评定得分为因变量，培训方式为自变量，家庭指数为斜变量，点击options按钮，进入子对话框</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/b219ebc4b74543a9d684653b1e178a82b80114ad.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/d31b0ef41bd5ad6ef1fafb1d81cb39dbb7fd3cc1.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>在这里将培训方式，也就是自变量移动到display means for中，并且勾选描述统计和方差齐性检验，点击continue按钮继续</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/dcc451da81cb39db86c3f8a1d0160924aa1830c1.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>点击model按钮，选择模型</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/4b90f603738da97764b019dcb051f8198718e3ae.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>刚打开这个对话框的时候，默认是full factorial模式，但是我们要检验交互作用，所以要选中custom</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/f703738da9773912edb91a96f8198618377ae2ae.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>将培训方式和家庭指数都放到model里</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/34fae6cd7b899e51348da5e342a7d933c9950dc1.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>同时选中培训方式和家庭指数，将type设置为interaction，点击添加按钮，添加到model中，点击continue按钮</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/0b46f21fbe096b636ab9c1a70c338744eaf8aca1.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/34fae6cd7b899e5134c4a5e342a7d933c9950dfa.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>点击ok按钮，开始处理数据</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/faedab64034f78f0bb08050479310a55b2191cc1.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>在出来的结果中，我们主要是看自变量和斜变量的交互作用，如图所示，sig值大于0.05，所以交互作用不显著，这就满足了斜率同质性假设</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/8601a18b87d6277ff28dadcf28381f30e824fcae.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>接着我们来进行协方差分析，在菜单栏上执行：analyse–general linear model–univariate</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/6159252dd42a28349d06a9fc5bb5c9ea14cebfa1.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>将各个变量都放到各自的位置，和上面的步骤一样，点击options按钮</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/1f178a82b9014a90ac3dd94aa9773912b21beec2.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>将培训方式移动到display means for列表里，勾选描述统计、方差齐性、效应值，点击continue继续</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/5ab5c9ea15ce36d37aa41cc73af33a87e850b1a1.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>点击model，选择模型</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/a8773912b31bb05198272cdf367adab44bede0c2.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>选择full factorial，点击continue</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/eac4b74543a982269a8bb4d08a82b9014b90ebfb.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li>点击ok按钮，开始处理数据</li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/03087bf40ad162d98971fdeb11dfa9ec8b13cdae.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<ul>
+<li><p>最后看分析的结果培训方式的效应显著，这说明不同的培训方式会影响到学生最后的分数</p>
+</li>
+<li></li>
+<li></li>
+</ul>
+<img src="/2015/04/11/spss协方差分析的操作过程和结果分析方法/10dfa9ec8a1363271dc75bc4918fa0ec08fac71b.jpg" title="spss协方差分析的操作过程和结果分析方法">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1037,152 +1224,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/">
-                Excel2013：[10]一次性找出所有隐藏的行列
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年03月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>有时候Excel中隐藏的单元格和表单我们自己都忘记了，一个个找起来也麻烦，当我们想要删除这个隐藏的表格的时候更麻烦，其实Excel给我们提供了这样的功能，可以快速的找到和删除所有隐藏的cell和sheet，下面是具体的方法“</p>
-<ul>
-<li>打开文件——选项，如图所示</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/2e6fa7389b504fc2b46e811ce7dde71190ef6db2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>在信任中心，点击设置信任中心</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/d5462bfae6cd7b895e130b9a0d2442a7d9330e68.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>在个人信息选项下，找到【文档检查器】</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/7787b9efce1b9d1697f6ab78f1deb48f8c5464b2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>勾选这两个选项【隐藏行和列】和【隐藏工作表】</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/b5ce925494eef01f4b2529dce2fe9925bc317db2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>检查一下，看看出现了什么有很多隐藏的行，我们点击全部删除就可以删除它们。</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/3b6833f5e0fe9925c93d584936a85edf8db171b2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>删除以后这些隐藏的内容将再也不回来了。</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/e1bf8725bc315c6043a45af68fb1cb13495477b2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/03/23/Python教程：[52]win32com调用constants/">
-                Python教程：[52]win32com调用constants
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年03月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>今天使用python的win32com组间操作Excel的时候发现一个问题，想要使用常数constants.xlUp，但是却总是提示错误：</p>
-<ul>
-<li><p>Traceback (most recent call last):</p>
-</li>
-<li><p>File “&lt;pyshell#1&gt;”, line 1, in <module></module></p>
-</li>
-<li><p>c.xlUp</p>
-</li>
-<li><p>File “D:\Python27\lib\site-packages\win32com\client__init__.py”, line 170, in <strong>getattr</strong></p>
-</li>
-<li><p>raise AttributeError(a)</p>
-</li>
-<li><p>AttributeError: xlUp</p>
-</li>
-<li><p>我来介绍一下自己的代码吧，先来引入常量constants</p>
-</li>
-</ul>
-<img src="/2015/03/23/Python教程：[52]win32com调用constants/906289dda144ad34b56cd31dd2a20cf430ad851e.jpg" title="Python教程：[52]win32com调用constants">
-<ul>
-<li>接着，我们引入client，这都是操作Excel的时候用到的基本模块</li>
-</ul>
-<img src="/2015/03/23/Python教程：[52]win32com调用constants/38403f3fb80e7beca9a4547b2d2eb9389a506beb.jpg" title="Python教程：[52]win32com调用constants">
-<ul>
-<li>现在我们启动一下Excel，句柄存在xl中</li>
-</ul>
-<img src="/2015/03/23/Python教程：[52]win32com调用constants/2e6fa7389b504fc2d626e79fe7dde71191ef6deb.jpg" title="Python教程：[52]win32com调用constants">
-<ul>
-<li>我们尝试调用一下c.xlUp,看到了吧，提示错误</li>
-</ul>
-<img src="/2015/03/23/Python教程：[52]win32com调用constants/b94f65ec54e736d12fc1d89299504fc2d462691e.jpg" title="Python教程：[52]win32com调用constants">
-<ul>
-<li>假如，我现在用另一个方式启动Excel</li>
-</ul>
-<img src="/2015/03/23/Python教程：[52]win32com调用constants/b87985504fc2d56280da8477e51190ef77c66c1e.jpg" title="Python教程：[52]win32com调用constants">
-<ul>
-<li>现在就可以正确读取了</li>
-</ul>
-<img src="/2015/03/23/Python教程：[52]win32com调用constants/e49cf91190ef76c6ad00afb19f16fdfaae51671e.jpg" title="Python教程：[52]win32com调用constants">
-<ul>
-<li>我现在还不知道这两种方式到底有什么区别，只能先写到这里，如果哪位朋友知道为什么，可以在下面留言。</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1224,6 +1265,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/07/21/python3的logging模块的最佳实践/">python3的logging模块的最佳实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/07/13/python自带GUI根据url显示网络图片/">python自带GUI根据url显示网络图片</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/07/10/pychrome安装和入门/">pychrome安装和入门</a>
             </li>
             
@@ -1232,7 +1281,7 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">前端如何检测Chrome-Headless不被爬虫</a>
+                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
             </li>
             
             <li>
@@ -1255,14 +1304,6 @@
                 <a class="footer-post" href="/2019/06/19/python+mongodb生态坏境部署和上手体验/">python+mongodb生态坏境部署和上手体验</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/06/04/nginx配置两个静态网站/">nginx配置两个静态网站</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/01/问卷星如何快速添加批量题目/">问卷星如何快速添加批量题目</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1274,11 +1315,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/logging/">logging</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1302,6 +1343,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/excel/">excel</a>
         </span>
         
@@ -1311,10 +1356,6 @@
         
         <span>
             <a class="footer-post" href="/tags/VBA/">VBA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1330,19 +1371,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/Latex/">Latex</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1355,6 +1388,14 @@
         
         <span>
             <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
         </span>
         
         <span>
@@ -1394,6 +1435,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
         </span>
         
@@ -1403,14 +1448,6 @@
         
         <span>
             <a class="footer-post" href="/tags/语料库/">语料库</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1426,11 +1463,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1462,6 +1495,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/mongodb/">mongodb</a>
         </span>
         
@@ -1474,7 +1515,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/networkx/">networkx</a>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
         </span>
         
         <span>
@@ -1482,7 +1523,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nginx/">nginx</a>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
@@ -1518,19 +1559,31 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
         </span>
         
         <span>
@@ -1542,11 +1595,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/flexx/">flexx</a>
+            <a class="footer-post" href="/tags/os/">os</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1558,23 +1615,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/os/">os</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/js2py/">js2py</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/ast/">ast</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pil/">pil</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tkinter/">tkinter</a>
         </span>
         
         <span>
@@ -1598,10 +1651,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/sublime/">sublime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/svd/">svd</a>
         </span>
         
@@ -1610,11 +1659,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/som/">som</a>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
         <span>
@@ -1622,15 +1671,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/win32com/">win32com</a>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/keras/">keras</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
         </span>
         
         <span>
@@ -1642,27 +1691,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/区块链/">区块链</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/神经网络系列/">神经网络系列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/笔记/">笔记</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/心理学/">心理学</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/可视化/">可视化</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/visjs/">visjs</a>
+            <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
         <span>
@@ -1671,6 +1700,18 @@
         
         <span>
             <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/爬虫/">爬虫</a>
         </span>
         
     </ul>
