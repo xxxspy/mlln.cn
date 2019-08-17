@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PsychoPy Experiment file format (.psyexp) &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="index.html" />
+    <link rel="up" title="Documentation" href="documentation.html" />
+    <link rel="prev" title="Adding a new Menu Item" href="developers/menuitem.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="developers/menuitem.html" title="Adding a new Menu Item"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="documentation.html" accesskey="U">Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">PsychoPy Experiment file format (.psyexp)</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#settings">Settings</a></li>
+<li><a class="reference internal" href="#routines">Routines</a></li>
+<li><a class="reference internal" href="#components">Components</a></li>
+<li><a class="reference internal" href="#flow">Flow</a></li>
+<li><a class="reference internal" href="#names">Names</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="developers/menuitem.html"
+                                  title="previous chapter">Adding a new Menu Item</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/psyexp.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="psychopy-experiment-file-format-psyexp">
+<h1>PsychoPy Experiment file format (.psyexp)<a class="headerlink" href="#psychopy-experiment-file-format-psyexp" title="Permalink to this headline">¶</a></h1>
+<p>The file format used to save experiments constructed in PsychoPy builder was created especially for the purpose, but is an open format, using a basic xml form, that may be of use to other similar software. Indeed the builder itself could be used to generate experiments on different backends (such as Vision Egg, PsychToolbox or PyEPL). The xml format of the file makes it extremely platform independent, as well as moderately(?!) easy to read by humans. There was a further suggestion to generate an XSD (or similar) <a class="reference external" href="https://groups.google.com/forum/?fromgroups=#!topic/psychopy-dev/j3XkZEYj_PQ">schema against which psyexp files could be validated</a>. That is a low priority but welcome addition if you wanted to work on it(!)
+There is a basic XSD (XML Schema Definition) available in <cite>psychopy/app/builder/experiment.xsd</cite>.</p>
+<p>The simplest way to understand the file format is probably simply to create an experiment, save it and open the file in an xml-aware editor/viewer (e.g. change the file extension from .psyexp to .xml and then open it in Firefox). An example (from the stroop demo) is shown below.</p>
+<p>The file format maps fairly obviously onto the structure of experiments constructed with the <a class="reference internal" href="builder/builder.html#builder"><span class="std std-ref">Builder</span></a> interface, as described <a class="reference internal" href="builder/concepts.html"><span class="doc">here</span></a>. There are general <a class="reference internal" href="#settingsxml"><span class="std std-ref">Settings</span></a> for the experiment, then there is a list of <a class="reference internal" href="#routinesxml"><span class="std std-ref">Routines</span></a> and a <a class="reference internal" href="builder/flow.html#flow"><span class="std std-ref">Flow</span></a> that describes how these are combined.</p>
+<p>As with any xml file the format contains object <cite>nodes</cite> which can have direct properties and also child nodes. For instance the outermost node of the .psyexp file is the experiment node, with properties that specify the version of PsychoPy that was used to save the file most recently and the encoding of text within the file (ascii, unicode etc.), and with child nodes <a class="reference internal" href="#settingsxml"><span class="std std-ref">Settings</span></a>, <a class="reference internal" href="#routinesxml"><span class="std std-ref">Routines</span></a> and <a class="reference internal" href="#flowxml"><span class="std std-ref">Flow</span></a>.</p>
+<div class="section" id="parameters">
+<span id="paramsxml"></span><h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>Many of the nodes described within this xml description of the experiment contain Param entries, representing different parameters of that Component. Nearly all parameter nodes have a <cite>name</cite> property and a <cite>val</cite> property. The parameter node with the name &#8220;advancedParams&#8221; does not have them. Most also have a <cite>valType</cite> property, which can take values &#8216;bool&#8217;, &#8216;code&#8217;, &#8216;extendedCode&#8217;, &#8216;num&#8217;, &#8216;str&#8217; and an <cite>updates</cite> property that specifies whether this parameter is changing during the experiment and, if so, whether it changes &#8216;every frame&#8217; (of the monitor) or &#8216;every repeat&#8217; (of the Routine).</p>
+</div>
+<div class="section" id="settings">
+<span id="settingsxml"></span><h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>The Settings node contains a number of parameters that, in PsychoPy, would normally be set in the <a class="reference internal" href="builder/settings.html#expsettings"><span class="std std-ref">Experiment settings</span></a> dialog, such as the monitor to be used. This node contains a number of <a class="reference internal" href="#paramsxml"><span class="std std-ref">Parameters</span></a> that map onto the entries in that dialog.</p>
+</div>
+<div class="section" id="routines">
+<span id="routinesxml"></span><h2>Routines<a class="headerlink" href="#routines" title="Permalink to this headline">¶</a></h2>
+<p>This node provides a sequence of xml child nodes, each of which describes a <a class="reference internal" href="builder/routines.html#routines"><span class="std std-ref">Routine</span></a>. Each Routine contains a number of children, each specifying a <a class="reference internal" href="builder/components.html#components"><span class="std std-ref">Component</span></a>, such as a stimulus or response collecting device. In the <a class="reference internal" href="builder/builder.html#builder"><span class="std std-ref">Builder</span></a> view, the <a class="reference internal" href="builder/routines.html#routines"><span class="std std-ref">Routines</span></a> obviously show up as different tabs in the main window and the <a class="reference internal" href="builder/components.html#components"><span class="std std-ref">Components</span></a> show up as tracks within that tab.</p>
+</div>
+<div class="section" id="components">
+<span id="componentsxml"></span><h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<p>Each <a class="reference internal" href="builder/components.html#components"><span class="std std-ref">Component</span></a> is represented in the .psyexp file as a set of parameters, corresponding to the entries in the appropriate component dialog box, that completely describe how and when the stimulus should be presented or how and when the input device should be read from. Different <a class="reference internal" href="builder/components.html#components"><span class="std std-ref">Components</span></a> have slightly different nodes in the xml representation which give rise to different sets of parameters. For instance the <cite>TextComponent</cite> nodes has parameters such as <cite>colour</cite> and <cite>font</cite>, whereas the <cite>KeyboardComponent</cite> node has parameters such as <cite>forceEndTrial</cite> and <cite>correctIf</cite>.</p>
+</div>
+<div class="section" id="flow">
+<span id="flowxml"></span><h2>Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h2>
+<p>The Flow node is rather more simple. Its children simply specify objects that occur in a particular order in time. A Routine described in this flow must exist in the list of Routines, since this is where it is fully described. One Routine can occur once, more than once or not at all in the Flow.
+The other children that can occur in a Flow are LoopInitiators and LoopTerminators which specify the start and endpoints of a loop. All loops must have exactly one initiator and one terminator.</p>
+</div>
+<div class="section" id="names">
+<span id="namesxml"></span><h2>Names<a class="headerlink" href="#names" title="Permalink to this headline">¶</a></h2>
+<p>For the experiment to generate valid PsychoPy code the name parameters of all objects (Components, Loops and Routines) must be unique and contain no spaces. That is, an experiment can not have two different Routines called &#8216;trial&#8217;, nor even a Routine called &#8216;trial&#8217; and a Loop called &#8216;trial&#8217;.</p>
+<p>The Parameter names belonging to each Component (or the Settings node) must be unique within that Component, but can be identical to parameters of other Components or can match the Component name themselves. A TextComponent should not, for example, have multiple &#8216;pos&#8217; parameters, but other Components generally will, and a Routine called &#8216;pos&#8217; would also be also permissible.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;PsychoPy2experiment</span> <span class="na">version=</span><span class="s">&quot;1.50.04&quot;</span> <span class="na">encoding=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Settings&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Monitor&quot;</span> <span class="na">val=</span><span class="s">&quot;testMonitor&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Window size (pixels)&quot;</span> <span class="na">val=</span><span class="s">&quot;[1024, 768]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Full-screen window&quot;</span> <span class="na">val=</span><span class="s">&quot;True&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Save log file&quot;</span> <span class="na">val=</span><span class="s">&quot;True&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Experiment info&quot;</span> <span class="na">val=</span><span class="s">&quot;{&#39;participant&#39;:&#39;s_001&#39;, &#39;session&#39;:001}&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Show info dlg&quot;</span> <span class="na">val=</span><span class="s">&quot;True&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;logging level&quot;</span> <span class="na">val=</span><span class="s">&quot;warning&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Units&quot;</span> <span class="na">val=</span><span class="s">&quot;norm&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;Screen&quot;</span> <span class="na">val=</span><span class="s">&quot;1&quot;</span> <span class="na">valType=</span><span class="s">&quot;num&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Settings&gt;</span>
+  <span class="nt">&lt;Routines&gt;</span>
+    <span class="nt">&lt;Routine</span> <span class="na">name=</span><span class="s">&quot;trial&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;TextComponent</span> <span class="na">name=</span><span class="s">&quot;word&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">val=</span><span class="s">&quot;word&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span> <span class="na">val=</span><span class="s">&quot;thisTrial.text&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;set every repeat&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;colour&quot;</span> <span class="na">val=</span><span class="s">&quot;thisTrial.rgb&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;set every repeat&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;ori&quot;</span> <span class="na">val=</span><span class="s">&quot;0&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;pos&quot;</span> <span class="na">val=</span><span class="s">&quot;[0, 0]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;times&quot;</span> <span class="na">val=</span><span class="s">&quot;[0.5,2.0]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;letterHeight&quot;</span> <span class="na">val=</span><span class="s">&quot;0.2&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;colourSpace&quot;</span> <span class="na">val=</span><span class="s">&quot;rgb&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;units&quot;</span> <span class="na">val=</span><span class="s">&quot;window units&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;font&quot;</span> <span class="na">val=</span><span class="s">&quot;Arial&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/TextComponent&gt;</span>
+      <span class="nt">&lt;KeyboardComponent</span> <span class="na">name=</span><span class="s">&quot;resp&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;storeCorrect&quot;</span> <span class="na">val=</span><span class="s">&quot;True&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">val=</span><span class="s">&quot;resp&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;forceEndTrial&quot;</span> <span class="na">val=</span><span class="s">&quot;True&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;times&quot;</span> <span class="na">val=</span><span class="s">&quot;[0.5,2.0]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;allowedKeys&quot;</span> <span class="na">val=</span><span class="s">&quot;[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;storeResponseTime&quot;</span> <span class="na">val=</span><span class="s">&quot;True&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;correctIf&quot;</span> <span class="na">val=</span><span class="s">&quot;resp.keys==str(thisTrial.corrAns)&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;store&quot;</span> <span class="na">val=</span><span class="s">&quot;last key&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/KeyboardComponent&gt;</span>
+    <span class="nt">&lt;/Routine&gt;</span>
+    <span class="nt">&lt;Routine</span> <span class="na">name=</span><span class="s">&quot;instruct&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;TextComponent</span> <span class="na">name=</span><span class="s">&quot;instrText&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">val=</span><span class="s">&quot;instrText&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span> <span class="na">val=</span><span class="s">&quot;&amp;quot;Please press;&amp;#10;1 for red ink,&amp;#10;2 for green ink&amp;#10;3 for blue ink&amp;#10;(Esc will quit)&amp;#10;&amp;#10;Any key to continue&amp;quot;&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;colour&quot;</span> <span class="na">val=</span><span class="s">&quot;[1, 1, 1]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;ori&quot;</span> <span class="na">val=</span><span class="s">&quot;0&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;pos&quot;</span> <span class="na">val=</span><span class="s">&quot;[0, 0]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;times&quot;</span> <span class="na">val=</span><span class="s">&quot;[0, 10000]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;letterHeight&quot;</span> <span class="na">val=</span><span class="s">&quot;0.1&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;colourSpace&quot;</span> <span class="na">val=</span><span class="s">&quot;rgb&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;units&quot;</span> <span class="na">val=</span><span class="s">&quot;window units&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;font&quot;</span> <span class="na">val=</span><span class="s">&quot;Arial&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/TextComponent&gt;</span>
+      <span class="nt">&lt;KeyboardComponent</span> <span class="na">name=</span><span class="s">&quot;ready&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;storeCorrect&quot;</span> <span class="na">val=</span><span class="s">&quot;False&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">val=</span><span class="s">&quot;ready&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;forceEndTrial&quot;</span> <span class="na">val=</span><span class="s">&quot;True&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;times&quot;</span> <span class="na">val=</span><span class="s">&quot;[0, 10000]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;allowedKeys&quot;</span> <span class="na">val=</span><span class="s">&quot;&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;storeResponseTime&quot;</span> <span class="na">val=</span><span class="s">&quot;False&quot;</span> <span class="na">valType=</span><span class="s">&quot;bool&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;correctIf&quot;</span> <span class="na">val=</span><span class="s">&quot;resp.keys==str(thisTrial.corrAns)&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;store&quot;</span> <span class="na">val=</span><span class="s">&quot;last key&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/KeyboardComponent&gt;</span>
+    <span class="nt">&lt;/Routine&gt;</span>
+    <span class="nt">&lt;Routine</span> <span class="na">name=</span><span class="s">&quot;thanks&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;TextComponent</span> <span class="na">name=</span><span class="s">&quot;thanksText&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">val=</span><span class="s">&quot;thanksText&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span> <span class="na">val=</span><span class="s">&quot;&amp;quot;Thanks!&amp;quot;&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;colour&quot;</span> <span class="na">val=</span><span class="s">&quot;[1, 1, 1]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;ori&quot;</span> <span class="na">val=</span><span class="s">&quot;0&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;pos&quot;</span> <span class="na">val=</span><span class="s">&quot;[0, 0]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;times&quot;</span> <span class="na">val=</span><span class="s">&quot;[1.0, 2.0]&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;letterHeight&quot;</span> <span class="na">val=</span><span class="s">&quot;0.2&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;colourSpace&quot;</span> <span class="na">val=</span><span class="s">&quot;rgb&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;units&quot;</span> <span class="na">val=</span><span class="s">&quot;window units&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;font&quot;</span> <span class="na">val=</span><span class="s">&quot;arial&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;constant&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/TextComponent&gt;</span>
+    <span class="nt">&lt;/Routine&gt;</span>
+  <span class="nt">&lt;/Routines&gt;</span>
+  <span class="nt">&lt;Flow&gt;</span>
+    <span class="nt">&lt;Routine</span> <span class="na">name=</span><span class="s">&quot;instruct&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;LoopInitiator</span> <span class="na">loopType=</span><span class="s">&quot;TrialHandler&quot;</span> <span class="na">name=</span><span class="s">&quot;trials&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;endPoints&quot;</span> <span class="na">val=</span><span class="s">&quot;[0, 1]&quot;</span> <span class="na">valType=</span><span class="s">&quot;num&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">val=</span><span class="s">&quot;trials&quot;</span> <span class="na">valType=</span><span class="s">&quot;code&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;loopType&quot;</span> <span class="na">val=</span><span class="s">&quot;random&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;nReps&quot;</span> <span class="na">val=</span><span class="s">&quot;5&quot;</span> <span class="na">valType=</span><span class="s">&quot;num&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;trialList&quot;</span> <span class="na">val=</span><span class="s">&quot;[{&#39;text&#39;: &#39;red&#39;, &#39;rgb&#39;: [1, -1, -1], &#39;congruent&#39;: 1, &#39;corrAns&#39;: 1}, {&#39;text&#39;: &#39;red&#39;, &#39;rgb&#39;: [-1, 1, -1], &#39;congruent&#39;: 0, &#39;corrAns&#39;: 1}, {&#39;text&#39;: &#39;green&#39;, &#39;rgb&#39;: [-1, 1, -1], &#39;congruent&#39;: 1, &#39;corrAns&#39;: 2}, {&#39;text&#39;: &#39;green&#39;, &#39;rgb&#39;: [-1, -1, 1], &#39;congruent&#39;: 0, &#39;corrAns&#39;: 2}, {&#39;text&#39;: &#39;blue&#39;, &#39;rgb&#39;: [-1, -1, 1], &#39;congruent&#39;: 1, &#39;corrAns&#39;: 3}, {&#39;text&#39;: &#39;blue&#39;, &#39;rgb&#39;: [1, -1, -1], &#39;congruent&#39;: 0, &#39;corrAns&#39;: 3}]&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;trialListFile&quot;</span> <span class="na">val=</span><span class="s">&quot;/Users/jwp...troop/trialTypes.csv&quot;</span> <span class="na">valType=</span><span class="s">&quot;str&quot;</span> <span class="na">updates=</span><span class="s">&quot;None&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LoopInitiator&gt;</span>
+    <span class="nt">&lt;Routine</span> <span class="na">name=</span><span class="s">&quot;trial&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;LoopTerminator</span> <span class="na">name=</span><span class="s">&quot;trials&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Routine</span> <span class="na">name=</span><span class="s">&quot;thanks&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Flow&gt;</span>
+<span class="nt">&lt;/PsychoPy2experiment&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="developers/menuitem.html" title="Adding a new Menu Item"
+             >previous</a> |</li>
+        <li><a href="index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="documentation.html" >Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

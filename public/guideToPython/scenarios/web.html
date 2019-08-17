@@ -1,0 +1,600 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web 应用 &amp; 框架 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HTML 抓取" href="scrape.html" />
+    <link rel="prev" title="网络应用" href="client.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/scenarios/web/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/scenarios/web">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="Web 应用 &amp; 框架 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="web">
+<h1>Web 应用 &amp; 框架<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/34309496175_b82d104282_k_d.jpg" src="../_images/34309496175_b82d104282_k_d.jpg" />
+<p>Python作为一门强大的脚本语言，能够适应快速原型和较大项目的制作，
+它被广泛用于web应用程序的开发中。</p>
+<div class="section" id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wsgi">
+<h3>WSGI<a class="headerlink" href="#wsgi" title="Permalink to this headline">¶</a></h3>
+<p>Web服务网关接口（Web Server Gateway Interface，简称“WSGI”）是一种在Web服务器
+和Python Web应用程序或框架之间的标准接口。通过标准化Web服务器和Python web应用程序
+或框架之间的行为和通信，WSGI使得编写可移植的的Python web代码变为可能，使其能够部署在任何
+:ref:` 符合WSGI的web服务器 &lt;wsgi-servers-ref&gt;` 上。WSGI记录在 <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-3333"><strong>PEP 3333</strong></a>。</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>框架<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>广义地说，Web框架包含一系列库和一个主要的处理器（handler），这样您就能够构建自己的代码来实现Web应用
+（比如说一个交互式的网站）。大多数web框架包含模式和工具，至少实现以下功能：</p>
+<dl class="docutils">
+<dt>URL路由（URL Routing）</dt>
+<dd>将输入的HTTP请求匹配到特定的Python代码用来调用</dd>
+<dt>请求和响应对象（Request and Response Objects）</dt>
+<dd>封装来自或发送给用户浏览器的信息</dd>
+<dt>模板引擎（Template Engine）</dt>
+<dd>能够将实现应用的Python代码逻辑和其要产生输出的HTML（或其他）分离开</dd>
+<dt>Web服务器开发（Development Web Server）</dt>
+<dd>在开发机上运行HTTP服务器，从而快速开发；当文件更新时自动更新服务端代码。</dd>
+</dl>
+<div class="section" id="django">
+<h3>Django<a class="headerlink" href="#django" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.djangoproject.com">Django</a> 是一个功能齐备的web应用框架。它是创建面向内容网站的极佳选择。
+通过提供众多工具和模式，Django使得快速构建复杂的、有数据库支持的web应用成为可能，
+同时鼓励使用它作为编写代码的最佳实践。</p>
+<p>Django拥有非常庞大和活跃的社区。此外，许多预构建的 <a class="reference external" href="https://djangopackages.com/">可重用模块</a>
+可以原样合并到新工程中，或者定制成符合需求的样子。</p>
+<p>在 <a class="reference external" href="https://djangocon.us">美国</a> 、 <a class="reference external" href="https://djangocon.eu">欧洲</a> 和
+<a class="reference external" href="https://djangocon.com.au">Australia</a> 均有每年度的Django会议。</p>
+<p>如今大部分新的Python web应用都是用Django构建的。</p>
+</div>
+<div class="section" id="flask">
+<h3>Flask<a class="headerlink" href="#flask" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://flask.pocoo.org/">Flask</a> 是一款针对Python的“微型框架”，它是构建更小应用、API和web服务的极佳选择。
+使用Flask构建应用，除了一些函数附上路由，它和写标准Python模块很相似。它真的很赞。</p>
+<p>Flask不会提供一切您可能需要的内容，而是实现了web应用框架中最常用的核心组件，比如说URL路由、请求和响应对象和模板等。</p>
+<p>作为Flask的用户，由您来决定选择和集成其他您可能用到的组件。比如说数据库访问或者表单生成和验证就不是Flask内置的功能。</p>
+<p>这挺好的，因为很多web应用并不需要这些特性。
+对于那些需要的，有许多可用的 <a class="reference external" href="http://flask.pocoo.org/extensions/">扩展</a> 或许符合您的需求。</p>
+<p>Flask是任何不适用Django的Python web应用的默认选择。</p>
+</div>
+<div class="section" id="falcon">
+<h3>Falcon<a class="headerlink" href="#falcon" title="Permalink to this headline">¶</a></h3>
+<p>当您的目标是构建快速、可扩展的REST风格API微服务时， <a class="reference external" href="https://falconframework.org/">Falcon</a> 是个不错的选择。</p>
+<p>这是一个可靠的、高性能的Python Web框架，用于构建大规模应用后端和微服务。Falcon鼓励REST架构风格的
+URI到资源的映射，以花费尽可能少的精力同时又保持高效。</p>
+<p>Falcon重点关注四个方面：速度、可靠性、灵活性和可调试性。它通过”响应者（responder）”
+（诸如 <code class="docutils literal notranslate"><span class="pre">on_get()</span></code>、 <code class="docutils literal notranslate"><span class="pre">on_put()</span></code> 等）来实现HTTP。这些响应者接收直接的请求，以及响应对象。</p>
+</div>
+<div class="section" id="tornado">
+<h3>Tornado<a class="headerlink" href="#tornado" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://www.tornadoweb.org/">Tornado</a> 是一个面向Python的异步web框架，它有自己的事件。
+这就使得它，举个例子，可以原生地支持WebSockets。编写良好的Tornado应用具有卓越的性能特性。</p>
+<p>除非您认为自己需要它，我并不建议您使用Tornado。</p>
+</div>
+<div class="section" id="pyramid">
+<h3>Pyramid<a class="headerlink" href="#pyramid" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://trypyramid.com/">Pyramid</a> 是一个非常灵活的框架，重点关注模块化。 它内置少量库（“电池”），
+并鼓励用户扩展其基本功能。它提供一组cookiecutter模板，帮助用户生成新项目。Pyramid驱动了Python基础架构中
+最重要部分之一—— <a class="reference external" href="https://pypi.org/">PyPI</a>。</p>
+<p>Pyramid不像Django和Flask，并没有庞大的用户基数。它一个有能力的框架，但如今新Python web 应用程序
+并没有十分青睐它。</p>
+</div>
+<div class="section" id="masonite">
+<h3>Masonite<a class="headerlink" href="#masonite" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.masoniteproject.com">Masonite</a> 是一个现代的，以开发人员为中心的“功能齐备”的网络框架。</p>
+<p>Masonite 框架遵循 MVC（Model-View-Controller，模型-视图-控制器）架构模式，受到 Rails 和 Laravel 等框架的极大启发，
+因此如果您是从 Ruby 或 PHP 背景来到 Python，那么您将感到宾至如归！</p>
+<p>Masonite 提供了许多开箱即用的功能，包括一个功能强大的具有自动解析依赖注入IOC容器、craft 命令行工具和 Active Record 模式的 Orator ORM。</p>
+<p>Masonite 非常适合初学者或经验丰富的开发人员。从安装到部署都相当快速和容易。只需尝试一次，你就会爱上它。</p>
+</div>
+<div class="section" id="fastapi">
+<h3>FastAPI<a class="headerlink" href="#fastapi" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://fastapi.tiangolo.com">FastAPI</a> 是一个使用 Python 3.6+ 版本来构建API的现代化 Web 框架。</p>
+<p>由于它是基于 <a class="reference external" href="https://www.starlette.io">Starlette</a> 和 <a class="reference external" href="https://pydantic-docs.helpmanual.io">Pydantic</a>，
+具有非常高的性能。</p>
+<p>FastAPI 利用函数参数中标准的 Python 类型声明来声明请求参数和实体、执行数据转换（序列化、分析）、数据验证，
+以及使用 ** OpenAPI 3 <a href="#id13"><span class="problematic" id="id14">**</span></a>（包括 ** JSON Schema <a href="#id15"><span class="problematic" id="id16">**</span></a>）自动生成 API 文档。</p>
+<p>它包括用于安全性和身份验证的工具和实用程序（包括带有JWT令牌的OAuth2）、依赖注入系统、交互式 API 文档生成器以及其他功能。</p>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>Web 服务端<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nginx">
+<span id="nginx-ref"></span><h3>Nginx<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://nginx.org/">Nginx</a> （发音为 “engine-x”）是一个web服务器，并是HTTP、SMTP和其他协议的反向代理。
+它由其高性能、相对简洁以及对众多应用服务器（比如WSGI服务器）兼容而著名。它也拥有便利的特性，
+比如负载均衡、基本的认证、流等。Nginx被设计为承载高负载的网站，并逐渐变得广为流行。</p>
+</div>
+</div>
+<div class="section" id="wsgi-servers-ref">
+<span id="id19"></span><h2>WSGI 服务器<a class="headerlink" href="#wsgi-servers-ref" title="Permalink to this headline">¶</a></h2>
+<p>独立WSGI服务器相比传统web服务器，使用更少的资源，并提供最高的性能 <a class="footnote-reference" href="#id34" id="id20">[1]</a>。</p>
+<div class="section" id="gunicorn">
+<span id="gunicorn-ref"></span><h3>Gunicorn<a class="headerlink" href="#gunicorn" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://gunicorn.org/">Gunicorn</a> （Green Unicorn，绿色独角兽）是一个纯Python WSGI服务器，
+用来支持Python应用。不像其他Python web服务器，它有周全的用户界面，十分易于使用和配置。</p>
+<p>Gunicorn具有合理的默认配置。 然而，其他一些像uWSGI这样的服务器相较而言过于可定制化，因此更加难以高效使用。</p>
+<p>Gunicorn是如今新Python web应用程序的推荐选择。</p>
+</div>
+<div class="section" id="waitress">
+<h3>Waitress<a class="headerlink" href="#waitress" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://waitress.readthedocs.io">Waitress</a> 是一个纯Python WSGI服务器，声称具备“非常可接受的性能”。
+它的文档不是很详细，但它确实提供了一些很好的而Gunicorn没有的功能（例如HTTP请求缓冲）。</p>
+<p>Waitress在Python Web开发社区中越来越受欢迎。</p>
+</div>
+<div class="section" id="uwsgi">
+<span id="uwsgi-ref"></span><h3>uWSGI<a class="headerlink" href="#uwsgi" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://uwsgi-docs.readthedocs.io">uWSGI</a> 用来构建全栈式的主机服务。除了进程管理、进程监控和其他功能外，
+uWSGI也能作为一个应用服务器，适用于多种编程语言和协议 - 包括Python和WSIG。
+uWSGI既能当作独立的web路由器来运行，也能运行在一个完整web服务器（比如Nginx或Apache）之后。
+对于后者，web服务器可以基于 <a class="reference external" href="https://uwsgi-docs.readthedocs.io/en/latest/Protocol.html">uwsgi 协议</a>
+配置uWSGI和应用的操作。uWSGI的web服务器支持允许动态配置Python、传递环境变量以及进一步优化。
+要看更多细节，请看 <a class="reference external" href="https://uwsgi-docs.readthedocs.io/en/latest/Vars.html">uWSGI 魔法变量</a>。</p>
+<p>除非您认为自己需要它，我并不建议您使用uWSGI。</p>
+</div>
+</div>
+<div class="section" id="server-best-practices-ref">
+<span id="id26"></span><h2>服务端最佳实践<a class="headerlink" href="#server-best-practices-ref" title="Permalink to this headline">¶</a></h2>
+<p>如今，自承载Python应用的主体托管于WSGI服务器（比如说 <a class="reference internal" href="#gunicorn-ref"><span class="std std-ref">Gunicorn</span></a>）
+或是直接或间接在轻量级web服务器（比如说 <a class="reference internal" href="#nginx-ref"><span class="std std-ref">nginx</span></a>）之后。</p>
+<p>WSGI服务器为Python应用服务，它能更好的处理诸如静态文件服务、请求路由、DDoS保护和基本认证的任务。</p>
+</div>
+<div class="section" id="hosting">
+<h2>Hosting<a class="headerlink" href="#hosting" title="Permalink to this headline">¶</a></h2>
+<p>平台即服务（Platform-as-a-Service，PaaS）是一种云计算基础设施类型，抽象和管理基础设施、路由和网络应用的扩展。
+使用PaaS时，应用开发者只需关注编写应用代码，而无须关心配置细节。</p>
+<div class="section" id="heroku">
+<h3>Heroku<a class="headerlink" href="#heroku" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.heroku.com/python">Heroku</a> 为Python 2.7-3.5 应用程序提供一流的支持。</p>
+<dl class="docutils">
+<dt>Heroku 支持所有类型的Python web应用、服务器和框架。在Heroku上可以免费开发应用程序。</dt>
+<dd>一旦您的应用程序准备好面向生产环境，您可以升级到Hobby或专业应用。</dd>
+</dl>
+<p>Heroku 维护了使用Python和Heroku交互的 <a class="reference external" href="https://devcenter.heroku.com/categories/python-support">详细文章</a>，
+同时也有 <a class="reference external" href="https://devcenter.heroku.com/articles/getting-started-with-python">手把手指导</a>
+来告诉您如何建立第一个应用。</p>
+<p>Heroku是如今部署Python Web应用程序的推荐PaaS。</p>
+</div>
+<div class="section" id="eldarion">
+<h3>Eldarion<a class="headerlink" href="#eldarion" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://eldarion-gondor.github.io/docs/how-to/setup-deploy-first-django-project/">Eldarion &lt;https://eldarion.cloud/&gt;`_（被称为Gondor）是由Kubernetes、CoreOS和Docker提供的PaaS。
+它们支持任一WSGI应用程序，并提供了部署
+`Django项目</a> 的指南。</p>
+</div>
+</div>
+<div class="section" id="id30">
+<h2>模板<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<p>多数WSGI应用响应HTTP请求，从而服务于HTML或其他标记语言中的内容。关注点分离的概念建议我们使用模板，
+而不是直接由Python生成文本内容。模板引擎管理一系列的模板文件，其系统的层次性和包容性避免了不必要的重复。
+模板引擎负责渲染（产生）实际内容，用由应用生成的动态内容填充静态内容。</p>
+<p>由于模板文件有时是由设计师或者前端开发者编写，处理不断增长的复杂度会变得困难。</p>
+<p>一些通用的良好实践应用到了部分应用中，情景包括传递动态内容到模板引擎和模板自身中。</p>
+<ul class="simple">
+<li>模板文件只应传递需要渲染的动态内容。避免传递附加的“以防万一”的内容：
+需要时添加遗漏的变量比移除可能不用的变量要来的容易。</li>
+<li>许多模板引擎允许在模板中编写复杂语句或者赋值，也有许多允许一些Python代码
+在模板中等价编写。这种便利会导致复杂度不可控地增加，也使得查找bug变得更加
+困难。</li>
+<li>我们常常需要混合JavaScript模板和HTML模板。一种聪明的做法是孤立出HTML
+模板传递部分变量内容到JavaScript代码中的部分。</li>
+</ul>
+<div class="section" id="jinja2">
+<h3>Jinja2<a class="headerlink" href="#jinja2" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://jinja.pocoo.org/">Jinja2</a> 是一个很受欢迎的模板引擎。</p>
+<p>它使用基于文本的模板语言，因此可以用于生成任何类型的标记，而不仅仅是HTML。
+它允许自定义过滤器，标签，测试和全局变量。 它具有Django模板系统的许多改进。</p>
+<p>这里有一些在Jinja2中重要的HTML标签：</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{# 这是注释 #}
+
+{# 下一个标签是输出变量： #}
+{{title}}
+
+{# 区块标签，能通过继承其他html代码来替换区块内容 #}
+{% block head %}
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>This is the head!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+{% endblock %}
+
+{# 数组迭代输出 #}
+{% for item in list %}
+<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ item }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+{% endfor %}
+</pre></div>
+</div>
+<p>下面列举的内容是一个使用Tornado的站点的例子。Tornado用起来并没那么复杂。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入 Jinja2</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">FileSystemLoader</span>
+
+<span class="c1"># 导入 Tornado</span>
+<span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">import</span> <span class="nn">tornado.web</span>
+
+<span class="c1"># 载入模板文件 templates/site.html</span>
+<span class="n">TEMPLATE_FILE</span> <span class="o">=</span> <span class="s2">&quot;site.html&quot;</span>
+<span class="n">templateLoader</span> <span class="o">=</span> <span class="n">FileSystemLoader</span><span class="p">(</span> <span class="n">searchpath</span><span class="o">=</span><span class="s2">&quot;templates/&quot;</span> <span class="p">)</span>
+<span class="n">templateEnv</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span> <span class="n">loader</span><span class="o">=</span><span class="n">templateLoader</span> <span class="p">)</span>
+<span class="n">template</span> <span class="o">=</span> <span class="n">templateEnv</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="n">TEMPLATE_FILE</span><span class="p">)</span>
+
+<span class="c1"># 包含著名电影的list</span>
+<span class="n">movie_list</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;The Hitchhiker&#39;s Guide to the Galaxy&quot;</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Back to future&quot;</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;Matrix&quot;</span><span class="p">]]</span>
+
+<span class="c1"># template.render() 返回包含渲染后html的字符串</span>
+<span class="n">html_output</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="nb">list</span><span class="o">=</span><span class="n">movie_list</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Here is my favorite movie list&quot;</span><span class="p">)</span>
+
+<span class="c1"># 主页的handler</span>
+<span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Returns rendered template string to the browser request</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html_output</span><span class="p">)</span>
+
+<span class="c1"># 将handler赋给服务器root (127.0.0.1:PORT/)</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="n">PORT</span><span class="o">=</span><span class="mi">8884</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Setup the server</span>
+    <span class="n">application</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">PORT</span><span class="p">)</span>
+    <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="file docutils literal notranslate"><span class="pre">base.html</span></code> 文件能够作为所有站点页面的基础，下面是实现的例子。</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{title}} - My Webpage<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>
+    {# 下一行内容将会在site.html模板中被添加。 #}
+    {% block content %}{% endblock %}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;footer&quot;</span><span class="p">&gt;</span>
+    {% block footer %}
+    <span class="ni">&amp;copy;</span> Copyright 2013 by <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://domain.invalid/&quot;</span><span class="p">&gt;</span>you<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.
+    {% endblock %}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>接下来是我们的site页面（<code class="file docutils literal notranslate"><span class="pre">site.html</span></code>），它由Python app载入，并扩展了 <code class="file docutils literal notranslate"><span class="pre">base.html</span></code>。
+下面的内容区块会自动填充到 <code class="file docutils literal notranslate"><span class="pre">base.html</span></code> 页面的相关区块中。</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &quot;base.html&quot; %}
+{% block content %}
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;important&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>{{title}}<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ list_title }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+             {% for item in list %}
+             <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>{{ item[0]}} :  {{ item[1]}}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+             {% endfor %}
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+{% endblock %}
+</pre></div>
+</div>
+<p>Jinja2是新Python Web应用程序的推荐模板库。</p>
+</div>
+<div class="section" id="chameleon">
+<h3>Chameleon<a class="headerlink" href="#chameleon" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://chameleon.readthedocs.io/">Chameleon</a> 页面模板是使用
+<a class="reference external" href="https://en.wikipedia.org/wiki/Template_Attribute_Language">模板属性语言（Template Attribute Language, TAL）</a>、
+<a class="reference external" href="https://chameleon.readthedocs.io/en/latest/reference.html#expressions-tales">TAL表达语法（TAL Expression Syntax,TALES）</a> 和
+<a class="reference external" href="https://chameleon.readthedocs.io/en/latest/reference.html#macros-metal">宏扩展TAL（Macro Expansion TAL, Metal）</a>
+语法的HTML/XML模板引擎实现。</p>
+<p>Chameleon在Python2.5及以上版本（包括3.x和PyPy）都是可用的，并常被 <a class="reference external" href="https://trypyramid.com">Pyramid Framework</a> 使用。</p>
+<p>页面模板是在文档结构中添加特定元素属性和文本标记。使用一系列简单语言概念，您能够控制文档流程、元素重复、文本替换和翻译。
+由于使用了基于属性的语法，未渲染的页面模板是合法的HTML，它可以在浏览器中查看，甚至能够在WYSIWYG编辑器中编辑。
+这使得设计者和原型构建者之间在浏览器是中静态文件上的往复合作变得更加简单。</p>
+<p>从下面的例子中能很快学到基本的TAL语言的用法：</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, <span class="p">&lt;</span><span class="nt">span</span> <span class="na">tal:replace</span><span class="o">=</span><span class="s">&quot;context.name&quot;</span><span class="p">&gt;</span>World<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">tal:repeat</span><span class="o">=</span><span class="s">&quot;row &#39;apple&#39;, &#39;banana&#39;, &#39;pineapple&#39;&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">tal:repeat</span><span class="o">=</span><span class="s">&quot;col &#39;juice&#39;, &#39;muffin&#39;, &#39;pie&#39;&quot;</span><span class="p">&gt;</span>
+           <span class="p">&lt;</span><span class="nt">span</span> <span class="na">tal:replace</span><span class="o">=</span><span class="s">&quot;row.capitalize()&quot;</span> <span class="p">/&gt;</span> <span class="p">&lt;</span><span class="nt">span</span> <span class="na">tal:replace</span><span class="o">=</span><span class="s">&quot;col&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>用作文本插入的 <cite>&lt;span tal:replace=”expression” /&gt;</cite> 形式非常常见。如果在未渲染的模板中并不要求严格的合法性，
+您可以取而代之地使用更加简洁和可读的语法，它使用 <cite>${expression}</cite> 的形式，就像下面这样：</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, ${world}!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span> <span class="na">tal:repeat</span><span class="o">=</span><span class="s">&quot;row &#39;apple&#39;, &#39;banana&#39;, &#39;pineapple&#39;&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span> <span class="na">tal:repeat</span><span class="o">=</span><span class="s">&quot;col &#39;juice&#39;, &#39;muffin&#39;, &#39;pie&#39;&quot;</span><span class="p">&gt;</span>
+           ${row.capitalize()} ${col}
+        <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>但是请记住，全部的 <cite>&lt;span tal:replace=”expression”&gt;Default Text&lt;/span&gt;</cite>
+语法也允许在未渲染的模板中有默认内容。</p>
+<p>在来自Pyramid的世界中，Chameleon不被广泛使用。</p>
+</div>
+<div class="section" id="mako">
+<h3>Mako<a class="headerlink" href="#mako" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://www.makotemplates.org/">Mako</a> 是一种模板语言，为了最大的性能，它编译为了Python。
+它的语法和API借鉴了其他模板语言，如Django和Jinja2中最好的部分。它
+是包括 <a class="reference external" href="http://www.pylonsproject.org/">Pylons 和 Pyramid</a> 在内的web框架所使用的默认模板语言。</p>
+<p>Mako的一个模板例子如下：</p>
+<div class="highlight-mako notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="nb">inherit</span> <span class="na">file=</span><span class="s">&quot;base.html&quot;</span><span class="cp">/&gt;</span><span class="x"></span>
+<span class="cp">&lt;%</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span>
+<span class="cp">%&gt;</span><span class="x"></span>
+<span class="x">&lt;table&gt;</span>
+    <span class="cp">%</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span><span class="x"></span>
+<span class="x">        </span><span class="cp">${</span><span class="n">makerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span><span class="cp">}</span>
+    <span class="cp">%</span><span class="k"> endfor</span><span class="x"></span>
+<span class="x">&lt;/table&gt;</span>
+
+<span class="cp">&lt;%</span><span class="nb">def</span> <span class="na">name=</span><span class="s">&quot;makerow(row)&quot;</span><span class="cp">&gt;</span><span class="x"></span>
+<span class="x">    &lt;tr&gt;</span>
+    <span class="cp">%</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span><span class="x"></span>
+<span class="x">        &lt;td&gt;</span><span class="cp">${</span><span class="n">name</span><span class="cp">}</span><span class="x">&lt;/td&gt;</span><span class="o">\</span>
+    <span class="cp">%</span><span class="k"> endfor</span><span class="x"></span>
+<span class="x">    &lt;/tr&gt;</span>
+<span class="cp">&lt;/%</span><span class="nb">def</span><span class="cp">&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>要渲染一个非常基本的模板，您可以像下面这么做：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mako.template</span> <span class="kn">import</span> <span class="n">Template</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Template</span><span class="p">(</span><span class="s2">&quot;hello ${data}!&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s2">&quot;world&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Mako在Python web社区中受到重视。</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id34" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id20">[1]</a></td><td><a class="reference external" href="http://blog.dscpl.com.au/2010/06/modpython-project-is-now-officially.html">mod_python 项目现在正式终结</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id35" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="http://modpython.org/pipermail/mod_python/2007-July/024080.html">mod_wsgi vs mod_python</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id36" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="http://nichol.as/benchmark-of-python-web-servers">Python WSGI 服务器基准测试</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Web 应用 &amp; 框架</a><ul>
+<li><a class="reference internal" href="#context">Context</a><ul>
+<li><a class="reference internal" href="#wsgi">WSGI</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">框架</a><ul>
+<li><a class="reference internal" href="#django">Django</a></li>
+<li><a class="reference internal" href="#flask">Flask</a></li>
+<li><a class="reference internal" href="#falcon">Falcon</a></li>
+<li><a class="reference internal" href="#tornado">Tornado</a></li>
+<li><a class="reference internal" href="#pyramid">Pyramid</a></li>
+<li><a class="reference internal" href="#masonite">Masonite</a></li>
+<li><a class="reference internal" href="#fastapi">FastAPI</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id17">Web 服务端</a><ul>
+<li><a class="reference internal" href="#nginx">Nginx</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wsgi-servers-ref">WSGI 服务器</a><ul>
+<li><a class="reference internal" href="#gunicorn">Gunicorn</a></li>
+<li><a class="reference internal" href="#waitress">Waitress</a></li>
+<li><a class="reference internal" href="#uwsgi">uWSGI</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#server-best-practices-ref">服务端最佳实践</a></li>
+<li><a class="reference internal" href="#hosting">Hosting</a><ul>
+<li><a class="reference internal" href="#heroku">Heroku</a></li>
+<li><a class="reference internal" href="#eldarion">Eldarion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id30">模板</a><ul>
+<li><a class="reference internal" href="#jinja2">Jinja2</a></li>
+<li><a class="reference internal" href="#chameleon">Chameleon</a></li>
+<li><a class="reference internal" href="#mako">Mako</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="client.html" title="previous chapter">网络应用</a></li>
+      <li>Next: <a href="scrape.html" title="next chapter">HTML 抓取</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

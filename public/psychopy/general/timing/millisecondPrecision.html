@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Can PsychoPy deliver millisecond precision? &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="Timing Issues and synchronisation" href="timing.html" />
+    <link rel="next" title="Glossary" href="../glossary.html" />
+    <link rel="prev" title="Comparing Operating Systems under PsychoPy" href="timingTestByOS.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../glossary.html" title="Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="timingTestByOS.html" title="Comparing Operating Systems under PsychoPy"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" accesskey="U">Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Can PsychoPy deliver millisecond precision?</a></li>
+<li><a class="reference internal" href="#computer-monitors">Computer monitors</a></li>
+<li><a class="reference internal" href="#can-i-have-my-stimulus-to-appear-with-a-very-precise-rate">Can I have my stimulus to appear with a very precise rate?</a></li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="timingTestByOS.html"
+                                  title="previous chapter">Comparing Operating Systems under PsychoPy</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="../glossary.html"
+                                  title="next chapter">Glossary</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/general/timing/millisecondPrecision.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="can-psychopy-deliver-millisecond-precision">
+<h1>Can PsychoPy deliver millisecond precision?<a class="headerlink" href="#can-psychopy-deliver-millisecond-precision" title="Permalink to this headline">¶</a></h1>
+<p>The simple answer is &#8216;yes&#8217;, given some additional hardware. The clocks that PsychoPy uses do have sub-millisecond precision but your keyboard has a latency of 4-25ms depending on your platform and keyboard. You could buy a response pad (e.g. a <a class="reference external" href="http://www.cedrus.com/responsepads">Cedrus Response Pad</a> ) and use PsychoPy&#8217;s serial port commands to retrieve information about responses and timing with a precision of around 1ms.</p>
+<dl class="docutils">
+<dt>Before conducting your experiment in which effects might be on the order of 1 ms, do consider that;</dt>
+<dd><ul class="first last simple">
+<li>your screen has a temporal resolution of ~10 ms</li>
+<li>your visual system has a similar upper limit (or you would notice the flickering screen)</li>
+<li>human response times are typically in the range 200-400 ms and very variable</li>
+<li>USB keyboard latencies are variable, in the range 20-30ms</li>
+</ul>
+</dd>
+</dl>
+<p>That said, PsychoPy does aim to give you as high a temporal precision as possible, and is likely not to be the limiting factor of your experiment.</p>
+</div>
+<div class="section" id="computer-monitors">
+<span id="monitortiming"></span><h1>Computer monitors<a class="headerlink" href="#computer-monitors" title="Permalink to this headline">¶</a></h1>
+<p>Monitors have fixed refresh rates, typically 60 Hz for a flat-panel display, higher for a CRT (85-100 Hz are common, up to 200 Hz is possible). For a refresh rate of 85 Hz there is a gap of 11.7 ms between frames and this limits the timing of stimulus presentation. You cannot have your stimulus appear for 100 ms, for instance; on an 85Hz monitor it can appear for either 94 ms (8 frames) or 105 ms (9 frames). There are further, less obvious, limitations however.</p>
+<p>For &#8216;&#8217;CRT (cathode ray tube) screens&#8217;&#8216;, the lines of pixels are drawn sequentially from the top to the bottom and once the bottom line has been drawn the screen is finished and the line returns to the top (the Vertical Blank Interval, VBI). Most of your frame interval is spent drawing the lines with 1-2ms being left for the VBI. This means that the pixels at the bottom are drawn &#8216;&#8217;&#8216;up to 10 ms later&#8217;&#8216;&#8217; than the pixels at the top of the screen. At what point are you going to say your stimulus &#8216;appeared&#8217; to the participant? For flat panel displays, or (or LCD projectors) your image will be presented simultaneously all over the screen, but it takes up to 20 ms(!!) for your pixels to go all the way from black to white (manufacturers of these panels quote values of 3 ms for the fastest panels, but they certainly don&#8217;t mean 3 ms white-to-black, I assume they mean 3 ms half-life).</p>
+<div class="figure" id="id1">
+<img alt="../../_images/TopOfScreen.jpg" src="../../_images/TopOfScreen.jpg" />
+<p class="caption"><span class="caption-text">Figure 1: photodiode trace at top of screen. The image above shows the luminance trace of a CRT recorded by a fast photo-sensitive diode at the top of the screen when a stimulus is requested (shown by the square wave). The square wave at the bottom is from a parallel port that indicates when the stimulus was flipped to the screen. Note that on a CRT the screen at any point is actually black for the majority of the time and just briefly bright. The visual system integrates over a large enough time window not to notice this. On the next frame after the stimulus &#8216;presentation time&#8217; the luminance of the screen flash increased.</span></p>
+</div>
+<div class="figure" id="id2">
+<img alt="../../_images/BottOfScreen.jpg" src="../../_images/BottOfScreen.jpg" />
+<p class="caption"><span class="caption-text">Figure 2: photodiode trace of the same large stimulus at bottom of screen. The image above shows comes from exactly the same script as the above but the photodiode is positioned at the bottom of the screen. In this case, after the stimulus is &#8216;requested&#8217; the current frame (which is dark) finishes drawing and then, 10ms later than the above image, the screen goes bright at the bottom.</span></p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you&#8217;re using a regular computer display, <em>you have a hardware-limited temporal precision of 10 ms irrespective of your response box or software clocks etc...</em> and should bear that in mind when looking for effect sizes of less than that.</p>
+</div>
+</div>
+<div class="section" id="can-i-have-my-stimulus-to-appear-with-a-very-precise-rate">
+<h1>Can I have my stimulus to appear with a very precise rate?<a class="headerlink" href="#can-i-have-my-stimulus-to-appear-with-a-very-precise-rate" title="Permalink to this headline">¶</a></h1>
+<p>Yes. Generally to do that you should time your stimulus (its onset/offset, its rate of change...) using the frame refresh rather than a clock. e.g. you should write your code to say &#8216;for 20 frames present this stimulus&#8217; rather than &#8216;for 300ms present this stimulus&#8217;. Provided your graphics card is set to synchronise page-flips with the vertical blank, and provided that you aren&#8217;t <a class="reference internal" href="detectingFrameDrops.html"><span class="doc">dropping frames</span></a> the frame rate will always be absolutely constant.</p>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../glossary.html" title="Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="timingTestByOS.html" title="Comparing Operating Systems under PsychoPy"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" >Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

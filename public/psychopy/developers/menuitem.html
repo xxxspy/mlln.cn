@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Adding a new Menu Item &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="For Developers" href="developers.html" />
+    <link rel="next" title="PsychoPy Experiment file format (.psyexp)" href="../psyexp.html" />
+    <link rel="prev" title="Localization (I18N, translation)" href="localization.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../psyexp.html" title="PsychoPy Experiment file format (.psyexp)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="localization.html" title="Localization (I18N, translation)"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="developers.html" accesskey="U">For Developers</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Adding a new Menu Item</a><ul>
+<li><a class="reference internal" href="#makemenus">1. makeMenus()</a></li>
+<li><a class="reference internal" href="#wxids-py">2. wxIDs.py</a></li>
+<li><a class="reference internal" href="#key-binding-prefs">3. Key-binding prefs</a></li>
+<li><a class="reference internal" href="#your-new-method">4. Your new method</a></li>
+<li><a class="reference internal" href="#documentation">5. Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="localization.html"
+                                  title="previous chapter">Localization (I18N, translation)</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="../psyexp.html"
+                                  title="next chapter">PsychoPy Experiment file format (.psyexp)</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/developers/menuitem.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="adding-a-new-menu-item">
+<span id="addmenuitem"></span><h1>Adding a new Menu Item<a class="headerlink" href="#adding-a-new-menu-item" title="Permalink to this headline">¶</a></h1>
+<p>Adding a new menu-item to the Builder (or Coder) is relatively straightforward, but there are several files that need to be changed in specific ways.</p>
+<div class="section" id="makemenus">
+<h2>1. makeMenus()<a class="headerlink" href="#makemenus" title="Permalink to this headline">¶</a></h2>
+<p>The code that constructs the menus for the Builder is within a method named <cite>makeMenus()</cite>, within class builder.BuilderFrame(). Decide which submenu your new command fits under, and look for that section (e.g., File, Edit, View, and so on). For example, to add an item for making the Routine panel items larger, I added two lines within the View menu, by editing the <cite>makeMenus()</cite> method of class <cite>BuilderFrame</cite> within <cite>psychopy/app/builder/builder.py</cite> (similar for Coder):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">viewMenu</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">IDs</span><span class="o">.</span><span class="n">tbIncrRoutineSize</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;&amp;Routine Larger</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="s1">&#39;largerRoutine&#39;</span><span class="p">],</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Larger routine items&quot;</span><span class="p">))</span>
+<span class="n">wx</span><span class="o">.</span><span class="n">EVT_MENU</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">IDs</span><span class="o">.</span><span class="n">tbIncrRoutineSize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">routinePanel</span><span class="o">.</span><span class="n">increaseSize</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note the use of the translation function, _(), for translating text that will be displayed to users (menu listing, hint).</p>
+</div>
+<div class="section" id="wxids-py">
+<h2>2. wxIDs.py<a class="headerlink" href="#wxids-py" title="Permalink to this headline">¶</a></h2>
+<p>A new item needs to have a (numeric) ID so that <cite>wx</cite> can keep track of it. Here, the number is <cite>self.IDs.tbIncrRoutineSize</cite>, which I had to define within the file <cite>psychopy/app/wxIDs.py</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tbIncrRoutineSize</span><span class="o">=</span><span class="mi">180</span>
+</pre></div>
+</div>
+<p>It&#8217;s possible that, instead of hard-coding it like this, it&#8217;s better to make a call to <cite>wx.NewId()</cite> &#8211; wx will take care of avoiding duplicate IDs, presumably.</p>
+</div>
+<div class="section" id="key-binding-prefs">
+<h2>3. Key-binding prefs<a class="headerlink" href="#key-binding-prefs" title="Permalink to this headline">¶</a></h2>
+<p>I also defined a key to use to as a keyboard short-cut for activating the new menu item:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="s1">&#39;largerRoutine&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The actual key is defined in a preference file. Because psychopy is multi-platform, you need to add info to four different .spec files, all of them being within the <cite>psychopy/preferences/</cite> directory, for four operating systems (Darwin, FreeBSD, Linux, Windows). For <cite>Darwin.spec</cite> (meaning macOS), I added two lines. The first line is not merely a comment: it is also automatically used as a tooltip (in the preferences dialog, under key-bindings), and the second being the actual short-cut key to use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># increase display size of Routines</span>
+<span class="n">largerRoutine</span> <span class="o">=</span> <span class="n">string</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;Ctrl++&#39;</span><span class="p">)</span> <span class="c1"># on Mac Book Pro this is good</span>
+</pre></div>
+</div>
+<p>This means that the user has to hold down the <cite>Ctrl</cite> key and then press the <cite>+</cite> key. Note that on Macs, &#8216;Ctrl&#8217; in the spec is automatically converted into &#8216;Cmd&#8217; for the actual key to use; in the .spec, you should always specify things in terms of &#8216;Ctrl&#8217; (and not &#8216;Cmd&#8217;). The default value is the key-binding to use unless the user defines another one in her or his preferences (which then overrides the default). Try to pick a sensible key for each operating system, and update all four .spec files.</p>
+</div>
+<div class="section" id="your-new-method">
+<h2>4. Your new method<a class="headerlink" href="#your-new-method" title="Permalink to this headline">¶</a></h2>
+<p>The second line within <cite>makeMenus()</cite> adds the key-binding definition into wx&#8217;s internal space, so that when the key is pressed, <cite>wx</cite> knows what to do. In the example, it will call the method <cite>self.routinePanel.increaseSize</cite>, which I had to define to do the desired behavior when the method is called (in this case, increment an internal variable and redraw the routine panel at the new larger size).</p>
+</div>
+<div class="section" id="documentation">
+<h2>5. Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>To let people know that your new feature exists, add a note about your new feature in the CHANGELOG.txt, and appropriate documentation in .rst files.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../psyexp.html" title="PsychoPy Experiment file format (.psyexp)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="localization.html" title="Localization (I18N, translation)"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="developers.html" >For Developers</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

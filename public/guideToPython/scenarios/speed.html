@@ -1,0 +1,544 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>速度 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="科学应用" href="scientific.html" />
+    <link rel="prev" title="持续集成" href="ci.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/scenarios/speed/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/scenarios/speed">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="速度 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="id1">
+<h1>速度<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/33175625804_e225b90f3e_k_d.jpg" src="../_images/33175625804_e225b90f3e_k_d.jpg" />
+<p>CPython作为最流行的Python环境，对于CPU密集型任务（CPU bound tasks）较慢，而 <a class="reference external" href="http://pypy.org">PyPy</a> 则较快。</p>
+<p>使用稍作改动的 <a class="reference external" href="http://www.dabeaz.com/GIL/gilvis/measure2.py">David Beazley的</a>  CPU密集测试代码（增加了循环进行多轮测试），
+您可以看到CPython与PyPy之间的执行差距。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> PyPy
+<span class="gp">$</span> ./pypy -V
+<span class="go">Python 2.7.1 (7773f8fc4223, Nov 18 2011, 18:47:10)</span>
+<span class="go">[PyPy 1.7.0 with GCC 4.4.3]</span>
+<span class="gp">$</span> ./pypy measure2.py
+<span class="go">0.0683999061584</span>
+<span class="go">0.0483210086823</span>
+<span class="go">0.0388588905334</span>
+<span class="go">0.0440690517426</span>
+<span class="go">0.0695300102234</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> CPython
+<span class="gp">$</span> ./python -V
+<span class="go">Python 2.7.1</span>
+<span class="gp">$</span> ./python measure2.py
+<span class="go">1.06774401665</span>
+<span class="go">1.45412397385</span>
+<span class="go">1.51485204697</span>
+<span class="go">1.54693889618</span>
+<span class="go">1.60109114647</span>
+</pre></div>
+</div>
+<div class="section" id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-gil">
+<h3>The GIL<a class="headerlink" href="#the-gil" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://wiki.python.org/moin/GlobalInterpreterLock">GIL</a> (全局解释器锁)是Python支持多线程并行操作的方式。Python的内存管理不是
+线程安全的，所以GIL被创造出来避免多线程同时运行同一个Python代码。</p>
+<p>David Beazley 有一个关于GIL如何工作的 <a class="reference external" href="http://www.dabeaz.com/python/UnderstandingGIL.pdf">指导</a> 。他也讨论了 Python3.2中的 <a class="reference external" href="http://www.dabeaz.com/python/NewGIL.pdf">新GIL</a>
+他的结论是为了最大化一个Python程序的性能，应该对GIL工作方式有一个深刻的理解 ———
+它如何影响您的特定程序，您拥有多少核，以及您程序瓶颈在哪。</p>
+</div>
+<div class="section" id="c">
+<h3>C 扩展<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="gil">
+<h3>GIL<a class="headerlink" href="#gil" title="Permalink to this headline">¶</a></h3>
+<p>当写一个C扩展时必须 <a class="reference external" href="https://docs.python.org/c-api/init.html#threads">特别关注</a>  在解释器中注册您的线程。</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>C 扩展<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cython">
+<h3>Cython<a class="headerlink" href="#cython" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://cython.org/">Cython</a> 是Python语言的一个超集，对其您可以为Python写C
+或C++模块。Cython也使得您可以从已编译的C库中调用函数。使用Cython让您得以发挥Python
+的变量与操作的强类型优势。</p>
+<p>这是一个Cython中的强类型例子。</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primes</span><span class="p">(</span><span class="nb">int</span> <span class="n">kmax</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;有一些Cython附加关键字的素数计算 &quot;&quot;&quot;</span>
+
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">n</span><span class="p">,</span> <span class="nf">k</span><span class="p">,</span> <span class="nf">i</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="kt">p</span>[1000]
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">kmax</span> <span class="o">&gt;</span> <span class="mf">1000</span><span class="p">:</span>
+        <span class="n">kmax</span> <span class="o">=</span> <span class="mf">1000</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mf">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mf">2</span>
+    <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">kmax</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mf">0</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mf">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mf">1</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mf">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>将这个有一些附加关键字的寻找素数算法实现与下面这个纯Python实现比较：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primes</span><span class="p">(</span><span class="n">kmax</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;标准Python语法下的素数计算&quot;&quot;&quot;</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">kmax</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+        <span class="n">kmax</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">kmax</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">%</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>注意，在Cython版本，在创建一个Python列表时，您声明了会被编译为C类型的整型和整型数组。</p>
+<div class="highlight-cython notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primes</span><span class="p">(</span><span class="nb">int</span> <span class="n">kmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;有一些Cython附加关键字的素数计算 &quot;&quot;&quot;</span>
+
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="nf">n</span><span class="p">,</span> <span class="nf">k</span><span class="p">,</span> <span class="nf">i</span>
+    <span class="k">cdef</span> <span class="kt">int</span> <span class="kt">p</span>[1000]
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">primes</span><span class="p">(</span><span class="n">kmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;标准Python语法下的素数计算&quot;&quot;&quot;</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>有什么差别呢？在上面的Cython版本中，您可以看到变量类型与整型数组像标准C一样被声明。
+作为例子，第三行的 <cite>cdef int n,k,i</cite> 这个附加类型声明（整型）使得Cython编译器得以产生比
+第二个版本更有效率的C代码。标准Python代码以 <cite>*.py</cite> 格式保存，而 Cython 以 <cite>*.pyx</cite> 格式保存。</p>
+<p>速度上有什么差异呢？看看这个！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="c1">#启动pyx编译器</span>
+<span class="kn">import</span> <span class="nn">pyximport</span>
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
+<span class="c1">#Cython的素数算法实现</span>
+<span class="kn">import</span> <span class="nn">primesCy</span>
+<span class="c1">#Python的素数算法实现</span>
+<span class="kn">import</span> <span class="nn">primes</span>
+
+<span class="k">print</span> <span class="s2">&quot;Cython:&quot;</span>
+<span class="n">t1</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">primesCy</span><span class="o">.</span><span class="n">primes</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">t2</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span> <span class="s2">&quot;Cython time: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;Python&quot;</span>
+<span class="n">t1</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">primes</span><span class="o">.</span><span class="n">primes</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">t2</span><span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span> <span class="s2">&quot;Python time: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这两行代码需要一些说明：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyximport</span>
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><cite>pyximport</cite> 使得您可以导入 <cite>*.pyx</cite> 文件，（像 <cite>primesCy.pyx</cite> 这样的）。
+<cite>pyximport.install()</cite> 命令使Python解释器可以打开Cython编译器直接编译出 <cite>*.so</cite> 格式
+的C库。Cython之后可以导入这个库到您的Python代码中，简便而有效。使用 <cite>time.time()</cite> 函数
+您可以比较两个不同的在查找500个素数的调用长的时间消耗差异。在一个标准笔记本中
+（双核AMD E-450 1.6GHz），测量值是这样的：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Cython time: 0.0054 seconds</span>
+
+<span class="go">Python time: 0.0566 seconds</span>
+</pre></div>
+</div>
+<p>而这个是嵌入的 <a class="reference external" href="http://beagleboard.org/Products/BeagleBone">ARM beaglebone</a> 机的输出结果：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Cython time: 0.0196 seconds</span>
+
+<span class="go">Python time: 0.3302 seconds</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pyrex">
+<h3>Pyrex<a class="headerlink" href="#pyrex" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="shedskin">
+<h3>Shedskin?<a class="headerlink" href="#shedskin" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>并发<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="concurrent-futures">
+<h3>Concurrent.futures<a class="headerlink" href="#concurrent-futures" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.python.org/3/library/concurrent.futures.html">concurrent.futures</a> 模块是标准库中的一个模块，它提供了一个“用于异步调用的高级接口”。
+它抽象了许多关于使用多个线程或进程并发的更复杂的细节，并允许用户专注于完成手头的任务。</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/concurrent.futures.html">concurrent.futures</a> 模块提供了两个主要的类，即 <cite>ThreadPoolExecutor</cite> 和 <cite>ProcessPoolExecutor</cite> 。
+ThreadPoolExecutor将创建一个用户可以提交作业的工作线程池。当下一个工作线程可用时，
+这些作业将在另一个线程中执行。</p>
+<p>ProcessPoolExecutor以相同的方式工作，它使用多进程而不是多线程作为工作池。这就可以避开
+GIL的问题，但是由于传递参数给工作进程的工作原理，只有可序列化的对象可以执行并返回。</p>
+<p>由于GIL的工作原理，一个很好的经验法则是当执行涉及很多阻塞（如通过网络发出请求）的任务时
+使用ThreadPoolExecutor，而对高计算开销的任务使用ProcessPoolExecutor执行器。</p>
+<p>使用两个执行器并行执行有两个主要方法。一个是使用 <cite>map(func, iterables)</cite> 方法。
+这个函数除了能并行执行一切，它几乎和内置的 <cite>map()</cite> 函数一模一样 ：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">get_webpage</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">page</span>
+
+<span class="n">pool</span> <span class="o">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">my_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://google.com/&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>  <span class="c1"># Create a list of urls</span>
+
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">get_webpage</span><span class="p">,</span> <span class="n">my_urls</span><span class="p">):</span>
+    <span class="c1"># 处理结果</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>为了进一步的控制，<cite>submit(func, *args, **kwargs)</cite> 方法将调度一个可执行的调用
+（如 <cite>func(*args, **kwargs)</cite> ），并返回一个代表可调用的执行的 <a class="reference external" href="https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Future">Future</a> 对象。</p>
+<p>Future对象提供了可用于检查计划可调用进程的各种方法。这些包括：</p>
+<p>cancel()
+&nbsp;&nbsp;&nbsp;&nbsp;尝试取消调用。
+cancelled()
+&nbsp;&nbsp;&nbsp;&nbsp;如果调用被成功取消，返回True。
+running()
+&nbsp;&nbsp;&nbsp;&nbsp;如果当前正在执行调用而且没被取消，则返回True
+done()
+&nbsp;&nbsp;&nbsp;&nbsp;如果调用被成功取消或完成运行，返回True。
+result()
+&nbsp;&nbsp;&nbsp;&nbsp;返回调用返回的值。请注意，此调用将阻塞到默认情况下调度的可调用对象的返回。
+exception()
+&nbsp;&nbsp;&nbsp;&nbsp;返回调用抛出的异常。如果没有抛出异常，将返回 <cite>None</cite> 。请注意，这和 <cite>result()</cite> 一样会阻塞。
+add_done_callback(fn)
+&nbsp;&nbsp;&nbsp;&nbsp;添加回调函数函数，在所调用的可调用对象执行返回时执行（如 <cite>fn(future)</cite> ）。
+&nbsp;&nbsp;&nbsp;&nbsp;预定可回拨。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
+
+<span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="bp">False</span>
+
+    <span class="n">sqrt_n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sqrt_n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="bp">True</span>
+
+<span class="n">PRIMES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">112272535095293</span><span class="p">,</span>
+    <span class="mi">112582705942171</span><span class="p">,</span>
+    <span class="mi">112272535095293</span><span class="p">,</span>
+    <span class="mi">115280095190773</span><span class="p">,</span>
+    <span class="mi">115797848077099</span><span class="p">,</span>
+    <span class="mi">1099726899285419</span><span class="p">]</span>
+
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+    <span class="c1"># Schedule the ProcessPoolExecutor to check if a number is prime</span>
+    <span class="c1"># and add the returned Future to our list of futures</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">PRIMES</span><span class="p">:</span>
+        <span class="n">fut</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">is_prime</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+        <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fut</span><span class="p">)</span>
+
+<span class="c1"># As the jobs are completed, print out the results</span>
+<span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{} is prime&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{} is not prime&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://docs.python.org/3/library/concurrent.futures.html">concurrent.futures</a> 模块包含两个帮助函数来处理Futures。<cite>as_completed(futures)</cite> 函数
+返回futures列表的的迭代器，在futures结束时yield。</p>
+<p>而 <cite>wait(futures)</cite> 函数则简单地阻塞，直到列表中所有的futures完成。</p>
+<p>有关使用 <a class="reference external" href="https://docs.python.org/3/library/concurrent.futures.html">concurrent.futures</a> 模块的更多信息，请参阅官方文档。</p>
+</div>
+<div class="section" id="threading">
+<h3>threading<a class="headerlink" href="#threading" title="Permalink to this headline">¶</a></h3>
+<p>标准库带有一个 <a class="reference external" href="https://docs.python.org/3/library/threading.html">threading</a> 模块，允许用户手动处理多个线程。</p>
+<p>在另一个线程中运行一个函数就如传递一个可调用对象以及它的参数到 <cite>Thread</cite> 的构造函数中，
+然后调用 <cite>start()</cite> 一样简单：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">get_webpage</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">page</span>
+
+<span class="n">some_thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">get_webpage</span><span class="p">,</span> <span class="s1">&#39;http://google.com/&#39;</span><span class="p">)</span>
+<span class="n">some_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>调用 <cite>join()</cite> 来等待线程终止：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">some_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>调用 <cite>join()</cite> 后，检查线程是否仍然存在（因为join调用超时）总是一个好主意：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">some_thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;join() must have timed out.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Our thread has terminated.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>由于多个线程可以访问相同的内存部分，有时可能会出现两个或多个线程尝试同时写入同一资源的情况，
+或者输出取决于某些事件的顺序或时序。 这被称为 <cite>数据竞争</cite> 或竞争条件。当这种情况发生时，
+输出将会出现乱码，或者可能会遇到难以调试的问题。 <a class="reference external" href="https://stackoverflow.com/questions/26688424/python-threads-are-printing-at-the-same-time-messing-up-the-text-output">Stack Overflow post</a> 是个很好的例子。</p>
+<p>可以避免的方法是每个线程在写入共享资源之前获取 <a class="reference external" href="https://docs.python.org/3/library/threading.html#lock-objects">Lock</a> 。 锁可以通过环境上下文协议
+（ <cite>with</cite> 语句）或直接使用 <cite>acquire()</cite> 和 <cite>release()</cite> 来获取和释放。
+以下是一个（颇有争议的）例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span><span class="p">,</span> <span class="n">Thread</span>
+
+<span class="n">file_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">file_lock</span><span class="p">:</span>
+        <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;website_changes.log&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">changes</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">monitor_website</span><span class="p">(</span><span class="n">some_website</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Monitor a website and then if there are any changes,</span>
+<span class="sd">    log them to disk.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">changes</span> <span class="o">=</span> <span class="n">check_for_changes</span><span class="p">(</span><span class="n">some_website</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">changes</span><span class="p">:</span>
+            <span class="n">log</span><span class="p">(</span><span class="n">changes</span><span class="p">)</span>
+
+<span class="n">websites</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://google.com/&#39;</span><span class="p">,</span> <span class="o">...</span> <span class="p">]</span>
+<span class="k">for</span> <span class="n">website</span> <span class="ow">in</span> <span class="n">websites</span><span class="p">:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">monitor_website</span><span class="p">,</span> <span class="n">website</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>在这里，我们有一堆线程检查站点列表中的更改，每当有任何更改时，它们尝试通过调用
+<cite>log(changes)</cite> 将这些更改写入文件。 当调用 <cite>log()</cite> 时，它在 <cite>with file_lock:</cite>
+处等待获取锁。 这样可以确保在任何时候只有一个线程正在写入文件。</p>
+<div class="section" id="spawning-processes">
+<h4>Spawning Processes<a class="headerlink" href="#spawning-processes" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="multiprocessing">
+<h4>Multiprocessing<a class="headerlink" href="#multiprocessing" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">速度</a><ul>
+<li><a class="reference internal" href="#context">Context</a><ul>
+<li><a class="reference internal" href="#the-gil">The GIL</a></li>
+<li><a class="reference internal" href="#c">C 扩展</a></li>
+<li><a class="reference internal" href="#gil">GIL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">C 扩展</a><ul>
+<li><a class="reference internal" href="#cython">Cython</a></li>
+<li><a class="reference internal" href="#pyrex">Pyrex</a></li>
+<li><a class="reference internal" href="#shedskin">Shedskin?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">并发</a><ul>
+<li><a class="reference internal" href="#concurrent-futures">Concurrent.futures</a></li>
+<li><a class="reference internal" href="#threading">threading</a><ul>
+<li><a class="reference internal" href="#spawning-processes">Spawning Processes</a></li>
+<li><a class="reference internal" href="#multiprocessing">Multiprocessing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ci.html" title="previous chapter">持续集成</a></li>
+      <li>Next: <a href="scientific.html" title="next chapter">科学应用</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

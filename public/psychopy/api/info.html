@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.info - functions for getting information about the system &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.iohub - ioHub event monitoring framework" href="iohub.html" />
+    <link rel="prev" title="pylink (SR research)" href="hardware/pylink.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iohub.html" title="psychopy.iohub - ioHub event monitoring framework"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hardware/pylink.html" title="pylink (SR research)"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="hardware/pylink.html"
+                                  title="previous chapter">pylink (SR research)</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="iohub.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.iohub</span></code> - ioHub event monitoring framework</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/info.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.info">
+<span id="psychopy-info-functions-for-getting-information-about-the-system"></span><h1><a class="reference internal" href="#module-psychopy.info" title="psychopy.info"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.info</span></code></a> - functions for getting information about the system<a class="headerlink" href="#module-psychopy.info" title="Permalink to this headline">¶</a></h1>
+<p>This module has tools for fetching data about the system or the
+current Python process. Such info can be useful for understanding
+the context in which an experiment was run.</p>
+<dl class="class">
+<dt id="psychopy.info.RunTimeInfo">
+<em class="property">class </em><code class="descclassname">psychopy.info.</code><code class="descname">RunTimeInfo</code><span class="sig-paren">(</span><em>author=None</em>, <em>version=None</em>, <em>win=None</em>, <em>refreshTest='grating'</em>, <em>userProcsDetailed=False</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.info.RunTimeInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a snapshot of your configuration at run-time,
+for immediate or archival use.</p>
+<p>Returns a dict-like object with info about PsychoPy, your experiment
+script, the system &amp; OS, your window and monitor settings (if any),
+python &amp; packages, and openGL.</p>
+<p>If you want to skip testing the refresh rate, use &#8216;refreshTest=None&#8217;</p>
+<p>Example usage: see runtimeInfo.py in coder demos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body"><ul class="first simple">
+<li>2010 written by Jeremy Gray, input from Jon Peirce and Alex Holcombe</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>win</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><em>None</em>, False, <a class="reference internal" href="visual/window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> instance</span><dd><p class="first last">what window to use for refresh rate testing (if any) and
+settings. None -&gt; temporary window using
+defaults; False -&gt; no window created, used, nor profiled;
+a Window() instance you have already created</p>
+</dd>
+<dt>author</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><em>None</em>, string</span><dd><p class="first last">None = try to autodetect first __author__ in sys.argv[0];
+string = user-supplied author info (of an experiment)</p>
+</dd>
+<dt>version</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><em>None</em>, string</span><dd><p class="first last">None = try to autodetect first __version__ in sys.argv[0];
+string = user-supplied version info (of an experiment)</p>
+</dd>
+</dl>
+<p>verbose : <em>False</em>, True; how much detail to assess</p>
+<dl class="docutils">
+<dt>refreshTest</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">None, False, True, <em>&#8216;grating&#8217;</em></span><dd><p class="first last">True or &#8216;grating&#8217; = assess refresh average, median, and SD
+of 60 win.flip()s, using visual.getMsPerFrame()
+&#8216;grating&#8217; = show a visual during the assessment;
+True = assess without a visual</p>
+</dd>
+<dt>userProcsDetailed: <em>False</em>, True</dt>
+<dd><p class="first last">get details about concurrent user&#8217;s processses
+(command, process-ID)</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a flat dict (but with several groups based on key names):</p>
+<dl class="last docutils">
+<dt>psychopy</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">version, rush() availability</span><dd><p class="first last">psychopyVersion, psychopyHaveExtRush, git branch and current
+commit hash if available</p>
+</dd>
+<dt>experiment</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">author, version, directory, name, current time-stamp,</span><dd><p class="first last">SHA1 digest, VCS info (if any, svn or hg only),
+experimentAuthor, experimentVersion, ...</p>
+</dd>
+<dt>system</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">hostname, platform, user login, count of users,</span><dd><p class="first last">user process info (count, cmd + pid), flagged processes
+systemHostname, systemPlatform, ...</p>
+</dd>
+<dt>window</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(see output; many details about the refresh rate, window,</span><dd><p class="first last">and monitor; units are noted)
+windowWinType, windowWaitBlanking, ...windowRefreshTimeSD_ms,
+... windowMonitor.&lt;details&gt;, ...</p>
+</dd>
+<dt>python</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">version of python, versions of key packages</span><dd><p class="first last">(wx, numpy, scipy, matplotlib, pyglet, pygame)
+pythonVersion, pythonScipyVersion, ...</p>
+</dd>
+<dt>openGL</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">version, vendor, rendering engine, plus info on whether</span><dd><p class="first last">several extensions are present
+openGLVersion, ..., openGLextGL_EXT_framebuffer_object, ...</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.info.getMemoryUsage">
+<code class="descclassname">psychopy.info.</code><code class="descname">getMemoryUsage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.info.getMemoryUsage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the memory (RAM) currently used by this Python process, in M.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.info.getRAM">
+<code class="descclassname">psychopy.info.</code><code class="descname">getRAM</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.info.getRAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return system&#8217;s physical RAM &amp; available RAM, in M.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iohub.html" title="psychopy.iohub - ioHub event monitoring framework"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hardware/pylink.html" title="pylink (SR research)"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

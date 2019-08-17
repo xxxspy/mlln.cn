@@ -1,0 +1,419 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>测试您的代码 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="日志（Logging）" href="logging.html" />
+    <link rel="prev" title="文档" href="documentation.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/writing/tests/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/writing/tests">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="测试您的代码 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="id1">
+<h1>测试您的代码<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<img alt="https://farm5.staticflickr.com/4166/34435687940_8f73fc1fa6_k_d.jpg" src="https://farm5.staticflickr.com/4166/34435687940_8f73fc1fa6_k_d.jpg" />
+<p>测试您的代码非常重要。</p>
+<p>常常将测试代码和运行代码一起写是一种非常好的习惯。
+聪明地使用这种方法将会帮助您更加精确地定义代码的含义，并且代码的耦合性更低。</p>
+<p>测试的通用规则：</p>
+<ul class="simple">
+<li>测试单元应该集中于小部分的功能，并且证明它是对的。</li>
+<li>每个测试单元必须完全独立。他们都能够单独运行，也可以在测试套件中运行，而不用考虑被调用的顺序。
+这个规则意味着每次测试应该加载全新的数据集，测试后再做一些清理。
+这通常由 <code class="xref py py-meth docutils literal notranslate"><span class="pre">setUp()</span></code> 和 <code class="xref py py-meth docutils literal notranslate"><span class="pre">tearDown()</span></code> 方法处理。</li>
+<li>尽量使测试单元快速运行。如果一个单独的测试单元需要较长的时间去运行，开发进度将会延迟，
+测试将无法按照需要的频率运行。有时候，因为测试单元需要复杂的数据结构，
+并且当它运行时每次都要加载，所以其运行时间较长。把运行吃力的测试单元放在单独的测试组件中由调度任务运行，
+并且按照需要运行其它测试单元。</li>
+<li>学习使用工具，学习如何运行一个单独的测试用例。然后，当在一个模块中开发了一个功能时，
+经常运行这个功能的测试用例，理想情况下，一切都将自动。</li>
+<li>在编码环节前后，要常常运行完整的测试组件。只有这样，您才会坚信没有破坏其他代码的功能。</li>
+<li>通过钩子（hook）实现一旦把代码放入分享仓库中，
+立刻运行所有的测试单元，这是个好办法。</li>
+<li>如果您在开发期间不得不打断自己的工作，写一个被打断的单元测试，它关于下一步要开发的东西。
+当回到工作时，您将更快地回到原先被打断的地方，并且步入正轨。</li>
+<li>当您调试代码的时候，首先需要写一个精确定位bug的测试单元。尽管这样做很难，
+但是捕捉bug的单元测试在项目中很重要。</li>
+<li>测试函数使用长且描述性的名字。这边的样式指导与运行代码有点不一样，运行代码更倾向于使用短的名字，
+而测试函数不会直接被调用。在运行代码中，square()或者甚至sqr()这样的命名都是可以的，
+但是在测试代码中，您应该这样取名test_square_of_number_2()，test_square_negative_number()。
+函数名在测试单元失败时会显示，应该尽可能具有描述性。</li>
+<li>当发生了一些问题，或者不得不改变时，如果代码中有一套不错的测试单元，
+维护将很大一部分依靠测试组件解决问题，或者修改确定的行为。因此测试代码应该尽可能多读，
+甚至多于运行代码。目的不明确的测试单元在这种情况下没有多少用处。</li>
+<li>测试代码的另外一个用处是作为新开发人员的入门介绍。当有人需要基于现有的代码库工作时，
+运行并且阅读相关的测试代码是最好的做法。他们会或者应该发现大多数困难出现的热点，以及边界的情况。
+如果他们必须添加一些功能，第一步应该是添加一个测试，以确保新的功能不是一个尚未插入到界面的工作路径。</li>
+</ul>
+<div class="section" id="id2">
+<h2>基本<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>单元测试<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.python.org/3/library/unittest.html#module-unittest" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a> 包括Python标准库中自带的测试模块。任何一个使用过Junit，nUnit,或CppUnit工具的人对它的API都会比较熟悉。</p>
+<p>创建测试用例通过继承 <a class="reference external" href="https://docs.python.org/3/library/unittest.html#unittest.TestCase" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.TestCase</span></code></a> 来实现.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">class</span> <span class="nc">MyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>截至Python 2.7，单元测试也包括自己的发现机制。</p>
+<blockquote>
+<div><a class="reference external" href="http://docs.python.org/library/unittest.html">在标准库文档中单元测试</a></div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>文档测试<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><a class="reference external" href="https://docs.python.org/3/library/doctest.html#module-doctest" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> 模块查找docstrings中看起来像交互式Python会话的零碎文本，执行那些会话以证实工作正常。</div></blockquote>
+<p>doctest模块的用例相比之前的单元测试有所不同：它们通常不是很详细，并且不会用特别的用例或者处理模糊的回归bug。作为模块和其部件主要用例的表述性文档，doctest模块非常有用。</p>
+<p>函数中的一个简单的doctest:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;返回 x 的平方。</span>
+
+<span class="sd">    &gt;&gt;&gt; square(2)</span>
+<span class="sd">    4</span>
+<span class="sd">    &gt;&gt;&gt; square(-2)</span>
+<span class="sd">    4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>当使用 <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">module.py</span></code> 这样的命令行运行这个模块时，doctest将会运行，并会在结果不和文档字符串的描述一致时报错。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>工具<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="py-test">
+<h3>py.test<a class="headerlink" href="#py-test" title="Permalink to this headline">¶</a></h3>
+<p>相比于Python标准的单元测试模块,py.test是一个没有模板的选择。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install pytest
+</pre></div>
+</div>
+<p>尽管这个测试工具功能完备，并且可扩展，但是它语法很简单。创建一个测试组件和写一个带有诸多函数的模块一样容易：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># content of test_sample.py</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">test_answer</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">func</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>运行命令py.test</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> py.test
+<span class="go">=========================== test session starts ============================</span>
+<span class="go">platform darwin -- Python 2.7.1 -- pytest-2.2.1</span>
+<span class="go">collecting ... collected 1 items</span>
+
+<span class="go">test_sample.py F</span>
+
+<span class="go">================================= FAILURES =================================</span>
+<span class="go">_______________________________ test_answer ________________________________</span>
+
+<span class="go">    def test_answer():</span>
+<span class="gp">&gt;</span>       assert func<span class="o">(</span><span class="m">3</span><span class="o">)</span> <span class="o">==</span> <span class="m">5</span>
+<span class="go">E       assert 4 == 5</span>
+<span class="go">E        +  where 4 = func(3)</span>
+
+<span class="go">test_sample.py:5: AssertionError</span>
+<span class="go">========================= 1 failed in 0.02 seconds =========================</span>
+</pre></div>
+</div>
+<p>要比单元测试模型中相同功能所要求的工作量少得多。</p>
+<blockquote>
+<div><a class="reference external" href="https://docs.pytest.org/en/latest/">py.test</a></div></blockquote>
+</div>
+<div class="section" id="hypothesis">
+<h3>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">¶</a></h3>
+<p>Hypothesis 让您编写被示例源码参数化的测试的库。它会生成简单易懂的例子，使您的测试失败，
+让您花更少的力气找到更多的错误。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install hypothesis
+</pre></div>
+</div>
+<p>例如，测试浮动列表要尝试很多例子，但是会报告每个错误的最小例子（区分异常类型和位置）：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">floats</span><span class="p">(</span><span class="n">allow_nan</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">allow_infinity</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">mean</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Falsifying example: test_mean(
+    xs=[1.7976321109618856e+308, 6.102390043022755e+303]
+)
+</pre></div>
+</div>
+<p>Hypothesis 是实用的，也是非常强大的，能经常会找出被其他所有形式的测试所遗漏的错误。
+它能与py.test很好地集成，在简单和高级场景中都非常注重可用性。</p>
+<blockquote>
+<div><a class="reference external" href="https://hypothesis.readthedocs.io/en/latest/">hypothesis</a></div></blockquote>
+</div>
+<div class="section" id="tox">
+<h3>tox<a class="headerlink" href="#tox" title="Permalink to this headline">¶</a></h3>
+<p>tox是自动化测试管理和针对多种解释器配置测试工具。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install tox
+</pre></div>
+</div>
+<p>tox允许通过简单的初始化样式配置文件，配置复杂的多参数测试矩阵。</p>
+<blockquote>
+<div><a class="reference external" href="https://tox.readthedocs.io/en/latest/">tox</a></div></blockquote>
+</div>
+<div class="section" id="unittest2">
+<h3>Unittest2<a class="headerlink" href="#unittest2" title="Permalink to this headline">¶</a></h3>
+<p>Unittest2是Python2.7中unittest模型的补丁，它的API有所改善，并且对Python之前版本中已有的内容有了更好的说明。</p>
+<p>如果使用Python2.6版本或者以下，需要使用pip安装unittest2。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install unittest2
+</pre></div>
+</div>
+<p>将来您可能想要以unittest之名导入模块，目的是更容易地把代码移植到新的版本中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest2</span> <span class="kn">as</span> <span class="nn">unittest</span>
+
+<span class="k">class</span> <span class="nc">MyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>如果切换到新的Python版本，并且不再需要unittest2模块，您只需要在测试模块中改变import内容，而不必改变其它代码。</p>
+<blockquote>
+<div><a class="reference external" href="http://pypi.org/project/unittest2">unittest2</a></div></blockquote>
+</div>
+<div class="section" id="mock">
+<h3>mock<a class="headerlink" href="#mock" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.python.org/3/library/unittest.mock.html#module-unittest.mock" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest.mock</span></code></a> 是Python中用于测试的一个库。在Python3.3版本中，标准库中就有。
+<a class="reference external" href="https://docs.python.org/dev/library/unittest.mock">标准库</a>.</p>
+<p>对于Python早期版本，如下操作：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install mock
+</pre></div>
+</div>
+<p>在测试环境下，使用mock对象能够替换部分系统，并且对它们如何被使用做了声明。
+例如，您可以对一个方法打猴子补丁：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mock</span> <span class="kn">import</span> <span class="n">MagicMock</span>
+<span class="n">thing</span> <span class="o">=</span> <span class="n">ProductionClass</span><span class="p">()</span>
+<span class="n">thing</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">thing</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">thing</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">assert_called_with</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>在测试环境下，对于模型中的mock类或对象，使用补丁修饰器。在下面这个例子中，一直返回相同结果的外部查询系统使用mock替换（但仅用在测试期间）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mock_search</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">MockSearchQuerySet</span><span class="p">(</span><span class="n">SearchQuerySet</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">iter</span><span class="p">([</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">MockSearchQuerySet</span><span class="p">()</span>
+
+<span class="c1"># SearchForm here refers to the imported class reference in myapp,</span>
+<span class="c1"># not where the SearchForm class itself is imported from</span>
+<span class="nd">@mock.patch</span><span class="p">(</span><span class="s1">&#39;myapp.SearchForm.search&#39;</span><span class="p">,</span> <span class="n">mock_search</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_new_watchlist_activities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># get_search_results runs a search and iterates over the result</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">myapp</span><span class="o">.</span><span class="n">get_search_results</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s2">&quot;fish&quot;</span><span class="p">)),</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>mock有许多其它方法，您可以配置它，并且控制它的动作。</p>
+<blockquote>
+<div><a class="reference external" href="http://www.voidspace.org.uk/python/mock/">mock</a></div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">测试您的代码</a><ul>
+<li><a class="reference internal" href="#id2">基本</a><ul>
+<li><a class="reference internal" href="#id3">单元测试</a></li>
+<li><a class="reference internal" href="#id5">文档测试</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">工具</a><ul>
+<li><a class="reference internal" href="#py-test">py.test</a></li>
+<li><a class="reference internal" href="#hypothesis">Hypothesis</a></li>
+<li><a class="reference internal" href="#tox">tox</a></li>
+<li><a class="reference internal" href="#unittest2">Unittest2</a></li>
+<li><a class="reference internal" href="#mock">mock</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="documentation.html" title="previous chapter">文档</a></li>
+      <li>Next: <a href="logging.html" title="next chapter">日志（Logging）</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

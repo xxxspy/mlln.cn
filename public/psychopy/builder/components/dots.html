@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dots (RDK) Component &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="Components" href="../components.html" />
+    <link rel="next" title="Grating Component" href="grating.html" />
+    <link rel="prev" title="Code Component" href="code.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="grating.html" title="Grating Component"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Code Component"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../builder.html" >Builder</a> &raquo;</li>
+          <li><a href="../components.html" accesskey="U">Components</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Dots (RDK) Component</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="code.html"
+                                  title="previous chapter">Code Component</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="grating.html"
+                                  title="next chapter">Grating Component</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/builder/components/dots.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dots-rdk-component">
+<span id="dots"></span><h1>Dots (RDK) Component<a class="headerlink" href="#dots-rdk-component" title="Permalink to this headline">¶</a></h1>
+<p>The Dots Component allows you to present a Random Dot Kinematogram (RDK) to the participant of your study. These are fields of dots that drift in different directions and subjects are typically required to identify the &#8216;global motion&#8217; of the field.</p>
+<p>There are many ways to define the motion of the signal and noise dots. In PsychoPy the way the dots are configured follows <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/0042698995003258">Scase, Braddick &amp; Raymond (1996)</a>. Although Scase et al (1996) show that the choice of algorithm for your dots actually makes relatively little difference there are some <strong>potential</strong> gotchas. Think carefully about whether each of these will affect your particular case:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>limited dot lifetimes:</strong> as your dots drift in one direction they go off the edge of the stimulus and are replaced randomly in the stimulus field. This could lead to a higher density of dots in the direction of motion providing subjects with an alternative cue to direction. Keeping dot lives relatively short prevents this.</li>
+<li><strong>noiseDots=&#8217;direction&#8217;:</strong> some groups have used noise dots that appear in a random location on each frame (noiseDots=&#8217;location&#8217;). This has the disadvantage that the noise dots not only have a random direction but also a random speed (whereas signal dots have a constant speed and constant direction)</li>
+<li><strong>signalDots=&#8217;same&#8217;:</strong> on each frame the dots constituting the signal could be the same as on the previous frame or different. If &#8216;different&#8217;, participants could follow a single dot for a long time and calculate its average direction of motion to get the &#8216;global&#8217; direction, because the dots would sometimes take a random direction and sometimes take the signal direction.</li>
+</ul>
+</div></blockquote>
+<p>As a result of these, the defaults for PsychoPy are to have signalDots that are from a &#8216;different&#8217; population, noise dots that have random &#8216;direction&#8217; and a dot life of 3 frames.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>name :</dt>
+<dd>Everything in a PsychoPy experiment needs a unique name. The name should contain only letters, numbers and underscores (no punctuation marks or spaces).</dd>
+<dt>start :</dt>
+<dd>The time that the stimulus should first appear. See <a class="reference internal" href="../startStop.html#startstop"><span class="std std-ref">Defining the onset/duration of components</span></a> for details.</dd>
+<dt>stop :</dt>
+<dd>Governs the duration for which the stimulus is presented. See <a class="reference internal" href="../startStop.html#startstop"><span class="std std-ref">Defining the onset/duration of components</span></a> for details.</dd>
+<dt>units</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><strong>None</strong>, &#8216;norm&#8217;, &#8216;cm&#8217;, &#8216;deg&#8217; or &#8216;pix&#8217;</span><dd>If None then the current units of the <a class="reference internal" href="../../api/visual/window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> will be used.
+See <a class="reference internal" href="../../general/units.html#units"><span class="std std-ref">Units for the window and stimuli</span></a> for explanation of other options.</dd>
+<dt>nDots</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>number of dots to be generated</dd>
+<dt>fieldPos</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(x,y) or [x,y]</span><dd>specifying the location of the centre of the stimulus.</dd>
+<dt>fieldSize</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">a single value, specifying the diameter of the field</span><dd>Sizes can be negative and can extend beyond the window.</dd>
+<dt>fieldShape :</dt>
+<dd>Defines the shape of the field in which the dots appear. For a circular field the nDots represents the <cite>average</cite> number of dots per frame, but on each frame this may vary a little.</dd>
+<dt>dotSize</dt>
+<dd>Always specified in pixels</dd>
+<dt>dotLife</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>Number of frames each dot lives for (-1=infinite)</dd>
+<dt>dir</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float (degrees)</span><dd>Direction of the signal dots</dd>
+<dt>speed</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Speed of the dots (in <em>units</em> per frame)</dd>
+<dt>signalDots :</dt>
+<dd>If &#8216;same&#8217; then the signal and noise dots are constant. If different then the choice of which is signal and which is noise gets randomised on each frame. This corresponds to Scase et al&#8217;s (1996) categories of RDK.</dd>
+<dt>noiseDots</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><em>&#8216;direction&#8217;</em>, &#8216;position&#8217; or &#8216;walk&#8217;</span><dd>Determines the behaviour of the noise dots, taken directly from Scase et al&#8217;s (1996) categories. For &#8216;position&#8217;, noise dots take a random position every frame. For &#8216;direction&#8217; noise dots follow a random, but constant direction. For &#8216;walk&#8217; noise dots vary their direction every frame, but keep a constant speed.</dd>
+</dl>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">API reference for <a class="reference internal" href="../../api/visual/dotstim.html#psychopy.visual.DotStim" title="psychopy.visual.DotStim"><code class="xref py py-class docutils literal"><span class="pre">DotStim</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="grating.html" title="Grating Component"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Code Component"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../builder.html" >Builder</a> &raquo;</li>
+          <li><a href="../components.html" >Components</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

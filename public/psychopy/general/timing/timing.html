@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Timing Issues and synchronisation &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="General issues" href="../general.html" />
+    <link rel="next" title="Non-slip timing for imaging" href="nonSlipTiming.html" />
+    <link rel="prev" title="Projects" href="../projects.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nonSlipTiming.html" title="Non-slip timing for imaging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../projects.html" title="Projects"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" accesskey="U">General issues</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Timing Issues and synchronisation</a><ul>
+<li><a class="reference internal" href="#specific-considerations-for-specific-designs">Specific considerations for specific designs</a></li>
+<li><a class="reference internal" href="#other-questions-about-timing">Other questions about timing</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="../projects.html"
+                                  title="previous chapter">Projects</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="nonSlipTiming.html"
+                                  title="next chapter">Non-slip timing for imaging</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/general/timing/timing.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="timing-issues-and-synchronisation">
+<span id="timing"></span><h1>Timing Issues and synchronisation<a class="headerlink" href="#timing-issues-and-synchronisation" title="Permalink to this headline">¶</a></h1>
+<p>One of the key requirements of experimental control software is that it has good temporal precision. PsychoPy aims to be as precise as possible in this domain and can achieve excellent results depending on your experiment and hardware. It also provides you with a precise log file of your experiment to allow you to check the precision with which things occurred. Some general considerations are discussed here and there are links with <a class="reference internal" href="#specifictiming"><span class="std std-ref">Specific considerations for specific designs</span></a>.</p>
+<p>Something that people seem to forget (not helped by the software manufacturers that keep talking about their sub-millisecond precision) is that the monitor, keyboard and human participant DO NOT have anything like this sort of precision. Your monitor updates every 10-20ms depending on frame rate. If you use a CRT screen then the top is drawn before the bottom of the screen by several ms. If you use an LCD screen the whole screen can take around 20ms to switch from one image to the next. Your keyboard has a latency of 4-30ms, depending on brand and system.</p>
+<p>So, yes, PsychoPy&#8217;s temporal precision is as good as most other equivalent applications, for instance the duration for which stimuli are presented can be synchronised precisely to the frame, but the overall accuracy is likely to be severely limited by your experimental hardware. To get <strong>very</strong> precise timing of responses etc., you need to use specialised hardware like button boxes and you need to think carefully about the physics of your monitor.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The information about timing in PsychoPy assumes that your graphics card is capable of synchronising with the monitor frame rate. For integrated Intel graphics chips (e.g. GMA 945) under Windows, this is not true and the use of those chips is not recommended for serious experimental use as a result. Desktop systems can have a moderate graphics card added for around £30 which will be vastly superior in performance.</p>
+</div>
+<div class="section" id="specific-considerations-for-specific-designs">
+<span id="specifictiming"></span><h2>Specific considerations for specific designs<a class="headerlink" href="#specific-considerations-for-specific-designs" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nonSlipTiming.html">Non-slip timing for imaging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nonSlipTiming.html#non-slip-timing-from-the-builder">Non-slip timing from the Builder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="detectingFrameDrops.html">Detecting dropped frames</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="detectingFrameDrops.html#turn-on-frame-time-recording">Turn on frame time recording</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectingFrameDrops.html#warn-me-if-i-drop-a-frame">Warn me if I drop a frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectingFrameDrops.html#show-me-all-the-frame-times-that-i-recorded">Show me all the frame times that I recorded</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detectingFrameDrops.html#blocking-on-the-vbi">&#8216;Blocking&#8217; on the VBI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reducingFrameDrops.html">Reducing dropped frames</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reducingFrameDrops.html#things-to-change-on-your-system">Things to change on your system:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reducingFrameDrops.html#writing-optimal-scripts">Writing optimal scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reducingFrameDrops.html#possible-good-ideas">Possible good ideas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timingTestByOS.html">Comparing Operating Systems under PsychoPy</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="other-questions-about-timing">
+<span id="millisecondtiming"></span><h2>Other questions about timing<a class="headerlink" href="#other-questions-about-timing" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="millisecondPrecision.html">Can PsychoPy deliver millisecond precision?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="millisecondPrecision.html#computer-monitors">Computer monitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="millisecondPrecision.html#can-i-have-my-stimulus-to-appear-with-a-very-precise-rate">Can I have my stimulus to appear with a very precise rate?</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="nonSlipTiming.html" title="Non-slip timing for imaging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../projects.html" title="Projects"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Helper functions &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="psychopy.visual - many visual stimuli" href="../visual.html" />
+    <link rel="next" title="ImageStim" href="imagestim.html" />
+    <link rel="prev" title="GratingStim" href="gratingstim.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="imagestim.html" title="ImageStim"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gratingstim.html" title="GratingStim"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" accesskey="U"><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="gratingstim.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">GratingStim</span></code></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="imagestim.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">ImageStim</span></code></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/api/visual/helperfunctions.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="helper-functions">
+<span id="visualhelperfunctions"></span><h1>Helper functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="psychopy.visual.helpers.pointInPolygon">
+<code class="descclassname">psychopy.visual.helpers.</code><code class="descname">pointInPolygon</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>poly</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.helpers.pointInPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if a point is inside a polygon; returns True if inside.</p>
+<p>(<cite>x</cite>, <cite>y</cite>) is the point to test. <cite>poly</cite> is a list of 3 or more vertices
+as (x,y) pairs. If given an object, such as a <cite>ShapeStim</cite>, will try to
+use its vertices and position as the polygon.</p>
+<p>Same as the <cite>.contains()</cite> method elsewhere.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.visual.helpers.polygonsOverlap">
+<code class="descclassname">psychopy.visual.helpers.</code><code class="descname">polygonsOverlap</code><span class="sig-paren">(</span><em>poly1</em>, <em>poly2</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.helpers.polygonsOverlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if two polygons intersect; can fail for very pointy polygons.</p>
+<p>Accepts two polygons, as lists of vertices (x,y) pairs. If given an object
+with with (vertices + pos), will try to use that as the polygon.</p>
+<p>Checks if any vertex of one polygon is inside the other polygon. Same as
+the <cite>.overlaps()</cite> method elsewhere.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="psychopy.visual.helpers.groupFlipVert">
+<code class="descclassname">psychopy.visual.helpers.</code><code class="descname">groupFlipVert</code><span class="sig-paren">(</span><em>flipList</em>, <em>yReflect=0</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.helpers.groupFlipVert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverses the vertical mirroring of all items in list <code class="docutils literal"><span class="pre">flipList</span></code>.</p>
+<p>Reverses the .flipVert status, vertical (y) positions, and angular
+rotation (.ori). Flipping preserves the relations among the group&#8217;s
+visual elements. The parameter <code class="docutils literal"><span class="pre">yReflect</span></code> is the y-value of an
+imaginary horizontal line around which to reflect the items;
+default = 0 (screen center).</p>
+<p>Typical usage is to call once prior to any display; call again to un-flip.
+Can be called with a list of all stim to be presented in a given routine.</p>
+<p>Will flip a) all psychopy.visual.xyzStim that have a setFlipVert method,
+b) the y values of .vertices, and c) items in n x 2 lists that are mutable
+(i.e., list, numpy.array, no tuples): [[x1, y1], [x2, y2], ...]</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="imagestim.html" title="ImageStim"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gratingstim.html" title="GratingStim"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" ><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Image Component &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="Components" href="../components.html" />
+    <link rel="next" title="ioLab Systems buttonbox Component" href="ioLabs.html" />
+    <link rel="prev" title="Grating Component" href="grating.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ioLabs.html" title="ioLab Systems buttonbox Component"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="grating.html" title="Grating Component"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../builder.html" >Builder</a> &raquo;</li>
+          <li><a href="../components.html" accesskey="U">Components</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Image Component</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#advanced-settings">Advanced Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="grating.html"
+                                  title="previous chapter">Grating Component</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="ioLabs.html"
+                                  title="next chapter">ioLab Systems buttonbox Component</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/builder/components/image.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="image-component">
+<span id="image"></span><h1>Image Component<a class="headerlink" href="#image-component" title="Permalink to this headline">¶</a></h1>
+<p>The Image stimulus allows an image to be presented, which can be a bitmap image from a variety of standard file formats, with an optional transparency mask that can effectively control the shape of the image. The mask can also be derived from an image file, or mathematical form such as a Gaussian.</p>
+<p><strong>It is a really good idea to get your image in roughly the size (in pixels) that it will appear on screen to save memory. If you leave the resolution at 12 megapixel camera, as taken from your camera, but then present it on a standard screen at 1680x1050 (=1.6 megapixels) then PsychoPy and your graphics card have to do an awful lot of unnecessary work.</strong> There is a performance advantage (in terms of milliseconds) to using images which are square and powers of two (32, 64, 128, etc.), but this is slight and would not be noticed in the majority of experiments.</p>
+<p>Images can have their position, orientation, size and other settings manipulated on a frame-by-frame basis.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">string</span><dd>Everything in a PsychoPy experiment needs a unique name. The name should contain only letters, numbers and underscores (no punctuation marks or spaces).</dd>
+<dt>Start :</dt>
+<dd>The time that the stimulus should first appear. See <a class="reference internal" href="../startStop.html#startstop"><span class="std std-ref">Defining the onset/duration of components</span></a> for details.</dd>
+<dt>Stop :</dt>
+<dd>Governs the duration for which the stimulus is presented. See <a class="reference internal" href="../startStop.html#startstop"><span class="std std-ref">Defining the onset/duration of components</span></a> for details.</dd>
+<dt>Image</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">a filename or a standard name (sin, sqr)</span><dd>Filenames can be relative or absolute paths and can refer to most image formats (e.g. tif,
+jpg, bmp, png, etc.). If this is set to none, the patch will be a flat colour.</dd>
+<dt>Position</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">[X,Y]</span><dd>The position of the centre of the stimulus, in the units specified by the stimulus or window</dd>
+<dt>Size</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">[sizex, sizey] or a single value (applied to x and y)</span><dd>The size of the stimulus in the given units of the stimulus/window. If the mask is a Gaussian then the size refers to width at 3 standard deviations on either side of the mean (i.e. sd=size/6)
+Set this to be blank to get the image in its native size.</dd>
+<dt>Orientation</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">degrees</span><dd>The orientation of the entire patch (texture and mask) in degrees.</dd>
+<dt>Opacity</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">value from 0 to 1</span><dd>If opacity is reduced then the underlying images/stimuli will show through</dd>
+<dt>Units</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">deg, cm, pix, norm, or inherit from window</span><dd>See <a class="reference internal" href="../../general/units.html"><span class="doc">Units for the window and stimuli</span></a></dd>
+</dl>
+<div class="section" id="advanced-settings">
+<h3>Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Color</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">Colors can be applied to luminance-only images (not to rgb images)</span><dd>See <a class="reference internal" href="../../general/colours.html"><span class="doc">Color spaces</span></a></dd>
+<dt>Color space</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">to be used if a color is supplied</span><dd>See <a class="reference internal" href="../../general/colours.html"><span class="doc">Color spaces</span></a></dd>
+<dt>Mask</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">a filename, a standard name (gauss, circle, raisedCos) or a numpy array of dimensions NxNx1</span><dd>The mask can define the shape (e.g. circle will make the patch circular) or something which overlays the patch e.g. noise.</dd>
+<dt>Interpolate :</dt>
+<dd>If <cite>linear</cite> is selected then linear interpolation will be applied when the image is rescaled to the appropriate size for the screen. <cite>Nearest</cite> will use a nearest-neighbour rule.</dd>
+<dt>Texture Resolution:</dt>
+<dd>This is only needed if you use a synthetic texture (e.g. sinusoidal grating) as the image.</dd>
+</dl>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">API reference for <a class="reference internal" href="../../api/visual/imagestim.html#psychopy.visual.ImageStim" title="psychopy.visual.ImageStim"><code class="xref py py-class docutils literal"><span class="pre">ImageStim</span></code></a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ioLabs.html" title="ioLab Systems buttonbox Component"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="grating.html" title="Grating Component"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../builder.html" >Builder</a> &raquo;</li>
+          <li><a href="../components.html" >Components</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

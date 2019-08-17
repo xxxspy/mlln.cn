@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.parallel - functions for interacting with the parallel port &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.preferences - getting and setting preferences" href="preferences.html" />
+    <link rel="prev" title="psychopy.monitors - for those that don’t like Monitor Center" href="monitors.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="preferences.html" title="psychopy.preferences - getting and setting preferences"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="monitors.html" title="psychopy.monitors - for those that don’t like Monitor Center"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.parallel</span></code> - functions for interacting with the parallel port</a><ul>
+<li><a class="reference internal" href="#legacy-functions">Legacy functions</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="monitors.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.monitors</span></code> - for those that don&#8217;t like Monitor Center</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="preferences.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.preferences</span></code> - getting and setting preferences</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/parallel.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="psychopy-parallel-functions-for-interacting-with-the-parallel-port">
+<span id="parallel"></span><h1><a class="reference internal" href="#module-psychopy.parallel" title="psychopy.parallel"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.parallel</span></code></a> - functions for interacting with the parallel port<a class="headerlink" href="#psychopy-parallel-functions-for-interacting-with-the-parallel-port" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-psychopy.parallel"></span><p>This module provides read / write access to the parallel port for
+Linux or Windows.</p>
+<p>The <code class="xref py py-class docutils literal"><span class="pre">Parallel</span></code> class described below will
+attempt to load whichever parallel port driver is first found on your
+system and should suffice in most instances. If you need to use a specific
+driver then, instead of using <code class="xref py py-class docutils literal"><span class="pre">ParallelPort</span></code>
+shown below you can use one of the following as drop-in replacements,
+forcing the use of a specific driver:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>psychopy.parallel.PParallelInpOut32</cite></li>
+<li><cite>psychopy.parallel.PParallelDLPortIO</cite></li>
+<li><cite>psychopy.parallel.PParallelLinux</cite></li>
+</ul>
+</div></blockquote>
+<p>Either way, each instance of the class can provide access to a different
+parallel port.</p>
+<p>There is also a legacy API which consists of the routines which are directly
+in this module. That API assumes you only ever want to use a single
+parallel port at once.</p>
+<div class="section" id="legacy-functions">
+<h2>Legacy functions<a class="headerlink" href="#legacy-functions" title="Permalink to this headline">¶</a></h2>
+<p>We would strongly recommend you use the class above instead: these are provided for backwards compatibility only.</p>
+<dl class="method">
+<dt id="psychopy.parallel.setPortAddress">
+<code class="descclassname">parallel.</code><code class="descname">setPortAddress</code><span class="sig-paren">(</span><em>address=888</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.parallel.setPortAddress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the memory address or device node for your parallel port
+of your parallel port, to be used in subsequent commands</p>
+<p>Common port addresses:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LPT1</span> <span class="o">=</span> <span class="mh">0x0378</span> <span class="ow">or</span> <span class="mh">0x03BC</span>
+<span class="n">LPT2</span> <span class="o">=</span> <span class="mh">0x0278</span> <span class="ow">or</span> <span class="mh">0x0378</span>
+<span class="n">LPT3</span> <span class="o">=</span> <span class="mh">0x0278</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>or for Linux::</dt>
+<dd>/dev/parport0</dd>
+</dl>
+<p>This routine will attempt to find a usable driver depending
+on your platform</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.parallel.setData">
+<code class="descclassname">parallel.</code><code class="descname">setData</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.parallel.setData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the data to be presented on the parallel port (one ubyte).
+Alternatively you can set the value of each pin (data pins are pins
+2-9 inclusive) using <a class="reference internal" href="#psychopy.parallel.setPin" title="psychopy.parallel.setPin"><code class="xref py py-func docutils literal"><span class="pre">setPin()</span></code></a></p>
+<p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parallel</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># sets all pins low</span>
+<span class="n">parallel</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>  <span class="c1"># sets all pins high</span>
+<span class="n">parallel</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># sets just pin 3 high (remember that pin2=bit0)</span>
+<span class="n">parallel</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># sets just pins 2 and 3 high</span>
+</pre></div>
+</div>
+<p>You can also convert base 2 to int v easily in python:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parallel</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;00000011&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># pins 2 and 3 high</span>
+<span class="n">parallel</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;00000101&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># pins 2 and 4 high</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.parallel.setPin">
+<code class="descclassname">parallel.</code><code class="descname">setPin</code><span class="sig-paren">(</span><em>pinNumber</em>, <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.parallel.setPin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a desired pin to be high (1) or low (0).</p>
+<p>Only pins 2-9 (incl) are normally used for data output:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parallel</span><span class="o">.</span><span class="n">setPin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># sets pin 3 high</span>
+<span class="n">parallel</span><span class="o">.</span><span class="n">setPin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># sets pin 3 low</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.parallel.readPin">
+<code class="descclassname">parallel.</code><code class="descname">readPin</code><span class="sig-paren">(</span><em>pinNumber</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.parallel.readPin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether a desired (input) pin is high(1) or low(0).</p>
+<p>Pins 2-13 and 15 are currently read here</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="preferences.html" title="psychopy.preferences - getting and setting preferences"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="monitors.html" title="psychopy.monitors - for those that don’t like Monitor Center"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

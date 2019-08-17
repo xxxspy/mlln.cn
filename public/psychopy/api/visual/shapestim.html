@@ -1,0 +1,759 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ShapeStim &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="psychopy.visual - many visual stimuli" href="../visual.html" />
+    <link rel="next" title="SimpleImageStim" href="simpleimagestim.html" />
+    <link rel="prev" title="Rect" href="rect.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="simpleimagestim.html" title="SimpleImageStim"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="rect.html" title="Rect"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" accesskey="U"><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">ShapeStim</span></code></a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#details">Details</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="rect.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">Rect</span></code></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="simpleimagestim.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">SimpleImageStim</span></code></a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/api/visual/shapestim.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="shapestim">
+<h1><code class="xref py py-class docutils literal"><span class="pre">ShapeStim</span></code><a class="headerlink" href="#shapestim" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim" title="psychopy.visual.ShapeStim"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim</span></code></a>(win[,&nbsp;units,&nbsp;lineWidth,&nbsp;...])</td>
+<td>A class for arbitrary shapes defined as lists of vertices (x,y).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.win" title="psychopy.visual.ShapeStim.win"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.win</span></code></a></td>
+<td>The <a class="reference internal" href="window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> object in which the  stimulus will be rendered by default.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.units" title="psychopy.visual.ShapeStim.units"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.units</span></code></a></td>
+<td>None, &#8216;norm&#8217;, &#8216;cm&#8217;, &#8216;deg&#8217;, &#8216;degFlat&#8217;, &#8216;degFlatPos&#8217;, or &#8216;pix&#8217;</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.vertices" title="psychopy.visual.ShapeStim.vertices"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.vertices</span></code></a></td>
+<td>A list of lists or a numpy array (Nx2) specifying xy positions of each vertex, relative to the center of the field.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.closeShape" title="psychopy.visual.ShapeStim.closeShape"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.closeShape</span></code></a></td>
+<td>True or False</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.pos" title="psychopy.visual.ShapeStim.pos"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.pos</span></code></a></td>
+<td>The position of the center of the stimulus in the stimulus</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.ori" title="psychopy.visual.ShapeStim.ori"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.ori</span></code></a></td>
+<td>The orientation of the stimulus (in degrees).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.size" title="psychopy.visual.ShapeStim.size"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.size</span></code></a></td>
+<td>Int/Float or <a class="reference internal" href="../../coder/codeStimuli.html#attrib-xy"><span class="std std-ref">x,y-pair</span></a>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.contrast" title="psychopy.visual.ShapeStim.contrast"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.contrast</span></code></a></td>
+<td>A value that is simply multiplied by the color</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.lineColor" title="psychopy.visual.ShapeStim.lineColor"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.lineColor</span></code></a></td>
+<td>Sets the color of the shape lines.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.lineColorSpace" title="psychopy.visual.ShapeStim.lineColorSpace"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.lineColorSpace</span></code></a></td>
+<td>Sets color space for line color.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.fillColor" title="psychopy.visual.ShapeStim.fillColor"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.fillColor</span></code></a></td>
+<td>Sets the color of the shape fill.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.fillColorSpace" title="psychopy.visual.ShapeStim.fillColorSpace"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.fillColorSpace</span></code></a></td>
+<td>Sets color space for fill color.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.opacity" title="psychopy.visual.ShapeStim.opacity"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.opacity</span></code></a></td>
+<td>Determines how visible the stimulus is relative to background</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.interpolate" title="psychopy.visual.ShapeStim.interpolate"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.interpolate</span></code></a></td>
+<td>True or False If True the edge of the line will be antialiased.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.name" title="psychopy.visual.ShapeStim.name"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.name</span></code></a></td>
+<td>String or None.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.autoLog" title="psychopy.visual.ShapeStim.autoLog"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.autoLog</span></code></a></td>
+<td>Whether every change in this stimulus should be auto logged.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.draw" title="psychopy.visual.ShapeStim.draw"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.draw</span></code></a>([win,&nbsp;keepMatrix])</td>
+<td>Draw the stimulus in the relevant window.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#psychopy.visual.ShapeStim.autoDraw" title="psychopy.visual.ShapeStim.autoDraw"><code class="xref py py-obj docutils literal"><span class="pre">ShapeStim.autoDraw</span></code></a></td>
+<td>Determines whether the stimulus should be automatically drawn on every frame flip.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.visual.ShapeStim">
+<em class="property">class </em><code class="descclassname">psychopy.visual.</code><code class="descname">ShapeStim</code><span class="sig-paren">(</span><em>win</em>, <em>units=''</em>, <em>lineWidth=1.5</em>, <em>lineColor='white'</em>, <em>lineColorSpace='rgb'</em>, <em>fillColor=None</em>, <em>fillColorSpace='rgb'</em>, <em>vertices=((-0.5</em>, <em>0)</em>, <em>(0</em>, <em>0.5)</em>, <em>(0.5</em>, <em>0))</em>, <em>windingRule=None</em>, <em>closeShape=True</em>, <em>pos=(0</em>, <em>0)</em>, <em>size=1</em>, <em>ori=0.0</em>, <em>opacity=1.0</em>, <em>contrast=1.0</em>, <em>depth=0</em>, <em>interpolate=True</em>, <em>name=None</em>, <em>autoLog=None</em>, <em>autoDraw=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for arbitrary shapes defined as lists of vertices (x,y).</p>
+<p>Shapes can be lines, polygons (concave, convex, self-crossing), or have
+holes or multiple regions.</p>
+<p><cite>vertices</cite> is typically a list of points (x,y). By default, these are
+assumed to define a closed figure (polygon); set <cite>closeShape=False</cite> for
+a line. <cite>closeShape</cite> cannot be changed dynamically, but individual
+vertices can be changed on a frame-by-frame basis. The stimulus as a
+whole can be rotated, translated, or scaled dynamically
+(using .ori, .pos, .size).</p>
+<p>Advanced shapes: <cite>vertices</cite> can also be a list of loops, where each loop
+is a list of points (x,y), e.g., to define a shape with a hole. Borders
+and contains() are not supported for multi-loop stimuli.</p>
+<p><cite>windingRule</cite> is an advanced feature to allow control over the GLU
+tesselator winding rule (default: GLU_TESS_WINDING_ODD). This is relevant
+only for self-crossing or multi-loop shapes. Cannot be set dynamically.</p>
+<p>See Coder demo &gt; stimuli &gt; shapes.py</p>
+<p>Changed Nov 2015: v1.84.00. Now allows filling of complex shapes. This
+is almost completely backwards compatible (see changelog). The
+old version is accessible as <cite>psychopy.visual.BaseShapeStim</cite>.</p>
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.autoDraw">
+<code class="descname">autoDraw</code><a class="headerlink" href="#psychopy.visual.ShapeStim.autoDraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether the stimulus should be automatically drawn
+on every frame flip.</p>
+<p>Value should be: <cite>True</cite> or <cite>False</cite>. You do NOT need to set this
+on every frame flip!</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.autoLog">
+<code class="descname">autoLog</code><a class="headerlink" href="#psychopy.visual.ShapeStim.autoLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether every change in this stimulus should be auto logged.</p>
+<p>Value should be: <cite>True</cite> or <cite>False</cite>. Set to <cite>False</cite> if your
+stimulus is updating frequently (e.g. updating its position every</p>
+<blockquote>
+<div>frame) and you want to avoid swamping the log file with</div></blockquote>
+<p>messages that aren&#8217;t likely to be useful.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.closeShape">
+<code class="descname">closeShape</code><a class="headerlink" href="#psychopy.visual.ShapeStim.closeShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>True or False
+Should the last vertex be automatically connected to the first?</p>
+<p>If you&#8217;re using <cite>Polygon</cite>, <cite>Circle</cite> or <cite>Rect</cite>, closeShape=True is
+assumed and shouldn&#8217;t be changed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.color">
+<code class="descname">color</code><a class="headerlink" href="#psychopy.visual.ShapeStim.color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the stimulus</p>
+<dl class="docutils">
+<dt>Value should be one of:</dt>
+<dd><ul class="first last">
+<li><p class="first">string: to specify a <a class="reference internal" href="../../general/colours.html#colornames"><span class="std std-ref">Colors by name</span></a>. Any of the standard
+html/X11 <cite>color names
+&lt;http://www.w3schools.com/html/html_colornames.asp&gt;</cite>
+can be used.</p>
+</li>
+<li><p class="first"><a class="reference internal" href="../../general/colours.html#hexcolors"><span class="std std-ref">Colors by hex value</span></a></p>
+</li>
+<li><dl class="first docutils">
+<dt>numerically: (scalar or triplet) for DKL, RGB or</dt>
+<dd><p class="first last">other <a class="reference internal" href="../../general/colours.html#colorspaces"><span class="std std-ref">Color spaces</span></a>. For
+these, <a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">operations</span></a> are supported.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>When color is specified using numbers, it is interpreted with
+respect to the stimulus&#8217; current colorSpace. If color is given as a
+single value (scalar) then this will be applied to all 3 channels.</p>
+<dl class="docutils">
+<dt>Examples::</dt>
+<dd><p class="first"># ... for whatever stim you have:
+stim.color = &#8216;white&#8217;
+stim.color = &#8216;RoyalBlue&#8217;  # (the case is actually ignored)
+stim.color = &#8216;#DDA0DD&#8217;  # DDA0DD is hexadecimal for plum
+stim.color = [1.0, -1.0, -1.0]  # if stim.colorSpace=&#8217;rgb&#8217;:</p>
+<blockquote>
+<div># a red color in rgb space</div></blockquote>
+<dl class="last docutils">
+<dt>stim.color = [0.0, 45.0, 1.0]  # if stim.colorSpace=&#8217;dkl&#8217;:</dt>
+<dd># DKL space with elev=0, azimuth=45</dd>
+<dt>stim.color = [0, 0, 255]  # if stim.colorSpace=&#8217;rgb255&#8217;:</dt>
+<dd># a blue stimulus using rgb255 space</dd>
+<dt>stim.color = 255  # interpreted as (255, 255, 255)</dt>
+<dd># which is white in rgb255.</dd>
+</dl>
+</dd>
+</dl>
+<p><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> work as normal for all numeric
+colorSpaces (e.g. &#8216;rgb&#8217;, &#8216;hsv&#8217; and &#8216;rgb255&#8217;) but not for strings, like
+named and hex. For example, assuming that colorSpace=&#8217;rgb&#8217;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># increment all guns by 1 value</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># multiply the color by -1 (which in this</span>
+                    <span class="c1"># space inverts the contrast)</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">*=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># decrease red, remove green, keep blue</span>
+</pre></div>
+</div>
+<p>You can use <cite>setColor</cite> if you want to set color and colorSpace in one
+line. These two are equivalent:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">setColor</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="s1">&#39;rgb255&#39;</span><span class="p">)</span>
+<span class="c1"># ... is equivalent to</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">colorSpace</span> <span class="o">=</span> <span class="s1">&#39;rgb255&#39;</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.colorSpace">
+<code class="descname">colorSpace</code><a class="headerlink" href="#psychopy.visual.ShapeStim.colorSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the color space currently being used</p>
+<p>Value should be: a string or None</p>
+<p>For strings and hex values this is not needed.
+If None the default colorSpace for the stimulus is
+used (defined during initialisation).</p>
+<p>Please note that changing colorSpace does not change stimulus
+parameters. Thus you usually want to specify colorSpace before
+setting the color. Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># A light green text</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">TextStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="s1">&#39;Color me!&#39;</span><span class="p">,</span>
+                       <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">colorSpace</span><span class="o">=</span><span class="s1">&#39;rgb&#39;</span><span class="p">)</span>
+
+<span class="c1"># An almost-black text</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">colorSpace</span> <span class="o">=</span> <span class="s1">&#39;rgb255&#39;</span>
+
+<span class="c1"># Make it light green again</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>x</em>, <em>y=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if a point x,y is inside the stimulus&#8217; border.</p>
+<dl class="docutils">
+<dt>Can accept variety of input options:</dt>
+<dd><ul class="first last">
+<li><p class="first">two separate args, x and y</p>
+</li>
+<li><p class="first">one arg (list, tuple or array) containing two vals (x,y)</p>
+</li>
+<li><dl class="first docutils">
+<dt>an object with a getPos() method that returns x,y, such</dt>
+<dd><p class="first last">as a <a class="reference internal" href="../event.html#psychopy.event.Mouse" title="psychopy.event.Mouse"><code class="xref py py-class docutils literal"><span class="pre">Mouse</span></code></a>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>Returns <cite>True</cite> if the point is within the area defined either by its
+<cite>border</cite> attribute (if one defined), or its <cite>vertices</cite> attribute if
+there is no .border. This method handles
+complex shapes, including concavities and self-crossings.</p>
+<p>Note that, if your stimulus uses a mask (such as a Gaussian) then
+this is not accounted for by the <cite>contains</cite> method; the extent of the
+stimulus is determined purely by the size, position (pos), and
+orientation (ori) settings (and by the vertices for shape stimuli).</p>
+<p>See Coder demos: shapeContains.py
+See Coder demos: shapeContains.py</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.contrast">
+<code class="descname">contrast</code><a class="headerlink" href="#psychopy.visual.ShapeStim.contrast" title="Permalink to this definition">¶</a></dt>
+<dd><p>A value that is simply multiplied by the color</p>
+<dl class="docutils">
+<dt>Value should be: a float between -1 (negative) and 1 (unchanged).</dt>
+<dd><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> supported.</dd>
+</dl>
+<p>Set the contrast of the stimulus, i.e. scales how far the stimulus
+deviates from the middle grey. You can also use the stimulus
+<cite>opacity</cite> to control contrast, but that cannot be negative.</p>
+<p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">1.0</span>  <span class="c1"># unchanged contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">0.5</span>  <span class="c1"># decrease contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">0.0</span>  <span class="c1"># uniform, no contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>  <span class="c1"># slightly inverted</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>  <span class="c1"># totally inverted</span>
+</pre></div>
+</div>
+<p>Setting contrast outside range -1 to 1 is permitted, but may
+produce strange results if color values exceeds the monitor limits.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span>  <span class="mf">1.2</span>  <span class="c1"># increases contrast</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">contrast</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.2</span>  <span class="c1"># inverts with increased contrast</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.depth">
+<code class="descname">depth</code><a class="headerlink" href="#psychopy.visual.ShapeStim.depth" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED. Depth is now controlled simply by drawing order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>win=None</em>, <em>keepMatrix=False</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the stimulus in the relevant window. You must call this method
+after every win.flip() if you want the stimulus to appear on that
+frame and then update the screen again.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.fillColor">
+<code class="descname">fillColor</code><a class="headerlink" href="#psychopy.visual.ShapeStim.fillColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color of the shape fill.</p>
+<p>See <a class="reference internal" href="gratingstim.html#psychopy.visual.GratingStim.color" title="psychopy.visual.GratingStim.color"><code class="xref py py-meth docutils literal"><span class="pre">psychopy.visual.GratingStim.color()</span></code></a> for further details
+of how to use colors.</p>
+<p>Note that shapes where some vertices point inwards will usually not
+&#8216;fill&#8217; correctly.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.fillColorSpace">
+<code class="descname">fillColorSpace</code><a class="headerlink" href="#psychopy.visual.ShapeStim.fillColorSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets color space for fill color. See documentation for fillColorSpace</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.interpolate">
+<code class="descname">interpolate</code><a class="headerlink" href="#psychopy.visual.ShapeStim.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>True or False
+If True the edge of the line will be antialiased.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.lineColor">
+<code class="descname">lineColor</code><a class="headerlink" href="#psychopy.visual.ShapeStim.lineColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color of the shape lines.</p>
+<p>See <a class="reference internal" href="gratingstim.html#psychopy.visual.GratingStim.color" title="psychopy.visual.GratingStim.color"><code class="xref py py-meth docutils literal"><span class="pre">psychopy.visual.GratingStim.color()</span></code></a> for further details
+of how to use colors.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.lineColorSpace">
+<code class="descname">lineColorSpace</code><a class="headerlink" href="#psychopy.visual.ShapeStim.lineColorSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets color space for line color. See documentation for lineColorSpace</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.lineWidth">
+<code class="descname">lineWidth</code><a class="headerlink" href="#psychopy.visual.ShapeStim.lineWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>int or float
+specifying the line width in <strong>pixels</strong></p>
+<p><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.name">
+<code class="descname">name</code><a class="headerlink" href="#psychopy.visual.ShapeStim.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String or None. The name of the object to be using during
+logged messages about this stim. If you have multiple stimuli
+in your experiment this really helps to make sense of log files!</p>
+<p>If name = None your stimulus will be called &#8220;unnamed &lt;type&gt;&#8221;, e.g.
+visual.TextStim(win) will be called &#8220;unnamed TextStim&#8221; in the logs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.opacity">
+<code class="descname">opacity</code><a class="headerlink" href="#psychopy.visual.ShapeStim.opacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines how visible the stimulus is relative to background</p>
+<p>The value should be a single float ranging 1.0 (opaque) to 0.0
+(transparent). <a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> are supported.
+Precisely how this is used depends on the <a class="reference internal" href="../../general/rendering.html#blendmode"><span class="std std-ref">Blend Mode</span></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.ori">
+<code class="descname">ori</code><a class="headerlink" href="#psychopy.visual.ShapeStim.ori" title="Permalink to this definition">¶</a></dt>
+<dd><p>The orientation of the stimulus (in degrees).</p>
+<p>Should be a single value (<a class="reference internal" href="../../coder/codeStimuli.html#attrib-scalar"><span class="std std-ref">scalar</span></a>).
+<a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> are supported.</p>
+<p>Orientation convention is like a clock: 0 is vertical, and positive
+values rotate clockwise. Beyond 360 and below zero values wrap
+appropriately.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.overlaps">
+<code class="descname">overlaps</code><span class="sig-paren">(</span><em>polygon</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.overlaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <cite>True</cite> if this stimulus intersects another one.</p>
+<p>If <cite>polygon</cite> is another stimulus instance, then the vertices
+and location of that stimulus will be used as the polygon.
+Overlap detection is typically very good, but it
+can fail with very pointy shapes in a crossed-swords configuration.</p>
+<p>Note that, if your stimulus uses a mask (such as a Gaussian blob)
+then this is not accounted for by the <cite>overlaps</cite> method; the extent
+of the stimulus is determined purely by the size, pos, and
+orientation settings (and by the vertices for shape stimuli).</p>
+<p>See coder demo, shapeContains.py</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.pos">
+<code class="descname">pos</code><a class="headerlink" href="#psychopy.visual.ShapeStim.pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position of the center of the stimulus in the stimulus
+<a class="reference internal" href="../../general/units.html#units"><span class="std std-ref">units</span></a></p>
+<p><cite>value</cite> should be an <a class="reference internal" href="../../coder/codeStimuli.html#attrib-xy"><span class="std std-ref">x,y-pair</span></a>.
+<a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> are also supported.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">stim</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Set slightly to the right of center</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">pos</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Increment pos rightwards and upwards.</span>
+    <span class="n">Is</span> <span class="n">now</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">pos</span> <span class="o">*=</span> <span class="mf">0.2</span>  <span class="c1"># Move stim towards the center.</span>
+    <span class="n">Is</span> <span class="n">now</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tip: If you need the position of stim in pixels, you can obtain
+it like this:</p>
+<blockquote>
+<div>from psychopy.tools.monitorunittools import posToPix
+posPix = posToPix(stim)</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setAutoDraw">
+<code class="descname">setAutoDraw</code><span class="sig-paren">(</span><em>value</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setAutoDraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets autoDraw. Usually you can use &#8216;stim.attribute = value&#8217;
+syntax instead, but use this method to suppress the log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setAutoLog">
+<code class="descname">setAutoLog</code><span class="sig-paren">(</span><em>value=True</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setAutoLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setColor">
+<code class="descname">setColor</code><span class="sig-paren">(</span><em>color</em>, <em>colorSpace=None</em>, <em>operation=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>For ShapeStim use <a class="reference internal" href="#psychopy.visual.ShapeStim.lineColor" title="psychopy.visual.ShapeStim.lineColor"><code class="xref py py-meth docutils literal"><span class="pre">lineColor()</span></code></a> or
+<a class="reference internal" href="#psychopy.visual.ShapeStim.fillColor" title="psychopy.visual.ShapeStim.fillColor"><code class="xref py py-meth docutils literal"><span class="pre">fillColor()</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setContrast">
+<code class="descname">setContrast</code><span class="sig-paren">(</span><em>newContrast</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setContrast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setDKL">
+<code class="descname">setDKL</code><span class="sig-paren">(</span><em>newDKL</em>, <em>operation=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setDKL" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use the <cite>color</cite> attribute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setDepth">
+<code class="descname">setDepth</code><span class="sig-paren">(</span><em>newDepth</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setFillColor">
+<code class="descname">setFillColor</code><span class="sig-paren">(</span><em>color</em>, <em>colorSpace=None</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setFillColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color of the shape fill.</p>
+<p>See <a class="reference internal" href="gratingstim.html#psychopy.visual.GratingStim.color" title="psychopy.visual.GratingStim.color"><code class="xref py py-meth docutils literal"><span class="pre">psychopy.visual.GratingStim.color()</span></code></a> for further details.</p>
+<p>Note that shapes where some vertices point inwards will usually not
+&#8216;fill&#8217; correctly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setFillRGB">
+<code class="descname">setFillRGB</code><span class="sig-paren">(</span><em>value</em>, <em>operation=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setFillRGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use <a class="reference internal" href="#psychopy.visual.ShapeStim.fillColor" title="psychopy.visual.ShapeStim.fillColor"><code class="xref py py-meth docutils literal"><span class="pre">fillColor()</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setLMS">
+<code class="descname">setLMS</code><span class="sig-paren">(</span><em>newLMS</em>, <em>operation=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setLMS" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use the <cite>color</cite> attribute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setLineColor">
+<code class="descname">setLineColor</code><span class="sig-paren">(</span><em>color</em>, <em>colorSpace=None</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setLineColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the color of the shape edge.</p>
+<p>See <a class="reference internal" href="gratingstim.html#psychopy.visual.GratingStim.color" title="psychopy.visual.GratingStim.color"><code class="xref py py-meth docutils literal"><span class="pre">psychopy.visual.GratingStim.color()</span></code></a> for further details.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setLineRGB">
+<code class="descname">setLineRGB</code><span class="sig-paren">(</span><em>value</em>, <em>operation=''</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setLineRGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use <a class="reference internal" href="#psychopy.visual.ShapeStim.lineColor" title="psychopy.visual.ShapeStim.lineColor"><code class="xref py py-meth docutils literal"><span class="pre">lineColor()</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setLineWidth">
+<code class="descname">setLineWidth</code><span class="sig-paren">(</span><em>value</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setLineWidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setOpacity">
+<code class="descname">setOpacity</code><span class="sig-paren">(</span><em>newOpacity</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setOpacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setOri">
+<code class="descname">setOri</code><span class="sig-paren">(</span><em>newOri</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setOri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setPos">
+<code class="descname">setPos</code><span class="sig-paren">(</span><em>newPos</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setRGB">
+<code class="descname">setRGB</code><span class="sig-paren">(</span><em>newRGB</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setRGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED since v1.60.05: Please use the <cite>color</cite> attribute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setSize">
+<code class="descname">setSize</code><span class="sig-paren">(</span><em>value</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setUseShaders">
+<code class="descname">setUseShaders</code><span class="sig-paren">(</span><em>value=True</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setUseShaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.ShapeStim.setVertices">
+<code class="descname">setVertices</code><span class="sig-paren">(</span><em>value=None</em>, <em>operation=''</em>, <em>log=None</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.ShapeStim.setVertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usually you can use &#8216;stim.attribute = value&#8217; syntax instead,
+but use this method if you need to suppress the log message</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.size">
+<code class="descname">size</code><a class="headerlink" href="#psychopy.visual.ShapeStim.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Int/Float or <a class="reference internal" href="../../coder/codeStimuli.html#attrib-xy"><span class="std std-ref">x,y-pair</span></a>.
+Sets the size of the shape.
+Size is independent of the units of shape and will simply scale
+the shape&#8217;s vertices by the factor given.
+Use a tuple or list of two values to scale asymmetrically.</p>
+<p><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.units">
+<code class="descname">units</code><a class="headerlink" href="#psychopy.visual.ShapeStim.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>None, &#8216;norm&#8217;, &#8216;cm&#8217;, &#8216;deg&#8217;, &#8216;degFlat&#8217;, &#8216;degFlatPos&#8217;, or &#8216;pix&#8217;</p>
+<p>If None then the current units of the
+<a class="reference internal" href="window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> will be used.
+See <a class="reference internal" href="../../general/units.html#units"><span class="std std-ref">Units for the window and stimuli</span></a> for explanation of other options.</p>
+<p>Note that when you change units, you don&#8217;t change the stimulus
+parameters and it is likely to change appearance. Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># This stimulus is 20% wide and 50% tall with respect to window</span>
+<span class="n">stim</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">PatchStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># This stimulus is 0.2 degrees wide and 0.5 degrees tall.</span>
+<span class="n">stim</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;deg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.useShaders">
+<code class="descname">useShaders</code><a class="headerlink" href="#psychopy.visual.ShapeStim.useShaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should shaders be used to render the stimulus
+(typically leave as <cite>True</cite>)</p>
+<p>If the system support the use of OpenGL shader language then leaving
+this set to True is highly recommended. If shaders cannot be used then
+various operations will be slower (notably, changes to stimulus color
+or contrast)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.vertices">
+<code class="descname">vertices</code><a class="headerlink" href="#psychopy.visual.ShapeStim.vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of lists or a numpy array (Nx2) specifying xy positions of
+each vertex, relative to the center of the field.</p>
+<p>Assigning to vertices can be slow if there are many vertices.</p>
+<p><a class="reference internal" href="../../coder/codeStimuli.html#attrib-operations"><span class="std std-ref">Operations</span></a> supported with <cite>.setVertices()</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.verticesPix">
+<code class="descname">verticesPix</code><a class="headerlink" href="#psychopy.visual.ShapeStim.verticesPix" title="Permalink to this definition">¶</a></dt>
+<dd><p>This determines the coordinates of the vertices for the
+current stimulus in pixels, accounting for size, ori, pos and units</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="psychopy.visual.ShapeStim.win">
+<code class="descname">win</code><a class="headerlink" href="#psychopy.visual.ShapeStim.win" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>The <a class="reference internal" href="window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> object in which the</dt>
+<dd>stimulus will be rendered by default. (required)</dd>
+</dl>
+<p>Example, drawing same stimulus in two different windows and display
+simultaneously. Assuming that you have two windows and a stimulus
+(win1, win2 and stim):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>   <span class="n">stim</span><span class="o">.</span><span class="n">win</span> <span class="o">=</span> <span class="n">win1</span>  <span class="c1"># stimulus will be drawn in win1</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># stimulus is now drawn to win1</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">win</span> <span class="o">=</span> <span class="n">win2</span>  <span class="c1"># stimulus will be drawn in win2</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c1"># it is now drawn in win2</span>
+   <span class="n">win1</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">waitBlanking</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># do not wait for next</span>
+                <span class="c1"># monitor update</span>
+   <span class="n">win2</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>  <span class="c1"># wait for vertical blanking.</span>
+
+<span class="n">Note</span> <span class="n">that</span> <span class="n">this</span> <span class="n">just</span> <span class="n">changes</span> <span class="o">**</span><span class="n">default</span><span class="o">**</span> <span class="n">window</span> <span class="k">for</span> <span class="n">stimulus</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">could</span> <span class="n">also</span> <span class="n">specify</span> <span class="n">window</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">draw</span><span class="o">-</span><span class="n">to</span> <span class="n">when</span> <span class="n">drawing</span><span class="p">::</span>
+
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">win1</span><span class="p">)</span>
+   <span class="n">stim</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">win2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="simpleimagestim.html" title="SimpleImageStim"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="rect.html" title="Rect"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" ><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

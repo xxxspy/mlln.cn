@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Style-guide for coder demos &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="For Developers" href="developers.html" />
+    <link rel="next" title="Localization (I18N, translation)" href="localization.html" />
+    <link rel="prev" title="Adding a new Builder Component" href="buildercomponent.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="localization.html" title="Localization (I18N, translation)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="buildercomponent.html" title="Adding a new Builder Component"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="developers.html" accesskey="U">For Developers</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="buildercomponent.html"
+                                  title="previous chapter">Adding a new Builder Component</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="localization.html"
+                                  title="next chapter">Localization (I18N, translation)</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/developers/demoStyleGuide.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="style-guide-for-coder-demos">
+<span id="demostyleguide"></span><h1>Style-guide for coder demos<a class="headerlink" href="#style-guide-for-coder-demos" title="Permalink to this headline">¶</a></h1>
+<p>Each coder demo is intended to illustrate a key PsychoPy feature (or two), especially in ways that show usage in practice, and go beyond the description in the API. The aim is not to illustrate every aspect, but to get people up to speed quickly, so they understand how basic usage works, and could then play around with advanced features.</p>
+<p>As a newcomer to PsychoPy, you are in a great position to judge whether the comments and documentation are clear enough or not. If something is not clear, you may need to ask a PsychoPy contributor for a description; email <a class="reference external" href="mailto:psychopy-dev&#37;&#52;&#48;googlegroups&#46;com">psychopy-dev<span>&#64;</span>googlegroups<span>&#46;</span>com</a>.</p>
+<p>Here are some style guidelines, written for the OpenHatch event(s) but hopefully useful after that too. These are intended specifically for the coder demos, not for the internal code-base (although they are generally quite close).</p>
+<p>The idea is to have clean code that looks and works the same way across demos, while leaving the functioning mostly untouched. Some small changes to function might be needed (e.g., to enable the use of &#8216;escape&#8217; to quit), but typically only minor changes like this.</p>
+<ul>
+<li><p class="first">Generally, when you run the demo, does it look good and help you understand the feature? Where might there be room for improvement? You can either leave notes in the code in a comment, or include them in a commit message.</p>
+</li>
+<li><p class="first">Standardize the top stuff to have 1) a shebang with python, 2) utf-8 encoding, and 3) a comment:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;Demo name, purpose, description (1-2 sentences, although some demos need more explanation).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>For the comment / description, it&#8217;s a good idea to read and be informed by the relevant parts of the API (see <a class="reference external" href="http://psychopy.org/api/api.html">http://psychopy.org/api/api.html</a>), but there&#8217;s no need to duplicate that text in your comment. If you are unsure, please post to the dev list <a class="reference external" href="mailto:psychopy-dev&#37;&#52;&#48;googlegroups&#46;com">psychopy-dev<span>&#64;</span>googlegroups<span>&#46;</span>com</a>.</p>
+<ul>
+<li><p class="first">Follow PEP-8 mostly, some exceptions:</p>
+<ul class="simple">
+<li>current PsychoPy convention is to use camelCase for variable names, so don&#8217;t convert those to underscores</li>
+<li>80 char columns can spill over a little. Try to keep things within 80 chars most of the time.</li>
+<li>do allow multiple imports on one line if they are thematically related (e.g., <cite>import os, sys, glob</cite>).</li>
+<li>inline comments are ok (because the code demos are intended to illustrate and explain usage in some detail, more so than typical code).</li>
+</ul>
+</li>
+<li><p class="first">Check all imports:</p>
+<ul class="simple">
+<li>remove any unnecessary ones</li>
+<li>replace <cite>import time</cite> with <cite>from psychopy import core</cite>. Use <cite>core.getTime()</cite> (= ms since the script started) or <cite>core.getAbsTime()</cite> (= seconds, unix-style) instead of <cite>time.time()</cite>, for all time-related functions or methods not just <cite>time()</cite>.</li>
+<li>add <cite>from __future__ import division</cite>, even if not needed. And make sure that doing so does not break the demo!</li>
+</ul>
+</li>
+<li><p class="first">Fix any typos in comments; convert any lingering British spellings to US, e.g., change <cite>colour</cite> to <cite>color</cite></p>
+</li>
+<li><p class="first">Prefer <cite>if &lt;boolean&gt;:</cite> as a construct instead of <cite>if &lt;boolean&gt; == True:</cite>. (There might not be any to change).</p>
+</li>
+<li><p class="first">If you have to choose, opt for more verbose but easier-to-understand code instead of clever or terse formulations. This is for readability, especially for people new to python. If you are unsure, please add a note to your commit message, or post a question to the dev list <a class="reference external" href="mailto:psychopy-dev&#37;&#52;&#48;googlegroups&#46;com">psychopy-dev<span>&#64;</span>googlegroups<span>&#46;</span>com</a>.</p>
+</li>
+<li><p class="first">Standardize variable names:</p>
+<ul class="simple">
+<li>use <cite>win</cite> for the <cite>visual.Window()</cite>, and so <cite>win.flip()</cite></li>
+</ul>
+</li>
+<li><p class="first">Provide a consistent way for a user to exit a demo using the keyboard, ideally enable this on every visual frame: use <cite>if len(event.getKeys([&#8216;escape&#8217;]): core.quit()</cite>. <strong>Note</strong>: if there is a previous <cite>event.getKeys()</cite> call, it can slurp up the <cite>&#8216;escape&#8217;</cite> keys. So check for &#8216;escape&#8217; first.</p>
+</li>
+<li><p class="first">Time-out after 10 seconds, if there&#8217;s no user response and a timeout is appropriate for the demo (and a longer time-out might be needed, e.g., for <cite>ratingScale.py</cite>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demoClock</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>  <span class="c1"># is demoClock&#39;s time is 0.000s at this point</span>
+<span class="o">...</span>
+<span class="k">if</span> <span class="n">demoClock</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">10.</span><span class="p">:</span>
+    <span class="n">core</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Most demos are not full screen. For any that are full-screen, see if it can work without being full screen. If it has to be full-screen, add some text to say that pressing &#8216;escape&#8217; will quit.</p>
+</li>
+<li><p class="first">If displaying log messages to the console seems to help understand the demo, here&#8217;s how to do it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">logging</span>
+<span class="o">...</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">console</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>  <span class="c1"># or logging.DEBUG for even more stuff</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">End a script with <cite>win.close()</cite> (assuming the script used a <cite>visual.Window</cite>), and then <cite>core.quit()</cite> even though it&#8217;s not strictly necessary</p>
+</li>
+</ul>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="localization.html" title="Localization (I18N, translation)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="buildercomponent.html" title="Adding a new Builder Component"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="developers.html" >For Developers</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

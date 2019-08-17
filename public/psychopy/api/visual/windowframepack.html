@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.visual.windowframepack - Pack multiple monochrome images into RGB frame &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="psychopy.visual - many visual stimuli" href="../visual.html" />
+    <link rel="next" title="psychopy.visual.windowwarp - warping to spherical, cylindrical, or other projections" href="windowwarp.html" />
+    <link rel="prev" title="Window" href="window.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="windowwarp.html" title="psychopy.visual.windowwarp - warping to spherical, cylindrical, or other projections"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="window.html" title="Window"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" accesskey="U"><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.visual.windowframepack</span></code> - Pack multiple monochrome images into RGB frame</a><ul>
+<li><a class="reference internal" href="#projectorframepacker"><code class="docutils literal"><span class="pre">ProjectorFramePacker</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="window.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">Window</span></code></a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="windowwarp.html"
+                                  title="next chapter"><code class="docutils literal"><span class="pre">psychopy.visual.windowwarp</span></code> - warping to spherical, cylindrical, or other projections</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/api/visual/windowframepack.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-psychopy.visual.windowframepack">
+<span id="psychopy-visual-windowframepack-pack-multiple-monochrome-images-into-rgb-frame"></span><h1><a class="reference internal" href="#module-psychopy.visual.windowframepack" title="psychopy.visual.windowframepack"><code class="xref py py-mod docutils literal"><span class="pre">psychopy.visual.windowframepack</span></code></a> - Pack multiple monochrome images into RGB frame<a class="headerlink" href="#module-psychopy.visual.windowframepack" title="Permalink to this headline">¶</a></h1>
+<p>Copyright (C) 2014 Allen Institute for Brain Science</p>
+<p>This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License Version 3
+as published by the Free Software Foundation on 29 June 2007.
+This program is distributed WITHOUT WARRANTY OF MERCHANTABILITY OR FITNESS
+FOR A PARTICULAR PURPOSE OR ANY OTHER WARRANTY, EXPRESSED OR IMPLIED.
+See the GNU General Public License Version 3 for more details.
+You should have received a copy of the GNU General Public License along
+with this program. If not, see <a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a></p>
+<div class="section" id="projectorframepacker">
+<h2><a class="reference internal" href="#psychopy.visual.windowframepack.ProjectorFramePacker" title="psychopy.visual.windowframepack.ProjectorFramePacker"><code class="xref py py-class docutils literal"><span class="pre">ProjectorFramePacker</span></code></a><a class="headerlink" href="#projectorframepacker" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="psychopy.visual.windowframepack.ProjectorFramePacker">
+<em class="property">class </em><code class="descclassname">psychopy.visual.windowframepack.</code><code class="descname">ProjectorFramePacker</code><span class="sig-paren">(</span><em>win</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.windowframepack.ProjectorFramePacker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class which packs 3 monochrome images per RGB frame.</p>
+<p>Allowing 180Hz stimuli with DLP projectors such as TI LightCrafter 4500.</p>
+<p>The class overrides methods of the visual.Window class to pack a
+monochrome image into each RGB channel. PsychoPy is running at 180Hz.
+The display device is running at 60Hz.  The output projector is producing
+images at 180Hz.</p>
+<p>Frame packing can work with any projector which can operate in
+&#8216;structured light mode&#8217; where each RGB channel is presented
+sequentially as a monochrome image.  Most home and office projectors
+cannot operate in this mode, but projectors designed for machine
+vision applications typically will offer this feature.</p>
+<p>Example usage to use ProjectorFramePacker:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy.visual.windowframepack</span> <span class="k">import</span> <span class="n">ProjectorFramePacker</span>
+<span class="n">win</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;testMonitor&#39;</span><span class="p">,</span> <span class="n">screen</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+             <span class="n">fullscr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">useFBO</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">framePacker</span> <span class="o">=</span> <span class="n">ProjectorFramePacker</span> <span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body">win : Handle to the window.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="psychopy.visual.windowframepack.ProjectorFramePacker.endOfFlip">
+<code class="descname">endOfFlip</code><span class="sig-paren">(</span><em>clearBuffer</em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.windowframepack.ProjectorFramePacker.endOfFlip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask RGB cyclically after each flip.
+We ignore clearBuffer and just auto-clear after each hardware flip.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="psychopy.visual.windowframepack.ProjectorFramePacker.startOfFlip">
+<code class="descname">startOfFlip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.visual.windowframepack.ProjectorFramePacker.startOfFlip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if all channels of the RGB frame have been filled
+with monochrome images, and the associated window should perform
+a hardware flip</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="windowwarp.html" title="psychopy.visual.windowwarp - warping to spherical, cylindrical, or other projections"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="window.html" title="Window"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../api.html" >Reference Manual (API)</a> &raquo;</li>
+          <li><a href="../visual.html" ><code class="docutils literal"><span class="pre">psychopy.visual</span></code> - many visual stimuli</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

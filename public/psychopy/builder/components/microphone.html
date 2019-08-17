@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Microphone Component &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="Components" href="../components.html" />
+    <link rel="next" title="Mouse Component" href="mouse.html" />
+    <link rel="prev" title="Keyboard Component" href="keyboard.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mouse.html" title="Mouse Component"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="keyboard.html" title="Keyboard Component"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../builder.html" >Builder</a> &raquo;</li>
+          <li><a href="../components.html" accesskey="U">Components</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Microphone Component</a><ul>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="keyboard.html"
+                                  title="previous chapter">Keyboard Component</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="mouse.html"
+                                  title="next chapter">Mouse Component</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/builder/components/microphone.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="microphone-component">
+<span id="microphone"></span><h1>Microphone Component<a class="headerlink" href="#microphone-component" title="Permalink to this headline">¶</a></h1>
+<p>Please note: This is a new component, and is subject to change.</p>
+<p>The microphone component provides a way to record sound during an experiment. To do so, specify the
+starting time relative to the start of the routine (see <cite>start</cite> below) and a stop time (= duration in seconds).
+A blank duration evaluates to recording for 0.000s.</p>
+<p>The resulting sound files
+are saved in .wav format (at 48000 Hz, 16 bit), one file per recording. The files appear in a new folder within the data
+directory (the subdirectory name ends in <cite>_wav</cite>). The file names include the unix (epoch) time
+of the onset of the recording with milliseconds, e.g., <cite>mic-1346437545.759.wav</cite>.</p>
+<p>It is possible to stop a recording that is in progress by using a code component. Every frame,
+check for a condition (such as key &#8216;q&#8217;, or a mouse click), and call the <cite>.stop()</cite> method
+of the microphone component. The recording will end at that point and be saved.
+For example, if <cite>mic</cite> is the name of your microphone component, then in the code component, do this on <strong>Each frame</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">getKeys</span><span class="p">([</span><span class="s1">&#39;q&#39;</span><span class="p">]):</span>
+    <span class="n">mic</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><cite>name</cite></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">string</span><dd>Everything in a PsychoPy experiment needs a unique name. The name should contain only letters, numbers and underscores (no punctuation marks or spaces).</dd>
+<dt><cite>start</cite></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float or integer</span><dd>The time that the stimulus should first play. See <a class="reference internal" href="../startStop.html#startstop"><span class="std std-ref">Defining the onset/duration of components</span></a> for details.</dd>
+<dt><cite>stop (duration)</cite>:</dt>
+<dd>The length of time (sec) to record for. An <cite>expected duration</cite> can be given for
+visualisation purposes. See <a class="reference internal" href="../startStop.html#startstop"><span class="std std-ref">Defining the onset/duration of components</span></a> for details; note that only seconds are allowed.</dd>
+</dl>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">API reference for <a class="reference internal" href="../../api/microphone.html#psychopy.microphone.AdvAudioCapture" title="psychopy.microphone.AdvAudioCapture"><code class="xref py py-class docutils literal"><span class="pre">AdvAudioCapture</span></code></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mouse.html" title="Mouse Component"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="keyboard.html" title="Keyboard Component"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../builder.html" >Builder</a> &raquo;</li>
+          <li><a href="../components.html" >Components</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

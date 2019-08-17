@@ -1,0 +1,268 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>HTML 抓取 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="命令行应用" href="cli.html" />
+    <link rel="prev" title="Web 应用 &amp; 框架" href="web.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/scenarios/scrape/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/scenarios/scrape">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="HTML 抓取 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="html">
+<h1>HTML 抓取<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/34268661876_442428e122_k_d.jpg" src="../_images/34268661876_442428e122_k_d.jpg" />
+<div class="section" id="web">
+<h2>Web抓取<a class="headerlink" href="#web" title="Permalink to this headline">¶</a></h2>
+<p>Web站点使用HTML描述，这意味着每个web页面是一个结构化的文档。有时从中
+获取数据同时保持它的结构是有用的。web站点不总是以容易处理的格式，
+如 CSV 或者 JSON 提供它们的数据。</p>
+<p>这正是web抓取出场的时机。Web抓取是使用计算机程序将web页面数据进行收集
+并整理成所需格式,同时保存其结构的实践。</p>
+</div>
+<div class="section" id="lxmlrequests">
+<h2>lxml和Requests<a class="headerlink" href="#lxmlrequests" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://lxml.de/">lxml</a> 是一个优美的扩展库，用来快速解析XML以及HTML文档
+即使所处理的标签非常混乱。我们也将使用 <a class="reference external" href="http://docs.python-requests.org/en/latest/">Requests</a>
+模块取代内建的urllib2模块，因为其速度更快而且可读性更好。您可以通过使用
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">lxml</span></code> 与 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">requests</span></code> 命令来安装这两个模块。</p>
+<p>让我们以下面的导入开始：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">html</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+<p>下一步我们将使用 <code class="docutils literal notranslate"><span class="pre">requests.get</span></code> 来从web页面中取得我们的数据，
+通过使用 <code class="docutils literal notranslate"><span class="pre">html</span></code> 模块解析它，并将结果保存到 <code class="docutils literal notranslate"><span class="pre">tree</span></code> 中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://econpy.pythonanywhere.com/ex/001.html&#39;</span><span class="p">)</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tree</span></code> 现在包含了整个HTML文件到一个优雅的树结构中，我们可以使用两种
+方法访问：XPath以及CSS选择器。在这个例子中，我们将选择前者。</p>
+<p>XPath是一种在结构化文档（如HTML或XML）中定位信息的方式。一个关于XPath的
+不错的介绍参见 <a class="reference external" href="http://www.w3schools.com/xml/xpath_intro.asp">W3Schools</a> 。</p>
+<p>有很多工具可以获取元素的XPath，如Firefox的FireBug或者Chrome的Inspector。
+如果您使用Chrome，您可以右键元素，选择 ‘Inspect element’，高亮这段代码，
+再次右击，并选择 ‘Copy XPath’。</p>
+<p>在进行一次快速分析后，我们看到在页面中的数据保存在两个元素中，一个是title是
+‘buyer-name’ 的div，另一个class是 ‘item-price’ 的span：</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;buyer-name&quot;</span><span class="p">&gt;</span>Carson Busses<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item-price&quot;</span><span class="p">&gt;</span>$29.95<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>知道这个后，我们可以创建正确的XPath查询并且使用lxml的 <code class="docutils literal notranslate"><span class="pre">xpath</span></code> 函数，
+像下面这样：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#这将创建buyers的列表：</span>
+<span class="n">buyers</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@title=&quot;buyer-name&quot;]/text()&#39;</span><span class="p">)</span>
+<span class="c1">#这将创建prices的列表：</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//span[@class=&quot;item-price&quot;]/text()&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>让我们看看我们得到了什么：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;Buyers: &#39;</span><span class="p">,</span> <span class="n">buyers</span>
+<span class="k">print</span> <span class="s1">&#39;Prices: &#39;</span><span class="p">,</span> <span class="n">prices</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Buyers</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;Carson Busses&#39;</span><span class="p">,</span> <span class="s1">&#39;Earl E. Byrd&#39;</span><span class="p">,</span> <span class="s1">&#39;Patty Cakes&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Derri Anne Connecticut&#39;</span><span class="p">,</span> <span class="s1">&#39;Moe Dess&#39;</span><span class="p">,</span> <span class="s1">&#39;Leda Doggslife&#39;</span><span class="p">,</span> <span class="s1">&#39;Dan Druff&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Al Fresco&#39;</span><span class="p">,</span> <span class="s1">&#39;Ido Hoe&#39;</span><span class="p">,</span> <span class="s1">&#39;Howie Kisses&#39;</span><span class="p">,</span> <span class="s1">&#39;Len Lease&#39;</span><span class="p">,</span> <span class="s1">&#39;Phil Meup&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Ira Pent&#39;</span><span class="p">,</span> <span class="s1">&#39;Ben D. Rules&#39;</span><span class="p">,</span> <span class="s1">&#39;Ave Sectomy&#39;</span><span class="p">,</span> <span class="s1">&#39;Gary Shattire&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Bobbi Soks&#39;</span><span class="p">,</span> <span class="s1">&#39;Sheila Takya&#39;</span><span class="p">,</span> <span class="s1">&#39;Rose Tattoo&#39;</span><span class="p">,</span> <span class="s1">&#39;Moe Tell&#39;</span><span class="p">]</span>
+
+<span class="n">Prices</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;$29.95&#39;</span><span class="p">,</span> <span class="s1">&#39;$8.37&#39;</span><span class="p">,</span> <span class="s1">&#39;$15.26&#39;</span><span class="p">,</span> <span class="s1">&#39;$19.25&#39;</span><span class="p">,</span> <span class="s1">&#39;$19.25&#39;</span><span class="p">,</span>
+<span class="s1">&#39;$13.99&#39;</span><span class="p">,</span> <span class="s1">&#39;$31.57&#39;</span><span class="p">,</span> <span class="s1">&#39;$8.49&#39;</span><span class="p">,</span> <span class="s1">&#39;$14.47&#39;</span><span class="p">,</span> <span class="s1">&#39;$15.86&#39;</span><span class="p">,</span> <span class="s1">&#39;$11.11&#39;</span><span class="p">,</span>
+<span class="s1">&#39;$15.98&#39;</span><span class="p">,</span> <span class="s1">&#39;$16.27&#39;</span><span class="p">,</span> <span class="s1">&#39;$7.50&#39;</span><span class="p">,</span> <span class="s1">&#39;$50.85&#39;</span><span class="p">,</span> <span class="s1">&#39;$14.26&#39;</span><span class="p">,</span> <span class="s1">&#39;$5.68&#39;</span><span class="p">,</span>
+<span class="s1">&#39;$15.00&#39;</span><span class="p">,</span> <span class="s1">&#39;$114.07&#39;</span><span class="p">,</span> <span class="s1">&#39;$10.09&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>恭喜！我们已经成功地通过lxml与Request，从一个web页面中抓取了所有我们想要的
+数据。我们将它们以列表的形式存在内存中。现在我们可以对它做各种很酷的事情了：
+我们可以使用Python分析它，或者我们可以将之保存为一个文件并向世界分享。</p>
+<p>我们可以考虑一些更酷的想法：修改这个脚本来遍历该例数据集中剩余的页面，或者
+使用多线程重写这个应用从而提升它的速度。</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HTML 抓取</a><ul>
+<li><a class="reference internal" href="#web">Web抓取</a></li>
+<li><a class="reference internal" href="#lxmlrequests">lxml和Requests</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="web.html" title="previous chapter">Web 应用 &amp; 框架</a></li>
+      <li>Next: <a href="cli.html" title="next chapter">命令行应用</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

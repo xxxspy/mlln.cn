@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 2: Measuring a JND using a staircase procedure &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Coder" href="coder.html" />
+    <link rel="next" title="Tutorial 3: Analysing data in Python" href="tutorial3.html" />
+    <link rel="prev" title="Tutorial 1: Generating your first stimulus" href="tutorial1.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial3.html" title="Tutorial 3: Analysing data in Python"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial1.html" title="Tutorial 1: Generating your first stimulus"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="coder.html" accesskey="U">Coder</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Tutorial 2: Measuring a JND using a staircase procedure</a><ul>
+<li><a class="reference internal" href="#get-info-from-the-user">Get info from the user</a></li>
+<li><a class="reference internal" href="#setup-the-information-for-trials">Setup the information for trials</a></li>
+<li><a class="reference internal" href="#build-your-stimuli">Build your stimuli</a></li>
+<li><a class="reference internal" href="#control-the-presentation-of-the-stimuli">Control the presentation of the stimuli</a></li>
+<li><a class="reference internal" href="#get-input-from-the-subject">Get input from the subject</a></li>
+<li><a class="reference internal" href="#output-your-data-and-clean-up">Output your data and clean up</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="tutorial1.html"
+                                  title="previous chapter">Tutorial 1: Generating your first stimulus</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="tutorial3.html"
+                                  title="next chapter">Tutorial 3: Analysing data in Python</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/coder/tutorial2.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-2-measuring-a-jnd-using-a-staircase-procedure">
+<h1>Tutorial 2: Measuring a JND using a staircase procedure<a class="headerlink" href="#tutorial-2-measuring-a-jnd-using-a-staircase-procedure" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial builds an experiment to test your just-noticeable-difference (JND) to orientation, that is it determines the smallest angular deviation that is needed for you to detect that a gabor stimulus isn&#8217;t vertical (or at some other reference orientation). The method presents a pair of stimuli at once with the observer having to report with a key press whether the left or the right stimulus was at the reference orientation (e.g. vertical).</p>
+<p>You can download the <a class="reference external" href="https://raw.githubusercontent.com/psychopy/psychopy/master/docs/source/coder/tutorial2.py">full code here</a>.
+Note that the entire experiment is constructed of less than 100 lines of code, including the initial presentation of a dialogue for parameters, generation and presentation of stimuli, running the trials, saving data and outputting a simple summary analysis for feedback. Not bad, eh?</p>
+<p>There are a great many modifications that can be made to this code, however this example is designed to demonstrate how much can be achieved with very simple code. Modifying existing is an excellent way to begin writing your own scripts, for example you may want to try changing the appearance of the text or the stimuli.</p>
+<div class="section" id="get-info-from-the-user">
+<h2>Get info from the user<a class="headerlink" href="#get-info-from-the-user" title="Permalink to this headline">¶</a></h2>
+<p>The first lines of code import the necessary libraries. We need lots of the PsychoPy modules for a full experiment, as well as <cite>numpy</cite> (which handles various numerical/mathematical functions):</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;measure your JND in orientation using a staircase method&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">visual</span><span class="p">,</span> <span class="n">gui</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">event</span>
+<span class="kn">from</span> <span class="nn">psychopy.tools.filetools</span> <span class="k">import</span> <span class="n">fromFile</span><span class="p">,</span> <span class="n">toFile</span>
+<span class="kn">import</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">random</span>
+</pre></div>
+</td></tr></table></div>
+<p>Also note that there are two ways to insert comments in Python (and you should do this often!). Using triple quotes, as in <cite>&#8220;&#8221;&#8220;Here&#8217;s my comment&#8221;&#8220;&#8221;</cite>, allows you to write a comment that can span several lines. Often you need that at the start of your script to leave yourself a note about the implementation and history of what you&#8217;ve written. For single-line comments, as you&#8217;ll see below, you can use a simple <cite>#</cite> to indicate that the rest of the line is a comment.</p>
+<p>The <code class="docutils literal"><span class="pre">try:...except:...</span></code> lines allow us to try and load a parameter file from a previous run of the experiment. If that fails (e.g. because the experiment has never been run) then create a default set of parameters. These are easy to store in a <a class="reference external" href="`http://docs.python.org/tut/node7.html#SECTION007500000000000000000`">python dictionary</a> that we&#8217;ll call <cite>expInfo</cite>:</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>  <span class="c1"># try to get a previous parameters file</span>
+    <span class="n">expInfo</span> <span class="o">=</span> <span class="n">fromFile</span><span class="p">(</span><span class="s1">&#39;lastParams.pickle&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>  <span class="c1"># if not there then use a default set</span>
+    <span class="n">expInfo</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;observer&#39;</span><span class="p">:</span><span class="s1">&#39;jwp&#39;</span><span class="p">,</span> <span class="s1">&#39;refOrientation&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">expInfo</span><span class="p">[</span><span class="s1">&#39;dateStr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">getDateStr</span><span class="p">()</span>  <span class="c1"># add the current time</span>
+</pre></div>
+</td></tr></table></div>
+<p>The last line adds the current date to to the information, whether we loaded from a previous run or created default values.</p>
+<p>So having loaded those parameters, let&#8217;s allow the user to change them in a dialogue box (which we&#8217;ll call <code class="docutils literal"><span class="pre">dlg</span></code>). This is the simplest form of dialogue, created directly from the dictionary above. the dialogue will be presented immediately to the user and the script will wait until they hit <em>OK</em> or <em>Cancel</em>.</p>
+<p>If they hit <em>OK</em> then dlg.OK=True, in which case we&#8217;ll use the updated values and save them straight to a parameters file (the one we try to load above).</p>
+<p>If they hit <em>Cancel</em> then we&#8217;ll simply quit the script and not save the values.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># present a dialogue to change params</span>
+<span class="n">dlg</span> <span class="o">=</span> <span class="n">gui</span><span class="o">.</span><span class="n">DlgFromDict</span><span class="p">(</span><span class="n">expInfo</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;simple JND Exp&#39;</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dateStr&#39;</span><span class="p">])</span>
+<span class="k">if</span> <span class="n">dlg</span><span class="o">.</span><span class="n">OK</span><span class="p">:</span>
+    <span class="n">toFile</span><span class="p">(</span><span class="s1">&#39;lastParams.pickle&#39;</span><span class="p">,</span> <span class="n">expInfo</span><span class="p">)</span>  <span class="c1"># save params to file for next time</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">core</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c1"># the user hit cancel so exit</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="setup-the-information-for-trials">
+<h2>Setup the information for trials<a class="headerlink" href="#setup-the-information-for-trials" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ll create a file to which we can output some data as text during each trial (as well as <a class="reference internal" href="#data-output"><span class="std std-ref">outputting a binary file</span></a> at the end of the experiment). PsychoPy actually has supporting functions to do this automatically, but here we&#8217;re showing you the manual way to do it.</p>
+<p>We&#8217;ll create a filename from the subject+date+&#8221;.csv&#8221; (note how easy it is to concatenate strings in python just by &#8216;adding&#8217; them). <a class="reference internal" href="../general/glossary.html#term-csv"><span class="xref std std-term">csv</span></a> files can be opened in most spreadsheet packages. Having opened a text file for writing, the last line shows how easy it is to send text to this target document.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># make a text file to save data</span>
+<span class="n">fileName</span> <span class="o">=</span> <span class="n">expInfo</span><span class="p">[</span><span class="s1">&#39;observer&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">expInfo</span><span class="p">[</span><span class="s1">&#39;dateStr&#39;</span><span class="p">]</span>
+<span class="n">dataFile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>  <span class="c1"># a simple text file with &#39;comma-separated-values&#39;</span>
+<span class="n">dataFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;targetSide,oriIncrement,correct</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>PsychoPy allows us to set up an object to handle the presentation of stimuli in a staircase procedure, the <a class="reference internal" href="../api/data.html#psychopy.data.StairHandler" title="psychopy.data.StairHandler"><code class="xref py py-class docutils literal"><span class="pre">StairHandler</span></code></a>. This will define the increment of the orientation (i.e. how far it is from the reference orientation). The staircase can be configured in many ways, but we&#8217;ll set it up to begin with an increment of 20deg (very detectable) and home in on the 80% threshold value. We&#8217;ll step up our increment every time the subject gets a wrong answer and step down if they get three right answers in a row. The step size will also decrease after every 2 reversals, starting with an 8dB step (large) and going down to 1dB steps (smallish). We&#8217;ll finish after 50 trials.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># create the staircase handler</span>
+<span class="n">staircase</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">StairHandler</span><span class="p">(</span><span class="n">startVal</span> <span class="o">=</span> <span class="mf">20.0</span><span class="p">,</span>
+                          <span class="n">stepType</span> <span class="o">=</span> <span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="n">stepSizes</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+                          <span class="n">nUp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nDown</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># will home in on the 80% threshold</span>
+                          <span class="n">nTrials</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="build-your-stimuli">
+<h2>Build your stimuli<a class="headerlink" href="#build-your-stimuli" title="Permalink to this headline">¶</a></h2>
+<p>Now we need to create a window, some stimuli and timers. We need a <cite>~psychopy.visual.Window</cite> in which to draw our stimuli, a fixation point and two <cite>~psychopy.visual.GratingStim</cite> stimuli (one for the target probe and one as the foil). We can have as many timers as we like and reset them at any time during the experiment, but I generally use one to measure the time since the experiment started and another that I reset at the beginning of each trial.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># create window and stimuli</span>
+<span class="n">win</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">Window</span><span class="p">([</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">],</span><span class="n">allowGUI</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;testMonitor&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;deg&#39;</span><span class="p">)</span>
+<span class="n">foil</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">GratingStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">sf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s1">&#39;gauss&#39;</span><span class="p">,</span>
+                          <span class="n">ori</span><span class="o">=</span><span class="n">expInfo</span><span class="p">[</span><span class="s1">&#39;refOrientation&#39;</span><span class="p">])</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">GratingStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">sf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s1">&#39;gauss&#39;</span><span class="p">,</span>
+                            <span class="n">ori</span><span class="o">=</span><span class="n">expInfo</span><span class="p">[</span><span class="s1">&#39;refOrientation&#39;</span><span class="p">])</span>
+<span class="n">fixation</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">GratingStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">color</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">colorSpace</span><span class="o">=</span><span class="s1">&#39;rgb&#39;</span><span class="p">,</span>
+                              <span class="n">tex</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="c1"># and some handy clocks to keep track of time</span>
+<span class="n">globalClock</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+<span class="n">trialClock</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>Once the stimuli are created we should give the subject a message asking if they&#8217;re ready. The next two lines create a pair of messages, then draw them into the screen and then update the screen to show what we&#8217;ve drawn. Finally we issue the command event.waitKeys() which will wait for a keypress before continuing.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># display instructions and wait</span>
+<span class="n">message1</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">TextStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="mi">3</span><span class="p">],</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hit a key when ready.&#39;</span><span class="p">)</span>
+<span class="n">message2</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">TextStim</span><span class="p">(</span><span class="n">win</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+    <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Then press left or right to identify the </span><span class="si">%.1f</span><span class="s2"> deg probe.&quot;</span> <span class="o">%</span><span class="n">expInfo</span><span class="p">[</span><span class="s1">&#39;refOrientation&#39;</span><span class="p">])</span>
+<span class="n">message1</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">message2</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">fixation</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">win</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span><span class="c1">#to show our newly drawn &#39;stimuli&#39;</span>
+<span class="c1">#pause until there&#39;s a keypress</span>
+<span class="n">event</span><span class="o">.</span><span class="n">waitKeys</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="control-the-presentation-of-the-stimuli">
+<h2>Control the presentation of the stimuli<a class="headerlink" href="#control-the-presentation-of-the-stimuli" title="Permalink to this headline">¶</a></h2>
+<p>OK, so we have everything that we need to run the experiment. The following uses a for-loop that will iterate over trials in the experiment. With each pass through the loop the <code class="xref py py-data docutils literal"><span class="pre">staircase</span></code> object will provide the new value for the intensity (which we will call <code class="xref py py-data docutils literal"><span class="pre">thisIncrement</span></code>). We will randomly choose a side to present the target stimulus using <code class="xref py py-func docutils literal"><span class="pre">numpy.random.random()</span></code>, setting the position of the target to be there and the foil to be on the other side of the fixation point.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>53
+54
+55
+56
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">thisIncrement</span> <span class="ow">in</span> <span class="n">staircase</span><span class="p">:</span>  <span class="c1"># will continue the staircase until it terminates!</span>
+    <span class="c1"># set location of stimuli</span>
+    <span class="n">targetSide</span><span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># will be either +1(right) or -1(left)</span>
+    <span class="n">foil</span><span class="o">.</span><span class="n">setPos</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="n">targetSide</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">setPos</span><span class="p">([</span><span class="mi">5</span><span class="o">*</span><span class="n">targetSide</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># in other location</span>
+</pre></div>
+</td></tr></table></div>
+<p>Then set the orientation of the foil to be the reference orientation plus <code class="xref py py-data docutils literal"><span class="pre">thisIncrement</span></code>, draw all the stimuli (including the fixation point) and update the window.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>59
+60
+61
+62
+63
+64
+65
+66</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># set orientation of probe</span>
+    <span class="n">foil</span><span class="o">.</span><span class="n">setOri</span><span class="p">(</span><span class="n">expInfo</span><span class="p">[</span><span class="s1">&#39;refOrientation&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">thisIncrement</span><span class="p">)</span>
+
+    <span class="c1"># draw all stimuli</span>
+    <span class="n">foil</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">target</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">fixation</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">win</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>Wait for presentation time of 500ms and then blank the screen (by updating the screen after drawing just the fixation point).</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>68
+69</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># wait 500ms; but use a loop of x frames for more accurate timing</span>
+    <span class="n">core</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>(This is not the most precise way to time your stimuli - you&#8217;ll probably overshoot by one frame - but its easy to understand. PsychoPy allows you to present a stimulus for acertian number of screen refreshes instead which is better for short stimuli.)</p>
+</div>
+<div class="section" id="get-input-from-the-subject">
+<h2>Get input from the subject<a class="headerlink" href="#get-input-from-the-subject" title="Permalink to this headline">¶</a></h2>
+<p>Still within the for-loop (note the level of indentation is the same) we need to get the response from the subject. The method works by starting off assuming that there hasn&#8217;t yet been a response and then waiting for a key press. For each key pressed we check if the answer was correct or incorrect and assign the response appropriately, which ends the trial. We always have to clear the event buffer if we&#8217;re checking for key presses like this</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># get response</span>
+    <span class="n">thisResp</span><span class="o">=</span><span class="kc">None</span>
+    <span class="k">while</span> <span class="n">thisResp</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
+        <span class="n">allKeys</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">waitKeys</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">thisKey</span> <span class="ow">in</span> <span class="n">allKeys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">thisKey</span><span class="o">==</span><span class="s1">&#39;left&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">targetSide</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span> <span class="n">thisResp</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># correct</span>
+                <span class="k">else</span><span class="p">:</span> <span class="n">thisResp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>              <span class="c1"># incorrect</span>
+            <span class="k">elif</span> <span class="n">thisKey</span><span class="o">==</span><span class="s1">&#39;right&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">targetSide</span><span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">thisResp</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># correct</span>
+                <span class="k">else</span><span class="p">:</span> <span class="n">thisResp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>              <span class="c1"># incorrect</span>
+            <span class="k">elif</span> <span class="n">thisKey</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;escape&#39;</span><span class="p">]:</span>
+                <span class="n">core</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>  <span class="c1"># abort experiment</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">clearEvents</span><span class="p">()</span>  <span class="c1"># clear other (eg mouse) events - they clog the buffer</span>
+</pre></div>
+</td></tr></table></div>
+<p>Now we must tell the staircase the result of this trial with its <a class="reference internal" href="../api/data.html#psychopy.data.TrialHandler.addData" title="psychopy.data.TrialHandler.addData"><code class="xref py py-meth docutils literal"><span class="pre">addData()</span></code></a> method. Then it can work out whether the next trial is an increment or decrement. Also, on each trial (so still within the for-loop) we may as well save the data as a line of text in that .csv file we created earlier.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>90
+91
+92
+93</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="c1"># add the data to the staircase so it can calculate the next level</span>
+    <span class="n">staircase</span><span class="o">.</span><span class="n">addData</span><span class="p">(</span><span class="n">thisResp</span><span class="p">)</span>
+    <span class="n">dataFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%i</span><span class="s1">,</span><span class="si">%.3f</span><span class="s1">,</span><span class="si">%i</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">targetSide</span><span class="p">,</span> <span class="n">thisIncrement</span><span class="p">,</span> <span class="n">thisResp</span><span class="p">))</span>
+    <span class="n">core</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="output-your-data-and-clean-up">
+<span id="data-output"></span><h2>Output your data and clean up<a class="headerlink" href="#output-your-data-and-clean-up" title="Permalink to this headline">¶</a></h2>
+<p>OK! We&#8217;re basically done! We&#8217;ve reached the end of the for-loop (which occurred because the staircase terminated) which means the trials are over. The next step is to close the text data file and also save the staircase as a binary file (by &#8216;pickling&#8217; the file in Python speak) which maintains a lot more info than we were saving in the text file.</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>95
+96
+97</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># staircase has ended</span>
+<span class="n">dataFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">staircase</span><span class="o">.</span><span class="n">saveAsPickle</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span>  <span class="c1"># special python binary file to save all the info</span>
+</pre></div>
+</td></tr></table></div>
+<p>While we&#8217;re here, it&#8217;s quite nice to give some immediate feedback to the user. Let&#8217;s tell them the intensity values at the all the reversals and give them the mean of the last 6. This is an easy way to get an estimate of the threshold, but we might be able to do a better job by trying to reconstruct the psychometric function. To give that a try see the staircase analysis script of <a class="reference internal" href="tutorial3.html"><span class="doc">Tutorial 3</span></a>.</p>
+<p>Having saved the data you can give your participant some feedback and quit!</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># give some output to user in the command line in the output window</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reversals:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">staircase</span><span class="o">.</span><span class="n">reversalIntensities</span><span class="p">)</span>
+<span class="n">approxThreshold</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">staircase</span><span class="o">.</span><span class="n">reversalIntensities</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean of final 6 reversals = </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">approxThreshold</span><span class="p">))</span>
+
+<span class="c1"># give some on-screen feedback</span>
+<span class="n">feedback1</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">TextStim</span><span class="p">(</span>
+        <span class="n">win</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="mi">3</span><span class="p">],</span>
+        <span class="n">text</span><span class="o">=</span><span class="s1">&#39;mean of final 6 reversals = </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">approxThreshold</span><span class="p">))</span>
+
+<span class="n">feedback1</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">fixation</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">win</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+<span class="n">event</span><span class="o">.</span><span class="n">waitKeys</span><span class="p">()</span>  <span class="c1"># wait for participant to respond</span>
+
+<span class="n">win</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">core</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial3.html" title="Tutorial 3: Analysing data in Python"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial1.html" title="Tutorial 1: Generating your first stimulus"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="coder.html" >Coder</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

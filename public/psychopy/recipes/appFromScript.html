@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Building an application from your script &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Recipes (“How-to”s)" href="recipes.html" />
+    <link rel="next" title="Builder - providing feedback" href="builderFeedback.html" />
+    <link rel="prev" title="Animation" href="animation.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="builderFeedback.html" title="Builder - providing feedback"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="animation.html" title="Animation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" accesskey="U">Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Building an application from your script</a><ul>
+<li><a class="reference internal" href="#using-py2exe-to-build-an-executable">Using py2exe to build an executable</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="animation.html"
+                                  title="previous chapter">Animation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="builderFeedback.html"
+                                  title="next chapter">Builder - providing feedback</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/recipes/appFromScript.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="building-an-application-from-your-script">
+<span id="appfromscript"></span><h1>Building an application from your script<a class="headerlink" href="#building-an-application-from-your-script" title="Permalink to this headline">¶</a></h1>
+<p>A lot of people ask how they can build a standalone application from their Python script. Usually this is because they have a collaborator and want to just send them the experiment.</p>
+<p>In general this is not advisable - the resulting bundle of files (single file on macOS) will be on the order of 100Mb and will not provide the end user with any of the options that they might need to control the task (for example, Monitor Center won&#8217;t be provided so they can&#8217;t to calibrate their monitor). A better approach in general is to get your collaborator to install the Standalone PsychoPy on their own machine, open your script and press run. (You don&#8217;t send a copy of Microsoft Word when you send someone a document - you expect the reader to install it themself and open the document).</p>
+<p>Nonetheless, it is technically possible to create exe files on Windows, and Ricky Savjani (savjani at bcm.edu) has kindly provided the following instructions for how to do it. A similar process might be possible on macOS using py2app - if you&#8217;ve done that then feel free to contribute the necessary script or instructions.</p>
+<div class="section" id="using-py2exe-to-build-an-executable">
+<h2>Using py2exe to build an executable<a class="headerlink" href="#using-py2exe-to-build-an-executable" title="Permalink to this headline">¶</a></h2>
+<p>Instructions:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Download and install py2exe (<a class="reference external" href="http://www.py2exe.org/">http://www.py2exe.org/</a>)</p>
+</li>
+<li><p class="first">Develop your PsychoPy script as normal</p>
+</li>
+<li><p class="first">Copy this setup.py file into the same directory as your script</p>
+</li>
+<li><p class="first">Change the Name of progName variable in this file to the Name of your desired executable program name</p>
+</li>
+<li><dl class="first docutils">
+<dt>Use cmd (or bash, terminal, etc.) and run the following in the directory of your the two files:</dt>
+<dd><p class="first last">python setup.py py2exe</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Open the &#8216;dist&#8217; directory and run your executable</p>
+</li>
+</ol>
+</div></blockquote>
+<p>A example setup.py script:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#   Created 8-09-2011</span>
+<span class="c1">#   Ricky Savjani</span>
+<span class="c1">#   (savjani at bcm.edu)</span>
+
+<span class="c1">#import necessary packages</span>
+<span class="kn">from</span> <span class="nn">distutils.core</span> <span class="k">import</span> <span class="n">setup</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">py2exe</span>
+
+<span class="c1">#the name of your .exe file</span>
+<span class="n">progName</span> <span class="o">=</span> <span class="s1">&#39;MultipleSchizophrenia.py&#39;</span>
+
+<span class="c1">#Initialize Holder Files</span>
+<span class="n">preference_files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">app_files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">my_data_files</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">get_py2exe_datafiles</span><span class="p">()</span>
+
+<span class="c1">#define which files you want to copy for data_files</span>
+<span class="k">for</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Program Files</span><span class="se">\\</span><span class="s1">PsychoPy2</span><span class="se">\\</span><span class="s1">Lib</span><span class="se">\\</span><span class="s1">site-packages</span><span class="se">\\</span><span class="s1">PsychoPy-1.65.00-py2.6.egg</span><span class="se">\\</span><span class="s1">psychopy</span><span class="se">\\</span><span class="s1">preferences</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Program Files</span><span class="se">\\</span><span class="s1">PsychoPy2</span><span class="se">\\</span><span class="s1">Lib</span><span class="se">\\</span><span class="s1">site-packages</span><span class="se">\\</span><span class="s1">PsychoPy-1.65.00-py2.6.egg</span><span class="se">\\</span><span class="s1">psychopy</span><span class="se">\\</span><span class="s1">preferences</span><span class="se">\\</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">files</span>
+    <span class="n">preference_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+
+<span class="c1">#if you might need to import the app files</span>
+<span class="c1">#for files in os.listdir(&#39;C:\\Program Files\\PsychoPy2\\Lib\\site-packages\\PsychoPy-1.65.00-py2.6.egg\\psychopy\\app\\&#39;):</span>
+<span class="c1">#    f1 = &#39;C:\\Program Files\\PsychoPy2\\Lib\\site-packages\\PsychoPy-1.65.00-py2.6.egg\\psychopy\\app\\&#39; + files</span>
+<span class="c1">#    app_files.append(f1)</span>
+
+<span class="c1">#all_files = [(&quot;psychopy\\preferences&quot;, preference_files),(&quot;psychopy\\app&quot;, app_files), my_data_files[0]]</span>
+
+<span class="c1">#combine the files</span>
+<span class="n">all_files</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;psychopy</span><span class="se">\\</span><span class="s2">preferences&quot;</span><span class="p">,</span> <span class="n">preference_files</span><span class="p">),</span> <span class="n">my_data_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+<span class="c1">#define the setup</span>
+<span class="n">setup</span><span class="p">(</span>
+                <span class="n">console</span><span class="o">=</span><span class="p">[</span><span class="n">progName</span><span class="p">],</span>
+                <span class="n">data_files</span> <span class="o">=</span> <span class="n">all_files</span><span class="p">,</span>
+                <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;py2exe&quot;</span><span class="p">:{</span>
+                        <span class="s2">&quot;skip_archive&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                        <span class="s2">&quot;optimize&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="builderFeedback.html" title="Builder - providing feedback"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="animation.html" title="Animation"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="recipes.html" >Recipes (&#8220;How-to&#8221;s)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

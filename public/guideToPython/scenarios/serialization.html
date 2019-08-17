@@ -1,0 +1,379 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>数据序列化 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="XML解析" href="xml.html" />
+    <link rel="prev" title="图像处理" href="imaging.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/scenarios/serialization/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/scenarios/serialization">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="数据序列化 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="id1">
+<h1>数据序列化<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<img alt="../_images/33467946364_3e59bd376a_k_d.jpg" src="../_images/33467946364_3e59bd376a_k_d.jpg" />
+<div class="section" id="id2">
+<h2>什么是数据序列化？<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>数据序列化是指将结构化数据转换成允许以共享或存储的格式，并能恢复成原始结构。
+在某些情况下，数据序列化的第二个目的是减少数据大小，从而减小对磁盘和带宽的要求。</p>
+</div>
+<div class="section" id="flat-vs-nested-data">
+<h2>Flat vs. Nested data<a class="headerlink" href="#flat-vs-nested-data" title="Permalink to this headline">¶</a></h2>
+<p>在开始序列化数据之前，确定或决定在数据序列化期间如何结构化数据（扁平或嵌套）是非常重要的。
+以下示例中显示了两种风格的差异。</p>
+<p>扁平风格:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;Type&quot;</span> <span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;field1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="s2">&quot;field2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span> <span class="s2">&quot;field3&quot;</span><span class="p">:</span> <span class="s2">&quot;value3&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>嵌套风格:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;A&quot;</span>
+    <span class="p">{</span> <span class="s2">&quot;field1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="s2">&quot;field2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span> <span class="s2">&quot;field3&quot;</span><span class="p">:</span> <span class="s2">&quot;value3&quot;</span> <span class="p">}</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>阅读两种风格的更多内容，请见如下讨论：
+<a class="reference external" href="https://mail.python.org/pipermail/python-list/2010-October/590762.html">Python mailing list</a>,
+<a class="reference external" href="https://www.ietf.org/mail-archive/web/json/current/msg03739.html">IETF mailing list</a> and
+<a class="reference external" href="https://softwareengineering.stackexchange.com/questions/350623/flat-or-nested-json-for-hierarchal-data">in stackexchange</a>.</p>
+</div>
+<div class="section" id="id3">
+<h2>序列化文本<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>简单文件（扁平数据）<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>如果要序列化的数据位于文件中，并包含扁平数据，则Python提供了两种序列化数据的方法。</p>
+<div class="section" id="repr">
+<h4>repr<a class="headerlink" href="#repr" title="Permalink to this headline">¶</a></h4>
+<p>Python 中的 repr 方法接收单个对象参数，返回输入的可打印形式：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 扁平文本作为输入</span>
+<span class="n">a</span> <span class="o">=</span>  <span class="p">{</span> <span class="s2">&quot;Type&quot;</span> <span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;field1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="s2">&quot;field2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span> <span class="s2">&quot;field3&quot;</span><span class="p">:</span> <span class="s2">&quot;value3&quot;</span> <span class="p">}</span>
+
+<span class="c1"># 相同的输入可以读取自文件</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/file.py&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># 返回输入的可打印形式</span>
+<span class="c1"># 输出也能够写入文件</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="c1"># 使用repr将内容写入文件</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/file.py&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ast-literal-eval">
+<h4>ast.literal_eval<a class="headerlink" href="#ast-literal-eval" title="Permalink to this headline">¶</a></h4>
+<p>literal_eval 方法安全地解析Python数据类型表达式并求值。其支持的数据类型有：字符串、数字、元组、列表、字典、布尔和None。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/file.py&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">inp</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="csv">
+<h3>CSV 文件 (扁平数据)<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h3>
+<p>Python 中的 CSV 模块实现了读取和写入CSV形式的表格数据的类。</p>
+<p>读取的简单例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 从文件中读取CSV数据</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/file.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>写入的简单例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 将CSV数据写入文件</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/temp/file.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>该模块的内容、函数和例子可以在
+<a class="reference external" href="https://docs.python.org/3/library/csv.html">Python 文档中</a> 查阅。</p>
+</div>
+<div class="section" id="yaml">
+<h3>YAML (嵌套数据)<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h3>
+<p>Python 中有许多第三方库用来解析和读取/写入 YAML 文件，例子如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用load方法从文件中读取 YAML 内容</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/file.yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">ymlexcp</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">ymlexcp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>第三方库的文档可以在
+<a class="reference external" href="https://pyyaml.org/wiki/PyYAMLDocumentation">PyYAML 文档</a> 中查阅。</p>
+</div>
+<div class="section" id="json">
+<h3>JSON 文件 (嵌套数据)<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
+<p>Python 的 JSON 模块可以用来读取和写入 JSON 模块。示例如下：</p>
+<p>读取：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 从文件中读取 JSON 内容</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>写入：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用 dump 方法将 JSON 内容写入文件</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xml">
+<h3>XML (嵌套数据)<a class="headerlink" href="#xml" title="Permalink to this headline">¶</a></h3>
+<p>Python 中 XML 的解析可以使用 <cite>xml</cite> 库。</p>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 从文件中读取 XML 内容</span>
+<span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="kn">as</span> <span class="nn">ET</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;country_data.xml&#39;</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>使用 <cite>xml.dom</cite> 和 <cite>xml.sax</cite> 包的更多文档可以在
+<a class="reference external" href="https://docs.python.org/3/library/xml.html">Python XML 库文档</a> 中找到。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>二进制<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="numpy-array">
+<h3>NumPy Array (扁平数据)<a class="headerlink" href="#numpy-array" title="Permalink to this headline">¶</a></h3>
+<p>Python 的 NumPy 数组可以将数据序列化成字节形式，或从字节形式的数据反序列化。</p>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NumPy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># 将 NumPy 数组转换为字节形式</span>
+<span class="n">byte_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> <span class="p">])</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+
+<span class="c1"># 将字节形式转换回 NumPy 数组</span>
+<span class="n">array_format</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">byte_output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pickle">
+<h3>Pickle (扁平数据)<a class="headerlink" href="#pickle" title="Permalink to this headline">¶</a></h3>
+<p>Python原生的数据序列化模块称为 <a class="reference external" href="https://docs.python.org/2/library/pickle.html">Pickle</a> 。</p>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c1"># 示例字典</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;Alice&#39;</span><span class="p">:</span> <span class="mi">89</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span> <span class="s1">&#39;Charles&#39;</span><span class="p">:</span> <span class="mi">87</span> <span class="p">}</span>
+
+<span class="c1"># 使用 dumps 将对象转换为序列化字符串</span>
+<span class="n">serial_grades</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span> <span class="n">grades</span> <span class="p">)</span>
+
+<span class="c1"># 使用 loads 反序列化为对象</span>
+<span class="n">received_grades</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span> <span class="n">serial_grades</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="protobuf">
+<h2>Protobuf<a class="headerlink" href="#protobuf" title="Permalink to this headline">¶</a></h2>
+<p>如果您正在寻找支持多种语言的序列化模块，那么Google的 <a class="reference external" href="https://developers.google.com/protocol-buffers">Protobuf</a> 库就是一个选择。</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">数据序列化</a><ul>
+<li><a class="reference internal" href="#id2">什么是数据序列化？</a></li>
+<li><a class="reference internal" href="#flat-vs-nested-data">Flat vs. Nested data</a></li>
+<li><a class="reference internal" href="#id3">序列化文本</a><ul>
+<li><a class="reference internal" href="#id4">简单文件（扁平数据）</a><ul>
+<li><a class="reference internal" href="#repr">repr</a></li>
+<li><a class="reference internal" href="#ast-literal-eval">ast.literal_eval</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#csv">CSV 文件 (扁平数据)</a></li>
+<li><a class="reference internal" href="#yaml">YAML (嵌套数据)</a></li>
+<li><a class="reference internal" href="#json">JSON 文件 (嵌套数据)</a></li>
+<li><a class="reference internal" href="#xml">XML (嵌套数据)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">二进制</a><ul>
+<li><a class="reference internal" href="#numpy-array">NumPy Array (扁平数据)</a></li>
+<li><a class="reference internal" href="#pickle">Pickle (扁平数据)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protobuf">Protobuf</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="imaging.html" title="previous chapter">图像处理</a></li>
+      <li>Next: <a href="xml.html" title="next chapter">XML解析</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,316 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GUI应用 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="数据库" href="db.html" />
+    <link rel="prev" title="命令行应用" href="cli.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/scenarios/gui/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/scenarios/gui">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="GUI应用 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="gui">
+<h1>GUI应用<a class="headerlink" href="#gui" title="Permalink to this headline">¶</a></h1>
+<img alt="https://farm5.staticflickr.com/4250/33907143624_cd621b535c_k_d.jpg" src="https://farm5.staticflickr.com/4250/33907143624_cd621b535c_k_d.jpg" />
+<p>以下GUI应用按字母顺序排列。</p>
+<div class="section" id="camelot">
+<h2>Camelot<a class="headerlink" href="#camelot" title="Permalink to this headline">¶</a></h2>
+<p>除了Python、SQLAlchemy和Qt之外，<a class="reference external" href="http://www.python-camelot.com">Camelot</a>
+提供构建应用的组件。它的灵感取决于Django的管理接口。</p>
+<p>如下是主要的信息资源网站: <a class="reference external" href="http://www.python-camelot.com">http://www.python-camelot.com</a>
+，邮件列表网站： <a class="reference external" href="http://groups.google.com/forum/#!forum/project-camelot">http://groups.google.com/forum/#!forum/project-camelot</a> 。</p>
+</div>
+<div class="section" id="cocoa">
+<h2>Cocoa<a class="headerlink" href="#cocoa" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Cocoa框架仅在OS X中可用。如果您正在写一个跨平台的应用，不要选用这个!</p>
+</div>
+</div>
+<div class="section" id="gtk">
+<h2>GTk<a class="headerlink" href="#gtk" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PyGTK提供GTK+工具包的Python绑定。但是，它已被PyGObject取代。 PyGTK不应该用于新项目，现有项目应该移植到PyGObject。</p>
+</div>
+</div>
+<div class="section" id="pygobject-aka-pygi">
+<h2>PyGObject aka (PyGi)<a class="headerlink" href="#pygobject-aka-pygi" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://wiki.gnome.org/Projects/PyGObject">PyGObject</a> 提供了Python绑定，可以访问整个GNOME软件平台。
+它完全兼容GTK+ 3。使用“Python GTK+ 3 教程”（<a class="reference external" href="https://python-gtk-3-tutorial.readthedocs.io/en/latest/">https://python-gtk-3-tutorial.readthedocs.io/en/latest/</a>&gt;`_）
+来开始学习。</p>
+<p><a class="reference external" href="http://lazka.github.io/pgi-docs/">API 参考</a></p>
+</div>
+<div class="section" id="kivy">
+<h2>Kivy<a class="headerlink" href="#kivy" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://kivy.org">Kivy</a> 是一个Python库，该库用于开发多点触控的媒体应用。
+当代码需要重复利用并且可部署时，它能够实现快速简单的交互设计，并且加速成形。</p>
+<p>Kivy使用Python编写，并且基于OpenGL，除此，它支持不同的输入设备，
+例如鼠标、双鼠标、WiiMote、WM_TOUCH、HIDtouch和苹果的产品等等。</p>
+<p>Kivy由社区积极开发，并且免费使用。它适用于所有主要的平台（Linux，OS X, Windows, Android）</p>
+<p>如下是主要的信息资源网站： <a class="reference external" href="http://kivy.org">http://kivy.org</a></p>
+</div>
+<div class="section" id="pyobjc">
+<h2>PyObjC<a class="headerlink" href="#pyobjc" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">仅在OS X中可用。如果您正在写一个跨平台的应用，不要选用这个。</p>
+</div>
+</div>
+<div class="section" id="pyside">
+<h2>PySide<a class="headerlink" href="#pyside" title="Permalink to this headline">¶</a></h2>
+<p>PySide是跨平台的Qt GUI工具包的Python绑定。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install pyside
+</pre></div>
+</div>
+<p><a class="reference external" href="https://wiki.qt.io/Category:LanguageBindings::PySide::Downloads">https://wiki.qt.io/Category:LanguageBindings::PySide::Downloads</a></p>
+</div>
+<div class="section" id="pyqt">
+<h2>PyQt<a class="headerlink" href="#pyqt" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">如果软件不能完全遵循GPL，那么就需要商业许可证。</p>
+</div>
+<p>PyQt提供Qt框架的Python绑定（见如下）</p>
+<p><a class="reference external" href="http://www.riverbankcomputing.co.uk/software/pyqt/download">http://www.riverbankcomputing.co.uk/software/pyqt/download</a></p>
+</div>
+<div class="section" id="pyjs-desktop-formerly-pyjamas-desktop">
+<h2>Pyjs Desktop (formerly Pyjamas Desktop)<a class="headerlink" href="#pyjs-desktop-formerly-pyjamas-desktop" title="Permalink to this headline">¶</a></h2>
+<p>Pyjs Desktop 是一个用于桌面和跨平台框架的应用程序小部件集。
+它允许完全相同的 Python Web 应用程序源代码作为独立的桌面应用程序来执行。</p>
+<p><a class="reference external" href="http://wiki.python.org/moin/PyjamasDesktop">PyjamasDesktop的Python维基百科</a>.</p>
+<p>主要的网址: <a class="reference external" href="http://pyjs.org/">pyjs</a>。</p>
+</div>
+<div class="section" id="qt">
+<h2>Qt<a class="headerlink" href="#qt" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://qt-project.org/">Qt</a> 是跨平台应用框架，它被广泛用于借GUI开发软件，但是也可用于非GUI应用。</p>
+</div>
+<div class="section" id="pysimplegui">
+<h2>PySimpleGUI<a class="headerlink" href="#pysimplegui" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pysimplegui.readthedocs.io/">PySimpleGUI</a> 是 Tkinter 一层包装。
+使用 PySimpleGUI 实现自定义 GUI 所需的代码量要比使用 Tkinter 直接编写相同的 GUI 要少得多。
+使用 Tkinter 作为底层是因为它与其他 GUI 框架相比，能运行在更多的平台上。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install pysimplegui
+</pre></div>
+</div>
+<p>PySimpleGUI 完全包含在一个 PySimpleGUI.py 文件中。
+如果 pip 安装不可用，将 PySimpleGUI.py 粘贴到项目文件夹中以便引用，即可。</p>
+</div>
+<div class="section" id="toga">
+<h2>Toga<a class="headerlink" href="#toga" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://toga.readthedocs.io/en/latest/">Toga</a> 是一个原生Python和操作系统的
+跨平台GUI工具包。Toga由一个具有共享接口的基础组件库组成，以简化与平台无关的GUI开发。</p>
+<p>Toga适用于Mac OS、Windows、Linux（GTK）以及Android和iOS等移动平台。</p>
+</div>
+<div class="section" id="tk">
+<h2>Tk<a class="headerlink" href="#tk" title="Permalink to this headline">¶</a></h2>
+<p>Tkinter是Tcl/Tk上的面向对象层。 <strong>它的优势是包括Python标准库，能够使编程更加方便，兼容性更强。</strong></p>
+<p>不管是Tk还是Tkinter，在大多数Unix平台，以及Windows和Macintosh系统都可用。
+从8.0发布版本开始，Tk在所有平台上使本身的样式和感觉更赞。</p>
+<p>在 <a class="reference external" href="http://www.tkdocs.com/tutorial/index.html">TkDocs</a> 中有一个非常好的多语言Tk教程，
+所有例子使用Python。更多信息可以看 <a class="reference external" href="http://wiki.python.org/moin/TkInter">Python 维基百科</a>.</p>
+</div>
+<div class="section" id="wxpython">
+<h2>wxPython<a class="headerlink" href="#wxpython" title="Permalink to this headline">¶</a></h2>
+<p>wxPython是Python语言编写的GUI工具包。Python编写人员能够使简单容易地使用健壮，高功能的图形用户接口编程。
+把流行的wxWidgets包在跨平台GUI库中，从而作为Python的扩展模块，这用C++编写。</p>
+<p><strong>安装（稳定版）wxPython可以去如下网址</strong>
+<a class="reference external" href="https://www.wxpython.org/pages/downloads/">https://www.wxpython.org/pages/downloads/</a> ，并且下载适用于当前操作系统的安装包。</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">GUI应用</a><ul>
+<li><a class="reference internal" href="#camelot">Camelot</a></li>
+<li><a class="reference internal" href="#cocoa">Cocoa</a></li>
+<li><a class="reference internal" href="#gtk">GTk</a></li>
+<li><a class="reference internal" href="#pygobject-aka-pygi">PyGObject aka (PyGi)</a></li>
+<li><a class="reference internal" href="#kivy">Kivy</a></li>
+<li><a class="reference internal" href="#pyobjc">PyObjC</a></li>
+<li><a class="reference internal" href="#pyside">PySide</a></li>
+<li><a class="reference internal" href="#pyqt">PyQt</a></li>
+<li><a class="reference internal" href="#pyjs-desktop-formerly-pyjamas-desktop">Pyjs Desktop (formerly Pyjamas Desktop)</a></li>
+<li><a class="reference internal" href="#qt">Qt</a></li>
+<li><a class="reference internal" href="#pysimplegui">PySimpleGUI</a></li>
+<li><a class="reference internal" href="#toga">Toga</a></li>
+<li><a class="reference internal" href="#tk">Tk</a></li>
+<li><a class="reference internal" href="#wxpython">wxPython</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="cli.html" title="previous chapter">命令行应用</a></li>
+      <li>Next: <a href="db.html" title="next chapter">数据库</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

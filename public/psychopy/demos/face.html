@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Draw a rotating face &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/demos/face.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="draw-a-rotating-face">
+<h1>Draw a rotating face<a class="headerlink" href="#draw-a-rotating-face" title="Permalink to this headline">¶</a></h1>
+<p>This demo shows a couple of uses of bitmap images. You can use them either as textures for images or as the mask for another texture (the face on the left is used as a mask for a blue and yellow grating).</p>
+<p>To work the demo needs a square image called face.jpg (e.g. <a class="reference download internal" href="../_downloads/face.jpg" download=""><code class="xref download docutils literal"><span class="pre">../images/face.jpg</span></code></a>)</p>
+<a class="reference external image-reference" href="documentation.html"><img alt="draw a drifting plaid" src="../_images/demo_face.jpg" /></a>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">visual</span><span class="p">,</span> <span class="n">event</span>
+
+<span class="c1">#create a window to draw in</span>
+<span class="n">myWin</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">Window</span><span class="p">((</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">allowGUI</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1">#INITIALISE SOME STIMULI</span>
+<span class="n">faceRGB</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">GratingStim</span><span class="p">(</span><span class="n">myWin</span><span class="p">,</span> <span class="n">tex</span><span class="o">=</span><span class="s1">&#39;face.jpg&#39;</span><span class="p">,</span>
+                             <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                             <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+                             <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+                             <span class="n">sf</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+
+<span class="n">faceALPHA</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">GratingStim</span><span class="p">(</span><span class="n">myWin</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                               <span class="n">tex</span><span class="o">=</span><span class="s2">&quot;sin&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="s2">&quot;face.jpg&quot;</span><span class="p">,</span>
+                               <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span>
+                               <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">sf</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                               <span class="n">units</span><span class="o">=</span><span class="s2">&quot;norm&quot;</span><span class="p">)</span>
+
+<span class="n">message</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">TextStim</span><span class="p">(</span><span class="n">myWin</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.95</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.95</span><span class="p">),</span>
+                          <span class="n">text</span><span class="o">=</span><span class="s1">&#39;[Esc] to quit&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                          <span class="n">alignHoriz</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">alignVert</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="n">trialClock</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">lastFPSupdate</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">trialClock</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span>
+    <span class="n">faceRGB</span><span class="o">.</span><span class="n">setOri</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span><span class="c1">#advance ori by 1 degree</span>
+    <span class="n">faceRGB</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+    <span class="n">faceALPHA</span><span class="o">.</span><span class="n">setPhase</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">)</span><span class="c1">#advance phase by 1/100th of a cycle</span>
+    <span class="n">faceALPHA</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+    <span class="c1">#update fps every second</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">-</span><span class="n">lastFPSupdate</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">lastFPS</span> <span class="o">=</span> <span class="n">myWin</span><span class="o">.</span><span class="n">fps</span><span class="p">()</span>
+        <span class="n">lastFPSupdate</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%i</span><span class="s2">fps, [Esc] to quit&quot;</span> <span class="o">%</span><span class="n">lastFPS</span><span class="p">)</span>
+    <span class="n">message</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+    <span class="n">myWin</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+
+    <span class="c1">#handle key presses each frame</span>
+    <span class="k">for</span> <span class="n">keys</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">getKeys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">keys</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;escape&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">myWin</span><span class="o">.</span><span class="n">fps</span><span class="p">())</span>
+            <span class="n">myWin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="n">core</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">clearEvents</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

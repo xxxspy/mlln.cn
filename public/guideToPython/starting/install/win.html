@@ -1,0 +1,246 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>在Windows上安装Python 2 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="在Linux上安装Python 2" href="linux.html" />
+    <link rel="prev" title="在Mac OS X上安装Python 2" href="osx.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/starting/install/win/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/starting/install/win">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="在Windows上安装Python 2 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="windowspython-2">
+<span id="install-windows"></span><h1>在Windows上安装Python 2<a class="headerlink" href="#windowspython-2" title="Permalink to this headline">¶</a></h1>
+<img alt="https://farm5.staticflickr.com/4268/34435688560_4cc2a7bcbb_k_d.jpg" src="https://farm5.staticflickr.com/4268/34435688560_4cc2a7bcbb_k_d.jpg" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">查看我们的 <a class="reference internal" href="../install3/win.html#install3-windows"><span class="std std-ref">在Windows上安装Python 3指南</span></a>.</p>
+</div>
+<p>首先，从官网下载 <a class="reference external" href="https://www.python.org/ftp/python/2.7.15/python-2.7.15.msi">最新版本</a>
+的Python 2.7。如果想要确保下载到最新版本，单击 <a class="reference external" href="https://python.org">Python官网</a> 的
+Downloads &gt; Windows 链接。</p>
+<p>Windows版本是MSI文件格式，双击它即可开始安装。MSI文件格式允许Windows管理员使用标准工具自动
+进行安装流程。</p>
+<p>Python将安装到内含版本号信息的路径，例如Python 2.7版本将被安装到 <code class="file docutils literal notranslate"><span class="pre">C:\Python27\</span></code>,
+故多个版本的Python可以共存在一个系统里，不会有冲突。当然仅有一个默认的Python解释器，
+<span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> 环境变量也不是自动修改的，开发人员可以控制要运行的Python版本。</p>
+<p>把默认使用的Python版本路径加到 <span class="target" id="index-1"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> 环境变量中，避免每次使用时都要冗余地写全Python
+解释器路径。假设安装路径是 <code class="file docutils literal notranslate"><span class="pre">C:\Python27\</span></code>, 将这段加入到 <span class="target" id="index-2"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> 中:</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">C:\Python27\;C:\Python27\Scripts\</span>
+</pre></div>
+</div>
+<p>或在 <code class="docutils literal notranslate"><span class="pre">powershell</span></code> 中运行:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;Path&quot;</span><span class="p">,</span> <span class="s2">&quot;$env:Path;C:\Python27\;C:\Python27\Scripts\&quot;</span><span class="p">,</span> <span class="s2">&quot;User&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这也是安装过程中的一个选择。</p>
+<p>其中第二个路径(<code class="file docutils literal notranslate"><span class="pre">Scripts</span></code>)可接收已安装包的命令文件，添加这个路径很有益处。虽然以上步骤完成后，
+就可以开始正式使用Python了，但我还是强烈建议各位，在正式开始Python应用开发前，安装接下来教程中所介绍
+的工具和库。特别应该安装Setuptools——它将简化安装和使用Python第三方库的流程。</p>
+<div class="section" id="setuptools-pip">
+<h2>Setuptools + Pip<a class="headerlink" href="#setuptools-pip" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pypi.org/project/setuptools">setuptools</a> 和 <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a>
+是两个最重要的第三方Python包。</p>
+<p>安装完成后，您可以使用单个命令下载、安装和卸载任何兼容的Python应用包。还可以轻松地这种网络安装的方式加入到自己开发
+的Python应用中。</p>
+<p>Python 2.7.9和更高版本（在Python 2系列上），Python 3.4和更高版本默认包含pip。</p>
+<p>要查看是否安装了pip，请打开命令提示符并运行：</p>
+<div class="highlight-doscon notranslate"><div class="highlight"><pre><span></span><span class="go">command -v pip</span>
+</pre></div>
+</div>
+<p>要安装pip， <a class="reference external" href="https://pip.pypa.io/en/latest/installing/">请遵照官方的pip安装指南</a> —— 这将自动安装最新版本的setuptools。</p>
+</div>
+<div class="section" id="id3">
+<h2>虚拟环境<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>虚拟环境工具(通常是指“virturalenv”)通过为不同项目创建专属的Python虚拟环境，以实现其依赖的库独立保存在不同的路径。
+这解决了“项目X依赖包版本1.x，但项目Y依赖包版本为4.x”的难题, 并且维持全局的site-packages目录干净、易管理。</p>
+<p>举个例子，通过这个工具可以实现依赖Django 1.10的项目与依赖Django 1.8的项目共存。</p>
+<p>进一步了解与使用请参考文档 <a class="reference internal" href="../../dev/virtualenvs.html#virtualenvironments-ref"><span class="std std-ref">Virtual Environments</span></a> 。</p>
+<hr class="docutils" />
+<p>该页是 <a class="reference external" href="https://www.stuartellis.name/articles/python-development-windows/">另一份指南</a> 的混合版本，可通过同一份许可获取。</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">在Windows上安装Python 2</a><ul>
+<li><a class="reference internal" href="#setuptools-pip">Setuptools + Pip</a></li>
+<li><a class="reference internal" href="#id3">虚拟环境</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="osx.html" title="previous chapter">在Mac OS X上安装Python 2</a></li>
+      <li>Next: <a href="linux.html" title="next chapter">在Linux上安装Python 2</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

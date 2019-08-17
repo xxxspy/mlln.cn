@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Troubleshooting &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="index.html" />
+    <link rel="up" title="Documentation" href="documentation.html" />
+    <link rel="next" title="Recipes (“How-to”s)" href="recipes/recipes.html" />
+    <link rel="prev" title="psychopy.web - Web methods" href="api/web.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="recipes/recipes.html" title="Recipes (“How-to”s)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api/web.html" title="psychopy.web - Web methods"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="documentation.html" accesskey="U">Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#the-application-doesn-t-start">The application doesn&#8217;t start</a></li>
+<li><a class="reference internal" href="#i-run-a-builder-experiment-and-nothing-happens">I run a Builder experiment and nothing happens</a></li>
+<li><a class="reference internal" href="#manually-turn-off-the-viewing-of-output">Manually turn off the viewing of output</a></li>
+<li><a class="reference internal" href="#use-the-source-luke">Use the source (Luke?)</a></li>
+<li><a class="reference internal" href="#cleaning-preferences-and-app-data">Cleaning preferences and app data</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="api/web.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.web</span></code> - Web methods</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="recipes/recipes.html"
+                                  title="next chapter">Recipes (&#8220;How-to&#8221;s)</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/troubleshooting.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="troubleshooting">
+<span id="id1"></span><h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<p>Regrettably, PsychoPy is not bug-free. Running on all possible hardware and all platforms is a big ask. That said, a huge number of bugs have been resolved by the fact that there are literally 1000s of people using the software that have <a class="reference internal" href="about/contributing.html#contribute"><span class="std std-ref">contributed either bug reports and/or fixes</span></a>.</p>
+<p>Below are some of the more common problems and their workarounds, as well as advice on how to get further help.</p>
+<div class="section" id="the-application-doesn-t-start">
+<span id="notstarting"></span><h2>The application doesn&#8217;t start<a class="headerlink" href="#the-application-doesn-t-start" title="Permalink to this headline">¶</a></h2>
+<p>You may find that you try to launch the PsychoPy application, the splash screen appears and then goes away and nothing more happens. What this means is that an error has occurred during startup itself.</p>
+<p>Commonly, the problem is that a preferences file is somehow corrupt. To fix that see <a class="reference internal" href="#cleanprefs"><span class="std std-ref">Cleaning preferences and app data</span></a>, below.</p>
+<p>If resetting the preferences files doesn&#8217;t help then we need to get to an error message in order to work out why the application isn&#8217;t starting. The way to get that message depends on the platform (see below).</p>
+<p><em>Windows users</em> (starting from the Command Prompt):</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Did you get an error message that &#8220;This application failed to start because the application configuration is incorrect. Reinstalling the application may fix the problem&#8221;? If so that indicates you need to <a class="reference external" href="http://www.microsoft.com/download/en/details.aspx?id=33">update your .NET installation to SP1</a> .</p>
+</li>
+<li><dl class="first docutils">
+<dt>open a DOS Command Prompt (terminal):</dt>
+<dd><ol class="first last arabic simple">
+<li>go to the Windows Start menu</li>
+<li>select Run... and type in cmd &lt;Return&gt;</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">paste the following into that window (Ctrl-V doesn&#8217;t work but you can right-click and select Paste). Replace VERSION with your version number (e.g. 1.61.03):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\PsychoPy2\python.exe&quot;</span> <span class="s2">&quot;C:\Program Files\PsychoPy2\Lib\site-packages\PsychoPy-VERSION-py2.6.egg\psychopy</span><span class="se">\a</span><span class="s2">pp\psychopyApp.py&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">when you hit &lt;return&gt; you will hopefully get a moderately useful error message that you can <a class="reference internal" href="about/contributing.html#contribforum"><span class="std std-ref">Contribute to the Forum (mailing list)</span></a></p>
+</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt><em>Mac users</em>:</dt>
+<dd><ol class="first last arabic simple">
+<li>open the Console app (open spotlight and type console)</li>
+<li>if there are a huge number of messages there you might find it easiest to clear them (the brush icon) and then start PsychoPy again to generate a new set of messages</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="i-run-a-builder-experiment-and-nothing-happens">
+<h2>I run a Builder experiment and nothing happens<a class="headerlink" href="#i-run-a-builder-experiment-and-nothing-happens" title="Permalink to this headline">¶</a></h2>
+<p>An error message may have appeared in a dialog box that is hidden (look to see if you have other open windows somewhere).</p>
+<dl class="docutils">
+<dt>An error message may have been generated that was sent to output of the Coder view:</dt>
+<dd><ol class="first arabic simple">
+<li>go to the Coder view (from the Builder&gt;View menu if not visible)</li>
+<li>if there is no Output panel at the bottom of the window, go to the View menu and select Output</li>
+<li>try running your experiment again and see if an error message appears in this Output view</li>
+</ol>
+<p class="last">If you still don&#8217;t get an error message but the application still doesn&#8217;t start then manually turn off the viewing of the Output (as below) and try the above again.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="manually-turn-off-the-viewing-of-output">
+<h2>Manually turn off the viewing of output<a class="headerlink" href="#manually-turn-off-the-viewing-of-output" title="Permalink to this headline">¶</a></h2>
+<p>Very occasionally an error will occur that crashes the application <em>after</em> the application has opened the Coder Output window. In this case the error message is still not sent to the console or command prompt.</p>
+<p>To turn off the Output view so that error messages are sent to the command prompt/terminal on startup, open your appData.cfg file (see <a class="reference internal" href="#cleanprefs"><span class="std std-ref">Cleaning preferences and app data</span></a>), find the entry:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">coder</span><span class="p">]</span>
+<span class="n">showOutput</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>and set it to <cite>showOutput = False</cite> (note the capital &#8216;F&#8217;).</p>
+</div>
+<div class="section" id="use-the-source-luke">
+<span id="usesource"></span><h2>Use the source (Luke?)<a class="headerlink" href="#use-the-source-luke" title="Permalink to this headline">¶</a></h2>
+<p>PsychoPy comes with all the source code included. You may not think you&#8217;re much of a programmer, but have a go at reading the code. You might find you understand more of it than you think!</p>
+<dl class="docutils">
+<dt>To have a look at the source code do one of the following:</dt>
+<dd><ul class="first last">
+<li><p class="first">when you get an error message in the <a class="reference internal" href="coder/coder.html#coder"><span class="std std-ref">Coder</span></a> click on the hyperlinked error lines to see the relevant code</p>
+</li>
+<li><dl class="first docutils">
+<dt>on Windows</dt>
+<dd><ul class="first last simple">
+<li>go to <cite>Program Files\PsychoPy2\Lib\site-packages\Psychopy</cite></li>
+<li>have a look at some of the files there</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>on Mac</dt>
+<dd><ul class="first last simple">
+<li>right click the PsychoPy app and select <cite>Show Package Contents</cite></li>
+<li>navigate to <cite>Contents/Resources/lib/python2.6/psychopy</cite></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="cleaning-preferences-and-app-data">
+<span id="cleanprefs"></span><h2>Cleaning preferences and app data<a class="headerlink" href="#cleaning-preferences-and-app-data" title="Permalink to this headline">¶</a></h2>
+<p>Every time you shut down PsychoPy (by normal means) your current preferences and the state of the application (the location and state of the windows) are saved to disk. If PsychoPy is crashing during startup you may need to edit those files or delete them completely.</p>
+<p>On macOS and Linux the files are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">psychopy2</span><span class="o">/</span><span class="n">appData</span><span class="o">.</span><span class="n">cfg</span>
+<span class="o">~/.</span><span class="n">psychopy2</span><span class="o">/</span><span class="n">userPrefs</span><span class="o">.</span><span class="n">cfg</span>
+</pre></div>
+</div>
+<p>On Windows they are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>${DOCS AND SETTINGS}\{USER}\Application Data\psychopy2\appData.cfg
+${DOCS AND SETTINGS}\{USER}\Application Data\psychopy2\userPrefs.cfg
+</pre></div>
+</div>
+<p>The files are simple text, which you should be able to edit in any text editor. Particular changes that you might need to make:</p>
+<p>If the problem is that you have a corrupt experiment file or script that is trying and failing to load on startup, you could simply delete the <cite>appData.cfg</cite> file. Please <em>also</em> <a class="reference internal" href="about/contributing.html#contribforum"><span class="std std-ref">Contribute to the Forum (mailing list)</span></a> a copy of the file that isn&#8217;t working so that the underlying cause of the problem can be investigated (google first to see if it&#8217;s a known issue).</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="recipes/recipes.html" title="Recipes (“How-to”s)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api/web.html" title="psychopy.web - Web methods"
+             >previous</a> |</li>
+        <li><a href="index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="documentation.html" >Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

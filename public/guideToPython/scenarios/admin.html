@@ -1,0 +1,485 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>系统管理 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="持续集成" href="ci.html" />
+    <link rel="prev" title="网络" href="network.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/scenarios/admin/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/scenarios/admin">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="系统管理 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="id1">
+<h1>系统管理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<img alt="https://farm5.staticflickr.com/4179/34435690580_3afec7d4cd_k_d.jpg" src="https://farm5.staticflickr.com/4179/34435690580_3afec7d4cd_k_d.jpg" />
+<div class="section" id="fabric">
+<h2>Fabric<a class="headerlink" href="#fabric" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://docs.fabfile.org">Fabric</a> 是一个简化系统管理任务的库。
+Chef和Puppet倾向于关注管理服务器和系统库，而Fabric更加关注应用级别的任务，比如说部署。</p>
+<p>安装Fabric:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install fabric
+</pre></div>
+</div>
+<p>下面的代码将会创建我们可以使用的两个任务： <code class="docutils literal notranslate"><span class="pre">memory_usage</span></code> 和 <code class="docutils literal notranslate"><span class="pre">deploy</span></code>。
+前者将会在每台机器上输出内存使用情况。后者将会SSH到每台服务器，cd到我们的工程目录，
+激活虚拟环境，拉取最新的代码库，以及重启应用服务器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fabric.api</span> <span class="kn">import</span> <span class="n">cd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">task</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;my_server1&#39;</span><span class="p">,</span> <span class="s1">&#39;my_server2&#39;</span><span class="p">]</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">memory_usage</span><span class="p">():</span>
+    <span class="n">run</span><span class="p">(</span><span class="s1">&#39;free -m&#39;</span><span class="p">)</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">deploy</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s1">&#39;/var/www/project-env/project&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">prefix</span><span class="p">(</span><span class="s1">&#39;. ../bin/activate&#39;</span><span class="p">):</span>
+            <span class="n">run</span><span class="p">(</span><span class="s1">&#39;git pull&#39;</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="s1">&#39;touch app.wsgi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>将上述代码保存到文件 <code class="file docutils literal notranslate"><span class="pre">fabfile.py</span></code> 中，我们可以这样检查内存的使用：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> fab memory_usage
+<span class="go">[my_server1] Executing task &#39;memory&#39;</span>
+<span class="go">[my_server1] run: free -m</span>
+<span class="go">[my_server1] out:              total     used     free   shared  buffers   cached</span>
+<span class="go">[my_server1] out: Mem:          6964     1897     5067        0      166      222</span>
+<span class="go">[my_server1] out: -/+ buffers/cache:     1509     5455</span>
+<span class="go">[my_server1] out: Swap:            0        0        0</span>
+
+<span class="go">[my_server2] Executing task &#39;memory&#39;</span>
+<span class="go">[my_server2] run: free -m</span>
+<span class="go">[my_server2] out:              total     used     free   shared  buffers   cached</span>
+<span class="go">[my_server2] out: Mem:          1666      902      764        0      180      572</span>
+<span class="go">[my_server2] out: -/+ buffers/cache:      148     1517</span>
+<span class="go">[my_server2] out: Swap:          895        1      894</span>
+</pre></div>
+</div>
+<p>and we can deploy with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> fab deploy
+</pre></div>
+</div>
+<p>额外的特性包括并行执行、和远程程序交互、以及主机分组。</p>
+<blockquote>
+<div><a class="reference external" href="http://docs.fabfile.org">Fabric 文档</a></div></blockquote>
+</div>
+<div class="section" id="salt">
+<h2>Salt<a class="headerlink" href="#salt" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://saltstack.org/">Salt</a> 是一个开源的基础管理工具。
+它支持从中心节点（主要的主机）到多个主机（指从机）的远程命令执行。
+它也支持系统语句，能够使用简单的模板文件配置多台服务器。</p>
+<p>Salt支持Python 2.6和2.7，并能通过pip安装：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install salt
+</pre></div>
+</div>
+<p>在配置好一台主服务器和任意数量的从机后，我们可以在从机上使用任意的shell命令或者预制的复杂命令的模块。</p>
+<p>下面的命令使用ping模块列出所有可用的从机：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> salt <span class="s1">&#39;*&#39;</span> test.ping
+</pre></div>
+</div>
+<p>主机过滤是通过匹配从机id或者使用颗粒系统（grains system）。
+<a class="reference external" href="http://docs.saltstack.com/en/latest/topics/targeting/grains.html">颗粒（grains）</a>
+系统使用静态的主机信息，比如操作系统版本或者CPU架构，来为Salt模块提供主机分类内容。</p>
+<p>下列命令行使用颗粒系统列举了所有可用的运行CentOS的从机：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> salt -G <span class="s1">&#39;os:CentOS&#39;</span> test.ping
+</pre></div>
+</div>
+<p>Salt也提供状态系统。状态能够用来配置从机。</p>
+<p>例如，当一个从机接受读取下列状态文件的指令，他将会安装和启动Apache服务器：</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">apache</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">installed</span>
+  <span class="l l-Scalar l-Scalar-Plain">service</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">running</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">apache</span>
+</pre></div>
+</div>
+<p>状态文件可以使用YAML、Jinja2模板系统或者纯Python编写。</p>
+<blockquote>
+<div><a class="reference external" href="http://docs.saltstack.com">Salt 文档</a></div></blockquote>
+</div>
+<div class="section" id="psutil">
+<h2>Psutil<a class="headerlink" href="#psutil" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/giampaolo/psutil/">Psutil</a> 是获取不同系统信息
+（比如CPU、内存、硬盘、网络、用户、进程）的接口。</p>
+<p>下面是一个关注一些服务器过载的例子。如果任意一个测试（网络、CPU）失败，它将会发送一封邮件。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取系统变量的函数:</span>
+<span class="kn">from</span> <span class="nn">psutil</span> <span class="kn">import</span> <span class="n">cpu_percent</span><span class="p">,</span> <span class="n">net_io_counters</span>
+<span class="c1"># 休眠函数:</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="c1"># 用于email服务的包:</span>
+<span class="kn">import</span> <span class="nn">smtplib</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="n">MAX_NET_USAGE</span> <span class="o">=</span> <span class="mi">400000</span>
+<span class="n">MAX_ATTACKS</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">attack</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">attack</span> <span class="o">&lt;=</span> <span class="n">MAX_ATTACKS</span><span class="p">:</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Check the cpu usage</span>
+    <span class="k">if</span> <span class="n">cpu_percent</span><span class="p">(</span><span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">:</span>
+        <span class="n">attack</span> <span class="o">=</span> <span class="n">attack</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Check the net usage</span>
+    <span class="n">neti1</span> <span class="o">=</span> <span class="n">net_io_counters</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">neto1</span> <span class="o">=</span> <span class="n">net_io_counters</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">neti2</span> <span class="o">=</span> <span class="n">net_io_counters</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">neto2</span> <span class="o">=</span> <span class="n">net_io_counters</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Calculate the bytes per second</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="p">((</span><span class="n">neti2</span><span class="o">+</span><span class="n">neto2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">neti1</span><span class="o">+</span><span class="n">neto1</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">if</span> <span class="n">net</span> <span class="o">&gt;</span> <span class="n">MAX_NET_USAGE</span><span class="p">:</span>
+        <span class="n">attack</span> <span class="o">=</span> <span class="n">attack</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">:</span>
+        <span class="n">attack</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># 如果attack大于4，就编写一封十分重要的email</span>
+<span class="n">TO</span> <span class="o">=</span> <span class="s2">&quot;you@your_email.com&quot;</span>
+<span class="n">FROM</span> <span class="o">=</span> <span class="s2">&quot;webmaster@your_domain.com&quot;</span>
+<span class="n">SUBJECT</span> <span class="o">=</span> <span class="s2">&quot;Your domain is out of system resources!&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Go and fix your server!&quot;</span>
+<span class="n">BODY</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="s2">&quot;From: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">FROM</span><span class="p">,</span><span class="s2">&quot;To: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">TO</span><span class="p">,</span><span class="s2">&quot;Subject: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="n">SUBJECT</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">FROM</span><span class="p">,</span> <span class="p">[</span><span class="n">TO</span><span class="p">],</span> <span class="n">BODY</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>一个类似于基于psutil并广泛扩展的top，并拥有客服端-服务端监控能力的完全终端应用叫做
+<a class="reference external" href="https://github.com/nicolargo/glances/">glance</a> 。</p>
+</div>
+<div class="section" id="ansible">
+<h2>Ansible<a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://ansible.com/">Ansible</a> 是一个开源系统自动化工具。
+相比于Puppet或者Chef最大的优点是它不需要客户机上的代理。
+Playbooks是Ansible的配置、部署和编排语言，它用YAML格式编写，使用Jinja2作为模板。</p>
+<p>Ansible支持Python 2.6和2.7，并能使用pip安装：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install ansible
+</pre></div>
+</div>
+<p>Ansible需要一个清单文件，来描述主机经过何处。以下是一个主机和playbook的例子，
+在清单文件中将会ping所有主机。</p>
+<p>清单文件示例如下：
+<code class="file docutils literal notranslate"><span class="pre">hosts.yml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">server_name</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+</pre></div>
+</div>
+<p>playbook示例如下：
+<code class="file docutils literal notranslate"><span class="pre">ping.yml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ping</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ping</span>
+</pre></div>
+</div>
+<p>要运行playbook：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ansible-playbook ping.yml -i hosts.yml --ask-pass
+</pre></div>
+</div>
+<p>Ansible playbook在 <code class="file docutils literal notranslate"><span class="pre">hosts.yml</span></code> 中将会ping所有的服务器。您也可以选择成组的服务器使用Ansible。
+了解更多关于Ansible的信息，请阅读 <a class="reference external" href="http://docs.ansible.com/">Ansible Docs</a> 。</p>
+<p><a class="reference external" href="https://serversforhackers.com/an-ansible-tutorial/">Ansible教程</a> 也是一个很棒的且详细的指引来开始熟悉Ansible。</p>
+</div>
+<div class="section" id="chef">
+<h2>Chef<a class="headerlink" href="#chef" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.chef.io/chef/">Chef</a> 是一个系统的云基础设施自动化框架，
+它使部署服务器和应用到任何物理、虚拟或者云终端上变得简单。您可以选择进行配置管理，那将主要使用Ruby去编写您的基础设施代码。</p>
+<p>Chef客户端运行于组成您的基础设施的每台服务器上，这些客户端定期检查Chef服务器来确保系统是均衡并且处于设想的状态。
+由于每台服务器拥有它自己的独立的Chef客户端，每个服务器配置自己，这种分布式方法使得Chef成为一个可扩展的自动化平台。</p>
+<p>Chef通过使用定制的在cookbook中实现的食谱（配置元素）来工作。Cookbook通常作为基础设施的选择项，
+作为包存放在Chef服务器中。请阅读 <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-install-a-chef-server-workstation-and-client-on-ubuntu-vps-instances">数字海洋教程系列</a>
+关于Chef的部分来学习如何创建一个简单的Chef服务器。</p>
+<p>要创建一个简单的cookbook，使用 <a class="reference external" href="https://docs.chef.io/knife.html">knife</a> 命令：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">knife cookbook create cookbook_name</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://gettingstartedwithchef.com/first-steps-with-chef.html">Getting started with Chef</a>
+对Chef初学者来说是一个好的开始点，许多社区维护着cookbook，可以作为是一个好的参考。要服务自己的基础设施配置需求，
+请见 <a class="reference external" href="https://supermarket.chef.io/cookbooks">Chef Supermarket</a> 。</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.chef.io/">Chef 文档</a></li>
+</ul>
+</div>
+<div class="section" id="puppet">
+<h2>Puppet<a class="headerlink" href="#puppet" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://puppetlabs.com">Puppet</a> 是来自Puppet Labs的IT自动化和配置管理软件，允许系统管理员定义他们的IT基础设施状态，
+这样就能够提供一种优雅的方式管理他们成群的物理和虚拟机器。</p>
+<p>Puppet均可作为开源版和企业版获取到。其模块是小的、可共享的代码单元，用以自动化或定义系统的状态。
+<a class="reference external" href="https://forge.puppetlabs.com/">Puppet Forge</a> 是一个模块仓库，它由社区编写，面向开源和企业版的Puppet。</p>
+<p>Puppet代理安装于其状态需要被监控或者修改的节点上。作为特定服务器的Puppet Master负责组织代理节点。</p>
+<p>代理节点发送系统的基本信息到Puppet Master，比如说操作系统、内核、架构、IP地址、主机名等。
+接着，Puppet Master编译携带有节点生成信息的目录，告知每个节点应如何配置，并发送给代理。
+代理便会执行前述目录中的变化，并向Puppet Master发送回一份报告。</p>
+<p>Facter是一个有趣的工具，它用来传递Puppet获取到的基本系统信息。这些信息可以在编写Puppet模块的时候作为变量来引用。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> facter kernel
+<span class="go">Linux</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> facter operatingsystem
+<span class="go">Ubuntu</span>
+</pre></div>
+</div>
+<p>在Puppet中编写模块十分直截了当。Puppet清单（manifest）组成了Puppet模块。Puppet清单以扩展名 <code class="docutils literal notranslate"><span class="pre">.pp</span></code> 结尾。
+下面是一个Puppet中 ‘Hello World’的例子。</p>
+<div class="highlight-puppet notranslate"><div class="highlight"><pre><span></span><span class="k">notify</span> <span class="p">{</span> <span class="s">&#39;This message is getting logged into the agent node&#39;</span><span class="p">:</span><span class="c"></span>
+
+<span class="c">    #As nothing is specified in the body the resource title</span>
+<span class="c">    #the notification message by default.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这里是另一个基于系统的逻辑的例子。注意操纵系统信息是如何作为变量使用的，变量前加了前缀符号 <code class="docutils literal notranslate"><span class="pre">$</span></code> 。
+类似的，其他信息比如说主机名就能用 <code class="docutils literal notranslate"><span class="pre">$hostname</span></code> 来引用。</p>
+<div class="highlight-puppet notranslate"><div class="highlight"><pre><span></span><span class="k">notify</span><span class="p">{</span> <span class="s">&#39;Mac Warning&#39;</span><span class="p">:</span>
+    <span class="na">message</span> <span class="o">=&gt;</span> <span class="nv">$operatingsystem</span> <span class="o">?</span> <span class="p">{</span>
+        <span class="s">&#39;Darwin&#39;</span> <span class="o">=&gt;</span> <span class="s">&#39;This seems to be a Mac.&#39;</span><span class="p">,</span>
+        <span class="k">default</span>  <span class="o">=&gt;</span> <span class="s">&#39;I am a PC.&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Puppet有多种资源类型，需要时可以使用包-文件-服务（package-file-service）范式来承担配置管理的主要任务。
+下面的Puppet代码确保了系统中安装了OpenSSH-Server包，并且在每次sshd配置文件改变时重启sshd服务。</p>
+<div class="highlight-puppet notranslate"><div class="highlight"><pre><span></span><span class="k">package</span> <span class="p">{</span> <span class="s">&#39;openssh-server&#39;</span><span class="p">:</span>
+    <span class="na">ensure</span> <span class="o">=&gt;</span> <span class="k">installed</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">file</span> <span class="p">{</span> <span class="s">&#39;/etc/ssh/sshd_config&#39;</span><span class="p">:</span>
+    <span class="na">source</span>   <span class="o">=&gt;</span> <span class="s">&#39;puppet:///modules/sshd/sshd_config&#39;</span><span class="p">,</span>
+    <span class="na">owner</span>    <span class="o">=&gt;</span> <span class="s">&#39;root&#39;</span><span class="p">,</span>
+    <span class="na">group</span>    <span class="o">=&gt;</span> <span class="s">&#39;root&#39;</span><span class="p">,</span>
+    <span class="na">mode</span>     <span class="o">=&gt;</span> <span class="s">&#39;640&#39;</span><span class="p">,</span>
+    <span class="k">notify</span>   <span class="o">=&gt;</span>  <span class="k">Service</span><span class="p">[</span><span class="s">&#39;sshd&#39;</span><span class="p">],</span><span class="c"> # sshd will restart</span>
+<span class="c">                                  # whenever you edit this</span>
+<span class="c">                                  # file</span>
+    <span class="na">require</span>  <span class="o">=&gt;</span> <span class="k">Package</span><span class="p">[</span><span class="s">&#39;openssh-server&#39;</span><span class="p">],</span>
+
+<span class="p">}</span>
+
+<span class="k">service</span> <span class="p">{</span> <span class="s">&#39;sshd&#39;</span><span class="p">:</span>
+    <span class="na">ensure</span>    <span class="o">=&gt;</span> <span class="k">running</span><span class="p">,</span>
+    <span class="na">enable</span>    <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="na">hasstatus</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="na">hasrestart</span><span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>了解更多信息，参考 <a class="reference external" href="http://docs.puppetlabs.com">Puppet Labs 文档</a> 。</p>
+</div>
+<div class="section" id="blueprint">
+<h2>Blueprint<a class="headerlink" href="#blueprint" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Write about Blueprint</p>
+</div>
+</div>
+<div class="section" id="buildout">
+<h2>Buildout<a class="headerlink" href="#buildout" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.buildout.org">Buildout</a> 是一个开源软件构件工具。Buildout由Python编写。
+它实现了配置和构建脚本分离的原则。Buildout主要用于下载和设置正在开发或部署软件的
+<cite>Python eggs &lt;https://stackoverflow.com/questions/2051192/what-is-a-python-egg&gt;</cite> 格式的依赖。
+在任何环境中构建任务的指南（recipe，原意为“食谱”，引申为“指南”）能被创建，许多早已可用。</p>
+</div>
+<div class="section" id="shinken">
+<h2>Shinken<a class="headerlink" href="#shinken" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.shinken-monitoring.org/">Shinken</a> 是一个使用Python编写的现代化的兼容Nagios的监控框架。
+其主要目标是为用户的设计成可扩展到大型环境的监控系统提供灵活的框架。</p>
+<p>Shinken与Nagios配置标准和插件向后兼容。它适用于任何支持Python的操作系统和架构，包括Windows、Linux和FreeBSD。</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">系统管理</a><ul>
+<li><a class="reference internal" href="#fabric">Fabric</a></li>
+<li><a class="reference internal" href="#salt">Salt</a></li>
+<li><a class="reference internal" href="#psutil">Psutil</a></li>
+<li><a class="reference internal" href="#ansible">Ansible</a></li>
+<li><a class="reference internal" href="#chef">Chef</a></li>
+<li><a class="reference internal" href="#puppet">Puppet</a></li>
+<li><a class="reference internal" href="#blueprint">Blueprint</a></li>
+<li><a class="reference internal" href="#buildout">Buildout</a></li>
+<li><a class="reference internal" href="#shinken">Shinken</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="network.html" title="previous chapter">网络</a></li>
+      <li>Next: <a href="ci.html" title="next chapter">持续集成</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Flow &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Builder" href="builder.html" />
+    <link rel="next" title="Blocks of trials and counterbalancing" href="blocksCounterbalance.html" />
+    <link rel="prev" title="Routines" href="routines.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="blocksCounterbalance.html" title="Blocks of trials and counterbalancing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="routines.html" title="Routines"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="builder.html" accesskey="U">Builder</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Flow</a><ul>
+<li><a class="reference internal" href="#adding-routines">Adding Routines</a></li>
+<li><a class="reference internal" href="#loops">Loops</a><ul>
+<li><a class="reference internal" href="#method-of-constants">Method of Constants</a></li>
+<li><a class="reference internal" href="#selecting-a-subset-of-conditions">Selecting a subset of conditions</a></li>
+<li><a class="reference internal" href="#staircase-methods">Staircase methods</a></li>
+<li><a class="reference internal" href="#accessing-loop-parameters-from-components">Accessing loop parameters from components</a></li>
+<li><a class="reference internal" href="#reducing-namespace-clutter-advanced">Reducing namespace clutter (advanced)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="routines.html"
+                                  title="previous chapter">Routines</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="blocksCounterbalance.html"
+                                  title="next chapter">Blocks of trials and counterbalancing</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/builder/flow.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="flow">
+<span id="id1"></span><h1>Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h1>
+<p>In the Flow panel a number of <a class="reference internal" href="routines.html"><span class="doc">Routines</span></a> can be combined to form an experiment. For instance, your study may have a <a class="reference internal" href="routines.html"><span class="doc">Routine</span></a> that presented initial instructions and waited for a key to be pressed, followed by a <a class="reference internal" href="routines.html"><span class="doc">Routine</span></a> that presented one trial which should be repeated 5 times with various different parameters set. All of this is achieved in the Flow panel. You can adjust the display size of the Flow panel (see View menu).</p>
+<div class="section" id="adding-routines">
+<h2>Adding Routines<a class="headerlink" href="#adding-routines" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="routines.html"><span class="doc">Routines</span></a> that the Flow will use should be generated first (although their contents can be added or altered at any time). To insert a <a class="reference internal" href="routines.html"><span class="doc">Routine</span></a> into the Flow click the appropriate button in the left of the Flow panel or use the Experiment menu. A dialog box will appear asking which of your <a class="reference internal" href="routines.html"><span class="doc">Routines</span></a> you wish to add. To select the location move the mouse to the section of the flow where you wish to add it and click on the black disk.</p>
+</div>
+<div class="section" id="loops">
+<span id="id2"></span><h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+<p>Loops control the repetition of <a class="reference internal" href="routines.html#routines"><span class="std std-ref">Routines</span></a> and the choice of stimulus parameters for each. PsychoPy can generate the next trial based on the <a class="reference internal" href="../general/glossary.html#term-method-of-constants"><span class="xref std std-term">method of constants</span></a> or using an <a class="reference internal" href="../general/glossary.html#term-adaptive-staircase"><span class="xref std std-term">adaptive staircase</span></a>. To insert a loop use the button on the left of the Flow panel, or the item in the Experiment menu of the Builder. The start and end of a loop is set in the same way as the location of a <a class="reference internal" href="routines.html"><span class="doc">Routine</span></a> (see above). Loops can encompass one or more <a class="reference internal" href="routines.html"><span class="doc">Routines</span></a> and other loops (i.e. they can be nested).</p>
+<p>As with components in <a class="reference internal" href="routines.html#routines"><span class="std std-ref">Routines</span></a>, the loop must be given a name, which must be unique and made up of only alpha-numeric characters (underscores are allowed). I would normally use a plural name, since the loop represents multiple repeats of something. For example, <cite>trials</cite>, <cite>blocks</cite> or <cite>epochs</cite> would be good names for your loops.</p>
+<p>It is usually best to use trial information that is contained in an external file (.xlsx or .csv). When inserting a <cite>loop</cite> into the <cite>flow</cite> you can browse to find the file you wish to use for this. An example of this kind of file can be found in the Stroop demo (trialTypes.xlsx). The column names are turned into variables (in this case text, letterColor, corrAns and congruent), these can be used to define parameters in the loop by putting a $ sign before them e.g. <cite>$text</cite>.</p>
+<p>As the column names from the input file are used in this way they must have legal variable names i.e. they must be unique, have no punctuation or spaces (underscores are ok) and must not start with a digit.</p>
+<p>The parameter <cite>Is trials</cite> exists because some loops are not there to indicate trials <em>per se</em> but a set of stimuli within a trial, or a set of blocks. In these cases we don&#8217;t want the data file to add an extra line with each pass around the loop. This parameter can be unchecked to improve (hopefully) your data file outputs. [Added in v1.81.00]</p>
+<div class="section" id="method-of-constants">
+<span id="trialtypes"></span><h3>Method of Constants<a class="headerlink" href="#method-of-constants" title="Permalink to this headline">¶</a></h3>
+<p>Selecting a loop type of <cite>random</cite>, <cite>sequential</cite>, or <cite>fullRandom</cite> will result in a <a class="reference internal" href="../general/glossary.html#term-method-of-constants"><span class="xref std std-term">method of constants</span></a> experiment, whereby the types of trials that can occur are predetermined. That is, the trials cannot vary depending on how the subject has responded on a previous trial. In this case, a file must be provided that describes the parameters for the repeats. This should be an Excel 2007 (<a class="reference internal" href="../general/glossary.html#term-xlsx"><span class="xref std std-term">xlsx</span></a>) file or a comma-separated-value (<a class="reference internal" href="../general/glossary.html#term-csv"><span class="xref std std-term">csv</span></a> ) file in which columns refer to parameters that are needed to describe stimuli etc. and rows one for each type of trial. These can easily be generated from a spreadsheet package like Excel. (Note that csv files can also be generated using most text editors, as long as they allow you to save the file as &#8220;plain text&#8221;; other output formats will <em>not</em> work, including &#8220;rich text&#8221;.) The top row should be a row of headers: text labels describing the contents of the respective columns. (Headers must also not include spaces or other characters other than letters, numbers or underscores and must not be the same as any variable names used elsewhere in your experiment.) For example, a file containing the following table:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ori</span>   <span class="n">text</span>    <span class="n">corrAns</span>
+<span class="mi">0</span>     <span class="n">aaa</span>     <span class="n">left</span>
+<span class="mi">90</span>    <span class="n">aaa</span>     <span class="n">left</span>
+<span class="mi">0</span>     <span class="n">bbb</span>     <span class="n">right</span>
+<span class="mi">90</span>    <span class="n">bbb</span>     <span class="n">right</span>
+</pre></div>
+</div>
+<p>would represent 4 different conditions (or trial types, one per line). The header line describes the parameters in the 3 columns: ori, text and corrAns. It&#8217;s really useful to include a column called corrAns that shows what the correct key press is going to be for this trial (if there is one).</p>
+<p>If the loop type is <cite>sequential</cite> then, on each iteration through the <a class="reference internal" href="routines.html#routines"><span class="std std-ref">Routines</span></a>, the next row will be selected in the order listed in the file. Under a <cite>random</cite> order, the next row will be selected at random (without replacement); it can only be selected again after all the other rows have also been selected. <cite>nReps</cite> determines how many repeats will be performed (for all conditions). The total number of trials will be the number of conditions (= number of rows in the file, not counting the header row) times the number of repetitions, <cite>nReps</cite>. With the <cite>fullRandom</cite> option, the entire list of trials including repetitions is used in random order, allowing the same item to appear potentially many times in a row, and to repeat without necessarily having done all of the other trials. For example, with 3 repetitions, a file of trial types like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">letter</span>
+<span class="n">a</span>
+<span class="n">b</span>
+<span class="n">c</span>
+</pre></div>
+</div>
+<p>could result in the following possible sequences. <cite>sequential</cite> could only ever give one sequence with this order: [a b c a b c a b c]. <cite>random</cite> will give one of 216 different orders (= 3! * 3! * 3! = nReps * (nTrials!) ), for example: [b a c a b c c a b]. Here the letters are effectively in sets of (abc) (abc) (abc), and randomization is only done within each set, ensuring (for example) that there are at least two a&#8217;s before the subject sees a 3rd b. Finally, <cite>fullRandom</cite> will return one of 362,880 different orders (= 9! = (nReps * nTrials)! ), such as [b b c a a c c a b], which <cite>random</cite> never would. There are no longer mini-blocks or &#8220;sets of trials&#8221; within the longer run. This means that, by chance, it would also be possible to get a very un-random-looking sequence like [a a a b b b c c c].</p>
+<p>It is possible to achieve any sequence you like, subject to any constraints that are logically possible. To do so, in the file you specify every trial in the desired order, and the for the loop select <cite>sequential</cite> order and nReps=1.</p>
+</div>
+<div class="section" id="selecting-a-subset-of-conditions">
+<h3>Selecting a subset of conditions<a class="headerlink" href="#selecting-a-subset-of-conditions" title="Permalink to this headline">¶</a></h3>
+<p>In the standard <a class="reference internal" href="#trialtypes"><span class="std std-ref">Method of Constants</span></a> you would use all the rows/conditions within your conditions file. However there are often times when you want to select a subset of your trials before randomising and repeating.</p>
+<p>The parameter <cite>Select rows</cite> allows this. You can specify which rows you want to use by inserting values here:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>0,2,5</cite> gives the 1st, 3rd and 5th entry of a list - Python starts with index zero)</li>
+<li><cite>random(4)*10</cite> gives 4 indices from 0 to 10 (so selects 4 out of 11 conditions)</li>
+<li><cite>5:10</cite> selects the 6th to 9th rows</li>
+<li><cite>$myIndices</cite> uses a variable that you&#8217;ve already created</li>
+</ul>
+</div></blockquote>
+<p>Note in the last case that <cite>5:8</cite> isn&#8217;t valid syntax for a variable so you cannot do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myIndices</span> <span class="o">=</span> <span class="mi">5</span><span class="p">:</span><span class="mi">8</span>
+</pre></div>
+</div>
+<p>but you can do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myIndices</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span> <span class="c1">#python object to represent a slice</span>
+<span class="n">myIndices</span> <span class="o">=</span> <span class="s2">&quot;5:8&quot;</span> <span class="c1">#a string that PsychoPy can then parse as a slice later</span>
+<span class="n">myIndices</span> <span class="o">=</span> <span class="s2">&quot;5:8:2&quot;</span> <span class="c1">#as above but</span>
+</pre></div>
+</div>
+<p>Note that PsychoPy uses Python&#8217;s built-in slicing syntax (where the first index is zero and the last entry of a slice doesn&#8217;t get included). You might want to check the outputs of your selection in the Python shell (bottom of the Coder view) like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="c1">#slice 5:8 of a standard set of indices</span>
+<span class="go">[5, 6, 7]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#slice 5:8 of a standard set of indices</span>
+<span class="go">[5, 7, 9, 11, 13, 15, 17, 19]</span>
+</pre></div>
+</div>
+<p>Check that the conditions you wanted to select are the ones you intended!</p>
+</div>
+<div class="section" id="staircase-methods">
+<span id="staircasemethods"></span><h3>Staircase methods<a class="headerlink" href="#staircase-methods" title="Permalink to this headline">¶</a></h3>
+<p>The loop type <cite>staircase</cite> allows the implementation of adaptive methods. That is, aspects of a trial can depend on (or &#8220;adapt to&#8221;) how a subject has responded earlier in the study. This could be, for example, simple up-down staircases where an intensity value is varied trial-by-trial according to certain parameters, or a stop-signal paradigm to assess impulsivity. For this type of loop a &#8216;correct answer&#8217; must be provided from something like a <a class="reference internal" href="components/keyboard.html"><span class="doc">Keyboard Component</span></a>. Various parameters for the staircase can be set to govern how many trials will be conducted and how many correct or incorrect answers make the staircase go up or down.</p>
+</div>
+<div class="section" id="accessing-loop-parameters-from-components">
+<span id="accessingparams"></span><h3>Accessing loop parameters from components<a class="headerlink" href="#accessing-loop-parameters-from-components" title="Permalink to this headline">¶</a></h3>
+<p>The parameters from your loops are accessible to any component enclosed within that loop. The simplest (and default) way to address these variables is simply to call them by the name of the parameter, prepended with <cite>$</cite> to indicate that this is the name of a variable. For example, if your Flow contains a loop with the above table as its input trial types file then you could give one of your stimuli an orientation <cite>$ori</cite> which would depend on the current trial type being presented. Example scenarios:</p>
+<ol class="arabic simple">
+<li>You want to loop randomly over some conditions in a loop called <cite>trials</cite>. Your conditions are stored in a csv file with headings &#8216;ori&#8217;, &#8216;text&#8217;, &#8216;corrAns&#8217; which you provide to this loop. You can then access these values from any component using <cite>$ori</cite>, <cite>$text</cite>, and <cite>$corrAns</cite></li>
+<li>You create a random loop called <cite>blocks</cite> and give it an Excel file with a single column called <cite>movieName</cite> listing filenames to be played. On each repeat you can access this with <cite>$movieName</cite></li>
+<li>You create a staircase loop called <cite>stairs</cite>. On each trial you can access the current value in the staircase with <cite>$thisStair</cite></li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When you set a component to use a parameter that will change (e.g on each repeat through the loop) you should <strong>remember to change the component parameter from `constant` to `set every repeat` or `set every frame`</strong> or it won&#8217;t have any effect!</p>
+</div>
+</div>
+<div class="section" id="reducing-namespace-clutter-advanced">
+<h3>Reducing namespace clutter (advanced)<a class="headerlink" href="#reducing-namespace-clutter-advanced" title="Permalink to this headline">¶</a></h3>
+<p>The downside of the above approach is that the names of trial parameters must be different between every loop, as well as not matching any of the predefined names in python, numpy and PsychoPy. For example, the stimulus called <cite>movie</cite> cannot use a parameter also called <cite>movie</cite> (so you need to call it <cite>movieName</cite>). An alternative method can be used without these restrictions. If you set the Builder preference <cite>unclutteredNamespace</cite> to True you can then access the variables by referring to parameter as an attribute of the singular name of the loop prepended with <cite>this</cite>. For example, if you have a loop called <cite>trials</cite> which has the above file attached to it, then you can access the stimulus ori with <cite>$thisTrial.ori</cite>. If you have a loop called <cite>blocks</cite> you could use <cite>$thisBlock.corrAns</cite>.</p>
+<p>Now, although the name of the loop must still be valid and unique, the names of the parameters of the file do not have the same requirements (they must still not contain spaces or punctuation characters).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="blocksCounterbalance.html" title="Blocks of trials and counterbalancing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="routines.html" title="Routines"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="builder.html" >Builder</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

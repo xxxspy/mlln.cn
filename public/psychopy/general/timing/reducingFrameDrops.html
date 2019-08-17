@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reducing dropped frames &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../../index.html" />
+    <link rel="up" title="Timing Issues and synchronisation" href="timing.html" />
+    <link rel="next" title="Comparing Operating Systems under PsychoPy" href="timingTestByOS.html" />
+    <link rel="prev" title="Detecting dropped frames" href="detectingFrameDrops.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="timingTestByOS.html" title="Comparing Operating Systems under PsychoPy"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="detectingFrameDrops.html" title="Detecting dropped frames"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" accesskey="U">Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Reducing dropped frames</a><ul>
+<li><a class="reference internal" href="#things-to-change-on-your-system">Things to change on your system:</a></li>
+<li><a class="reference internal" href="#writing-optimal-scripts">Writing optimal scripts</a></li>
+<li><a class="reference internal" href="#possible-good-ideas">Possible good ideas</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="detectingFrameDrops.html"
+                                  title="previous chapter">Detecting dropped frames</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="timingTestByOS.html"
+                                  title="next chapter">Comparing Operating Systems under PsychoPy</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../_sources/general/timing/reducingFrameDrops.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reducing-dropped-frames">
+<span id="reducingframedrops"></span><h1>Reducing dropped frames<a class="headerlink" href="#reducing-dropped-frames" title="Permalink to this headline">¶</a></h1>
+<p>There are many things that can affect the speed at which drawing is achieved on your computer. These include, but are probably not limited to; your graphics card, CPU, operating system, running programs, stimuli, and your code itself. Of these, the CPU and the OS appear to make rather little difference. To determine whether you are actually dropping frames see <a class="reference internal" href="detectingFrameDrops.html"><span class="doc">Detecting dropped frames</span></a>.</p>
+<div class="section" id="things-to-change-on-your-system">
+<h2>Things to change on your system:<a class="headerlink" href="#things-to-change-on-your-system" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">make sure you have a good graphics card. Avoid integrated graphics chips, especially Intel integrated chips and especially on laptops (because on these you don&#8217;t get to change your mind so easily later). In particular, try to make sure that your card supports OpenGL 2.0</p>
+</li>
+<li><dl class="first docutils">
+<dt>shut down as many programs, including background processes. Although modern processors are fast and often have multiple cores, substantial disk/memory accessing can cause frame drops</dt>
+<dd><ul class="first last simple">
+<li>anti-virus auto-updating (if you&#8217;re allowed)</li>
+<li>email checking software</li>
+<li>file indexing software</li>
+<li>backup solutions (e.g. TimeMachine)</li>
+<li>Dropbox</li>
+<li>Synchronisation software</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="writing-optimal-scripts">
+<h2>Writing optimal scripts<a class="headerlink" href="#writing-optimal-scripts" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">run in full-screen mode (rather than simply filling the screen with your window). This way the OS doesn&#8217;t have to spend time working out what application is currently getting keyboard/mouse events.</p>
+</li>
+<li><p class="first">don&#8217;t generate your stimuli when you need them. Generate them in advance and then just modify them later with the methods like setContrast(), setOrientation() etc...</p>
+</li>
+<li><dl class="first docutils">
+<dt>calls to the following functions are comparatively slow; they require more CPU time than most other functions and then have to send a large amount of data to the graphics card. Try to use these methods in inter-trial intervals. This is especially true when you need to load an image from disk too as the texture.</dt>
+<dd><ol class="first last arabic simple">
+<li>GratingStim.setTexture()</li>
+<li>RadialStim.setTexture()</li>
+<li>TextStim.setText()</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">if you don&#8217;t have OpenGL 2.0 then calls to setContrast, setRGB and setOpacity will also be slow, because they also make a call to setTexture(). If you have shader support then this call is not necessary and a large speed increase will result.</p>
+</li>
+<li><p class="first">avoid loops in your python code (use numpy arrays to do maths with lots of elements)</p>
+</li>
+<li><p class="first">if you need to create a large number (e.g. greater than 10) similar stimuli, then try the ElementArrayStim</p>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="possible-good-ideas">
+<h2>Possible good ideas<a class="headerlink" href="#possible-good-ideas" title="Permalink to this headline">¶</a></h2>
+<p>It isn&#8217;t clear that these actually make a difference, but they might).</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>disconnect the internet cable (to prevent programs performing auto-updates?)</li>
+<li>on Macs you can actually shut down the Finder. It might help. See Alex Holcombe&#8217;s page <a class="reference external" href="http://openwetware.org/wiki/Holcombe:VerifyTiming">here</a></li>
+<li>use a single screen rather than two (probably there is some graphics card overhead in managing double the number of pixels?)</li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="timingTestByOS.html" title="Comparing Operating Systems under PsychoPy"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="detectingFrameDrops.html" title="Detecting dropped frames"
+             >previous</a> |</li>
+        <li><a href="../../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="../general.html" >General issues</a> &raquo;</li>
+          <li><a href="timing.html" >Timing Issues and synchronisation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

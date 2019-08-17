@@ -1,0 +1,809 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>代码风格 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="阅读好的代码" href="reading.html" />
+    <link rel="prev" title="结构化您的工程" href="structure.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/writing/style/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/writing/style">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="代码风格 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="code-style">
+<span id="id1"></span><h1>代码风格<a class="headerlink" href="#code-style" title="Permalink to this headline">¶</a></h1>
+<img alt="https://farm5.staticflickr.com/4223/33907150054_5ee79e8940_k_d.jpg" src="https://farm5.staticflickr.com/4223/33907150054_5ee79e8940_k_d.jpg" />
+<p>如果您问Python程序员最喜欢Python的什么，他们总会说是Python的高可读性。
+事实上，高度的可读性是Python语言的设计核心。这基于这样的事实：代码的
+阅读比编写更加频繁。</p>
+<p>Python代码具有高可读性的其中一个原因是它的相对完整的代码风格指引和 “Pythonic”
+的习语。</p>
+<p>当一位富有经验的Python开发者（Pythonista）指出某段代码并不 “Pythonic”时，
+通常意味着这些代码并没有遵循通用的指导方针，也没有用最佳的（最可读的）方式
+来表达意图。</p>
+<p>在某些边缘情况下，Python代码中并没有大家都认同的表达意图的最佳方式，但这些情况
+都很少见。</p>
+<div class="section" id="id2">
+<h2>一般概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>明确的代码<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>在存在各种黑魔法的Python中，我们提倡最明确和直接的编码方式。</p>
+<p><strong>糟糕</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_complex</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_complex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>在上述优雅的代码中，x和y以明确的字典形式返回给调用者。开发者在使用
+这个函数的时候通过阅读第一和最后一行，能够正确地知道该做什么。而在
+糟糕的例子中则没有那么明确。</p>
+</div>
+<div class="section" id="id4">
+<h3>每行一个声明<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>复合语句（比如说列表推导）因其简洁和表达性受到推崇，但在同一行代码中写
+两条独立的语句是糟糕的。</p>
+<p><strong>糟糕</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;one&#39;</span><span class="p">;</span> <span class="k">print</span> <span class="s1">&#39;two&#39;</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">print</span> <span class="s1">&#39;one&#39;</span>
+
+<span class="k">if</span> <span class="o">&lt;</span><span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="o">&lt;</span><span class="n">other</span> <span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="c1"># do something</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s1">&#39;one&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;two&#39;</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;one&#39;</span>
+
+<span class="n">cond1</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span>
+<span class="n">cond2</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">other</span> <span class="nb">complex</span> <span class="n">comparison</span><span class="o">&gt;</span>
+<span class="k">if</span> <span class="n">cond1</span> <span class="ow">and</span> <span class="n">cond2</span><span class="p">:</span>
+    <span class="c1"># do something</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>函数参数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>将参数传递给函数有四种不同的方式：</p>
+<ol class="arabic simple">
+<li><strong>位置参数</strong> 是强制的，且没有默认值。 它们是最简单的参数形式，而且能被用在
+一些这样的函数参数中：它们是函数意义的完整部分，其顺序是自然的。比如说：对
+函数的使用者而言，记住 <code class="docutils literal notranslate"><span class="pre">send(message,</span> <span class="pre">recipient)</span></code> 或 <code class="docutils literal notranslate"><span class="pre">point(x,</span> <span class="pre">y)</span></code> 需要
+两个参数以及它们的参数顺序并不困难。</li>
+</ol>
+<p>在这两种情况下，当调用函数的时候可以使用参数名称，也可以改变参数的顺序，比如说
+<code class="docutils literal notranslate"><span class="pre">send(recipient='World',</span> <span class="pre">message='Hello')</span></code> 和 <code class="docutils literal notranslate"><span class="pre">point(y=2,</span> <span class="pre">x=1)</span></code>。但和 <code class="docutils literal notranslate"><span class="pre">send(</span>
+<span class="pre">'Hello',</span> <span class="pre">'World')</span></code> 和 <code class="docutils literal notranslate"><span class="pre">point(1,</span> <span class="pre">2)</span></code> 比起来，这降低了可读性，而且带来了
+不必要的冗长。</p>
+<ol class="arabic simple" start="2">
+<li><strong>关键字参数</strong> 是非强制的，且有默认值。它们经常被用在传递给函数的可选参数中。
+当一个函数有超过两个或三个位置参数时，函数签名会变得难以记忆，使用带有默认参数
+的关键字参数将会带来帮助。比如，一个更完整的 <code class="docutils literal notranslate"><span class="pre">send</span></code> 函数可以被定义为
+<code class="docutils literal notranslate"><span class="pre">send(message,</span> <span class="pre">to,</span> <span class="pre">cc=None,</span> <span class="pre">bcc=None)</span></code>。这里的 <code class="docutils literal notranslate"><span class="pre">cc</span></code> 和 <code class="docutils literal notranslate"><span class="pre">bcc</span></code> 是可选的，
+当没有传递给它们其他值的时候，它们的值就是None。</li>
+</ol>
+<p>Python中有多种方式调用带关键字参数的函数。比如说，我们可以按定义中的参数顺序而无需
+明确的命名参数来调用函数，就像 <code class="docutils literal notranslate"><span class="pre">send('Hello',</span> <span class="pre">'World',</span> <span class="pre">'Cthulhu',</span> <span class="pre">'God')</span></code> 是将密件
+发送给上帝。我们也可以使用命名参数而无需遵循参数顺序来调用函数，就像
+<code class="docutils literal notranslate"><span class="pre">send('Hello</span> <span class="pre">again',</span> <span class="pre">'World',</span> <span class="pre">bcc='God',</span> <span class="pre">cc='Cthulhu')</span></code> 。如果没有任何强有力的理由
+不去遵循最接近函数定义的语法：<code class="docutils literal notranslate"><span class="pre">send('Hello',</span> <span class="pre">'World',</span> <span class="pre">cc='Cthulhu',</span> <span class="pre">bcc='God')</span></code> 那么
+这两种方式都应该是要极力避免的。</p>
+<p>作为附注，请遵循 <a class="reference external" href="http://en.wikipedia.org/wiki/You_ain't_gonna_need_it">YAGNI</a> 原则。
+通常，移除一个用作“以防万一”但却看起来从未使用的可选参数（以及它在函数中的逻辑），比
+添加一个所需的新的可选参数和它的逻辑要来的困难。</p>
+<ol class="arabic simple" start="3">
+<li><strong>任意参数列表</strong> 是第三种给函数传参的方式。如果函数的目的通过带有数目可扩展的
+位置参数的签名能够更好的表达，该函数可以被定义成 <code class="docutils literal notranslate"><span class="pre">*args</span></code> 的结构。在这个函数体中，
+<code class="docutils literal notranslate"><span class="pre">args</span></code> 是一个元组，它包含所有剩余的位置参数。举个例子， 我们可以用任何容器作为参数去
+调用 <code class="docutils literal notranslate"><span class="pre">send(message,</span> <span class="pre">*args)</span></code> ，比如 <code class="docutils literal notranslate"><span class="pre">send('Hello',</span> <span class="pre">'God',</span> <span class="pre">'Mom',</span> <span class="pre">'Cthulhu')</span></code>。
+在此函数体中， <code class="docutils literal notranslate"><span class="pre">args</span></code> 相当于 <code class="docutils literal notranslate"><span class="pre">('God','Mom',</span> <span class="pre">'Cthulhu')</span></code>。</li>
+</ol>
+<p>尽管如此，这种结构有一些缺点，使用时应该予以注意。如果一个函数接受的参数列表具有
+相同的性质，通常把它定义成一个参数，这个参数是一个列表或者其他任何序列会更清晰。
+在这里，如果 <code class="docutils literal notranslate"><span class="pre">send</span></code> 参数有多个容器（recipients），将之定义成 <code class="docutils literal notranslate"><span class="pre">send(message,</span> <span class="pre">recipients)</span></code>
+会更明确，调用它时就使用 <code class="docutils literal notranslate"><span class="pre">send('Hello',</span> <span class="pre">['God',</span> <span class="pre">'Mom',</span> <span class="pre">'Cthulhu'])</span></code>。这样的话，
+函数的使用者可以事先将容器列表维护成列表（list）形式，这为传递各种不能被转变成
+其他序列的序列（包括迭代器）带来了可能。</p>
+<ol class="arabic simple" start="4">
+<li><strong>任意关键字参数字典</strong> 是最后一种给函数传参的方式。如果函数要求一系列待定的
+命名参数，我们可以使用 <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> 的结构。在函数体中， <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> 是一个
+字典，它包含所有传递给函数但没有被其他关键字参数捕捉的命名参数。</li>
+</ol>
+<p>和 <em>任意参数列表</em> 中所需注意的一样，相似的原因是：这些强大的技术是用在被证明确实
+需要用到它们的时候，它们不应该被用在能用更简单和更明确的结构，来足够表达函数意图
+的情况中。</p>
+<p>编写函数的时候采用何种参数形式，是用位置参数，还是可选关键字参数，是否使用形如任意参数
+的高级技术，这些都由程序员自己决定。如果能明智地遵循上述建议，就可能且非常享受地写出
+这样的Python函数：</p>
+<ul class="simple">
+<li>易读（名字和参数无需解释）</li>
+<li>易改（添加新的关键字参数不会破坏代码的其他部分）</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>避免魔法方法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Python 对骇客来说是一个强有力的工具，它拥有非常丰富的钩子（hook）和工具，允许
+您施展几乎任何形式的技巧。比如说，它能够做以下每件事：</p>
+<ul class="simple">
+<li>改变对象创建和实例化的方式</li>
+<li>改变Python解释器导入模块的方式</li>
+<li>甚至可能（如果需要的话也是被推荐的）在Python中嵌入C程序</li>
+</ul>
+<p>尽管如此，所有的这些选择都有许多缺点。使用更加直接的方式来达成目标通常是更好的
+方法。它们最主要的缺点是可读性不高。许多代码分析工具，比如说 pylint 或者
+pyflakes，将无法解析这种“魔法”代码。</p>
+<p>我们认为Python开发者应该知道这些近乎无限的可能性，因为它为我们灌输了没有不可能
+完成的任务的信心。然而，知道如何，尤其是何时 <strong>不能</strong> 使用它们是非常重要的。</p>
+<p>就像一位功夫大师，一个Pythonista知道如何用一个手指杀死对方，但从不会那么去做。</p>
+</div>
+<div class="section" id="id7">
+<h3>我们都是负责任的用户<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>如前所述，Python允许很多技巧，其中一些具有潜在的危险。一个好的例子是：任何客户端
+代码能够重写一个对象的属性和方法（Python中没有 “private” 关键字）。这种哲学
+是在说：“我们都是负责任的用户”，它和高度防御性的语言（如Java，拥有很多机制来预防
+错误的使用）有着非常大的不同。</p>
+<p>这并不意味着，比如说，Python中没有属性是私有的，也不意味着没有合适的封装方法。
+与其依赖在开发者的代码之间树立起的一道道隔墙，Python社区更愿意依靠一组约定，来
+表明这些元素不应该被直接访问。</p>
+<p>私有属性的主要约定和实现细节是在所有的“内部”变量前加一个下划线。如果客户端代码
+打破了这条规则并访问了带有下划线的变量，那么因内部代码的改变而出现的任何不当的行为或问题，都是客户端代码的责任。</p>
+<p>鼓励“慷慨地”使用此约定：任何不开放给客户端代码使用的方法或属性，应该有一个下划线
+前缀。这将保证更好的职责划分以及更容易对已有代码进行修改。将一个私有属性公开化
+总是可能的，但是把一个公共属性私有化可能是一个更难的选择。</p>
+</div>
+<div class="section" id="id8">
+<h3>返回值<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>当一个函数变得复杂，在函数体中使用多返回值的语句并不少见。然而，为了保持函数
+的明确意图以及一个可持续的可读水平，更建议在函数体中避免使用返回多个有意义的值。</p>
+<p>在函数中返回结果主要有两种情况：函数正常运行并返回它的结果，以及错误的情况，要么
+因为一个错误的输入参数，要么因为其他导致函数无法完成计算或任务的原因。</p>
+<p>如果您在面对第二种情况时不想抛出异常，返回一个值（比如说None或False）来表明
+函数无法正确运行，可能是需要的。在这种情况下，越早返回所发现的不正确上下文越好。
+这将帮助扁平化函数的结构：在“因为错误而返回”的语句后的所有代码能够假定条件满足
+接下来的函数主要结果的运算。有多个这样的返回结果通常是需要的。</p>
+<p>尽管如此，当一个函数在其正常过程中有多个主要出口点时，它会变得难以调试和返回其
+结果，所以保持单个出口点可能会更好。这也将有助于提取某些代码路径，而且多个出口点
+很有可能意味着这里需要重构。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">complex_function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">a</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>  <span class="c1"># 抛出一个异常可能会更好</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>  <span class="c1"># 抛出一个异常可能会更好</span>
+
+    <span class="c1"># 一些复杂的代码试着用a,b,c来计算x</span>
+    <span class="c1"># 如果成功了，抵制住返回x的诱惑</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="p">:</span>
+        <span class="c1"># 一些关于x的计算的Plan-B</span>
+    <span class="k">return</span> <span class="n">x</span>  <span class="c1"># 返回值x只有一个出口点有利于维护代码</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="idiom">
+<h2>习语（Idiom）<a class="headerlink" href="#idiom" title="Permalink to this headline">¶</a></h2>
+<p>编程习语，说得简单些，就是写代码的 <em>方式</em>。编程习语的概念在 <a class="reference external" href="http://c2.com/cgi/wiki?ProgrammingIdiom">c2</a> 和 <a class="reference external" href="http://stackoverflow.com/questions/302459/what-is-a-programming-idiom">Stack Overflow</a> 上有充足的讨论。</p>
+<p>采用习语的Python代码通常被称为 <em>Pythonic</em>。</p>
+<p>尽管通常有一种 — 而且最好只有一种 — 明显的方式去写得Pythonic；对Python
+初学者来说，写出习语式的Python代码的 <em>方式</em> 并不明显。所以，好的习语必须
+有意识地获取。</p>
+<p>如下有一些常见的Python习语：</p>
+<div class="section" id="unpacking">
+<span id="unpacking-ref"></span><h3>解包（Unpacking）<a class="headerlink" href="#unpacking" title="Permalink to this headline">¶</a></h3>
+<p>如果您知道一个列表或者元组的长度，您可以将其解包并为它的元素取名。比如，
+<code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> 会对list中的每个项提供包含两个元素的元组：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">some_list</span><span class="p">):</span>
+    <span class="c1"># 使用index和item做一些工作</span>
+</pre></div>
+</div>
+<p>您也能通过这种方式交换变量：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>嵌套解包也能工作：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>在Python 3中，扩展解包的新方法在 <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-3132"><strong>PEP 3132</strong></a> 有介绍：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="c1"># a = 1, rest = [2, 3]</span>
+<span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">middle</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="c1"># a = 1, middle = [2, 3], c = 4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>创建一个被忽略的变量<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>如果您需要赋值（比如，在 <a class="reference internal" href="#unpacking-ref"><span class="std std-ref">解包（Unpacking）</span></a> ）但不需要这个变量，请使用
+<code class="docutils literal notranslate"><span class="pre">__</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;foobar.txt&#39;</span>
+<span class="n">basename</span><span class="p">,</span> <span class="n">__</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">rpartition</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">许多Python风格指南建议使用单下划线的 “<code class="docutils literal notranslate"><span class="pre">_</span></code>” 而不是这里推荐的双下划线 “<code class="docutils literal notranslate"><span class="pre">__</span></code>” 来
+指示废弃变量。问题是， “<code class="docutils literal notranslate"><span class="pre">_</span></code>” 常用在作为 <a class="reference external" href="https://docs.python.org/3/library/gettext.html#gettext.gettext" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gettext()</span></code></a> 函数
+的别名，也被用在交互式命令行中记录最后一次操作的值。相反，使用双下划线
+十分清晰和方便，而且能够消除使用其他这些用例所带来的意外干扰的风险。</p>
+</div>
+</div>
+<div class="section" id="n">
+<h3>创建一个含N个对象的列表<a class="headerlink" href="#n" title="Permalink to this headline">¶</a></h3>
+<p>使用Python列表中的 <code class="docutils literal notranslate"><span class="pre">*</span></code> 操作符：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">four_nones</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>创建一个含N个列表的列表<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>因为列表是可变的，所以 <code class="docutils literal notranslate"><span class="pre">*</span></code> 操作符（如上）将会创建一个包含N个且指向 <em>同一个</em>
+列表的列表，这可能不是您想用的。取而代之，请使用列表解析：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">four_lists</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">__</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>注意：在 Python 3 中使用 range() 而不是 xrange()</p>
+</div>
+<div class="section" id="id11">
+<h3>根据列表来创建字符串<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>创建字符串的一个常见习语是在空的字符串上使用 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.join" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.join()</span></code></a> 。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]</span>
+<span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这会将 <em>word</em> 变量赋值为 ‘spam’。这个习语可以用在列表和元组中。</p>
+</div>
+<div class="section" id="collection">
+<h3>在集合体（collection）中查找一个项<a class="headerlink" href="#collection" title="Permalink to this headline">¶</a></h3>
+<p>有时我们需要在集合体中查找。让我们看看这两个选择：列表和集合（set）。</p>
+<p>用如下代码举个例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">])</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">lookup_set</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;s&#39;</span> <span class="ow">in</span> <span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">lookup_list</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;s&#39;</span> <span class="ow">in</span> <span class="n">l</span>
+</pre></div>
+</div>
+<p>即使两个函数看起来完全一样，但因为 <em>查找集合</em> 是利用了Python中的集合是可哈希的
+特性，两者的查询性能是非常不同的。为了判断一个项是否在列表中，Python将会查看
+每个项直到它找到匹配的项。这是耗时的，尤其是对长列表而言。另一方面，在集合中，
+项的哈希值将会告诉Python在集合的哪里去查找匹配的项。结果是，即使集合很大，查询
+的速度也很快。在字典中查询也是同样的原理。想了解更多内容，请见
+<a class="reference external" href="https://stackoverflow.com/questions/513882/python-list-vs-dict-for-look-up-table">StackOverflow</a> 。想了解在每种数据结构上的多种常见操作的花费时间的详细内容，
+请见 <a class="reference external" href="https://wiki.python.org/moin/TimeComplexity?">此页面</a>。</p>
+<p>因为这些性能上的差异，在下列场合在使用集合或者字典而不是列表，通常会是个好主意：</p>
+<ul class="simple">
+<li>集合体中包含大量的项</li>
+<li>您将在集合体中重复地查找项</li>
+<li>您没有重复的项</li>
+</ul>
+<p>对于小的集合体，或者您不会频繁查找的集合体，建立哈希带来的额外时间和内存的
+开销经常会大过改进搜索速度所节省的时间。</p>
+</div>
+</div>
+<div class="section" id="python">
+<h2>Python之禅<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p>又名 <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0020"><strong>PEP 20</strong></a>, Python设计的指导原则。</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">this</span>
+<span class="go">The Zen of Python, by Tim Peters</span>
+
+<span class="go">Beautiful is better than ugly.</span>
+<span class="go">Explicit is better than implicit.</span>
+<span class="go">Simple is better than complex.</span>
+<span class="go">Complex is better than complicated.</span>
+<span class="go">Flat is better than nested.</span>
+<span class="go">Sparse is better than dense.</span>
+<span class="go">Readability counts.</span>
+<span class="go">Special cases aren&#39;t special enough to break the rules.</span>
+<span class="go">Although practicality beats purity.</span>
+<span class="go">Errors should never pass silently.</span>
+<span class="go">Unless explicitly silenced.</span>
+<span class="go">In the face of ambiguity, refuse the temptation to guess.</span>
+<span class="go">There should be one-- and preferably only one --obvious way to do it.</span>
+<span class="go">Although that way may not be obvious at first unless you&#39;re Dutch.</span>
+<span class="go">Now is better than never.</span>
+<span class="go">Although never is often better than *right* now.</span>
+<span class="go">If the implementation is hard to explain, it&#39;s a bad idea.</span>
+<span class="go">If the implementation is easy to explain, it may be a good idea.</span>
+<span class="go">Namespaces are one honking great idea -- let&#39;s do more of those!</span>
+
+<span class="go">Python之禅 by Tim Peters</span>
+
+<span class="go">优美胜于丑陋（Python以编写优美的代码为目标）</span>
+<span class="go">明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）</span>
+<span class="go">简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）</span>
+<span class="go">复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）</span>
+<span class="go">扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）</span>
+<span class="go">间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）</span>
+<span class="go">可读性很重要（优美的代码是可读的）</span>
+<span class="go">即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）</span>
+<span class="go">不要包容所有错误，除非您确定需要这样做（精准地捕获异常，不写 except:pass 风格的代码）</span>
+<span class="go">当存在多种可能，不要尝试去猜测</span>
+<span class="go">而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）</span>
+<span class="go">虽然这并不容易，因为您不是 Python 之父（这里的 Dutch 是指 Guido ）</span>
+<span class="go">做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）</span>
+<span class="go">如果您无法向人描述您的方案，那肯定不是一个好方案；反之亦然（方案测评标准）</span>
+<span class="go">命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）</span>
+</pre></div>
+</div>
+<p>想要了解一些Python优雅风格的例子，请见 <a class="reference external" href="http://artifex.org/~hblanks/talks/2011/pep20_by_example.pdf">这些来自于Python用户的幻灯片</a>.</p>
+</div>
+<div class="section" id="pep-8">
+<h2>PEP 8<a class="headerlink" href="#pep-8" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a> 是Python事实上的代码风格指南，我们可以在 <a class="reference external" href="http://pep8.org/">pep8.org</a>
+上获得高质量的、易读的PEP 8版本。</p>
+<p>强烈推荐阅读这部分。整个Python社区都尽力遵循本文档中规定的准则。一些项目可能受其影响，
+而其他项目可能 <a class="reference external" href="http://docs.python-equests.org/en/master/dev/contributing/kenneth-reitz-s-code-style">修改其建议</a>。</p>
+<p>也就是说，让您的 Python 代码遵循 PEP 8 通常是个好主意，这也有助于在与其他开发人员
+一起工作时使代码更加具有可持续性。命令行程序 pycodestyle <a class="reference external" href="https://github.com/PyCQA/pycodestyle">https://github.com/PyCQA/pycodestyle</a>
+（以前叫做``pep8``），可以检查代码一致性。在您的终端上运行以下命令来安装它：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install pycodestyle
+</pre></div>
+</div>
+<p>然后，对一个文件或者一系列的文件运行它，来获得任何违规行为的报告。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pycodestyle optparse.py
+<span class="go">optparse.py:69:11: E401 multiple imports on one line</span>
+<span class="go">optparse.py:77:1: E302 expected 2 blank lines, found 1</span>
+<span class="go">optparse.py:88:5: E301 expected 1 blank line, found 0</span>
+<span class="go">optparse.py:222:34: W602 deprecated form of raising exception</span>
+<span class="go">optparse.py:347:31: E211 whitespace before &#39;(&#39;</span>
+<span class="go">optparse.py:357:17: E201 whitespace after &#39;{&#39;</span>
+<span class="go">optparse.py:472:29: E221 multiple spaces before operator</span>
+<span class="go">optparse.py:544:21: W601 .has_key() is deprecated, use &#39;in&#39;</span>
+</pre></div>
+</div>
+<p>程序 <a class="reference external" href="https://pypi.org/project/autopep8/">autopep8</a> 能自动将代码格式化
+成 PEP 8 风格。用以下指令安装此程序：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install autopep8
+</pre></div>
+</div>
+<p>用以下指令格式化一个文件：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> autopep8 --in-place optparse.py
+</pre></div>
+</div>
+<p>不包含 <code class="docutils literal notranslate"><span class="pre">--in-place</span></code> 标志将会使得程序直接将更改的代码输出到控制台，以供审查。
+<code class="docutils literal notranslate"><span class="pre">--aggressive</span></code> 标志则会执行更多实质性的变化，而且可以多次使用以达到更佳的效果。</p>
+</div>
+<div class="section" id="id15">
+<h2>约定<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>这里有一些您应该遵循的约定，以让您的代码更加易读。</p>
+<div class="section" id="id16">
+<h3>检查变量是否等于常量<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>您不需要明确地比较一个值是True，或者None，或者0 - 您可以仅仅把它放在if语句中。
+参阅 <a class="reference external" href="http://docs.python.org/library/stdtypes.html#truth-value-testing">真值测试</a> 来了解什么被认为是false。</p>
+<p><strong>糟糕</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;True!&#39;</span>
+
+<span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;attr is None!&#39;</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 检查值</span>
+<span class="k">if</span> <span class="n">attr</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;attr is truthy!&#39;</span>
+
+<span class="c1"># 或者做相反的检查</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">attr</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;attr is falsey!&#39;</span>
+
+<span class="c1"># or, since None is considered false, explicitly check for it</span>
+<span class="k">if</span> <span class="n">attr</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;attr is None!&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>访问字典元素<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>不要使用 <code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.has_key()</span></code> 方法。取而代之，使用 <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">d</span></code> 语法，或者
+将一个默认参数传递给 <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict.get" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.get()</span></code></a>。</p>
+<p><strong>糟糕</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hello&#39;</span><span class="p">:</span> <span class="s1">&#39;world&#39;</span><span class="p">}</span>
+<span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">]</span>    <span class="c1"># 打印 &#39;world&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;default_value&#39;</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hello&#39;</span><span class="p">:</span> <span class="s1">&#39;world&#39;</span><span class="p">}</span>
+
+<span class="k">print</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;default_value&#39;</span><span class="p">)</span> <span class="c1"># 打印 &#39;world&#39;</span>
+<span class="k">print</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thingy&#39;</span><span class="p">,</span> <span class="s1">&#39;default_value&#39;</span><span class="p">)</span> <span class="c1"># 打印 &#39;default_value&#39;</span>
+
+<span class="c1"># Or:</span>
+<span class="k">if</span> <span class="s1">&#39;hello&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>维护列表的捷径<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://docs.python.org/tutorial/datastructures.html#list-comprehensions">列表推导</a>
+提供了一个强大的而又简洁的方式来处理列表。</p>
+<p><a class="reference external" href="http://docs.python.org/tutorial/classes.html#generator-expressions">生成器表达式</a>
+遵循和列表推导几乎相同的语法，但是返回生成器而非列表。</p>
+<p>创建一个新的列表需要更多的工作，也需要使用更多的内存。如果你只是遍历这个列表，更好地方式是使用迭代器。</p>
+<p><strong>糟糕</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 不必要地在内存中分配了包含所有对象（gpa, name）的列表</span>
+<span class="n">valedictorian</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([(</span><span class="n">student</span><span class="o">.</span><span class="n">gpa</span><span class="p">,</span> <span class="n">student</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">graduates</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">valedictorian</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">student</span><span class="o">.</span><span class="n">gpa</span><span class="p">,</span> <span class="n">student</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">graduates</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>当你确实想要创建新的列表时，比如要多次使用结果，那么就使用列表推导。</p>
+<p>如果你的逻辑太过复杂，无法用简短的列表推导或者生成器来简洁地表达，请考虑使用生成器函数而非返回一个列表。</p>
+<p><strong>Good</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_batches</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; list(make_batches([1, 2, 3, 4, 5], batch_size=3))</span>
+<span class="sd">    [[1, 2, 3], [4, 5]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">current_batch</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">current_batch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">current_batch</span><span class="p">)</span> <span class="o">==</span> <span class="n">batch_size</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">current_batch</span>
+            <span class="n">current_batch</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">yield</span> <span class="n">current_batch</span>
+</pre></div>
+</div>
+<p>永远不要为了列表推导的副作用而使用它。</p>
+<p><strong>糟糕</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id22">
+<h3>过滤列表<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p><strong>糟糕</strong>:</p>
+<p>在迭代列表的过程中，永远不要从列表中移除元素。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 过滤大于 4 的元素</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>不要在列表中多次遍历。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<p>使用列表推导，或生成器表达式。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 推导创建了一个新的列表对象</span>
+<span class="n">filtered_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sequence</span> <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="c1"># 生成器不会创建新的列表</span>
+<span class="n">filtered_values</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sequence</span> <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="id23">
+<h4>修改原始列表可能产生的副作用<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<p>如果有其他变量引用原始列表，则修改它可能会有风险。但如果你真的想这样做，你可以使用 <em>切片赋值（slice assignment）</em> 。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 修改原始列表的内容</span>
+<span class="n">sequence</span><span class="p">[::]</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sequence</span> <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id24">
+<h3>在列表中修改值<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<p><strong>糟糕</strong>:</p>
+<p>请记住，赋值永远不会创建新对象。如果两个或多个变量引用相同的列表，则修改其中一个变量意味着将修改所有变量。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 所有的列表成员都加 3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>                     <span class="c1"># a 和 b 都指向一个列表独享</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">3</span>             <span class="c1"># b[i] 也改变了</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<p>创建一个新的列表对象并保留原始列表对象会更安全。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+
+<span class="c1"># 给变量 &quot;a&quot; 赋值新的列表，而不改变 &quot;b&quot;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>使用 <a class="reference external" href="https://docs.python.org/3/library/functions.html#enumerate" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">enumerate()</span></code></a> 获得列表中的当前位置的计数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span>
+<span class="c1"># 打印</span>
+<span class="c1"># 0 3</span>
+<span class="c1"># 1 4</span>
+<span class="c1"># 2 5</span>
+</pre></div>
+</div>
+<p>使用 <a class="reference external" href="https://docs.python.org/3/library/functions.html#enumerate" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">enumerate()</span></code></a> 函数比手动维护计数有更好的可读性。而且，它对迭代器
+进行了更好的优化。</p>
+</div>
+<div class="section" id="id25">
+<h3>读取文件<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open</span></code> 语法来读取文件。它将会为您自动关闭文件。</p>
+<p><strong>糟糕</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">a</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">line</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">with</span></code> 语句会更好，因为它能确保您总是关闭文件，即使是在 <code class="docutils literal notranslate"><span class="pre">with</span></code> 的区块中
+抛出一个异常。</p>
+</div>
+<div class="section" id="id26">
+<h3>行的延续<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<p>当一个代码逻辑行的长度超过可接受的限度时，您需要将之分为多个物理行。如果行的结尾
+是一个反斜杠（），Python解释器会把这些连续行拼接在一起。这在某些情况下很有帮助，
+但我们总是应该避免使用，因为它的脆弱性：如果在行的结尾，在反斜杠后加了空格，这会
+破坏代码，而且可能有意想不到的结果。</p>
+<p>一个更好的解决方案是在元素周围使用括号。左边以一个未闭合的括号开头，Python
+解释器会把行的结尾和下一行连接起来直到遇到闭合的括号。同样的行为适用中括号
+和大括号。</p>
+<p><strong>糟糕</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_very_big_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;For a long time I used to go to bed early. Sometimes, </span><span class="se">\</span>
+<span class="s2">    when I had put out my candle, my eyes would close so quickly that I had not even </span><span class="se">\</span>
+<span class="s2">    time to say “I’m going to sleep.”&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">some.deep.module.inside.a.module</span> <span class="kn">import</span> <span class="n">a_nice_function</span><span class="p">,</span> <span class="n">another_nice_function</span><span class="p">,</span> \
+    <span class="n">yet_another_nice_function</span>
+</pre></div>
+</div>
+<p><strong>优雅</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_very_big_string</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;For a long time I used to go to bed early. Sometimes, &quot;</span>
+    <span class="s2">&quot;when I had put out my candle, my eyes would close so quickly &quot;</span>
+    <span class="s2">&quot;that I had not even time to say “I’m going to sleep.”&quot;</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">some.deep.module.inside.a.module</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">a_nice_function</span><span class="p">,</span> <span class="n">another_nice_function</span><span class="p">,</span> <span class="n">yet_another_nice_function</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>尽管如此，通常情况下，必须去分割一个长逻辑行意味着您同时想做太多的事，这
+可能影响可读性。</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">代码风格</a><ul>
+<li><a class="reference internal" href="#id2">一般概念</a><ul>
+<li><a class="reference internal" href="#id3">明确的代码</a></li>
+<li><a class="reference internal" href="#id4">每行一个声明</a></li>
+<li><a class="reference internal" href="#id5">函数参数</a></li>
+<li><a class="reference internal" href="#id6">避免魔法方法</a></li>
+<li><a class="reference internal" href="#id7">我们都是负责任的用户</a></li>
+<li><a class="reference internal" href="#id8">返回值</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#idiom">习语（Idiom）</a><ul>
+<li><a class="reference internal" href="#unpacking">解包（Unpacking）</a></li>
+<li><a class="reference internal" href="#id9">创建一个被忽略的变量</a></li>
+<li><a class="reference internal" href="#n">创建一个含N个对象的列表</a></li>
+<li><a class="reference internal" href="#id10">创建一个含N个列表的列表</a></li>
+<li><a class="reference internal" href="#id11">根据列表来创建字符串</a></li>
+<li><a class="reference internal" href="#collection">在集合体（collection）中查找一个项</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#python">Python之禅</a></li>
+<li><a class="reference internal" href="#pep-8">PEP 8</a></li>
+<li><a class="reference internal" href="#id15">约定</a><ul>
+<li><a class="reference internal" href="#id16">检查变量是否等于常量</a></li>
+<li><a class="reference internal" href="#id18">访问字典元素</a></li>
+<li><a class="reference internal" href="#id19">维护列表的捷径</a></li>
+<li><a class="reference internal" href="#id22">过滤列表</a><ul>
+<li><a class="reference internal" href="#id23">修改原始列表可能产生的副作用</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id24">在列表中修改值</a></li>
+<li><a class="reference internal" href="#id25">读取文件</a></li>
+<li><a class="reference internal" href="#id26">行的延续</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="structure.html" title="previous chapter">结构化您的工程</a></li>
+      <li>Next: <a href="reading.html" title="next chapter">阅读好的代码</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

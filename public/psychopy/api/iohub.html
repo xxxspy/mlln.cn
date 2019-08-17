@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>psychopy.iohub - ioHub event monitoring framework &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="Reference Manual (API)" href="api.html" />
+    <link rel="next" title="psychopy.iohub Specific Requirements" href="iohub/requirements.html" />
+    <link rel="prev" title="psychopy.info - functions for getting information about the system" href="info.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iohub/requirements.html" title="psychopy.iohub Specific Requirements"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="info.html" title="psychopy.info - functions for getting information about the system"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" accesskey="U">Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">psychopy.iohub</span></code> - ioHub event monitoring framework</a><ul>
+<li><a class="reference internal" href="#using-psychopy-iohub">Using psychopy.iohub:</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="info.html"
+                                  title="previous chapter"><code class="docutils literal"><span class="pre">psychopy.info</span></code> - functions for getting information about the system</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="iohub/requirements.html"
+                                  title="next chapter">psychopy.iohub Specific Requirements</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/api/iohub.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="psychopy-iohub-iohub-event-monitoring-framework">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">psychopy.iohub</span></code> - ioHub event monitoring framework<a class="headerlink" href="#psychopy-iohub-iohub-event-monitoring-framework" title="Permalink to this headline">¶</a></h1>
+<p>ioHub monitors for device events in parallel with the PsychoPy experiment
+execution by running in a separate process than the main PsychoPy script. This
+means, for instance, that keyboard and mouse event timing is not quantized
+by the rate at which the window.swap() method is called.</p>
+<p>ioHub reports device events to the PsychoPy experiment runtime as they occur.
+Optionally, events can be saved to a <a class="reference external" href="http://www.hdfgroup.org/HDF5/">HDF5</a>
+file.</p>
+<p>All iohub events are timestamped using the PsychoPy global time base
+(psychopy.core.getTime()). Events can be accessed as a device independent
+event stream, or from a specific device of interest.</p>
+<p>A comprehensive set of examples that each use at least one of the iohub devices
+is available in the psychopy/demos/coder/iohub folder.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is in very early stages of being written. Many sections
+regarding device usage details are simply placeholders.
+For information on devices or functionality that has not yet been migrated
+to the psychopy documentation, please visit the somewhat outdated
+<a class="reference external" href="http://www.isolver-solutions.com/iohubdocs/">original ioHub doc&#8217;s.</a></p>
+</div>
+<div class="section" id="using-psychopy-iohub">
+<h2>Using psychopy.iohub:<a class="headerlink" href="#using-psychopy-iohub" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="iohub/requirements.html">psychopy.iohub Specific Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iohub/requirements.html#computer-specifications">Computer Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/requirements.html#usage-considerations">Usage Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/requirements.html#software-requirements">Software Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="iohub/starting.html">Starting the psychopy.iohub Process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iohub/starting.html#launchhubserver-function">launchHubServer function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/starting.html#iohubconnection-class">ioHubConnection Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="iohub/devices.html">ioHub Devices and Device Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/keyboard.html">Keyboard Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/keyboard.html#keyboard-events">Keyboard Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/mouse.html">Mouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/computer.html">Computer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/xinput.html">XInput Gamepad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/eyetracker.html">Eye Tracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/serial.html">Serial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/analoginput.html">Analog to Digital Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iohub/device/touch.html">Elo Touch Screen</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="iohub/requirements.html" title="psychopy.iohub Specific Requirements"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="info.html" title="psychopy.info - functions for getting information about the system"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="api.html" >Reference Manual (API)</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>

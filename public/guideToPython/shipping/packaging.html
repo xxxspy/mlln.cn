@@ -1,0 +1,358 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>打包您的代码 &#8212; The Hitchhiker&#39;s Guide to Python</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="冻结（freezing）您的代码" href="freezing.html" />
+    <link rel="prev" title="发布您的代码" href="publishing.html" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div.body {
+      min-width: initial;
+      max-width: initial;
+    }
+  </style>
+
+  
+  <link rel="canonical" href="https://docs.python-guide.org/shipping/packaging/"/>
+  <meta property="og:url" content="https://docs.python-guide.org/shipping/packaging">
+  
+
+  <link rel="icon" type="image/png" href="https://media.readthedocs.org/images/favicon.png">
+
+  <meta name="google-site-verification" content="013PxE2_8KX9jdUSC5gr8QsfdxTXr1mFgmD9zplp5II" />
+
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:image" content="https://docs.python-guide.org/_static/social-card.jpg">
+  <meta property="og:title" content="打包您的代码 &#8212; The Hitchhiker&#39;s Guide to Python">
+  <meta property="og:type" content="article">
+  
+  <meta property="og:description" content="">
+
+  <script>window.rp_prop_id = '29182759436';</script>
+  <script src="https://srv.realpython.net/tag.js" async></script>
+
+  <script src="https://d31vxm9ubutrmw.cloudfront.net/static/js/2169.js"></script>
+
+  
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37242602-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            <div style="display:block;position:relative; margin-bottom: 1em;">
+              <div style="display:block;width:100%;padding-top:12.5%;"></div>
+              <div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+            </div>
+            
+  <div class="section" id="packaging-your-code-ref">
+<span id="id1"></span><h1>打包您的代码<a class="headerlink" href="#packaging-your-code-ref" title="Permalink to this headline">¶</a></h1>
+<img alt="https://farm5.staticflickr.com/4325/36137234682_be6898bf57_k_d.jpg" src="https://farm5.staticflickr.com/4325/36137234682_be6898bf57_k_d.jpg" />
+<p>打包就是把您的代码分享给其他开发者。例如，共享一个库给其他开发者用在
+他们的应用中，或者作为一个开发工具，比如 ‘py.test’。</p>
+<p>这种分发方式的一个优势是它拥有既已建成的良好的工具生态，如PyPI与pip，其使得其他
+开发者很容易下载与安装您的包，而无论是一个即兴实验还是作为一个巨型软件系统的一部分。</p>
+<p>使用这种方式共享Python代码是既已存在的传统，如果您的代码没打包到PyPI上，则它将难以
+被其他开发者找到并用在它们的程序中。事实上他们会怀疑这种项目是否管理不善或者已被放弃了。</p>
+<p>像这样分发代码的消极一面是它依赖使用者理解如何安装所要求的Python版本以及会并且希望
+使用pip这样的工具安装您的代码及其他依赖项。虽然对于其它的开发者来说这是没问题的，但
+对于最终用户这并不友好。</p>
+<p><a class="reference external" href="https://python-packaging-user-guide.readthedocs.io/">Python打包指南</a>
+提供了更多关于如何创建以及维护Python包的知识。</p>
+<div class="section" id="id2">
+<h2>打包的多种方式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>为了分发应用给最终用户，您应该
+<a class="reference internal" href="freezing.html#freezing-your-code-ref"><span class="std std-ref">冻结您的应用</span></a>。</p>
+<p>在Linux，您可能想会考虑
+<a class="reference internal" href="#packaging-for-linux-distributions-ref"><span class="std std-ref">创建一个Linux分发包</span></a>
+(例 对于Debian或Ubuntu是一个 .deb文件)</p>
+</div>
+<div class="section" id="id3">
+<h2>对于Python开发者<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>如果您编写了一个开源的Python模块， <a class="reference external" href="http://pypi.org">PyPI</a>
+(更准确的叫法是 <em>The Cheeseshop</em>)是一个放它的地方。</p>
+<div class="section" id="pip-vs-easy-install">
+<h3>Pip vs. easy_install<a class="headerlink" href="#pip-vs-easy-install" title="Permalink to this headline">¶</a></h3>
+<p>使用 <a class="reference external" href="http://pypi.org/project/pip">pip</a>. 更多细节参见
+<a class="reference external" href="https://stackoverflow.com/questions/3220404/why-use-pip-over-easy-install">here</a></p>
+</div>
+<div class="section" id="id4">
+<h3>私人的PyPI<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>如果您想要从有别于PyPI的其他源安装包（也就是说，如果您的包是 <em>专门</em> （proprietary）的），
+您可以通过为自己开启一个服务器来建立一个这样的源，这个服务器应该开在您想共享的包所在位置
+的文件夹下。</p>
+<p><strong>例子总是有益的</strong></p>
+<p>作为例子，如果您想要共享一个叫做 <code class="file docutils literal notranslate"><span class="pre">MyPackage.tar.gz</span></code> 的包，并且假设您的文件
+结构是这样的：</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>archive</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>MyPackage</dt>
+<dd><ul class="first last">
+<li>MyPackage.tar.gz</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>打开您的命令行并且输入：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> archive
+<span class="gp">$</span> python -m http.server <span class="m">9000</span>
+</pre></div>
+</div>
+<p>这运行了一个简单的HTTP服务器，其监听端口9000并且将列出所有包（比如 <strong>MyPackage</strong>）。现在
+您可以使用任何Python包安装器从您的服务器中安装 <strong>MyPackage</strong> 。若使用Pip,您可以这样做：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install --extra-index-url<span class="o">=</span>http://127.0.0.1:9000/ MyPackage
+</pre></div>
+</div>
+<p>您的文件夹名字与您的包名相同是 <strong>必须</strong> 的。我曾经被这个坑过一次。但是如果您觉得
+创建一个叫做 <code class="file docutils literal notranslate"><span class="pre">MyPackage</span></code> 的文件夹然后里面又有一个 <code class="file docutils literal notranslate"><span class="pre">MyPackage.tar.gz</span></code> 文件
+是 <em>多余</em> 的，您可以这样共享 MyPackage:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install  http://127.0.0.1:9000/MyPackage.tar.gz
+</pre></div>
+</div>
+<div class="section" id="pypiserver">
+<h4>pypiserver<a class="headerlink" href="#pypiserver" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://pypi.org/project/pypiserver">Pypiserver</a> 是一个精简的PyPI兼容服务器。
+它可以被用来让一系列包通过easy_install与pip进行共享。它包含一些有益的命令，诸如管理
+命令（ <code class="docutils literal notranslate"><span class="pre">-U</span></code> ），其可以自动更新所有它的包到PyPI上的最新版。</p>
+</div>
+<div class="section" id="s3-hosted-pypi">
+<h4>S3-Hosted PyPI<a class="headerlink" href="#s3-hosted-pypi" title="Permalink to this headline">¶</a></h4>
+<p>一个简单的个人PyPI服务器实现选项是使用Amazon S3。使用它的一个前置要求是您有一个
+Amazon AWS账号并且有 S3 bucket。</p>
+<ol class="arabic simple">
+<li><strong>安装所有您需要的东西从PyPI或者其他源</strong></li>
+<li><strong>安装 pip2pi</strong></li>
+</ol>
+<ul class="simple">
+<li><code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+https://github.com/wolever/pip2pi.git</span></code></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><strong>跟着 pip2pi 的README文件使用pip2tgz 与 dir2pi命令</strong></li>
+</ol>
+<ul class="simple">
+<li><code class="code docutils literal notranslate"><span class="pre">pip2tgz</span> <span class="pre">packages/</span> <span class="pre">YourPackage</span></code> (or <code class="code docutils literal notranslate"><span class="pre">pip2tgz</span> <span class="pre">packages/</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>)</li>
+<li><code class="code docutils literal notranslate"><span class="pre">dir2pi</span> <span class="pre">packages/</span></code></li>
+</ul>
+<p>4. <strong>上传新文件</strong>
+* 使用像Cyberduck这些的客户端同步整个 <code class="file docutils literal notranslate"><span class="pre">packages`文件夹到您的s3</span> <span class="pre">bucket</span>
+<span class="pre">*</span> <span class="pre">保证您像（注意文件和路径）这样</span> <span class="pre">:code:`packages/simple/index.html</span></code> 上传了新的文件。</p>
+<ol class="arabic simple" start="5">
+<li><strong>Fix新文件许可</strong></li>
+</ol>
+<ul class="simple">
+<li>默认情况下，当您上传新文件到S3 bucket,它们将有一个不合适的许可设置。</li>
+<li>使用Amazon web console设置文件的对所有人的READ许可。</li>
+<li>如果当您尝试安装一个包的时候遇上 HTTP 403 ，确保您正确设置了许可。</li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><strong>搞定</strong></li>
+</ol>
+<ul class="simple">
+<li>您可以安装您的包通过使用代码 <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--index-url=http://your-s3-bucket/packages/simple/</span> <span class="pre">YourPackage</span></code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="linux">
+<span id="packaging-for-linux-distributions-ref"></span><h2>在Linux上分发<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p>创建一个Linux分发包对于Linux来说是个正确的决定。</p>
+<p>因为分发包可以不包含Python解释器，它使得下载与安装这些包可以减小2-12 MB，
+<a class="reference internal" href="freezing.html#freezing-your-code-ref"><span class="std std-ref">freezing your application</span></a>.</p>
+<p>并且，如果Python有了更新的版本，则您的应用可以自动使用新版本的Python。</p>
+<p>bdist_rpm命令使得 <a class="reference external" href="https://docs.python.org/3/distutils/builtdist.html#creating-rpm-packages">producing an RPM file</a>
+使得像Red Hat以及SuSE使用分发包变得极其简单，</p>
+<blockquote>
+<div>无论如何，创建和维持不同配置要求给不同的发布格式（如 对于Debian/Ubuntu是.deb，而对于Red
+Hat/Fedora是.rpm等）无疑需要大量的工作。如果您的代码是一个应用，而您计划分发到其他平台上，
+则您需要创建并维护各个配置要求来冻结您的应用为Windows与OS X。它比创建和
+维护一个单独的配置给每个平台要简单的多 <a class="reference internal" href="freezing.html#freezing-your-code-ref"><span class="std std-ref">freezing tools</span></a>
+其将产生独立可执行的文件给所有Linux发布版，就像Windows与OS X上一样，</div></blockquote>
+<p>创建一个对Python版本敏感的分发包也会造成问题。可能需要告诉Ubuntu的 <em>一些版本</em> 的
+用户他们需要增加 <a class="reference external" href="https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes">the ‘dead-snakes’ PPA</a>
+通过使用 <cite>sudo apt-repository</cite> 命令在他们安装您的 .deb文件，这将使用户极其厌烦。
+不仅如此，您会要维持每个发布版的使用指导，也许更糟的是，您的用户要去读，理解，
+并按它上面说的做。</p>
+<p>下面是指导如何做上面所说事情的链接：</p>
+<ul class="simple">
+<li><a class="reference external" href="https://fedoraproject.org/wiki/Packaging:Python">Fedora</a></li>
+<li><a class="reference external" href="http://www.debian.org/doc/packaging-manuals/python-policy/">Debian and Ubuntu</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Python_Package_Guidelines">Arch</a></li>
+</ul>
+<div class="section" id="id6">
+<h3>有用的工具<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/jordansissel/fpm">fpm</a></li>
+<li><a class="reference external" href="http://joeyh.name/code/alien/">alien</a></li>
+<li><a class="reference external" href="https://dh-virtualenv.readthedocs.io/en/latest/info.html">dh-virtualenv</a> (for APT/DEB omnibus packaging)</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+    <a href="http://mlln.cn">
+        <img
+        class="logo"
+        src="../_static/datascience-logo.png"
+        title="返回DataScience首页"
+      />
+      <h3>DataScience首页</h3>
+    </a>
+  </p>
+  
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/python-guide-logo.png" title="Python最佳实践指南"/>
+  </a>
+</p>
+
+<p style="margin-left:auto; margin-right: auto;"><iframe src="https://ghbtns.com/github-btn.html?user=prodesire&repo=python-guide-cn&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe></p>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<style>
+.algolia-autocomplete{
+  width: 100%;
+  height: 1.5em
+}
+.algolia-autocomplete a{
+  border-bottom: none !important;
+}
+#doc_search{
+  width: 100%;
+  height: 100%;
+}
+</style>
+<input id="doc_search" placeholder="搜索文档" autofocus/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '512b0d6c0c8578bed7662f5279c2249c',
+  indexName: 'python-guide',
+  inputSelector: '#doc_search',
+  debug: false // Set debug to true if you want to inspect the dropdown
+})" async></script>
+
+<p>
+  这份较为主观的指南旨在为Python初学者和专家提供一个关于Python安装、配置、和日常使用的最佳实践手册。
+</p>
+
+<div style="display:block;position:relative;margin: 1em 0 1em 0;">
+  <div style="display:block;width:100%;padding-top:100%;"></div>
+  <div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+
+<h3>O'Reilly 书籍</h3>
+
+<p>这份指南现在有纸质版啦！</p>
+
+<p><a href="/guide-book" target="_blank"><img style="max-width: 100%; text-align: center;" src="/_static/guide-book-cover.jpg" alt="Python Guide Book Cover"></a></p>
+
+<p>所有的收入都直接捐赠给 <a href="https://djangogirls.org">DjangoGirls</a> 组织。</p>
+
+<h3>翻译</h3>
+<ul>
+  <li><a href="https://docs.python-guide.org/en/latest/">English</a></li>
+  <li><a href="https://python-guide-fr.readthedocs.io/fr/latest/">French</a></li>
+  <li><a href="https://pythonguidecn.readthedocs.io/zh/latest/">Chinese</a></li>
+  <li><a href="http://python-guideja.readthedocs.io/ja/latest/">Japanese</a></li>
+  <li><a href="https://python-guide-kr.readthedocs.io/ko/latest/">Korean</a></li>
+  <li><a href="http://python-guide-fil.readthedocs.io/en/latest/">Filipino</a></li>
+  <li><a href="http://python-guide-pt-br.readthedocs.io/pt_BR/latest/">Brazilian Portuguese</a></li>
+</ul>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">打包您的代码</a><ul>
+<li><a class="reference internal" href="#id2">打包的多种方式</a></li>
+<li><a class="reference internal" href="#id3">对于Python开发者</a><ul>
+<li><a class="reference internal" href="#pip-vs-easy-install">Pip vs. easy_install</a></li>
+<li><a class="reference internal" href="#id4">私人的PyPI</a><ul>
+<li><a class="reference internal" href="#pypiserver">pypiserver</a></li>
+<li><a class="reference internal" href="#s3-hosted-pypi">S3-Hosted PyPI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linux">在Linux上分发</a><ul>
+<li><a class="reference internal" href="#id6">有用的工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="publishing.html" title="previous chapter">发布您的代码</a></li>
+      <li>Next: <a href="freezing.html" title="next chapter">冻结（freezing）您的代码</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script><!-- Alabaster (krTheme++) Hacks -->
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<div class="footer">
+  <div style="text-align: center;" id="waldo-tag-2171"></div>
+  <p>&copy;2011-2019 <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> &amp; <a href="https://realpython.com">Real Python</a>. <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a></p>
+</div>
+
+  </body>
+</html>

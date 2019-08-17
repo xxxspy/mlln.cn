@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Monitor Center &mdash; PsychoPy v1.8-Psychopy教程</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.85.4',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="PsychoPy v1.8" href="../index.html" />
+    <link rel="up" title="General issues" href="general.html" />
+    <link rel="next" title="Units for the window and stimuli" href="units.html" />
+    <link rel="prev" title="General issues" href="general.html" /> 
+  </head>
+  <body>
+
+
+<div id="header"  style="background-color: white">
+<table width="100%" cellpadding="10">
+<tr><td style="text-align:left;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/psychopyDocBanner2.gif" alt="PsychoPy logo" /></a>
+</td><td style="text-align:right;vertical-align:middle">
+<a href='/psychopy'><img src="../_static/nott_logo.png" alt="University of Nottingham" /></a>
+</td></table>
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="units.html" title="Units for the window and stimuli"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="general.html" title="General issues"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="general.html" accesskey="U">General issues</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference internal" href="#">Monitor Center</a><ul>
+<li><a class="reference internal" href="#real-world-units">Real world units</a></li>
+<li><a class="reference internal" href="#calibrating-your-monitor">Calibrating your monitor</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="general.html"
+                                  title="previous chapter">General issues</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="units.html"
+                                  title="next chapter">Units for the window and stimuli</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../_sources/general/monitors.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+
+            <h3>Quick links</h3>
+            <ul>
+            <li><a href="/2018/03/07/psychopy绿色免安装版下载/"><strong>psychopy免安装版下载</strong></a></li>
+            <li><a href="http://mlln.cn">心理学技术讨论群:680552969</a></li>
+            <li><a href="http://mlln.cn">站长QQ: 675495787</a></li>
+            <li><a href="https://shop68313372.taobao.com/">淘宝店</a></li>
+            </ul>
+
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="monitor-center">
+<span id="monitorcenter"></span><h1>Monitor Center<a class="headerlink" href="#monitor-center" title="Permalink to this headline">¶</a></h1>
+<p>PsychoPy provides a simple and intuitive way for you to calibrate your monitor and provide other information about it and then import that information into your experiment.</p>
+<p>Information is inserted in the Monitor Center (Tools menu), which allows you to store information about multiple monitors and keep track of multiple calibrations for the same monitor.</p>
+<p>For experiments written in the Builder view, you can then import this information by simply specifying the name of the monitor that you wish to use in the <a class="reference internal" href="../builder/settings.html#expsettings"><span class="std std-ref">Experiment settings</span></a> dialog. For experiments created as scripts you can retrieve the information when creating the <a class="reference internal" href="../api/visual/window.html#psychopy.visual.Window" title="psychopy.visual.Window"><code class="xref py py-class docutils literal"><span class="pre">Window</span></code></a> by simply naming the monitor that you created in Monitor Center. e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">psychopy</span> <span class="k">import</span> <span class="n">visual</span>
+<span class="n">win</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">Window</span><span class="p">([</span><span class="mi">1024</span><span class="p">,</span><span class="mi">768</span><span class="p">],</span> <span class="n">mon</span><span class="o">=</span><span class="s1">&#39;SonyG500&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Of course, the name of the monitor in the script needs to match perfectly the name given in the Monitor Center.</p>
+<div class="section" id="real-world-units">
+<h2>Real world units<a class="headerlink" href="#real-world-units" title="Permalink to this headline">¶</a></h2>
+<p>One of the particular features of PsychoPy is that you can specify the size and location of stimuli in units that are independent of your particular setup, such as degrees of visual angle (see <a class="reference internal" href="units.html#units"><span class="std std-ref">Units for the window and stimuli</span></a>). In order for this to be possible you need to inform PsychoPy of some characteristics of your monitor. Your choice of units determines the information you need to provide:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Units</th>
+<th class="head">Requires</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8216;norm&#8217; (normalised to width/height)</td>
+<td>n/a</td>
+</tr>
+<tr class="row-odd"><td>&#8216;pix&#8217; (pixels)</td>
+<td>Screen width in pixels</td>
+</tr>
+<tr class="row-even"><td>&#8216;cm&#8217; (centimeters on the screen)</td>
+<td>Screen width in pixels and screen width in cm</td>
+</tr>
+<tr class="row-odd"><td>&#8216;deg&#8217; (degrees of visual angle)</td>
+<td>Screen width (pixels), screen width (cm) and distance (cm)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="calibrating-your-monitor">
+<h2>Calibrating your monitor<a class="headerlink" href="#calibrating-your-monitor" title="Permalink to this headline">¶</a></h2>
+<p>PsychoPy can also store and use information about the gamma correction required for your monitor. If you have a Spectrascan PR650 (other devices will hopefully be added) you can perform an automated calibration in which PsychoPy will measure the necessary gamma value to be applied to your monitor. Alternatively this can be added manually into the grid to the right of the Monitor Center. To run a calibration, connect the PR650 via the serial port and, immediately after turning it on press the <cite>Find PR650</cite> button in the Monitor Center.</p>
+<p>Note that, if you don&#8217;t have a photometer to hand then there is a method for determining the necessary gamma value psychophysically included in PsychoPy (see gammaMotionNull and gammaMotionAnalysis in the demos menu).</p>
+<p>The two additional tables in the Calibration box of the Monitor Center provide conversion from <a class="reference internal" href="colours.html#dkl"><span class="std std-ref">DKL</span></a> and <a class="reference internal" href="colours.html#lms"><span class="std std-ref">LMS</span></a> colour spaces to <a class="reference internal" href="colours.html#rgb"><span class="std std-ref">RGB</span></a>.</p>
+<span class="target" id="windows"></span></div>
+</div>
+
+
+          </div>
+          <div class="container"><div id="SOHUCS"></div>
+			<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+			<script type="text/javascript">
+			window.changyan.api.config({
+			appid: 'cysqnjGqk',
+			conf: 'prod_023698c59c1b0d0e29687979a2d2e9a3'
+			});
+			</script>
+		  </div>
+        </div>
+      </div>
+
+      <div class="clearer"></div>
+      
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="units.html" title="Units for the window and stimuli"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="general.html" title="General issues"
+             >previous</a> |</li>
+        <li><a href="../index.html">PsychoPy</a> &raquo;</li>
+          <li><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li><a href="general.html" >General issues</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2015, Jonathan Peirce.
+      Last updated on Mar 08, 2018.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.1.
+    </div>
+  </body>
+</html>
