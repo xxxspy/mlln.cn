@@ -169,6 +169,15 @@
         </a>
     </div>
 </header>
+<div class="page_list archive-container">
+        
+    <div class="archive-post" style="opacity: 1;">
+        <a href="/guideToPython/">
+            推荐书: Python开发最佳实践
+        </a>
+    </div>
+    
+</div>
 
     <!-- Main Content -->
     <div class="row">
@@ -181,6 +190,12 @@
     </h3>
     <div class="page_list archive-container">
         
+            <div class="archive-post">
+                <a href="/2019/08/18/python深入理解print函数/">
+                    python深入理解print函数
+                </a>
+            </div>
+            
             <div class="archive-post">
                 <a href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">
                     python中logging模块的error和exception的区别和最佳实践
@@ -202,12 +217,6 @@
             <div class="archive-post">
                 <a href="/2019/07/10/pychrome安装和入门/">
                     pychrome安装和入门
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/06/29/python解析JavaScript生成语法树并修改之/">
-                    python解析JavaScript生成语法树并修改之
                 </a>
             </div>
             
@@ -272,8 +281,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-1：梯度下降法/">
-                    李宏毅机器学习教程3-1：梯度下降法
+                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
+                    李宏毅机器学习教程01:机器学习简介
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
@@ -284,14 +299,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
-                    李宏毅机器学习教程17：深度生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -365,14 +374,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
-                    李宏毅机器学习教程18：无监督生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
-                    李宏毅机器学习教程21-2：循环神经网络
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
+                    李宏毅机器学习教程10：卷积神经网络
                 </a>
             </div>
             
@@ -428,6 +437,566 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/06/13/神经网络python库keras在windows下部署过程，带下载链接/">
+                神经网络python库keras在windows下部署过程，带下载链接
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月13日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
+<li>64位win10</li>
+<li>python 3.5 64 bit</li>
+</ul>
+<p>keras的官方文档说，他们只支持python2.7-python3.5。</p>
+<h3 id="下载wheels"><a href="#下载wheels" class="headerlink" title="下载wheels"></a>下载wheels</h3><p>因为numpy和scipy在windows平台上安装会出现编译问题，因为他们依赖一些c库会找不到，所以我们就安装wheel格式的库，他们是预先编译好的。</p>
+<p>下载链接：<a href="http://pan.baidu.com/s/1dETxbwd" target="_blank" rel="noopener">http://pan.baidu.com/s/1dETxbwd</a> 密码：5jwl</p>
+<p>在这里你能看到有很多<code>.whl</code>格式的文件，如果你跟我的python版本一样，你可以下载，否则你需要下载适合你自己版本的安装文件。</p>
+<img src="/2017/06/13/神经网络python库keras在windows下部署过程，带下载链接/baiduyun.jpg">
+<h3 id="安装numpy和scipy"><a href="#安装numpy和scipy" class="headerlink" title="安装numpy和scipy"></a>安装numpy和scipy</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> wheel文件所在的文件夹</span><br><span class="line">pip install "numpy-<span class="number">1</span>.<span class="number">11</span>.<span class="number">3</span>+mkl-cp35-cp35m-win_amd64.whl"</span><br><span class="line">pip install "scipy-<span class="number">0</span>.<span class="number">19</span>.<span class="number">0</span>-cp35-cp35m-win_amd64.whl"</span><br></pre></td></tr></table></figure>
+<h3 id="安装tensorflow"><a href="#安装tensorflow" class="headerlink" title="安装tensorflow"></a>安装tensorflow</h3><p>tensorflow是keras的神经网络计算引擎，但是安装keras的时候，不会自动安装它，因为这是一个可选包，所以你的自己安装。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow</span><br></pre></td></tr></table></figure>
+<h3 id="安装keras"><a href="#安装keras" class="headerlink" title="安装keras"></a>安装keras</h3><p>因为在安装麻烦的库已经安装好了，现在可以安装keras了。keras还依赖一些其他的库，比如six/tensorflow/pyyaml等，不过他们可以在安装keras的时候，自动被安装，所以不需要你手动安装。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install keras</span><br></pre></td></tr></table></figure>
+<h3 id="hello-keras"><a href="#hello-keras" class="headerlink" title="hello keras"></a>hello keras</h3><p>打开python shell，可以在cmd中输入python来打开。</p>
+<p>首先来构建一个网络结构</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Activation</span><br><span class="line">model.add(Dense(units=<span class="number">25</span>, input_dim=<span class="number">64</span>))</span><br><span class="line">model=Sequential()   <span class="comment">#网络基本结构</span></span><br><span class="line">model.add(Dense(units=<span class="number">25</span>, input_dim=<span class="number">8</span>*<span class="number">8</span>))  <span class="comment">#添加一个隐层，有25个节点，64个输入</span></span><br><span class="line">model.add(Activation(<span class="string">"sigmoid"</span>))  <span class="comment">#设置激活函数logistic</span></span><br><span class="line">model.add(Dense(units=<span class="number">10</span>))  <span class="comment">#增加一个输出层</span></span><br><span class="line">model.add(Activation(<span class="string">'sigmoid'</span>))  <span class="comment"># 设置激活函数</span></span><br></pre></td></tr></table></figure>
+<p>准备数据，我们要得到输入和输出矩阵，输入矩阵每一行是一个64维的向量，输出矩阵每一行是一个10维矩阵</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data=open(<span class="string">'orc-data.csv'</span>,<span class="string">'r'</span>).readlines()</span><br><span class="line">data=[line.strip().split(<span class="string">','</span>) <span class="keyword">for</span> line <span class="keyword">in</span> data]</span><br><span class="line">data=[list(map(row, int)) <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">data=[list(map(int, row)) <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">X=[row[<span class="number">1</span>:] <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">temp_Y=[row[<span class="number">0</span>] <span class="keyword">for</span> row <span class="keyword">in</span> data]</span><br><span class="line">Y=[]</span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> temp_Y:</span><br><span class="line">	v=[<span class="number">0</span>]*<span class="number">10</span></span><br><span class="line">	v[y]=<span class="number">1</span></span><br><span class="line">	Y.append(v)</span><br></pre></td></tr></table></figure>
+<p>现在我们得到了两个矩阵X和Y。网络结构已经建好，我们可以训练这个模型了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</span><br><span class="line">				optimizer=<span class="string">'adam'</span>,</span><br><span class="line">				metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fid(X, Y, batch_size=<span class="number">100</span>, nb_epoch=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/机器学习/">#机器学习</a> <a href="/tags/keras/">#keras</a> <a href="/tags/神经网络/">#神经网络</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/06/11/人工神经网络入门-代码实现ORC/">
+                人工神经网络入门+代码实现ORC
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            
+<div class="row" id="content-body">
+    <div id="orc-container" class="col-md-6 col-lg-6 col-sm-12"></div>
+    <div class="controls col-md-6 col-lg-6 col-sm-12">
+        在表格里写入一个一个数字(0-9)<br>
+        <button class="clear btn btn-default"> 清空 </button>
+        <button class="recognize btn btn-default">识别</button>
+        <div>预测结果： <span class="prediction"> ?? </span> </div>
+        信度：<div class="confidence"></div>
+        <div class="confidences">
+        </div>
+    </div>
+</div>
+<div class="row" id="network-container"></div>
+<div class="row btn-group" id="network-buttons">
+    <button class="btn btn-lg btn-default" id="reduce-neuron">减少神经元</button>
+    <input id="num-nodes" type="number" class="btn btn-default btn-large form-group" value="25" title="隐层神经元个数" height="100%">
+    <button class="btn btn-lg btn-default" id="add-neuron">增加神经元</button>
+    <button class="btn btn-lg btn-default" id="network-run">训练</button>
+</div>
+
+
+<!-- orc -->
+   <style>
+        body {
+          margin: 0;
+          font-family: Helvetica;
+          font-weight: 100;
+        }
+        svg {
+          shape-rendering: crispEdges;
+          cursor: pointer;
+        }
+        .controls {
+        }
+    </style>
+    
+    <!-- draw a grid -->
+    <script type="text/javascript">
+
+        if ('d3' in window){
+            var gL=50, gridN=8, boxLength=gL * gridN
+            var svg=d3.select('#orc-container').append('svg').attr("width",boxLength)
+                .attr("height",boxLength)
+            var data=d3.range(gridN*gridN).map(function(d){
+                return {i: d%gridN, j:Math.floor(d/gridN), id: d, active:0}
+            })
+
+            var grids=svg.append('g').attr('class', 'grids')
+                .selectAll('rect').data(data).enter().append('rect')
+                .attr("width", gL).attr("height", gL)
+                .attr('x', function(d){return gL*d.i})
+                .attr('y', function(d){return gL*d.j})
+                .style('stroke', 'rgba(255, 255, 255, 0.2)')
+
+            function updateGrid(g){
+                g.style('fill', function(d){
+                    return d.active ? 'rgba(255,255,255,1)':'black'
+                })
+
+            }
+            var conf = d3.select('.confidences').selectAll('div')
+                .data(d3.range(10)).enter()
+                .append('div').text(function(d){return d + ': '})
+
+            var bar=conf.append('div').attr('class', 'bg')
+                .style("width",'60px')
+                .style("height", '20px')
+                .style("display", 'inline-block')
+
+            bar.append('div').attr('class', 'fg')
+                .style("width", '20%')
+                .style("height", '100%')
+                .style('background-color', 'rgba(0, 0, 0, 0.8)')
+
+            svg.on('mousedown', function(){
+                grids.on('mousemove',function(d){
+                    d.active=1
+                    updateGrid(d3.select(this))
+                })
+            }).on('mouseup',function(){
+                grids.on('mousemove',null)
+            })
+
+            function updateState(){
+                var input = data.map(function(d){return d.active})
+                var output = window.network.activate(input)
+                var max = -1, maxId = -1
+                output.forEach(function(d, i) { if (d > max) max = d, maxId = i })
+                conf.data(output).select('.fg')
+                    .style('width', function(d) { return d * 100 + '%' })
+                d3.select('.prediction').text(maxId)
+                d3.select('.confidence').text(max)
+
+            }
+            d3.select('button.clear').on('click', resetBlocks)
+            d3.select('button.recognize').on('click', updateState)
+
+            function resetBlocks() {
+              grids.each(function(d) { d.active = 0 }).call(updateGrid)
+            }
+        }else{
+            document.getElementById('content-body').innerHTML='本篇文章内容特殊，只有打开文章才能看到。'
+            document.getElementById('network-buttons').innerHTML=''
+        }
+    </script>
+
+
+
+   <!-- network graph -->
+    <style type="text/css">
+        text {
+          pointer-events: none;
+        }
+
+        .node:hover {
+          stroke: #999;
+          stroke-opacity: .6;
+          stroke-width: 4px;
+        }
+
+        .link {
+          stroke: #999;
+          stroke-opacity: .6;
+        }
+    </style>
+    <script type="text/javascript">
+    if ('d3' in window){
+        var width = 960,
+            height = 1400,
+            nodeSize = 10;
+
+        var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+        var svg = d3.select("#network-container").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+
+        window.show_network=function(network) {
+            
+            svg.selectAll('*').remove()
+            // get network size
+            var netsize = {}
+            allLayers=[network.layers.input]
+            network.layers.hidden.forEach(function(l){
+                allLayers.push(l)
+            })
+            allLayers.push(network.layers.output)
+
+            // calc distances between nodes
+            largestLayerSize=0
+            allLayers.forEach(function(d){if(d.size>largestLayerSize){
+                largestLayerSize=d.size
+            }})
+
+            var xdist = width / allLayers.length,
+                ydist = height / largestLayerSize;
+
+            // create node locations
+            layerCount=0
+            var links = [];
+            allLayers.map(function(layer) {
+                layerCount +=1
+                layer.layerCount=layerCount
+                neurons=layer.neurons()
+                nNeurons=neurons.length
+                maxYDistance=nNeurons * ydist
+                startY=(height-maxYDistance)/2
+                neuCount=0
+                neurons.forEach(function(neuron){
+                    neuCount +=1
+                    neuron.x=(layerCount - 0.5) * xdist
+                    neuron.y=(neuCount - 0.5 ) * ydist + startY
+                    connections=neuron.connections.projected
+                    keys=Object.keys(connections)
+                    keys.forEach(function(id){
+                        links.push(connections[id])
+                    })
+                })
+            });
+
+            // draw links
+            var link = svg.selectAll(".link")
+                .data(links)
+              .enter().append("line")
+                .attr("class", "link")
+                .attr("x1", function(d) { return d.from.x; })
+                .attr("y1", function(d) { return d.from.y; })
+                .attr("x2", function(d) { return d.to.x; })
+                .attr("y2", function(d) { return d.to.y; })
+                .style("stroke-width", function(d) { return d.weight * 10; });
+
+            // draw nodes
+            console.log(network.neurons())
+            var node = svg.selectAll(".node")
+                .data(network.neurons())
+              .enter().append("g")
+                .attr("transform", function(d) {
+                    return "translate(" + d.neuron.x + "," + d.neuron.y + ")"; }
+                );
+
+            var circle = node.append("circle")
+                .attr("class", "node")
+                .attr("r", nodeSize)
+                .style("fill", function(d) { return color(d.layer.layerCount); });
+
+
+            node.append("text")
+                .attr("dx", "-.35em")
+                .attr("dy", ".35em")
+                .text(function(d, i) { return i; })
+        }
+
+        var numInput=document.getElementById('num-nodes')
+        var addBtn=d3.select('#add-neuron').on('click', function(){
+            value=numInput.value
+            console.log(value)
+            value = parseInt(value)
+            // numInput.attr('value', value + 1)  #这个方法不能动态显示更改后的数据
+            numInput.value=value +1
+        })
+        var reduceBtn=d3.select('#reduce-neuron').on('click', function(){
+            value= parseInt(numInput.value)
+            value = (value > 1)? value -1 : 0
+            numInput.value=value
+            
+        })
+        var runBtn= d3.select('#network-run').on('click', function(){
+            num=parseInt(numInput.value)
+            if(num>0){
+                myNetwork=new synaptic.Architect.Perceptron(64, num, 10)
+                trainer=new synaptic.Trainer(myNetwork)
+                window.train(trainer)
+                window.show_network(myNetwork)
+                window.network=myNetwork
+                window.trainer=trainer
+                alert('训练完成')
+            }else{
+                alert('神经元的数量必须大于0')
+            }
+        })
+    }
+    </script>
+
+
+
+    <script type="text/javascript">
+        if('synaptic' in window){
+            var myNetwork = new synaptic.Architect.Perceptron(64, 25, 10)
+            var trainer = new synaptic.Trainer(myNetwork)
+
+            function train(trainer){
+                d3.text('data', function(err, data) {
+                  if (err) {
+                    throw err
+                  }
+                  var ts, te, idx
+                  data = d3.csvParseRows(data, function(row) { return row.map(Number) })
+                    .map(function(d) {
+                    // Expected output.
+                    var t = d3.range(10).map(function() { return 0 })
+                    t[d[0]] = 1
+                    return { input: d.slice(1), output: t }
+                  })
+                    ts=Date.now()
+                    trainer.train(data)
+                    te=Date.now()
+                    console.log('Time Spend: '+ (te-ts))
+                })
+            }
+            window.train=train
+            train(trainer)
+            window.network=myNetwork
+            window.trianer=trainer
+            window.show_network(myNetwork)
+        }
+    </script>
+
+<h3 id="计算计算过程"><a href="#计算计算过程" class="headerlink" title="计算计算过程"></a>计算计算过程</h3><h4 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h4><p>假设网络中所有的参数已知，根据一个输入向量x，求输出向量y。</p>
+<p>首先输入是一个64维向量：</p>
+<p><code>\[ x=\left[ x_1, x_2,\dots x_d \right] \](d=64)</code></p>
+<p>而输出向量应该是一个10维的向量，用来表征10个数字的识别概率。</p>
+<p><code>\[ \hat y=\left [ \hat y_1, \hat y_2,\dots \hat y_l \right](l=10) \]</code></p>
+<h4 id="已知条件："><a href="#已知条件：" class="headerlink" title="已知条件："></a>已知条件：</h4><ul>
+<li>输入层到隐层神经元之间的链接权重<code>v</code>：</li>
+</ul>
+<p><code>\[ v=\left| { \begin{array}{c}
+v_{11} &amp; v_{12} &amp; \dots &amp; v_{1d}\\
+v_{21} &amp; v_{22} &amp; \dots &amp; v_{2d}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+v_{q1} &amp; v_{q2} &amp; \dots &amp; v_{qd}
+\end{array} }\right| (d=64, q=\text{count of hidden layer neurons})\]</code></p>
+<ul>
+<li>隐层神经元的阈值b</li>
+</ul>
+<p><code>\[ b=[b_1, b_2, \dots, b_q](q=\text{count of hidden layer neurons}) \]</code></p>
+<ul>
+<li>隐层到输出层的权重<code>w</code>：</li>
+</ul>
+<p><code>\[
+w=\left| { \begin{array}{c}
+w_{11} &amp; w_{12} &amp; \dots &amp; w_{1q}\\
+w_{21} &amp; w_{22} &amp; \dots &amp; w_{2q}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+w_{l1} &amp; w_{l2} &amp; \dots &amp; w_{lq}
+\end{array} }\right| (l=10, q=\text{count of hidden layer neurons})
+\]</code></p>
+<ul>
+<li>输出层的阈值<code>\( \theta \)</code></li>
+</ul>
+<p><code>\[ \theta=[\theta_1, \theta_2,\dots,\theta_l](l=10) \]</code></p>
+<ul>
+<li>激活函数</li>
+</ul>
+<p><code>\[ f(x)={ 1 \over { 1 + e^{-x} } } \]</code></p>
+<h4 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h4><ul>
+<li>隐层神经元的输入</li>
+</ul>
+<p><code>\[ \alpha = v · x^T + b  \]</code></p>
+<ul>
+<li>隐层神经元的激活</li>
+</ul>
+<p><code>\[ \beta=f(\alpha) \]</code></p>
+<ul>
+<li>输出神经元输入</li>
+</ul>
+<p><code>\[\gamma = w · \beta + \theta\]</code></p>
+<ul>
+<li>输出神经元的激活</li>
+</ul>
+<p><code>\[f(\gamma)\]</code></p>
+<h3 id="synaptic-js实现神经网络"><a href="#synaptic-js实现神经网络" class="headerlink" title="synaptic.js实现神经网络"></a>synaptic.js实现神经网络</h3><p>为了演示我们就用一个前端库来做一个神经网络。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myNetwork = <span class="keyword">new</span> synaptic.Architect.Perceptron(<span class="number">64</span>, <span class="number">25</span>, <span class="number">10</span>)</span><br><span class="line"><span class="keyword">var</span> trainer = <span class="keyword">new</span> synaptic.Trainer(myNetwork)</span><br><span class="line">data=[</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">input</span>: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>], <span class="attr">output</span>: <span class="number">1</span>&#125;</span><br><span class="line">]</span><br><span class="line">trainer.train(data)</span><br><span class="line">new_input=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,...,<span class="number">0</span>]</span><br><span class="line"><span class="keyword">var</span> output = network.activate(new_input)</span><br></pre></td></tr></table></figure>
+<p>### </p>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/ORC/">#ORC</a> <a href="/tags/神经网络/">#神经网络</a> <a href="/tags/3djs/">#3djs</a> <a href="/tags/synaptic/">#synaptic</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/06/11/测试d3-js在hexo博客中的效果/">
+                测试d3.js在hexo博客中的效果
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017年06月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>d3.js可以在hexo博客中使用，如下图所示。但是有一些坑需要你提前知道如何填。</p>
+<h4 id="json数据"><a href="#json数据" class="headerlink" title="json数据"></a>json数据</h4><p>d3经常需要用到json格式的数据文件，如果放在代码里不太好，加载js的时候比较慢，<br>所以通常我们都是用<code>d3.json</code>方法，它需要你准备一个可被调用的json文件。<br>那么，我的做法是，在文章（post）的同名资源文件夹中加入json文件，但是我遇到一个问题，<br>就是json文件会被hexo当做一篇post给渲染，导致你的网站中会出现一篇无名的文章，<br>内容就是json文件的内容。你可能想到在<code>_config.yml</code>中配置<code>skip_render</code>，但是，<br>这个选项还有一些bug，我也懒得去改，这么做并不能防止生成一篇莫名文章。<br>我想到没有后缀名的文件是不会被渲染的，所以我就把json文件的后缀名给去掉，这样就可以了。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>hexo中想要嵌入到文章中的代码通常写在<code>{ raw }your html code{ endraw }</code>中(标签中百分号没写)，<br>我也是这么做的。但是你一定要注意，文章不仅会出现在文章页面，还可能会出现在index(home)页，<br>这就麻烦了，因为你的JavaScript很可能影响到首页。如果你加载太多JavaScript库，还会导致首页加载速度过慢，<br>如果你在意用户体验或者SEO，你就需要注意这点。</p>
+<p>我的方法是在文章开始输入一个配置变量，这是我这篇文章的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 测试d3.js在hexo博客中的效果</span><br><span class="line">date: 2017-06-11 08:12:09</span><br><span class="line">tags: [hexo, d3js]</span><br><span class="line">d3js: true</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>你可以看到d3js这个变量。但是它还不能发挥作用，因为我们还得修改网站的模板。让模板侦测该变量，<br>如果为true就加载d3.js这个库。所以我们先增加一个partial文件，在主题文件夹下<code>layout/_partial/d3js.ejs</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://d3js.org/d3.v4.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后再修改<code>head.ejs</code>, 增加如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span>(page.d3js)&#123; %&gt;</span><br><span class="line">    &lt;!-- d3js --&gt;</span><br><span class="line">    &lt;%- partial(<span class="string">'d3js'</span>) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>到此，我们已经成功了一半了（怎么还有一半？）</p>
+<h4 id="探测d3是否加载"><a href="#探测d3是否加载" class="headerlink" title="探测d3是否加载"></a>探测d3是否加载</h4><p>在写post的时候，你如果直接用d3这个变量，会引发错误，因为在index页面我们不允许加载d3，但是文章出现在首页的时候，<br>错误就发生了，告诉你d3是undefined。所以在使用d3前，你需要判断d3是否为undefined。你可以用in操作符即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">"d3"</span> <span class="keyword">in</span> <span class="built_in">window</span>)&#123;</span><br><span class="line">    <span class="comment">// code to run</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><p>OK, 是时候让你看到我文章中写的全部代码了，而代码的运行效果就是下图。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d3js-example-content"</span>&gt;</span></span><br><span class="line">    这里是文章自定义内容，你需要进入该文章才能看到。</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"># input-button &#123;</span></span><br><span class="line"><span class="undefined">  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;</span></span><br><span class="line"><span class="undefined">  position: relative;</span></span><br><span class="line"><span class="undefined">  left: 10px;</span></span><br><span class="line"><span class="undefined">  top: 10px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">if</span> (<span class="string">'d3'</span> <span class="keyword">in</span> <span class="built_in">window</span>)&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> html=<span class="string">''</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> contentDiv=<span class="built_in">document</span>.getElementById(<span class="string">"d3js-example-content"</span>);</span></span><br><span class="line"><span class="xml">    contentDiv.innerHTML='<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"960"</span> <span class="attr">height</span>=<span class="string">"600"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span>' +</span></span><br><span class="line"><span class="xml">                            '<span class="tag">&lt;<span class="name">label</span> <span class="attr">id</span>=<span class="string">"input-button"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">style</span>=<span class="string">"width:240px;"</span> <span class="attr">type</span>=<span class="string">"range"</span> <span class="attr">min</span>=<span class="string">"0"</span> <span class="attr">max</span>=<span class="string">"1"</span> <span class="attr">step</span>=<span class="string">"any"</span> <span class="attr">value</span>=<span class="string">"0.5"</span>&gt;</span>'+</span></span><br><span class="line"><span class="javascript">                            <span class="string">' Link Strength&lt;/label&gt;'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">"canvas"</span>),</span></span><br><span class="line"><span class="javascript">        context = canvas.getContext(<span class="string">"2d"</span>),</span></span><br><span class="line"><span class="undefined">        width = canvas.width,</span></span><br><span class="line"><span class="undefined">        height = canvas.height;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> simulation = d3.forceSimulation()</span></span><br><span class="line"><span class="javascript">        .force(<span class="string">"link"</span>, d3.forceLink().id(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123; <span class="keyword">return</span> d.id; &#125;).strength(<span class="number">0.5</span>))</span></span><br><span class="line"><span class="javascript">        .force(<span class="string">"charge"</span>, d3.forceManyBody())</span></span><br><span class="line"><span class="javascript">        .force(<span class="string">"center"</span>, d3.forceCenter(width / <span class="number">2</span>, height / <span class="number">2</span>))</span></span><br><span class="line"><span class="javascript">        <span class="comment">// .alphaDecay(0);</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    d3.select(<span class="string">"input[type=range]"</span>)</span></span><br><span class="line"><span class="javascript">        .on(<span class="string">"input"</span>, inputted);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    d3.json(<span class="string">"miserables"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, graph</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      simulation</span></span><br><span class="line"><span class="undefined">          .nodes(graph.nodes)</span></span><br><span class="line"><span class="javascript">          .on(<span class="string">"tick"</span>, ticked);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      simulation.force(<span class="string">"link"</span>)</span></span><br><span class="line"><span class="undefined">          .links(graph.links);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">ticked</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">        context.clearRect(0, 0, width, height);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        context.beginPath();</span></span><br><span class="line"><span class="undefined">        graph.links.forEach(drawLink);</span></span><br><span class="line"><span class="javascript">        context.strokeStyle = <span class="string">"#aaa"</span>;</span></span><br><span class="line"><span class="undefined">        context.stroke();</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        context.beginPath();</span></span><br><span class="line"><span class="undefined">        graph.nodes.forEach(drawNode);</span></span><br><span class="line"><span class="undefined">        context.fill();</span></span><br><span class="line"><span class="javascript">        context.strokeStyle = <span class="string">"#fff"</span>;</span></span><br><span class="line"><span class="undefined">        context.stroke();</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">inputted</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      simulation.force(<span class="string">"link"</span>).strength(+<span class="keyword">this</span>.value);</span></span><br><span class="line"><span class="undefined">      simulation.alpha(1).restart();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">drawLink</span>(<span class="params">d</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      context.moveTo(d.source.x, d.source.y);</span></span><br><span class="line"><span class="undefined">      context.lineTo(d.target.x, d.target.y);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">drawNode</span>(<span class="params">d</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      context.moveTo(d.x + 3, d.y);</span></span><br><span class="line"><span class="javascript">      context.arc(d.x, d.y, <span class="number">3</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<div id="d3js-example-content">
+    这是特殊内容，你需要进入该文章才能看到。
+</div>  
+
+<style>
+
+# input-button {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+</style>
+
+<script>
+
+if ('d3' in window){
+    var html=''
+    var contentDiv=document.getElementById("d3js-example-content");
+    contentDiv.innerHTML='<canvas width="960" height="600"></canvas>' +
+                            '<label id="input-button"><input style="width:240px;" type="range" min="0" max="1" step="any" value="0.5">'+
+                            ' Link Strength</label>';
+
+    var canvas = document.querySelector("canvas"),
+        context = canvas.getContext("2d"),
+        width = canvas.width,
+        height = canvas.height;
+
+    var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) { return d.id; }).strength(0.5))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        // .alphaDecay(0);
+
+    d3.select("input[type=range]")
+        .on("input", inputted);
+
+    d3.json("miserables", function(error, graph) {
+      if (error) throw error;
+
+      simulation
+          .nodes(graph.nodes)
+          .on("tick", ticked);
+
+      simulation.force("link")
+          .links(graph.links);
+
+      function ticked() {
+        context.clearRect(0, 0, width, height);
+
+        context.beginPath();
+        graph.links.forEach(drawLink);
+        context.strokeStyle = "#aaa";
+        context.stroke();
+
+        context.beginPath();
+        graph.nodes.forEach(drawNode);
+        context.fill();
+        context.strokeStyle = "#fff";
+        context.stroke();
+      }
+    });
+
+    function inputted() {
+      simulation.force("link").strength(+this.value);
+      simulation.alpha(1).restart();
+    }
+
+    function drawLink(d) {
+      context.moveTo(d.source.x, d.source.y);
+      context.lineTo(d.target.x, d.target.y);
+    }
+
+    function drawNode(d) {
+      context.moveTo(d.x + 3, d.y);
+      context.arc(d.x, d.y, 3, 0, 2 * Math.PI);
+    }
+
+
+
+
+}
+
+
+</script>
+
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/hexo/">#hexo</a> <a href="/tags/d3js/">#d3js</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1273,218 +1842,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/19/numpy函数：[2]tile函数用法/">
-                numpy函数：[2]tile函数用法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>tile函数位于python模块 numpy.lib.shape_base中，他的功能是重复某个数组。比如tile(A,n)，功能是将数组A重复n次，构成一个新的数组，我们还是使用具体的例子来说明问题：</p>
-<ul>
-<li>先来引入numpy下的所有方法</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[2]tile函数用法/f677b1c379310a5583d241f8b54543a98326108c.jpg" title="numpy函数：[2]tile函数用法">
-<ul>
-<li>我们创建一个a，如图下图，使用tile来创建b，注意看b的数据结构</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[2]tile函数用法/43e6c733c895d1438c637b2f71f082025aaf0761.jpg" title="numpy函数：[2]tile函数用法">
-<ul>
-<li>假如我们输入一个元组(1,2)，我们会得到一样的结果，与上面相同的b</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[2]tile函数用法/d57e9994a4c27d1eda87a4c819d5ad6edcc438dd.jpg" title="numpy函数：[2]tile函数用法">
-<ul>
-<li>当然，我们想要a变为一个二维数组，就要换一种重复的方式了。</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[2]tile函数用法/0fb505d5ad6eddc45c462bf73bdbb6fd536633dd.jpg" title="numpy函数：[2]tile函数用法">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/numpy/">#numpy</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/19/SPSS实例：[23]如何对数据进行排序/">
-                SPSS实例：[23]如何对数据进行排序
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们今天来学习一个简单的功能，在spss中如何对数据进行排序，虽然简单，但是很重要。我刚才处理的数据是从Excel中导入的，接着还有其他Excel中的数据要粘贴到spss中，我需要先让spss中的数据按照年级、专业排序，然后才能保证粘贴数据的时候能够按照年级和专业的顺序去粘贴，下面我们来看看如何排序吧。</p>
-<ul>
-<li>在菜单中执行：data-sort cases，打开排序对话框</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/58af236d55fbb2fb93e62b704d4a20a44723dc40.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>我们想要让spss按照年级排序，当case与case的年级相同的时候，按照专业进行排序，如图所示，将年级和专业按照先后顺序放入sort by框中</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/bf487563f6246b60eed4c116e9f81a4c500fa2bf.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>设置排序的方式是【升序】，如图所示，选择ascending，相反你可以选择desceding来降序</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/7787b9efce1b9d16d51fe903f1deb48f8d5464bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>接着，我们其实可以点击ok来完成排序，但是没用一次spss就看一下它的syntax是非常好的习惯，这样你很快就能学会基本的syntax操作，学会syntax好处就是你比别人处理数据的速度大大提升，十倍百倍的速度提升，点击paste可以看到syntax</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/b5ce925494eef01f15cc6ba7e2fe9925bd317dbc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>你看到了，其实只需要用两句简单的代码就能实现排序的功能</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/95afee1f3a292df5d11bdf77be315c6035a873bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>我们还是回到界面中，点击ok</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/9864a2315c6034a8683acbe3c9134954082376bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>排序好了以后，你最好保存一下结果</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/5f9e93b1cb13495433c69b06544e9258d0094abc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<ul>
-<li>现在的数据就是按照年级和专业进行的排序，你学会了吗？请关注我的系列教程：spss实例教程，你将看到一个专业的数据分析员是如何在工作中使用spss的。</li>
-</ul>
-<img src="/2016/10/19/SPSS实例：[23]如何对数据进行排序/d019d2bf6c81800a5c3dfa6cb33533fa838b47bc.jpg" title="SPSS实例：[23]如何对数据进行排序">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/19/numpy函数：[12]数组切片/">
-                numpy函数：[12]数组切片
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们可以向使用列表切片一样使用数组切片，如果会使用liest切片，那么这篇文章就是温习一下而已，下面我们来看看具体的数组切片是如何使用的。</p>
-<ul>
-<li>从numpy中引入所有</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/c71d0e385343fbf21a8108bcb27eca8064388f45.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>创建一个包含10个元素的一位数组</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/d1571724ab18972bf1a4ae55e4cd7b899f510a57.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>我们可以使用一个下标获取数组中相应的值，也可以更改它的值</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/b3508d13b07eca80c9a89778932397dda0448345.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>使用冒号获取连续的几个元素，如获取第四个到第五个元素</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/34bbf8cd7b899e512510948b40a7d933c9950d57.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>省略冒号前的数字，表示从头开始</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/43e6c733c895d1439de84abc71f082025baf0757.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>使用负数表示从后往前数，-1表示从后往前数第一个数</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/30ecd5ef76094b36163fb572a1cc7cd98c109d45.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>-2表示从后往前第二个，以此类推</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/a28d62d98d1001e9f991ba90ba0e7bec55e79745.jpg" title="numpy函数：[12]数组切片">
-<img src="/2016/10/19/numpy函数：[12]数组切片/b258f5c4b74543a9c18554531c178a82b8011457.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>还可以设置步长来读取数组元素</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/b6045da98226cffc5bb4112dbb014a90f703ea50.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>步长为-1，其他参数不设置，就是将数组进行了倒序排列</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/1f569482b9014a90bfa0e822ab773912b21bee50.jpg" title="numpy函数：[12]数组切片">
-<ul>
-<li>使用负数步长需要让第一个下表大于第二个下标</li>
-</ul>
-<img src="/2016/10/19/numpy函数：[12]数组切片/a005b3345982b2b7635e905b33adcbef77099b29.jpg" title="numpy函数：[12]数组切片">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/numpy/">#numpy</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1526,6 +1883,18 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/20/Introduction-to-Mediation-Moderation-and-Conditional-Process-Analysis第二版PDF下载/">Introduction to Mediation</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/18/python深入理解print函数/">python深入理解print函数</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
             </li>
             
@@ -1546,23 +1915,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/07/05/前端如何检测Chrome-Headless不被爬虫虐/">前端如何检测Chrome-Headless不被爬虫</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/06/29/python解析JavaScript生成语法树并修改之/">python解析JavaScript生成语法树并修</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/26/requests(python)怎样持久化cookies以便复用/">mongodb解决textsearch搜索中文的问</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/25/python文件信息查看和修改/">python文件信息查看和修改</a>
+                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
             </li>
             
         </ul>
@@ -1576,11 +1933,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1589,10 +1946,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1628,15 +1981,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1648,10 +2005,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
@@ -1660,11 +2013,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
+            <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1676,11 +2033,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1688,19 +2049,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/process/">process</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1724,6 +2077,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1736,11 +2093,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1752,11 +2113,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1765,18 +2134,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/jieba/">jieba</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
         </span>
         
         <span>
@@ -1792,6 +2149,18 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jieba/">jieba</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/dataframe/">dataframe</a>
         </span>
         
@@ -1800,11 +2169,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -1820,14 +2189,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
@@ -1840,11 +2201,11 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/logging/">logging</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1853,6 +2214,10 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1868,6 +2233,14 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/logging/">logging</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pil/">pil</a>
         </span>
         
@@ -1876,7 +2249,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/print/">print</a>
         </span>
         
         <span>
@@ -1888,11 +2261,19 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -1904,14 +2285,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
@@ -1920,7 +2293,15 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/cron/">cron</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1928,11 +2309,7 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/requests/">requests</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/cookies/">cookies</a>
+            <a class="footer-post" href="/tags/cron/">cron</a>
         </span>
         
         <span>
@@ -1941,10 +2318,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1957,22 +2330,6 @@ n &amp; \text{左} &amp; \text{中} &amp; \text{右} \\
         
         <span>
             <a class="footer-post" href="/tags/3djs/">3djs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
     </ul>

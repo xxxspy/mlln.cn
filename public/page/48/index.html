@@ -169,6 +169,15 @@
         </a>
     </div>
 </header>
+<div class="page_list archive-container">
+        
+    <div class="archive-post" style="opacity: 1;">
+        <a href="/guideToPython/">
+            推荐书: Python开发最佳实践
+        </a>
+    </div>
+    
+</div>
 
     <!-- Main Content -->
     <div class="row">
@@ -181,6 +190,12 @@
     </h3>
     <div class="page_list archive-container">
         
+            <div class="archive-post">
+                <a href="/2019/08/18/python深入理解print函数/">
+                    python深入理解print函数
+                </a>
+            </div>
+            
             <div class="archive-post">
                 <a href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">
                     python中logging模块的error和exception的区别和最佳实践
@@ -202,12 +217,6 @@
             <div class="archive-post">
                 <a href="/2019/07/10/pychrome安装和入门/">
                     pychrome安装和入门
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/06/29/python解析JavaScript生成语法树并修改之/">
-                    python解析JavaScript生成语法树并修改之
                 </a>
             </div>
             
@@ -272,8 +281,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-1：梯度下降法/">
-                    李宏毅机器学习教程3-1：梯度下降法
+                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
+                    李宏毅机器学习教程01:机器学习简介
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
@@ -284,14 +299,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
-                    李宏毅机器学习教程17：深度生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -365,14 +374,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
-                    李宏毅机器学习教程18：无监督生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
-                    李宏毅机器学习教程21-2：循环神经网络
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
+                    李宏毅机器学习教程10：卷积神经网络
                 </a>
             </div>
             
@@ -428,6 +437,255 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/08/11/Python教程：[29]读取/">
+                Python教程：[29]读取
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年08月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>我们用python搞数据挖掘，通常要从Excel里读取数据，这就用到了xlrd，下面我们来系统的看一下xlrd的使用方法。（下面的方法介绍了为什么从Excel读取的数据是乱码，其实就是编码的问题。）</p>
+<ul>
+<li>先导入xlrd模块</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/476217f7905298223eebded5d5ca7bcb0b46d489.jpg" title="Python教程：[29]读取">
+<ul>
+<li>打开指定路径的Excel文件，Excel这个变量存放的是Excel文件的路径</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/99636c0e0cf3d7ca342ed860f01fbe096a63a989.jpg" title="Python教程：[29]读取">
+<ul>
+<li>介绍两种获取sheet对象的方法，第一个俄式通过索引获取第一个sheet</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/7a8a1446f21fbe093886240269600c338644ad89.jpg" title="Python教程：[29]读取">
+<ul>
+<li>通过sheet的名称获取</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/6a22e8246b600c33d0a139de184c510fd8f9a189.jpg" title="Python教程：[29]读取">
+<ul>
+<li>根据坐标来获取单元格的值，我们看到cv在python当中的编码，但是打印出来的话就是正常显示的了。</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/ae10eddeb48f8c543551223938292df5e1fe7fe3.jpg" title="Python教程：[29]读取">
+<ul>
+<li>我们还可以读取整行的数据</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/bd70426034a85edf260e19354b540923dc5475e3.jpg" title="Python教程：[29]读取">
+<ul>
+<li>从读取整整行数据中获得第一个值</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/cbc17b380cd79123ef387362af345982b3b78089.jpg" title="Python教程：[29]读取">
+<ul>
+<li>当然，我们还可以获取sheet中有多少行和多少列。</li>
+</ul>
+<img src="/2015/08/11/Python教程：[29]读取/d1e312f431adcbeff7ec9910aeaf2edda2cc9f89.jpg" title="Python教程：[29]读取">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/08/11/SPSS自动化：[4]/">
+                SPSS自动化：[4]
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年08月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>syntax是spss中的命令，在spss有syntax文档对象，这个对象有哪些属性呢？</p>
+<ul>
+<li><p>1&gt;designated属性：为当前输出文档、语法文档或草稿文档返回或设置指定的窗口状态。指定的窗口（designatedwindow）是spss传送输出、粘贴或运行语法命令的窗口。当一个新的输出窗口打开以后它就成为了指定窗口。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Intcount=objdocuments.outputdoccount</p>
+</li>
+<li><p>Set objoutputdoc=objdocuments.getoutputdoc(intcount-1)</p>
+</li>
+<li><p>Objoutputdoc.designated=true</p>
+</li>
+<li><p>‘本实例将最后一个输出文档设置成指定文档接收新的输出。</p>
+</li>
+<li><p>2&gt;height和width属性、left和top属性、modified属性在前面其他对象中有介绍，这里省略。</p>
+</li>
+<li><p>3&gt;papersource属性：设置打印时候纸张的来源，它有四个值：</p>
+</li>
+<li><p>1    Upper</p>
+</li>
+<li><p>2    Lower</p>
+</li>
+<li><p>3    Middle</p>
+</li>
+<li><p>4    envelop</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Setobjprintoptions=objoutputdoc.printoptions</p>
+</li>
+<li><p>‘设置打印选项</p>
+</li>
+<li><p>Printoptions.papersource-2</p>
+</li>
+<li><p>4&gt;rtftext属性：返回或设置语法窗口中的格式化文本，或rich文本框中的rtf文本编辑器。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>String=objsyntaxdoc.text</p>
+</li>
+<li><p>Objsyntaxdoc.rtftext=string</p>
+</li>
+<li><p>Objsyntaxdoc.run</p>
+</li>
+<li><p>5&gt;text属性：在语法窗口或者激活的rtf文本编辑器中返回或设置文本，可以使用该属性写成或接收未格式化的文本。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Dim syntaxcommands as string</p>
+</li>
+<li><p>Syntaxcommands=objdatadoc.invokedialogandreturnsyntax(“analyze&gt;compare means&gt;paired-samples t test”,1)</p>
+</li>
+<li><p>‘获取了syntax命令</p>
+</li>
+<li><p>Dim objsyntaxdoc as ispsssyntaxdoc</p>
+</li>
+<li><p>Set objsyntaxdoc=objspssapp.newsyntaxdoc</p>
+</li>
+<li><p>Objsyntaxdoc.text=syntaxcommands</p>
+</li>
+<li><p>6&gt;toolbarvisible属性、visible属性、windowstate属性略去。</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/">
+                spss如何用散点图检验两个变量之间的交互作用
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年08月11日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>散点图如图所示， 就是由一些点所构成的图，他是怎么看出交互作用的呢？好吧，我们一步一步来做你就懂了，下面是具体的过程。<br>工具/原料</p>
+<ul>
+<li>spss<br>方法/步骤</li>
+</ul>
+<ul>
+<li>首先在spss中准备好数据，然后在菜单栏上执行：graphs–散点图，如图所示，我这里是spss20.0，如果你要是其他的版本，菜单是不一样的，你得找找散点图在哪里</li>
+</ul>
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/4e4a20a4462309f7380b0cd1720e0cf3d6cad689.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<ul>
+<li>弹出一个窗口，让你选择使用哪个散点图，我们选择第一个最简单的散点图</li>
+</ul>
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/64380cd7912397dd762039c75982b2b7d1a2879c.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<ul>
+<li>因为我们要检验摸底考试成绩与教学方法之间的交互作用，所以你看好了，期末考试是因变量，也就是在y轴，而摸底考试成绩在x轴，分类变量是教学方法</li>
+</ul>
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/91529822720e0cf37ba3ef380a46f21fbf09aa99.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<ul>
+<li>点击ok按钮，开始输出散点图，如图所示，那是一个初步的散点图</li>
+</ul>
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/8b82b9014a90f60303803c843912b31bb151edc5.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/d788d43f8794a4c2411047e80ef41bd5ac6e39c5.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<ul>
+<li>在散点图上右键单击，然后选择在新的窗口中编辑</li>
+</ul>
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/9e3df8dcd100baa1e203e7784710b912c9fc2ec1.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<ul>
+<li>我们要用到上面两个按钮，第一个是所有的点拟合直线，其实就是忽略教学方法这个变量，得到一条回归曲线，但是我们为了比较教学方法，所以需要给不同的教学方法分别绘制回归线，所以点击右侧的按钮</li>
+</ul>
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/7af40ad162d9f2d3c619842ca9ec8a136227cced.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<ul>
+<li>出现了两条回归线，这两条回归线代表不同的教学方法，这两条线如果是平行的就可以认为他们是没有交互作用的，显然这个线有交叉的取向，我们只能先假定有交互作用的取向，但是还无法说达到了显著的水平。</li>
+</ul>
+<img src="/2015/08/11/spss如何用散点图检验两个变量之间的交互作用/9922720e0cf3d7cad7ea9fb5f21fbe096a63a9d1.jpg" title="spss如何用散点图检验两个变量之间的交互作用">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -930,185 +1188,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/07/23/Excel2013：[28]countif函数用法大全/">
-                Excel2013：[28]countif函数用法大全
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年07月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>countif函数时我们经常用到的函数之一，经过组合它可以求得任何我们想要的计数结果，下面是具体的用法：</p>
-<ul>
-<li>假如我们要统计男女生的人数，我们可以在E5单元格输入公式=COUNTIF(A2:A21,”男”)；公式中A2:A21是我们计数的范围，第二个参数“男”表示对单元格中为男的计数</li>
-</ul>
-<img src="/2015/07/23/Excel2013：[28]countif函数用法大全/61183b2dd42a28344b75b77259b5c9ea14cebfbd.jpg" title="Excel2013：[28]countif函数用法大全">
-<ul>
-<li>同样的，在F5单元格输入公式也可以求得女生人数：=COUNTIF(A2:A21,”女”)</li>
-</ul>
-<img src="/2015/07/23/Excel2013：[28]countif函数用法大全/d56b3634349b033bda5b7da317ce36d3d439bdbd.jpg" title="Excel2013：[28]countif函数用法大全">
-<ul>
-<li>假如我们要统计成绩大于60的人数</li>
-</ul>
-<img src="/2015/07/23/Excel2013：[28]countif函数用法大全/35da1d3b5bb5c9ea9620829ad739b6003bf3b3bd.jpg" title="Excel2013：[28]countif函数用法大全">
-<ul>
-<li>我们可以在单元格中输入公式=COUNTIF(B2:B21,”&gt;=60”)</li>
-</ul>
-<img src="/2015/07/23/Excel2013：[28]countif函数用法大全/dc15484e9258d10963cf29cbd358ccbf6c814d58.jpg" title="Excel2013：[28]countif函数用法大全">
-<ul>
-<li>假如我们要计算一个区间内的人数，我们可以使用两个countif函数，运用减法就可以算出来，下面是计算成绩在60到65之间的个数</li>
-</ul>
-<img src="/2015/07/23/Excel2013：[28]countif函数用法大全/9dc3cf58ccbf6c81551bac91be3eb13533fa4058.jpg" title="Excel2013：[28]countif函数用法大全">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/07/23/wxpython教程：[4]菜单中的图标/">
-                wxpython教程：[4]菜单中的图标
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年07月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们看到的菜单中多半是有一个图标的，那么今天我们就来做一个菜单，菜单选项左侧有一个图标。要达到这个目的我们必须手动创建一个选项。下面是今天代码的全部：由于这些大部分代码在之前的文章中有讲解，所以这篇文章就着重讲不同的部分。</p>
-<ul>
-<li>先创建一个选项：注意第二个参数设定了该选项的id，以后绑定方法的时候可以用id来表示该选项</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/0e655ca7d933c895c3031a14d21373f082020024.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>设置选项的图标用到了方法：SetBitmap，该方法需要传入一个Bitmap对象：exit.jpg是我自己做的一个图片</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/c9d4cf43ad4bd11366b0355d59afa40f4bfb0524.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>将创建好的选项添加到菜单</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/72b19c025aafa40f52bb4cb2a864034f78f01924.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>将选项与方法绑定，这样点击该菜单选项就能执行OnQuit动作。注意现在用id来表示跟哪个选项进行的绑定，因为我们在</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/55a628d12f2eb9383071f89dd6628535e5dd6f06.jpg" title="wxpython教程：[4]菜单中的图标">
-<ul>
-<li>这是最后做出来的效果图</li>
-</ul>
-<img src="/2015/07/23/wxpython教程：[4]菜单中的图标/b25d9901a18b87d61b3c2670040828381f30fd20.jpg" title="wxpython教程：[4]菜单中的图标">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a> <a href="/tags/wxpython/">#wxpython</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/07/19/amos21.0教程：[6]结构方程模型分析流程/">
-                amos21.0教程：[6]结构方程模型分析流程
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年07月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>结构方程模型的分析遵循严格的步骤，在今天这一节我们着重探讨一下使用amos进行结构方程分析时需要的流程，下面这个是整个的流程图。</p>
-<ul>
-<li><p>第一个步骤是相关理论研究，这里主要要明白自己所做的是什么研究，主要的变量有哪些；查看前人的文献来考察这几个变量之间是否相关，正相关还是负相关，是否存在因果关系。当这几个变量的相互关系都基本了解以后，你可以进入下一个阶段了。</p>
-</li>
-<li><p>界定测量模型：前面的文章已经介绍过什么是测量模型了，如果你还不知道什么是测量模型，可以看下面参考资料的内容。界定测量模型首先你要知道那几个变量是通过测量得到的，比如主观幸福感需要使用主观幸福感量表来测定，如果有些变量没有成熟的量表来测定，你需要使用几个指标来作为操作定义，比如“学业成就”可以用四六级英语成绩和其他学习成绩的总分来计算。这个步骤主要的目的就是知道所有的变量都是如何测定的。为了让得到的模型具有可识别性，每个测量模型需要只有少两个指标变量。</p>
-</li>
-<li><p>界定结构模型：确定潜在变量之间的关系，绘制关系图。这时候你需要利用第一步中获得的只是来绘制关系图，也就是变量之间的关系。</p>
-</li>
-<li><p>测量抽样调查：这时候就是你做实验或者做调查的阶段了，从总体中随机抽样，然后根据测量模型对变量进行测定。得到数据。</p>
-</li>
-<li><p>模型参数判别：这时候你已经在amos中绘制好了结构方程模型的图形，图中出现的各个参数需要进行估计，这个过程就是得出各个路径的系数。</p>
-</li>
-<li><p>模型适配：根据得到的模型参数来判断模型是否合适。以后我们会专门介绍如何判断得到的模型是否合适，如果不合适该怎么做，现在你的知识有限，所以我们先不作介绍。这一步如果模型合适就可以进入下一步，如果模型不合适需要返回到第二步重新界定测量模型。</p>
-</li>
-<li><p>假如模型合适，这时候我们需要根据自己的专业知识来对结构方程模型进行解释，得出因果关系。</p>
-</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/amos/">#amos</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1150,6 +1229,18 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/20/Introduction-to-Mediation-Moderation-and-Conditional-Process-Analysis第二版PDF下载/">Introduction to Mediation</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/18/python深入理解print函数/">python深入理解print函数</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
             </li>
             
@@ -1170,23 +1261,11 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/07/05/前端如何检测Chrome-Headless不被爬虫虐/">前端如何检测Chrome-Headless不被爬虫</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/06/29/python解析JavaScript生成语法树并修改之/">python解析JavaScript生成语法树并修</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/26/requests(python)怎样持久化cookies以便复用/">mongodb解决textsearch搜索中文的问</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/25/python文件信息查看和修改/">python文件信息查看和修改</a>
+                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
             </li>
             
         </ul>
@@ -1200,11 +1279,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1213,10 +1292,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1252,15 +1327,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1272,10 +1351,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
@@ -1284,11 +1359,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
+            <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1300,11 +1379,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1312,19 +1395,11 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/process/">process</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1348,6 +1423,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1360,11 +1439,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1376,11 +1459,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1389,18 +1480,6 @@
         
         <span>
             <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/jieba/">jieba</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
         </span>
         
         <span>
@@ -1416,6 +1495,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jieba/">jieba</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/dataframe/">dataframe</a>
         </span>
         
@@ -1424,11 +1515,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -1444,14 +1535,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
@@ -1464,11 +1547,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/logging/">logging</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1477,6 +1560,10 @@
         
         <span>
             <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1492,6 +1579,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/logging/">logging</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pil/">pil</a>
         </span>
         
@@ -1500,7 +1595,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/print/">print</a>
         </span>
         
         <span>
@@ -1512,11 +1607,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -1528,14 +1631,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
@@ -1544,7 +1639,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/cron/">cron</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1552,11 +1655,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/requests/">requests</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/cookies/">cookies</a>
+            <a class="footer-post" href="/tags/cron/">cron</a>
         </span>
         
         <span>
@@ -1565,10 +1664,6 @@
         
         <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1581,22 +1676,6 @@
         
         <span>
             <a class="footer-post" href="/tags/3djs/">3djs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
     </ul>

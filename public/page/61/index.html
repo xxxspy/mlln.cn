@@ -169,6 +169,15 @@
         </a>
     </div>
 </header>
+<div class="page_list archive-container">
+        
+    <div class="archive-post" style="opacity: 1;">
+        <a href="/guideToPython/">
+            推荐书: Python开发最佳实践
+        </a>
+    </div>
+    
+</div>
 
     <!-- Main Content -->
     <div class="row">
@@ -181,6 +190,12 @@
     </h3>
     <div class="page_list archive-container">
         
+            <div class="archive-post">
+                <a href="/2019/08/18/python深入理解print函数/">
+                    python深入理解print函数
+                </a>
+            </div>
+            
             <div class="archive-post">
                 <a href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">
                     python中logging模块的error和exception的区别和最佳实践
@@ -202,12 +217,6 @@
             <div class="archive-post">
                 <a href="/2019/07/10/pychrome安装和入门/">
                     pychrome安装和入门
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/06/29/python解析JavaScript生成语法树并修改之/">
-                    python解析JavaScript生成语法树并修改之
                 </a>
             </div>
             
@@ -272,8 +281,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-1：梯度下降法/">
-                    李宏毅机器学习教程3-1：梯度下降法
+                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
+                    李宏毅机器学习教程01:机器学习简介
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
@@ -284,14 +299,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
-                    李宏毅机器学习教程17：深度生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -365,14 +374,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
-                    李宏毅机器学习教程18：无监督生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
-                    李宏毅机器学习教程21-2：循环神经网络
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
+                    李宏毅机器学习教程10：卷积神经网络
                 </a>
             </div>
             
@@ -428,6 +437,238 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/02/01/pandas教程：[13]agg分组多种计算/">
+                pandas教程：[13]agg分组多种计算
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年02月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>有时候aggregate不能满足需求，因为我们要对分组数据进行多种计算，比如要同时计算各组数据的平均数、标准差、总数等等，这时候用agg()就比较好了。</p>
+<ul>
+<li>先引入必要的变量，并且创建一个DataFrame<br>我们可以看一下DataFrame包含哪些数据</li>
+</ul>
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/246cca2a2834349b2ee45d93caea15ce37d3be82.jpg" title="pandas教程：[13]agg分组多种计算">
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/2f9cbdcc7cd98d1052363f27223fb80e7aec9082.jpg" title="pandas教程：[13]agg分组多种计算">
+<ul>
+<li>按照颜色将数据分组：</li>
+</ul>
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/77485536acaf2eddecc67bff8e1001e9390193b5.jpg" title="pandas教程：[13]agg分组多种计算">
+<ul>
+<li>计算各组数据的总数、平均数、标准差<br>计算结果为：</li>
+</ul>
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/027a45b5c9ea15ce070cd31fb5003af33b87b282.jpg" title="pandas教程：[13]agg分组多种计算">
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/00a82701213fb80e2c3352c135d12f2eb8389482.jpg" title="pandas教程：[13]agg分组多种计算">
+<ul>
+<li>假如我们只需要对a列数据进行计算，可以选择a列：<br>计算结果为：</li>
+</ul>
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/3792cb39b6003af30f58ef76362ac65c1138b682.jpg" title="pandas教程：[13]agg分组多种计算">
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/ae10eddeb48f8c54ffe4f73939292df5e0fe7fb5.jpg" title="pandas教程：[13]agg分组多种计算">
+<ul>
+<li>假如我们需要定制显示的标题，也可以如此设置：<br>输出结果为：</li>
+</ul>
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/c71d0e385343fbf28ece9535b37eca8064388f82.jpg" title="pandas教程：[13]agg分组多种计算">
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/9a1151c2d56285358502e13793ef76c6a6ef6382.jpg" title="pandas教程：[13]agg分组多种计算">
+<ul>
+<li>另外，我们还可以通过lambda匿名函数来进行特殊的计算：<br>计算各组数据的绝对值的平均数（离均差）：</li>
+</ul>
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/b87985504fc2d562db3fe2fbe41190ef76c66cb5.jpg" title="pandas教程：[13]agg分组多种计算">
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/e49cf91190ef76c6c330c83d9e16fdfaae516782.jpg" title="pandas教程：[13]agg分组多种计算">
+<ul>
+<li>我们还可以使用字符串作为一个function，要正确使用字符串，必须先学习groupby对象有哪些可用的方法。这种方式可以实现一些更高级的功能，比如定制计算方法，不建议新手使用。<br>计算结果为：</li>
+</ul>
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/ac754782b2b7d0a2452b378bc8ef76094a369a82.jpg" title="pandas教程：[13]agg分组多种计算">
+<img src="/2015/02/01/pandas教程：[13]agg分组多种计算/9319cf09b3de9c82ae52cb996f81800a19d843b5.jpg" title="pandas教程：[13]agg分组多种计算">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/">
+                Excel2013：[46]如何绘制半圆饼图
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年01月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>很多时候需要美化你的图表这样才能让人感觉你是一个有创意的员工，是一个对工作有激情的员工。额。。好吧，其实这句话我也不信，但信不信由你，我现在开始讲如何绘制一个半圆的饼图。</p>
+<ul>
+<li>先来看一下我的数据，下面要对这些数据绘制半圆饼图；先选中这些数据</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/245e8bcad1c8a786a48d52616509c93d71cf50fe.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>在插入一个饼图</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/eab9044c510fd9f9d6a84d06272dd42a2934a4e6.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>这里是自动生成的一个饼图</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/61183b2dd42a283432192e6459b5c9ea14cebfe6.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>点击两次半圆的【总计】部分，选中它，然后右键单击它，选择填充【白色】</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/3a86813df8dcd100cc3be04e708b4710b8122ffe.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>好了，半圆饼图的雏形已经有了，我们接着要删除【总计】这个标签了。</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/bbe0d311728b4710c388e5a3c1cec3fdfd0323fe.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>右键单击饼图，然后我们在这里可以看到有一个【设置图表区域格式】</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/1a94b36eddc451da0a7c1484b4fd5266d1163293.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>如何旋转饼图：来到这里，设置系列选项，我们设置第一扇区起始角度为270</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/4651a712c8fcc3cebe67d15c9045d688d53f20fe.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>看一下这一步我们的效果喽</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/b853d6fcc3cec3fd8299bf1ad488d43f869427fe.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>如果你给它添加上标签会更好看</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/b74124f33a87e95024a8eb0312385343faf2b4e6.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>接着可以再设置一下数据标签格式，也是在右键菜单中</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/d7c9ca3f8794a4c2f984ff440cf41bd5ac6e39fe.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>在打开的选项中，我们设置为【值】而不是【百分比】，因为百分比是错误的百分比呀！</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/c71d0e385343fbf2a493be4cb27eca8064388fe6.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<ul>
+<li>最终的效果就是它了。</li>
+</ul>
+<img src="/2015/01/23/Excel2013：[46]如何绘制半圆饼图/5202e5f2b2119313a8fce7df67380cd790238de6.jpg" title="Excel2013：[46]如何绘制半圆饼图">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/01/19/Django教程：[2]创建一个站点/">
+                Django教程：[2]创建一个站点
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年01月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>上一篇文章我们安装了django，并测试成功；今天我们就要使用django创建一个站点，创建完成以后你就发现，一个最简单的网站已经制作完毕，我们接下来的任务就是在这个站点的基础上进行开发。下面是创建站点（工程）的具体方法：</p>
+<ul>
+<li>按下快捷键win+r，打开运行窗口，输入cmd，按下回车键，打开命令窗口</li>
+</ul>
+<img src="/2015/01/19/Django教程：[2]创建一个站点/3792cb39b6003af3717c1819372ac65c1138b642.jpg" title="Django教程：[2]创建一个站点">
+<ul>
+<li>我们将当前目录定位到你想要存放网站的目录，比如我想要放到D盘下的website文件夹中，我们输入命令：cd /d d:\website</li>
+</ul>
+<img src="/2015/01/19/Django教程：[2]创建一个站点/718e25c79f3df8dc612a48e8cf11728b47102871.jpg" title="Django教程：[2]创建一个站点">
+<ul>
+<li>在该目录下，我们输入命令来创建站点：django-admin.py startproject djangoweb；其中最后一个参数djangoweb就是我给我的站点起的名字，该命令将在当前目录下创建一个文件夹，该文件夹命名为django；我的命令出现了错误，因为我之前已经创建好了一个站点</li>
+</ul>
+<img src="/2015/01/19/Django教程：[2]创建一个站点/b853d6fcc3cec3fd4529600cd488d43f87942771.jpg" title="Django教程：[2]创建一个站点">
+<ul>
+<li>我们可以看到这个文件夹已经创建了，我们打开文件夹看看有什么内容</li>
+</ul>
+<img src="/2015/01/19/Django教程：[2]创建一个站点/389aa8fd5266d016c20e5951952bd40735fa3571.jpg" title="Django教程：[2]创建一个站点">
+<ul>
+<li>有一个py文件和一个文件夹，继续打开文件夹</li>
+</ul>
+<img src="/2015/01/19/Django教程：[2]创建一个站点/0b14ad19ebc4b745a86c706fcdfc1e178b821594.jpg" title="Django教程：[2]创建一个站点">
+<ul>
+<li>在这个文件夹内有四个文件，如图所示。这么简单的几个文件实际上已经构成了一个站点，下一篇文章我们介绍如何启动服务器，让你在浏览器看到自己的站点。</li>
+</ul>
+<img src="/2015/01/19/Django教程：[2]创建一个站点/ac0acf1373f082028785564649fbfbedab641b71.jpg" title="Django教程：[2]创建一个站点">
+<ul>
+<li>下面的参考资料可能会对你学习django有用</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/django/">#django</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -939,231 +1180,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/01/11/DataNitro：[11]自动换行/">
-                DataNitro：[11]自动换行
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年01月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>本篇文章原创于《百度经验》，如果转载此文章，需要注明出处、链接地址和作者名称，否则侵权。</p>
-<ul>
-<li>我们知道只要点击这里就可以实现自动换行</li>
-</ul>
-<img src="/2015/01/11/DataNitro：[11]自动换行/d4239b35e5dde71132ecb0b4a4efce1b9d166173.jpg" title="DataNitro：[11]自动换行">
-<ul>
-<li>换行后就会实现这个效果：</li>
-</ul>
-<img src="/2015/01/11/DataNitro：[11]自动换行/a992e31f4134970afe44e36d96cad1c8a7865d7a.jpg" title="DataNitro：[11]自动换行">
-<ul>
-<li>但是现在我们需要使用datanitro来实现这个效果，而在datanitro里面没有直接的模块可以用，这时候我们想到用vba，在vbe里面的vba1模块里，写入一个过程：wraptext</li>
-</ul>
-<img src="/2015/01/11/DataNitro：[11]自动换行/8367d1fc1e178a82a3268de2f503738da977e81f.jpg" title="DataNitro：[11]自动换行">
-<ul>
-<li>接着，我们打开Python shell</li>
-</ul>
-<img src="/2015/01/11/DataNitro：[11]自动换行/ae10eddeb48f8c543f78376d39292df5e1fe7f8e.jpg" title="DataNitro：[11]自动换行">
-<ul>
-<li>写入如下代码，然后按下回车，注意参数是vba过程的名称</li>
-</ul>
-<img src="/2015/01/11/DataNitro：[11]自动换行/245e8bcad1c8a7861beeb84c6409c93d71cf5069.jpg" title="DataNitro：[11]自动换行">
-<ul>
-<li>这样就实现了自动换行</li>
-</ul>
-<img src="/2015/01/11/DataNitro：[11]自动换行/245e8bcad1c8a786182cb74c6409c93d70cf502b.jpg" title="DataNitro：[11]自动换行">
-<ul>
-<li>再运行一遍，就可以回到没有自动换行的状态。</li>
-</ul>
-<img src="/2015/01/11/DataNitro：[11]自动换行/373bc4b44aed2e73acd67b6e8401a18b87d6fa72.jpg" title="DataNitro：[11]自动换行">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/datanitro/">#datanitro</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/01/11/Python教程：[18]urlparse模块/">
-                Python教程：[18]urlparse模块
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年01月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>使用urlparse模块可以对url进行分析，最主要的操作就是拆分和合并url的各个部件，那么url有哪些部件呢？下图列出了所有的部件。你可能不太理解，不要着急，我们在例子中看看每个部分都代表着什么。</p>
-<ul>
-<li>引入urlparse模块，这里只引入了urlparse方法，如果你想要用所有的方法，你需要import urlparse</li>
-</ul>
-<img src="/2015/01/11/Python教程：[18]urlparse模块/d7c9ca3f8794a4c23abdb8070cf41bd5ac6e39c4.jpg" title="Python教程：[18]urlparse模块">
-<ul>
-<li>我们将下面的url地址进行拆解，将拆解的结果存放到parsed中</li>
-</ul>
-<img src="/2015/01/11/Python教程：[18]urlparse模块/f7426d8da9773912cd4fda4dfa198618367ae276.jpg" title="Python教程：[18]urlparse模块">
-<ul>
-<li>之后，我们通过parsed的各个属性来访问不同的部分</li>
-</ul>
-<img src="/2015/01/11/Python教程：[18]urlparse模块/d5462bfae6cd7b89c4f265af0d2442a7d8330ec4.jpg" title="Python教程：[18]urlparse模块">
-<ul>
-<li>我们看最后输出的结果：通过这样的方法我们可以快速的对url进行操作</li>
-</ul>
-<img src="/2015/01/11/Python教程：[18]urlparse模块/834344afa40f4bfb934ec178014f78f0f63618c4.jpg" title="Python教程：[18]urlparse模块">
-<ul>
-<li><p>所有的源码都写在下面：</p>
-</li>
-<li><p>from urlparse import urlparse</p>
-</li>
-<li><p>parsed = urlparse(‘url地址’)</p>
-</li>
-<li><p>print ‘scheme  :’+ parsed.scheme   #网络协议</p>
-</li>
-<li><p>print ‘netloc  :’+ parsed.netloc   #服务器位置（也可呢能有用户信息）</p>
-</li>
-<li><p>print ‘path    :’+ parsed.path     #网页文件在服务器中存放的位置</p>
-</li>
-<li><p>print ‘params  :’+ parsed.params   #可选参数</p>
-</li>
-<li><p>print ‘query   :’+ parsed.query    #连接符（&amp;）连接键值对</p>
-</li>
-<li><p>print ‘fragment:’+ parsed.fragment #拆分文档中的特殊猫</p>
-</li>
-<li><p>print ‘username:’+ parsed.username #用户名</p>
-</li>
-<li><p>print ‘password:’+ parsed.password #密码</p>
-</li>
-<li><p>print ‘hostname:’+ parsed.hostname #服务器名称或者地址</p>
-</li>
-<li><p>print ‘port    :’, parsed.port     #端口（默认是80</p>
-</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/01/05/spss交叉设计如何进行方差分析/">
-                spss交叉设计如何进行方差分析
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年01月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>交叉设计是自身配对基础上发展的设计方法，是一种特殊的自身对照设计，通常的设计方案为被试分为两组，一组接受实验的顺序是AB，一组接受的实验顺序是BA，这样就形成了对照，这样的设计如何进行方差分析呢？下面是具体的方法：<br>工具/原料</p>
-<ul>
-<li>spss20.0<br>方法/步骤</li>
-</ul>
-<ul>
-<li>首先要明白数据的录入方式，如图所示，stage就是接受条件AB的阶段</li>
-</ul>
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/f603918fa0ec08faab3c106659ee3d6d55fbda37.jpg" title="spss交叉设计如何进行方差分析">
-<ul>
-<li>在菜单栏上执行：analyse–GLM–univariate，打开方差分析对话框</li>
-</ul>
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/b8014a90f603738d79ee0fe3b31bb051f919ec4f.jpg" title="spss交叉设计如何进行方差分析">
-<ul>
-<li>将自变量和因变量放入格子的框中，点击model按钮，开始设置模型</li>
-</ul>
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/e1fe9925bc315c605105682e8db1cb134854775a.jpg" title="spss交叉设计如何进行方差分析">
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/024f78f0f736afc3b8283da4b319ebc4b64512ce.jpg" title="spss交叉设计如何进行方差分析">
-<ul>
-<li>勾选“custom”，然后将三个变量放入右侧的模型框中</li>
-</ul>
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/03087bf40ad162d91cef60dd11dfa9ec8b13cdea.jpg" title="spss交叉设计如何进行方差分析">
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/63d0f703918fa0ecf0c666cc269759ee3c6ddbea.jpg" title="spss交叉设计如何进行方差分析">
-<ul>
-<li>将type设置为maineffect，意思是没有交互作用，回到主菜单，点击ok</li>
-</ul>
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/80cb39dbb6fd526675313ed5ab18972bd50736dc.jpg" title="spss交叉设计如何进行方差分析">
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/34fae6cd7b899e51a19438d542a7d933c9950ddc.jpg" title="spss交叉设计如何进行方差分析">
-<ul>
-<li>我们看到输出的结果，治疗方案treat边缘显著，但是质量的顺序stage是不显著的，判断标准就是sig值</li>
-</ul>
-<img src="/2015/01/05/spss交叉设计如何进行方差分析/7dd98d1001e9390164138fff7bec54e737d196d9.jpg" title="spss交叉设计如何进行方差分析">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1205,6 +1221,18 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/20/Introduction-to-Mediation-Moderation-and-Conditional-Process-Analysis第二版PDF下载/">Introduction to Mediation</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/18/python深入理解print函数/">python深入理解print函数</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
             </li>
             
@@ -1225,23 +1253,11 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/07/05/前端如何检测Chrome-Headless不被爬虫虐/">前端如何检测Chrome-Headless不被爬虫</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/06/29/python解析JavaScript生成语法树并修改之/">python解析JavaScript生成语法树并修</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/26/requests(python)怎样持久化cookies以便复用/">mongodb解决textsearch搜索中文的问</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/25/python文件信息查看和修改/">python文件信息查看和修改</a>
+                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
             </li>
             
         </ul>
@@ -1255,11 +1271,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1268,10 +1284,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1307,15 +1319,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1327,10 +1343,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
@@ -1339,11 +1351,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
+            <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1355,11 +1371,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1367,19 +1387,11 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/process/">process</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1403,6 +1415,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1415,11 +1431,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1431,11 +1451,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1444,18 +1472,6 @@
         
         <span>
             <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/jieba/">jieba</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
         </span>
         
         <span>
@@ -1471,6 +1487,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jieba/">jieba</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/dataframe/">dataframe</a>
         </span>
         
@@ -1479,11 +1507,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -1499,14 +1527,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
@@ -1519,11 +1539,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/logging/">logging</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1532,6 +1552,10 @@
         
         <span>
             <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1547,6 +1571,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/logging/">logging</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pil/">pil</a>
         </span>
         
@@ -1555,7 +1587,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/print/">print</a>
         </span>
         
         <span>
@@ -1567,11 +1599,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -1583,14 +1623,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
@@ -1599,7 +1631,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/cron/">cron</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1607,11 +1647,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/requests/">requests</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/cookies/">cookies</a>
+            <a class="footer-post" href="/tags/cron/">cron</a>
         </span>
         
         <span>
@@ -1620,10 +1656,6 @@
         
         <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1636,22 +1668,6 @@
         
         <span>
             <a class="footer-post" href="/tags/3djs/">3djs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
     </ul>

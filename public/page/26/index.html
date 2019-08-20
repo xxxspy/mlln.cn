@@ -169,6 +169,15 @@
         </a>
     </div>
 </header>
+<div class="page_list archive-container">
+        
+    <div class="archive-post" style="opacity: 1;">
+        <a href="/guideToPython/">
+            推荐书: Python开发最佳实践
+        </a>
+    </div>
+    
+</div>
 
     <!-- Main Content -->
     <div class="row">
@@ -181,6 +190,12 @@
     </h3>
     <div class="page_list archive-container">
         
+            <div class="archive-post">
+                <a href="/2019/08/18/python深入理解print函数/">
+                    python深入理解print函数
+                </a>
+            </div>
+            
             <div class="archive-post">
                 <a href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">
                     python中logging模块的error和exception的区别和最佳实践
@@ -202,12 +217,6 @@
             <div class="archive-post">
                 <a href="/2019/07/10/pychrome安装和入门/">
                     pychrome安装和入门
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/06/29/python解析JavaScript生成语法树并修改之/">
-                    python解析JavaScript生成语法树并修改之
                 </a>
             </div>
             
@@ -272,8 +281,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程3-1：梯度下降法/">
-                    李宏毅机器学习教程3-1：梯度下降法
+                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
+                    李宏毅机器学习教程01:机器学习简介
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
+                    李宏毅机器学习教程11：为什么使用深度网络
                 </a>
             </div>
             
@@ -284,14 +299,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程17：深度生成模型/">
-                    李宏毅机器学习教程17：深度生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
@@ -365,14 +374,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程18：无监督生成模型/">
-                    李宏毅机器学习教程18：无监督生成模型
+                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
+                    李宏毅机器学习教程21-2：循环神经网络
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程21-2：循环神经网络/">
-                    李宏毅机器学习教程21-2：循环神经网络
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
+                    李宏毅机器学习教程10：卷积神经网络
                 </a>
             </div>
             
@@ -428,6 +437,234 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/09/23/Python统计分析：[7]混合设计的方差分析/">
+                Python统计分析：[7]混合设计的方差分析
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年09月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>混合设计的方差分析就是既有组内变量又有组间变量的方差分析。想要进行这样的方差分析，如果还是用python.statsmodels就不太方便了，因此用到了Python的另一个还比较年轻的统计包pyvttbl,它对anova的支持更全面，使用也更方便，这里我们就看看如何用pyvttbl来实现混合设计的方差分析。</p>
+<ul>
+<li>引入DataFrame对象，注意此Dataframe不是pandas.DataFrame</li>
+</ul>
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/cebd00178a82b90162ea4c4f708da9773812efcc.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<ul>
+<li>读取数据</li>
+</ul>
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/b8405490f603738d820d835eb01bb051f919eccc.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<ul>
+<li>我们看一下pyvttbl.DataFrame的结构，有一个变量是必须的——SUBJECT，也就是被试编号，同一个被试有相同的编号，这是我们必须提供的，否则在后面的分析中会出错。</li>
+</ul>
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/373bc4b44aed2e73beae09508401a18b86d6facc.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<ul>
+<li>我们用anova方法进行混合设计的方差分析，需要制定因变量score，组间变量group，组内变量test</li>
+</ul>
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/2f3295d4b31c870199f13d9a247f9e2f0608ffcc.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<ul>
+<li>打印出来的结果有很多，首先看组间效应的检验，group的F和sig值<br>与此相对应，我们输出spss中的结果</li>
+</ul>
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/9f6e190828381f30d65e02d5aa014c086f06f0cc.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/5beeba0f4bfbfbedb3cbb9037bf0f736aec31ff8.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<ul>
+<li>接着是组间效应的检验，包括交互效应<br>以下是spss中的输出结果</li>
+</ul>
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/8367d1fc1e178a829eaef0dcf503738da877e8f9.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/4bd1e803738da97715bd0957b351f8198718e3f9.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<ul>
+<li>最后是边际均值</li>
+</ul>
+<img src="/2016/09/23/Python统计分析：[7]混合设计的方差分析/8759287adab44aed1adc3198b01c8701a08bfbf9.jpg" title="Python统计分析：[7]混合设计的方差分析">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/09/23/spss如何使用K-S进行正态性检验/">
+                spss如何使用K-S进行正态性检验
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年09月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>在对数据进行t检验或者f检验之前需要让数据满足正态性的要求，所以应该对数据进行正态性检验，检验正态性的方法中，K-S检验是最普遍的方法之一，下面我们就来具体的操作一下图和进行K-S检验。<br>方法/步骤</p>
+<ul>
+<li>我拿到数据以后，先要在spss中组织数据，如图所示，第一列变量是我们要检验是否为正态的变量，第二列是数据的分组，即他们的组号。有的时候你的数据没有分组，也就是只有一个组，那就没有必要写group列了</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/c2cec3fdfc0392458db6a68a8794a4c27d1e2537.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>为了分别检验每个分组的数据是否符合正态分布，我们要先将各个组分离（如果你的数据只有一个组那就没必要进行这一步了），如图所示在菜单栏上执行：data—split file</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/71cf3bc79f3df8dc8133c814cd11728b4710282c.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>勾选【organize output by groups】，它的意思是分组呈现变量结果，将分组情况这个变量添加到group based on中，点击ok按钮</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/d000baa1cd11728b1323cba7c8fcc3cec3fd2c2c.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>接着要对正太性进行检验了，我们在菜单栏上执行：analyze–nonparametric—one sample</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/80cb39dbb6fd5266ba287b91ab18972bd4073637.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>切换到fileds这个选项，然后将你要检验的变量放到右侧的text fields中</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/9345d688d43f8794faf10fabd21b0ef41bd53a2c.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>切换到settings选项，然后点击【choose test】，勾选右侧的K-S检验，如图所示。然后点击下方的options</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/0ff41bd5ad6eddc434e9f37e39dbb6fd5266332c.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>打开如图所示的对话框，我们将normal这个选项勾选，因为没有已知的正太分布的参数，所以选择use sample data，点击ok</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/dcc451da81cb39dbdece20d3d0160924ab18302c.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>切换到text options 设置显著性水平，如图所示，一般为0.05或者0.01</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/72f082025aafa40f34c58958ab64034f78f01937.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li>点击run，你就会看到数据处理的结果了</li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/ac4bd11373f08202279cd6ba4bfbfbedab641b2c.jpg" title="spss如何使用K-S进行正态性检验">
+<ul>
+<li><p>下面是各个组的检验结果，结果显示的很详细，每个组都没有达到显著水平，接受原假设，即所有的组都是正态分布的。</p>
+</li>
+<li></li>
+</ul>
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/cefc1e178a82b901dbae84b6738da9773912ef30.jpg" title="spss如何使用K-S进行正态性检验">
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/f703738da97739122525c2e4f8198618367ae230.jpg" title="spss如何使用K-S进行正态性检验">
+<img src="/2016/09/23/spss如何使用K-S进行正态性检验/b21bb051f8198618ac44a8014aed2e738bd4e630.jpg" title="spss如何使用K-S进行正态性检验">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/09/19/DataNitro：[6]sheet操作(A)/">
+                DataNitro：[6]sheet操作(A)
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年09月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>今天继续我们的datanitro，讲一讲对sheet的操作，sheet就是工作表（擦！你以为我们不知道啊！），因为内容比较多，我们分为A篇和B篇，看完A篇（A篇听起来很性感），觉得好看再看B篇。</p>
+<ul>
+<li>active_sheet：返回当前活动工作表（当前活动的也就是你正在操作的，鼠标点一下某个sheet就会激活这个sheet）。如果你不传入任何参数，他会返回活动sheet的名称，如果你传入一个sheet名称，就会激活该sheet：</li>
+</ul>
+<img src="/2016/09/19/DataNitro：[6]sheet操作(A)/d5462bfae6cd7b8986cda4d00c2442a7d8330e84.jpg" title="DataNitro：[6]sheet操作(A)">
+<ul>
+<li>display_sheet：展示某个工作表：它的用法和上面一样，传不传参数，它的功能不同，其实datanitro的很多方法都是这样的，你畜类旁通一下，因为很多时候我是不会重复的说这个事情的。</li>
+</ul>
+<img src="/2016/09/19/DataNitro：[6]sheet操作(A)/d5462bfae6cd7b898914a3d00c2442a7d9330e2d.jpg" title="DataNitro：[6]sheet操作(A)">
+<ul>
+<li>clear_row和clear_col：清空某行或者某列：他们可以使用整数、列表、Cell对象CellRange对象作为参数。当使用Cell或者CellRange的时候，他们清空的是这些单元格所在的行或者列</li>
+</ul>
+<img src="/2016/09/19/DataNitro：[6]sheet操作(A)/cdfe7281800a19d863fd1d5630fa828ba71e46ac.jpg" title="DataNitro：[6]sheet操作(A)">
+<ul>
+<li><p>del_row/del_col用法也是同上，顾名思义，删除行或者列。</p>
+</li>
+<li><p>hide_row/hide_col用法稍微不同，顾名思义，隐藏行或者列。可以传入整数、列表，还可以指定隐藏某个特定的工作表中的行。</p>
+</li>
+</ul>
+<img src="/2016/09/19/DataNitro：[6]sheet操作(A)/d66b7e59252dd42aadde98f8003b5bb5c8eab84b.jpg" title="DataNitro：[6]sheet操作(A)">
+<ul>
+<li>row_is_hidded/col_is_hidden：判断某行/列是否被隐藏，如果被隐藏，返回True，否则返回False。只能接受整数作为参数，而是否指定某个工作表是可选的，如果不指定，那么就指的是当前活动的工作表</li>
+</ul>
+<img src="/2016/09/19/DataNitro：[6]sheet操作(A)/86d5bac27d1ed21b0824b7b6ae6eddc450da3fb0.jpg" title="DataNitro：[6]sheet操作(A)">
+<ul>
+<li>insert_row/insert_col：这两个方法你应该亲手测试一下，传入不同的参数看看效果，它可以接受的参数有整数，Cell对象，列表；还可以指定某个工作表。</li>
+</ul>
+<img src="/2016/09/19/DataNitro：[6]sheet操作(A)/c8ab0bce36d3d5393bea96903987e950342ab04b.jpg" title="DataNitro：[6]sheet操作(A)">
+<ul>
+<li>aotofit：设置自动列宽，它有两个可选参数：工作表和CellRange地址</li>
+</ul>
+<img src="/2016/09/19/DataNitro：[6]sheet操作(A)/c71d0e385343fbf224fb3f70b37eca8064388f4b.jpg" title="DataNitro：[6]sheet操作(A)">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/datanitro/">#datanitro</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1010,225 +1247,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/11/wxpython教程：[3]菜单栏/">
-                wxpython教程：[3]菜单栏
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年09月11日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>窗口中通常有菜单栏，菜单栏中包括很多菜单，每一个菜单中包括很多选项，比如一个简单的记事本：里面菜单有：文件、编辑、格式等等。下面我们就来亲手制作一个菜单栏——以便让我们退出程序。</p>
-<ul>
-<li>先看一下我们所有的代码</li>
-</ul>
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/9319cf09b3de9c82072a7ce06f81800a18d843d7.jpg" title="wxpython教程：[3]菜单栏">
-<ul>
-<li>重点要说的首先是这句：创建菜单栏<br>这就是菜单栏：</li>
-</ul>
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/9dc3cf58ccbf6c815978a987bf3eb13532fa40d7.jpg" title="wxpython教程：[3]菜单栏">
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/a75fb6d3fd1f413474788011261f95cad0c85ed7.jpg" title="wxpython教程：[3]菜单栏">
-<ul>
-<li>创建一个菜单<br>这是一个菜单：</li>
-</ul>
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/dbf554ed2e738bd4f348375ea28b87d6277ff931.jpg" title="wxpython教程：[3]菜单栏">
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/948bcfc8a786c917954cd756ca3d70cf3ac757d7.jpg" title="wxpython教程：[3]菜单栏">
-<ul>
-<li>向菜单中添加一个选项：<br>也就是这个选项：</li>
-</ul>
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/1e71f724b899a901005cde591e950a7b0208f531.jpg" title="wxpython教程：[3]菜单栏">
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/72ccb7773912b31b880548468518367adab4e131.jpg" title="wxpython教程：[3]菜单栏">
-<ul>
-<li>现在我们将创建好的菜单添加到菜单栏</li>
-</ul>
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/d57e9994a4c27d1ed368beab18d5ad6edcc438d7.jpg" title="wxpython教程：[3]菜单栏">
-<ul>
-<li>最后，我们将设置好的菜单栏添加到窗口：<br>将菜单中的选项与命令绑定，这样才能在点击选项的时候执行某个动作：<br>到此我们的菜单栏就做好了，运行程序可以看到效果</li>
-</ul>
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/0fb505d5ad6eddc457a931943adbb6fd536633d7.jpg" title="wxpython教程：[3]菜单栏">
-<img src="/2016/09/11/wxpython教程：[3]菜单栏/dc854fda81cb39dbbf8ee239d3160924aa1830d7.jpg" title="wxpython教程：[3]菜单栏">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a> <a href="/tags/wxpython/">#wxpython</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/05/spss单因素重复测量的方差分析操作和解释/">
-                spss单因素重复测量的方差分析操作和解释
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年09月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>方法/步骤</p>
-<ul>
-<li>首先需要整理数据，数据文件结构对重复测量方差分析很重要，一定要把每次测量作为一个变量（把每个实验处理作为一个变量）!!!</li>
-</ul>
-<img src="/2016/09/05/spss单因素重复测量的方差分析操作和解释/4e4a20a4462309f71ed536d0720e0cf3d6cad6be.jpg" title="spss单因素重复测量的方差分析操作和解释">
-<ul>
-<li>在spss中执行：菜单栏–analyse–GLM–repeated measured，打开重复测量对话框</li>
-</ul>
-<img src="/2016/09/05/spss单因素重复测量的方差分析操作和解释/caef76094b36acafe6fa0d3e7cd98d1000e99cde.jpg" title="spss单因素重复测量的方差分析操作和解释">
-<ul>
-<li>我们给变量写入一个名称，这个名称随便填，然后输入变量的水平数，这个要看你的研究了，在我的研究中，变量只有四个水平，所以就填4，如图所示</li>
-</ul>
-<img src="/2016/09/05/spss单因素重复测量的方差分析操作和解释/5d6034a85edf8db13b6fe7a60923dd54574e74ab.jpg" title="spss单因素重复测量的方差分析操作和解释">
-<ul>
-<li>点击add按钮，将变量添加到下面的框，然后点击define按钮，打开一个新的对话框</li>
-</ul>
-<img src="/2016/09/05/spss单因素重复测量的方差分析操作和解释/c8177f3e6709c93d607d95359f3df8dcd0005460.jpg" title="spss单因素重复测量的方差分析操作和解释">
-<ul>
-<li>将四个水平的变量放入右侧的框中，然后点击ok，开始处理数据</li>
-</ul>
-<img src="/2016/09/05/spss单因素重复测量的方差分析操作和解释/7acb0a46f21fbe09fcd458d66b600c338644ad6e.jpg" title="spss单因素重复测量的方差分析操作和解释">
-<ul>
-<li>我们要看的第一个表格是球星检验的结果，如果sig值大于0.05，就认为符合球星检验</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/">
-                Excel2013：[34]禁止复制隐藏单元格
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年09月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>如图所示，假如我隐藏了B列，而A咧和C列是可以选中的，那么我们复制A:C就可以将ABC三列复制下来，那么隐藏的单元格也就暴露了。所以今天我教给大家两个方法保护工作表，都可以防止复制。</p>
-<ul>
-<li>将需要隐藏的单元格先隐藏，这里就省略了隐藏的过程，然后我们点击菜单上的：审阅–保护工作表</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/8c511fe93901213f7a53e0a056e736d12f2e952f.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li>输入密码，勾选前两个选项，然后点击确定按钮。</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/8697397f9e2f0708757e847ceb24b899a901f210.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li>提示你重新输入密码，重新输入密码，点击确定按钮</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/91ae68c6a7efce1b4f4b66b6ad51f3deb48f652f.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li><p>当别人尝试复制你的Excel的时候就会看到无法选中你的单元格，也就无法取消隐藏的单元格。</p>
-</li>
-<li><p>先选中所有单元格</p>
-</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/4bd1e803738da97775542857b251f8198618e310.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li>按下快捷键Ctrl+1，打开【设置单元格格式】对话框，切换到【保护】标签，取消这两个选项，点击确定</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/8759287adab44aed7a351098b11c8701a18bfb10.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li>接着，我们将B列移动到A列，方法是：剪切B列，然后在A列上右键单击，选择【插入复制的列】，这样B列就移动到了A第一列，这很重要，我们这一步的关键点就是：【将要隐藏的列移动到第一列（A列）】。。。</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/1cd4147b02087bf46297f995f0d3572c11dfcf10.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li><p>选中A列，按下快捷键Ctrl+1，打开【设置单元格格式】对话框，切换到【保护】标签，勾选【锁定】和【隐藏】，点击确定</p>
-</li>
-<li><p>隐藏A列：右键单击A列，然后选择【隐藏】</p>
-</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/a005b3345982b2b7622e91b833adcbef77099bde.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li>接着我们保护一下工作表，点击【保护工作表】</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/4e83cb628535e5dd2d240ea374c6a7efce1b6207.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li>输入密码，记得勾选下面的前两项，点击确定按钮。</li>
-</ul>
-<img src="/2016/09/05/Excel2013：[34]禁止复制隐藏单元格/ae10eddeb48f8c5441db6e5338292df5e0fe7f07.jpg" title="Excel2013：[34]禁止复制隐藏单元格">
-<ul>
-<li>现在已经完成了设置，别人无法复制隐藏的第一列数据，可以修改编辑复制其他列数据。如果你打算隐藏的数据不仅仅是一列还有很多列，你可以将所有隐藏列放到表格的最前面，然后隐藏、在保护单元格。这样最前面隐藏的单元格都是无法被选中的，也即是无法被复制查看修改的。</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1270,6 +1288,18 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/20/Introduction-to-Mediation-Moderation-and-Conditional-Process-Analysis第二版PDF下载/">Introduction to Mediation</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/18/python深入理解print函数/">python深入理解print函数</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
             </li>
             
@@ -1290,23 +1320,11 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2019/07/05/前端如何检测Chrome-Headless不被爬虫虐/">前端如何检测Chrome-Headless不被爬虫</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/06/29/python解析JavaScript生成语法树并修改之/">python解析JavaScript生成语法树并修</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/26/requests(python)怎样持久化cookies以便复用/">mongodb解决textsearch搜索中文的问</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/06/25/python文件信息查看和修改/">python文件信息查看和修改</a>
+                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
             </li>
             
         </ul>
@@ -1320,11 +1338,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
         </span>
         
         <span>
@@ -1333,10 +1351,6 @@
         
         <span>
             <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1372,15 +1386,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/django/">django</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
+            <a class="footer-post" href="/tags/EM/">EM</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/EM/">EM</a>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
         </span>
         
         <span>
@@ -1392,10 +1410,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
@@ -1404,11 +1418,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
+            <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1420,11 +1438,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1432,19 +1454,11 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/process/">process</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1468,6 +1482,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/electron/">electron</a>
         </span>
         
@@ -1480,11 +1498,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1496,11 +1518,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
         </span>
         
         <span>
@@ -1509,18 +1539,6 @@
         
         <span>
             <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/jieba/">jieba</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
         </span>
         
         <span>
@@ -1536,6 +1554,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jieba/">jieba</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/dataframe/">dataframe</a>
         </span>
         
@@ -1544,11 +1574,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
@@ -1564,14 +1594,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
@@ -1584,11 +1606,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/logging/">logging</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
@@ -1597,6 +1619,10 @@
         
         <span>
             <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1612,6 +1638,14 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/logging/">logging</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/pil/">pil</a>
         </span>
         
@@ -1620,7 +1654,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
+            <a class="footer-post" href="/tags/print/">print</a>
         </span>
         
         <span>
@@ -1632,11 +1666,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
         </span>
         
         <span>
@@ -1648,14 +1690,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/svd/">svd</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pca/">pca</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
         </span>
         
@@ -1664,7 +1698,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/cron/">cron</a>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
         </span>
         
         <span>
@@ -1672,11 +1714,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/requests/">requests</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/cookies/">cookies</a>
+            <a class="footer-post" href="/tags/cron/">cron</a>
         </span>
         
         <span>
@@ -1685,10 +1723,6 @@
         
         <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1701,22 +1735,6 @@
         
         <span>
             <a class="footer-post" href="/tags/3djs/">3djs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/synaptic/">synaptic</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/决策树/">决策树</a>
         </span>
         
     </ul>
