@@ -442,6 +442,152 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/01/15/SPSS自动化：[3]结果输出文档对象的属性/">
+                SPSS自动化：[3]结果输出文档对象的属性
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年01月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <ul>
+<li><p>1&gt;designated属性</p>
+</li>
+<li><p>2&gt;height 和width属性</p>
+</li>
+<li><p>3&gt;items属性</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Dim objoutputdoc as ispssoutputdoc</p>
+</li>
+<li><p>Set objoutputdoc=objspssapp.getgesignatedoutputdoc           ‘声明变量并获取指定的输出文档。</p>
+</li>
+<li><p>Dim objoutputitems as ispssitems</p>
+</li>
+<li><p>Dim objoutputitem as ispssitem</p>
+</li>
+<li><p>Set objoutputitems=objoutputdoc.items         ‘声明并获取项目对象</p>
+</li>
+<li><p>Dim intcount as integer</p>
+</li>
+<li><p>Dim strtype() as string</p>
+</li>
+<li><p>Intcount=objoutputitems.count</p>
+</li>
+<li><p>Redim strtype(intcount)</p>
+</li>
+<li><p>For i=0 to count-1</p>
+</li>
+<li><p>Objoutputitem=objoutputitems.getitem(i)</p>
+</li>
+<li><p>Strtype(i)=objoutputitem.spsstype</p>
+</li>
+<li><p>Next I</p>
+</li>
+<li><p>4&gt;label属性：返回或者设置某个输出项的标签</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Dim objoutputdoc as ispssoutputdoc</p>
+</li>
+<li><p>Set objoutputdoc=objspssapp.openoutputdoc(“c:\out.spo”)</p>
+</li>
+<li><p>Dim objoutputitems as ispssitems</p>
+</li>
+<li><p>Dim objoutputitem as ispssitem</p>
+</li>
+<li><p>Set objoutputitems=objoutputdoc.items</p>
+</li>
+<li><p>Dim intcount as integer</p>
+</li>
+<li><p>Intcount=objoutputitems.count</p>
+</li>
+<li><p>For i=0 to intcount-1</p>
+</li>
+<li><p>Set objoutputitem=objoutputitems.getitem(i)</p>
+</li>
+<li><p>If objoutputitem.label=’notes’ then</p>
+</li>
+<li><p>Objoutputitem.selected=true</p>
+</li>
+<li><p>Exit for</p>
+</li>
+<li><p>End if</p>
+</li>
+<li><p>Next i</p>
+</li>
+<li><p>5&gt;left和top属性：设置输出文档对象的位置</p>
+</li>
+<li><p>7&gt;outliningtoolbarvisible属性：在输出浏览器窗口中显示或者隐藏外观工具条。</p>
+</li>
+<li><p>用法：objoutputdoc.outliningtoolbarvisible=true</p>
+</li>
+<li><p>8&gt;printoptions属性：返回打印选项对象。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Setobjprintoptions=objoutputdoc.printoptions</p>
+</li>
+<li><p>Objprintoptions.headertext=”str”</p>
+</li>
+<li><p>Objprintoptions.papersize=4</p>
+</li>
+<li><p>Objprintoptions.papersource=1</p>
+</li>
+<li><p>Objprintoptions.startingpagenumber=10  ‘从第十页开始打印</p>
+</li>
+<li><p>Objoutputdoc.printdoc</p>
+</li>
+<li><p>8&gt;splitterpositon属性：返回或者设置分割线的位置。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>objoutputdoc.splitterposition=objoutputdoc.width/2</p>
+</li>
+<li><p>9&gt;standardtoolbarvisible属性：返回或者设置标准工具条的可见性。</p>
+</li>
+<li><p>用法：</p>
+</li>
+<li><p>Objoutputdoc.standardtoolbarvisible=true</p>
+</li>
+<li><p>10&gt;visible属性：可见性。</p>
+</li>
+<li><p>11&gt;windowstate属性：窗口状态属性。</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/01/11/pandas教程：[4]Dataframe筛选数据/">
                 pandas教程：[4]Dataframe筛选数据
             </a>
@@ -703,75 +849,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2016/01/03/spss20.0安装和破解方法【附许可证】/">
-                spss20.0安装和破解方法【附许可证】
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年01月03日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>#####该方法已经失效#####大家不要骂街####<br>方法/步骤</p>
-<ul>
-<li>下一步</li>
-</ul>
-<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/7c1ed21b0ef41bd597c8467751da81cb38db3d9d.jpg" title="spss20.0安装和破解方法【附许可证】">
-<ul>
-<li>准备安装</li>
-</ul>
-<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/f636afc379310a55ecdf7077b74543a9832610bd.jpg" title="spss20.0安装和破解方法【附许可证】">
-<ul>
-<li>下一步</li>
-</ul>
-<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/0bd162d9f2d3572c9d19325f8a13632763d0c3be.jpg" title="spss20.0安装和破解方法【附许可证】">
-<ul>
-<li>下一步</li>
-</ul>
-<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/3c6d55fbb2fb4316f1e4d4f920a4462308f7d3be.jpg" title="spss20.0安装和破解方法【附许可证】">
-<ul>
-<li>因为我们一般使用的就是中文，</li>
-</ul>
-<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/5ab5c9ea15ce36d36b9f2db33af33a87e850b19e.jpg" title="spss20.0安装和破解方法【附许可证】">
-<ul>
-<li>。点击图中所示按钮</li>
-</ul>
-<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/c75c10385343fbf27ad708a0b07eca8064388fbe.jpg" title="spss20.0安装和破解方法【附许可证】">
-<ul>
-<li>继续</li>
-</ul>
-<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/4ec2d5628535e5dd0ab70b5c76c6a7efcf1b629e.jpg" title="spss20.0安装和破解方法【附许可证】">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2016/01/03/怎样将excel中的联系人导入到邮箱/">
                 怎样将excel中的联系人导入到邮箱
             </a>
@@ -848,6 +925,75 @@
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
             <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/01/03/spss20.0安装和破解方法【附许可证】/">
+                spss20.0安装和破解方法【附许可证】
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年01月03日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>#####该方法已经失效#####大家不要骂街####<br>方法/步骤</p>
+<ul>
+<li>下一步</li>
+</ul>
+<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/7c1ed21b0ef41bd597c8467751da81cb38db3d9d.jpg" title="spss20.0安装和破解方法【附许可证】">
+<ul>
+<li>准备安装</li>
+</ul>
+<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/f636afc379310a55ecdf7077b74543a9832610bd.jpg" title="spss20.0安装和破解方法【附许可证】">
+<ul>
+<li>下一步</li>
+</ul>
+<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/0bd162d9f2d3572c9d19325f8a13632763d0c3be.jpg" title="spss20.0安装和破解方法【附许可证】">
+<ul>
+<li>下一步</li>
+</ul>
+<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/3c6d55fbb2fb4316f1e4d4f920a4462308f7d3be.jpg" title="spss20.0安装和破解方法【附许可证】">
+<ul>
+<li>因为我们一般使用的就是中文，</li>
+</ul>
+<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/5ab5c9ea15ce36d36b9f2db33af33a87e850b19e.jpg" title="spss20.0安装和破解方法【附许可证】">
+<ul>
+<li>。点击图中所示按钮</li>
+</ul>
+<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/c75c10385343fbf27ad708a0b07eca8064388fbe.jpg" title="spss20.0安装和破解方法【附许可证】">
+<ul>
+<li>继续</li>
+</ul>
+<img src="/2016/01/03/spss20.0安装和破解方法【附许可证】/4ec2d5628535e5dd0ab70b5c76c6a7efcf1b629e.jpg" title="spss20.0安装和破解方法【附许可证】">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
         </div>
     
 
@@ -1059,76 +1205,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/10/23/Python教程：[54]matplotlib引用错误/">
-                Python教程：[54]matplotlib引用错误
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年10月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>安装好了matplotlib，但是引入的时候出现问题，无法引用，提示引用错误：ImportError: matplotlib requires pyparsing。然后通过安装pyparsing模块解决了这个问题，为了让大家都解决这个问题，我把我遇到问题描述在这里：</p>
-<ul>
-<li>首先，我用的是exe文件装的matplotlib模块：</li>
-</ul>
-<img src="/2015/10/23/Python教程：[54]matplotlib引用错误/54baacfb43166d2221538a0e442309f79152d2c1.jpg" title="Python教程：[54]matplotlib引用错误">
-<ul>
-<li><p>安装过程没有任何提示错误，但是引用的时候出现问题：提示错误</p>
-</li>
-<li><p>Traceback (most recent call last):</p>
-</li>
-<li><p>File “&lt;pyshell#0&gt;”, line 1, in <module></module></p>
-</li>
-<li><p>import matplotlib</p>
-</li>
-<li><p>File “D:\Python27\lib\site-packages\matplotlib__init__.py”, line 125, in <module></module></p>
-</li>
-<li><p>raise ImportError(“matplotlib requires pyparsing”)</p>
-</li>
-<li><p>ImportError: matplotlib requires pyparsing</p>
-</li>
-<li><p>解决问题的方法是安装pyparsing，用到setuptools，如果你没有安装setuptools，你可以在这里安装：<a href="http://jingyan.baidu.com/article/b907e627dd80df46e7891c2c.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/b907e627dd80df46e7891c2c.html</a></p>
-</li>
-<li><p>接着我们打开命令窗口，输入命令easy_install pyparsing</p>
-</li>
-</ul>
-<img src="/2015/10/23/Python教程：[54]matplotlib引用错误/fc5e5f34970a304ec9993f60d3c8a786c8175cb6.jpg" title="Python教程：[54]matplotlib引用错误">
-<ul>
-<li>接着，我们引入matplotlib，就成功了</li>
-</ul>
-<img src="/2015/10/23/Python教程：[54]matplotlib引用错误/c9bdddcec3fdfc03902a7c22d63f8794a5c2269e.jpg" title="Python教程：[54]matplotlib引用错误">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1170,6 +1246,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/09/05/SEM结构方程模型分析的数据需要至少多少样本量/">SEM结构方程模型分析的数据需要至少多少样本量</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
             </li>
             
@@ -1203,10 +1283,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/05/前端如何检测Chrome-Headless不被爬虫虐/">前端如何检测Chrome-Headless不被爬虫</a>
             </li>
             
         </ul>

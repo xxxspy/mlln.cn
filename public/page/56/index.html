@@ -442,6 +442,135 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/04/19/Excel2013：[59]匹配不同工作表记录/">
+                Excel2013：[59]匹配不同工作表记录
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>如何匹配不同工作表中的记录？假如有多个工作表，第一个工作表作为基本表，用于和其他几个表匹配记录，假如一条记录同时出现在了基本表和其他表中，我们就在基本表中标识出来。怎么实现这个过程？</p>
+<ul>
+<li>首先将Excel文件存为可以执行vba的格式，xlsm格式</li>
+</ul>
+<img src="/2015/04/19/Excel2013：[59]匹配不同工作表记录/caae68094b36acaf906a34eb7fd98d1000e99ce4.jpg" title="Excel2013：[59]匹配不同工作表记录">
+<ul>
+<li>我们利用SN号作为一条记录是否重复的指标，假如两条记录SN号相同，则认为两条记录匹配</li>
+</ul>
+<img src="/2015/04/19/Excel2013：[59]匹配不同工作表记录/d002b34bd11373f0b4cccd88a70f4bfbfaed04f2.jpg" title="Excel2013：[59]匹配不同工作表记录">
+<ul>
+<li>打开开发工具下的visual basic，或者可以按下快捷键alt+F11</li>
+</ul>
+<img src="/2015/04/19/Excel2013：[59]匹配不同工作表记录/7d98931001e93901e5882f2978ec54e737d196e4.jpg" title="Excel2013：[59]匹配不同工作表记录">
+<ul>
+<li>打开vb界面，我们双击 thisworkbook，大概一个代码界面</li>
+</ul>
+<img src="/2015/04/19/Excel2013：[59]匹配不同工作表记录/a54e55fbfbedab643f81efd7f436afc378311ef2.jpg" title="Excel2013：[59]匹配不同工作表记录">
+<ul>
+<li>复制以下代码到代码界面</li>
+</ul>
+<img src="/2015/04/19/Excel2013：[59]匹配不同工作表记录/d019d2bf6c81800aeb562419b23533fa828b4733.jpg" title="Excel2013：[59]匹配不同工作表记录">
+<ul>
+<li>将鼠标光标移动到代码的任意位置，按下快捷键F5即可执行代码，执行结果可见：在第一个工作表的最后一列标志出了某条记录出现在哪一个工作表中，如果所有工作表都没有匹配，则输出无匹配。</li>
+</ul>
+<img src="/2015/04/19/Excel2013：[59]匹配不同工作表记录/f15e24292df5e0fe79922b165f6034a85fdf72e4.jpg" title="Excel2013：[59]匹配不同工作表记录">
+<ul>
+<li>注意基本工作表总是位于最前面。也是Excel认为的第一个工作表，代码总是用第一个表中的数据与其他表中的数据去匹配，匹配成功则输出工作表的名称。</li>
+</ul>
+<img src="/2015/04/19/Excel2013：[59]匹配不同工作表记录/148f28d3d539b600985ba2a0ea50352ac75cb7d5.jpg" title="Excel2013：[59]匹配不同工作表记录">
+<ul>
+<li><p>本教程用到的代码：复制可用。</p>
+</li>
+<li><p>Sub pipei()</p>
+</li>
+<li><p>Set d = CreateObject(“scripting.dictionary”)</p>
+</li>
+<li><p>For i = 2 To Worksheets.Count</p>
+</li>
+<li><p>For j = 1 To Sheets(i).Cells(1, 300).End(xlToLeft).Column</p>
+</li>
+<li><p>If Sheets(i).Cells(1, j).Text = “SN号” Then</p>
+</li>
+<li><p>For r = 2 To Sheets(i).Cells(65536, j).End(xlUp).Row</p>
+</li>
+<li><p>If Not (Sheets(i).Cells(r, j).Value = 0 Or Sheets(i).Cells(r, j).Text = “”) Then</p>
+</li>
+<li><p>d.Add Sheets(i).Cells(r, j).Text, Sheets(i).Name</p>
+</li>
+<li><p>End If</p>
+</li>
+<li><p>Next r</p>
+</li>
+<li><p>End If</p>
+</li>
+<li><p>Next j</p>
+</li>
+<li><p>Next i</p>
+</li>
+<li><p>Sheets(1).Activate</p>
+</li>
+<li><p>max_col = Cells(1, 300).End(xlToLeft).Column</p>
+</li>
+<li><p>For c = 1 To max_col</p>
+</li>
+<li><p>If Cells(1, c).Text = “SN号” Then</p>
+</li>
+<li><p>For r = 2 To Cells(65536, c).End(xlUp).Row</p>
+</li>
+<li><p>If d.exists(Cells(r, c).Text) Then</p>
+</li>
+<li><p>Cells(r, max_col + 1) = d.Item(Cells(r, c).Text)</p>
+</li>
+<li><p>Else</p>
+</li>
+<li><p>Cells(r, max_col + 1) = “无匹配”</p>
+</li>
+<li><p>End If</p>
+</li>
+<li><p>Next r</p>
+</li>
+<li><p>End If</p>
+</li>
+<li><p>Next c</p>
+</li>
+<li><p>MsgBox “ok”</p>
+</li>
+<li><p>End Sub</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/04/19/python 线性代数：[12]求协方差矩阵/">
                 python 线性代数：[12]求协方差矩阵
             </a>
@@ -1287,91 +1416,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/04/05/pandas教程：[26]值替换/">
-                pandas教程：[26]值替换
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年04月05日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>有时候我们需要将数据中的某些值替换为其他值，replace()方法就是干这个用的，不同的情况下使用replace的方法也不同，下面我们用离子来说明一下：</p>
-<ul>
-<li>引入相关模块并创建一个Series</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/00a82701213fb80ee7b595d035d12f2eb9389416.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>具体数值的替换，方法很简单：将0替换为6<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/9a1151c2d56285354084262693ef76c6a7ef6316.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/346bd85c103853437bc173269013b07eca808868.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>列表到列表的替换，这种方法经常用到，有些问卷的题目是反向计分，所以要在处理数据的时候将分数再翻转一下：<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/91ae68c6a7efce1b364f3ccdac51f3deb48f6516.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/5d212aa85edf8db1774a88630a23dd54564e7416.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>还可以使用字典映射：将1替换为11，将2替换为12<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/fcbbb151f3deb48f3c0d55d9f31f3a292df57816.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/cbc17b380cd791231fee6073ae345982b2b78068.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>以上方法同样适用于DataFrame对象<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/d66b7e59252dd42a5807f5ac003b5bb5c9eab868.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/570f8c58d109b3de58db106fcfbf6c81800a4c16.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>假如DataFrame中只有一列数据需要替换数值，我们可以单独操作者一列<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/d56b3634349b033b288608dd16ce36d3d539bd68.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/adee30dda3cc7cd91a23c0de3a01213fb80e9168.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>假如有多个列进行相同的替换操作，我们可以同时选择多个列：<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/3792cb39b6003af340b42867362ac65c1038b668.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/814b07d8bc3eb135ffa343bca51ea8d3fd1f4416.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>若多个列中不同的值都要替换为一个相同的值，可以使用字典的方法表示所有需要被替换的值：<br>输出结果为：</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/3b6833f5e0fe99250b689d5737a85edf8db17116.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/32bb9c8ba61ea8d32d468003940a304e251f5816.jpg" title="pandas教程：[26]值替换">
-<ul>
-<li>插值法同样可以用于替换数值，只要使用参数method即可</li>
-</ul>
-<img src="/2015/04/05/pandas教程：[26]值替换/b74124f33a87e9504e97046b13385343faf2b4f2.jpg" title="pandas教程：[26]值替换">
-<img src="/2015/04/05/pandas教程：[26]值替换/346bd85c10385343844f70269013b07ecb8088f2.jpg" title="pandas教程：[26]值替换">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/pandas/">#pandas</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1413,6 +1457,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/09/05/SEM结构方程模型分析的数据需要至少多少样本量/">SEM结构方程模型分析的数据需要至少多少样本量</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
             </li>
             
@@ -1446,10 +1494,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/05/前端如何检测Chrome-Headless不被爬虫虐/">前端如何检测Chrome-Headless不被爬虫</a>
             </li>
             
         </ul>

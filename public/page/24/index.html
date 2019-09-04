@@ -442,6 +442,200 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2016/10/23/Python教程：[14]快速创建TCP服务器/">
+                Python教程：[14]快速创建TCP服务器
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年10月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>这里我不跟大家讲什么是TCP，什么是服务器，相信大家都懂，不懂的话我也没有能力让你懂，所以我就直接上代码了，在代码中解释，然后把所有的代码呈现出现，以后你只要在这个简单的代码上进行修改就可以了。</p>
+<ul>
+<li>首先我们引入socket的所有属性，引入时间戳函数ctime，后面要用到时间戳</li>
+</ul>
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/bf487563f6246b6025f2785fe9f81a4c500fa2da.jpg" title="Python教程：[14]快速创建TCP服务器">
+<ul>
+<li>设置主机地址，主机地址为空说明我们可以使用任意可以使用的地址；端口号是我随意写的，只要不超过一定的范围就可以了，你可以搜索一下端口号的范围；ADDR连接地址包括主机地址和端口号。</li>
+</ul>
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/4651a712c8fcc3ce685903189045d688d53f20c5.jpg" title="Python教程：[14]快速创建TCP服务器">
+<ul>
+<li>我们使用socket方法来创建一个套接字；使用bind方法绑定到地址上；使用listen设定最多可以连接5个客户端。</li>
+</ul>
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/504ec7f9d72a605914ec2b312a34349b023bbada.jpg" title="Python教程：[14]快速创建TCP服务器">
+<ul>
+<li>下面是最重要的部分，我们使用无限循环来保证随时接受链接请求，accept方法可以接受请求，并返回客户端tcpclisock和客户端地址。使用recv方法来接受数据，send方法发送数据。如果一开始接受到了数据，后来数据为空，则跳出循环。</li>
+</ul>
+<img src="/2016/10/23/Python教程：[14]快速创建TCP服务器/d66b7e59252dd42a1bf5cb80013b5bb5c8eab8da.jpg" title="Python教程：[14]快速创建TCP服务器">
+<ul>
+<li><p>下面是所有的代码：</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>from socket import *   #引入socket的所有</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>from time import ctime  #时间戳函数，用于实现服务器的功能</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>HOST=’’   #主机地址</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>PORT=23345   #端口号</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>BUFSIZ=2048   #缓存区大小，单位是字节，这里设定了2K的缓冲区</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>ADDR=(HOST,PORT)   #链接地址</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>tcpSerSock=socket(AF_INET,SOCK_STREAM)   #创建一个TCP套接字</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>tcpSerSock.bind(ADDR)    #绑定地址</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>tcpSerSock.listen(5)    #最大连接数为5</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>while True:   #无限循环</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>print(‘客户端连接。。。’)   #显示文字信息</p>
+</li>
+<li><p>tcpCliSock,addr=tcpSerSock.accept()          #等待接受连接</p>
+</li>
+<li><p>print( ‘链接成功，客户端地址为：’,addr)</p>
+</li>
+<li><p>while True:</p>
+</li>
+<li><p>data=tcpCliSock.recv(BUFSIZ)    #接收数据,BUFSIZ是缓存区大小</p>
+</li>
+<li><p>if not data:   #如果data为空</p>
+</li>
+<li><p>break  #则跳出循环</p>
+</li>
+<li><p>tcpCliSock.send(‘[%s] %s’% (ctime(),data))</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<pre><code>tcpCliSock.close()   #关闭连接
+</code></pre></blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>tcpSerSock.close()   #关闭服务器</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2016/10/19/numpy函数：[2]tile函数用法/">
                 numpy函数：[2]tile函数用法
             </a>
@@ -1103,63 +1297,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/10/03/SPSS实例：[31]统计选项频数/">
-                SPSS实例：[31]统计选项频数
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年10月03日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>假如有一个单选题，有五个选项，我现在想知道每一个选项有都少人选，怎么办？其实这是一个最简单的频率统计问题，我们把在spss中的统计过程列在以下，请参考：</p>
-<ul>
-<li>首先，我们在菜单栏上执行：分析–描述统计–频数</li>
-</ul>
-<img src="/2016/10/03/SPSS实例：[31]统计选项频数/9864a2315c6034a885a32ccfc9134954082376f8.jpg" title="SPSS实例：[31]统计选项频数">
-<ul>
-<li>在这里，我们将想要统计的题目放到变量框</li>
-</ul>
-<img src="/2016/10/03/SPSS实例：[31]统计选项频数/1b0d4f0fd9f9d72aed368753d62a2834359bbbeb.jpg" title="SPSS实例：[31]统计选项频数">
-<ul>
-<li>点击ok开始统计</li>
-</ul>
-<img src="/2016/10/03/SPSS实例：[31]统计选项频数/fc5e5f34970a304ed18337b4d3c8a786c8175c98.jpg" title="SPSS实例：[31]统计选项频数">
-<ul>
-<li>在输出的表格中，我们的频率一栏就是我们要统计的内容了。</li>
-</ul>
-<img src="/2016/10/03/SPSS实例：[31]统计选项频数/fab3ac119313b07e6eefc7460ed7912396dd8ceb.jpg" title="SPSS实例：[31]统计选项频数">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1201,6 +1338,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/09/05/SEM结构方程模型分析的数据需要至少多少样本量/">SEM结构方程模型分析的数据需要至少多少样本量</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
             </li>
             
@@ -1234,10 +1375,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/05/前端如何检测Chrome-Headless不被爬虫虐/">前端如何检测Chrome-Headless不被爬虫</a>
             </li>
             
         </ul>
