@@ -281,14 +281,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
-                    李宏毅机器学习教程1-1：回归案例教程
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
-                    李宏毅机器学习教程01:机器学习简介
+                <a href="/2018/09/21/李宏毅机器学习教程13：无监督学习/">
+                    李宏毅机器学习教程13：无监督学习
                 </a>
             </div>
             
@@ -374,14 +374,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程21-1：循环神经网络/">
-                    李宏毅机器学习教程21-1：循环神经网络
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程9-3：卷积神经网络/">
-                    李宏毅机器学习教程10：卷积神经网络
+                <a href="/2018/09/21/李宏毅机器学习教程9-3：tensorflow教程/">
+                    李宏毅机器学习教程9-3：tensorflow教程
                 </a>
             </div>
             
@@ -437,6 +437,70 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/05/15/pandas教程：[25]插值法填补缺失值/">
+                pandas教程：[25]插值法填补缺失值
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年05月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>使用插值法可以计算缺失值的估计值，所谓的插值法就是通过两点（x0，y0），（x1，y1）估计中间点的值，假设y=f(x)是一条直线，通过已知的两点来计算函数f(x),然后只要知道x就能求出y，以此方法来估计缺失值。当然我们也可以假设f（x)不是直线，二是其他函数。</p>
+<ul>
+<li>引入相关模块并创建一个数据框<br>数据框的内容为：<br>‘</li>
+</ul>
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/62667cd0f703918f03ed62cd523d269759eec4be.jpg" title="pandas教程：[25]插值法填补缺失值">
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/0865b518972bd40763af8cfa78899e510fb30909.jpg" title="pandas教程：[25]插值法填补缺失值">
+<ul>
+<li>使用插值法估计缺失值<br>输出结果为：</li>
+</ul>
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/b13fd48065380cd74f81fdeaa244ad34588281df.jpg" title="pandas教程：[25]插值法填补缺失值">
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/99636c0e0cf3d7cacdca6071f11fbe096b63a9be.jpg" title="pandas教程：[25]插值法填补缺失值">
+<ul>
+<li><p>我们可以计算一下缺失值实际上上前一个值和后一个值得平均数，因为interpolate（）假设函数是直线形式</p>
+</li>
+<li><p>假如index是数字，我们还可以根据数字来进行插值，用到参数method=’values’<br>比较一下插值的结果与上一个结果的不同之处这时候索引的数值实际上就是用于估计y的x值</p>
+</li>
+</ul>
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/dc854fda81cb39dbf9a83851d3160924ab183009.jpg" title="pandas教程：[25]插值法填补缺失值">
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/7a8a1446f21fbe09d1629c1368600c338744adbe.jpg" title="pandas教程：[25]插值法填补缺失值">
+<ul>
+<li>同样道理，如果index是时间，我们可以用method=time来达到同样的效果<br>输出结果为：</li>
+</ul>
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/54baacfb43166d22e24b4a93452309f79052d2be.jpg" title="pandas教程：[25]插值法填补缺失值">
+<img src="/2015/05/15/pandas教程：[25]插值法填补缺失值/f35ea0096b63f624d76166048444ebf81a4ca3be.jpg" title="pandas教程：[25]插值法填补缺失值">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1260,81 +1324,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/05/03/pandas教程：[11]aggregate分组计算/">
-                pandas教程：[11]aggregate分组计算
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年05月03日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>一旦对数据分组，接下来一定是对各组数据进行计算，这是通过groupby.aggregate()实现的，我们来看一下今天的例子：</p>
-<ul>
-<li>先引入必要的模块，然后创建一个DataFrame对象，如果你看了前几篇文章，应该已经知道这个DataFrame了。<br>这是内部数据：</li>
-</ul>
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/bf487563f6246b602a038662e8f81a4c510fa253.jpg" title="pandas教程：[11]aggregate分组计算">
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/9e7ce6dcd100baa16f0973ad4410b912c8fc2ebb.jpg" title="pandas教程：[11]aggregate分组计算">
-<ul>
-<li>根据两个索引color、food进行分组</li>
-</ul>
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/f76575600c338744c3c81b6a520fd9f9d72aa053.jpg" title="pandas教程：[11]aggregate分组计算">
-<ul>
-<li>计算各组总和：<br>计算结果为：</li>
-</ul>
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/310f3b1f95cad1c8309ec8317c3e6709c93d51bb.jpg" title="pandas教程：[11]aggregate分组计算">
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/b853d6fcc3cec3fd551b9363d588d43f879427bb.jpg" title="pandas教程：[11]aggregate分组计算">
-<ul>
-<li>计算结果默认使用了两个分组索引color和food作为新的DataFrame的索引（注意计算结果为一个DataFrame对象），可以使用reset_index()来将两个索引转化为列变量<br>结果为：</li>
-</ul>
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/d66b7e59252dd42a180435bd003b5bb5c9eab853.jpg" title="pandas教程：[11]aggregate分组计算">
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/3bb22487e950352afb6c111e5043fbf2b2118b53.jpg" title="pandas教程：[11]aggregate分组计算">
-<ul>
-<li>在分组是也可以使用as_index参数达到reset_index()的效果：<br>计算结果为：</li>
-</ul>
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/fd428c45d688d43f2a8ca5e47e1ed21b0ef43bbb.jpg" title="pandas教程：[11]aggregate分组计算">
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/1a94b36eddc451da37d338fdb5fd5266d01632bb.jpg" title="pandas教程：[11]aggregate分组计算">
-<ul>
-<li>另外我们经常用到的一个方法为size()返回各组数据量<br>结果为：</li>
-</ul>
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/dc854fda81cb39db0ee55340d3160924ab1830bb.jpg" title="pandas教程：[11]aggregate分组计算">
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/aa59892bd40735fa26d57aaf9d510fb30f2408bb.jpg" title="pandas教程：[11]aggregate分组计算">
-<ul>
-<li>最后，还有一个经常用到的方法为describe()，对各组数据进行描述性统计：<br>计算结果为：</li>
-</ul>
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/34bbf8cd7b899e51ccab0e0241a7d933c8950dbb.jpg" title="pandas教程：[11]aggregate分组计算">
-<img src="/2015/05/03/pandas教程：[11]aggregate分组计算/d872d695d143ad4b1b0b72d681025aafa40f06bb.jpg" title="pandas教程：[11]aggregate分组计算">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/pandas/">#pandas</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1376,6 +1365,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/09/06/spss计算平均方差提取量AVE和组合信度CR的方法/">spss计算平均方差提取量AVE和组合信度CR的方</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/09/05/SEM结构方程模型分析的数据需要至少多少样本量/">SEM结构方程模型分析的数据需要至少多少样本量</a>
             </li>
             
@@ -1411,10 +1404,6 @@
                 <a class="footer-post" href="/2019/07/10/pychrome安装和入门/">pychrome安装和入门</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/07/05/爬虫如何隐藏Headles-Chrome不被检测出来/">爬虫如何隐藏Headles-Chrome不被检测出</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1426,7 +1415,7 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
@@ -1442,15 +1431,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/amos/">amos</a>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mplus/">mplus</a>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
         </span>
         
         <span>
@@ -1466,15 +1455,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+            <a class="footer-post" href="/tags/amos/">amos</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
         </span>
         
         <span>
@@ -1482,7 +1467,19 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/推荐书/">推荐书</a>
         </span>
         
         <span>
@@ -1494,35 +1491,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/mysql/">mysql</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/推荐书/">推荐书</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/eprime/">eprime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/MathJax/">MathJax</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
         </span>
         
         <span>
@@ -1534,7 +1511,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/process/">process</a>
         </span>
         
         <span>
@@ -1542,7 +1535,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
         </span>
         
         <span>
@@ -1566,11 +1559,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/electron/">electron</a>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
         </span>
         
         <span>
@@ -1578,7 +1567,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/process/">process</a>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
         </span>
         
         <span>
@@ -1590,6 +1591,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/jupyter/">jupyter</a>
         </span>
         
@@ -1598,23 +1603,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/keras基础/">keras基础</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -1630,15 +1623,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
         </span>
         
         <span>
@@ -1682,6 +1675,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/selenium/">selenium</a>
         </span>
         
@@ -1690,23 +1687,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+            <a class="footer-post" href="/tags/logging/">logging</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/logging/">logging</a>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
         </span>
         
         <span>
@@ -1718,35 +1711,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/print/">print</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/scipy/">scipy</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/os/">os</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/psychology/">psychology</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pil/">pil</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/tkinter/">tkinter</a>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
@@ -1758,15 +1731,31 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/requests/">requests</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/cookies/">cookies</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/print/">print</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pil/">pil</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tkinter/">tkinter</a>
         </span>
         
         <span>
@@ -1794,7 +1783,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
+            <a class="footer-post" href="/tags/cron/">cron</a>
         </span>
         
         <span>
@@ -1802,19 +1791,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/cron/">cron</a>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/wxpython/">wxpython</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
         <span>
@@ -1823,6 +1808,10 @@
         
         <span>
             <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
         </span>
         
     </ul>

@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb="http://open.weibo.com/wb">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <!--Description-->
+    
+        <meta name="description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="xxxspy">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="spss计算平均方差提取量AVE和组合信度CR的方法">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="专注于数据开发, 数据分析代做, 数据采集代做, python代码代写">
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="DataScience">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>spss计算平均方差提取量AVE和组合信度CR的方法 - DataScience</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    code{
+    color: #d7ecff;
+    font-size: 110%;
+    }
+    pre > code {
+        -webkit-border-before: black;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #f9f4f4;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f500;
+        border: 1px solid #eff3f521;
+        border-radius: 0;
+    }
+    pre > code::before {
+        content:"- ";
+        z-index: -1;
+        left:-2px;
+    }
+    </style>
+
+    
+        <!-- mathjax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+        var maths = document.getElementsByTagName("code");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+    </script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    menuSettings: {
+      zoom: "None"
+    },
+    showMathMenu: true,
+    jax: ["input/TeX","output/CommonHTML"],
+    extensions: ["tex2jax.js"],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js"],
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [["\\(", "\\)"],["$","$"]],
+      displayMath: [["\\[", "\\]"],["$$", "$$"]],
+      skipTags: ['^(?!code).*$']
+    }
+  });
+  var maths = document.getElementsByTagName("code");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,maths]);
+</script>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]} });
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script> -->
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script> -->
+
+    
+    
+    
+    
+    
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+    <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i>
+        
+            <p id="main-title" class="title">DataScience</p>
+        
+        </a>
+    </div>
+</header>
+<div class="page_list archive-container">
+        
+    <div class="archive-post" style="opacity: 1;">
+        <a href="/guideToPython/">
+            推荐书: Python开发最佳实践
+        </a>
+    </div>
+    
+</div>
+
+    <!-- Main Content -->
+    
+
+    
+        
+<div class="row">
+    
+    <div class="col-md-9 col-sm-12">
+        <!--Title and Logo-->
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/09/06/spss计算平均方差提取量AVE和组合信度CR的方法/">
+                spss计算平均方差提取量AVE和组合信度CR的方法
+            </a>
+
+        </h1>
+        <div class="weibo-share">
+            <p>分享时@该用户已经被封, 我就能回答你的问题奥!</p>
+            <wb:share-button appkey="2694758202" addition="number" type="button" ralateuid="1312359657" default_text="spss计算平均方差提取量AVE和组合信度CR的方法"></wb:share-button>
+        </div>
+        <div class="post-info">
+            
+                <span class="date">2019年09月06日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+    <!-- Table of Contents -->
+    
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>这篇文章主要介绍了如何使用SPSS计算平均提取方差值AVE(Average Variance Extracted)和组合信度CR( Composite Reliability)的方法, 并且提供了计算他们的小程序, 帮助你在线计算。</p>
+<a id="more"></a>
+<p>在统计学（经典测量理论）中，提取的平均方差（AVE）是因子包含题目的的方差量的量度，与测量误差引起的方差量有关。  在下图中<code>$\lambda$</code></p>
+<h3 id="spss操作"><a href="#spss操作" class="headerlink" title="spss操作"></a>spss操作</h3><p>在spss中, 我们可以这样去计算每个题目(变量)的因子载荷:</p>
+<p><img src="imgs/factor-analysis-menue.png"></p>
+<p>注意我们需要用到因子旋转后的因子载荷, 所以要设置旋转方法:</p>
+<p><img src="imgs/factor-analysis-dialog.png"></p>
+<p>运行命令以后, 可以输出旋转后因子成分矩阵, 下图中, 红色方框中的因子载荷就是第一个因子的因子载荷, 利用这些数据就可以计算第一个因子的平均提取方差值(AVE)和组合信度(CR):</p>
+<p><img src="imgs/rotated-component-matrix.png"></p>
+<h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>假设<code>$\lambda$</code>代表题目的因子载荷, 那么平均方差提取量(Average Variance Extracted)<code>$l_{AVE}$</code></p>
+<p>那么组合信度( Composite Reliability)的计算公式是:</p>
+<p><code>$$
+l_{CR} = {( \sum \lambda)^2 \over {( \sum \lambda)^2 + \sum \varepsilon}}
+$$</code></p>
+<h3 id="在线计算器"><a href="#在线计算器" class="headerlink" title="在线计算器"></a>在线计算器</h3><p>为了方便广大童鞋能够正确的计算AVE和CR值, 我在这里写了一个小程序, 你需要输入某个因子的因子载荷,<br>多个数值之间使用英文逗号”,”隔开, 例如”0.5,0.7,0.8,0.9”,<br>然后点击”计算”!</p>
+
+
+<script>
+console.log('hello')
+</script>
+
+<table class="table">
+    <tr>
+        <td>输入因子载荷(英文逗号隔开)</td>
+        <td>
+           <input id="loads" class="form-control" placeholder="输入因子载荷, 然后点击计算按钮" type="text">
+        </td>
+    </tr>
+    <tr><td>AVE=</td><td> <input readonly class="form-control" id="ave" type="number"></td>
+    </tr>
+    <tr><td>CR=</td><td><input readonly class="form-control" id="cr" type="number"></td></tr>
+    <tr><td colspan="2"><button onclick="cal_cr()" class="btn btn-default">计算</button></td></tr>
+</table>
+
+<script>
+    function cal_cr(){
+        let loadsIpt = $('#loads')
+        $('#ave').val('')
+        $('#cr').val('')
+
+        let loads = []
+        let loadvalues = loadsIpt.val()
+        if(!loadvalues){
+            alert('没有因子载荷')
+            return
+        }
+        let sm = 0
+        let sm2 = 0
+        let epsm = 0
+        let n_item = 0
+        loadvalues.split(',').forEach(v=>{
+            n_item += 1
+            let load = parseFloat(v)
+            loads.push(load)
+            sm += load
+            sm2 += load * load
+            epsm += 1 - load*load
+        })
+        let ave = sm2 / n_item
+        let cr = sm * sm / (sm*sm + epsm)
+        $('#ave').val(ave)
+        $('#cr').val(cr)
+    }
+</script>
+
+
+<blockquote>
+<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="spss计算平均方差提取量AVE和组合信度CR的方法.ipynb">notebook</a><br>有问题可以直接在下方留言<br>或者给我发邮件675495787[at]qq.com<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+    </div>
+
+    <!-- rightside -->
+    <div class="col-md-3 col-sm-12 rightside">
+        
+<div class="related-posts">
+    <h3>
+        <a href="/tags/spss/">
+            spss
+        </a>
+    </h3>
+    <div class="page_list">
+        
+            <div class="archive-post">
+                <a href="/2019/09/06/spss计算平均方差提取量AVE和组合信度CR的方法/">
+                    spss计算平均方差提取量AVE和组合信度CR的方法
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/09/05/SEM结构方程模型分析的数据需要至少多少样本量/">
+                    SEM结构方程模型分析的数据需要至少多少样本量
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/08/21/SPSS的Process插件下载和安装/">
+                    SPSS的Process插件下载和安装
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2019/02/14/招聘兼职数据分析师/">
+                    招聘兼职数据分析师
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2017/10/10/sobel检验原理和一键计算器/">
+                    sobel检验原理和一键计算器
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/23/SPSS实例：[2]卡方检验百分比差异/">
+                    SPSS实例：[2]卡方检验百分比差异
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/19/SPSS实例：[23]如何对数据进行排序/">
+                    SPSS实例：[23]如何对数据进行排序
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/15/SPSS实例：[17]进行sobel检验(小白教程)/">
+                    SPSS实例：[17]进行sobel检验(小白教程)
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/11/SPSS python教程：[7]读取透视表中的平均数/">
+                    SPSS python教程：[7]读取透视表中的平均数
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/05/SPSS绘图教程：[1]教程简介/">
+                    SPSS绘图教程：[1]教程简介
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/03/SPSS python教程：[6]读取PivotTable行标签/">
+                    SPSS python教程：[6]读取PivotTable行标签
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/03/SPSS实例：[31]统计选项频数/">
+                    SPSS实例：[31]统计选项频数
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/10/03/SPSS实例：[24]卡方检验百分比是否相同/">
+                    SPSS实例：[24]卡方检验百分比是否相同
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/09/23/spss如何使用K-S进行正态性检验/">
+                    spss如何使用K-S进行正态性检验
+                </a>
+            </div>
+            
+            <div class="archive-post">
+                <a href="/2016/09/15/spss如何分组求平均值/">
+                    spss如何分组求平均值
+                </a>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="related-posts hidden-sm-down">
+    <h3>
+        <a href="#">
+            友商赞助
+        </a>
+    </h3>
+    <div class="page_list">
+        <div class="archive-post">
+            <a href="http://jupyter.cn">
+                  问卷大全问卷案例下载
+            </a>
+            <a href="http://mlln.cn/2019/05/09/2019%E5%B9%B4%E5%A4%A7%E5%AD%A6%E7%94%9F%E9%97%AE%E5%8D%B7%E4%BA%92%E5%A1%AB%E7%BE%A4%E6%8E%A8%E8%8D%90/">
+                大学生互填问卷群推荐
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-about">
+                <h2>About</h2>
+                <p>
+                    这是<code>xxxspy</code>的个人博客
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/09/06/spss计算平均方差提取量AVE和组合信度CR的方法/">spss计算平均方差提取量AVE和组合信度CR的方</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/09/05/SEM结构方程模型分析的数据需要至少多少样本量/">SEM结构方程模型分析的数据需要至少多少样本量</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/21/SPSS的Process插件下载和安装/">SPSS的Process插件下载和安装</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/20/Introduction-to-Mediation-Moderation-and-Conditional-Process-Analysis第二版PDF下载/">Introduction to Mediation</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/18/python深入理解print函数/">python深入理解print函数</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/07/31/ubuntu下使用cron执行定时任务更新代码/">ubuntu下使用cron执行定时任务更新代码</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/07/21/python3的logging模块的最佳实践/">python3的logging模块的最佳实践</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/07/13/python自带GUI根据url显示网络图片/">python自带GUI根据url显示网络图片</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/07/10/pychrome安装和入门/">pychrome安装和入门</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 footer-tags">
+    <h2>tags</h2>
+    <ul>
+        
+        <span>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/报告系统/">报告系统</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷互填/">问卷互填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷星/">问卷星</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷代填/">问卷代填</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/excel/">excel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/VBA/">VBA</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/amos/">amos</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mplus/">mplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime/">eprime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/EM/">EM</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/卡方检验/">卡方检验</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/javascript/">javascript</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/MathJax/">MathJax</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Latex/">Latex</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mysql/">mysql</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/人工智能/">人工智能</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/Q-learning/">Q-learning</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/深度学习/">深度学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/process/">process</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow/">tensorflow</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/作文评分/">作文评分</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/自然语言处理/">自然语言处理</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/NLP/">NLP</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/语料库/">语料库</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/electron/">electron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gitlab/">gitlab</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jupyter/">jupyter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/notebook/">notebook</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras教程/">keras教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras基础/">keras基础</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongodb/">mongodb</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/jieba/">jieba</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/networkx/">networkx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/p5-js/">p5.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pandas/">pandas</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/dataframe/">dataframe</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据分析/">数据分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychopy/">psychopy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pychrome/">pychrome</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/chrome/">chrome</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pydotplus/">pydotplus</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/flexx/">flexx</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/graphviz/">graphviz</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/logging/">logging</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/lisrel/">lisrel</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/数据采集/">数据采集</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/淘宝/">淘宝</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/os/">os</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/scipy/">scipy</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/js2py/">js2py</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ast/">ast</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/情感分析/">情感分析</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/print/">print</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pil/">pil</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tkinter/">tkinter</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/stata/">stata</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/sublime/">sublime</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/svd/">svd</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pca/">pca</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tensorflow教程/">tensorflow教程</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/som/">som</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cron/">cron</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/vscode/">vscode</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/win32com/">win32com</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/wxpython/">wxpython</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/ORC/">ORC</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/神经网络/">神经网络</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/3djs/">3djs</a>
+        </span>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        <!-- links -->
+
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-about">
+        <h2>Links</h2>
+        <ul>
+            
+                <span> | </span><a class="footer-post" href="http://www.17bigdata.com/" target="_blank">一起大数据</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/baidusitemap.xml" target="_blank">网站地图</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://mlln.cn/sitemap.xml" target="_blank">DataScience</a><span> | </span>
+            
+                <span> | </span><a class="footer-post" href="http://www.superli.tech/" target="_blank">Superli&#39;sBlog</a><span> | </span>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/xxxspy">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:675495787@qq.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @感谢github免费托管，hexo的静态网站引擎和模板主题制作者<a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                    <br>
+                    <a href="http://www.miitbeian.gov.cn">京ICP备16033873号-2</>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- tweenmax -->
+<script src="/js/TweenMax.min.js">
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- bootstrap.js -->
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Baidu link push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- baidu_static -->
+
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?588f06b88af0ef575445f53432cd15ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
