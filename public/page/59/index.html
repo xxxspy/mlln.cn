@@ -191,6 +191,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2019/09/10/python3中给函数缓存结果-让程序加速/">
+                    python3中给函数缓存结果-让程序加速
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2019/08/18/python深入理解print函数/">
                     python深入理解print函数
                 </a>
@@ -211,12 +217,6 @@
             <div class="archive-post">
                 <a href="/2019/07/13/python自带GUI根据url显示网络图片/">
                     python自带GUI根据url显示网络图片
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/07/10/pychrome安装和入门/">
-                    pychrome安装和入门
                 </a>
             </div>
             
@@ -437,6 +437,61 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/03/01/Django教程：[5]URLpattern的语法/">
+                Django教程：[5]URLpattern的语法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年03月01日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>前一篇文章我们使用Django制作了第一个网页，针对其中的一些问题，我们补充一点知识，这是关于urls.py文件中的URLpattern的，</p>
+<ul>
+<li>我们在写url的时候实际上写的是正则表达式，尖号（^）和美元符号（$）都是正则表达式符号，分别表示字符串的开头和结尾。上面添加的url（’^hello/$’）表示url以hello/开头，也以hello/结尾，只有满足这两个条件的url才可以调用hello函数。</li>
+</ul>
+<img src="/2015/03/01/Django教程：[5]URLpattern的语法/fab3ac119313b07ef63b6f720ed7912396dd8c82.jpg" title="Django教程：[5]URLpattern的语法">
+<ul>
+<li><p>假如我们写成 ^hello/ ，没有$结尾，表示任何以hello/开头的url都是可以调用hello方法的，比如浏览器中访问<a href="http://127.0.0.1:8001/hello/dfdf也可以调用hello方法。" target="_blank" rel="noopener">http://127.0.0.1:8001/hello/dfdf也可以调用hello方法。</a></p>
+</li>
+<li><p>假如我们写成 hello/$，没有尖号（^）开头，那么任何以hello/结尾的url都可以调用hello方法。比如<a href="http://127.0.0.1:8001/dfdfdf/hello/" target="_blank" rel="noopener">http://127.0.0.1:8001/dfdfdf/hello/</a></p>
+</li>
+<li><p>那么，只写 hello/ ，没有尖号和美元符号，那么只要url中包含字符 hello/都可以调用方法 hello 。</p>
+</li>
+<li><p>学习python的正则表达式可以帮助你更好的理解这些内容，下面的参考资料里有python的正则表达式的学习教程。</p>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/django/">#django</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1047,74 +1102,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/02/17/pandas教程：[19]读写sql数据库/">
-                pandas教程：[19]读写sql数据库
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年02月17日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>如何从数据库中读取数据到DataFrame中？pandas提供这这样的接口完成此工作——read_sql()。下面我们用离子来说明这个方法。</p>
-<ul>
-<li>我们要从sqlite数据库中读取数据，引入相关模块</li>
-</ul>
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/5beeba0f4bfbfbed3468307a7bf0f736afc31f46.jpg" title="pandas教程：[19]读写sql数据库">
-<ul>
-<li>read_sql接受两个参数，一个是sql语句，这个你可能需要单独学习；一个是con（数据库连接）、read_sql直接返回一个DataFrame对象<br>打印一下，可以看到已经成功的读取了数据</li>
-</ul>
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/d019d2bf6c81800a41348e0bb23533fa838b47a6.jpg" title="pandas教程：[19]读写sql数据库">
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/f7426d8da977391207178364fb198618367ae247.jpg" title="pandas教程：[19]读写sql数据库">
-<ul>
-<li>我们还可以使用index_col参数来规定将那一列数据设置为index<br>结果输出为：</li>
-</ul>
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/79b1e936afc37931af59802ce8c4b74543a91146.jpg" title="pandas教程：[19]读写sql数据库">
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/b110e6198618367a63b879d82d738bd4b31ce547.jpg" title="pandas教程：[19]读写sql数据库">
-<ul>
-<li>当然，我们可以设置多个index，只要将index_col的值设置为列表<br>输出结果为：</li>
-</ul>
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/b258f5c4b74543a9282afcc91d178a82b9011446.jpg" title="pandas教程：[19]读写sql数据库">
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/718e25c79f3df8dcbeec8894ce11728b461028a6.jpg" title="pandas教程：[19]读写sql数据库">
-<ul>
-<li>写入数据库也很简单，下面第二句用于删除数据库中已有的表”weather_2012”，然后将df保存到数据库中的”weather_2012”表</li>
-</ul>
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/83cab81ea8d3fd1f21d8a53f334e251f94ca5fa6.jpg" title="pandas教程：[19]读写sql数据库">
-<ul>
-<li>假如我们使用的是mysql数据库也没问题，我们只需要建立与mysql的连接即可，用下面的con代替上面的con可以达到的效果相同。</li>
-</ul>
-<img src="/2015/02/17/pandas教程：[19]读写sql数据库/cebd00178a82b901e59cc536708da9773912ef47.jpg" title="pandas教程：[19]读写sql数据库">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/pandas/">#pandas</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1156,6 +1143,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/09/10/python3中给函数缓存结果-让程序加速/">python3中给函数缓存结果-让程序加速</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/09/06/spss计算平均方差提取量AVE和组合信度CR的方法/">spss计算平均方差提取量AVE和组合信度CR的方</a>
             </li>
             
@@ -1189,10 +1180,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/07/13/python自带GUI根据url显示网络图片/">python自带GUI根据url显示网络图片</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/10/pychrome安装和入门/">pychrome安装和入门</a>
             </li>
             
         </ul>

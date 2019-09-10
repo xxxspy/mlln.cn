@@ -191,6 +191,12 @@
     <div class="page_list archive-container">
         
             <div class="archive-post">
+                <a href="/2019/09/10/python3中给函数缓存结果-让程序加速/">
+                    python3中给函数缓存结果-让程序加速
+                </a>
+            </div>
+            
+            <div class="archive-post">
                 <a href="/2019/08/18/python深入理解print函数/">
                     python深入理解print函数
                 </a>
@@ -211,12 +217,6 @@
             <div class="archive-post">
                 <a href="/2019/07/13/python自带GUI根据url显示网络图片/">
                     python自带GUI根据url显示网络图片
-                </a>
-            </div>
-            
-            <div class="archive-post">
-                <a href="/2019/07/10/pychrome安装和入门/">
-                    pychrome安装和入门
                 </a>
             </div>
             
@@ -437,6 +437,268 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/06/15/python 线性代数：[8]计算矩阵距离/">
+                python 线性代数：[8]计算矩阵距离
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年06月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>矩阵的距离，这里是的是欧几里得距离，其他距离表示方法我们以后再谈，今天进说一下如何计算两个形状相同矩阵之间的距离。</p>
+<ul>
+<li>创建一个矩阵a和b</li>
+</ul>
+<img src="/2015/06/15/python%20线性代数：[8]计算矩阵距离/bd70426034a85edfa4889fd44b540923dc547585.jpg" title="python 线性代数：[8]计算矩阵距离">
+<img src="/2015/06/15/python%20线性代数：[8]计算矩阵距离/35e940df8db1cb13626d5de4df54564e93584b85.jpg" title="python 线性代数：[8]计算矩阵距离">
+<ul>
+<li>先计算得到他俩的距离矩阵c</li>
+</ul>
+<img src="/2015/06/15/python%20线性代数：[8]计算矩阵距离/0862c354564e9258e130e7199e82d158cdbf4e85.jpg" title="python 线性代数：[8]计算矩阵距离">
+<ul>
+<li>距离矩阵的平方，得到矩阵d</li>
+</ul>
+<img src="/2015/06/15/python%20线性代数：[8]计算矩阵距离/e8112b2ac65c1038be14af35b0119313b17e89a4.jpg" title="python 线性代数：[8]计算矩阵距离">
+<ul>
+<li>计算矩阵d的迹</li>
+</ul>
+<img src="/2015/06/15/python%20线性代数：[8]计算矩阵距离/6dc09e0a19d8bc3e880c673d808ba61ea9d34585.jpg" title="python 线性代数：[8]计算矩阵距离">
+<ul>
+<li>然后将得到的e进行开方得到距离：你可以手动算一下是不是正确。</li>
+</ul>
+<img src="/2015/06/15/python%20线性代数：[8]计算矩阵距离/814b07d8bc3eb13509c3d64ca41ea8d3fc1f4485.jpg" title="python 线性代数：[8]计算矩阵距离">
+<ul>
+<li><p>我们用到的原理就是矩阵的迹的性质，在numpy或者scipy中还有计算距离的函数，我们以后再说</p>
+</li>
+<li><p>今天用到的所有代码如下：</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>a=[[0,1],[1,0]]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>a=np.array(a)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>a</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[0, 1],</p>
+</li>
+<li><p>[1, 0]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>b=[[1,1],[1,1]]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>b=np.array(b)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>b</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[1, 1],</p>
+</li>
+<li><p>[1, 1]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>c=a-b</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>c</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[-1,  0],</p>
+</li>
+<li><p>[ 0, -1]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>d=np.dot(c,c)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>d</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>array([[1, 0],</p>
+</li>
+<li><p>[0, 1]])</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>e=np.trace(d)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>e</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>2</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+<p>e**0.5</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><p>1.4142135623730951</p>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li><blockquote>
+<blockquote>
+<blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1117,79 +1379,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/">
-                spss20.0二项式检验的操作方法和结果分析
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年06月01日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p> 只有两个值的变量叫做二分变量，比如性别就是一个二分变量，它只有两个值：男女。为了检验男女的比率是否符合1:1，我们可以使用二项式检验。下面是具体的操作方法和数据结果的分析。<br>方法/步骤</p>
-<ul>
-<li>在spss20.0中，要检验二分变量的两个值的比例是否和理论值相左，我们先在菜单栏上执行：analyze-nonparamecric-legacy dialogs-binomial</li>
-</ul>
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/b64543a98226cffc086a6043b9014a90f703eafb.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<ul>
-<li>将你要检验的这个二分变量放到test variable list中</li>
-</ul>
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/4b90f603738da977246f59dab051f8198718e3fb.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<ul>
-<li>点击options按钮，设置要输出的参数有哪些</li>
-</ul>
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/72f082025aafa40f4ca3112cab64034f79f019dd.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<ul>
-<li>这里我们勾选descriptive就可以了，可以看到数据的描述性统计结果</li>
-</ul>
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/42a98226cffc1e179dda53c04a90f603728de9de.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<ul>
-<li>设置检验的比率，这个比率是其中一个变量值在所有的变量值中的比例，比如男女比例一概是1:1，所以这里应该填写0.5，这样就可以建议男女比例是不是1:1了</li>
-</ul>
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/4d086e061d950a7b357591350ad162d9f3d3c9fb.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<ul>
-<li>点击ok，开始运行，输出结果</li>
-</ul>
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/63d9f2d3572c11df979160d2632762d0f603c2fb.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<ul>
-<li><p>第一个图为描述性统计，第二个图是二项式检验结果，我们看到显著性为0.000这说明该数据的比率与理论值有差异，且差异明显。</p>
-</li>
-<li></li>
-<li></li>
-</ul>
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/b151f8198618367af9eca02c2e738bd4b21ce5de.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<img src="/2015/06/01/spss20.0二项式检验的操作方法和结果分析/503d269759ee3d6d1f86583a43166d224e4adefb.jpg" title="spss20.0二项式检验的操作方法和结果分析">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1231,6 +1420,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/09/10/python3中给函数缓存结果-让程序加速/">python3中给函数缓存结果-让程序加速</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/09/06/spss计算平均方差提取量AVE和组合信度CR的方法/">spss计算平均方差提取量AVE和组合信度CR的方</a>
             </li>
             
@@ -1264,10 +1457,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/07/13/python自带GUI根据url显示网络图片/">python自带GUI根据url显示网络图片</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/10/pychrome安装和入门/">pychrome安装和入门</a>
             </li>
             
         </ul>
