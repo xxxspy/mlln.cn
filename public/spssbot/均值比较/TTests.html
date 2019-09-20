@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ch">
+  <head>
+    <meta charset="utf-8" />
+    <title>T检验 &#8212; SPSSBot  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to SPSSBot&#39;s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="t">
+<h1>T检验<a class="headerlink" href="#t" title="Permalink to this headline">¶</a></h1>
+<p>T检验(独立样本T检验),用于分析定类数据与定量数据之间的关系情况.
+例如研究人员想知道两组学生的智商平均值是否有显著差异.
+T检验仅可对比两组数据的差异,如果为三组或更多,则使用方差分析.如果刚好仅两组,建议样本较少(低于100时)使用T检验,反之使用方差分析。</p>
+<p>如果你的数据中, 分组变量有两组以上, 那么你可以单独比较其中的两组, 不能同时对两组以上的数据进行分析。</p>
+<div class="section" id="id1">
+<h2>基本流程<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>理论上来说，t检验需要满足正态分布和方差齐性，
+首先，t检验的结果要判断是否显著，是根据t分布表，如果你的数据不是正态的（正态分布的小样本分布为t分布），那查表就必然有偏误，所以需要数据是正态分布。
+其次是方差齐性，独立样本t检验计算t值的时候需要合并方差，合并方差的前提是两组数据的方差来自同一总体，如果不满足这个条件，等于相加的两个方差单位不同，
+而单位不同的数据是不可以直接相加的。所以方差齐性也必须满足。</p>
+<p>但t检验实际上对于方差齐性和正态分布是有一定稳健性的，也就是一定程度上的违反不太影响t检验结果的准确性，所以基本上你可以放心用t检验。
+如果严重违反正态性和方差齐性，可以考虑做给数据做一下正态转换，它可以解决正态性问题，并一定程度上改善方差齐性问题。</p>
+<ul class="simple">
+<li><p>检验被分析的变量是否满足正态分布(大样本情况下不必检验)</p></li>
+<li><p>检验两组数据之间是否满足方差齐性</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>数据格式<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>比如&quot;性别&quot;是分组变量, 我们要比较不同性别的人的工龄和上网时间有什么区别:</p>
+<p>在spss中数据的格式往往是这样的:</p>
+<p><img alt="值标签" src="../_images/value-labels.png" /></p>
+<p>数据视图是这样的:</p>
+<p><img alt="DataStructre" src="../_images/data.png" /></p>
+</div>
+<div class="section" id="id3">
+<h2>结果展示<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><iframe src="../_static/均值比较/TTests-report.html" height="600px" width="100%"></iframe>
+<a href="../_static/均值比较/TTests-report.html" target="_blank">全屏查看</a></p>
+</div>
+<div class="section" id="id4">
+<h2>结果解读<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>T检验会输出4个表格, 他们分别是:</p>
+<ul class="simple">
+<li><p><strong>各组描述性统计:</strong> 各组的样本量/均值/标准差/标准误。</p></li>
+<li><p><strong>方差齐性检验:</strong> sig(显著性)低于0.05可认为方差不齐, 也就是T检验的前提不成立, T检验的结果不可信, 需要采纳异方差稳健的结果。</p></li>
+<li><dl class="simple">
+<dt><strong>T检验结果:</strong> 我们输出的两种算法的结果, 一是T检验结果, 二是异方差稳健的结果,</dt><dd><p>如果数据满足方差齐性, 就采纳第一行结果(方差齐), 反之采纳第二行(异方差稳健)的结果。 sig(显著性)这一列标志着两组均值是否有差异,
+sig&lt;0.05的话就认为均值差异显著。</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>整合后的T检验(用于某些论文格式，用不到的可以忽略):</strong> 论文常用表格格式。</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">SPSSBot</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">T检验</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">基本流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">数据格式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">结果展示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">结果解读</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to SPSSBot's documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, xxxspy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/均值比较/TTests.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
