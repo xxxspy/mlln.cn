@@ -449,6 +449,87 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2015/03/23/Python教程：[52]win32com调用constants/">
+                Python教程：[52]win32com调用constants
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年03月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>今天使用python的win32com组间操作Excel的时候发现一个问题，想要使用常数constants.xlUp，但是却总是提示错误：</p>
+<ul>
+<li><p>Traceback (most recent call last):</p>
+</li>
+<li><p>File “&lt;pyshell#1&gt;”, line 1, in <module></module></p>
+</li>
+<li><p>c.xlUp</p>
+</li>
+<li><p>File “D:\Python27\lib\site-packages\win32com\client__init__.py”, line 170, in <strong>getattr</strong></p>
+</li>
+<li><p>raise AttributeError(a)</p>
+</li>
+<li><p>AttributeError: xlUp</p>
+</li>
+<li><p>我来介绍一下自己的代码吧，先来引入常量constants</p>
+</li>
+</ul>
+<img src="/2015/03/23/Python教程：[52]win32com调用constants/906289dda144ad34b56cd31dd2a20cf430ad851e.jpg" title="Python教程：[52]win32com调用constants">
+<ul>
+<li>接着，我们引入client，这都是操作Excel的时候用到的基本模块</li>
+</ul>
+<img src="/2015/03/23/Python教程：[52]win32com调用constants/38403f3fb80e7beca9a4547b2d2eb9389a506beb.jpg" title="Python教程：[52]win32com调用constants">
+<ul>
+<li>现在我们启动一下Excel，句柄存在xl中</li>
+</ul>
+<img src="/2015/03/23/Python教程：[52]win32com调用constants/2e6fa7389b504fc2d626e79fe7dde71191ef6deb.jpg" title="Python教程：[52]win32com调用constants">
+<ul>
+<li>我们尝试调用一下c.xlUp,看到了吧，提示错误</li>
+</ul>
+<img src="/2015/03/23/Python教程：[52]win32com调用constants/b94f65ec54e736d12fc1d89299504fc2d462691e.jpg" title="Python教程：[52]win32com调用constants">
+<ul>
+<li>假如，我现在用另一个方式启动Excel</li>
+</ul>
+<img src="/2015/03/23/Python教程：[52]win32com调用constants/b87985504fc2d56280da8477e51190ef77c66c1e.jpg" title="Python教程：[52]win32com调用constants">
+<ul>
+<li>现在就可以正确读取了</li>
+</ul>
+<img src="/2015/03/23/Python教程：[52]win32com调用constants/e49cf91190ef76c6ad00afb19f16fdfaae51671e.jpg" title="Python教程：[52]win32com调用constants">
+<ul>
+<li>我现在还不知道这两种方式到底有什么区别，只能先写到这里，如果哪位朋友知道为什么，可以在下面留言。</li>
+</ul>
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2015/03/19/SPSS python教程：[3]怎样python代码/">
                 SPSS python教程：[3]怎样python代码
             </a>
@@ -1095,61 +1176,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/03/01/Django教程：[5]URLpattern的语法 - 副本/">
-                Django教程：[5]URLpattern的语法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年03月01日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>前一篇文章我们使用Django制作了第一个网页，针对其中的一些问题，我们补充一点知识，这是关于urls.py文件中的URLpattern的，</p>
-<ul>
-<li>我们在写url的时候实际上写的是正则表达式，尖号（^）和美元符号（$）都是正则表达式符号，分别表示字符串的开头和结尾。上面添加的url（’^hello/$’）表示url以hello/开头，也以hello/结尾，只有满足这两个条件的url才可以调用hello函数。</li>
-</ul>
-
-<ul>
-<li><p>假如我们写成 ^hello/ ，没有$结尾，表示任何以hello/开头的url都是可以调用hello方法的，比如浏览器中访问<a href="http://127.0.0.1:8001/hello/dfdf也可以调用hello方法。" target="_blank" rel="noopener">http://127.0.0.1:8001/hello/dfdf也可以调用hello方法。</a></p>
-</li>
-<li><p>假如我们写成 hello/$，没有尖号（^）开头，那么任何以hello/结尾的url都可以调用hello方法。比如<a href="http://127.0.0.1:8001/dfdfdf/hello/" target="_blank" rel="noopener">http://127.0.0.1:8001/dfdfdf/hello/</a></p>
-</li>
-<li><p>那么，只写 hello/ ，没有尖号和美元符号，那么只要url中包含字符 hello/都可以调用方法 hello 。</p>
-</li>
-<li><p>学习python的正则表达式可以帮助你更好的理解这些内容，下面的参考资料里有python的正则表达式的学习教程。</p>
-</li>
-</ul>
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/django/">#django</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1191,6 +1217,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/10/31/JSON Schema介绍和入门/">JSON-Schema介绍和入门</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/09/10/python3中给函数缓存结果-让程序加速/">python3中给函数缓存结果-让程序加速</a>
             </li>
             
@@ -1226,10 +1256,6 @@
                 <a class="footer-post" href="/2019/07/21/python3的logging模块的最佳实践/">python3的logging模块的最佳实践</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/07/13/python自带GUI根据url显示网络图片/">python自带GUI根据url显示网络图片</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1241,7 +1267,7 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
         </span>
         
         <span>
@@ -1513,11 +1539,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+            <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
         </span>
         
         <span>
