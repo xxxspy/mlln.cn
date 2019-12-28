@@ -288,8 +288,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
-                    李宏毅机器学习教程11：为什么使用深度网络
+                <a href="/2018/09/21/李宏毅机器学习教程5：逻辑回归/">
+                    李宏毅机器学习教程5：逻辑回归
                 </a>
             </div>
             
@@ -300,14 +300,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
-                    李宏毅机器学习教程01:机器学习简介
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
                 </a>
             </div>
             
@@ -381,14 +381,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
-                    李宏毅机器学习教程12：半监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程22：集成模型/">
+                    李宏毅机器学习教程22：集成模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程9-1：训练深度神经网络的一些tips/">
-                    李宏毅机器学习教程9-1：训练深度神经网络的一些tips
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
                 </a>
             </div>
             
@@ -444,6 +444,83 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/04/15/pandas教程：[3]DataFrame切片操作/">
+                pandas教程：[3]DataFrame切片操作
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月15日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>DataFrame数据框允许我们使用iloc方法来像操作array（数组）一样对DataFrame进行切片操作，其形式上，跟对数组进行切片是一样的，我们下面来演示一下一些典型的切片操作：</p>
+<ul>
+<li>先创建一个6行4列的DataFrame数据框</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/4e83cb628535e5dd397819eb75c6a7efce1b626b.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>使用iloc方法，提取第四行数据：</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/4abae5edab64034f33d47e32acc379310a551dad.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>我们可以看一下，这种方法得到的返回值是一个series数据</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/79b1e936afc3793145713a1de8c4b74543a911ad.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>返回4-5行，1-2列数据，用下面的写法，你可以看到跟array的切片操作是一模一样的额</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/b5ce925494eef01fd140a4f1e3fe9925bc317d6b.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>我们也可以提取不连续行和列的数</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/1f569482b9014a90ac27fa89aa773912b31beeae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>想要提取某一样或者某几行的数据，保证所有列都在，可以使用一个冒号来表示所有列</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/72ccb7773912b31bef75711d8518367adab4e1ae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>当然，所有行，也可以用冒号来表示</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/b110e6198618367ab990c3e92d738bd4b31ce5ae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>提取某一个值，去掉所有冒号，比如取第2行第2列的这个数</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/d019d2bf6c81800a18b2353ab23533fa828b476b.jpg" title="pandas教程：[3]DataFrame切片操作">
+<ul>
+<li>当然，iat是专门提取某个数的方法，它的效率高更高，因此建议在提取单个数的时候用iat</li>
+</ul>
+<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/8640bf8b87d6277ff20b8e0c2b381f30e924fcae.jpg" title="pandas教程：[3]DataFrame切片操作">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1163,71 +1240,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/">
-                Excel2013：[10]一次性找出所有隐藏的行列
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年03月23日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>有时候Excel中隐藏的单元格和表单我们自己都忘记了，一个个找起来也麻烦，当我们想要删除这个隐藏的表格的时候更麻烦，其实Excel给我们提供了这样的功能，可以快速的找到和删除所有隐藏的cell和sheet，下面是具体的方法“</p>
-<ul>
-<li>打开文件——选项，如图所示</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/2e6fa7389b504fc2b46e811ce7dde71190ef6db2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>在信任中心，点击设置信任中心</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/d5462bfae6cd7b895e130b9a0d2442a7d9330e68.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>在个人信息选项下，找到【文档检查器】</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/7787b9efce1b9d1697f6ab78f1deb48f8c5464b2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>勾选这两个选项【隐藏行和列】和【隐藏工作表】</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/b5ce925494eef01f4b2529dce2fe9925bc317db2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>检查一下，看看出现了什么有很多隐藏的行，我们点击全部删除就可以删除它们。</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/3b6833f5e0fe9925c93d584936a85edf8db171b2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<ul>
-<li>删除以后这些隐藏的内容将再也不回来了。</li>
-</ul>
-<img src="/2015/03/23/Excel2013：[10]一次性找出所有隐藏的行列/e1bf8725bc315c6043a45af68fb1cb13495477b2.jpg" title="Excel2013：[10]一次性找出所有隐藏的行列">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1269,6 +1281,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/12/28/为什么正态性检验的时候偏度和峰度的标准误都是一样的/">为什么正态性检验的时候偏度和峰度的标准误都是一样的</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/26/2020年大学生毕业论文问卷互填群推荐/">2020年大学生毕业论文问卷互填群推荐</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/10/31/JSON Schema介绍和入门/">JSON-Schema介绍和入门</a>
             </li>
             
@@ -1300,14 +1320,6 @@
                 <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/07/31/ubuntu下使用cron执行定时任务更新代码/">ubuntu下使用cron执行定时任务更新代码</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/21/python3的logging模块的最佳实践/">python3的logging模块的最佳实践</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1319,23 +1331,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/报告系统/">报告系统</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1359,7 +1359,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -1372,6 +1380,10 @@
         
         <span>
             <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷网/">问卷网</a>
         </span>
         
         <span>
@@ -1403,7 +1415,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/JSONSchema/">JSONSchema</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1415,19 +1443,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1436,6 +1452,10 @@
         
         <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
         </span>
         
         <span>
@@ -1459,15 +1479,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1475,27 +1491,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1507,6 +1507,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1515,15 +1527,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
         </span>
         
         <span>
@@ -1536,6 +1548,10 @@
         
         <span>
             <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1559,10 +1575,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pychrome/">pychrome</a>
         </span>
         
@@ -1575,14 +1587,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
@@ -1591,11 +1595,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
         </span>
         
         <span>
@@ -1607,7 +1619,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/lru-cache/">lru_cache</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/os/">os</a>
         </span>
         
         <span>
@@ -1619,10 +1639,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/os/">os</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pil/">pil</a>
         </span>
         
@@ -1631,19 +1647,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/requests/">requests</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/cookies/">cookies</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1656,6 +1664,14 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
         </span>
         
         <span>
@@ -1699,6 +1715,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/win32com/">win32com</a>
         </span>
         
@@ -1707,15 +1727,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
     </ul>

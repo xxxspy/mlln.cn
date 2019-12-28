@@ -288,8 +288,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
-                    李宏毅机器学习教程11：为什么使用深度网络
+                <a href="/2018/09/21/李宏毅机器学习教程5：逻辑回归/">
+                    李宏毅机器学习教程5：逻辑回归
                 </a>
             </div>
             
@@ -300,14 +300,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
-                    李宏毅机器学习教程01:机器学习简介
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
                 </a>
             </div>
             
@@ -381,14 +381,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
-                    李宏毅机器学习教程12：半监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程22：集成模型/">
+                    李宏毅机器学习教程22：集成模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程9-1：训练深度神经网络的一些tips/">
-                    李宏毅机器学习教程9-1：训练深度神经网络的一些tips
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
                 </a>
             </div>
             
@@ -444,6 +444,81 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2016/04/23/Python统计分析：[1]独立样本T检验/">
+                Python统计分析：[1]独立样本T检验
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016年04月23日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>这是《Python统计分析》系列文章的第一篇，该系列文章致力于使用Python进行一般的统计分析，比如T检验、方差分析、回归分析、主成分、聚类、等等。Python有很多统计包可以帮助我们实现我们的目的，《Python统计分析》系列文章用到的包包括但不仅限于：pandas、numpy、scipy、Statsmodels。很多人都知道我写过所有这些包的教程，而《Python统计分析》系列文章可以把以前的内容综合运用起来，所以需要你对这些模块有一定的了解，但不需要精通。</p>
+<ul>
+<li>引入相关的模块，ttest_ind是用于独立样本t检验的（independent samples t test），pandas主要用到它的DataFrame</li>
+</ul>
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/5f9e93b1cb1349547392d817554e9258d0094af1.jpg" title="Python统计分析：[1]独立样本T检验">
+<ul>
+<li>读取数据并查看一下数据的前五行<br>我们可以看到数据包含三列，最后一列group表示不同的组，只有1、2两组</li>
+</ul>
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/8367d1fc1e178a8265b04fd3f503738da877e8f2.jpg" title="Python统计分析：[1]独立样本T检验">
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/8a95ad1c8701a18b6967223c9d2f07082938fef2.jpg" title="Python统计分析：[1]独立样本T检验">
+<ul>
+<li>我们用到了DataFrame的一个筛选数据的功能，比如筛选1组数据<br>我们可以得到这样的数据</li>
+</ul>
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/8b527d2762d0f7039705a6af0bfa513d2797c5ca.jpg" title="Python统计分析：[1]独立样本T检验">
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/476217f7905298226abc09b0d4ca7bcb0b46d4f2.jpg" title="Python统计分析：[1]独立样本T检验">
+<ul>
+<li>假如现在我们想要比较两组数据在scoreA上是否有差异，我们可以分别筛选得到1组的scoreA和2组的scoreA，然进行t检验<br>检验的结果得到一个tuple，第一个元素是t值，第二个元素是p值，根据p值就知道两列数据均值差异不显著</li>
+</ul>
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/21e5582309f790528ee7744d0ff3d7ca7acbd58d.jpg" title="Python统计分析：[1]独立样本T检验">
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/27d647ee3d6d55fbbd6946556e224f4a21a4ddd2.jpg" title="Python统计分析：[1]独立样本T检验">
+<ul>
+<li>如果我们想要同时比较scoreA和scoreB也可以，筛选数据的时候加上scoreB即可<br>结果得到的是tuple构成的tuple，第一个tuple元素表示t值，根据结果我们就知道t（scoreA）=1.366，t（scoreB）=0.601,另一个tuple就不解释了吧</li>
+</ul>
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/1f569482b9014a90289276ceaa773912b21beed2.jpg" title="Python统计分析：[1]独立样本T检验">
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/08b68e529822720e1561d28978cb0a46f31fabd2.jpg" title="Python统计分析：[1]独立样本T检验">
+<ul>
+<li>当然我们还需要注意，ttest_ind默认两组数据方差齐性的，如果想要设置默认方差不齐，可以设置equal_var=False，下面比较一下这两种情况结果的差异</li>
+</ul>
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/148f28d3d539b6000f613fc4ea50352ac75cb7d2.jpg" title="Python统计分析：[1]独立样本T检验">
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/c8ab0bce36d3d53982b23fb03987e950342ab0f2.jpg" title="Python统计分析：[1]独立样本T检验">
+<ul>
+<li>那么，问题来了（挖掘机到底哪家强？），我们用什么检验两组数据的方差齐性呢——levene test<br>检验结果为p&gt;0.05所以，可以认为方差是相等的。</li>
+</ul>
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/373bc4b44aed2e736145b65f8401a18b86d6fad2.jpg" title="Python统计分析：[1]独立样本T检验">
+<img src="/2016/04/23/Python统计分析：[1]独立样本T检验/0d729944ebf81a4c77bddcbad42a6059242da6f2.jpg" title="Python统计分析：[1]独立样本T检验">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -1056,111 +1131,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2016/04/03/用excel在局域网聊天图文教程/">
-                用excel在局域网聊天图文教程
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2016年04月03日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>excel可以在局域网聊天，你也许不信，那么就跟我来做一下。其实很简单的几步设置就可以了，其主要的原理是使用excel的多人同时编辑的功能，可以共享该excel文件，几个人同时编辑该文件，就可以实现聊天的功能，不过好多人都不知道如何设置多人同时编辑和共享文件，下面我就来重点介绍一下这两个步骤吧。<br>方法/步骤</p>
-<ul>
-<li>新建一个excel，然后打开，我们先在第一行建立一个标题栏，格式设置一下以便突出出来，标题栏标注的就是聊天的所有的人。</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/37d12f2eb9389b502b6bf5cc8535e5dde6116e93.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>选中所有的单元格，右键单击任意单元格，然后再选择【设置单元格格式】，打开设置对话框</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/11385343fbf2b211d78b90d0ca8065380dd78e82.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>切换到对齐选项，勾选自动换行，然后点击确定。这么做是为了让文字都显示完整</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/8435e5dde71190ef1c6f8741ce1b9d16fcfa6093.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>接着来到审阅选项，点击【共享工作簿】</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/b58f8c5494eef01f4f800d5be0fe9925bd317d93.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>假如弹出这个对话框，你需要进一步进行设置，点击确定</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/5882b2b7d0a20cf46035eb4176094b36adaf9982.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>点击excel的开始按钮，在开始菜单中，打开excel选项。</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/77094b36acaf2eddf4545c778d1001e938019382.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>在信任中心中，打开信任中心设置</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/810a19d8bc3eb135bd53a225a61ea8d3fc1f4493.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>切换到个人信息选项下，然后取消勾选【保存时从文件属性中删除个人信息】，一路点击确定，退出excel选项。</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/838ba61ea8d3fd1fd29db7a4304e251f94ca5f93.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>接着点击【共享工作簿】，弹出共享设置对话框，勾选【允许多用户同时编辑，同时运行工作簿合并】，然后切换到高级选项下</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/e4dde71190ef76c6cc77eeb59d16fdfaae516782.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>滑将自动更新间隔设置为5分钟（最短时间），然后勾选【保存本人的更改并查看其他用户的更改】，点击确定按钮。</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/77c6a7efce1b9d1693628ffff3deb48f8d546482.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>弹出警告消息，点击确定，保存文档</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/314e251f95cad1c83e2fe9b97f3e6709c83d5193.jpg" title="用excel在局域网聊天图文教程">
-<img src="/2016/04/03/用excel在局域网聊天图文教程/9e3df8dcd100baa169b852254710b912c9fc2e93.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>新建一个文件夹，将文件夹放到任意一个隐蔽的位置，将我们做好的excel放到该文件夹中</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/5d6034a85edf8db1b58b69fa0923dd54574e7482.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>右键单击该文件夹，然后执行：共享–家庭组读取、写入。好了，到这里，别人就可以访问你的电脑并打开excel进行聊天了。那么别人怎么找到你的excel文件呢?</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/b812c8fcc3cec3fd57aab2ebd688d43f86942793.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li>在桌面上双击网络，进入局域网</li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/18d8bc3eb13533fa0d1386b0a8d3fd1f40345b82.jpg" title="用excel在局域网聊天图文教程">
-<ul>
-<li><p>在这里找到存有excel文档的电脑，双击进入就可以找到了。</p>
-</li>
-<li></li>
-</ul>
-<img src="/2016/04/03/用excel在局域网聊天图文教程/960a304e251f95ca49508728c9177f3e66095282.jpg" title="用excel在局域网聊天图文教程">
-<img src="/2016/04/03/用excel在局域网聊天图文教程/0e2442a7d933c8951bea8de5d11373f083020093.jpg" title="用excel在局域网聊天图文教程">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/excel/">#excel</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1202,6 +1172,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/12/28/为什么正态性检验的时候偏度和峰度的标准误都是一样的/">为什么正态性检验的时候偏度和峰度的标准误都是一样的</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/26/2020年大学生毕业论文问卷互填群推荐/">2020年大学生毕业论文问卷互填群推荐</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/10/31/JSON Schema介绍和入门/">JSON-Schema介绍和入门</a>
             </li>
             
@@ -1233,14 +1211,6 @@
                 <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/07/31/ubuntu下使用cron执行定时任务更新代码/">ubuntu下使用cron执行定时任务更新代码</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/21/python3的logging模块的最佳实践/">python3的logging模块的最佳实践</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1252,23 +1222,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/报告系统/">报告系统</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1292,7 +1250,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -1305,6 +1271,10 @@
         
         <span>
             <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷网/">问卷网</a>
         </span>
         
         <span>
@@ -1336,7 +1306,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/JSONSchema/">JSONSchema</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1348,19 +1334,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1369,6 +1343,10 @@
         
         <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
         </span>
         
         <span>
@@ -1392,15 +1370,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1408,27 +1382,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1440,6 +1398,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1448,15 +1418,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
         </span>
         
         <span>
@@ -1469,6 +1439,10 @@
         
         <span>
             <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1492,10 +1466,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pychrome/">pychrome</a>
         </span>
         
@@ -1508,14 +1478,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
@@ -1524,11 +1486,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
         </span>
         
         <span>
@@ -1540,7 +1510,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/lru-cache/">lru_cache</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/os/">os</a>
         </span>
         
         <span>
@@ -1552,10 +1530,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/os/">os</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pil/">pil</a>
         </span>
         
@@ -1564,19 +1538,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/requests/">requests</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/cookies/">cookies</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1589,6 +1555,14 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
         </span>
         
         <span>
@@ -1632,6 +1606,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/win32com/">win32com</a>
         </span>
         
@@ -1640,15 +1618,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
     </ul>

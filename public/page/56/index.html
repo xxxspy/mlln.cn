@@ -288,8 +288,8 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程11：为什么使用深度网络/">
-                    李宏毅机器学习教程11：为什么使用深度网络
+                <a href="/2018/09/21/李宏毅机器学习教程5：逻辑回归/">
+                    李宏毅机器学习教程5：逻辑回归
                 </a>
             </div>
             
@@ -300,14 +300,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程15：无监督学习-neighbor-embeding/">
-                    李宏毅机器学习教程15：无监督学习-neighbor-embeding
+                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
+                    李宏毅机器学习教程12：半监督学习
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程01-机器学习简介/">
-                    李宏毅机器学习教程01:机器学习简介
+                <a href="/2018/09/21/李宏毅机器学习教程1-1：回归案例教程/">
+                    李宏毅机器学习教程1-1：回归案例教程
                 </a>
             </div>
             
@@ -381,14 +381,14 @@
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程12：半监督学习/">
-                    李宏毅机器学习教程12：半监督学习
+                <a href="/2018/09/21/李宏毅机器学习教程22：集成模型/">
+                    李宏毅机器学习教程22：集成模型
                 </a>
             </div>
             
             <div class="archive-post">
-                <a href="/2018/09/21/李宏毅机器学习教程9-1：训练深度神经网络的一些tips/">
-                    李宏毅机器学习教程9-1：训练深度神经网络的一些tips
+                <a href="/2018/09/21/李宏毅机器学习教程23-1：强化学习/">
+                    李宏毅机器学习教程23-1：强化学习
                 </a>
             </div>
             
@@ -444,6 +444,84 @@
         <!--Title and Logo-->
         <section class="main">
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/04/19/pandas教程：[27]散点图和抖动图/">
+                pandas教程：[27]散点图和抖动图
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>拿到一个数据我们首先想到的是绘制散点图查看数据的基本分布情况，那么在Python.pandas中，如何绘制散点图呢？散点图的缺陷是什么，为什么要绘制抖动图呢？</p>
+<ul>
+<li>先引入相应的模块</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/b25d9901a18b87d6333d7e6f040828381f30fd00.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>读取数据到数据框df<br>打印出前5行数据，可以看到有两列数据，分别是 孩子的身高和父母的身高</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/1e71f724b899a901504a8e461e950a7b0208f500.jpg" title="pandas教程：[27]散点图和抖动图">
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/3790312eb9389b50ccbb35228635e5dde7116e3f.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>先绘制一个散点图，x轴为孩子的身高，y轴为父母的身高，将绘制得到的图片保存在D盘下的plot.png文件</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/969cbf44ad345982dfce30e20ff431adcbef843f.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>我们可以看到得到的图片是酱紫的，由于数据点重合在了一起，所以我们看到的散点图很规整，但却隐藏了规律，于是我们想到用到抖动的方法，绘制抖动图</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/08b68e529822720e32b1378a78cb0a46f21fab00.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>我们看可以实现抖动的函数：所谓的抖动就是让数据点发生微小的位移，也就是略微改变数据的值，使得数据点不能完全重合，抖动距离的大小用下面函数中的factor参数来决定。</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/d1e312f431adcbef0470ab76afaf2edda3cc9f3f.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>利用上面的函数对df进行处理</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/f392492c11dfa9eca251836761d0f703918fc100.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>我们看得到的数据df2是酱紫的：</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/27d647ee3d6d55fb86b9a3566e224f4a20a4dd00.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>现在接着绘制一个散点图，生成的就是抖动图了。alpha参数指的是数据点的透明度</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/6391e903918fa0ec26b8b17d259759ee3d6ddb00.jpg" title="pandas教程：[27]散点图和抖动图">
+<ul>
+<li>从这个图中我们可以清楚的看到，颜色比较深、数据比较多的点和颜色比较浅、数据比较少的点的位置。</li>
+</ul>
+<img src="/2015/04/19/pandas教程：[27]散点图和抖动图/61183b2dd42a283466d9e37b58b5c9ea15cebf00.jpg" title="pandas教程：[27]散点图和抖动图">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/pandas/">#pandas</a>
+        </div>
+    
+
+</div>
+                    
                 
 <div class="post">
 
@@ -618,87 +696,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/">
-                SPSS实例：[28]卡方检验百分比与理论值差异
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年04月19日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>我们有一个研究检验某种疗法的有效性，统计了实施前后的人数，我们想要比较实施前和实施后人数是否有差异，怎么比较？有两种数据结构，得使用不同的方法，下面将要介绍的是这种数据没有原始数据，只有计数数据，如下图。变量9表示人数，实施前后表示该方法实施前用0表示，实施后用1表示。另外一种数据结构是你有原始数据，而不是计数数据，你可以参考我以前的文章：<a href="http://jingyan.baidu.com/article/d8072ac4587f6dec95cefd9a.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/d8072ac4587f6dec95cefd9a.html</a></p>
-<ul>
-<li>首先要给数据加权，我们在data菜单下，选择case加权</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/c71d0e385343fbf213af316fb27eca8064388fb8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>将变量9放入频数变量框，点击【ok】，完成加权（如果有原始数据，则不需要加权）</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/29790130e924b899f378ee746c061d950b7bf6f3.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>接着我们来做卡方检验，在菜单栏上执行：分析–非参检验–遗留选项–卡方检验</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/906289dda144ad34f23c10cbd2a20cf430ad85b8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>将实施前后变量放入检验变量框。</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/0db52fadcbef7609f9880ed32cdda3cc7dd99eb8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>这里有一个问题，如果你的数据有一个单元格频数小于5，你得使用精确卡方检验，需要点击【exact】进行设置</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/f99dcf00baa1cd117002e46cbb12c8fcc2ce2d82.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>勾选这个选项，点击继续</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/c9bdddcec3fdfc039bcc75f4d63f8794a5c22682.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>接着设置这里，我们可以检验不同组人数是否相同，使用【所有分类相同】；</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/27d647ee3d6d55fbc02fe06a6f224f4a21a4dd56.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>也可以自己设定频数，比如我设定为2和6，当然今天我们只讲上面的【所有分类相同】的情况。</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/1cd4147b02087bf46a59c1a5f0d3572c10dfcf82.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>这里就是检验结果了，sig值大于0.05，结果不显著，说明两组之间没有差异。</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/30ecd5ef76094b361f118ca1a1cc7cd98c109db8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<ul>
-<li>如果你用的是精确检验就会看大有一个精确sig值</li>
-</ul>
-<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/91138622720e0cf3abe7dfb70846f21fbe09aa2f.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/spss/">#spss</a>
-        </div>
-    
-
-</div>
-                    
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2015/04/19/Excel2013：[59]匹配不同工作表记录/">
                 Excel2013：[59]匹配不同工作表记录
             </a>
@@ -818,6 +815,87 @@
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
             <a href="/tags/excel/">#excel</a>
+        </div>
+    
+
+</div>
+                    
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/">
+                SPSS实例：[28]卡方检验百分比与理论值差异
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2015年04月19日</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>我们有一个研究检验某种疗法的有效性，统计了实施前后的人数，我们想要比较实施前和实施后人数是否有差异，怎么比较？有两种数据结构，得使用不同的方法，下面将要介绍的是这种数据没有原始数据，只有计数数据，如下图。变量9表示人数，实施前后表示该方法实施前用0表示，实施后用1表示。另外一种数据结构是你有原始数据，而不是计数数据，你可以参考我以前的文章：<a href="http://jingyan.baidu.com/article/d8072ac4587f6dec95cefd9a.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/d8072ac4587f6dec95cefd9a.html</a></p>
+<ul>
+<li>首先要给数据加权，我们在data菜单下，选择case加权</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/c71d0e385343fbf213af316fb27eca8064388fb8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>将变量9放入频数变量框，点击【ok】，完成加权（如果有原始数据，则不需要加权）</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/29790130e924b899f378ee746c061d950b7bf6f3.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>接着我们来做卡方检验，在菜单栏上执行：分析–非参检验–遗留选项–卡方检验</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/906289dda144ad34f23c10cbd2a20cf430ad85b8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>将实施前后变量放入检验变量框。</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/0db52fadcbef7609f9880ed32cdda3cc7dd99eb8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>这里有一个问题，如果你的数据有一个单元格频数小于5，你得使用精确卡方检验，需要点击【exact】进行设置</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/f99dcf00baa1cd117002e46cbb12c8fcc2ce2d82.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>勾选这个选项，点击继续</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/c9bdddcec3fdfc039bcc75f4d63f8794a5c22682.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>接着设置这里，我们可以检验不同组人数是否相同，使用【所有分类相同】；</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/27d647ee3d6d55fbc02fe06a6f224f4a21a4dd56.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>也可以自己设定频数，比如我设定为2和6，当然今天我们只讲上面的【所有分类相同】的情况。</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/1cd4147b02087bf46a59c1a5f0d3572c10dfcf82.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>这里就是检验结果了，sig值大于0.05，结果不显著，说明两组之间没有差异。</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/30ecd5ef76094b361f118ca1a1cc7cd98c109db8.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<ul>
+<li>如果你用的是精确检验就会看大有一个精确sig值</li>
+</ul>
+<img src="/2015/04/19/SPSS实例：[28]卡方检验百分比与理论值差异/91138622720e0cf3abe7dfb70846f21fbe09aa2f.jpg" title="SPSS实例：[28]卡方检验百分比与理论值差异">
+<blockquote>
+<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
+</blockquote>
+<blockquote>
+<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
+</blockquote>
+
+        </div>
+    
+
+    
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/spss/">#spss</a>
         </div>
     
 
@@ -1329,83 +1407,6 @@
 
 </div>
                     
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2015/04/15/pandas教程：[3]DataFrame切片操作/">
-                pandas教程：[3]DataFrame切片操作
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2015年04月15日</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>DataFrame数据框允许我们使用iloc方法来像操作array（数组）一样对DataFrame进行切片操作，其形式上，跟对数组进行切片是一样的，我们下面来演示一下一些典型的切片操作：</p>
-<ul>
-<li>先创建一个6行4列的DataFrame数据框</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/4e83cb628535e5dd397819eb75c6a7efce1b626b.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>使用iloc方法，提取第四行数据：</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/4abae5edab64034f33d47e32acc379310a551dad.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>我们可以看一下，这种方法得到的返回值是一个series数据</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/79b1e936afc3793145713a1de8c4b74543a911ad.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>返回4-5行，1-2列数据，用下面的写法，你可以看到跟array的切片操作是一模一样的额</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/b5ce925494eef01fd140a4f1e3fe9925bc317d6b.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>我们也可以提取不连续行和列的数</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/1f569482b9014a90ac27fa89aa773912b31beeae.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>想要提取某一样或者某几行的数据，保证所有列都在，可以使用一个冒号来表示所有列</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/72ccb7773912b31bef75711d8518367adab4e1ae.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>当然，所有行，也可以用冒号来表示</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/b110e6198618367ab990c3e92d738bd4b31ce5ae.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>提取某一个值，去掉所有冒号，比如取第2行第2列的这个数</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/d019d2bf6c81800a18b2353ab23533fa828b476b.jpg" title="pandas教程：[3]DataFrame切片操作">
-<ul>
-<li>当然，iat是专门提取某个数的方法，它的效率高更高，因此建议在提取单个数的时候用iat</li>
-</ul>
-<img src="/2015/04/15/pandas教程：[3]DataFrame切片操作/8640bf8b87d6277ff20b8e0c2b381f30e924fcae.jpg" title="pandas教程：[3]DataFrame切片操作">
-<blockquote>
-<p>转载请注明来自<a href="http://mlln.cn">DataScience</a>.</p>
-</blockquote>
-<blockquote>
-<p>邮箱: <a href="mailto:675495787@qq.com" target="_blank" rel="noopener">675495787@qq.com</a> </p>
-</blockquote>
-
-        </div>
-    
-
-    
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/pandas/">#pandas</a>
-        </div>
-    
-
-</div>
-                    
         </section>
     </div>
 </div>
@@ -1447,6 +1448,14 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/12/28/为什么正态性检验的时候偏度和峰度的标准误都是一样的/">为什么正态性检验的时候偏度和峰度的标准误都是一样的</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/12/26/2020年大学生毕业论文问卷互填群推荐/">2020年大学生毕业论文问卷互填群推荐</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/10/31/JSON Schema介绍和入门/">JSON-Schema介绍和入门</a>
             </li>
             
@@ -1478,14 +1487,6 @@
                 <a class="footer-post" href="/2019/08/04/python中logging模块的error和exception的区别和最佳实践/">python中logging模块的error和ex</a>
             </li>
             
-            <li>
-                <a class="footer-post" href="/2019/07/31/ubuntu下使用cron执行定时任务更新代码/">ubuntu下使用cron执行定时任务更新代码</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/07/21/python3的logging模块的最佳实践/">python3的logging模块的最佳实践</a>
-            </li>
-            
         </ul>
     </div>
 
@@ -1497,23 +1498,11 @@
     <ul>
         
         <span>
-            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
+            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/报告系统/">报告系统</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/python/">python</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/数据科学教程/">数据科学教程</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/numpy/">numpy</a>
         </span>
         
         <span>
@@ -1537,7 +1526,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/numpy/">numpy</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/datanitro/">datanitro</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/python/">python</a>
         </span>
         
         <span>
@@ -1550,6 +1547,10 @@
         
         <span>
             <a class="footer-post" href="/tags/django/">django</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/问卷网/">问卷网</a>
         </span>
         
         <span>
@@ -1581,7 +1582,23 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/JSONSchema/">JSONSchema</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/推荐书/">推荐书</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/spss/">spss</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/游戏/">游戏</a>
         </span>
         
         <span>
@@ -1593,19 +1610,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/机器学习/">机器学习</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/深度学习/">深度学习</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/游戏/">游戏</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/spss/">spss</a>
         </span>
         
         <span>
@@ -1614,6 +1619,10 @@
         
         <span>
             <a class="footer-post" href="/tags/statsmodels/">statsmodels</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
         </span>
         
         <span>
@@ -1637,15 +1646,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/tensorflow-js/">tensorflow.js</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nodejs/">nodejs</a>
         </span>
         
         <span>
@@ -1653,27 +1658,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/tamplermonkey/">tamplermonkey</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gensim/">gensim</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/git/">git</a>
+            <a class="footer-post" href="/tags/e-prime/">e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/gitlab/">gitlab</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/gui/">gui</a>
         </span>
         
         <span>
@@ -1685,6 +1674,18 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/gensim/">gensim</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/摘要生成/">摘要生成</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/gui/">gui</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/keras教程/">keras教程</a>
         </span>
         
@@ -1693,15 +1694,15 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/nginx/">nginx</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/networkx/">networkx</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/officejs/">officejs</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/nginx/">nginx</a>
         </span>
         
         <span>
@@ -1714,6 +1715,10 @@
         
         <span>
             <a class="footer-post" href="/tags/mongoengine/">mongoengine</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/git/">git</a>
         </span>
         
         <span>
@@ -1737,10 +1742,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pychrome/">pychrome</a>
         </span>
         
@@ -1753,14 +1754,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/selenium/">selenium</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/flexx/">flexx</a>
         </span>
         
@@ -1769,11 +1762,19 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/格式化字符串/">格式化字符串</a>
+            <a class="footer-post" href="/tags/selenium/">selenium</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/eprime-e-prime/">eprime/e-prime</a>
         </span>
         
         <span>
             <a class="footer-post" href="/tags/文本挖掘/">文本挖掘</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/pywinauto/">pywinauto</a>
         </span>
         
         <span>
@@ -1785,7 +1786,15 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/pymongo/">pymongo</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/lru-cache/">lru_cache</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/os/">os</a>
         </span>
         
         <span>
@@ -1797,10 +1806,6 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/os/">os</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/pil/">pil</a>
         </span>
         
@@ -1809,19 +1814,11 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/scipy/">scipy</a>
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/requests/">requests</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/cookies/">cookies</a>
+            <a class="footer-post" href="/tags/时间序列/">时间序列</a>
         </span>
         
         <span>
@@ -1834,6 +1831,14 @@
         
         <span>
             <a class="footer-post" href="/tags/psychology/">psychology</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/requests/">requests</a>
+        </span>
+        
+        <span>
+            <a class="footer-post" href="/tags/cookies/">cookies</a>
         </span>
         
         <span>
@@ -1877,6 +1882,10 @@
         </span>
         
         <span>
+            <a class="footer-post" href="/tags/keras/">keras</a>
+        </span>
+        
+        <span>
             <a class="footer-post" href="/tags/win32com/">win32com</a>
         </span>
         
@@ -1885,15 +1894,7 @@
         </span>
         
         <span>
-            <a class="footer-post" href="/tags/keras/">keras</a>
-        </span>
-        
-        <span>
             <a class="footer-post" href="/tags/CCA/">CCA</a>
-        </span>
-        
-        <span>
-            <a class="footer-post" href="/tags/典型相关分析/">典型相关分析</a>
         </span>
         
     </ul>
